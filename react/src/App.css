@@ -1,0 +1,24 @@
+.App {
+  text-align: center;
+}
+
+.subtitle {
+    font-size: calc(10px + 0.25em);
+    position: relative;
+    bottom: 1em;
+}
+
+.App-header {
+  background-color: #1a1a1a;
+  min-height: 32vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 8vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
