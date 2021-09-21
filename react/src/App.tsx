@@ -11,8 +11,14 @@ function App() {
           <br />
           <span className="subtitle">(AH-ven-LOO-tn)</span>
         </p>
-
       </header>
+      <p>
+        Adventure stories in the <a
+                                   target="_blank"
+                                   href="https://lootproject.com"
+                                 >lootverse</a>
+        .
+      </p>
 
       <footer>
         <p> By <a href="https://squad.games">Squad.Games</a></p>
