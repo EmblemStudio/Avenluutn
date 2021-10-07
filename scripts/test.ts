@@ -1,6 +1,6 @@
 import { getLootBag, getAbilityScore, getName, getClassInstance } from './src/loot'
 import { findBlockHashNear } from './src/utils'
-import { prng } from './src/index'
+import { prng, tellNarrative } from './src/index'
 
 // TODO set up secret management
 const alchemyAPI = "https://eth-mainnet.alchemyapi.io/v2/PPujLNqHqSdJjZwxxytSUA68DA_xf8Mm"
@@ -16,7 +16,14 @@ async function main() {
   console.log(prng.nextInt(10, 100000))
 
   console.log(await findBlockHashNear(
-    Math.floor(Date.now() / 1000) - 100, 
+    Math.floor(Date.now() / 1000) - 100, // 100 seconds ago
+    alchemyAPI
+  ))
+
+  console.log(await tellNarrative(
+    Math.floor(Date.now() / 1000) - 100, // 100 seconds ago
+    1000,
+    1,
     alchemyAPI
   ))
 }
