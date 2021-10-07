@@ -7,7 +7,7 @@ export function makeProvider(providerUrl?: string): providers.BaseProvider {
 
 /**
  * Find closest block with timestamp greater than given timestamp
- * using binary search, with a bias towards recent blocks
+ * using binary search, assuming starting point based on avg blocktime
  */
 
 export async function findBlockHashNear(
@@ -20,20 +20,22 @@ export async function findBlockHashNear(
   if (targetTime < firstBlock.timestamp) { return firstBlock.hash }
 
   const latestBlock = await provider.getBlock("latest")
-  if (targetTime > latestBlock.timestamp) { return null }
+  if (targetTime >= latestBlock.timestamp) { return null }
 
-  const biasedStartBlock = await provider.getBlock(
-    Math.floor(latestBlock.number - (60 * 60 / 13.3)) // approx. 1 hr ago
+  const timeAgo = latestBlock.timestamp - targetTime
+  const assumedStartBlock = await provider.getBlock(
+    Math.floor(latestBlock.number - (timeAgo * 1.1 / 13.3)) // 13.3 = avg block time
   )
-  if (targetTime >= biasedStartBlock.timestamp) {
+  if (targetTime >= assumedStartBlock.timestamp) {
     return (await closestLaterBlock(
       targetTime,
       provider,
-      biasedStartBlock,
+      assumedStartBlock,
       latestBlock
     )).hash
   }
 
+  // if our assumption failed, start from the beginning
   return (await closestLaterBlock(
     targetTime,
     provider,
