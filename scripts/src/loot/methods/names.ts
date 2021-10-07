@@ -2,7 +2,7 @@
 
 import { ethers } from 'ethers'
 
-import { makeProvider } from '../utils'
+import { makeProvider } from '../../utils'
 import * as namesAbi from '../abis/names.json'
 
 const NAMES_ADDR = "0xb9310af43f4763003f42661f6fc098428469adab"
