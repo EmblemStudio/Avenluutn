@@ -1,13 +1,16 @@
 // Names: https://etherscan.io/address/0xb9310af43f4763003f42661f6fc098428469adab
 
-import { ethers } from 'ethers'
+import { providers, Contract } from 'ethers'
 
 import { makeProvider } from '../../utils'
 import * as namesAbi from '../abis/names.json'
+import Prando from 'prando'
 
 const NAMES_ADDR = "0xb9310af43f4763003f42661f6fc098428469adab"
+const MIN_ID = 1
+const MAX_ID = 8021
 
-interface Name {
+export interface Name {
   id: number;
   prefix: string;
   firstName: string;
@@ -16,9 +19,11 @@ interface Name {
   suffix: string;
 }
 
-function makeNames(providerUrl?: string): ethers.Contract {
-  const provider = makeProvider(providerUrl)
-  return new ethers.Contract(
+function makeNames(provider?: providers.BaseProvider | string): Contract {
+  if (!(provider instanceof providers.BaseProvider)) {
+    provider = makeProvider(provider)
+  }
+  return new Contract(
     NAMES_ADDR,
     namesAbi,
     provider
@@ -27,13 +32,13 @@ function makeNames(providerUrl?: string): ethers.Contract {
 
 export async function getName(
   nameId: number, 
-  providerUrl?: string
+  provider?: providers.BaseProvider | string
 ): Promise<Name> {
-  if (1 > nameId || nameId > 8021) { 
-    throw new Error("nameId must be between 1 and 8020") 
+  if (nameId < MIN_ID || nameId > MAX_ID) { 
+    throw new Error(`nameId must be between ${MIN_ID} and ${MAX_ID}`) 
   }
 
-  const names = makeNames(providerUrl)
+  const names = makeNames(provider)
 
   const [prefix, firstName, middleName, lastName, suffix] =
     await Promise.all([
@@ -52,4 +57,12 @@ export async function getName(
     lastName,
     suffix
   }
+}
+
+export async function getRandomName(
+  prng: Prando,
+  provider?: providers.BaseProvider | string
+): Promise<Name> {
+  const nameId = prng.nextInt(MIN_ID, MAX_ID)
+  return await getName(nameId, provider)
 }

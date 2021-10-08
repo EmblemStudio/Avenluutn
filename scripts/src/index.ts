@@ -14,16 +14,21 @@
  */
 
 import Prando from 'prando'
-import { ethers, providers } from 'ethers'
+import { providers } from 'ethers'
 
 import { makeProvider, findBlockHashNear } from './utils'
+import { State, Adventurer, Quest } from './interfaces'
 
-// TODO remove prng export from src/index
-export const prng = new Prando("0xace2f3c937f99467c1407f5cd24da8d51ca8adf0a45677a8f19c34d0040fa5cc")
+interface Beginning {
+  adventurers: Adventurer[];
+  quest: Quest;
+  text: string[];
+}
 
 const NOT_STARTED = "Nothing stirs."
 
 export async function tellNarrative(
+  state: State,
   startTime: number, 
   length: number, 
   copyNumber: number,
@@ -62,11 +67,22 @@ export async function tellNarrative(
 }
 
 async function tellBeginning(
+  state: State,
   startTime: number, 
   length: number, 
   copyNumber: number,
   provider: providers.BaseProvider
-): Promise<string> {
+): Promise<Beginning> {
+  /**
+   * Generate quest
+   */
+
+  /**
+   * Select adventurers
+   * - is it based on the quest?
+   * - how do we make sure adventurers can't go on two adventures at once?
+   *   - for now, we'll do this by having preset parties
+   */
   return "beginning"
 }
 

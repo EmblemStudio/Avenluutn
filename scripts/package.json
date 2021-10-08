@@ -9,7 +9,7 @@
     "ethers": "^5.4.7"
   },
   "scripts": {
-    "test": "ts-node test"
+    "test": "ts-node test/test"
   },
   "dependencies": {
     "@types/node": "^16.10.3",

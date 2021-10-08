@@ -1,11 +1,14 @@
 // Class: https://etherscan.io/address/0xccab950f5b192603a94a26c4fa00c8d2d392b98d
 
-import { ethers } from 'ethers'
+import { providers, Contract } from 'ethers'
+import Prando from 'prando'
 
 import { makeProvider } from '../../utils'
 import * as classAbi from '../abis/class.json'
 
 const CLASS_ADDR = "0xccab950f5b192603a94a26c4fa00c8d2d392b98d"
+const MIN_ID = 1
+const MAX_ID = 10000
 
 interface ClassInstance {
   id: number;
@@ -14,9 +17,11 @@ interface ClassInstance {
   class: string;
 }
 
-function makeClass(providerUrl?: string): ethers.Contract {
-  const provider = makeProvider(providerUrl)
-  return new ethers.Contract(
+function makeClass(provider?: providers.BaseProvider | string): Contract {
+  if (!(provider instanceof providers.BaseProvider)) {
+    provider = makeProvider(provider)
+  }
+  return new Contract(
     CLASS_ADDR,
     classAbi,
     provider
@@ -25,11 +30,13 @@ function makeClass(providerUrl?: string): ethers.Contract {
 
 export async function getClassInstance(
   classId: number, 
-  providerUrl?: string
+  provider?: providers.BaseProvider | string
 ): Promise<ClassInstance> {
-  if (1 > classId || classId > 10000) { throw new Error("classId must be between 1 and 8000") }
+  if (classId < MIN_ID || classId > MAX_ID) { 
+    throw new Error(`classId must be between ${MIN_ID} and ${MAX_ID}`) 
+  }
 
-  const class_ = makeClass(providerUrl)
+  const class_ = makeClass(provider)
 
   const [gender, race, _class] =
     await Promise.all([
@@ -44,4 +51,12 @@ export async function getClassInstance(
     race: race.split(": ")[1],
     class: _class.split(": ")[1]
   }
+}
+
+export async function getRandomClass(
+  prng: Prando,
+  provider?: providers.BaseProvider | string
+): Promise<ClassInstance> {
+  const classId = prng.nextInt(MIN_ID, MAX_ID)
+  return await getClassInstance(classId, provider)
 }
