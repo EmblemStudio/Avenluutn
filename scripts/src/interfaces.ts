@@ -1,5 +1,22 @@
 import { Name } from './loot/methods/names'
 
+// They [verb] [adjectives] [type] [name] [additions]
+// They [stumbled upon] a [man-eating] [puzzlebox] [, "The Most Stark Horcrux",] which was [instilled with a dragon's spirit]. 
+// adjectives and additions are connected to relevant skills / traits?
+export interface Obstacle {
+
+}
+
+// [Skill / trait triggers]. 
+// 
+// [Obstacle outcome]. 
+// After 
+// [Result events]
+// 
+export interface Outcome {
+  success: number; // 0: costly failure, 1: costly success, 2: full success
+}
+
 export interface Quest {
   difficulty: number; // not included in final text, but publicly available (equivalent to "greatness")
   verb: string; // e.g. "Defeat"
@@ -44,10 +61,6 @@ export interface Stats {
   toughness: number;
 }
 
-export interface Party {
-  adventurers: number[];
-}
-
 export interface Guild {
   id: number;
   name: string;
@@ -55,7 +68,7 @@ export interface Guild {
   location: string;
   bard: Character;
   adventurers: { [id: number]: Adventurer };
-  parties: Party[];
+  parties: number[][];
   adventurerCredits: { [advernturerId: number]: number };
   gold: number;
 }

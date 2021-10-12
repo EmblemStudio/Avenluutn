@@ -2,9 +2,16 @@ import Prando from 'prando'
 import { providers } from 'ethers'
 
 import { getRandomName, getRandomClass, getRandomLootPiece } from '../src/loot'
-import { State, Guild, Party, Character, Pronouns, Adventurer, Stats } from '../src/interfaces'
+import { State, Guild, Character, Pronouns, Adventurer, Stats, Quest } from '../src/interfaces'
 import { state } from '../src/state'
-import { pronounsSource, skills, traits, guildNames, guildMottos, guildLocations } from '../src/sourceArrays'
+import {
+  pronounsSource, 
+  skills, 
+  traits, 
+  guildNames, 
+  guildMottos, 
+  guildLocations 
+} from '../src/oc/sourceArrays'
 
 // TODO Prando input should match block hash format
 export const testPrng = new Prando(Date.now())
@@ -24,17 +31,23 @@ export async function randomStartingState(
 
 export async function randomGuild(
   id: number,
-  prng: Prando, 
+  prng: Prando,
   provider?: providers.BaseProvider | string
 ): Promise<Guild> {
+  const adventurers = await makeRandomAdventurers(
+    prng.nextInt(3, 5), 
+    id, 
+    prng, 
+    provider
+  )
   return {
     id,
     name: prng.nextArrayItem(guildNames),
     motto: prng.nextArrayItem(guildMottos),
     location: prng.nextArrayItem(guildLocations),
     bard: await randomCharacter(prng, provider, 2),
-    adventurers: await makeRandomAdventurers({}, 3, id, prng, provider),
-    parties: 
+    adventurers,
+    parties: makeRandomParties(prng, adventurers),
     adventurerCredits: {},
     gold: 0
   }
@@ -43,15 +56,49 @@ export async function randomGuild(
 function makeRandomParties(
   prng: Prando,
   adventurers: { [id: number]: Adventurer }
-): Party[] {
-  // Break adventurers into random parties of 3-5
+): number[][] {
   /**
    * if there are > 8 adventurers left, break off 3-5 into a party and go again
-   * if there are 6, 7, or 8 adventurers left, break off (left - 3) and go again
-   * if there are 3 adventurers left, make those 3 a party
+   * if there are 6, 7, or 8 adventurers left, break off 3, then break off the rest, then return
+   * if there are 5 or fewer, break them off and return
    */
-  const res: Party[] = []
-  
+  const res: number[][] = []
+  let adventurersLeft = [...Object.keys(adventurers)]
+  while (Object.keys(adventurersLeft).length > 8) {
+    const partySize = prng.nextInt(3, 5)
+    const partyRes = makeParty(prng, partySize, adventurersLeft)
+    res.push(partyRes.party)
+    adventurersLeft = partyRes.adventurersLeft
+  }
+  if ([6,7,8].includes(Object.keys(adventurersLeft).length)) {
+    const partyRes = makeParty(prng, 3, adventurersLeft)
+    res.push(partyRes.party)
+    adventurersLeft = partyRes.adventurersLeft
+  }
+  const partyRes = makeParty(prng, Object.keys(adventurersLeft).length, adventurersLeft)
+  res.push(partyRes.party)
+  adventurersLeft = partyRes.adventurersLeft
+  return res
+}
+
+function makeParty(
+  prng: Prando,
+  size: number,
+  adventurersLeft: string[]
+): { party: number[], adventurersLeft: string[] } {
+  const party: number[] = []
+  for(let i = 0; i < size; i++) {
+    const nextAdvId = prng.nextArrayItem(adventurersLeft)
+    party.push(parseInt(nextAdvId))
+    adventurersLeft.splice(
+      adventurersLeft.indexOf(nextAdvId),
+      1
+    )
+  }
+  return {
+    party,
+    adventurersLeft
+  }
 }
 
 async function randomCharacter(
@@ -79,8 +126,9 @@ async function randomCharacter(
   return newChar
 }
 
+const existingAdv: { [id: string]: Adventurer } = {}
+
 async function makeRandomAdventurers(
-  existing: { [id: string]: Adventurer },
   numberToMake: number,
   guildId: number,
   prng: Prando,
@@ -88,9 +136,9 @@ async function makeRandomAdventurers(
 ): Promise<{ [id: string]: Adventurer }> {
   const res: { [id: string]: Adventurer } = Object.assign(
     {},
-    existing
+    existingAdv
   )
-  const numberExisting = Object.keys(existing).length
+  const numberExisting = Object.keys(existingAdv).length
   for(let i = 0; i < numberToMake; i++) {
     const newAdv = await randomAdventurer(
       parseInt(`${guildId}${numberExisting + i}`),
@@ -99,6 +147,7 @@ async function makeRandomAdventurers(
     )
     res[newAdv.id] = newAdv
   }
+  Object.assign(existingAdv, res)
   return res
 }
 

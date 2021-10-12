@@ -66,3 +66,18 @@ export async function getRandomName(
   const nameId = prng.nextInt(MIN_ID, MAX_ID)
   return await getName(nameId, provider)
 }
+
+export function nameString(name: Name): string {
+  let res = ""
+  const prefix = name.prefix
+  if (prefix) { res += prefix + " " }
+  const firstName = name.firstName
+  if (firstName) { res += firstName + " " }
+  const middleName = name.middleName
+  if (middleName) { res += middleName + " " }
+  const lastName = name.lastName
+  if (lastName) { res += lastName }
+  const suffix = name.suffix
+  if (suffix) { res += " " + suffix }
+  return res
+}

@@ -1,6 +1,7 @@
 import { getLootBag, getAbilityScore, getName, getClassInstance } from '../src/loot'
-import { findBlockHashNear } from '../src/utils'
+import { closestLaterBlockHash } from '../src/utils'
 import { tellNarrative } from '../src/index'
+import { randomQuest } from '../src/oc/methods'
 import { testPrng, randomGuild, randomStartingState } from './utils'
 
 // TODO set up secret management
@@ -17,21 +18,32 @@ async function main() {
   console.log(testPrng.next(0, 10))
   console.log(testPrng.nextInt(10, 100000))
 
-  console.log(await findBlockHashNear(
-    Math.floor(Date.now() / 1000) - 100, // 100 seconds ago
+  const time = Math.floor(Date.now() / 1000) - 100 // 100 seconds ago
+
+  console.log('findBlockHashNear', await findBlockHashNear(
+    time,
+    alchemyAPI
+  ))
+
+  console.log('closestLaterBlockHash', await closestLaterBlockHash(
+    time,
     alchemyAPI
   ))
   */
-  const testState = await randomStartingState(3, testPrng, alchemyAPI)
-  console.log('created test state')
+
+  // console.log(randomQuest(testPrng))
   
+  const testState = await randomStartingState(3, testPrng, alchemyAPI)
+  console.log('created test state', testState)
+
   console.log(await tellNarrative(
     testState,
     Math.floor(Date.now() / 1000) - 100, // 100 seconds ago
-    1000,
+    100,
     1,
     alchemyAPI
   ))
+  
 }
 
 main()
