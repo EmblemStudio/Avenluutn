@@ -15,15 +15,24 @@ const narrativeLength = 10
 const narrativeSpacing = 11
 const copies = 4
 
-async function getNarrativeManager() {
-  const NarrativeManager = await ethers.getContractFactory("NarrativeManager");
-  const narrativeManager = await NarrativeManager.deploy(
+async function getNarrativeManager(overrides) {
+  const defaults = {
     timeBuffer,
     baseAuctionDuration,
     minBidAmount,
     minBidIncrementPercentage,
     name,
-    symbol,
+    symbol
+  }
+  const params = Object.assign({}, defaults, overrides)
+  const NarrativeManager = await ethers.getContractFactory("NarrativeManager");
+  const narrativeManager = await NarrativeManager.deploy(
+    params.timeBuffer,
+    params.baseAuctionDuration,
+    params.minBidAmount,
+    params.minBidIncrementPercentage,
+    params.name,
+    params.symbol,
   );
 
   await narrativeManager.deployed();

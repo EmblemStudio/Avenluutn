@@ -14,9 +14,14 @@ const {
 
 describe("NarrativeManager", () => {
   let narrativeManager
+  let bobNarrativeManager
+
+  let alice, bob
 
   beforeEach(async () => {
+    ;[alice, bob] = await ethers.getSigners()
     narrativeManager = await getNarrativeManager()
+    bobNarrativeManager = narrativeManager.connect(bob)
   })
 
   it("Should append narrators to its array", async function () {
@@ -142,7 +147,15 @@ describe("NarrativeManager", () => {
     )
   })
 
-  it.skip("Only lets the owner add narrators", async () => {
-    expect(true).to.equal(false)
+  it("Disallows non-owners to add narrators", async () => {
+    await expect(bobNarrativeManager.addNarrator(
+      NFTAddress,
+      NFTId,
+      start,
+      totalNarratives,
+      narrativeLength,
+      narrativeSpacing,
+      copies
+    )).to.be.revertedWith("Ownable: caller is not the owner")
   })
 })

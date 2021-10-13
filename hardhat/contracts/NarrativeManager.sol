@@ -150,12 +150,11 @@ contract NarrativeManager is ReentrancyGuard, Ownable, ERC721Enumerable {
             narrative.copyIndex
         );
         Narrator memory narrator = narrators[narrative.narratorIndex];
-        uint256 auctionStart = narrativeStart + narrator.narrativeLength + 1;
+        uint256 auctionStart = narrativeStart + narrator.narrativeLength;
         if (block.timestamp < auctionStart) {
             return type(uint256).max; // Narrative hasn't ended yet, auction not open
         }
         uint256 auctionEnd = auctionStart + narrative.auction.duration;
-        console.log(auctionStart);
         if (block.timestamp > auctionEnd) {
             return 0; // Auction has ended
         }
