@@ -17,16 +17,16 @@ library Narrators {
         uint256 narrativeLength; // seconds between narration start and end
         uint256 narrativeSpacing; // seconds between narration starts
         uint256 copies; // number of simultanious narrations
-    };
+    }
 
     // narrativeStartTime requires narrative to exist and will revert otherwise
     function narrativeStartTime(
-        Narrator narrator,
+        Narrator memory narrator,
         uint256 narrativeIndex,
-        uint256 copyIndex,
-    ) internal pure returns (uint256 start) {
+        uint256 copyIndex
+    ) internal pure returns (uint256) {
         require(
-            narrativeIndex < narrator.totalNarrations,
+            narrativeIndex < narrator.totalNarratives,
             "narrativeIndex out of bounds"
         );
         require(copyIndex < narrator.copies, "invalid copy");
