@@ -1,0 +1,32 @@
+tag="emblemstudio/aavenluutn:test"
+container_name="aavenluutn"
+
+function wake () {
+    case $1 in
+        "build")
+            docker build -t $tag .
+            ;;
+        "run")
+            docker run \
+                   -p 8000:8000 \
+                   -d \
+                   --rm \
+                   --name aavenluutn \
+                   $tag
+            ;;
+        "test")
+            echo "Tests not implemented"
+            false
+            ;;
+        "up")
+            wake build
+            wake run
+            ;;
+        "down")
+            docker stop $container_name
+            ;;
+        *)
+            cat ./wake
+            ;;
+    esac
+}
