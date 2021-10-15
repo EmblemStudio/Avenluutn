@@ -1,9 +1,26 @@
-tag="emblemstudio/aavenluutn:test"
-container_name="aavenluutn"
+#!/bin/bash
+
+tag=emblemstudio/aavenluutn:test
+container_name=aavenluutn
+ipfs_staging=`pwd`/ipfs/staging
+ipfs_data=`pwd`/ipfs/data
+ipfs_container_name=ipfs_host
 
 function wake () {
     case $1 in
         "build")
+            docker run --rm \
+                   -v `pwd`/../hardhat/contracts:/sources \
+                   -v `pwd`/contracts:/out \
+                   ethereum/solc:stable \
+                   -o /out
+                   solc --abi NarrativeManger.sol \
+                        --bin NarrativeManger.sol
+            abigen \
+                --bin=Stories_sol_Stories.bin \
+                --abi=Stories_sol_Stories.abi \
+                --pkg=stories \
+                --out=Stories.go
             docker build -t $tag .
             ;;
         "run")
@@ -18,15 +35,23 @@ function wake () {
             echo "Tests not implemented"
             false
             ;;
-        "up")
+        "dev")
             wake build
+            docker run -d --rm \
+                   --name $ipfs_container_name \
+                   -v $ipfs_staging:/export \
+                   -v $ipfs_data:/data/ipfs \
+                   -p 4001:4001 \
+                   -p 127.0.0.1:8080:8080 \
+                   -p 127.0.0.1:5001:5001 \
+                   ipfs/go-ipfs:latest
             wake run
             ;;
         "down")
-            docker stop $container_name
+            docker stop $container_name $ipfs_container_name
             ;;
         *)
-            cat ./wake
+            which wake
             ;;
     esac
 }
