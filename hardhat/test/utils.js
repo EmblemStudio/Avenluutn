@@ -10,12 +10,12 @@ const symbol = "TA"
 const NFTAddress = "0x28a8746e75304c0780E011BEd21C72cD78cd535E"
 const NFTId = 0
 const start = 1
-const totalNarratives = 3
-const narrativeLength = 10
-const narrativeSpacing = 11
-const copies = 4
+const totalCollections = 3
+const collectionLength = 10
+const collectionSpacing = 11
+const collectionSize = 4
 
-async function getNarrativeManager(overrides) {
+async function getPublisher(overrides) {
   const defaults = {
     timeBuffer,
     baseAuctionDuration,
@@ -25,8 +25,8 @@ async function getNarrativeManager(overrides) {
     symbol
   }
   const params = Object.assign({}, defaults, overrides)
-  const NarrativeManager = await ethers.getContractFactory("NarrativeManager");
-  const narrativeManager = await NarrativeManager.deploy(
+  const Publisher = await ethers.getContractFactory("Publisher");
+  const publisher = await Publisher.deploy(
     params.timeBuffer,
     params.baseAuctionDuration,
     params.minBidAmount,
@@ -35,18 +35,18 @@ async function getNarrativeManager(overrides) {
     params.symbol,
   );
 
-  await narrativeManager.deployed();
-  narrativeManager.addNarrator(
+  await publisher.deployed();
+  publisher.addNarrator(
     NFTAddress,
     NFTId,
     start,
-    totalNarratives,
-    narrativeLength,
-    narrativeSpacing,
-    copies,
+    totalCollections,
+    collectionLength,
+    collectionSpacing,
+    collectionSize,
   )
 
-  return narrativeManager
+  return publisher
 }
 
 async function setNextBlockTime(t, mine=false) {
@@ -65,10 +65,10 @@ module.exports = {
   NFTAddress,
   NFTId,
   start,
-  totalNarratives,
-  narrativeLength,
-  narrativeSpacing,
-  copies,
-  getNarrativeManager,
+  totalCollections,
+  collectionLength,
+  collectionSpacing,
+  collectionSize,
+  getPublisher,
   setNextBlockTime,
 }
