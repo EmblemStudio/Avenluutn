@@ -1,8 +1,29 @@
 import { providers } from 'ethers'
+import Prando from 'prando'
 
 export function makeProvider(providerUrl?: string): providers.BaseProvider {
   if (providerUrl) { return new providers.JsonRpcProvider(providerUrl) }
   return providers.getDefaultProvider()
+}
+
+export function makeParty(
+  prng: Prando,
+  size: number,
+  adventurersLeft: string[]
+): { party: number[], adventurersLeft: string[] } {
+  const party: number[] = []
+  for(let i = 0; i < size; i++) {
+    const nextAdvId = prng.nextArrayItem(adventurersLeft)
+    party.push(parseInt(nextAdvId))
+    adventurersLeft.splice(
+      adventurersLeft.indexOf(nextAdvId),
+      1
+    )
+  }
+  return {
+    party,
+    adventurersLeft
+  }
 }
 
 /**

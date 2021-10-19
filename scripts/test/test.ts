@@ -1,7 +1,7 @@
 import { getLootBag, getAbilityScore, getName, getClassInstance } from '../src/loot'
 import { closestLaterBlockHash } from '../src/utils'
 import { tellNarrative } from '../src/index'
-import { randomQuest } from '../src/oc/methods'
+import { randomQuest, randomObstacle, questObstacle, findOutcome } from '../src/oc/methods'
 import { testPrng, randomGuild, randomStartingState } from './utils'
 
 // TODO set up secret management
@@ -31,11 +31,27 @@ async function main() {
   ))
   */
 
-  // console.log(randomQuest(testPrng))
-  
   const testState = await randomStartingState(3, testPrng, alchemyAPI)
   console.log('created test state', testState)
-
+  
+  const quest = randomQuest(testPrng)
+  console.log(quest)
+  console.log(randomObstacle(testPrng, 1))
+  console.log(randomObstacle(testPrng, 4))
+  const questObs = questObstacle(testPrng, quest)
+  console.log(questObs)
+  const guild = testState.guilds[0]
+  if (!guild) { throw new Error("no guild") }
+  const outcome = await findOutcome(
+    testPrng, 
+    questObs, 
+    Object.values(guild.adventurers),
+    [],
+    alchemyAPI
+  )
+  console.log(outcome)
+  /*
+  
   console.log(await tellNarrative(
     testState,
     Math.floor(Date.now() / 1000) - 100, // 100 seconds ago
@@ -43,7 +59,7 @@ async function main() {
     1,
     alchemyAPI
   ))
-  
+  */
 }
 
 main()

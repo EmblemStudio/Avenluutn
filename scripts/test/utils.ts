@@ -2,8 +2,9 @@ import Prando from 'prando'
 import { providers } from 'ethers'
 
 import { getRandomName, getRandomClass, getRandomLootPiece } from '../src/loot'
-import { State, Guild, Character, Pronouns, Adventurer, Stats, Quest } from '../src/interfaces'
+import { State, Guild, Character, Pronouns, Adventurer, Stats, Quest } from '../src/oc/interfaces'
 import { state } from '../src/state'
+import { makeParty } from '../src/utils'
 import {
   pronounsSource, 
   skills, 
@@ -47,13 +48,13 @@ export async function randomGuild(
     location: prng.nextArrayItem(guildLocations),
     bard: await randomCharacter(prng, provider, 2),
     adventurers,
-    parties: makeRandomParties(prng, adventurers),
+    // parties: makeRandomParties(prng, adventurers),
     adventurerCredits: {},
     gold: 0
   }
 }
 
-function makeRandomParties(
+export function makeRandomParties(
   prng: Prando,
   adventurers: { [id: number]: Adventurer }
 ): number[][] {
@@ -81,26 +82,6 @@ function makeRandomParties(
   return res
 }
 
-function makeParty(
-  prng: Prando,
-  size: number,
-  adventurersLeft: string[]
-): { party: number[], adventurersLeft: string[] } {
-  const party: number[] = []
-  for(let i = 0; i < size; i++) {
-    const nextAdvId = prng.nextArrayItem(adventurersLeft)
-    party.push(parseInt(nextAdvId))
-    adventurersLeft.splice(
-      adventurersLeft.indexOf(nextAdvId),
-      1
-    )
-  }
-  return {
-    party,
-    adventurersLeft
-  }
-}
-
 async function randomCharacter(
   prng: Prando, 
   provider?: providers.BaseProvider | string,
@@ -118,7 +99,7 @@ async function randomCharacter(
     for(let i = 0; i < traitCount; i++) {
       newChar.traits = addRandomUnusedElement(
         newChar.traits,
-        traits,
+        Object.keys(traits),
         prng
       )
     }
