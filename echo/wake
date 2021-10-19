@@ -5,22 +5,23 @@ container_name=aavenluutn
 ipfs_staging=`pwd`/ipfs/staging
 ipfs_data=`pwd`/ipfs/data
 ipfs_container_name=ipfs_host
+hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts/Publisher.sol
+abigen_out_path=`pwd`/ethereum
 
 function wake () {
     case $1 in
         "build")
-            docker run --rm \
-                   -v `pwd`/../hardhat/contracts:/sources \
-                   -v `pwd`/contracts:/out \
-                   ethereum/solc:stable \
-                   -o /out
-                   solc --abi NarrativeManger.sol \
-                        --bin NarrativeManger.sol
-            abigen \
-                --bin=Stories_sol_Stories.bin \
-                --abi=Stories_sol_Stories.abi \
-                --pkg=stories \
-                --out=Stories.go
+            cd ../hardhat
+            yarn build
+            cd ../echo
+            docker run \
+                   -v $hardhat_abi_path:/sources \
+                   -v $abigen_out_path:/out \
+                   ethereum/client-go:alltools-latest abigen \
+                     --abi /sources/Publisher.json \
+                     --pkg ethereum \
+                     --type Publisher \
+                     --out /out/Publisher.go
             docker build -t $tag .
             ;;
         "run")
