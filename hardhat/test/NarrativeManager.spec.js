@@ -89,13 +89,13 @@ describe("NarrativeManager", () => {
       const [
         narratorIndex,
         collectionIndex,
-        copyIndex,
+        storyIndex,
         expectedStartTime
       ] = cases[i]
       const startTime = await Publisher.storyStartTime(
         narratorIndex,
         collectionIndex,
-        copyIndex
+        storyIndex
       )
       expect(startTime).to.equal(expectedStartTime)
     }

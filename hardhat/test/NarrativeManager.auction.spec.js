@@ -30,7 +30,7 @@ describe("Stories Auctions", () => {
     return async function (
       narratorIndex,
       storyIndex,
-      copyIndex,
+      storyIndex,
       bidAmount,
       blockTime
     ) {
@@ -39,7 +39,7 @@ describe("Stories Auctions", () => {
       return walletStories.bid(
         narratorIndex,
         storyIndex,
-        copyIndex,
+        storyIndex,
         await wallet.getAddress(),
         { value: bidAmount }
       )
