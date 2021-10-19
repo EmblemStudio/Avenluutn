@@ -5,98 +5,96 @@ const {
   NFTAddress,
   NFTId,
   start,
-  totalNarratives,
-  narrativeLength,
-  narrativeSpacing,
-  copies,
-  getNarrativeManager
+  totalCollections,
+  collectionLength,
+  collectionSpacing,
+  collectionSize,
+  getPublisher
 }= require('./utils')
 
 describe("NarrativeManager", () => {
-  let narrativeManager
-  let bobNarrativeManager
+  let Publisher
+  let bobPublisher
 
   let alice, bob
 
   beforeEach(async () => {
+    await network.provider.request({
+      method: "hardhat_reset",
+      params: []
+    })
     ;[alice, bob] = await ethers.getSigners()
-    narrativeManager = await getNarrativeManager()
-    bobNarrativeManager = narrativeManager.connect(bob)
+    Publisher = await getPublisher()
+    bobPublisher = Publisher.connect(bob)
   })
 
   it("Should append narrators to its array", async function () {
 
-    const firstNarrator = await narrativeManager.narrators(0)
+    const firstNarrator = await Publisher.narrators(0)
     expect(firstNarrator.NFTAddress).to.equal(NFTAddress)
-    expect(firstNarrator.NFTId).to.equal(ethers.BigNumber.from(NFTId))
-    expect(firstNarrator.start).to.equal(ethers.BigNumber.from(start))
-    expect(firstNarrator.totalNarratives).to.equal(ethers.BigNumber.from(totalNarratives))
-    expect(firstNarrator.narrativeLength).to.equal(ethers.BigNumber.from(narrativeLength))
-    expect(firstNarrator.narrativeSpacing).to.equal(ethers.BigNumber.from(narrativeSpacing))
-    expect(firstNarrator.copies).to.equal(ethers.BigNumber.from(copies))
+    expect(firstNarrator.NFTId).to.equal(NFTId)
+    expect(firstNarrator.start).to.equal(start)
+    expect(firstNarrator.totalCollections).to.equal(totalCollections)
+    expect(firstNarrator.collectionLength).to.equal(collectionLength)
+    expect(firstNarrator.collectionSpacing).to.equal(collectionSpacing)
+    expect(firstNarrator.collectionSize).to.equal(collectionSize)
 
-    const futureNarrator = await narrativeManager.narrators(1)
+    const futureNarrator = await Publisher.narrators(1)
     expect(futureNarrator.NFTAddress).to.equal("0x0000000000000000000000000000000000000000")
-    expect(futureNarrator.narrativeSpacing).to.equal(ethers.BigNumber.from(0))
+    expect(futureNarrator.collectionSpacing).to.equal(0)
 
     const nextNFTId = 2
     const nextStart = start + 5
-    const nextTotalNarratives = totalNarratives + 2
-    const nextNarrativeLength = narrativeLength + 15
-    const nextNarrativeSpacing = narrativeSpacing + 3
-    const nextCopies = copies + 123
-    const addNarratorTx = await narrativeManager.addNarrator(
+    const nextTotalCollections = totalCollections + 2
+    const nextCollectionLength = collectionLength + 15
+    const nextCollectionSpacing = collectionSpacing + 3
+    const nextCollectionSize = collectionSize + 123
+    const addNarratorTx = await Publisher.addNarrator(
       NFTAddress,
       nextNFTId,
       nextStart,
-      nextTotalNarratives,
-      nextNarrativeLength,
-      nextNarrativeSpacing,
-      nextCopies,
+      nextTotalCollections,
+      nextCollectionLength,
+      nextCollectionSpacing,
+      nextCollectionSize,
     )
     await addNarratorTx.wait()
 
-    const nextNarrator = await narrativeManager.narrators(1)
+    const nextNarrator = await Publisher.narrators(1)
     expect(nextNarrator.NFTAddress).to.equal(NFTAddress)
-    expect(nextNarrator.NFTId).to.equal(ethers.BigNumber.from(nextNFTId))
-    expect(nextNarrator.start).to.equal(ethers.BigNumber.from(nextStart))
-    expect(nextNarrator.totalNarratives).to.equal(
-      ethers.BigNumber.from(nextTotalNarratives)
-    )
-    expect(nextNarrator.narrativeLength).to.equal(
-      ethers.BigNumber.from(nextNarrativeLength)
-    )
-    expect(nextNarrator.narrativeSpacing).to.equal(
-      ethers.BigNumber.from(nextNarrativeSpacing)
-    )
-    expect(nextNarrator.copies).to.equal(ethers.BigNumber.from(nextCopies))
+    expect(nextNarrator.NFTId).to.equal(nextNFTId)
+    expect(nextNarrator.start).to.equal(nextStart)
+    expect(nextNarrator.totalCollections).to.equal(nextTotalCollections)
+    expect(nextNarrator.collectionLength).to.equal(nextCollectionLength)
+    expect(nextNarrator.collectionSpacing).to.equal(nextCollectionSpacing)
+    expect(nextNarrator.collectionSize).to.equal(nextCollectionSize)
   })
 
-  it("Reports narrative start times", async () => {
+  it("Reports collection start times", async () => {
     const cases = [
-      // first narrative should be the start time
+      // first collection should be the start time
       [0, 0, 0, start],
 
-      // different copies should start at the same time
+      // different collectionSize should start at the same time
       [0, 0, 1, start],
 
-      // second narrative should be start + narrative spacing
-      [0, 1, 0, start + narrativeSpacing],
+      // second collection should be start + collection spacing
+      [0, 1, 0, start + collectionSpacing],
 
-      // different copies should be the same there too
-      [0, 1, 1, start + narrativeSpacing],
+      // different collectionSize should be the same there too
+      [0, 1, 1, start + collectionSpacing],
     ]
 
     for (const i in cases) {
       const [
         narratorIndex,
-        narrativeIndex,
+        collectionIndex,
         copyIndex,
         expectedStartTime
       ] = cases[i]
-      const startTime = await narrativeManager.narrativeStartTime(
+      const startTime = await Publisher.storyStartTime(
         narratorIndex,
-        narrativeIndex,
+        collectionIndex,
         copyIndex
       )
       expect(startTime).to.equal(expectedStartTime)
@@ -104,58 +102,58 @@ describe("NarrativeManager", () => {
 
     const revertCases = [
       [1, 0, 0],
-      [0, totalNarratives, 0],
-      [0, 0, copies]
+      [0, totalCollections, 0],
+      [0, 0, collectionSize]
     ]
 
     for (const i in revertCases) {
       const [
         narratorIndex,
-        narrativeIndex,
-        copyIndex
+        collectionIndex,
+        storyIndex
       ] = revertCases[i]
-      await expect(narrativeManager.narrativeStartTime(
+      await expect(Publisher.storyStartTime(
         narratorIndex,
-        narrativeIndex,
-        copyIndex
+        collectionIndex,
+        storyIndex
       )).to.be.reverted
     }
   })
 
   it("Logs NarratorAdded events", async () => {
-    await expect(narrativeManager.addNarrator(
+    await expect(Publisher.addNarrator(
       NFTAddress,
       NFTId,
       start,
-      totalNarratives,
-      narrativeLength,
-      narrativeSpacing,
-      copies
+      totalCollections,
+      collectionLength,
+      collectionSpacing,
+      collectionSize
     )).to.emit(
-      narrativeManager, "NarratorAdded"
+      Publisher, "NarratorAdded"
     ).withArgs(
       [
         NFTAddress,
         NFTId,
         start,
-        totalNarratives,
-        narrativeLength,
-        narrativeSpacing,
-        copies
+        totalCollections,
+        collectionLength,
+        collectionSpacing,
+        collectionSize
       ],
       1
     )
   })
 
   it("Disallows non-owners to add narrators", async () => {
-    await expect(bobNarrativeManager.addNarrator(
+    await expect(bobPublisher.addNarrator(
       NFTAddress,
       NFTId,
       start,
-      totalNarratives,
-      narrativeLength,
-      narrativeSpacing,
-      copies
+      totalCollections,
+      collectionLength,
+      collectionSpacing,
+      collectionSize
     )).to.be.revertedWith("Ownable: caller is not the owner")
   })
 })
