@@ -1,7 +1,7 @@
 {
   "name": "@aavenluutn/contracts",
   "version": "0.0.1-dev",
-  "description": "Adventure manager and auction contracts",
+  "description": "Story collection publishing and auction contracts",
   "main": "index.js",
   "author": "Emblem Studio",
   "license": "Apache-2.0",
