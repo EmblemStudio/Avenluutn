@@ -6,20 +6,20 @@ import (
 
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	stories "./contracts"
+	publisher "./contracts"
 )
 
-type NFTInfo struct {
+type NftInfo struct {
 	address string
 	id uint
 }
 
-func (c *ethclient.Client) GetNFTInfo(
+func (c *ethclient.Client) GetNftInfo(
 	narrator uint,
 	collection uint,
 	story uint
-) NFTInfo {
-	instance, err := stories.NewStories(storiesAddress, c)
+) NftInfo {
+	instance, err := publisher.NewPublisher(config.publisherAddress, c)
 	if err != null {
 		log.Fatal(err)
 	}

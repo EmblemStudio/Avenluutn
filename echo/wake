@@ -15,13 +15,14 @@ function wake () {
             yarn build
             cd ../echo
             docker run \
+                   -u `id -u`:`id -g` \
                    -v $hardhat_abi_path:/sources \
                    -v $abigen_out_path:/out \
                    ethereum/client-go:alltools-latest abigen \
-                     --abi /sources/Publisher.json \
+                     --abi /sources/Publisher.abi \
                      --pkg ethereum \
                      --type Publisher \
-                     --out /out/Publisher.go
+                     --out /out/artifact_Publisher_sol.go
             docker build -t $tag .
             ;;
         "run")
