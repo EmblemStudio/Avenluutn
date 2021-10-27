@@ -1,14 +1,14 @@
 #!/bin/bash
 
-tag=emblemstudio/aavenluutn:test
-container_name=aavenluutn
-ipfs_staging=`pwd`/ipfs/staging
-ipfs_data=`pwd`/ipfs/data
-ipfs_container_name=ipfs_host
-hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts/Publisher.sol
-abigen_out_path=`pwd`/ethereum
-
 function wake () {
+    tag=emblemstudio/aavenluutn:test
+    container_name=aavenluutn
+    ipfs_staging=`pwd`/ipfs/staging
+    ipfs_data=`pwd`/ipfs/data
+    ipfs_container_name=ipfs_host
+    hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
+    abigen_out_path=`pwd`/publisher
+
     case $1 in
         "build")
             cd ../hardhat
@@ -19,10 +19,23 @@ function wake () {
                    -v $hardhat_abi_path:/sources \
                    -v $abigen_out_path:/out \
                    ethereum/client-go:alltools-latest abigen \
-                     --abi /sources/Publisher.abi \
-                     --pkg ethereum \
-                     --type Publisher \
-                     --out /out/artifact_Publisher_sol.go
+                   --abi /sources/Publisher.sol/Publisher.abi \
+                   --out /out/artifact_Publisher_sol.go \
+                   --pkg  publisher \
+                   --type Publisher \
+                   --bin /sources/Publisher.sol/Publisher.bin \
+
+            docker run \
+                   -u `id -u`:`id -g` \
+                   -v $hardhat_abi_path:/sources \
+                   -v $abigen_out_path:/out \
+                   ethereum/client-go:alltools-latest abigen \
+                   --abi /sources/NarratorNFTs.sol/NarratorNFTs.abi \
+                   --out /out/artifact_NarratorNFTs_sol.go \
+                   --pkg  publisher \
+                   --type NarratorNFTs \
+                   --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin \
+
             docker build -t $tag .
             ;;
         "run")
@@ -34,8 +47,7 @@ function wake () {
                    $tag
             ;;
         "test")
-            echo "Tests not implemented"
-            false
+            go test ./...
             ;;
         "dev")
             wake build
@@ -51,6 +63,9 @@ function wake () {
             ;;
         "down")
             docker stop $container_name $ipfs_container_name
+            ;;
+        "format")
+            go fmt
             ;;
         *)
             which wake
