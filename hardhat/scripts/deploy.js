@@ -50,7 +50,7 @@ async function main() {
    */
   const narratorTx = await narratorNFTs.mint(
     "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
-    "data:text/javascript;base64,ZnVuY3Rpb24gbWFpbihzdGF0ZSkgewogICAgcmV0dXJuIHsKICAgICAgICBzdGF0ZTogT2JqZWN0LmFzc2lnbihzdGF0ZSwge2E6IDF9KSwKICAgICAgICB0ZXh0OiBgV2Ugd2VyZSAke3N0YXRlLmhvd1dlV2VyZX0uYAogIH0KfQ=="
+    "data:text/javascript;base64,ZnVuY3Rpb24gdGVsbFN0b3J5KHN0YXRlLCBhLCBiLCBjLCBkKSB7CiAgICBpZiAoIXN0YXRlLmhvd1dlV2VyZSkgewogICAgICAgIHN0YXRlLmhvd1dlV2VyZSA9ICJjdXJpb3VzIgogICAgfQogICAgcmV0dXJuIHsKICAgICAgICBuZXh0U3RhdGU6IE9iamVjdC5hc3NpZ24oc3RhdGUsIHthOiBhfSksCiAgICAgICAgc3RvcmllczogW2BXZSB3ZXJlICR7c3RhdGUuaG93V2VXZXJlfS5gXQogIH0KfQ=="
   )
 
   // add test narrator
