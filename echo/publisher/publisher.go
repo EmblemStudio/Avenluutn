@@ -16,18 +16,6 @@ import (
 	v8 "rogchap.com/v8go"
 )
 
-type PublisherStore interface {
-	Now() time.Time
-
-	Set(key string, value ScriptResult) error
-	Get(key string) (ScriptResult, error)
-
-	GetFullStateForTest() map[string]ScriptResult
-
-	LatestBlockTimeAsOf(t time.Time) (time.Time, error)
-	NextBlockTimeAsOf(t time.Time) (time.Time, error)
-}
-
 func (p *Publisher) GetNarrator(i int64) (PublisherNarrator, error) {
 	return p.Narrators(nil, big.NewInt(i))
 }
