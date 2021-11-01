@@ -9,6 +9,7 @@
     "ethers": "^5.4.7"
   },
   "scripts": {
+    "build": "tsc --build",
     "test": "ts-node test/test"
   },
   "dependencies": {

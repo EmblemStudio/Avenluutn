@@ -1,11 +1,11 @@
 import { Pronouns, ObstacleType, ResultType, Success } from './interfaces'
 
-// Obstacle Sources // 
+// Outcome Sources // 
 
 export const activityAdjectives = {
   0: [ // failed
     "an exhausting",
-    "a failed",
+    "a misjudged",
     "a rough",
     "a weak",
     "a bungled",
@@ -35,6 +35,126 @@ export const activityAdjectives = {
   ]
 }
 
+interface ResultCountOdds {
+  0: number, 
+  1: number, 
+  2: number,
+  3: number
+}
+
+export const numberOfResultsOdds: { 
+  [difficulty: number]: ResultCountOdds;
+  1: ResultCountOdds; 
+  2: ResultCountOdds; 
+  3: ResultCountOdds; 
+  4: ResultCountOdds;
+} = {
+  1: { // for obstacle with difficulty 1:
+    0: 50, // 50% chance for 0 results
+    1: 90, // 40% chance for 1 result, etc.
+    2: 99,
+    3: 100
+  },
+  2: {
+    0: 35,
+    1: 85,
+    2: 98,
+    3: 100
+  },
+  3: {
+    0: 20,
+    1: 70,
+    2: 96,
+    3: 100
+  },
+  4: {
+    0: 5,
+    1: 60,
+    2: 95,
+    3: 100
+  }
+}
+
+interface ResultOdds {
+  [resultType: string]: number;
+  "INJURY": number;
+  "DEATH": number;
+  "LOOT": number;
+  "SKILL": number;
+  "TRAIT": 100;
+}
+
+export const typeOfResultOdds: {
+  0: ResultOdds; 1: ResultOdds; 2: ResultOdds;
+} = {
+  0: {
+    "INJURY": 85,
+    "DEATH": 90,
+    "LOOT": 97,
+    "SKILL": 98,
+    "TRAIT": 100
+  },
+  1: {
+    "INJURY": 40,
+    "DEATH": 41,
+    "LOOT": 93,
+    "SKILL": 97,
+    "TRAIT": 100
+  },
+  2: {
+    "INJURY": 15,
+    "DEATH": 15,
+    "LOOT": 90,
+    "SKILL": 95,
+    "TRAIT": 100
+  }
+}
+
+export const Injuries: { text: string, traits: string[] }[] = [
+  {
+    text: "broke *depPossessive* leg", // verb phrase
+    traits: ["a peg leg"]
+  },
+  {
+    text: "was frightened half to death",
+    traits: ["anxiety"]
+  },
+  {
+    text: "suffered slash wounds",
+    traits: ["cowardice", "martyr complex"]
+  },
+  {
+    text: "bruised *depPossessive* ribs",
+    traits: ["weakness"]
+  },
+  {
+    text: "dislocated *depPossessive* shoulder",
+    traits: ["weakness"]
+  },
+  {
+    text: "got blasted eardrums",
+    traits: ["deafness"]
+  },
+  {
+    text: "had *depPossessive* confidence shaken",
+    traits: ["self-doubt"]
+  },
+  {
+    text: "had *depPossessive* arm crushed",
+    traits: ["a prosthetic arm"]
+  },
+  {
+    text: "got fried nerves",
+    traits: ["aggressive impulses"]
+  },
+  {
+    text: "was stabbed in the torso",
+    traits: ["cowardice", "martyr complex"]
+  }
+]
+
+// Obstacle Sources // 
+
 export const obstacleInfo = {
   "PUZZLE": {
     discovery: [ // they ___ an object
@@ -52,7 +172,7 @@ export const obstacleInfo = {
     activities: [ // after a ____
       "brainstorm",
       "attempt",
-      `hundred guesses`
+      "hundred guesses"
     ],
     resolvers: [ // they ____ the object
       ["solved", "failed to solve"],
@@ -75,14 +195,14 @@ export const obstacleInfo = {
       "waste"
     ],
     activities: [
-      "journey",
+      "attempt",
       "exertion",
       "trek"
     ],
     resolvers: [
       ["traversed", "failed to traverse"],
       ["crossed", "failed to cross"],
-      ["passed through", "failed to pass through"]
+      ["overcame", "failed to overcome"]
     ]
   },
   "ENTITY": {
@@ -95,7 +215,7 @@ export const obstacleInfo = {
     ],
     objects: [
       "beast",
-      "band of brigands",
+      "brigands",
       "tunnel dweller",
       "bird folk",
       "elemental"
@@ -144,126 +264,6 @@ export const boonTypes = {
   ]
 }
 
-// Obstacles //
-
-interface ResultCountOdds {
-  0: number, 
-  1: number, 
-  2: number,
-  3: number
-}
-
-export const numberOfResultsOdds: { 
-  [difficulty: number]: ResultCountOdds;
-  1: ResultCountOdds; 
-  2: ResultCountOdds; 
-  3: ResultCountOdds; 
-  4: ResultCountOdds;
-} = {
-  1: { // for obstacle with difficulty 1:
-    0: 50, // 50% chance for 0 results
-    1: 90, // 40% chance for 1 result, etc.
-    2: 99,
-    3: 100
-  },
-  2: {
-    0: 35,
-    1: 85,
-    2: 98,
-    3: 100
-  },
-  3: {
-    0: 20,
-    1: 70,
-    2: 96,
-    3: 100
-  },
-  4: {
-    0: 5,
-    1: 45,
-    2: 95,
-    3: 100
-  }
-}
-
-interface ResultOdds {
-  [resultType: string]: number;
-  "INJURY": number;
-  "DEATH": number;
-  "LOOT": number;
-  "SKILL": number;
-  "TRAIT": 100;
-}
-
-export const typeOfResultOdds: {
-  0: ResultOdds; 1: ResultOdds; 2: ResultOdds;
-} = {
-  0: {
-    "INJURY": 85,
-    "DEATH": 90,
-    "LOOT": 91,
-    "SKILL": 95,
-    "TRAIT": 100
-  },
-  1: {
-    "INJURY": 40,
-    "DEATH": 41,
-    "LOOT": 81,
-    "SKILL": 90,
-    "TRAIT": 100
-  },
-  2: {
-    "INJURY": 15,
-    "DEATH": 15,
-    "LOOT": 75,
-    "SKILL": 90,
-    "TRAIT": 100
-  }
-}
-
-export const Injuries: { text: string, traits: string[] }[] = [
-  {
-    text: "broke *depPossessive* leg", // verb phrase
-    traits: ["peg leg"]
-  },
-  {
-    text: "was frightened half to death",
-    traits: ["anxiety"]
-  },
-  {
-    text: "suffered slash wounds",
-    traits: ["cowardice", "martyr complex"]
-  },
-  {
-    text: "bruised *depPossessive* ribs",
-    traits: ["weakness"]
-  },
-  {
-    text: "dislocated *depPossessive* shoulder",
-    traits: ["weakness"]
-  },
-  {
-    text: "got blasted eardrums",
-    traits: ["deafness"]
-  },
-  {
-    text: "had *depPossessive* confidence shaken",
-    traits: ["self-doubt"]
-  },
-  {
-    text: "had *depPossessive* arm crushed",
-    traits: ["prosthetic arm"]
-  },
-  {
-    text: "got fried nerves",
-    traits: ["aggressive impulses"]
-  },
-  {
-    text: "was stabbed in the torso",
-    traits: ["cowardice", "martyr complex"]
-  }
-]
-
 /*
 Simple HP system = 
 - 3 injuries: knocked out for the rest of the adventure
@@ -273,76 +273,13 @@ Simple HP system =
 - if whole party is knocked out, they all die (unless?)
 - when you survive an adventure with an injury, chance to get a permanent injury trait
 - otherwise, injuries are healed at end of adventure (rather, they don't persist)
-
-// They [verb] [adjectives] [type] [name] [additions]
-// They [stumbled upon] a [man-eating] [puzzlebox] [, "The Most Stark Horcrux",] which was [host to a dragon's spirit]. 
-// adjectives and additions are connected to relevant skills / traits?
-export interface Obstacle {
-  difficulty: number; // 1-4?
-  verb: string; 
-  firstAdjective: string;
-  secondAdjective?: string;
-  type: string;
-  firstName?: string;
-  lastName?: string;
-  additions: string[];
-}
-
-// [Trait triggers].
-// The [trait] [name] [positive trait verb / negative trait verb].
-// Gerald's [trait] [verb]
-// [Skill  triggers]. 
-// [name]'s [skill] skills [come in handy | get in the way].
-// [Obstacle outcome]. 
-// After a [adjs] [type-specific action-noun], they [failed to?] [type-specific verb] the [object].
-// [Result events]
-// [[name] [outcome]].
-// George breaks his femur. Lina discovers Ancient Armor!
-export interface Outcome {
-  success: number; // 0: costly failure, 1: costly success, 2: full success
-  traitTriggers: TraitTrigger[];
-  skillTriggers: SkillTrigger[];
-  adjective: string;
-  action: string;
-  failure?: boolean;
-  verb: string;
-  obstacle: Obstacle;
-  results: Result[];
-}
-
-interface TraitTrigger {
-  characterName: Name;
-  trait: string;
-  verb: string;
-}
-
-interface SkillTrigger {
-  characterName: Name;
-  skill: string;
-  verb: string;
-}
-
-interface Result {
-  characterName: Name;
-  type: ResultType;
-  verb: string;
-  object: string;
-}
-
-enum ResultType {
-  Injury,
-  Death,
-  Loot,
-  Skill,
-  Trait,
-}
 */
 
 export const questObstacleMap: { [goalType: string]: ObstacleType } = {
   "DEFEAT": ObstacleType.entity,
   "EXPLORE": ObstacleType.obstacle,
   "RETRIEVE": ObstacleType.puzzle,
-  "DEFEND": ObstacleType.entity,
+  "DEFEND": ObstacleType.obstacle,
   "BEFRIEND": ObstacleType.entity
 }
 
@@ -361,20 +298,26 @@ export const questDifficulty: number[] = [
   4
 ]
 
-export const questGoalsAndInfo: {
+export const questTypesAndInfo: {
   [goal: string]: {
     objectives: string[];
+    activities: string[];
     resolvers: string[][];
   }
 } = {
   "defeat": { 
     objectives: [
       "ogre",
-      "mimic",
+      "giant spider",
       "wyrm",
       "warlock",
       "swarm",
       "psychopomp"
+    ],
+    activities: [ // after a ____
+      "battle",
+      "contest",
+      "struggle"
     ],
     resolvers: [
       ["defeated", "were defeated by"],
@@ -384,6 +327,7 @@ export const questGoalsAndInfo: {
     ]
   },
   "explore": {
+    // script cares about ending in s or beginning with a vowel
     objectives: [
       "dunes",
       "caves",
@@ -391,11 +335,16 @@ export const questGoalsAndInfo: {
       "hidden passage",
       "ruins"
     ],
+    activities: [ // after a ____
+      "journey",
+      "reconnoiter",
+      "exploration"
+    ],
     resolvers: [
-      ["navigated", "were unable to navigate"],
-      ["mapped out", "got lost in"],
-      ["explored", "ran out of supplies in"],
-      ["surveiled", "were disoriented by"]
+      ["successfully navigated", "were unable to navigate"],
+      ["completely mapped out", "got lost in"],
+      ["fully explored", "ran out of supplies in"],
+      ["surveiled all of", "were disoriented by"]
     ]
   },
   "retrieve": {
@@ -407,6 +356,11 @@ export const questGoalsAndInfo: {
       "secret",
       "egregore"
     ],
+    activities: [ // after a ____
+      "search",
+      "mission",
+      "infiltration"
+    ],
     resolvers: [
       ["retrieved", "could not retrieve"],
       ["returned with", "left without"],
@@ -416,17 +370,21 @@ export const questGoalsAndInfo: {
   },
   "defend": {
     objectives: [
-      "fortress",
+      "citadel",
       "walls",
       "outskirts",
       "sanctum",
       "caravan",
       "mindscape"
     ],
+    activities: [ // after a ____
+      "overwatch",
+      "attempt",
+      "battle"
+    ],
     resolvers: [
       ["defended", "failed to defend"],
       ["protected", "could not to protect"],
-      ["kept safe", "failed to keep safe"],
       ["safe-guarded", "could not safe-guard"]
     ]
   },
@@ -438,11 +396,16 @@ export const questGoalsAndInfo: {
       "fiend",
       "nephilim"
     ],
+    activities: [ // after a ____
+      "conversation",
+      "audience",
+      "introduction"
+    ],
     resolvers: [
       ["befriended", "offended"],
       ["gained favor with", "angered"],
       ["struck a deal with", "annoyed"],
-      ["found common ground with", "made an enemy of"],
+      ["found common ground with", "made an enemy of"]
     ]
   }
 }
@@ -548,56 +511,34 @@ export const pronounsSource: Pronouns[] = [
     depPossessive: "their",
     indPossessive: "theirs",
     reflexive: "themself"
-  },
-  {
-    subject: "it",
-    object: "it",
-    depPossessive: "its",
-    indPossessive: "its",
-    reflexive: "itself"
-  },
+  }
 ]
 
-/*
- text: "broke *depPossessive* leg", // verb phrase
-    traits: ["peg leg"]
-  },
-  {
-    text: "was frightened half to death",
-    traits: ["anxiety"]
-  },
-  {
-    text: "suffered slash wounds",
-    traits: ["cowardice", "martyr complex"]
-  },
-  {
-    text: "bruised *depPossessive* ribs",
-    traits: ["weakness"]
-  },
-  {
-    text: "dislocated *depPossessive* shoulder",
-    traits: ["weakness"]
-  },
-  {
-    text: "got blasted eardrums",
-    traits: ["deafness"]
-  },
-  {
-    text: "had *depPossessive* confidence shaken",
-    traits: ["self-doubt"]
-  },
-  {
-    text: "had *depPossessive* arm crushed",
-    traits: ["prosthetic arm"]
-  },
-  {
-    text: "got fried nerves",
-    traits: ["aggressive impulses"]
-  },
-  {
-    text: "was stabbed in the torso",
-    traits: ["cowardice", "martyr complex"]
-*/
+export const triggerMap: {
+  [keystring: string]: // string to search obstacle text for
+    {
+      chance: number; // percent chance to trigger
+      modifier: number, // amount to adjust roll by +/- (5, 10, 15, 20, 25, 30)
+      name: string, // name of trait, skill, loot word
+      type: "skills" | "loot" | "traits"
+    }[]
+  
+} = {
+  "horrifying": [
+    {
+      chance: 10,
+      modifier: -15,
+      name: "cowardice",
+      type: "traits"
+    },
+    {
+      chance: 5,
+      modifier: -10,
+      name: "trauma",
+      type: "traits"
+    }
+  ],
+}
 
 export const traits: { 
   [trait: string]: { 
@@ -605,37 +546,37 @@ export const traits: {
     negativeTrigger: string | null 
   } 
 } = {
-  "peg leg": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+  "a peg leg": {
+    positiveTrigger: "protected by *depPossesive* peg leg",
+    negativeTrigger: "hampered by *depPossesive* peg leg"
   },
   "anxiety": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+    positiveTrigger: null,
+    negativeTrigger: "feels anxious"
   },
   "weakness": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+    positiveTrigger: null,
+    negativeTrigger: "feels weak"
   },
   "deafness": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+    positiveTrigger: "is unharmed by the sound",
+    negativeTrigger: "cannot hear a thing"
   },
   "self-doubt": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+    positiveTrigger: null,
+    negativeTrigger: "is consumed by self-doubt"
   },
-  "prosthetic arm": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+  "a prosthetic arm": {
+    positiveTrigger: "uses *depPossesive* prosthetic arm",
+    negativeTrigger: "struggles with *depPossesive* prosthetic arm"
   },
   "aggressive impulses": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+    positiveTrigger: "charges forward fearlessly",
+    negativeTrigger: "rushes in too eagerly"
   },
   "cowardice": {
-    positiveTrigger: "",
-    negativeTrigger: ""
+    positiveTrigger: null,
+    negativeTrigger: "is frozen in fear"
   },
   "greed": {
     positiveTrigger: "greedily spots something no one else saw",
@@ -665,9 +606,9 @@ export const traits: {
     positiveTrigger: "remembers not to make the same mistakes again",
     negativeTrigger: "is haunted by their past"
   },
-  "arachnophobia": {
+  "monsterphobia": {
     positiveTrigger: null,
-    negativeTrigger: "is terrified of spiders"
+    negativeTrigger: "is terrified of strange beasts"
   },
   "quick-wit": {
     positiveTrigger: "conjures smiles with a clever joke",
@@ -679,17 +620,18 @@ export const traits: {
   }
 }
 
+// Bob took advantage of his _____ skill.
 export const skills: string[] = [
-  "ropes",
-  "horses",
-  "baking",
-  "archeology",
-  "arcane Arts",
-  "marketing",
-  "lying",
-  "swords",
-  "archery",
-  "portraiture"
+  "Ropes",
+  "Horses",
+  "Baking",
+  "Archeology",
+  "Arcane Arts",
+  "Marketing",
+  "Deception",
+  "Swords",
+  "Archery",
+  "Portraiture"
 ]
 
 export const guildNames: string[] = [

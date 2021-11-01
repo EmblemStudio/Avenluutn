@@ -1,28 +1,5 @@
 // Loot: https://etherscan.io/address/0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7
 
-/**
- * Two approaches to grabbing NFT data:
- * 1. identify NFT contract as SVG type
- *    - use `tokenURI` and get an array of strings out of the SVGs text fields
- *    - assign a specific type and convert the array of strings to it
- * 2. for each loot NFT, manually call each of its `getX` functions for each token URI
- * 
- * we should do the second one for now probably
- * 
- * Loot contracts to interact with:
- * - AbilityScores: https://etherscan.io/address/0x42a87e04f87a038774fb39c0a61681e7e859937b
- * - Names: https://opensea.io/collection/name-for-adventurers
- * - Class (gender, race, class) https://opensea.io/collection/loot-class
- *   - drawback: binary genders
- * - Treasure https://opensea.io/collection/treasure-for-loot
- * - Realms https://opensea.io/collection/lootrealms
- * - Foes https://opensea.io/collection/foes
- * - Monsters https://opensea.io/collection/lootmonsters
- * 
- * general approach to expand: https://github.com/0x84A/loot.js/tree/main/src
- * 
- */
-
 import { providers, Contract } from 'ethers'
 import Prando from 'prando'
 

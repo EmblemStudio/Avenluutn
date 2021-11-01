@@ -19,7 +19,7 @@ export interface Obstacle {
   firstName?: string;
   lastName?: string;
   additions?: string[];
-  questType?: QuestType;
+  quest?: Quest;
 }
 
 // [Trait triggers].
@@ -54,20 +54,32 @@ export interface Trigger {
   verb: string;
 }
 
-// perhaps change from verb + object to text + object, where object is the injury/loot/etc.
 export interface Result {
-  characterName: Name;
+  guildId: number;
+  advName: Name;
+  advId: number;
   type: ResultType;
   text: string;
   component: string;
 }
 
+// TODO add a "TREASURE" type?
 export enum ResultType {
   Injury = "INJURY",
+  Knockout = "KNOCKOUT", // 3 injuries = knockout
   Death = "DEATH",
   Loot = "LOOT",
   Skill = "SKILL",
   Trait = "TRAIT",
+}
+
+export interface Results {
+  "INJURY": Result[];
+  "KNOCKOUT": Result[];
+  "DEATH": Result[];
+  "LOOT": Result[];
+  "SKILL": Result[];
+  "TRAIT": Result[];
 }
 
 export enum QuestType {
@@ -79,6 +91,7 @@ export enum QuestType {
 }
 
 export interface Quest {
+  guildId: number; // index of the guild going on the quest
   difficulty: number; // 1-4, not included in final text, but publicly available (equivalent to "greatness")
   type: QuestType; // e.g. "Defeat"
   firstAdjective?: string; // e.g. "strong"
@@ -130,6 +143,7 @@ export interface Guild {
   location: string;
   bard: Character;
   adventurers: { [id: number]: Adventurer };
+  graveyard: { [id: number]: Adventurer };
   // parties: number[][];
   adventurerCredits: { [advernturerId: number]: number };
   gold: number;

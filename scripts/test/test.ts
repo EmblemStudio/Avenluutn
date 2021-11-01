@@ -1,6 +1,6 @@
 import { getLootBag, getAbilityScore, getName, getClassInstance } from '../src/loot'
 import { closestLaterBlockHash } from '../src/utils'
-import { tellNarrative } from '../src/index'
+import { tellStories, nextState } from '../src/index'
 import { randomQuest, randomObstacle, questObstacle, findOutcome } from '../src/oc/methods'
 import { testPrng, randomGuild, randomStartingState } from './utils'
 
@@ -31,9 +31,12 @@ async function main() {
   ))
   */
 
+  /*
   const testState = await randomStartingState(3, testPrng, alchemyAPI)
   console.log('created test state', testState)
-  
+  */
+
+  /*
   const quest = randomQuest(testPrng)
   console.log(quest)
   console.log(randomObstacle(testPrng, 1))
@@ -50,16 +53,22 @@ async function main() {
     alchemyAPI
   )
   console.log(outcome)
-  /*
-  
-  console.log(await tellNarrative(
-    testState,
-    Math.floor(Date.now() / 1000) - 100, // 100 seconds ago
-    100,
-    1,
-    alchemyAPI
-  ))
   */
+
+  const stories = await tellStories(
+    null,
+    1600031900,
+    100,
+    3,
+    alchemyAPI
+  )
+  console.log(stories[0], stories[1], stories[2])
+
+  // console.log('first state', stories.state.guilds[1])
+
+  const newState = nextState(stories.state, stories.results)
+
+  // console.log('new state', newState.guilds[1])
 }
 
 main()
