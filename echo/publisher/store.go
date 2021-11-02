@@ -7,6 +7,11 @@ import (
 	"fmt"
 	"errors"
 	"path"
+	"context"
+	"math"
+	"math/big"
+
+	"github.com/ethereum/go-ethereum/ethclient"
 )
 
 type PublisherStore interface {
@@ -21,11 +26,11 @@ type PublisherStore interface {
 
 type EthLocalStore struct {
 	path string
-	ethProvider string
+	client *ethclient.Client
 }
 
-func NewEthLocalStore(path string, ethProvider string) EthLocalStore {
-	return EthLocalStore{path, ethProvider}
+func NewEthLocalStore(path string, client *ethclient.Client) EthLocalStore {
+	return EthLocalStore{path, client}
 }
 
 func (els *EthLocalStore) Now() time.Time {
@@ -55,12 +60,100 @@ func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
 	return result, nil
 }
 
-func (els *EthLocalStore) LatestBlockTimeAsOf(t time.Time) (time.Time, error) {
-	return time.Now().Add(-100), nil
+var seenBlocks map[int64]int64 // blockNumber -> blockTime
+func getBlockTime(blockNumber int64, client *ethclient.Client) (int64, error) {
+	blockTime, present := seenBlocks[blockNumber]
+	if present {
+		return blockTime, nil
+	}
+	block, err := client.BlockByNumber(
+		context.Background(),
+		big.NewInt(blockNumber),
+	)
+	if err != nil {
+		return 0, err
+	}
+	return int64(block.Time()), nil
 }
 
-func (els *EthLocalStore) NextBlockTimeAsOf(t time.Time) (time.Time, error) {
-	return time.Now().Add(100), nil
+func findOnOrBetween(
+	client *ethclient.Client,
+	t int64,
+	blockNumberGuess int64,
+	maxDepth int64,
+) (int64, int64, error) { // blockTimeBefore, blockTimeAfter, error
+	if maxDepth == 0 {
+		return 0, 0, errors.New("Max depth exceeded")
+	}
+	maxDepth -= 1
+	blockTime, err := getBlockTime(blockNumberGuess, client)
+	if err != nil {
+		return 0, 0, err
+	}
+	if t == blockTime {
+		// hit it perfectly on, return that time for both
+		return blockTime, blockTime, nil
+	}
+	diff := float64(t) - float64(blockTime)
+	expectedBlocksAway := diff / 13
+	if math.Abs(expectedBlocksAway) >= 5 {
+		// jump to the new expected block
+		jumpSize := int64(math.Floor(expectedBlocksAway))
+		return findOnOrBetween(client, t, jumpSize + blockNumberGuess, maxDepth)
+	}
+
+	// one step at a time
+	if blockTime < t {
+		nextBlockTime, err := getBlockTime(blockNumberGuess + 1, client)
+		if err != nil {
+			return 0, 0, err
+		}
+		if nextBlockTime > t {
+			return blockTime, nextBlockTime, nil
+		}
+		return findOnOrBetween(client, t, blockNumberGuess + 1, maxDepth)
+	}
+	return findOnOrBetween(client, t, blockNumberGuess - 1, maxDepth)
+}
+
+func (els *EthLocalStore) NextBlockTimeAsOf(
+	t time.Time,
+	client *ethclient.Client,
+) (time.Time, error) {
+	latestBlockNumber, err := client.BlockNumber(context.Background())
+	if err != nil {
+		return time.Time{}, nil
+	}
+	_, blockTime, err := findOnOrBetween(
+		client,
+		t.Unix(),
+		int64(latestBlockNumber),
+		50,
+	)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.Unix(blockTime, 0), nil
+}
+
+func (els *EthLocalStore) LatestBlockTimeAsOf(
+	t time.Time,
+	client *ethclient.Client,
+) (time.Time, error) {
+	latestBlockNumber, err := client.BlockNumber(context.Background())
+	if err != nil {
+		return time.Time{}, nil
+	}
+	blockTime, _, err := findOnOrBetween(
+		client,
+		t.Unix(),
+		int64(latestBlockNumber),
+		50,
+	)
+	if err != nil {
+		return time.Time{}, err
+	}
+	return time.Unix(blockTime, 0), nil
 }
 
 type MockStore struct {
