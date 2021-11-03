@@ -1,4 +1,4 @@
-import { Pronouns, ObstacleType, ResultType, Success } from './interfaces'
+import { Pronouns, ObstacleType, ResultType, Success } from '../interfaces'
 
 // Outcome Sources // 
 

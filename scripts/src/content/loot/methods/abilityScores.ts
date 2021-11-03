@@ -2,7 +2,7 @@
 
 import { ethers } from 'ethers'
 
-import { makeProvider } from '../../utils'
+import { makeProvider } from '../../../utils'
 import * as abilityScoreAbi from '../abis/abilityScores.json'
 
 const ABILITY_SCORES_ADDR = "0x42A87e04f87A038774fb39c0A61681e7e859937b"

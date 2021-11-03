@@ -1,9 +1,8 @@
 import Prando from 'prando'
 import { providers } from 'ethers'
 
-import { getRandomName, getRandomClass, getRandomLootPiece } from '../src/loot'
-import { State, Guild, Character, Adventurer, Stats } from '../src/oc/interfaces'
-import { makeParty } from '../src/utils'
+import { getRandomName, getRandomClass, getRandomLootPiece } from '../content/loot'
+import { State, Guild, Character, Adventurer, Stats } from '../content/interfaces'
 import {
   pronounsSource, 
   skills, 
@@ -11,11 +10,7 @@ import {
   guildNames, 
   guildMottos, 
   guildLocations 
-} from '../src/oc/sourceArrays'
-import { stringify } from 'querystring';
-
-// TODO Prando input should match block hash format
-export const testPrng = new Prando(123456)
+} from '../content/original/sourceArrays'
 
 export async function randomStartingState(
   numberOfGuilds: number,
@@ -31,7 +26,7 @@ export async function randomStartingState(
   return state
 }
 
-export async function randomGuild(
+async function randomGuild(
   id: number,
   prng: Prando,
   previousState: State,
@@ -42,12 +37,18 @@ export async function randomGuild(
     prng, 
     provider
   )
+  /*
   const name = uniqueArrayItem<string, Guild>(
     prng,
     guildNames,
     previousState.guilds,
     (name: string, guild: Guild) => name === guild.name
   )
+  */
+ const name = randomUnusedItem<string>(
+   previousState.guilds.map(g => g.name),
+   () => prng.nextArrayItem(guildNames)
+ )
   return {
     id,
     name,
@@ -61,29 +62,29 @@ export async function randomGuild(
   }
 }
 
-function uniqueArrayItem<T, S>(
-  prng: Prando, 
-  array: T[], 
-  alreadyChosen: S[],
-  same: Function
-): T {
-  let item = prng.nextArrayItem(array)
-  let itemRepeat = true
-  while (itemRepeat === true) {
-    let repeat = false
-    alreadyChosen.forEach(t => {
-      if (same(item, t)) repeat = true
-    })
-    if (repeat === false) {
-      itemRepeat = false
-    } else {
-      item = prng.nextArrayItem(array)
-    }
+export function randomParty(
+  prng: Prando,
+  size: number,
+  adventurersLeft: string[]
+): { party: number[], adventurersLeft: string[] } {
+  if (size > adventurersLeft.length) size = adventurersLeft.length
+  const party: number[] = []
+  for(let i = 0; i < size; i++) {
+    const nextAdvId = prng.nextArrayItem(adventurersLeft)
+    party.push(parseInt(nextAdvId))
+    adventurersLeft.splice(
+      adventurersLeft.indexOf(nextAdvId),
+      1
+    )
   }
-  return item
+  return {
+    party,
+    adventurersLeft
+  }
 }
 
-export function makeRandomParties(
+/*
+function makeRandomParties(
   prng: Prando,
   adventurers: { [id: number]: Adventurer }
 ): number[][] {
@@ -91,25 +92,26 @@ export function makeRandomParties(
    * if there are > 8 adventurers left, break off 3-5 into a party and go again
    * if there are 6, 7, or 8 adventurers left, break off 3, then break off the rest, then return
    * if there are 5 or fewer, break them off and return
-   */
+   
   const res: number[][] = []
   let adventurersLeft = [...Object.keys(adventurers)]
   while (Object.keys(adventurersLeft).length > 8) {
     const partySize = prng.nextInt(3, 5)
-    const partyRes = makeParty(prng, partySize, adventurersLeft)
+    const partyRes = randomParty(prng, partySize, adventurersLeft)
     res.push(partyRes.party)
     adventurersLeft = partyRes.adventurersLeft
   }
   if ([6,7,8].includes(Object.keys(adventurersLeft).length)) {
-    const partyRes = makeParty(prng, 3, adventurersLeft)
+    const partyRes = randomParty(prng, 3, adventurersLeft)
     res.push(partyRes.party)
     adventurersLeft = partyRes.adventurersLeft
   }
-  const partyRes = makeParty(prng, Object.keys(adventurersLeft).length, adventurersLeft)
+  const partyRes = randomParty(prng, Object.keys(adventurersLeft).length, adventurersLeft)
   res.push(partyRes.party)
   adventurersLeft = partyRes.adventurersLeft
   return res
 }
+*/
 
 async function randomCharacter(
   prng: Prando, 
@@ -126,11 +128,17 @@ async function randomCharacter(
   }
   if (traitCount) {
     for(let i = 0; i < traitCount; i++) {
+      /*
       newChar.traits = addRandomUnusedElement(
         newChar.traits,
         Object.keys(traits),
         prng
       )
+      */
+      newChar.traits.push(randomUnusedItem(
+        newChar.traits,
+        () => prng.nextArrayItem(Object.keys(traits))
+      ))
     }
   }
   return newChar
@@ -167,7 +175,8 @@ async function randomAdventurer(
     id,
     class: [(await getRandomClass(prng, provider)).class],
     stats: randomStats(prng),
-    skills: addRandomUnusedElement<string>([], skills, prng),
+    // skills: addRandomUnusedElement<string>([], skills, prng),
+    skills: [prng.nextArrayItem(skills)],
     loot: [await getRandomLootPiece(prng, provider)]
   })
   return newAdv
@@ -183,6 +192,42 @@ function randomStats(prng: Prando): Stats {
   }
 }
 
+export function randomUnusedItem<T>(
+  used: T[],
+  randomItem: Function
+): T {
+  let item = randomItem()
+  while (used.includes(item)) {
+    item = randomItem()
+  }
+  return item
+}
+
+/*
+function uniqueArrayItem<T, S>(
+  prng: Prando, 
+  array: T[], 
+  alreadyChosen: S[],
+  same: Function
+): T {
+  let item = prng.nextArrayItem(array)
+  let itemRepeat = true
+  while (itemRepeat === true) {
+    let repeat = false
+    alreadyChosen.forEach(t => {
+      if (same(item, t)) repeat = true
+    })
+    if (repeat === false) {
+      itemRepeat = false
+    } else {
+      item = prng.nextArrayItem(array)
+    }
+  }
+  return item
+}
+*/
+
+/*
 function addRandomUnusedElement<T>(
   target: T[], 
   source: T[],
@@ -196,3 +241,4 @@ function addRandomUnusedElement<T>(
   target.push(newItem)
   return target
 }
+*/

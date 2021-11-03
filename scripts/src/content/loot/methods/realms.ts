@@ -2,7 +2,7 @@
 
 import { ethers } from 'ethers'
 
-import { makeProvider } from '../../utils'
+import { makeProvider } from '../../../utils'
 import * as realmsAbi from '../abis/realms.json'
 
 const REALMS_ADDR = "0x7afe30cb3e53dba6801aa0ea647a0ecea7cbe18d"

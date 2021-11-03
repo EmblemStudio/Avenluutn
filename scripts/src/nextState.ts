@@ -1,15 +1,15 @@
-import { State, Adventurer, Quest, Obstacle, Outcome, Result, Success, ResultType, Guild } from './oc/interfaces'
+import { State, Result, ResultType } from './content/interfaces'
 
-export function nextState(state: State, results: Result[]): State {
+export function nextState(state: State, events: Result[]): State {
   const newState = Object.assign({}, state)
-  results.forEach(result => {
-    const guild = newState.guilds[result.guildId]
+  events.forEach(event => {
+    const guild = newState.guilds[event.guildId]
 
     if (guild) {
       // TODO store adventurers in state separately, just reference ids in guilds?
-      const adventurer = guild.adventurers[result.advId]
+      const adventurer = guild.adventurers[event.advId]
       if (adventurer) {
-        switch (result.type) {
+        switch (event.type) {
           case ResultType.Death:
             // move adventurer to the graveyard
             guild.graveyard[adventurer.id] = adventurer
@@ -17,17 +17,17 @@ export function nextState(state: State, results: Result[]): State {
             break
           case ResultType.Loot:
             // add loot to adventurer
-            adventurer.loot.push(result.component)
+            adventurer.loot.push(event.component)
             guild.adventurers[adventurer.id] = Object.assign({}, adventurer)
             break
           case ResultType.Skill:
             // add skill to adventurer
-            adventurer.skills.push(result.component)
+            adventurer.skills.push(event.component)
             guild.adventurers[adventurer.id] = Object.assign({}, adventurer)
             break
           case ResultType.Trait:
             // add trait to adventurer
-            adventurer.traits.push(result.component)
+            adventurer.traits.push(event.component)
             guild.adventurers[adventurer.id] = Object.assign({}, adventurer)
             break
           default:
@@ -35,7 +35,7 @@ export function nextState(state: State, results: Result[]): State {
         }
       }
 
-      newState.guilds[result.guildId] = Object.assign(
+      newState.guilds[event.guildId] = Object.assign(
         {},
         guild
       )

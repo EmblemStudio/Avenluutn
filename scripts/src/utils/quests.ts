@@ -13,7 +13,7 @@ import {
   Success,
   ResultType,
   Results
-} from './interfaces'
+} from '../content/interfaces'
 import { 
   obstacleInfo,
   questDifficulty,
@@ -32,9 +32,39 @@ import {
   traits,
   activityAdjectives,
   triggerMap
-} from './sourceArrays'
-import { getRandomLootPiece, nameString } from '../loot'
-import { makeProvider, makeObstacleText } from '../utils'
+} from '../content/original/sourceArrays'
+import { getRandomLootPiece, nameString } from '../content/loot'
+import { makeObstacleText } from './makeText'
+import { makeProvider } from './nextBlockHash'
+
+// 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
+// TODO adjust the RNG so characters are more likely to "select" quests that fit them?
+export function randomQuest(guildId: number, prng: Prando): Quest {
+  const type = prng.nextArrayItem(
+    Object.keys(questTypesAndInfo)
+  ) as QuestType
+  const questInfo = questTypesAndInfo[type]
+  if (!questInfo) { throw new Error("No quest info") }
+  const res: Quest = { 
+    guildId,
+    difficulty: prng.nextArrayItem(questDifficulty),
+    type,
+    objective: prng.nextArrayItem(questInfo.objectives),
+    locationName: prng.nextArrayItem(questLocationName),
+    locationType: prng.nextArrayItem(questLocationType)
+  }
+  if (res.difficulty > 1) {
+    res.firstAdjective = prng.nextArrayItem(genericFirstAdjectives)
+  }
+  if (res.difficulty > 2) {
+    res.secondAdjective = prng.nextArrayItem(genericSecondAdjectives)
+  }
+  if (res.difficulty > 3) {
+    res.firstName = prng.nextArrayItem(genericFirstName)
+    res.lastName = prng.nextArrayItem(genericLastName)
+  }
+  return res
+}
 
 export function randomObstacle(prng: Prando, difficulty: number): Obstacle {
   if (![1,2,3,4].includes(difficulty)) { throw new Error ("Difficulty must be 1, 2, 3, or 4")}
@@ -405,34 +435,4 @@ function insertPronouns(string: string, pronouns: Pronouns): string {
     })
   })
   return splitString.join('')
-}
-
-// 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
-// TODO is it a problem that names can repeat like 'Macrosign Desert' 'Macrosign Forest'?
-// TODO adjust the RNG so characters are more likely to "select" quests that fit them?
-export function randomQuest(guildId: number, prng: Prando): Quest {
-  const type = prng.nextArrayItem(
-    Object.keys(questTypesAndInfo)
-  ) as QuestType
-  const questInfo = questTypesAndInfo[type]
-  if (!questInfo) { throw new Error("No quest info") }
-  const res: Quest = { 
-    guildId,
-    difficulty: prng.nextArrayItem(questDifficulty),
-    type,
-    objective: prng.nextArrayItem(questInfo.objectives),
-    locationName: prng.nextArrayItem(questLocationName),
-    locationType: prng.nextArrayItem(questLocationType)
-  }
-  if (res.difficulty > 1) {
-    res.firstAdjective = prng.nextArrayItem(genericFirstAdjectives)
-  }
-  if (res.difficulty > 2) {
-    res.secondAdjective = prng.nextArrayItem(genericSecondAdjectives)
-  }
-  if (res.difficulty > 3) {
-    res.firstName = prng.nextArrayItem(genericFirstName)
-    res.lastName = prng.nextArrayItem(genericLastName)
-  }
-  return res
 }

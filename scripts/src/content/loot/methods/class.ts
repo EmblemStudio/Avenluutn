@@ -3,7 +3,7 @@
 import { providers, Contract } from 'ethers'
 import Prando from 'prando'
 
-import { makeProvider } from '../../utils'
+import { makeProvider } from '../../../utils'
 import * as classAbi from '../abis/class.json'
 
 const CLASS_ADDR = "0xccab950f5b192603a94a26c4fa00c8d2d392b98d"

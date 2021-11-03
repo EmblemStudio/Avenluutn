@@ -2,7 +2,7 @@
 
 import { providers, Contract } from 'ethers'
 
-import { makeProvider } from '../../utils'
+import { makeProvider } from '../../../utils'
 import * as namesAbi from '../abis/names.json'
 import Prando from 'prando'
 

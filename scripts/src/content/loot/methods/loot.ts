@@ -3,7 +3,7 @@
 import { providers, Contract } from 'ethers'
 import Prando from 'prando'
 
-import { makeProvider } from '../../utils'
+import { makeProvider } from '../../../utils'
 import * as lootAbi from '../abis/loot.json'
 
 const LOOT_ADDR = "0xFF9C1b15B16263C61d017ee9F65C50e4AE0113D7"

@@ -1,4 +1,4 @@
-import { Name } from '../loot/methods/names'
+import { Name } from './loot/methods/names'
 
 // They [verb] [adjectives] [type] [name] [additions]
 // They [stumbled upon] a [man-eating] [puzzlebox] [, "The Most Stark Horcrux",] which was [instilled with a dragon's spirit]. 
