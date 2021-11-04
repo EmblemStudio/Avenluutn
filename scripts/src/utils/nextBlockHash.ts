@@ -6,7 +6,7 @@ export function makeProvider(providerUrl?: string): providers.BaseProvider {
 }
 
 /**
- * If `time` has been reached, try to get closest later block
+ * If `time` has been reached, try to get closest earlier block
  */
 
 export async function nextBlockHash(
@@ -19,16 +19,16 @@ export async function nextBlockHash(
     return null
   }
 
-  const startBlockHash = await closestLaterBlockHash(time, provider)
+  const startBlockHash = await closestEarlierBlockHash(time, provider)
   if (!startBlockHash) { 
-    console.warn(`No block found after time ${time}.`) 
+    console.warn(`Unreachable: no mined block found before time ${time}.`)
     return null
   }
   return startBlockHash
 }
 
 /**
- * Find closest block after the target time
+ * Find closest block before the target time
  */
 
 /**
@@ -43,7 +43,7 @@ export async function nextBlockHash(
  *   - else, set newBlock to 1 block earlier
  * - recurse with block: newBlock, previousBlock: block
  */
-export async function closestLaterBlockHash(
+export async function closestEarlierBlockHash(
   targetTime: number,
   provider: providers.BaseProvider | string,
   block?: providers.Block,
@@ -107,7 +107,7 @@ export async function closestLaterBlockHash(
   }
   */
 
-  return await closestLaterBlockHash(targetTime, provider, newBlock, block)
+  return await closestEarlierBlockHash(targetTime, provider, newBlock, block)
 }
 
 function surrounded(time1: number, time2: number, surroundedTime: number): boolean {

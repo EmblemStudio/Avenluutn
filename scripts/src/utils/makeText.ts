@@ -1,7 +1,4 @@
-import { providers } from 'ethers'
-import Prando from 'prando'
-
-import { Obstacle, Quest, Outcome, ObstacleType } from '../content/interfaces'
+import { Obstacle, Quest, Outcome } from '../content/interfaces'
 
 export function makeQuestText(quest: Quest): string {
   let text = `Consulting the guild, they choose their quest: to ${quest.type} the`

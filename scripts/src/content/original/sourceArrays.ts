@@ -514,6 +514,8 @@ export const pronounsSource: Pronouns[] = [
   }
 ]
 
+import * as triggerMapJson from '../../../csv-to-json/json/triggerMap.json'
+
 export const triggerMap: {
   [keystring: string]: // string to search obstacle text for
     {
@@ -523,22 +525,7 @@ export const triggerMap: {
       type: "skills" | "loot" | "traits"
     }[]
   
-} = {
-  "horrifying": [
-    {
-      chance: 10,
-      modifier: -15,
-      name: "cowardice",
-      type: "traits"
-    },
-    {
-      chance: 5,
-      modifier: -10,
-      name: "trauma",
-      type: "traits"
-    }
-  ],
-}
+} = JSON.parse(JSON.stringify(triggerMapJson))
 
 export const traits: { 
   [trait: string]: { 

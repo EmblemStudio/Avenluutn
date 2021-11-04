@@ -5,17 +5,25 @@
   "main": "index.ts",
   "author": "Emblem Studio",
   "license": "MIT",
-  "devDependencies": {
-    "ethers": "^5.4.7"
-  },
   "scripts": {
     "build": "tsc --build",
-    "test": "ts-node test/test"
+    "build-csv": "ts-node csv-to-json/index",
+    "examples": "ts-node examples/examples",
+    "lint": "ts-standard",
+    "format": "ts-standard --fix",
+    "test": "yarn build && ts-jest --collect-coverage && yarn lint"
   },
   "dependencies": {
     "@types/node": "^16.10.3",
     "prando": "^6.0.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "ethers": "^5.4.7",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "ts-standard": "^10.0.0"
   }
 }

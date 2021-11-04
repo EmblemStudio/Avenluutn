@@ -151,7 +151,6 @@ export async function findOutcome(
     advResults[result.type].push(result)
     processedResults[result.advId] = advResults
   })
-  
 
   let everyoneKnockedOut = false
   let knockOutCount = 0
@@ -182,16 +181,48 @@ export async function findOutcome(
       Object.keys(triggerMap).forEach(keyword => {
         const index = makeObstacleText(obstacle).indexOf(keyword)
         if (index >= 0) {
+          // console.log(makeObstacleText(obstacle), keyword, index)
           const triggerInfos = triggerMap[keyword]
           if (!triggerInfos) { throw new Error ("No trigger infos") }
           triggerInfos.forEach(triggerInfo => {
             const qualities = adventurer[triggerInfo.type]
             if (!qualities) { throw new Error("No adventurer qualities") }
+            // doing it like this because keywords are subsets of loot strings
             const hasName = qualities.join(" ").indexOf(triggerInfo.name)
+            // console.log(hasName, qualities.join(" "), triggerInfo.name)
             if (hasName >= 0) {
               const triggerRoll = prng.nextInt(1, 100)
               if (triggerRoll <= triggerInfo.chance) {
+                // TODO add trigger text
                 successRoll += triggerInfo.modifier
+                let verb = ""
+                if (triggerInfo.type === "traits") {
+                  const trait = traits[triggerInfo.name]
+                  if (!trait) throw new Error("No trait")
+                  if (triggerInfo.modifier > 0 && trait.positiveTrigger) { 
+                    verb = trait.positiveTrigger
+                  } else if (trait.negativeTrigger) {
+                    verb = trait.negativeTrigger
+                  }
+                } else if (triggerInfo.type === "skills") {
+                  verb = `${nameString(adventurer.name)} used ${adventurer.pronouns.depPossessive} ${triggerInfo.name} skills.`
+                } else if (triggerInfo.type === "loot") {
+                  let usedLoot = ""
+                  qualities.forEach(lootPiece => {
+                    const index = lootPiece.indexOf(triggerInfo.name)
+                    if (index >= 0) {
+                      usedLoot = lootPiece
+                    }
+                  })
+                  if (usedLoot !== "") {
+                    verb = `${nameString(adventurer.name)} used ${adventurer.pronouns.depPossessive} ${usedLoot}.`
+                  }
+                }
+                outcome.triggers.push({
+                  characterName: adventurer.name,
+                  triggeredComponent: triggerInfo.name,
+                  verb
+                })
               }
             }
           })
