@@ -175,7 +175,6 @@ func before(a time.Time, b *big.Int) bool {
 	return a.Before(bTime)
 }
 
-var depth = 0
 func (pub *Publisher) GetStoryAsOf(
 	backend bind.ContractBackend,
 	ps PublisherStore,
@@ -184,32 +183,26 @@ func (pub *Publisher) GetStoryAsOf(
 	storyIndex int64,
 	t time.Time,
 ) (Story, error) {
-	depth += 1
-	latestBlockTime, err := ps.LatestBlockTimeAsOf(t);
-	if t.Before(latestBlockTime) {
-		panic(errors.New("why tho"))
-	}
-
+	latestBlockTime, err := ps.LatestBlockTimeAsOf(t)
 	if err != nil {
-		depth -= 1
+		fmt.Println("could not get latest time as of", err)
 		return "", err
 	}
 
 	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
-		depth -= 1
 		return "", err
 	}
 
 	// if latestBlockTime is before the narrator start time
 	// use `{}` as the state
-	var previousResult ScriptResult
-	previousResult, err = GetCachedResult(
+	_, err = GetCachedResult(
 		ps,
 		narratorIndex,
 		collectionIndex,
 		storyIndex,
 		latestBlockTime,
-	); if err != nil && !before(latestBlockTime, narrator.Start) {
+	)
+	if err != nil && !before(latestBlockTime, narrator.Start) {
 		// We don't have the result in the cache...
 		// and it's after the start time...
 		// so we need to get it by recursing and getting the state
@@ -223,12 +216,22 @@ func (pub *Publisher) GetStoryAsOf(
 			latestBlockTime.Add(time.Second * -1), // a second before
 		)
 	}
+
 	var state string
 	if before(latestBlockTime, narrator.Start) {
 		state = "{}"
-	} else {
-		marshaled, err := json.Marshal(previousResult.NextState); if err != nil {
-			depth -= 1
+	} else { // cache should be warmed now
+		hitResult, err := GetCachedResult(
+			ps,
+			narratorIndex,
+			collectionIndex,
+			storyIndex,
+			latestBlockTime,
+		)
+		if err != nil {
+			return "", err
+		}
+		marshaled, err := json.Marshal(hitResult.NextState); if err != nil {
 			return "", err
 		}
 		state = string(marshaled)
@@ -238,7 +241,6 @@ func (pub *Publisher) GetStoryAsOf(
 		narrator.CollectionSpacing.Int64() * collectionIndex
 
 	script, err := pub.GetScript(narratorIndex, backend); if err != nil {
-		depth -= 1
 		return "", err
 	}
 	result, err := pub.RunNarratorScript(
@@ -248,9 +250,9 @@ func (pub *Publisher) GetStoryAsOf(
 		narrator.CollectionLength.Int64(),
 		narrator.CollectionSize.Int64(),
 	); if err != nil {
-		depth -= 1
 		return "", err
 	}
+
 
 	// This has to save for the next future block time
 	// not the latest block time
@@ -267,6 +269,8 @@ func (pub *Publisher) GetStoryAsOf(
 		)
 		ps.Set(stateKey, result)
 	}
-	depth -= 1
+	if int(storyIndex) >= len(result.Stories) {
+		return "", errors.New("Story index out of bounds")
+	}
 	return result.Stories[storyIndex], nil
 }

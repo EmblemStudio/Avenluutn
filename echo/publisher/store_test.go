@@ -12,12 +12,12 @@ import (
 var ropsten = "https://ropsten.infura.io/v3/46801402492348e480a7e18d9830eab8"
 var localFolder = "./tmp-test-store"
 
-func setUp(t *testing.T) (EthLocalStore, *ethclient.Client) {
+func setUp(t *testing.T) (*EthLocalStore, *ethclient.Client) {
 	os.Mkdir(localFolder, 0755)
 	client, err := ethclient.Dial(ropsten)
 	if err != nil {
 		t.Fatalf("could not create Ethereum client")
-		return EthLocalStore{}, client
+		return &EthLocalStore{}, client
 	}
 	localStore := NewEthLocalStore(localFolder, client)
 	return localStore, client
@@ -38,12 +38,12 @@ func TestEthLocalStoreTime(t *testing.T) {
 	onTarget := time.Unix(target, 0)
 
 	// when it's spot on
-	haveNext, err := localStore.NextBlockTimeAsOf(onTarget, client)
+	haveNext, err := localStore.NextBlockTimeAsOf(onTarget)
 	if err != nil {
 		t.Fatalf("could not get next block time\n%v", err)
 	}
 
-	haveLatest, err := localStore.LatestBlockTimeAsOf(onTarget, client)
+	haveLatest, err := localStore.LatestBlockTimeAsOf(onTarget)
 	if err != nil {
 		t.Fatalf("could not get latest block time\n%v", err)
 	}
@@ -61,12 +61,12 @@ func TestEthLocalStoreTime(t *testing.T) {
 	beforeTarget := time.Unix(target - 1, 0)
 	afterTarget := time.Unix(target + 1, 0)
 
-	haveNext, err = localStore.NextBlockTimeAsOf(beforeTarget, client)
+	haveNext, err = localStore.NextBlockTimeAsOf(beforeTarget)
 	if err != nil {
 		t.Fatalf("could not get next block time\n%v", err)
 	}
 
-	haveLatest, err = localStore.LatestBlockTimeAsOf(afterTarget, client)
+	haveLatest, err = localStore.LatestBlockTimeAsOf(afterTarget)
 	if err != nil {
 		t.Fatalf("could not get latest block time\n%v", err)
 	}
@@ -77,6 +77,21 @@ func TestEthLocalStoreTime(t *testing.T) {
 			haveLatest,
 			haveNext,
 			onTarget,
+		)
+	}
+
+	// what about for times after the latest block (like Now!)
+	haveNextNow, err := localStore.NextBlockTimeAsOf(time.Now())
+	if err == nil {
+		t.Errorf("\nwant _, non nil,\nhave: %v, %v", haveNextNow, err)
+	}
+
+	haveLatestNow, err := localStore.LatestBlockTimeAsOf(time.Now())
+	if err != nil {
+		t.Errorf(
+			"LatestBlockTimeAsOf(Now)\nwant _, <nil>\nhave: %v, %v",
+			haveLatestNow,
+			err,
 		)
 	}
 }

@@ -29,8 +29,8 @@ type EthLocalStore struct {
 	client *ethclient.Client
 }
 
-func NewEthLocalStore(path string, client *ethclient.Client) EthLocalStore {
-	return EthLocalStore{path, client}
+func NewEthLocalStore(path string, client *ethclient.Client) *EthLocalStore {
+	return &EthLocalStore{path, client}
 }
 
 func (els *EthLocalStore) Now() time.Time {
@@ -80,73 +80,108 @@ func findOnOrBetween(
 	client *ethclient.Client,
 	t int64,
 	blockNumberGuess int64,
+	chainHeight int64,
 	maxDepth int64,
 ) (int64, int64, error) { // blockTimeBefore, blockTimeAfter, error
+	fmt.Println(maxDepth, blockNumberGuess)
+	if blockNumberGuess < 0 {
+		fmt.Println(maxDepth, "fell off the beginning")
+		return 0, 0, errors.New("Guessed block number less than zero")
+	}
 	if maxDepth == 0 {
+		fmt.Println(maxDepth, "giving up")
 		return 0, 0, errors.New("Max depth exceeded")
 	}
 	maxDepth -= 1
 	blockTime, err := getBlockTime(blockNumberGuess, client)
 	if err != nil {
+		fmt.Println(maxDepth, "getBlockTime", err)
 		return 0, 0, err
 	}
 	if t == blockTime {
+		fmt.Println(maxDepth, "FOUND IT!")
 		// hit it perfectly on, return that time for both
 		return blockTime, blockTime, nil
 	}
 	diff := float64(t) - float64(blockTime)
 	expectedBlocksAway := diff / 13
-	if math.Abs(expectedBlocksAway) >= 5 {
+	jumpSize := math.Min(
+		math.Floor(expectedBlocksAway),
+		float64(chainHeight - blockNumberGuess),
+	)
+	if math.Abs(jumpSize) >= 5 {
 		// jump to the new expected block
-		jumpSize := int64(math.Floor(expectedBlocksAway))
-		return findOnOrBetween(client, t, jumpSize + blockNumberGuess, maxDepth)
+		fmt.Println(maxDepth, "findOnOrBetween...")
+		return findOnOrBetween(
+			client,
+			t,
+			int64(jumpSize) + blockNumberGuess,
+			chainHeight,
+			maxDepth,
+		)
 	}
 
 	// one step at a time
 	if blockTime < t {
+		fmt.Println(maxDepth, "try one after")
 		nextBlockTime, err := getBlockTime(blockNumberGuess + 1, client)
 		if err != nil {
-			return 0, 0, err
+			// we have a block time for this guess, but could not
+			// find a subsequent block. Time must be after the
+			// latest block
+			return blockTime, -1, nil
 		}
 		if nextBlockTime > t {
 			return blockTime, nextBlockTime, nil
 		}
-		return findOnOrBetween(client, t, blockNumberGuess + 1, maxDepth)
+		return findOnOrBetween(
+			client,
+			t,
+			blockNumberGuess + 1,
+			chainHeight,
+			maxDepth,
+		)
 	}
-	return findOnOrBetween(client, t, blockNumberGuess - 1, maxDepth)
+	fmt.Println(maxDepth, "try one before")
+	return findOnOrBetween(
+		client,
+		t,
+		blockNumberGuess - 1,
+		chainHeight,
+		maxDepth,
+	)
 }
 
-func (els *EthLocalStore) NextBlockTimeAsOf(
-	t time.Time,
-	client *ethclient.Client,
-) (time.Time, error) {
-	latestBlockNumber, err := client.BlockNumber(context.Background())
+func (els *EthLocalStore) NextBlockTimeAsOf(t time.Time) (time.Time, error) {
+	latestBlockNumber, err := els.client.BlockNumber(context.Background())
 	if err != nil {
 		return time.Time{}, nil
 	}
 	_, blockTime, err := findOnOrBetween(
-		client,
+		els.client,
 		t.Unix(),
+		int64(latestBlockNumber),
 		int64(latestBlockNumber),
 		50,
 	)
 	if err != nil {
 		return time.Time{}, err
 	}
+	if blockTime == -1 {
+		return time.Time{}, errors.New("No next block yet")
+	}
 	return time.Unix(blockTime, 0), nil
 }
 
-func (els *EthLocalStore) LatestBlockTimeAsOf(
-	t time.Time,
-	client *ethclient.Client,
-) (time.Time, error) {
-	latestBlockNumber, err := client.BlockNumber(context.Background())
+func (els *EthLocalStore) LatestBlockTimeAsOf(t time.Time) (time.Time, error) {
+	latestBlockNumber, err := els.client.BlockNumber(context.Background())
 	if err != nil {
 		return time.Time{}, nil
 	}
 	blockTime, _, err := findOnOrBetween(
-		client,
+		els.client,
 		t.Unix(),
+		int64(latestBlockNumber),
 		int64(latestBlockNumber),
 		50,
 	)

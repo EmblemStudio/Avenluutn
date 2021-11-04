@@ -6,6 +6,7 @@ import (
 	"testing"
 	"os"
 	"time"
+	"fmt"
 	"reflect"
 
 	"github.com/ethereum/go-ethereum/common"
@@ -202,6 +203,28 @@ func TestGetCachedResult(t *testing.T) {
 	}
 }
 
+func TestGetStoryFirstCall(t *testing.T) {
+	pub, _, _, _, client := setup(t)
+	testPubStore := &MockStore{
+		time.Unix(95, 0), // five seconds after the highest block
+		map[string]ScriptResult{},
+		pub,
+	}
+
+	haveStory, err := pub.GetStory(client, testPubStore, 0, 0, 0)
+
+	wantStory := "We were curious."
+	if haveStory != wantStory || err != nil {
+		t.Errorf(
+			"GetStory\nwant: %v, %v\nhave: %v, %v",
+			wantStory,
+			nil,
+			haveStory,
+			err,
+		)
+	}
+}
+
 func TestGetStory(t *testing.T) {
 	pub, _, _, _, client := setup(t)
 
@@ -248,8 +271,16 @@ if (!state.howWeWere) {
          */
 
 	testPubStore.setTime(time.Unix(25, 0))
+	fmt.Println("----")
+	fmt.Println(testPubStore)
+	fmt.Println("----")
 	pub.GetStory(client, testPubStore, 0, 0, 0)
+	fmt.Println("----")
+	fmt.Println(testPubStore)
+	fmt.Println("----")
 	haveResult, err := GetCachedResult(testPubStore, 0, 0, 0, time.Unix(20, 0))
+	fmt.Println("----")
+	fmt.Println("----")
 	wantNextState := map[string]interface{}{
 		"howWeWere": "well",
 		"a": float64(1),

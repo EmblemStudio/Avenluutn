@@ -1,15 +1,18 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.17-alpine
+FROM golang:1.17
 
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y build-essential
 
 COPY go.mod ./
 COPY go.sum ./
 
 RUN go mod download
 
-COPY src/*.go ./
+COPY ./*.go ./
+COPY ./publisher/*.go ./publisher/
 
 RUN go build -o /aavenluutn
 

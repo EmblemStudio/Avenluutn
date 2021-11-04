@@ -39,14 +39,6 @@ async function main() {
 
   /**
    * add test narratorNFT
-   * ```
-   * function main(state) {
-   *     return {
-   *         state: Object.assign(state, {a: 1}),
-   *         text: `We were ${state.howWeWere}.`
-   *   }
-   * }
-   * ```
    */
   const narratorTx = await narratorNFTs.mint(
     "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
@@ -54,7 +46,7 @@ async function main() {
   )
 
   // add test narrator
-  const pubTx = await publisher.addNarrator(
+  let pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
     1,
@@ -65,6 +57,17 @@ async function main() {
   )
   await narratorTx.wait()
   await pubTx.wait()
+
+  const now = parseInt((new Date().getTime() / 1000).toFixed(0))
+  pubTx = await publisher.addNarrator(
+    narratorNFTs.address,
+    0,
+    now, // start
+    100,           // totalCollections
+    60 * 60 * 12,  // collectionLength
+    60 * 60 * 15,  // collectionSpacing
+    3,             // collectionSize
+  )
 }
 
 // We recommend this pattern to be able to use async/await everywhere
