@@ -11,58 +11,12 @@ import {
   makeObstacleText, 
   makeOutcomeText, 
   OutcomeText, 
-  makeProvider, 
   nextBlockHash, 
-  randomStartingState, 
   randomParty 
 } from './utils'
 import { State, Adventurer, Quest, Obstacle, Outcome, Result, Success, ResultType, Guild } from './content/interfaces'
 
-interface Stories {
-  state: State;
-  [storyIndex: number]: Story;
-  events: Result[];
-}
-
-export async function tellStories(
-  state: State | null,
-  startTime: number,
-  length: number,
-  totalStories: number,
-  providerUrl?: string
-): Promise<Stories> {
-  const provider = makeProvider(providerUrl)
-
-  const startBlockHash = await nextBlockHash(startTime, provider)
-  if (!startBlockHash) { throw new Error('No starting block hash') }
-
-  const prng = new Prando(startBlockHash)
-
-  if (!state) {
-    state = await randomStartingState(totalStories, prng, provider)
-  }
-
-  const stories: Stories = {
-    state,
-    events: []
-  }
-  for (let i = 0; i < totalStories; i++) {
-    const story = await tellStory(
-      prng, 
-      state, 
-      startTime, 
-      length, 
-      i, 
-      provider
-    )
-    stories[i] = story
-    stories.events = [...stories.events, ...story.events]
-  }
-
-  return stories
-}
-
-interface Story {
+export interface Story {
   plainText: string[];
   richText: {
     beginning: string[];
