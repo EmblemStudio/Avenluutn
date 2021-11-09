@@ -258,6 +258,7 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         // if someone bid, require sender to have won auction
         if(story.auction.bidder != address(0)) {
             require(msg.sender == story.auction.bidder);
+            //TODO send the money somewhere!!!
         } // otherwise fine you can mint
 
         // mint

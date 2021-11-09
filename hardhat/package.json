@@ -6,7 +6,16 @@
   "author": "Emblem Studio",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "npx hardhat test"
+    "up": "yarn build && npx hardhat node",
+    "test": "npx hardhat test",
+    "deploy": "npx hardhat run --network localhost scripts/deploy.js",
+    "build": "npx hardhat compile && yarn get-abi && yarn get-bin",
+    "get-abi": "yarn get-abi:nft && yarn get-abi:pub",
+    "get-bin": "yarn get-bin:nft && yarn get-bin:pub",
+    "get-abi:pub": "cat artifacts/contracts/Publisher.sol/Publisher.json | jq .abi > artifacts/contracts/Publisher.sol/Publisher.abi",
+    "get-bin:pub": "cat artifacts/contracts/Publisher.sol/Publisher.json | jq -r .bytecode > artifacts/contracts/Publisher.sol/Publisher.bin",
+    "get-abi:nft": "cat artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json | jq .abi > artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.abi",
+    "get-bin:nft": "cat artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json | jq -r .bytecode > artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.bin"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.0",

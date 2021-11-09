@@ -1,0 +1,77 @@
+#!/bin/bash
+
+function wake () {
+    tag=emblemstudio/aavenluutn:test
+    container_name=aavenluutn
+    ipfs_staging=`pwd`/ipfs/staging
+    ipfs_data=`pwd`/ipfs/data
+    ipfs_container_name=ipfs_host
+    hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
+    abigen_out_path=`pwd`/publisher
+    store_path=`pwd`/store
+
+    case $1 in
+        "build")
+            cd ../hardhat
+            yarn build
+            cd ../echo
+            docker run \
+                   -u `id -u`:`id -g` \
+                   -v $hardhat_abi_path:/sources \
+                   -v $abigen_out_path:/out \
+                   ethereum/client-go:alltools-latest abigen \
+                   --abi /sources/Publisher.sol/Publisher.abi \
+                   --out /out/artifact_Publisher_sol.go \
+                   --pkg  publisher \
+                   --type Publisher \
+                   --bin /sources/Publisher.sol/Publisher.bin \
+
+            docker run \
+                   -u `id -u`:`id -g` \
+                   -v $hardhat_abi_path:/sources \
+                   -v $abigen_out_path:/out \
+                   ethereum/client-go:alltools-latest abigen \
+                   --abi /sources/NarratorNFTs.sol/NarratorNFTs.abi \
+                   --out /out/artifact_NarratorNFTs_sol.go \
+                   --pkg  publisher \
+                   --type NarratorNFTs \
+                   --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin \
+
+            docker build -t $tag .
+            ;;
+        "run")
+            mkdir store
+            docker run \
+                   -p 8000:8000 \
+                   --rm \
+                   --net host \
+                   -v $store_path:/store \
+                   --name aavenluutn \
+                   $tag
+            ;;
+        "test")
+            go test ./...
+            ;;
+        "dev")
+            wake build
+            docker run -d --rm \
+                   --name $ipfs_container_name \
+                   -v $ipfs_staging:/export \
+                   -v $ipfs_data:/data/ipfs \
+                   -p 4001:4001 \
+                   -p 127.0.0.1:8080:8080 \
+                   -p 127.0.0.1:5001:5001 \
+                   ipfs/go-ipfs:latest
+            wake run
+            ;;
+        "stop")
+            docker stop $container_name $ipfs_container_name
+            ;;
+        "format")
+            go fmt
+            ;;
+        *)
+            which wake
+            ;;
+    esac
+}
