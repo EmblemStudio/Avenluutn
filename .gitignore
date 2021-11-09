@@ -104,5 +104,6 @@ dist
 # TernJS port file
 .tern-port
 
-# Scripts JS build 
+# Scripts build 
 ./scripts/js
+./scripts/dist
