@@ -6,6 +6,8 @@
     "noUncheckedIndexedAccess": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "outDir": "dist"
-  }
+    "outDir": "js",
+    "isolatedModules": true
+  },
+  "include": ["src/index.ts"]
 }
