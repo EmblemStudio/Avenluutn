@@ -6,36 +6,41 @@ import (
 	"testing"
 	"os"
 	"time"
-	"fmt"
 	"reflect"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
 )
 
-func setup(t *testing.T) (
+func GetContractAddrs() (common.Address, common.Address, error) {
+	var (
+		pubAddrPath = "../../hardhat/PublisherAddress.txt"
+		nftAddrPath = "../../hardhat/NarratorNFTsAddress.txt"
+	)
+	publisherAddressData, err := os.ReadFile(pubAddrPath)
+	if err != nil {
+		return common.Address{}, common.Address{}, err
+	}
+	nftAddressData, err := os.ReadFile(nftAddrPath)
+	if err != nil {
+		return common.Address{}, common.Address{}, err
+	}
+	publisherAddress := common.HexToAddress(string(publisherAddressData))
+	nftAddress := common.HexToAddress(string(nftAddressData))
+	return publisherAddress, nftAddress, nil
+}
+
+func EthSetup(t *testing.T) (
 	*Publisher,
 	common.Address,
 	*NarratorNFTs,
 	common.Address,
 	*ethclient.Client,
 ) {
-	var (
-		pubAddrPath = "../../hardhat/PublisherAddress.txt"
-		nftAddrPath = "../../hardhat/NarratorNFTsAddress.txt"
-	)
-
-
-	publisherAddressData, err := os.ReadFile(pubAddrPath)
+	publisherAddress, nftAddress, err := GetContractAddrs()
 	if err != nil {
-		t.Fatalf("Could not read %v", pubAddrPath)
+		t.Fatalf("Could not get contract addresses: %v", err)
 	}
-	nftAddressData, err := os.ReadFile(nftAddrPath)
-	if err != nil {
-		t.Fatalf("Could not read %v", nftAddrPath)
-	}
-	publisherAddress := common.HexToAddress(string(publisherAddressData))
-	nftAddress := common.HexToAddress(string(nftAddressData))
 
 	client, err := ethclient.Dial("http://localhost:8545")
 	if err != nil {
@@ -59,7 +64,7 @@ func TestGetNarrator(t *testing.T) {
 
 	// Setup
 	var narratorIndex int64 = 0
-	pub, _, _, nftAddress, _ := setup(t)
+	pub, _, _, nftAddress, _ := EthSetup(t)
 
 	expectedNarrator := PublisherNarrator{
 		nftAddress,
@@ -145,7 +150,7 @@ func TestGetNarrator(t *testing.T) {
 func TestGetScriptURI(t *testing.T) {
 	var expectedScriptURI string = "data:text/javascript;base64,ZnVuY3Rpb24gdGVsbFN0b3J5KHN0YXRlLCBhLCBiLCBjLCBkKSB7CiAgICBpZiAoIXN0YXRlLmhvd1dlV2VyZSkgewogICAgICAgIHN0YXRlLmhvd1dlV2VyZSA9ICJjdXJpb3VzIgogICAgfQogICAgcmV0dXJuIHsKICAgICAgICBuZXh0U3RhdGU6IE9iamVjdC5hc3NpZ24oc3RhdGUsIHthOiBhfSksCiAgICAgICAgc3RvcmllczogW2BXZSB3ZXJlICR7c3RhdGUuaG93V2VXZXJlfS5gXQogIH0KfQ=="
 
-	pub, _, _, _, client := setup(t)
+	pub, _, _, _, client := EthSetup(t)
 
 	scriptURI, err := pub.GetScriptURI(0, client)
 	if err != nil {
@@ -158,7 +163,7 @@ func TestGetScriptURI(t *testing.T) {
 }
 
 func TestGetCachedResult(t *testing.T) {
-	pub, _, _, _, _ := setup(t)
+	pub, _, _, _, _ := EthSetup(t)
 
 	testPubStore := &MockStore{
 		time.Unix(15, 0),
@@ -204,7 +209,7 @@ func TestGetCachedResult(t *testing.T) {
 }
 
 func TestGetStoryFirstCall(t *testing.T) {
-	pub, _, _, _, client := setup(t)
+	pub, _, _, _, client := EthSetup(t)
 	testPubStore := &MockStore{
 		time.Unix(95, 0), // five seconds after the highest block
 		map[string]ScriptResult{},
@@ -226,7 +231,7 @@ func TestGetStoryFirstCall(t *testing.T) {
 }
 
 func TestGetStory(t *testing.T) {
-	pub, _, _, _, client := setup(t)
+	pub, _, _, _, client := EthSetup(t)
 
 	testPubStore := &MockStore{
 		time.Unix(15, 0),
@@ -271,16 +276,8 @@ if (!state.howWeWere) {
          */
 
 	testPubStore.setTime(time.Unix(25, 0))
-	fmt.Println("----")
-	fmt.Println(testPubStore)
-	fmt.Println("----")
 	pub.GetStory(client, testPubStore, 0, 0, 0)
-	fmt.Println("----")
-	fmt.Println(testPubStore)
-	fmt.Println("----")
 	haveResult, err := GetCachedResult(testPubStore, 0, 0, 0, time.Unix(20, 0))
-	fmt.Println("----")
-	fmt.Println("----")
 	wantNextState := map[string]interface{}{
 		"howWeWere": "well",
 		"a": float64(1),

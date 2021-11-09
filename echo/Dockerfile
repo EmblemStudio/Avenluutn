@@ -13,6 +13,7 @@ RUN go mod download
 
 COPY ./*.go ./
 COPY ./publisher/*.go ./publisher/
+copy ./server/*.go ./server/
 
 RUN go build -o /aavenluutn
 

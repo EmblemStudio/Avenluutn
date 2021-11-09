@@ -76,6 +76,7 @@ func getBlockTime(blockNumber int64, client *ethclient.Client) (int64, error) {
 	return int64(block.Time()), nil
 }
 
+var foundTimes = make(map[int64][2]int64)
 func findOnOrBetween(
 	client *ethclient.Client,
 	t int64,
@@ -83,24 +84,23 @@ func findOnOrBetween(
 	chainHeight int64,
 	maxDepth int64,
 ) (int64, int64, error) { // blockTimeBefore, blockTimeAfter, error
-	fmt.Println(maxDepth, blockNumberGuess)
+	if times, found := foundTimes[t]; found {
+		return times[0], times[1], nil
+	}
 	if blockNumberGuess < 0 {
-		fmt.Println(maxDepth, "fell off the beginning")
 		return 0, 0, errors.New("Guessed block number less than zero")
 	}
 	if maxDepth == 0 {
-		fmt.Println(maxDepth, "giving up")
 		return 0, 0, errors.New("Max depth exceeded")
 	}
 	maxDepth -= 1
 	blockTime, err := getBlockTime(blockNumberGuess, client)
 	if err != nil {
-		fmt.Println(maxDepth, "getBlockTime", err)
 		return 0, 0, err
 	}
 	if t == blockTime {
-		fmt.Println(maxDepth, "FOUND IT!")
 		// hit it perfectly on, return that time for both
+		foundTimes[t] = [2]int64{blockTime, blockTime}
 		return blockTime, blockTime, nil
 	}
 	diff := float64(t) - float64(blockTime)
@@ -109,9 +109,8 @@ func findOnOrBetween(
 		math.Floor(expectedBlocksAway),
 		float64(chainHeight - blockNumberGuess),
 	)
-	if math.Abs(jumpSize) >= 5 {
+	if math.Abs(jumpSize) >= 15 {
 		// jump to the new expected block
-		fmt.Println(maxDepth, "findOnOrBetween...")
 		return findOnOrBetween(
 			client,
 			t,
@@ -123,15 +122,16 @@ func findOnOrBetween(
 
 	// one step at a time
 	if blockTime < t {
-		fmt.Println(maxDepth, "try one after")
 		nextBlockTime, err := getBlockTime(blockNumberGuess + 1, client)
 		if err != nil {
 			// we have a block time for this guess, but could not
 			// find a subsequent block. Time must be after the
 			// latest block
+			foundTimes[t] = [2]int64{blockTime, -1}
 			return blockTime, -1, nil
 		}
 		if nextBlockTime > t {
+			foundTimes[t] = [2]int64{blockTime, nextBlockTime}
 			return blockTime, nextBlockTime, nil
 		}
 		return findOnOrBetween(
@@ -142,7 +142,6 @@ func findOnOrBetween(
 			maxDepth,
 		)
 	}
-	fmt.Println(maxDepth, "try one before")
 	return findOnOrBetween(
 		client,
 		t,
@@ -195,6 +194,14 @@ type MockStore struct {
 	mockNow time.Time
 	state map[string]ScriptResult
 	pub *Publisher
+}
+
+func NewMockStore(
+	now time.Time,
+	state map[string]ScriptResult,
+	pub *Publisher,
+) MockStore {
+	return MockStore{now, state, pub}
 }
 
 func (ms *MockStore) Publisher() *Publisher {

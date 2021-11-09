@@ -52,10 +52,14 @@ func (p *Publisher) GetScript(i int64, backend bind.ContractBackend) (string, er
 		return script, nil
 	default:
 		resp, err := http.Get(scriptURI.String()); if err != nil {
+			fmt.Println("script get err:", err)
 			return "", err
 		}
 		defer resp.Body.Close()
-		body, err := io.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body); if err != nil {
+			fmt.Println("script request body read error:", err)
+			return "", err
+		}
 		return string(body), nil
 	}
 }
@@ -122,6 +126,9 @@ func parseOpaqueData(opaque string) (string, string, error) {
 
 type Story = interface{}
 
+// TODO refactor so the server is result generic.
+// rather than returning stories it retuns generic results
+// allowing the UI and Script to coordinate on that
 type ScriptResult struct {
 	Stories []Story `json:"stories"`
 	NextState map[string]interface{} `json:"nextState"`
@@ -135,11 +142,16 @@ func (pub *Publisher) RunNarratorScript(
 	collectionLength int64,
 	collectionSize int64,
 ) (ScriptResult, error) {
+	fmt.Println("running script")
 	jsVM, _ := v8.NewContext()
 
 	// script must define a tellStory function that takes an initial state
 	// and returns { state: mapping, stories: string[] }
-	if _, err := jsVM.RunScript(script, "index.js"); err != nil {
+	if _, err := jsVM.RunScript(
+		script,
+		"index.js",
+	); err != nil {
+		fmt.Println("RunScript error", err)
 		return ScriptResult{}, err
 	}
 
@@ -152,19 +164,37 @@ func (pub *Publisher) RunNarratorScript(
 		"'localhost:8545'", // todo make providerURL configurable?
 	)
 
-	resultJSValue, err := jsVM.RunScript(functionCall, "index.js")
+	value, err := jsVM.RunScript(functionCall, "index.js")
 	if err != nil {
+		fmt.Println("js function call error", err)
+		return ScriptResult{}, err
+	}
+	promise, err := value.AsPromise()
+	if err != nil {
+		fmt.Println("as promise error", err)
 		return ScriptResult{}, err
 	}
 
-	resultJSON, err := json.Marshal(resultJSValue); if err != nil {
+	for promise.State() == v8.Pending {
+		time.Sleep(100 * time.Millisecond)
+	}
+
+	if promise.State() == v8.Rejected {
+		fmt.Println("promise rejected", promise)
+		return ScriptResult{}, errors.New("rejected promise")
+	}
+
+	resultJSON, err := json.Marshal(promise.Result()); if err != nil {
+		fmt.Println("result marshal error", err)
 		return ScriptResult{}, err
 	}
 
 	var result ScriptResult
 	if err := json.Unmarshal(resultJSON, &result); err != nil {
+		fmt.Println("json unmarshal error", err)
 		return ScriptResult{}, err
 	}
+	fmt.Println(result.Stories)
 	return result, nil
 }
 
@@ -183,13 +213,19 @@ func (pub *Publisher) GetStoryAsOf(
 	storyIndex int64,
 	t time.Time,
 ) (Story, error) {
-	latestBlockTime, err := ps.LatestBlockTimeAsOf(t)
-	if err != nil {
-		fmt.Println("could not get latest time as of", err)
+	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
 		return "", err
 	}
 
-	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
+	// if the story is over, jump to the end,
+	// don't run it for all the blocks after that
+	storyEnd := narrator.Start.Int64() + narrator.CollectionLength.Int64()
+	if storyEnd < t.Unix() {
+		t = time.Unix(storyEnd, 0)
+	}
+
+	latestBlockTime, err := ps.LatestBlockTimeAsOf(t)
+	if err != nil {
 		return "", err
 	}
 
@@ -231,7 +267,7 @@ func (pub *Publisher) GetStoryAsOf(
 		if err != nil {
 			return "", err
 		}
-		marshaled, err := json.Marshal(hitResult.NextState); if err != nil {
+		marshaled, err := json.Marshal(hitResult); if err != nil {
 			return "", err
 		}
 		state = string(marshaled)
