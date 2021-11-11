@@ -5,12 +5,15 @@ const prando_1 = require("prando");
 const utils_1 = require("./utils");
 const tellStory_1 = require("./tellStory");
 const nextState_1 = require("./nextState");
+const cross_fetch_1 = require("cross-fetch");
+globalThis.fetch = cross_fetch_1.fetch;
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
     const provider = (0, utils_1.makeProvider)(providerUrl);
     const startBlockHash = await (0, utils_1.nextBlockHash)(startTime, provider);
     if (!startBlockHash) {
         throw new Error('No starting block hash');
     }
+    console.log(startBlockHash);
     const prng = new prando_1.default(startBlockHash);
     let state;
     if (!prevResult) {
@@ -26,9 +29,10 @@ async function tellStories(prevResult, startTime, length, totalStories, provider
         stories.push(story);
         events = [...events, ...story.events];
     }
-    return {
+    const result = {
         stories,
         nextState: (0, nextState_1.nextState)(state, events)
     };
+    return result;
 }
 exports.tellStories = tellStories;

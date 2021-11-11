@@ -3,7 +3,7 @@ package server
 import (
 	"strconv"
 	"net/http"
-	"fmt"
+	"encoding/json"
 
 	"github.com/labstack/echo/v4"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -65,7 +65,15 @@ func (ps PubServer) GetStory(c echo.Context) error {
 			err,
 		)
 	}
-	return c.String(http.StatusOK, fmt.Sprintf("%v", story))
+
+	jsonResponse, err := json.Marshal(story)
+	if err != nil {
+		return echo.NewHTTPError(
+			http.StatusInternalServerError,
+			err,
+		)
+	}
+	return c.String(http.StatusOK, string(jsonResponse))
 }
 
 

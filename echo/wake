@@ -15,6 +15,7 @@ function wake () {
             cd ../hardhat
             yarn build
             cd ../echo
+
             docker run \
                    -u `id -u`:`id -g` \
                    -v $hardhat_abi_path:/sources \
@@ -35,11 +36,12 @@ function wake () {
                    --out /out/artifact_NarratorNFTs_sol.go \
                    --pkg  publisher \
                    --type NarratorNFTs \
-                   --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin \
+                   --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin
 
             docker build -t $tag .
             ;;
         "run")
+            wake build
             mkdir store
             docker run \
                    -p 8000:8000 \

@@ -2,7 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.closestEarlierBlockHash = exports.nextBlockHash = exports.makeProvider = void 0;
 const ethers_1 = require("ethers");
+const http = require("http");
 function makeProvider(providerUrl) {
+    console.log("making provider:", providerUrl);
     if (providerUrl) {
         return new ethers_1.providers.JsonRpcProvider(providerUrl);
     }
@@ -29,6 +31,21 @@ exports.nextBlockHash = nextBlockHash;
 /**
  * Find closest block before the target time
  */
+const cachedBlocks = new Map();
+async function getBlock(blockNumber, provider) {
+    console.log("getting block", blockNumber);
+    if (!cachedBlocks.has(blockNumber)) {
+        console.log("block not cached", blockNumber);
+        cachedBlocks.set(blockNumber, await provider.getBlock(blockNumber));
+    }
+    const block = cachedBlocks.get(blockNumber);
+    if (block === undefined) {
+        console.log("WARNING: expected cached block but didn't get one");
+        return await provider.getBlock(blockNumber);
+    }
+    console.log("returning cached block");
+    return block;
+}
 /**
  * - if no block, set block to latest block
  * - find time difference between block.timestamp and targetTime
@@ -42,11 +59,28 @@ exports.nextBlockHash = nextBlockHash;
  * - recurse with block: newBlock, previousBlock: block
  */
 async function closestEarlierBlockHash(targetTime, provider, block, previousBlock) {
+    console.log("closestEarlierBlockHash", targetTime, block, provider);
     if (typeof provider === "string") {
         provider = makeProvider(provider);
     }
+    console.log("ready? error?");
+    provider._ready().then(console.log, console.error);
+    console.log("getting localhost");
+    http.get('http://localhost:8080', { timeout: 200 }, (res) => {
+        const { statusCode } = res;
+        console.log("localhost response!", statusCode);
+    });
+    setTimeout(async () => {
+        const result = await ethers_1.utils.fetchJson("https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8", '{ "id": 42, "jsonrpc": "2.0", "method": "eth_chainId", "params": [ ] }');
+        console.log("fetch node address", result);
+    }, 500);
+    console.log("waiting for provider");
+    await provider.ready;
+    console.log("provider", provider);
     if (!block) {
+        console.log("no block provided, getting the latest block");
         block = await provider.getBlock("latest");
+        console.log("got latest block", block);
         if (targetTime >= block.timestamp) {
             console.warn(`Chain hasn't reached time ${targetTime} yet.`);
             return null;
@@ -57,8 +91,9 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     if (timeDifference === 0) {
         return block.hash;
     }
-    let newBlock = await provider.getBlock(Math.floor(block.number - (timeDifference / 13.3)) // 13.3 = avg block time
-    );
+    // 13.3 = avg block time
+    const blockNumber = Math.floor(block.number - (timeDifference / 13.3));
+    let newBlock = await getBlock(blockNumber, provider);
     if (previousBlock) {
         if (surrounded(block.timestamp, previousBlock.timestamp, targetTime) &&
             Math.abs(block.number - previousBlock.number) === 1) {
@@ -71,10 +106,10 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     // if block is within 100 sec of target time, set new block 1 block toward target time
     if (Math.abs(block.timestamp - targetTime) <= 100) {
         if (block.timestamp < targetTime) {
-            newBlock = await provider.getBlock(block.number + 1);
+            newBlock = await getBlock(block.number + 1, provider);
         }
         else {
-            newBlock = await provider.getBlock(block.number - 1);
+            newBlock = await getBlock(block.number - 1, provider);
         }
     }
     /*

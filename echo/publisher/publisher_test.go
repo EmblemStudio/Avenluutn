@@ -60,6 +60,12 @@ func EthSetup(t *testing.T) (
 	return pub, publisherAddress, nfts, nftAddress, client
 }
 
+func TestRunNarratorScript(t *testing.T) {
+	pub, _, _, _, _ := EthSetup(t)
+
+	pub.RunNarratorScript("console.log('test log')", "", 0, 0, 0)
+}
+
 func TestGetNarrator(t *testing.T) {
 
 	// Setup

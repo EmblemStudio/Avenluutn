@@ -1,6 +1,8 @@
-import { providers } from 'ethers'
+import { providers, utils } from 'ethers'
+import * as http from 'http'
 
 export function makeProvider(providerUrl?: string): providers.BaseProvider {
+  console.log("making provider:", providerUrl)
   if (providerUrl) { return new providers.JsonRpcProvider(providerUrl) }
   return providers.getDefaultProvider()
 }
@@ -10,7 +12,7 @@ export function makeProvider(providerUrl?: string): providers.BaseProvider {
  */
 
 export async function nextBlockHash(
-  time: number, 
+  time: number,
   provider: providers.BaseProvider
 ): Promise<string | null> {
   const now = Math.floor(Date.now()/1000)
@@ -20,7 +22,7 @@ export async function nextBlockHash(
   }
 
   const startBlockHash = await closestEarlierBlockHash(time, provider)
-  if (!startBlockHash) { 
+  if (!startBlockHash) {
     console.warn(`Unreachable: no mined block found before time ${time}.`)
     return null
   }
@@ -30,6 +32,27 @@ export async function nextBlockHash(
 /**
  * Find closest block before the target time
  */
+
+const cachedBlocks: Map<number, providers.Block> =
+  new Map<number, providers.Block>()
+
+async function getBlock(
+  blockNumber: number,
+  provider: providers.BaseProvider
+): Promise<providers.Block> {
+  console.log("getting block", blockNumber)
+  if (!cachedBlocks.has(blockNumber)) {
+    console.log("block not cached", blockNumber)
+    cachedBlocks.set(blockNumber, await provider.getBlock(blockNumber))
+  }
+  const block = cachedBlocks.get(blockNumber)
+  if (block === undefined) {
+    console.log("WARNING: expected cached block but didn't get one")
+    return await provider.getBlock(blockNumber)
+  }
+  console.log("returning cached block")
+  return block
+}
 
 /**
  * - if no block, set block to latest block
@@ -49,27 +72,47 @@ export async function closestEarlierBlockHash(
   block?: providers.Block,
   previousBlock?: providers.Block
 ): Promise<string | null> {
-
+  console.log("closestEarlierBlockHash", targetTime, block, provider)
   if (typeof provider === "string") { provider = makeProvider(provider)}
 
+  console.log("ready? error?")
+  provider._ready().then(console.log, console.error)
+
+  console.log("getting localhost")
+  http.get('http://localhost:8080', { timeout: 200 }, (res) => {
+    const { statusCode } = res
+    console.log("localhost response!", statusCode)
+  })
+
+  setTimeout(async () => {
+    const result = await utils.fetchJson("https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8", '{ "id": 42, "jsonrpc": "2.0", "method": "eth_chainId", "params": [ ] }')
+    console.log("fetch node address", result);
+  }, 500)
+
+  console.log("waiting for provider")
+  await provider.ready
+  console.log("provider", provider)
+
   if (!block) {
+    console.log("no block provided, getting the latest block")
     block = await provider.getBlock("latest")
-    if (targetTime >= block.timestamp) { 
+    console.log("got latest block", block)
+    if (targetTime >= block.timestamp) {
       console.warn(`Chain hasn't reached time ${targetTime} yet.`)
-      return null 
+      return null
     }
   }
 
   // Will be negative if block is EARLIER than target time
   const timeDifference = block.timestamp - targetTime
 
-  if (timeDifference === 0) { 
-    return block.hash 
+  if (timeDifference === 0) {
+    return block.hash
   }
 
-  let newBlock = await provider.getBlock(
-    Math.floor(block.number - (timeDifference / 13.3)) // 13.3 = avg block time
-  )
+  // 13.3 = avg block time
+  const blockNumber = Math.floor(block.number - (timeDifference / 13.3))
+  let newBlock = await getBlock(blockNumber, provider)
 
   if (previousBlock) {
     if (
@@ -86,9 +129,9 @@ export async function closestEarlierBlockHash(
   // if block is within 100 sec of target time, set new block 1 block toward target time
   if (Math.abs(block.timestamp - targetTime) <= 100) {
     if (block.timestamp < targetTime) {
-      newBlock = await provider.getBlock(block.number + 1)
+      newBlock = await getBlock(block.number + 1, provider)
     } else {
-      newBlock = await provider.getBlock(block.number - 1)
+      newBlock = await getBlock(block.number - 1, provider)
     }
   }
 
@@ -113,7 +156,7 @@ export async function closestEarlierBlockHash(
 function surrounded(time1: number, time2: number, surroundedTime: number): boolean {
   if (
     (time1 > surroundedTime && time2 < surroundedTime) ||
-    (time2 > surroundedTime && time1 < surroundedTime) 
+    (time2 > surroundedTime && time1 < surroundedTime)
   ) {
     return true
   }

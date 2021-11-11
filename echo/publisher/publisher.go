@@ -7,13 +7,15 @@ import (
 	"net/http"
 	"net/url"
 	"io"
+	"io/ioutil"
+	"os/exec"
 	"strings"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-	v8 "rogchap.com/v8go"
+//	v8 "rogchap.com/v8go"
 )
 
 func (p *Publisher) GetNarrator(i int64) (PublisherNarrator, error) {
@@ -51,7 +53,8 @@ func (p *Publisher) GetScript(i int64, backend bind.ContractBackend) (string, er
 		}
 		return script, nil
 	default:
-		resp, err := http.Get(scriptURI.String()); if err != nil {
+		resp, err := http.Get("http://localhost:8080/bundle.js"); if err != nil {
+		//resp, err := http.Get(scriptURI.String()); if err != nil {
 			fmt.Println("script get err:", err)
 			return "", err
 		}
@@ -89,20 +92,18 @@ func GetStateKey(
 	ps PublisherStore,
 	narrator int64,
 	collection int64,
-	story int64,
 	t time.Time,
 ) string {
-	return fmt.Sprintf("%v.%v.%v.%v", narrator, collection,	story, t.Unix())
+	return fmt.Sprintf("%v.%v.%v", narrator, collection, t.Unix())
 }
 
 func GetCachedResult(
 	ps PublisherStore,
 	narratorIndex int64,
 	collectionIndex int64,
-	storyIndex int64,
 	t time.Time,
 ) (ScriptResult, error) {
-	stateKey := GetStateKey(ps, narratorIndex, collectionIndex, storyIndex, t)
+	stateKey := GetStateKey(ps, narratorIndex, collectionIndex, t)
 	result, err := ps.Get(stateKey)
 	return result, err
 }
@@ -134,7 +135,7 @@ type ScriptResult struct {
 	NextState map[string]interface{} `json:"nextState"`
 }
 
-// RunNarratorScript run a narrator script in V8, return next state and some stories
+// RunNarratorScript run a narrator script in node, return next state and some stories
 func (pub *Publisher) RunNarratorScript(
 	script string,
 	previousResult string,
@@ -142,50 +143,56 @@ func (pub *Publisher) RunNarratorScript(
 	collectionLength int64,
 	collectionSize int64,
 ) (ScriptResult, error) {
-	fmt.Println("running script")
-	jsVM, _ := v8.NewContext()
-
-	// script must define a tellStory function that takes an initial state
-	// and returns { state: mapping, stories: string[] }
-	if _, err := jsVM.RunScript(
-		script,
-		"index.js",
-	); err != nil {
-		fmt.Println("RunScript error", err)
+	scriptFilePath := "./script.js"
+	if err := ioutil.WriteFile(scriptFilePath, []byte(script), 0644); err != nil {
+		fmt.Println("script.js write error:", err)
 		return ScriptResult{}, err
 	}
 
-	functionCall := fmt.Sprintf(
-		"tellStory(%v, %v, %v, %v, %v)",
+	resultFilePath := "./result.json"
+	runScript := []byte(fmt.Sprintf(
+		`
+const fs = require('fs')
+const script = require('./script.js')
+
+console.log("imported fs")
+
+function save(result) {
+   console.log("saving result")
+   fs.writeFileSync("%v", JSON.stringify(result))
+}
+
+function fail(e) {
+    console.log("failed to tell", e)
+    throw new Error("ERROR: tellStories failed")
+}
+
+console.log("telling stories");
+
+script.tellStories(%v, %v, %v, %v, "%v")
+  .then(save)
+  .catch(fail)
+`,
+		resultFilePath,
 		previousResult,
 		collectionStart,
 		collectionLength,
 		collectionSize,
-		"'localhost:8545'", // todo make providerURL configurable?
-	)
-
-	value, err := jsVM.RunScript(functionCall, "index.js")
-	if err != nil {
-		fmt.Println("js function call error", err)
+		"http://127.0.0.1:8545",//"https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8",
+	))
+	runScriptPath := "./runScript.js"
+	if err := ioutil.WriteFile(runScriptPath, runScript, 0644); err != nil {
+		fmt.Println("runScript.js write error:", err)
 		return ScriptResult{}, err
 	}
-	promise, err := value.AsPromise()
+	fmt.Println("Running script")
+	out, err := exec.Command("node", runScriptPath).CombinedOutput()
 	if err != nil {
-		fmt.Println("as promise error", err)
-		return ScriptResult{}, err
+		fmt.Println("Output:\n", string(out), "\nError:\n", err)
 	}
-
-	for promise.State() == v8.Pending {
-		time.Sleep(100 * time.Millisecond)
-	}
-
-	if promise.State() == v8.Rejected {
-		fmt.Println("promise rejected", promise)
-		return ScriptResult{}, errors.New("rejected promise")
-	}
-
-	resultJSON, err := json.Marshal(promise.Result()); if err != nil {
-		fmt.Println("result marshal error", err)
+	resultJSON, err := ioutil.ReadFile(resultFilePath)
+	if err != nil {
+		fmt.Println("read result file error:", err)
 		return ScriptResult{}, err
 	}
 
@@ -194,7 +201,6 @@ func (pub *Publisher) RunNarratorScript(
 		fmt.Println("json unmarshal error", err)
 		return ScriptResult{}, err
 	}
-	fmt.Println(result.Stories)
 	return result, nil
 }
 
@@ -213,6 +219,7 @@ func (pub *Publisher) GetStoryAsOf(
 	storyIndex int64,
 	t time.Time,
 ) (Story, error) {
+	fmt.Println("GetStoryAsOf", t)
 	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
 		return "", err
 	}
@@ -235,7 +242,6 @@ func (pub *Publisher) GetStoryAsOf(
 		ps,
 		narratorIndex,
 		collectionIndex,
-		storyIndex,
 		latestBlockTime,
 	)
 	if err != nil && !before(latestBlockTime, narrator.Start) {
@@ -255,13 +261,12 @@ func (pub *Publisher) GetStoryAsOf(
 
 	var state string
 	if before(latestBlockTime, narrator.Start) {
-		state = "{}"
+		state = "null"
 	} else { // cache should be warmed now
 		hitResult, err := GetCachedResult(
 			ps,
 			narratorIndex,
 			collectionIndex,
-			storyIndex,
 			latestBlockTime,
 		)
 		if err != nil {
@@ -286,27 +291,34 @@ func (pub *Publisher) GetStoryAsOf(
 		narrator.CollectionLength.Int64(),
 		narrator.CollectionSize.Int64(),
 	); if err != nil {
+		fmt.Println("run script error", err)
 		return "", err
 	}
+
+	fmt.Println("got script result")
 
 
 	// This has to save for the next future block time
 	// not the latest block time
-	nextBlockTime, noNextBlockErr := ps.NextBlockTimeAsOf(t)
+	nextBlockTime, errNoNextBlock := ps.NextBlockTimeAsOf(t)
 
-	if noNextBlockErr == nil {
+	if errNoNextBlock == nil {
 		// if there is a next block, save this result against it
 		stateKey := GetStateKey(
 			ps,
 			narratorIndex,
 			collectionIndex,
-			storyIndex,
 			nextBlockTime,
 		)
+		fmt.Println("found next block, saving cache", stateKey)
 		ps.Set(stateKey, result)
+	} else {
+		fmt.Println("no next block, not caching")
 	}
 	if int(storyIndex) >= len(result.Stories) {
+		fmt.Println("story index out of bounds")
 		return "", errors.New("Story index out of bounds")
 	}
+	fmt.Println(result.Stories[storyIndex])
 	return result.Stories[storyIndex], nil
 }
