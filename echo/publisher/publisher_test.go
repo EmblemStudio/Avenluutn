@@ -60,12 +60,6 @@ func EthSetup(t *testing.T) (
 	return pub, publisherAddress, nfts, nftAddress, client
 }
 
-func TestRunNarratorScript(t *testing.T) {
-	pub, _, _, _, _ := EthSetup(t)
-
-	pub.RunNarratorScript("console.log('test log')", "", 0, 0, 0)
-}
-
 func TestGetNarrator(t *testing.T) {
 
 	// Setup
@@ -154,7 +148,7 @@ func TestGetNarrator(t *testing.T) {
 }
 
 func TestGetScriptURI(t *testing.T) {
-	var expectedScriptURI string = "data:text/javascript;base64,ZnVuY3Rpb24gdGVsbFN0b3J5KHN0YXRlLCBhLCBiLCBjLCBkKSB7CiAgICBpZiAoIXN0YXRlLmhvd1dlV2VyZSkgewogICAgICAgIHN0YXRlLmhvd1dlV2VyZSA9ICJjdXJpb3VzIgogICAgfQogICAgcmV0dXJuIHsKICAgICAgICBuZXh0U3RhdGU6IE9iamVjdC5hc3NpZ24oc3RhdGUsIHthOiBhfSksCiAgICAgICAgc3RvcmllczogW2BXZSB3ZXJlICR7c3RhdGUuaG93V2VXZXJlfS5gXQogIH0KfQ=="
+	var expectedScriptURI string = "data:text/javascript;base64,YXN5bmMgZnVuY3Rpb24gdGVsbFN0b3JpZXMocmVzdWx0LCBhLCBiLCBjLCBkKSB7CiAgICBpZiAocmVzdWx0ID09PSBudWxsKSB7CiAgICAgICAgbGV0IHN0YXRlID0geyBob3dXZVdlcmU6ICAiY3VyaW91cyJ9CiAgICAgICAgcmVzdWx0ID0geyBuZXh0U3RhdGU6IHN0YXRlLCBzdG9yaWVzOiBbXSB9CiAgICB9CiAgICByZXR1cm4gewogICAgICAgIG5leHRTdGF0ZTogT2JqZWN0LmFzc2lnbihyZXN1bHQubmV4dFN0YXRlLCB7YTogYX0pLAogICAgICAgIHN0b3JpZXM6IFtgV2Ugd2VyZSAke3Jlc3VsdC5uZXh0U3RhdGUuaG93V2VXZXJlfS5gXQogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IHRlbGxTdG9yaWVzIH0="
 
 	pub, _, _, _, client := EthSetup(t)
 
@@ -174,7 +168,7 @@ func TestGetCachedResult(t *testing.T) {
 	testPubStore := &MockStore{
 		time.Unix(15, 0),
 		map[string]ScriptResult{
-			"0.0.0.10": ScriptResult{
+			"0.0.10": ScriptResult{
 				Stories: []Story{"a", "b"},
 				NextState: map[string]interface{}{},
 			},
@@ -197,11 +191,11 @@ func TestGetCachedResult(t *testing.T) {
 	}
 
 	// so we want the state to be the one at key 0.0.0.10
-	wantState, ok := testPubStore.state["0.0.0.10"]
+	wantState, ok := testPubStore.state["0.0.10"]
 	if !ok {
 		t.Fatal("could not read expected state")
 	}
-	haveState, err := GetCachedResult(testPubStore, 0, 0, 0, time.Unix(10, 0))
+	haveState, err := GetCachedResult(testPubStore, 0, 0, time.Unix(10, 0))
 	if err != nil {
 		t.Errorf("Expected no error, got: %v", err)
 	}
@@ -242,7 +236,7 @@ func TestGetStory(t *testing.T) {
 	testPubStore := &MockStore{
 		time.Unix(15, 0),
 		map[string]ScriptResult{
-			"0.0.0.10": ScriptResult{
+			"0.0.10": ScriptResult{
 				Stories: []Story{"a", "b"},
 				NextState: map[string]interface{}{
 					"next": "state",
@@ -283,7 +277,7 @@ if (!state.howWeWere) {
 
 	testPubStore.setTime(time.Unix(25, 0))
 	pub.GetStory(client, testPubStore, 0, 0, 0)
-	haveResult, err := GetCachedResult(testPubStore, 0, 0, 0, time.Unix(20, 0))
+	haveResult, err := GetCachedResult(testPubStore, 0, 0, time.Unix(20, 0))
 	wantNextState := map[string]interface{}{
 		"howWeWere": "well",
 		"a": float64(1),

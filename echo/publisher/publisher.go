@@ -185,7 +185,6 @@ script.tellStories(%v, %v, %v, %v, "%v")
 		fmt.Println("runScript.js write error:", err)
 		return ScriptResult{}, err
 	}
-	fmt.Println("Running script")
 	out, err := exec.Command("node", runScriptPath).CombinedOutput()
 	if err != nil {
 		fmt.Println("Output:\n", string(out), "\nError:\n", err)
@@ -219,7 +218,6 @@ func (pub *Publisher) GetStoryAsOf(
 	storyIndex int64,
 	t time.Time,
 ) (Story, error) {
-	fmt.Println("GetStoryAsOf", t)
 	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
 		return "", err
 	}
@@ -295,9 +293,6 @@ func (pub *Publisher) GetStoryAsOf(
 		return "", err
 	}
 
-	fmt.Println("got script result")
-
-
 	// This has to save for the next future block time
 	// not the latest block time
 	nextBlockTime, errNoNextBlock := ps.NextBlockTimeAsOf(t)
@@ -310,15 +305,11 @@ func (pub *Publisher) GetStoryAsOf(
 			collectionIndex,
 			nextBlockTime,
 		)
-		fmt.Println("found next block, saving cache", stateKey)
 		ps.Set(stateKey, result)
-	} else {
-		fmt.Println("no next block, not caching")
 	}
 	if int(storyIndex) >= len(result.Stories) {
 		fmt.Println("story index out of bounds")
 		return "", errors.New("Story index out of bounds")
 	}
-	fmt.Println(result.Stories[storyIndex])
 	return result.Stories[storyIndex], nil
 }
