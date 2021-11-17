@@ -37,14 +37,10 @@ func (p *Publisher) GetScriptURI(i int64, backend bind.ContractBackend) (*url.UR
 	return url.Parse(uriString)
 }
 
-var scriptCache string
 func (p *Publisher) GetScript(
 	narratorIndex int64,
 	backend bind.ContractBackend,
 ) (string, error) {
-	if scriptCache != "" {
-		return scriptCache, nil
-	}
 	scriptURI, err := p.GetScriptURI(narratorIndex, backend); if err != nil {
 		return "", err
 	}
@@ -67,32 +63,6 @@ func (p *Publisher) GetScript(
 		}
 		return string(body), nil
 	}
-}
-
-/*
-
-func (pub *Publisher) GetStory(
-	backend bind.ContractBackend,
-	ps PublisherStore,
-	narratorIndex int64,
-	collectionIndex int64,
-	storyIndex int64,
-) (Story, error) {
-	fmt.Println("GetStory")
-	return pub.GetStoryAsOf(
-		backend,
-		ps,
-		narratorIndex,
-		collectionIndex,
-		storyIndex,
-		ps.Now(),
-	)
-}
-
-*/
-
-func LatestBlockTime(ps PublisherStore) (time.Time, error) {
-	return ps.LatestBlockTimeAsOf(ps.Now())
 }
 
 func GetStateKey(
@@ -232,127 +202,3 @@ script.tellStories(%v, %v, %v, %v, "%v")
 	}
 	return result, nil
 }
-
-// before compares a go time.Time and a big.Int from the contract
-// intrepreted as a unix timestamp
-func before(a time.Time, b *big.Int) bool {
-	bTime := time.Unix(b.Int64(), 0)
-	return a.Before(bTime)
-}
-
-
-/*
-
-var depth = 0
-
-func (pub *Publisher) GetStoryAsOf(
-	backend bind.ContractBackend,
-	ps PublisherStore,
-	narratorIndex int64,
-	collectionIndex int64,
-	storyIndex int64,
-	t time.Time,
-) (Story, error) {
-	depth += 1
-	defer func () { depth -= 1 }()
-	fmt.Println(depth, "GetStoryAsOf", t)
-	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
-		return "", err
-	}
-
-	latestBlockTime, err := ps.LatestBlockTimeAsOf(t)
-	if err != nil {
-		return "", err
-	}
-
-	// if the story is over, jump to the end,
-	// don't run it for all the blocks after that
-	storyEnd := narrator.Start.Int64() + narrator.CollectionLength.Int64()
-	if storyEnd < latestBlockTime.Unix() {
-		latestBlockTime = time.Unix(storyEnd, 0)
-	}
-
-	// if latestBlockTime is before the narrator start time
-	// use `null` as the state
-	_, err = GetCachedResult(
-		ps,
-		narratorIndex,
-		collectionIndex,
-		latestBlockTime,
-	)
-	if err != nil && !before(latestBlockTime, narrator.Start) {
-		// We don't have the result in the cache...
-		// and it's after the start time...
-		// so we need to get it by recursing and getting the state
-		// as of a time just before the most recent block time
-		pub.GetStoryAsOf(
-			backend,
-			ps,
-			narratorIndex,
-			collectionIndex,
-			storyIndex,
-			latestBlockTime.Add(time.Second * -1), // a second before
-		)
-	}
-
-	// we are either before the start time, or the cache is warm
-
-	var state string
-	if before(latestBlockTime, narrator.Start) {
-		state = "null"
-	} else { // cache should be warmed now
-		hitResult, err := GetCachedResult(
-			ps,
-			narratorIndex,
-			collectionIndex,
-			latestBlockTime,
-		)
-		if err != nil {
-			fmt.Println(depth, "Unexpected cache miss", narratorIndex, collectionIndex, latestBlockTime.Unix())
-			return "", err
-		}
-		fmt.Println(depth, "Cache hit")
-		marshaled, err := json.Marshal(hitResult); if err != nil {
-			return "", err
-		}
-		state = string(marshaled)
-	}
-
-	collectionStart := narrator.Start.Int64() +
-		narrator.CollectionSpacing.Int64() * collectionIndex
-
-	script, err := pub.GetScript(narratorIndex, backend); if err != nil {
-		return "", err
-	}
-	result, err := pub.RunNarratorScript(
-		script,
-		state,
-		collectionStart,
-		narrator.CollectionLength.Int64(),
-		narrator.CollectionSize.Int64(),
-	); if err != nil {
-		fmt.Println(depth, "run script error", err)
-		return "", err
-	}
-
-	// This has to save for the next future block time
-	// not the latest block time
-	nextBlockTime, errNoNextBlock := ps.NextBlockTimeAsOf(t)
-
-	if errNoNextBlock == nil {
-		// if there is a next block, save this result against it
-		stateKey := GetStateKey(
-			ps,
-			narratorIndex,
-			collectionIndex,
-			nextBlockTime,
-		)
-		ps.Set(stateKey, result)
-	}
-	if int(storyIndex) >= len(result.Stories) {
-		fmt.Println("story index out of bounds")
-		return "", errors.New("Story index out of bounds")
-	}
-	return result.Stories[storyIndex], nil
-}
-*/
