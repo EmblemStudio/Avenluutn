@@ -57,7 +57,9 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.GET("/:narrator/:collection/:story", s.GetStory)
+	e.GET("/runs/:narrator/:collection", s.RunNarratorScript)
+
+	e.GET("/stories/:narrator/:collection/:story", s.GetStory)
 
 	e.GET("/", func(c echo.Context) error {
 		return c.HTML(
@@ -69,6 +71,10 @@ func main() {
 			),
 		)
 	})
+
+	e.Static("/test", "static")
+
+	e.POST("/test/script", s.RunTestScript)
 
 	e.GET("/healthcheck", func(c echo.Context) error {
 		return c.JSON(

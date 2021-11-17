@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.17
+FROM golang:1.17 as builder
 
 WORKDIR /app
 
@@ -13,12 +13,17 @@ RUN go mod download
 
 COPY ./*.go ./
 COPY ./publisher/*.go ./publisher/
-copy ./server/*.go ./server/
+COPY ./server/*.go ./server/
 
-RUN go build -o /aavenluutn
+RUN go build -o /avenluutn
+
+FROM node:lts
+
+COPY --from=builder /avenluutn /avenluutn
+COPY ./static/* ./static/
 
 ENV HTTP_PORT="8000"
 
 EXPOSE 8000
 
-CMD [ "/aavenluutn" ]
+CMD [ "/avenluutn" ]

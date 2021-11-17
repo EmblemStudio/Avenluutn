@@ -4,7 +4,13 @@ module.exports = {
   entry: './js/src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    library: {
+      name: "avenluutn",
+      type: "umd"
+    },
+    globalObject: "this"
   },
-  mode: "development"
+  mode: "production",
+  target: "node"
 };

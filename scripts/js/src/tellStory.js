@@ -8,9 +8,13 @@ const interfaces_1 = require("./content/interfaces");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 // TODO return results in a different list from story text, so they can be formatted differently by a front end?
 async function tellStory(prng, state, startTime, length, guildId, provider) {
+    console.log("tellStory", guildId, state, startTime);
     const subPrng = new prando_1.default(prng.nextInt() + guildId);
+    console.log("telling beginning...", guildId);
     const beginning = await tellBeginning(subPrng, state, startTime, length, guildId);
+    console.log("telling middle", beginning);
     const middle = await tellMiddle(state, beginning, provider);
+    console.log("telling end", beginning, middle);
     const ending = await tellEnding(beginning, middle, provider);
     let res = {
         plainText: [],

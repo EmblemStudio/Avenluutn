@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.closestEarlierBlockHash = exports.nextBlockHash = exports.makeProvider = void 0;
 const ethers_1 = require("ethers");
 function makeProvider(providerUrl) {
+    console.log("making provider:", providerUrl);
     if (providerUrl) {
         return new ethers_1.providers.JsonRpcProvider(providerUrl);
     }
@@ -29,6 +30,18 @@ exports.nextBlockHash = nextBlockHash;
 /**
  * Find closest block before the target time
  */
+const cachedBlocks = new Map();
+async function getBlock(blockNumber, provider) {
+    if (!cachedBlocks.has(blockNumber)) {
+        cachedBlocks.set(blockNumber, await provider.getBlock(blockNumber));
+    }
+    const block = cachedBlocks.get(blockNumber);
+    if (block === undefined) {
+        console.log("WARNING: expected cached block but didn't get one");
+        return await provider.getBlock(blockNumber);
+    }
+    return block;
+}
 /**
  * - if no block, set block to latest block
  * - find time difference between block.timestamp and targetTime
@@ -42,9 +55,13 @@ exports.nextBlockHash = nextBlockHash;
  * - recurse with block: newBlock, previousBlock: block
  */
 async function closestEarlierBlockHash(targetTime, provider, block, previousBlock) {
+    console.log("closestEarlierBlockHash", targetTime, block, provider);
     if (typeof provider === "string") {
         provider = makeProvider(provider);
     }
+    console.log("ready? error?");
+    provider._ready().then(console.log, console.error);
+    await provider.ready;
     if (!block) {
         block = await provider.getBlock("latest");
         if (targetTime >= block.timestamp) {
@@ -57,8 +74,9 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     if (timeDifference === 0) {
         return block.hash;
     }
-    let newBlock = await provider.getBlock(Math.floor(block.number - (timeDifference / 13.3)) // 13.3 = avg block time
-    );
+    // 13.3 = avg block time
+    const blockNumber = Math.floor(block.number - (timeDifference / 13.3));
+    let newBlock = await getBlock(blockNumber, provider);
     if (previousBlock) {
         if (surrounded(block.timestamp, previousBlock.timestamp, targetTime) &&
             Math.abs(block.number - previousBlock.number) === 1) {
@@ -71,10 +89,10 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     // if block is within 100 sec of target time, set new block 1 block toward target time
     if (Math.abs(block.timestamp - targetTime) <= 100) {
         if (block.timestamp < targetTime) {
-            newBlock = await provider.getBlock(block.number + 1);
+            newBlock = await getBlock(block.number + 1, provider);
         }
         else {
-            newBlock = await provider.getBlock(block.number - 1);
+            newBlock = await getBlock(block.number - 1, provider);
         }
     }
     /*

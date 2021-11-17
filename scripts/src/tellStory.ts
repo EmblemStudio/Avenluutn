@@ -39,7 +39,9 @@ export async function tellStory(
   guildId: number,
   provider: providers.BaseProvider
 ): Promise<Story> {
+  console.log("tellStory", guildId, state, startTime)
   const subPrng = new Prando(prng.nextInt()+guildId)
+  console.log("telling beginning...", guildId)
   const beginning = await tellBeginning(
     subPrng,
     state,
@@ -47,11 +49,13 @@ export async function tellStory(
     length,
     guildId
   )
+  console.log("telling middle", beginning)
   const middle = await tellMiddle(
     state,
     beginning,
     provider
   )
+  console.log("telling end", beginning, middle)
   const ending = await tellEnding(
     beginning,
     middle,
