@@ -1,11 +1,29 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
+import { useWallet, UseWalletProvider } from 'use-wallet'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import 'bulma'
+
 import './App.css'
+import Home from './pages/Home'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <UseWalletProvider>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </UseWalletProvider>
+    </div>
+  )
+}
+
+export default App
+
+/*
+<header className="App-header">
         <p>
           Aavenluutn
           <br />
@@ -23,8 +41,4 @@ function App() {
       <footer>
         <p> By <a href="https://squad.games">Squad.Games</a></p>
       </footer>
-    </div>
-  )
-}
-
-export default App
+      */

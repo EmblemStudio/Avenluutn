@@ -1,26 +1,34 @@
 html {
-    background-color: #1a1a1a;
-    color: white;
+    background-color: black;
 }
 
 .App {
-    text-align: center;
-    font-size: calc(10px + 1.2vmin);
+    font-family: "EB Garamond";
+    color: white;
 }
 
-.subtitle {
-    font-size: calc(10px + 0.2em);
+#top {
+  min-height: 85vh;
 }
 
-.App-header {
-  min-height: 15vmin;
+.title {
+    color: white;
+    font-weight: 100;
+}
+
+.button.is-ghost {
+    color: white;
+}
+
+.button.is-ghost:hover {
+  color: white;
+}
+
+.is-ibm {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.is-vertical {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 8vmin);
-}
-
-.App-link {
-  color: #61dafb;
 }
