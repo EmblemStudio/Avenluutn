@@ -13,9 +13,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"reflect"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
-//	v8 "rogchap.com/v8go"
 )
 
 func (p *Publisher) GetNarrator(i int64) (PublisherNarrator, error) {
@@ -38,11 +38,14 @@ func (p *Publisher) GetScriptURI(i int64, backend bind.ContractBackend) (*url.UR
 }
 
 var scriptCache string
-func (p *Publisher) GetScript(i int64, backend bind.ContractBackend) (string, error) {
+func (p *Publisher) GetScript(
+	narratorIndex int64,
+	backend bind.ContractBackend,
+) (string, error) {
 	if scriptCache != "" {
 		return scriptCache, nil
 	}
-	scriptURI, err := p.GetScriptURI(i, backend); if err != nil {
+	scriptURI, err := p.GetScriptURI(narratorIndex, backend); if err != nil {
 		return "", err
 	}
 
@@ -53,8 +56,7 @@ func (p *Publisher) GetScript(i int64, backend bind.ContractBackend) (string, er
 		}
 		return script, nil
 	default:
-		resp, err := http.Get("http://localhost:8080/bundle.js"); if err != nil {
-		//resp, err := http.Get(scriptURI.String()); if err != nil {
+		resp, err := http.Get(scriptURI.String()); if err != nil {
 			fmt.Println("script get err:", err)
 			return "", err
 		}
@@ -67,6 +69,8 @@ func (p *Publisher) GetScript(i int64, backend bind.ContractBackend) (string, er
 	}
 }
 
+/*
+
 func (pub *Publisher) GetStory(
 	backend bind.ContractBackend,
 	ps PublisherStore,
@@ -74,6 +78,7 @@ func (pub *Publisher) GetStory(
 	collectionIndex int64,
 	storyIndex int64,
 ) (Story, error) {
+	fmt.Println("GetStory")
 	return pub.GetStoryAsOf(
 		backend,
 		ps,
@@ -83,6 +88,8 @@ func (pub *Publisher) GetStory(
 		ps.Now(),
 	)
 }
+
+*/
 
 func LatestBlockTime(ps PublisherStore) (time.Time, error) {
 	return ps.LatestBlockTimeAsOf(ps.Now())
@@ -135,10 +142,16 @@ type ScriptResult struct {
 	NextState map[string]interface{} `json:"nextState"`
 }
 
+func (sr ScriptResult) JSON() (string, error) {
+	data, err := json.Marshal(sr)
+	if err != nil { return "", err }
+	return string(data), nil
+}
+
 // RunNarratorScript run a narrator script in node, return next state and some stories
 func (pub *Publisher) RunNarratorScript(
 	script string,
-	previousResult string,
+	previousResult ScriptResult,
 	collectionStart int64,
 	collectionLength int64,
 	collectionSize int64,
@@ -149,13 +162,24 @@ func (pub *Publisher) RunNarratorScript(
 		return ScriptResult{}, err
 	}
 
+	var previousResultJSON string
+	if reflect.DeepEqual(previousResult, ScriptResult{}) {
+		previousResultJSON = "null"
+	} else {
+		previousResultJSONData, err := json.Marshal(previousResult)
+		if err != nil {
+			fmt.Println("previousResult json marshal error", err)
+			return ScriptResult{}, err
+		}
+		previousResultJSON = string(previousResultJSONData)
+	}
+
+
 	resultFilePath := "./result.json"
 	runScript := []byte(fmt.Sprintf(
 		`
 const fs = require('fs')
 const script = require('./script.js')
-
-console.log("imported fs")
 
 function save(result) {
    console.log("saving result")
@@ -174,20 +198,26 @@ script.tellStories(%v, %v, %v, %v, "%v")
   .catch(fail)
 `,
 		resultFilePath,
-		previousResult,
+		previousResultJSON,
 		collectionStart,
 		collectionLength,
 		collectionSize,
-		"http://127.0.0.1:8545",//"https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8",
+		// TODO make eth network configurable
+		"https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8",
 	))
 	runScriptPath := "./runScript.js"
 	if err := ioutil.WriteFile(runScriptPath, runScript, 0644); err != nil {
 		fmt.Println("runScript.js write error:", err)
 		return ScriptResult{}, err
 	}
+	fmt.Println(
+		"Running node command, previous result length",
+		len(previousResultJSON),
+	)
 	out, err := exec.Command("node", runScriptPath).CombinedOutput()
 	if err != nil {
-		fmt.Println("Output:\n", string(out), "\nError:\n", err)
+		ioutil.WriteFile("./node_command_out.txt", out, 0644)
+		fmt.Println("NodeJS Error:", err)
 	}
 	resultJSON, err := ioutil.ReadFile(resultFilePath)
 	if err != nil {
@@ -210,6 +240,11 @@ func before(a time.Time, b *big.Int) bool {
 	return a.Before(bTime)
 }
 
+
+/*
+
+var depth = 0
+
 func (pub *Publisher) GetStoryAsOf(
 	backend bind.ContractBackend,
 	ps PublisherStore,
@@ -218,15 +253,11 @@ func (pub *Publisher) GetStoryAsOf(
 	storyIndex int64,
 	t time.Time,
 ) (Story, error) {
+	depth += 1
+	defer func () { depth -= 1 }()
+	fmt.Println(depth, "GetStoryAsOf", t)
 	narrator, err := pub.GetNarrator(narratorIndex); if err != nil {
 		return "", err
-	}
-
-	// if the story is over, jump to the end,
-	// don't run it for all the blocks after that
-	storyEnd := narrator.Start.Int64() + narrator.CollectionLength.Int64()
-	if storyEnd < t.Unix() {
-		t = time.Unix(storyEnd, 0)
 	}
 
 	latestBlockTime, err := ps.LatestBlockTimeAsOf(t)
@@ -234,8 +265,15 @@ func (pub *Publisher) GetStoryAsOf(
 		return "", err
 	}
 
+	// if the story is over, jump to the end,
+	// don't run it for all the blocks after that
+	storyEnd := narrator.Start.Int64() + narrator.CollectionLength.Int64()
+	if storyEnd < latestBlockTime.Unix() {
+		latestBlockTime = time.Unix(storyEnd, 0)
+	}
+
 	// if latestBlockTime is before the narrator start time
-	// use `{}` as the state
+	// use `null` as the state
 	_, err = GetCachedResult(
 		ps,
 		narratorIndex,
@@ -257,6 +295,8 @@ func (pub *Publisher) GetStoryAsOf(
 		)
 	}
 
+	// we are either before the start time, or the cache is warm
+
 	var state string
 	if before(latestBlockTime, narrator.Start) {
 		state = "null"
@@ -268,8 +308,10 @@ func (pub *Publisher) GetStoryAsOf(
 			latestBlockTime,
 		)
 		if err != nil {
+			fmt.Println(depth, "Unexpected cache miss", narratorIndex, collectionIndex, latestBlockTime.Unix())
 			return "", err
 		}
+		fmt.Println(depth, "Cache hit")
 		marshaled, err := json.Marshal(hitResult); if err != nil {
 			return "", err
 		}
@@ -289,7 +331,7 @@ func (pub *Publisher) GetStoryAsOf(
 		narrator.CollectionLength.Int64(),
 		narrator.CollectionSize.Int64(),
 	); if err != nil {
-		fmt.Println("run script error", err)
+		fmt.Println(depth, "run script error", err)
 		return "", err
 	}
 
@@ -313,3 +355,4 @@ func (pub *Publisher) GetStoryAsOf(
 	}
 	return result.Stories[storyIndex], nil
 }
+*/

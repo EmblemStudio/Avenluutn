@@ -11,6 +11,6 @@ module.exports = {
     },
     globalObject: "this"
   },
-  mode: "development",
+  mode: "production",
   target: "node"
 };

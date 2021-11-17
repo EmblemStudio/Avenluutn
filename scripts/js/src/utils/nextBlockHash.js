@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.closestEarlierBlockHash = exports.nextBlockHash = exports.makeProvider = void 0;
 const ethers_1 = require("ethers");
-const http = require("http");
 function makeProvider(providerUrl) {
     console.log("making provider:", providerUrl);
     if (providerUrl) {
@@ -33,9 +32,7 @@ exports.nextBlockHash = nextBlockHash;
  */
 const cachedBlocks = new Map();
 async function getBlock(blockNumber, provider) {
-    console.log("getting block", blockNumber);
     if (!cachedBlocks.has(blockNumber)) {
-        console.log("block not cached", blockNumber);
         cachedBlocks.set(blockNumber, await provider.getBlock(blockNumber));
     }
     const block = cachedBlocks.get(blockNumber);
@@ -43,7 +40,6 @@ async function getBlock(blockNumber, provider) {
         console.log("WARNING: expected cached block but didn't get one");
         return await provider.getBlock(blockNumber);
     }
-    console.log("returning cached block");
     return block;
 }
 /**
@@ -65,22 +61,9 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     }
     console.log("ready? error?");
     provider._ready().then(console.log, console.error);
-    console.log("getting localhost");
-    http.get('http://localhost:8080', { timeout: 200 }, (res) => {
-        const { statusCode } = res;
-        console.log("localhost response!", statusCode);
-    });
-    setTimeout(async () => {
-        const result = await ethers_1.utils.fetchJson("https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8", '{ "id": 42, "jsonrpc": "2.0", "method": "eth_chainId", "params": [ ] }');
-        console.log("fetch node address", result);
-    }, 500);
-    console.log("waiting for provider");
     await provider.ready;
-    console.log("provider", provider);
     if (!block) {
-        console.log("no block provided, getting the latest block");
         block = await provider.getBlock("latest");
-        console.log("got latest block", block);
         if (targetTime >= block.timestamp) {
             console.warn(`Chain hasn't reached time ${targetTime} yet.`);
             return null;

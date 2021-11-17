@@ -2,6 +2,7 @@
 
 function wake () {
     tag=emblemstudio/aavenluutn:test
+    pubtag=emblem/avenluutn:latest
     container_name=aavenluutn
     ipfs_staging=`pwd`/ipfs/staging
     ipfs_data=`pwd`/ipfs/data
@@ -74,6 +75,10 @@ function wake () {
             ;;
         *)
             which wake
+            ;;
+        "publish")
+            docker build $pubtag .
+            docker push $pubtag
             ;;
     esac
 }

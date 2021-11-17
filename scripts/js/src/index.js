@@ -8,7 +8,9 @@ const nextState_1 = require("./nextState");
 const cross_fetch_1 = require("cross-fetch");
 globalThis.fetch = cross_fetch_1.fetch;
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
+    console.log("making provider with:", providerUrl);
     const provider = (0, utils_1.makeProvider)(providerUrl);
+    console.log("provider!", provider);
     const startBlockHash = await (0, utils_1.nextBlockHash)(startTime, provider);
     if (!startBlockHash) {
         throw new Error('No starting block hash');
