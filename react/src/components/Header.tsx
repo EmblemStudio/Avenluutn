@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import ConnectButton from './ConnectButton'
 
-export default function Header() {
+export default () => {
   return (
     <nav className="level mt-5 mr-5 ml-5">
       <div className="level-left">

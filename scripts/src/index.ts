@@ -3,14 +3,28 @@ import {
   makeProvider, 
   nextBlockHash, 
   randomStartingState,
+  OutcomeText,
 } from './utils'
 import { State, Result } from './content/interfaces'
-import { Story, tellStory } from './tellStory'
+import { tellStory } from './tellStory'
 import { nextState } from './nextState'
 
 export interface ScriptResult {
   stories: Story[];
   nextState: State;
+}
+
+export interface Story {
+  plainText: string[];
+  richText: {
+    beginning: string[];
+    middle: {
+      obstacleText: string[];
+      outcomeText: OutcomeText[];
+    };
+    ending: string[];
+  }
+  events: Result[];
 }
 
 export async function tellStories(

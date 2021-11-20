@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Footer() {
+export default () => {
   return (
     <nav className="level m-5 is-size-5">
       <div className="level-item has-text-centered">

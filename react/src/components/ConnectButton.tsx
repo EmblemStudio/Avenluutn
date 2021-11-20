@@ -3,7 +3,7 @@ import { useWallet } from 'use-wallet'
 
 import { shortAddress } from '../utils'
 
-export default function ConnectButton() {
+export default () => {
   const [modalActive, setModalActive] = useState("")
   const wallet = useWallet()
 
@@ -15,7 +15,7 @@ export default function ConnectButton() {
           onClick={() => wallet.reset()}
         >
           <span>Disconnect</span> 
-          <span className="is-size-7">{shortAddress(wallet.account)}</span>
+          <span className="is-size-6">{shortAddress(wallet.account)}</span>
         </a>
       ) : (
         <a 
