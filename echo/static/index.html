@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Single file upload</title>
+</head>
+<body>
+<h1>Upload single file with fields</h1>
+
+<form action="/test/script" method="post" enctype="multipart/form-data">
+    Previous Result: <input type="text" name="previous-result" value="null"><br>
+    Collection Start: <input type="number" name="collection-start" value="1637168603"><br>
+    Collection Length: <input type="number" name="collection-length" value="86400"><br>
+    Collection Size: <input type="number" name="collection-size" value="3"><br>
+    Cache Buster: <input type="text" name="cache-buster"><br>
+    Script File: <input type="file" name="file"><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
