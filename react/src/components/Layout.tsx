@@ -8,7 +8,9 @@ export default (el: ReactElement) => {
     <> 
       <div id="top">
         <Header />
-        {el}
+        <section className="section is-ibm is-size-6">
+          {el}
+        </section>
       </div>
       <Footer />
     </>

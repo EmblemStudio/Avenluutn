@@ -5,13 +5,9 @@ import axios from 'axios'
 import useContractReadable from './useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
 import { ScriptResult } from '../../../scripts/src'
-import { Narrator, Auction, Collection } from '../utils'
-
-const addresses: { [network: string]: string } = {
-  "ropsten": "0x0533770ca8Fe4fDb4C186aE00363fbFdEEf34efb"
-}
-
-const server = "http://67.205.138.92"
+import { Narrator, Auction, Collection, setNarratorState } from '../utils'
+import narratorState from '../state/narratorState'
+import { ADDRESSES, SERVER, CACHE_PERIOD } from '../constants'
 
 async function getCollection(
   publisher: Contract,
@@ -19,7 +15,7 @@ async function getCollection(
   narratorIndex: number,
   collectionIndex: number
 ): Promise<Collection | null> {
-  const response = await axios.get(`${server}/runs/${narratorIndex}/${collectionIndex}`)
+  const response = await axios.get(`${SERVER}/runs/${narratorIndex}/${collectionIndex}`)
   if (!response.data) return null
   const scriptResult: ScriptResult = response.data
   const collection: Collection = {
@@ -47,18 +43,22 @@ async function getCollection(
   return collection
 }
 
-export default (network: string, narratorIndex: number) => {
+interface UseNarratorReadableParams { network: string; narratorIndex: number }
+
+export default (params: UseNarratorReadableParams) => {
   const [narrator, setNarrator] = useState<Narrator | null>(null)
 
   useEffect(() => {
-    // TODO memoize some state
-    if (narrator) return
+    if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
+      setNarrator(narratorState.narrator)
+      return
+    }
 
-    const address = addresses[network]
+    const address = ADDRESSES[params.network]
     const publisher = useContractReadable(address, artifact.abi, "ropsten")
     if (!publisher) return
 
-    publisher.narrators(narratorIndex)
+    publisher.narrators(params.narratorIndex)
       .then((nData: any) => {
         let newNarrator = {
           ...nData,
@@ -69,13 +69,14 @@ export default (network: string, narratorIndex: number) => {
           getCollection(
             publisher,
             newNarrator,
-            narratorIndex,
+            params.narratorIndex,
             i
           )
             .then(c => {
               if (c) {
                 newNarrator.collections.push(c)
                 setNarrator(newNarrator)
+                setNarratorState(newNarrator)
               }
             })
         }

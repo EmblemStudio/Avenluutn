@@ -36,22 +36,62 @@ html {
 /* Borders */
 
 .outer-border {
-  border: 2px solid;
+  border: 1px solid;
   padding: 2px;
 }
 
 .inner-border {
-  border: 2px solid;
+  border: 1px solid;
 }
 
 .has-border-green {
   border-color: green;
 }
 
+.has-border-red {
+  border-color: red;
+}
+
+.has-border-blue {
+  border-color: blue;
+}
+
+.has-border-yellow {
+  border-color: yellow;
+}
+
+.has-border-purple {
+  border-color: purple;
+}
+
+.has-border-orange {
+  border-color: orange;
+}
+
 /* Text */
 
-.has-text-green {
+.has-text-green, .is-ghost.has-text-green {
   color: green;
+}
+
+.has-text-red, .is-ghost.has-text-red {
+  color: red;
+}
+
+.has-text-blue, .is-ghost.has-text-blue {
+  color: blue;
+}
+
+.has-text-yellow, .is-ghost.has-text-yellow {
+  color: yellow;
+}
+
+.has-text-purple, .is-ghost.has-text-purple {
+  color: purple;
+}
+
+.has-text-orange, .is-ghost.has-text-orange {
+  color: orange;
 }
 
 /* Guild Cards */

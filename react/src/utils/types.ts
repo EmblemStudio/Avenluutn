@@ -1,6 +1,11 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ScriptResult } from '../../../scripts/src'
 
+export interface NarratorState {
+  narrator: Narrator | null;
+  lastUpdate: number;
+}
+
 export interface Narrator {
   NFTAddress: string;
   NFTId: BigNumber;

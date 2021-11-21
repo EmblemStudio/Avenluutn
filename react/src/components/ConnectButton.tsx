@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useWallet } from 'use-wallet'
 
 import { shortAddress } from '../utils'
+import MetamaskSVG from '../assets/images/metamask-fox.svg'
 
 export default () => {
   const [modalActive, setModalActive] = useState("")
@@ -37,7 +38,7 @@ export default () => {
                   setModalActive("")
                 }}
               >
-                <img src="src/assets/images/metamask-fox.svg" alt="Metamask" width="80px"/>
+                <img src={MetamaskSVG} alt="Metamask" width="80px"/>
                 <h2 className="subtitle pl-5">Metamask</h2>
               </a>
             </section>
