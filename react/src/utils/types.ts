@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { Story as StoryText } from '../../../scripts/src'
+import { ScriptResult } from '../../../scripts/src'
 
 export interface Narrator {
   NFTAddress: string;
@@ -9,7 +9,13 @@ export interface Narrator {
   collectionLength: BigNumber;
   collectionSpacing: BigNumber;
   collectionSize: BigNumber;
-  stories: Stories;
+  collections: Collection[];
+}
+
+export interface Collection {
+  collectionIndex: number;
+  scriptResult: ScriptResult;
+  stories: Story[];
 }
 
 export interface Story {
@@ -20,11 +26,6 @@ export interface Story {
   startTime: BigNumber;
   endTime: BigNumber;
   auction: Auction;
-  text: StoryText;
-}
-
-export interface Stories { 
-  [storyIndex: number]: Story[] 
 }
 
 export interface Auction {

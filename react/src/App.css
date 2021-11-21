@@ -32,3 +32,34 @@ html {
   display: flex;
   flex-direction: column;
 }
+
+/* Borders */
+
+.outer-border {
+  border: 2px solid;
+  padding: 2px;
+}
+
+.inner-border {
+  border: 2px solid;
+}
+
+.has-border-green {
+  border-color: green;
+}
+
+/* Text */
+
+.has-text-green {
+  color: green;
+}
+
+/* Guild Cards */
+
+.guild-card {
+  width: 200px;
+}
+
+.does-wrap {
+  flex-wrap: wrap;
+}

@@ -12,6 +12,8 @@ import { fetch } from 'cross-fetch'
 
 globalThis.fetch = fetch
 
+export * from './content/interfaces'
+
 export interface ScriptResult {
   stories: Story[];
   nextState: State;
