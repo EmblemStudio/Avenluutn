@@ -204,9 +204,7 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
             story.narratorIndex = narratorIndex;
             story.collectionIndex = collectionIndex;
             story.index = storyIndex;
-            story.auction.amount = msg.value;
-            story.auction.bidder = payable(msg.sender);
-            story.auction.duration = baseAuctionDuration;
+            story.auction.duration += baseAuctionDuration;
         } else {
             uint256 minIncrement = (
                 story.auction.amount * minBidIncrementPercentage
@@ -216,9 +214,9 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
                 "Bid increment too low"
             );
         }
+
         uint256 timeLeft = _auctionTimeLeft(storyId);
         require(timeLeft > 0 && timeLeft < type(uint256).max, "Auction not open");
-        // TODO implement WETH backup transfer
 
         // extend the auction if needed
         if (timeLeft < timeBuffer) {
@@ -231,17 +229,23 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
             );
         }
 
+        // TODO implement WETH backup transfer
+        address previousBidder = story.auction.bidder;
+        uint256 previousAmount = story.auction.amount;
+
         // set current bidder as winning bidder
         story.auction.bidder = payable(msg.sender);
         story.auction.amount = msg.value;
         emit Bid(narratorIndex, collectionIndex, storyIndex, msg.value, msg.sender);
 
         // return previous bidder their bid
-        (bool success,) = story.auction.bidder.call{
-            value: story.auction.amount
-        }(new bytes(0));
-        // TODO what happens when the refund to previous bidder fails?
-        return success;
+        if (previousBidder != address(0)) {
+            (bool sent,) = previousBidder.call{value: previousAmount}("");
+            // TODO what happens when the refund to previous bidder fails?
+            return sent;
+        }
+
+        return true;
     }
 
     function mint(
@@ -260,7 +264,9 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
             require(msg.sender == story.auction.bidder);
             // Pay the beneficiary
             address beneficiary = payable(owner());
-            beneficiary.call{value: story.auction.amount}(new bytes(0));
+            (bool sent, bytes memory data) = beneficiary.call{
+                value: story.auction.amount
+            }("");
         } // otherwise fine you can mint
 
         // mint

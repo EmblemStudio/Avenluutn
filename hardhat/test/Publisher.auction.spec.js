@@ -41,7 +41,7 @@ describe("Stories Auctions", () => {
         narratorIndex,
         collectionIndex,
         storyIndex,
-        await wallet.getAddress(),
+        wallet.address,
         { value: bidAmount }
       )
     }
@@ -60,7 +60,7 @@ describe("Stories Auctions", () => {
         narratorIndex,
         collectionIndex,
         storyIndex,
-        await wallet.getAddress()
+        wallet.address,
       )
     }
   }
@@ -179,18 +179,18 @@ describe("Stories Auctions", () => {
     currentBlockTime = startTime + collectionLength + 1
     const bobBidAmount = minBidAmount
     await expect(
-      bobBid(1, 0, 0, bobBidAmount, currentBlockTime)
+      () => bobBid(1, 0, 0, bobBidAmount, currentBlockTime)
     ).to.changeEtherBalances(
-      [bob, publisher.address],
+      [bob,           publisher],
       [-minBidAmount, minBidAmount]
     )
 
-    currentBlockTime += 1
+    currentBlockTime += 13
     const carolBidAmount = minBidAmount * 2
     await expect(
-      carolBid(1, 0, 0, carolBidAmount, currentBlockTime)
+      () => carolBid(1, 0, 0, carolBidAmount, currentBlockTime)
     ).to.changeEtherBalances(
-      [carol,           bob,          publisher.address],
+      [carol,           bob,          publisher],
       [-carolBidAmount, bobBidAmount, carolBidAmount - bobBidAmount],
     )
   })
@@ -204,9 +204,9 @@ describe("Stories Auctions", () => {
 
     currentBlockTime = startTime + collectionLength + baseAuctionDuration + 1
     await expect(
-      bobMint(1, 0, 0, currentBlockTime)
+      () => bobMint(1, 0, 0, currentBlockTime)
     ).to.changeEtherBalances(
-      [bob, alice,     publisher.address],
+      [bob, alice,     publisher],
       [0,   bidAmount, -bidAmount],
     )
   })
