@@ -1,4 +1,4 @@
-const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]
+import { COLORS } from '../constants' 
 
 export function guildColor(id: number): string {
   return COLORS[id % (COLORS.length - 1)]

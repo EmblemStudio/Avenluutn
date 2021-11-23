@@ -14,3 +14,5 @@ export const CACHE_PERIOD = 180000 // 3 minutes
 export const API_URIS: { [network: string]: string } = {
   ropsten: "https://ropsten.infura.io/v3/46801402492348e480a7e18d9830eab8"
 }
+
+export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]

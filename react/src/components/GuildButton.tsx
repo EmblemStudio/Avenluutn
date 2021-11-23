@@ -10,7 +10,7 @@ export default (guild: Guild) => {
   return (
     <div key={guild.id} className="level-item m-3">
       <Link to={`/${guild.id}/lobby`}>
-        <div className={`guild-card outer-border has-border-${color}`}>
+        <div className={`guild-button outer-border has-border-${color}`}>
           <div className={`container has-text-centered inner-border has-border-${color} has-text-${color} pt-3 pb-3`}>
             <div className="block">
               {guild.name}

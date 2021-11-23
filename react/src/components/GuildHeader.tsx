@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 import GuildButton from './GuildButton'
 import { Guild } from '../../../scripts/src'
-import { guildColor } from '../utils'
+import { guildColor, coloredBoldStyle } from '../utils'
 
 const padding = "pl-6"
 
 function selectedStyles(selected: string, rendered: string, color: string): string {
   if (selected === rendered) {
-    return ` has-text-${color} has-text-weight-bold`
+    return coloredBoldStyle(color)
   }
   return " has-text-white"
 }

@@ -94,10 +94,14 @@ html {
   color: orange;
 }
 
-/* Guild Cards */
+/* Guild Buttons */
 
-.guild-card {
+.guild-button {
   width: 200px;
+}
+
+.level-left .guild-button {
+  margin-left: 0;
 }
 
 .does-wrap {
