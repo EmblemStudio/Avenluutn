@@ -2,19 +2,29 @@ import Prando from 'prando'
 import { providers } from 'ethers'
 
 import { nameString } from './content/loot'
-import { 
-  randomQuest, 
-  randomObstacle, 
-  questObstacle, 
-  findOutcome, 
-  makeQuestText, 
-  makeObstacleText, 
-  makeOutcomeText, 
-  OutcomeText, 
-  nextBlockHash, 
-  randomParty 
+import {
+  randomQuest,
+  randomObstacle,
+  questObstacle,
+  findOutcome,
+  makeQuestText,
+  makeObstacleText,
+  makeOutcomeText,
+  OutcomeText,
+  nextBlockHash,
+  randomParty
 } from './utils'
-import { State, Adventurer, Quest, Obstacle, Outcome, Result, Success, ResultType, Guild } from './content/interfaces'
+import {
+  State,
+  Adventurer,
+  Quest,
+  Obstacle,
+  Outcome,
+  Result,
+  Success,
+  ResultType,
+  Guild
+} from './content/interfaces'
 
 export interface Story {
   plainText: string[];
@@ -34,14 +44,13 @@ export interface Story {
 export async function tellStory(
   prng: Prando,
   state: State,
-  startTime: number, 
-  length: number, 
+  startTime: number,
+  length: number,
   guildId: number,
   provider: providers.BaseProvider
 ): Promise<Story> {
-  console.log("tellStory", guildId, state, startTime)
-  const subPrng = new Prando(prng.nextInt()+guildId)
-  console.log("telling beginning...", guildId)
+  const subSeed = prng.nextInt() + guildId
+  const subPrng = new Prando(subSeed)
   const beginning = await tellBeginning(
     subPrng,
     state,
@@ -49,14 +58,14 @@ export async function tellStory(
     length,
     guildId
   )
-  console.log("telling middle", beginning)
   const middle = await tellMiddle(
+    guildId,
     state,
     beginning,
     provider
   )
-  console.log("telling end", beginning, middle)
   const ending = await tellEnding(
+    guildId,
     beginning,
     middle,
     provider
@@ -102,8 +111,8 @@ interface Beginning {
 async function tellBeginning(
   prng: Prando,
   state: State,
-  startTime: number, 
-  length: number, 
+  startTime: number,
+  length: number,
   guildId: number
   // provider: providers.BaseProvider
 ): Promise<Beginning> {
@@ -137,10 +146,10 @@ async function tellBeginning(
    */
   const quest = randomQuest(guildId, prng)
   const questText = makeQuestText(quest)
-  
+
   /**
    * Create obstacle times, outcome times, and end time
-   * 
+   *
    * TODO add the possibility of a boon in addition to obstacles
    */
   const endTime = startTime + length
@@ -175,7 +184,7 @@ interface Middle {
 }
 
 async function tellMiddle(
-  // prng: Prando,
+  guildId: number,
   state: State,
   beginning: Beginning,
   provider: providers.BaseProvider
@@ -190,51 +199,61 @@ async function tellMiddle(
   }
   let allOutcomesSucceeded = true
   for(let i = 0; i < beginning.obstacleTimes.length; i++) {
+    console.log("Ob", i)
     if (allOutcomesSucceeded) {
       const obstacleTime = beginning.obstacleTimes[i]
       if (!obstacleTime) { throw new Error("No obstacle time") }
 
       const obstacleHash = await nextBlockHash(obstacleTime, provider)
-
+      console.log("Ob hash", obstacleHash)
       if (obstacleHash) {
+        const obsSeed = obstacleHash + guildId
+        console.log("obstacle seed", obsSeed)
         const obsPrng = new Prando(obstacleHash)
         if (i + 1 === beginning.obstacleTimes.length) {
           const obstacle = questObstacle(obsPrng, beginning.quest)
           middle.obstacles.push(obstacle)
           middle.obstacleText.push(makeObstacleText(obstacle))
         } else {
+          console.log("getting random ob")
           const obstacle = randomObstacle(obsPrng, i + 1)
+          console.log("got random ob", obstacle)
           middle.obstacles.push(obstacle)
           middle.obstacleText.push(makeObstacleText(obstacle))
+          console.log("got obstacle text", middle.obstacleText)
         }
       }
 
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
-      
+      console.log("getting next block hash")
       const outcomeHash = await nextBlockHash(outcomeTime, provider)
-
+      console.log("outcome hash", outcomeHash)
       const obstacle = middle.obstacles[i]
       if (obstacle && outcomeHash) {
-        const outPrng = new Prando(outcomeHash)
+        const outcomeSeed = outcomeHash + guildId
+        const outPrng = new Prando(outcomeSeed)
+        console.log("finding outcome")
         const outcome = await findOutcome(
-          outPrng, 
+          outPrng,
           beginning.guild.id,
           obstacle,
           beginning.party,
           middle.allResults,
           provider
         )
+        console.log(outcome)
         if (outcome.success === Success.failure) allOutcomesSucceeded = false
         if (i + 1 === beginning.obstacleTimes.length) middle.questSuccess = outcome.success
         middle.outcomes.push(outcome)
         middle.allResults = [...middle.allResults, ...outcome.results]
         // TODO outcome text should differentiate between main text and results text for UI purposes
         middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome)]
+        console.log("outcome text", middle.outcomeText)
       }
     }
   }
-  
+
   return middle
 }
 
@@ -244,6 +263,7 @@ interface Ending {
 }
 
 async function tellEnding(
+  guildId: number,
   beginning: Beginning,
   middle: Middle,
   provider: providers.BaseProvider
@@ -256,6 +276,7 @@ async function tellEnding(
    * check overall success level
    * create end text: [adv names] returned to [guild name] [triumphantly / in disgrace]. [if treasure] [Treasure] was added to the guild vault.
    */
+  console.log("telling ending", guildId)
   const ending: Ending = {
     results: [],
     text: [""]
@@ -269,7 +290,9 @@ async function tellEnding(
   let oneLeft = false
 
   if (endingHash) {
-    const prng = new Prando(endingHash)
+    const endingSeed = endingHash + guildId
+    console.log("ending seed", endingSeed)
+    const prng = new Prando(endingSeed)
 
     for (let i = 0; i < middle.allResults.length; i++) {
       const result = middle.allResults[i]

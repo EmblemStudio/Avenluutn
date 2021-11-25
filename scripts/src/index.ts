@@ -3,6 +3,7 @@ import {
   makeProvider,
   nextBlockHash,
   randomStartingState,
+  boundingBlocks,
 } from './utils'
 import { State, Result } from './content/interfaces'
 import { Story, tellStory } from './tellStory'
@@ -23,12 +24,12 @@ export async function tellStories(
   totalStories: number,
   providerUrl?: string,
 ): Promise<ScriptResult> {
+  console.log("telling", totalStories, "stories")
   const provider = makeProvider(providerUrl)
 
   const startBlockHash = await nextBlockHash(startTime, provider)
   if (!startBlockHash) { throw new Error('No starting block hash') }
 
-  console.log(startBlockHash)
   const prng = new Prando(startBlockHash)
 
   let state: State
@@ -37,7 +38,6 @@ export async function tellStories(
   } else {
     state = prevResult.nextState
   }
-
   const stories: Story[] = []
   let events: Result[] = []
   for (let i = 0; i < totalStories; i++) {
@@ -49,6 +49,7 @@ export async function tellStories(
       i,
       provider
     )
+    console.log("got story", story)
     stories.push(story)
     events = [...events, ...story.events]
   }
@@ -60,3 +61,27 @@ export async function tellStories(
 
   return result
 }
+
+async function checkOne() {
+  return tellStories(
+    null,
+    1637168603,
+    86400,
+    2,
+    "http://localhost:8545",
+  )
+}
+
+boundingBlocks(10, "http://localhost:8545").then(
+  (blocks) => {
+    if (blocks === null) {
+      console.log("no bounding blocks")
+    } else {
+      const [lower, upper] = blocks
+      console.log(upper)
+      console.log(lower)
+      console.log(upper.timestamp - lower.timestamp)
+      console.log(upper.number - lower.number)
+    }
+  }
+).catch(console.error)

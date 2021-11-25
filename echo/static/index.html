@@ -8,12 +8,27 @@
 <h1>Upload single file with fields</h1>
 
 <form action="/test/script" method="post" enctype="multipart/form-data">
-    Previous Result: <input type="text" name="previous-result" value="null"><br>
+    Previous Result: <textarea name="previous-result">null</textarea><br>
     Collection Start: <input type="number" name="collection-start" value="1637168603"><br>
     Collection Length: <input type="number" name="collection-length" value="86400"><br>
     Collection Size: <input type="number" name="collection-size" value="3"><br>
+    Iterations: <input type="number" name="iterations" value="1"><br>
     Cache Buster: <input type="text" name="cache-buster"><br>
     Script File: <input type="file" name="file"><br>
+    Response Template: <textarea name="template">
+{{ range $i, $s := .Stories }}
+Story $i
+    {{ $s.events | len }} events
+    {{ range $s.events }}
+        Event: {{ . }}
+    {{ end }}
+    {{ range $s.plainText }}
+        {{ . }}
+    {{ end }}
+{{ end }}
+
+{{ .PrettyJSON }}
+    </textarea></br>
     <input type="submit" value="Submit">
 </form>
 </body>

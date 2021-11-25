@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.closestEarlierBlockHash = exports.nextBlockHash = exports.makeProvider = void 0;
+exports.boundingBlocks = exports.closestEarlierBlockHash = exports.nextBlockHash = exports.makeProvider = void 0;
 const ethers_1 = require("ethers");
 function makeProvider(providerUrl) {
-    console.log("making provider:", providerUrl);
     if (providerUrl) {
         return new ethers_1.providers.JsonRpcProvider(providerUrl);
     }
@@ -19,7 +18,9 @@ async function nextBlockHash(time, provider) {
         console.warn(`Time ${time} is in the future.`);
         return null;
     }
+    console.log("getting start block hash", time, provider);
     const startBlockHash = await closestEarlierBlockHash(time, provider);
+    console.log("got start block hash", startBlockHash);
     if (!startBlockHash) {
         console.warn(`Unreachable: no mined block found before time ${time}.`);
         return null;
@@ -32,6 +33,7 @@ exports.nextBlockHash = nextBlockHash;
  */
 const cachedBlocks = new Map();
 async function getBlock(blockNumber, provider) {
+    console.log("getBlock", blockNumber);
     if (!cachedBlocks.has(blockNumber)) {
         cachedBlocks.set(blockNumber, await provider.getBlock(blockNumber));
     }
@@ -40,6 +42,7 @@ async function getBlock(blockNumber, provider) {
         console.log("WARNING: expected cached block but didn't get one");
         return await provider.getBlock(blockNumber);
     }
+    console.log("got block", block);
     return block;
 }
 /**
@@ -55,12 +58,16 @@ async function getBlock(blockNumber, provider) {
  * - recurse with block: newBlock, previousBlock: block
  */
 async function closestEarlierBlockHash(targetTime, provider, block, previousBlock) {
-    console.log("closestEarlierBlockHash", targetTime, block, provider);
+    console.log("closestEarlierBlockHash", targetTime);
+    if (block) {
+        console.log("block number", block.number);
+    }
+    if (previousBlock) {
+        console.log("previous block number", previousBlock.number);
+    }
     if (typeof provider === "string") {
         provider = makeProvider(provider);
     }
-    console.log("ready? error?");
-    provider._ready().then(console.log, console.error);
     await provider.ready;
     if (!block) {
         block = await provider.getBlock("latest");
@@ -71,6 +78,7 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     }
     // Will be negative if block is EARLIER than target time
     const timeDifference = block.timestamp - targetTime;
+    console.log("time difference", timeDifference);
     if (timeDifference === 0) {
         return block.hash;
     }
@@ -88,6 +96,7 @@ async function closestEarlierBlockHash(targetTime, provider, block, previousBloc
     }
     // if block is within 100 sec of target time, set new block 1 block toward target time
     if (Math.abs(block.timestamp - targetTime) <= 100) {
+        console.log("marching", block.timestamp, block.number);
         if (block.timestamp < targetTime) {
             newBlock = await getBlock(block.number + 1, provider);
         }
@@ -119,3 +128,115 @@ function surrounded(time1, time2, surroundedTime) {
     }
     return false;
 }
+// refine Bounds returns the tightest upper and lower bounds available
+async function refineBounds(targetTime, estimates, provider, upperBound, lowerBound) {
+    var _a, _b, _c, _d, _e, _f;
+    const blocks = [upperBound, lowerBound, ...estimates];
+    console.log("____");
+    console.log("block diffs", blocks.map(b => {
+        var _a;
+        return ((_a = b === null || b === void 0 ? void 0 : b.timestamp) !== null && _a !== void 0 ? _a : Infinity) - targetTime;
+    }));
+    // check all blocks and track best bounds
+    let newLowerBound = lowerBound;
+    let newUpperBound = upperBound;
+    const lowerTime = (_a = lowerBound === null || lowerBound === void 0 ? void 0 : lowerBound.timestamp) !== null && _a !== void 0 ? _a : -Infinity;
+    const upperTime = (_b = upperBound === null || upperBound === void 0 ? void 0 : upperBound.timestamp) !== null && _b !== void 0 ? _b : Infinity;
+    console.log("lower diff", lowerTime - targetTime);
+    console.log("upper diff", upperTime - targetTime);
+    blocks.forEach(b => {
+        var _a;
+        const t = (_a = b === null || b === void 0 ? void 0 : b.timestamp) !== null && _a !== void 0 ? _a : Infinity;
+        // b is a better lower bound if it's > lower bound but <= target time
+        if (t > lowerTime && t <= targetTime) {
+            console.log("better lower bound", t - targetTime);
+            newLowerBound = b;
+        }
+        // b is a better upper bound if its < upper bound but >= target time
+        if (t < upperTime && t >= targetTime) {
+            console.log("better upper bound", t - targetTime);
+            newUpperBound = b;
+        }
+    });
+    await new Promise(resolve => setTimeout(resolve, 100));
+    if (newLowerBound !== undefined && lowerBound !== undefined) {
+        if (newLowerBound.number === lowerBound.number) {
+            console.log("lower bound didn't change, try one higher");
+            newLowerBound = await getBlock(lowerBound.number + 1, provider);
+            console.log("updated diff", ((_c = newLowerBound === null || newLowerBound === void 0 ? void 0 : newLowerBound.timestamp) !== null && _c !== void 0 ? _c : -Infinity) - targetTime);
+            // if one more was too far, back off
+            if (((_d = newLowerBound === null || newLowerBound === void 0 ? void 0 : newLowerBound.timestamp) !== null && _d !== void 0 ? _d : Infinity) > targetTime) {
+                console.log("too far, go back");
+                newLowerBound = lowerBound;
+            }
+        }
+    }
+    if (newUpperBound !== undefined && upperBound !== undefined) {
+        if (newUpperBound.number === upperBound.number) {
+            console.log("upper bound didn't change, try one lower");
+            newUpperBound = await getBlock(upperBound.number - 1, provider);
+            console.log("updated diff", ((_e = newUpperBound === null || newUpperBound === void 0 ? void 0 : newUpperBound.timestamp) !== null && _e !== void 0 ? _e : Infinity) - targetTime);
+            // if one more was too far, back off
+            if (((_f = newUpperBound === null || newUpperBound === void 0 ? void 0 : newUpperBound.timestamp) !== null && _f !== void 0 ? _f : -Infinity) < targetTime) {
+                console.log("too far, go back");
+                newUpperBound = upperBound;
+            }
+        }
+    }
+    return [newLowerBound, newUpperBound];
+}
+async function estimateBlock(targetTime, block, provider) {
+    if (block === undefined) {
+        block = await provider.getBlock("latest");
+    }
+    if (block === undefined) {
+        throw new Error("could not get latest block");
+    }
+    const diff = targetTime - block.timestamp;
+    const jumpSize = Math.floor(diff / 13.3); // 13.3 average block time
+    return getBlock(block.number + jumpSize, provider);
+}
+async function boundingBlocks(targetTime, provider, upperBound, lowerBound) {
+    if (typeof provider === "string") {
+        provider = makeProvider(provider);
+    }
+    if (upperBound === undefined) {
+        upperBound = await provider.getBlock("latest");
+        if (targetTime > upperBound.timestamp) {
+            return null;
+        }
+    }
+    if (lowerBound === undefined) {
+        lowerBound = await getBlock(1, provider);
+        if (targetTime < lowerBound.timestamp) {
+            return null;
+        }
+    }
+    console.log("boundingBlocks", targetTime, upperBound.timestamp, lowerBound.timestamp);
+    // are they bounding blocks?
+    // do they have a difference of 1 or are they they the same?
+    // they'll be the same if target time lands exactly on a block
+    if (upperBound !== undefined && lowerBound !== undefined) {
+        // type narrow ^
+        if (upperBound.number - lowerBound.number <= 1) {
+            // are either of them spot on?
+            if (upperBound.timestamp === targetTime) {
+                return [upperBound, upperBound];
+            }
+            if (lowerBound.timestamp === targetTime) {
+                return [lowerBound, lowerBound];
+            }
+            return [lowerBound, upperBound];
+        }
+    }
+    // otherwise estimate new blocks for each
+    const estimates = [
+        await estimateBlock(targetTime, upperBound, provider),
+        await estimateBlock(targetTime, lowerBound, provider),
+    ];
+    console.log("estimates", estimates.map((e) => e.number));
+    const [newLowerBound, newUpperBound] = await refineBounds(targetTime, estimates, provider, upperBound, lowerBound);
+    // recurse
+    return boundingBlocks(targetTime, provider, newUpperBound, newLowerBound);
+}
+exports.boundingBlocks = boundingBlocks;
