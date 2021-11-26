@@ -1,14 +1,13 @@
 import React from 'react'
 
-import Layout from '../components/Layout'
 import GuildButtons from '../components/GuildButtons'
-import useNarratorReadable from '../hooks/useNarratorReadable'
-import { READ_NARRATOR_PARAMS } from '../constants'
+import useNarratorState from '../hooks/useNarratorState'
+import { NARRATOR_PARAMS, LOADING } from '../constants'
 
-function Home() {
-  const narrator = useNarratorReadable(READ_NARRATOR_PARAMS)
+export default () => {
+  const narrator = useNarratorState()
 
-  return Layout(
+  return (
     <>
       <div className="block">
         You have entered Avenluutn, on the edge of nowhere.
@@ -18,14 +17,14 @@ function Home() {
         Sweet wind rustles the treetops. You feel hopeful.
       </div>
       {
-        narrator ? 
+        narrator.collections.length > 0 ? 
           <>
             <div className="block">
               A sign in the road directs you. Choose a guild:
             </div>
-            {GuildButtons(
-              narrator.collections[narrator.collections.length - 1].scriptResult.nextState.guilds
-            )}
+            <GuildButtons 
+              guilds={narrator.collections[narrator.collections.length - 1].scriptResult.nextState.guilds} 
+            />
           </>
         : 
           /* TODO Add a "Return in [timer]"
@@ -33,10 +32,8 @@ function Home() {
             Return in [timer]
           </div>
           */
-          null
+          LOADING
       }
     </>
   )
 }
-
-export default Home

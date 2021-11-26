@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 import GuildButton from './GuildButton'
 import { Guild } from '../../../scripts/src'
 import { guildColor, coloredBoldStyle } from '../utils'
+import { LOADING } from '../constants';
 
-const padding = "pl-6"
+const padding = "pl-3 pr-3"
 
 function selectedStyles(selected: string, rendered: string, color: string): string {
   if (selected === rendered) {
@@ -14,7 +15,18 @@ function selectedStyles(selected: string, rendered: string, color: string): stri
   return " has-text-white"
 }
 
-export default (guild: Guild, selected: string) => {
+interface GuildHeaderProps {
+  guild: Guild | null;
+  selected: string
+}
+
+export default ({guild, selected }: GuildHeaderProps) => {
+  if (!guild) return (
+    <nav className="level">
+      <div className="level-item">{LOADING}</div>
+    </nav>
+  )
+
   const color = guildColor(guild.id)
 
   return (

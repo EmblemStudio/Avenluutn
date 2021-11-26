@@ -28,6 +28,10 @@ html {
   font-family: "IBM Plex Mono", monospace;
 }
 
+.is-garamond {
+  font-family: "EB Garamond";
+}
+
 .is-vertical {
   display: flex;
   flex-direction: column;
@@ -100,10 +104,21 @@ html {
   width: 200px;
 }
 
-.level-left .guild-button {
+.level-left .level-item {
   margin-left: 0;
 }
 
 .does-wrap {
   flex-wrap: wrap;
+}
+
+/* Notifications */
+
+.notification {
+  border-radius: 0;
+  padding: 1rem 2rem 1rem 1.25rem;
+}
+
+.notification a:not(.button):not(.dropdown-item) {
+  text-decoration: none;
 }

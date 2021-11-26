@@ -5,7 +5,7 @@ import ConnectButton from './ConnectButton'
 
 export default () => {
   return (
-    <nav className="level mt-5 mr-5 ml-5">
+    <nav className="level mt-5 mb-0 mr-5 ml-5">
       <div className="level-left">
         <div className="level-item">
           <Link to="/">

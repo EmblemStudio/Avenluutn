@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { useWallet } from 'use-wallet'
 
 import { shortAddress } from '../utils'

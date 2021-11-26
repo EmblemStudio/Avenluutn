@@ -1,4 +1,4 @@
-export const READ_NARRATOR_PARAMS = {
+export const NARRATOR_PARAMS = {
   network: "ropsten", 
   narratorIndex: 6
 }
@@ -16,3 +16,5 @@ export const API_URIS: { [network: string]: string } = {
 }
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]
+
+export const LOADING = ". . ."

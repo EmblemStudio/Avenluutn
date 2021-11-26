@@ -1,10 +1,13 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ScriptResult } from '../../../scripts/src'
+import { ScriptResult, Story as StoryText } from '../../../scripts/src'
 
-export interface NarratorState {
-  narrator: Narrator | null;
-  lastUpdate: number;
+export interface Notifications {
+  warnings: string[];
+  errors: string[];
+  status: string[];
 }
+
+export interface NarratorParams { network: string; narratorIndex: number }
 
 export interface Narrator {
   NFTAddress: string;
@@ -15,12 +18,19 @@ export interface Narrator {
   collectionSpacing: BigNumber;
   collectionSize: BigNumber;
   collections: Collection[];
+  stories: CategorizedStories;
 }
 
 export interface Collection {
   collectionIndex: number;
   scriptResult: ScriptResult;
-  stories: Story[];
+}
+
+export interface CategorizedStories {
+  upcoming: Story[];
+  inProgress: Story[];
+  onAuction: Story[];
+  completed: Story[];
 }
 
 export interface Story {
@@ -31,10 +41,11 @@ export interface Story {
   startTime: BigNumber;
   endTime: BigNumber;
   auction: Auction;
+  text: StoryText;
 }
 
 export interface Auction {
-  bidAmount: number;
+  amount: BigNumber;
   bidder: string;
-  timeLeft: number;
+  duration: BigNumber;
 }
