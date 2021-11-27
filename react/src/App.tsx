@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import GuildLobby from './pages/GuildLobby'
 import GuildAuctions from './pages/GuildAuctions'
 import GuildLogbook from './pages/GuildLogbook'
+import About from './pages/About'
 
 export default () => {
   return (
@@ -26,6 +27,7 @@ export default () => {
                     <Route path="/:guildId/lobby" element={<GuildLobby />} />
                     <Route path="/:guildId/auctions" element={<GuildAuctions />} />
                     <Route path="/:guildId/logbook" element={<GuildLogbook />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
               </Layout>
             </BrowserRouter>

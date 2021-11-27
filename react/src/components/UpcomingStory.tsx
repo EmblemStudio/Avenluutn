@@ -2,10 +2,14 @@ import React from 'react'
 
 import { Story } from '../utils'
 
-export default (story: Story) => {
+interface UpcomingStoryProps {
+  story: Story
+}
+
+export default ({ story }: UpcomingStoryProps) => {
   return (
-    <div key={story.collectionIndex}>
-      Upcoming story
+    <div>
+      Starts at: {Number(story.startTime)}
     </div>
   )
 }

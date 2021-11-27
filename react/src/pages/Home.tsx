@@ -32,7 +32,9 @@ export default () => {
             Return in [timer]
           </div>
           */
-          LOADING
+          <div className="block">
+            {LOADING}
+          </div>
       }
     </>
   )

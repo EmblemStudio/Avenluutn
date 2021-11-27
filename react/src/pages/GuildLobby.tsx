@@ -29,10 +29,10 @@ export default () => {
         </>}
         <div className="block">
           {narrator.stories.inProgress.map(s => { 
-            return StoryInProgress(s)
+            return <StoryInProgress key={s.collectionIndex} story={s} />
           })}
           {narrator.stories.upcoming.map(s => { 
-            return UpcomingStory(s)
+            return <UpcomingStory key={s.collectionIndex} story={s} />
           })}
         </div>
       </div>

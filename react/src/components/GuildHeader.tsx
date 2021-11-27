@@ -35,37 +35,28 @@ export default ({guild, selected }: GuildHeaderProps) => {
         {GuildButton(guild)}
         <div className={`level-item ${padding}`}>
           <Link to={`/${guild.id}/lobby`}>
-            <div className=
-              {"is-ghost is-underlined" + 
-              selectedStyles(selected, "lobby", color)}
-            >
+            <div className={"is-underlined" + selectedStyles(selected, "lobby", color)}>
               Lobby
             </div>
           </Link>
         </div>
         <div className={`level-item ${padding}`}>
           <Link to={`/${guild.id}/auctions`}>
-          <div className=
-              {"is-ghost is-underlined" + 
-              selectedStyles(selected, "auctions", color)}
-            >
+          <div className={"is-underlined" + selectedStyles(selected, "auctions", color)}>
               Auctions
             </div>
           </Link>
         </div>
         <div className={`level-item ${padding}`}>
           <Link to={`/${guild.id}/logbook`}>
-            <div className=
-              {"is-ghost is-underlined" + 
-              selectedStyles(selected, "logbook", color)}
-            >
+            <div className={"is-underlined" + selectedStyles(selected, "logbook", color)}>
               Logbook
             </div>
           </Link>
         </div>
         <div className={`level-item ${padding}`}>
           <Link to="/">
-            <div className="is-ghost is-underlined has-text-white">
+            <div className="is-underlined has-text-white">
               Back
             </div>
           </Link>

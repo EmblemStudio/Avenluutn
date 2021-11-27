@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Contract } from '@ethersproject/contracts'
 
-import { Story, shortAddress, secondsToTimeString, presentOrPast } from '../utils'
+import { Story, shortAddress, secondsToTimeString } from '../utils'
 import StoryBox from './StoryBox'
 
 interface StoryAuctionProps {
@@ -11,10 +11,40 @@ interface StoryAuctionProps {
 }
 
 export default ({story, publisher, addNotification}: StoryAuctionProps) => {
+  const handleClaim = () => {
+    if (typeof publisher === "string") { 
+      addNotification("warnings", publisher)
+    } else {
+      publisher.signer.getAddress()
+        .then(address => {
+          publisher.mint(
+            story.narratorIndex, 
+            story.collectionIndex, 
+            story.storyIndex,
+            address
+          )
+        })
+    }
+  }
+
+  const handleClaimFor = () => {
+    if (typeof publisher === "string") { 
+      addNotification("warnings", publisher)
+    } else {
+      publisher.mint(
+        story.narratorIndex, 
+        story.collectionIndex, 
+        story.storyIndex,
+        story.auction.bidder
+      )
+    }
+  }
+
   return (
     <div className="container">
       <nav className="level mb-0 mt-5">
         <div className="level-item">
+          {/* TODO timer should count down if not at 0 */}
           Time left: {secondsToTimeString(story.auction.duration.toNumber())}
         </div>
         <div className="level-item is-vertical">
@@ -27,29 +57,13 @@ export default ({story, publisher, addNotification}: StoryAuctionProps) => {
         </div>
         <div className="level-item">
           {story.auction.duration.gt(0) ? 
+            // TODO small bid form
             "Bid Button"
           :
             story.auction.amount.isZero() ?
-              <a className="button is-ghost" onClick={() => {
-                if (typeof publisher === "string") { 
-                  console.log(publisher)
-                  addNotification("warnings", publisher)
-                } else {
-                  publisher.signer.getAddress()
-                    .then(address => {
-                      publisher.mint(
-                        story.narratorIndex, 
-                        story.collectionIndex, 
-                        story.storyIndex,
-                        address
-                      )
-                    })
-                }
-              }}>Claim</a>
+              <a className="button is-ghost" onClick={handleClaim}>Claim</a>
             :
-              <a className="button is-ghost" onClick={() => {
-
-              }}>Claim for Winner</a>
+              <a className="button is-ghost" onClick={handleClaimFor}>Claim for Winner</a>
           }
         </div>
       </nav>

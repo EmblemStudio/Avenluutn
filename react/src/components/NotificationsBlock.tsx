@@ -3,13 +3,18 @@ import { useWallet } from 'use-wallet'
 
 import useNotifications from '../hooks/useNotifications'
 import Notification from './Notification'
+import { noConnection, wrongNetwork } from '../utils'
+import { NARRATOR_PARAMS, WARNINGS } from '../constants'
+
+// TODO Notification block should float and freeze on screen so visible from anywhere
 
 export default () => {
   const { notifications, removeNotification } = useNotifications()
   const wallet = useWallet()
 
-  useEffect(() => { 
-    console.log('use effect notifs', notifications)
+  useEffect(() => {
+    if (!noConnection(wallet)) removeNotification("warnings", WARNINGS.no_connection)
+    if (!wrongNetwork(wallet, NARRATOR_PARAMS.network)) removeNotification("warnings", WARNINGS.wrong_network) 
   }, [wallet])
 
   function closeFactory(type: "errors" | "warnings" | "status", text: string) {
