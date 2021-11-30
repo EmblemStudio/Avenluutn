@@ -15,6 +15,7 @@ describe("Stories Auctions", () => {
   let bobBid
   let bobMint
   let carolBid
+  let carolMint
   let currentBlockTime = 2000000000000
   let startTime        = 2100000000000
 
@@ -26,6 +27,17 @@ describe("Stories Auctions", () => {
   const collectionSize      = 1
 
   let alice, bob, carol
+
+  async function owns(wallet, ni, ci, si) {
+    const pub = publisher.connect(wallet)
+    const storyId = await pub.getStoryId(ni, ci, si)
+    const story = await pub.stories(storyId)
+    if (!story.minted) {
+      return false
+    }
+    const owner = await pub.ownerOf(story.nftId)
+    return owner === wallet.address
+  }
 
   function mkBidder(wallet) {
     return async function (
@@ -90,6 +102,7 @@ describe("Stories Auctions", () => {
     bobBid = mkBidder(bob)
     bobMint = mkMinter(bob)
     carolBid = mkBidder(carol)
+    carolMint = mkMinter(carol)
   })
 
   it("Rejects bids before the story ends", async () => {
@@ -200,7 +213,6 @@ describe("Stories Auctions", () => {
     const bidAmount = minBidAmount * 3
     const bidTx = await bobBid(1, 0, 0, bidAmount, currentBlockTime)
     await bidTx.wait
-    console.log('here')
 
     currentBlockTime = startTime + collectionLength + baseAuctionDuration + 1
     await expect(
@@ -209,5 +221,68 @@ describe("Stories Auctions", () => {
       [bob, alice,     publisher],
       [0,   bidAmount, -bidAmount],
     )
+  })
+
+  it("Allows auction winners only to mint (and only once)", async () => {
+    currentBlockTime = startTime + collectionLength + 1
+    const bidAmount = minBidAmount * 3
+    const bidTx = await bobBid(1, 0, 0, bidAmount, currentBlockTime)
+    await bidTx.wait
+
+    // bob is auction winner
+    currentBlockTime = startTime + collectionLength + baseAuctionDuration + 1
+
+    // carol can't mint
+    await expect(carolMint(1, 0, 0, currentBlockTime)).to.be.reverted
+
+    // bob can mint
+    currentBlockTime += 13
+    expect(await owns(bob, 1, 0, 0)).to.be.false
+    await bobMint(1, 0, 0, currentBlockTime)
+    expect(await owns(bob, 1, 0, 0)).to.be.true
+
+    // but only once
+    currentBlockTime += 13
+    await expect(bobMint(1, 0, 0, currentBlockTime)).to.be.reverted
+  })
+
+  it("Allows the first caller to mint (once) if auction gets no bids", async () => {
+    // move to after the auction with no bidders
+    currentBlockTime = startTime + collectionLength + baseAuctionDuration + 1
+
+    expect(await owns(carol, 1, 0, 0)).to.be.false
+    await carolMint(1, 0, 0, currentBlockTime)
+    expect(await owns(carol, 1, 0, 0)).to.be.true
+
+    currentBlockTime += 13
+    await expect(bobMint(1, 0, 0, currentBlockTime)).to.be.reverted
+
+    currentBlockTime += 13
+    await expect(carolMint(1, 0, 0, currentBlockTime)).to.be.reverted
+  })
+
+  it("Records nftId and minted in the story struct when minted", async () => {
+    const story0Id = await publisher.getStoryId(1, 0, 0)
+    const story1Id = await publisher.getStoryId(1, 0, 1)
+    let story0 = await publisher.stories(story0Id)
+    expect(story0.minted).to.be.false
+    expect(story0.nftId).to.equal(0)
+    let story1 = await publisher.stories(story1Id)
+    expect(story1.minted).to.be.false
+    expect(story1.nftId).to.equal(0)
+
+    // move to after the auction with no bidders
+    currentBlockTime = startTime + collectionLength + baseAuctionDuration + 1
+    await bobMint(1, 0, 0, currentBlockTime)
+    currentBlockTime += 13
+    await bobMint(1, 0, 1, currentBlockTime)
+
+    story0 = await publisher.stories(story0Id)
+    expect(story0.minted).to.be.true
+    expect(story0.nftId).to.equal(0)
+
+    story1 = await publisher.stories(story1Id)
+    expect(story1.minted).to.be.true
+    expect(story1.nftId).to.equal(1)
   })
 })

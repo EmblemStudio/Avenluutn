@@ -34,6 +34,9 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         uint256 collectionIndex; // the Nth collection of that narrator
         uint256 index; // the Nth story of that collection
         Auction auction;
+
+        bool minted;
+        uint256 nftId;
     }
 
     // storyId: keccak(narratorIndex, collectionIndex, storyIndex) => Story
@@ -257,7 +260,8 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         require(to != address(0), "Invalid to address");
         bytes32 storyId = getStoryId(narratorIndex, collectionIndex, storyIndex);
         require(_auctionTimeLeft(storyId) == 0, "Auction not finished");
-        Story memory story = stories[storyId];
+        Story storage story = stories[storyId];
+        require(!story.minted, "Publisher: story already minted");
 
         // if someone bid, require sender to have won auction
         if(story.auction.bidder != address(0)) {
@@ -272,6 +276,9 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         // mint
         _mint(to, nftIds.current());
         mintedStories[nftIds.current()] = storyId;
+        story.minted = true;
+        story.nftId = nftIds.current();
+
         nftIds.increment();
     }
 
