@@ -4,7 +4,7 @@ import { Story } from '../utils'
 
 export default (story: Story) => {
   return (
-    <section className="section pt-3 pb-5" key={story.collectionIndex}>
+    <section className="section pt-2 pb-6" key={story.collectionIndex}>
       <div className="container outer-border">
         <div className="container inner-border">
           <section className="section pt-5 pb-5">

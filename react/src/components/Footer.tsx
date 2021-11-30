@@ -8,21 +8,21 @@ export default () => {
     <nav className="level m-5 is-size-5">
       <div className="level-item has-text-centered">
         <Link to="/about">
-          <span className="has-text-white">About</span>
+          <span className="has-text-white has-hover-underline">About</span>
         </Link>
       </div>
       <div className="level-item has-text-centered">
-        <a className="has-text-white" target="_blank" href={GITHUB}>
+        <a className="has-text-white has-hover-underline" target="_blank" href={GITHUB}>
           Github
         </a>
       </div>
       <div className="level-item has-text-centered">
-        <a className="has-text-white" target="_blank" href={ETHERSCAN}>
+        <a className="has-text-white has-hover-underline" target="_blank" href={ETHERSCAN}>
           Etherscan
         </a>
       </div>
       <div className="level-item has-text-centered">
-        <a className="has-text-white" target="_blank" href={DISCORD}>
+        <a className="has-text-white has-hover-underline" target="_blank" href={DISCORD}>
           Discord
         </a>
       </div>

@@ -1,10 +1,10 @@
 html {
-    background-color: black;
+  background-color: black;
 }
 
 .App {
-    font-family: "EB Garamond";
-    color: white;
+  font-family: "EB Garamond";
+  color: white;
 }
 
 #top {
@@ -12,16 +12,20 @@ html {
 }
 
 .title {
-    color: white;
-    font-weight: 100;
+  color: white;
+  font-weight: 100;
 }
 
 .button.is-ghost {
-    color: white;
+  color: white;
 }
 
 .button.is-ghost:hover {
   color: white;
+}
+
+.has-hover-underline:hover {
+  text-decoration: underline;
 }
 
 .is-ibm {

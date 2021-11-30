@@ -28,7 +28,7 @@ export default ({children, index, name, expanders, setExpanders}: StoryExpanderP
   }
 
   return (
-    <div className="container">
+    <div>
       { expanded ?
         <>
           <a className="has-text-white is-size-4" onClick={toggle}>
