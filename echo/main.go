@@ -16,28 +16,17 @@ import (
 	"EmblemStudio/aavenluutn/echo/server"
 )
 
-var (
-	// TODO move global vars to config
-	pubHexAddress = "0x0533770ca8Fe4fDb4C186aE00363fbFdEEf34efb"
-	provider      = "https://ropsten.infura.io/v3/46801402492348e480a7e18d9830eab8"
-)
-
-/*
-
-REST Endpoints
-
-/healthcheck
-    return 200 ok
-
-/
-    return some help text and settings
-
-/<narrator>/<collection>/<story>
-    return the text for this story
-
-*/
-
 func main() {
+
+	pubHexAddress := os.Getenv("AVENLUUTN_PUB_ADDR")
+	if pubHexAddress == "" {
+		log.Fatal("Missing required AVENLUUTN_PUB_ADDR envar")
+	}
+
+	provider := os.Getenv("AVENLUUTN_PROVIDER")
+	if provider == "" {
+		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
+	}
 
 	// make a server
 	client, err := ethclient.Dial(provider)
@@ -60,9 +49,6 @@ func main() {
 
 	e.GET("/runs/:narrator/:collection", s.RunNarratorScript)
 	e.GET("/stories/:narrator/:collection/:story", s.GetStory)
-
-	e.Static("/test", "static")
-	e.POST("/test/script", s.RunTestScript)
 
 	e.GET("/", func(c echo.Context) error {
 		return c.HTML(
