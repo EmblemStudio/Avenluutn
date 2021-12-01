@@ -50,6 +50,7 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
 
     publisher.narrators(params.narratorIndex)
       .then((nData: any) => {
+        console.log('data', nData)
         let newNarrator: Narrator = {
           ...nData,
           collections: [],
@@ -62,10 +63,12 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
         }
         
         const totalCollections = Number(newNarrator.totalCollections)
+        console.log('total', totalCollections)
         for (let i = 0; i < totalCollections; i++) {
           getCollection(params.narratorIndex, i)
             .then(c => {
               if (c) {
+                console.log('c', c)
                 newNarrator.collections.push(c)
                 concatCategorizedStories(
                   publisher, 
@@ -77,6 +80,7 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
                   c.scriptResult
                 )
                   .then((newStories: CategorizedStories) => {
+                    console.log('stories', newStories)
                     newNarrator.stories = newStories
                     setNarratorState({
                       narrator: newNarrator,
@@ -125,9 +129,12 @@ async function concatCategorizedStories(
   for (let j = 0; j < collectionSize; j++) {
     const storyIndex = j
     const id = await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex)
+    console.log('id', id)
     const startTime = await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex)
+    console.log('start time', startTime)
     const endTime = startTime.add(collectionLength)
     const contractStory = await publisher.stories(id)
+    console.log('contract story', contractStory)
     const auction: Auction = contractStory.auction
     const text = scriptResult.stories[j]
     const story: Story = {

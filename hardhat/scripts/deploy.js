@@ -41,8 +41,8 @@ async function main() {
    * add test narratorNFT
    */
   const narratorTx = await narratorNFTs.mint(
-    "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
-    "data:text/javascript;base64,YXN5bmMgZnVuY3Rpb24gdGVsbFN0b3JpZXMocmVzdWx0LCBhLCBiLCBjLCBkKSB7CiAgICBpZiAocmVzdWx0ID09PSBudWxsKSB7CiAgICAgICAgbGV0IHN0YXRlID0geyBob3dXZVdlcmU6ICAiY3VyaW91cyJ9CiAgICAgICAgcmVzdWx0ID0geyBuZXh0U3RhdGU6IHN0YXRlLCBzdG9yaWVzOiBbXSB9CiAgICB9CiAgICByZXR1cm4gewogICAgICAgIG5leHRTdGF0ZTogT2JqZWN0LmFzc2lnbihyZXN1bHQubmV4dFN0YXRlLCB7YTogYX0pLAogICAgICAgIHN0b3JpZXM6IFtgV2Ugd2VyZSAke3Jlc3VsdC5uZXh0U3RhdGUuaG93V2VXZXJlfS5gXQogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IHRlbGxTdG9yaWVzIH0="
+    "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
+    "https://gist.githubusercontent.com/jessebmiller/9295f7e34e05efc7c6e66b84c9f459de/raw/7a1c1583ca68cfb71fb3f351176a9468b0667669/bundle.js"
   )
 
   // add test narrator
