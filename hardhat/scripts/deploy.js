@@ -14,7 +14,7 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  console.log(hre.network)
+  // console.log(hre.network)
 
   // We get the contracts to deploy
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
@@ -46,6 +46,7 @@ async function main() {
   )
 
   // add test narrator
+  /*
   let pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
@@ -55,19 +56,22 @@ async function main() {
     1000,
     10000,
   )
+  */
   await narratorTx.wait()
-  await pubTx.wait()
+  // await pubTx.wait()
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
-  pubTx = await publisher.addNarrator(
+  const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
-    now, // start
-    100,           // totalCollections
-    60 * 60 * 12,  // collectionLength
-    60 * 60 * 15,  // collectionSpacing
-    3,             // collectionSize
+    now,              // start
+    100,              // totalCollections
+    60 * 60,          // collectionLength
+    60 * 60 * 3 / 2,  // collectionSpacing
+    5,                // collectionSize
   )
+  const receipt = await pubTx.wait()
+  console.log("New narrator added at index:", Number(receipt.events[0].args.count))
 }
 
 // We recommend this pattern to be able to use async/await everywhere
