@@ -24,9 +24,7 @@ export async function tellStories(
   totalStories: number,
   providerUrl?: string,
 ): Promise<ScriptResult> {
-  console.log("telling", totalStories, "stories")
   const provider = makeProvider(providerUrl)
-
   const startBlockHash = await nextBlockHash(startTime, provider)
   if (!startBlockHash) { throw new Error('No starting block hash') }
 
@@ -42,7 +40,7 @@ export async function tellStories(
   let events: Result[] = []
   for (let i = 0; i < totalStories; i++) {
     const story = await tellStory(
-      prng,
+      `${startBlockHash}{i}`, // prng,
       state,
       startTime,
       length,
@@ -62,26 +60,3 @@ export async function tellStories(
   return result
 }
 
-async function checkOne() {
-  return tellStories(
-    null,
-    1637168603,
-    86400,
-    2,
-    "http://localhost:8545",
-  )
-}
-
-boundingBlocks(10, "http://localhost:8545").then(
-  (blocks) => {
-    if (blocks === null) {
-      console.log("no bounding blocks")
-    } else {
-      const [lower, upper] = blocks
-      console.log(upper)
-      console.log(lower)
-      console.log(upper.timestamp - lower.timestamp)
-      console.log(upper.number - lower.number)
-    }
-  }
-).catch(console.error)

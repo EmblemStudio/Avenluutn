@@ -7,10 +7,9 @@ const utils_1 = require("./utils");
 const interfaces_1 = require("./content/interfaces");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 // TODO return results in a different list from story text, so they can be formatted differently by a front end?
-async function tellStory(prng, state, startTime, length, guildId, provider) {
-    const subSeed = prng.nextInt() + guildId;
-    const subPrng = new prando_1.default(subSeed);
-    const beginning = await tellBeginning(subPrng, state, startTime, length, guildId);
+async function tellStory(seed, //prng: Prando,
+state, startTime, length, guildId, provider) {
+    const beginning = await tellBeginning(seed, state, startTime, length, guildId);
     const middle = await tellMiddle(guildId, state, beginning, provider);
     const ending = await tellEnding(guildId, beginning, middle, provider);
     let res = {
@@ -41,9 +40,11 @@ async function tellStory(prng, state, startTime, length, guildId, provider) {
     return res;
 }
 exports.tellStory = tellStory;
-async function tellBeginning(prng, state, startTime, length, guildId
+async function tellBeginning(seed, // prng: Prando,
+state, startTime, length, guildId
 // provider: providers.BaseProvider
 ) {
+    const prng = new prando_1.default(seed);
     // Load guild
     const guild = state.guilds[guildId];
     if (!guild) {
@@ -110,46 +111,36 @@ async function tellMiddle(guildId, state, beginning, provider) {
     };
     let allOutcomesSucceeded = true;
     for (let i = 0; i < beginning.obstacleTimes.length; i++) {
-        console.log("Ob", i);
         if (allOutcomesSucceeded) {
             const obstacleTime = beginning.obstacleTimes[i];
             if (!obstacleTime) {
                 throw new Error("No obstacle time");
             }
             const obstacleHash = await (0, utils_1.nextBlockHash)(obstacleTime, provider);
-            console.log("Ob hash", obstacleHash);
-            if (obstacleHash) {
-                const obsSeed = obstacleHash + guildId;
-                console.log("obstacle seed", obsSeed);
-                const obsPrng = new prando_1.default(obstacleHash);
+            if (obstacleHash !== null) {
+                const obsSeed = obstacleHash + guildId + i;
+                const obsPrng = new prando_1.default(obsSeed);
                 if (i + 1 === beginning.obstacleTimes.length) {
                     const obstacle = (0, utils_1.questObstacle)(obsPrng, beginning.quest);
                     middle.obstacles.push(obstacle);
                     middle.obstacleText.push((0, utils_1.makeObstacleText)(obstacle));
                 }
                 else {
-                    console.log("getting random ob");
                     const obstacle = (0, utils_1.randomObstacle)(obsPrng, i + 1);
-                    console.log("got random ob", obstacle);
                     middle.obstacles.push(obstacle);
                     middle.obstacleText.push((0, utils_1.makeObstacleText)(obstacle));
-                    console.log("got obstacle text", middle.obstacleText);
                 }
             }
             const outcomeTime = beginning.outcomeTimes[i];
             if (!outcomeTime) {
                 throw new Error("No outcome time");
             }
-            console.log("getting next block hash");
             const outcomeHash = await (0, utils_1.nextBlockHash)(outcomeTime, provider);
-            console.log("outcome hash", outcomeHash);
             const obstacle = middle.obstacles[i];
             if (obstacle && outcomeHash) {
-                const outcomeSeed = outcomeHash + guildId;
+                const outcomeSeed = outcomeHash + guildId + i;
                 const outPrng = new prando_1.default(outcomeSeed);
-                console.log("finding outcome");
                 const outcome = await (0, utils_1.findOutcome)(outPrng, beginning.guild.id, obstacle, beginning.party, middle.allResults, provider);
-                console.log(outcome);
                 if (outcome.success === interfaces_1.Success.failure)
                     allOutcomesSucceeded = false;
                 if (i + 1 === beginning.obstacleTimes.length)
@@ -158,7 +149,6 @@ async function tellMiddle(guildId, state, beginning, provider) {
                 middle.allResults = [...middle.allResults, ...outcome.results];
                 // TODO outcome text should differentiate between main text and results text for UI purposes
                 middle.outcomeText = [...middle.outcomeText, (0, utils_1.makeOutcomeText)(outcome)];
-                console.log("outcome text", middle.outcomeText);
             }
         }
     }
@@ -173,7 +163,6 @@ async function tellEnding(guildId, beginning, middle, provider) {
      * check overall success level
      * create end text: [adv names] returned to [guild name] [triumphantly / in disgrace]. [if treasure] [Treasure] was added to the guild vault.
      */
-    console.log("telling ending", guildId);
     const ending = {
         results: [],
         text: [""]
@@ -185,7 +174,6 @@ async function tellEnding(guildId, beginning, middle, provider) {
     let oneLeft = false;
     if (endingHash) {
         const endingSeed = endingHash + guildId;
-        console.log("ending seed", endingSeed);
         const prng = new prando_1.default(endingSeed);
         for (let i = 0; i < middle.allResults.length; i++) {
             const result = middle.allResults[i];
