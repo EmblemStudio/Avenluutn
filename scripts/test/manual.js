@@ -37,7 +37,7 @@ tellCollection(
   null,
   1637168603,
   400,
-  1,
+  2,
   "http://localhost:8545",
   [],
 ).then(a => {
