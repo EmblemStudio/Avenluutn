@@ -18,13 +18,15 @@ export interface Narrator {
   collectionSpacing: BigNumber;
   collectionSize: BigNumber;
   collections: Collection[];
-  stories: CategorizedStories;
+  stories: StoriesByGuild;
 }
 
 export interface Collection {
   collectionIndex: number;
   scriptResult: ScriptResult;
 }
+
+export interface StoriesByGuild { [guildId: number]: CategorizedStories };
 
 export interface CategorizedStories {
   upcoming: Story[];
@@ -41,6 +43,8 @@ export interface Story {
   startTime: BigNumber;
   endTime: BigNumber;
   auction: Auction;
+  minted: boolean;
+  nftId: BigNumber;
   text: StoryText;
 }
 

@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { Story } from '../utils'
+import Countdown from './Countdown'
+import { Story, storyName, getTimeLeft } from '../utils'
+import { LOADING } from '../constants' 
 
-export default (story: Story) => {
+interface StoryBoxProps { story: Story }
+
+export default ({ story }: StoryBoxProps) => {
   return (
-    <section className="section pt-2 pb-6" key={story.collectionIndex}>
+    <section className="section pt-2 pb-5">
       <div className="container outer-border">
         <div className="container inner-border">
           <section className="section pt-5 pb-5">
@@ -43,8 +47,21 @@ export default (story: Story) => {
             <div className="block">
               {story.text.richText.ending}
             </div>
+            {getTimeLeft(Number(story.endTime)) > 0 &&
+              <div className="has-text-centered">
+                <div className="block">
+                  {LOADING}
+                </div>
+                <div className="block">
+                  <Countdown to={Number(story.endTime)}/>
+                </div>
+              </div>
+            }
           </section>
         </div>
+      </div>
+      <div className="container has-text-right is-garamond is-italic is-size-5 pr-1">
+        {`NFT ${storyName(story)}`}
       </div>
     </section>
   )

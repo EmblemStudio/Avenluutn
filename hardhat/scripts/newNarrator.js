@@ -8,7 +8,9 @@ async function main() {
   const signers = await hre.ethers.getSigners()
   const narratorNFTs = new Contract("0x2F48fD01C3f03bD8E16481369c88d94c5588B0ae", nftAbi, signers[0]) 
   const publisher = new Contract("0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4", publisherAbi, signers[0])
-  
+
+  const nftId = await narratorNFTs.ids()
+
   /**
    * mint narratorNFT
    */
@@ -21,11 +23,11 @@ async function main() {
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
-    0,
+    nftId,
     now,              // start
     100,              // totalCollections
-    60 * 60,          // collectionLength
-    60 * 60 * 3 / 2,  // collectionSpacing
+    1000 * 60 * 60,          // collectionLength
+    1000 * 60 * 60 * 3 / 2,  // collectionSpacing
     5,                // collectionSize
   )
   const receipt = await pubTx.wait()

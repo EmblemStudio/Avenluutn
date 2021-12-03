@@ -9,7 +9,12 @@ export default () => {
       <div className="level-left">
         <div className="level-item">
           <Link to="/">
-            <h1 className="title">The Grand Adventure</h1>
+            <div className="block has-text-centered mb-0">
+              <h2 className="subtitle has-text-white">The Grand Adventure:</h2>
+            </div>
+            <div className="block has-text-centered">
+              <h1 className="title">Avenluutn</h1>
+            </div>
           </Link>
         </div>
       </div>

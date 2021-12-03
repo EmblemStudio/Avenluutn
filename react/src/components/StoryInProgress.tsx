@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Story } from '../utils'
+import StoryBox from './StoryBox'
+import { Story, storyName } from '../utils'
 
 interface StoryInProgressProps {
   story: Story
@@ -8,8 +9,8 @@ interface StoryInProgressProps {
 
 export default ({ story }: StoryInProgressProps) => {
   return (
-    <div>
-      {story.text.plainText}
+    <div className="container">
+      <StoryBox story={story} />
     </div>
   )
 }

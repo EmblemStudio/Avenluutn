@@ -1,6 +1,7 @@
 import React from 'react'
 
 import GuildHeader from '../components/GuildHeader'
+import StoryBox from '../components/StoryBox'
 import UpcomingStory from '../components/UpcomingStory'
 import StoryInProgress from '../components/StoryInProgress'
 import useNarratorState from '../hooks/useNarratorState'
@@ -26,15 +27,25 @@ export default () => {
             </span>
             .
           </div>
+          {narrator.stories[guild.id].inProgress.length > 0 && 
+            <div className="block mb-4">
+              <div className="block">
+                Adventurers from {guild.name} have set forth. The bard tells their tales:
+              </div>
+              {narrator.stories[guild.id].inProgress.map(s => {
+                return <StoryBox key={s.collectionIndex} story={s}/>
+              })}
+            </div>
+          }
+          {narrator.stories[guild.id].upcoming.length > 0 && 
+            <div className="block">
+              <div className="block">
+                The bard indicates a shadowed crew in the corner: "They'll be leaving next."
+              </div>
+              <UpcomingStory story={narrator.stories[guild.id].upcoming[0]} />
+            </div>
+          }
         </>}
-        <div className="block">
-          {narrator.stories.inProgress.map(s => { 
-            return <StoryInProgress key={s.collectionIndex} story={s} />
-          })}
-          {narrator.stories.upcoming.map(s => { 
-            return <UpcomingStory key={s.collectionIndex} story={s} />
-          })}
-        </div>
       </div>
     </>
   )

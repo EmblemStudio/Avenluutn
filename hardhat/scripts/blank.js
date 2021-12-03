@@ -9,7 +9,11 @@ async function main() {
   const narratorNFTs = new Contract("0x2F48fD01C3f03bD8E16481369c88d94c5588B0ae", nftAbi, signers[0]) 
   const publisher = new Contract("0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4", publisherAbi, signers[0])
   
-  console.log(await publisher.narratorCount())
+  const nftId = await narratorNFTs.ids()
+
+  // console.log('nftId', nftId)
+  console.log(await publisher.narrators(3))
+  console.log(await narratorNFTs.tokenURI(3))
 }
 
 // We recommend this pattern to be able to use async/await everywhere

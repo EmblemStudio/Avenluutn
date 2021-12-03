@@ -1,6 +1,6 @@
 export const NARRATOR_PARAMS = {
   network: "ropsten", 
-  narratorIndex: 0
+  narratorIndex: 3
 }
 
 export const WARNINGS = {
@@ -17,7 +17,7 @@ export const SERVER = "http://67.205.138.92"
 export const CACHE_PERIOD = 180000 // 3 minutes
 
 export const API_URIS: { [network: string]: string } = {
-  ropsten: "https://ropsten.infura.io/v3/46801402492348e480a7e18d9830eab8"
+  ropsten: "https://eth-ropsten.alchemyapi.io/v2/tDTu2vhfHnGOWJuM0p1DrA6BBJn0uDL3"
 }
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]

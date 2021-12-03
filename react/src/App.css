@@ -41,6 +41,17 @@ html {
   flex-direction: column;
 }
 
+.is-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-half-width {
+  width: 50%;
+}
+
 /* Borders */
 
 .outer-border {
@@ -125,4 +136,17 @@ html {
 
 .notification a:not(.button):not(.dropdown-item) {
   text-decoration: none;
+}
+
+/* Forms */
+
+.textarea, .input {
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  width: 75px;
+}
+
+.input:focus, .input:active {
+  border: none;
 }

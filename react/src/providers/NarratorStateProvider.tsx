@@ -1,12 +1,13 @@
 import React, { useState, useEffect, createContext, ReactElement } from 'react'
 import { Contract } from '@ethersproject/contracts'
 import { BigNumber } from '@ethersproject/bignumber'
+import { AddressZero } from '@ethersproject/constants'
 import axios from 'axios'
 
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
 import { ScriptResult } from '../../../scripts/src'
-import { NarratorParams, Narrator, Auction, Collection, Story, CategorizedStories, presentOrPast } from '../utils'
+import { NarratorParams, Narrator, Auction, Collection, Story, StoriesByGuild, CategorizedStories, presentOrPast } from '../utils'
 import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
 
 const emptyNarrator: Narrator = {
@@ -18,12 +19,7 @@ const emptyNarrator: Narrator = {
   collectionSize: BigNumber.from(0),
   collectionSpacing: BigNumber.from(0),
   collections: [],
-  stories: {
-    upcoming: [],
-    inProgress: [],
-    onAuction: [],
-    completed: []
-  }
+  stories: {}
 }
 
 export const NarratorStateContext = createContext({
@@ -40,6 +36,7 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
   })
 
   useEffect(() => {
+    console.log('narrator use effect')
     if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
       return
     }
@@ -48,48 +45,42 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
     const publisher = useContractReadable(address, artifact.abi, params.network)
     if (!publisher) return
 
-    publisher.narrators(params.narratorIndex)
-      .then((nData: any) => {
-        console.log('data', nData)
-        let newNarrator: Narrator = {
-          ...nData,
-          collections: [],
-          stories: {
-            upcoming: [],
-            inProgress: [],
-            onAuction: [],
-            completed: []
+    publisher.baseAuctionDuration()
+      .then((baseAuctionDuration: BigNumber) => {
+        publisher.narrators(params.narratorIndex)
+        .then((nData: any) => {
+          let newNarrator: Narrator = {
+            ...nData,
+            collections: [],
+            stories: {}
           }
-        }
-        
-        const totalCollections = Number(newNarrator.totalCollections)
-        console.log('total', totalCollections)
-        for (let i = 0; i < totalCollections; i++) {
-          getCollection(params.narratorIndex, i)
-            .then(c => {
-              if (c) {
-                console.log('c', c)
-                newNarrator.collections.push(c)
-                concatCategorizedStories(
-                  publisher, 
-                  params.narratorIndex,
-                  Number(newNarrator.collectionSize),
-                  newNarrator.collectionLength,
-                  c,
-                  newNarrator.stories,
-                  c.scriptResult
-                )
-                  .then((newStories: CategorizedStories) => {
-                    console.log('stories', newStories)
-                    newNarrator.stories = newStories
-                    setNarratorState({
-                      narrator: newNarrator,
-                      lastUpdate: Date.now()
+          const totalCollections = Number(newNarrator.totalCollections)
+          for (let i = 0; i < totalCollections; i++) {
+            getCollection(params.narratorIndex, i)
+              .then(c => {
+                if (c) {
+                  newNarrator.collections.push(c)
+                  concatCategorizedStories(
+                    publisher, 
+                    baseAuctionDuration,
+                    params.narratorIndex,
+                    Number(newNarrator.collectionSize),
+                    newNarrator.collectionLength,
+                    c,
+                    newNarrator.stories,
+                    c.scriptResult
+                  )
+                    .then((newStories: StoriesByGuild) => {
+                      newNarrator.stories = newStories
+                      setNarratorState({
+                        narrator: newNarrator,
+                        lastUpdate: Date.now()
+                      })
                     })
-                  })
-              }
-            })
-        }
+                }
+              })
+          }
+        })
       })
   }, [narratorState])
 
@@ -118,23 +109,21 @@ async function getCollection(
 
 async function concatCategorizedStories(
   publisher: Contract,
+  auctionDuration: BigNumber,
   narratorIndex: number,
   collectionSize: number,
   collectionLength: BigNumber,
   collection: Collection,
-  storiesSoFar: CategorizedStories,
+  storiesSoFar: StoriesByGuild,
   scriptResult: ScriptResult,
-): Promise<CategorizedStories> {
+): Promise<StoriesByGuild> {
   const collectionIndex = collection.collectionIndex
   for (let j = 0; j < collectionSize; j++) {
     const storyIndex = j
     const id = await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex)
-    console.log('id', id)
     const startTime = await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex)
-    console.log('start time', startTime)
     const endTime = startTime.add(collectionLength)
     const contractStory = await publisher.stories(id)
-    console.log('contract story', contractStory)
     const auction: Auction = contractStory.auction
     const text = scriptResult.stories[j]
     const story: Story = {
@@ -145,23 +134,37 @@ async function concatCategorizedStories(
       startTime,
       endTime,
       auction,
+      minted: contractStory.minted,
+      nftId: contractStory.nftId,
       text
     }
-    const started = presentOrPast(story.startTime)
-    const ended = presentOrPast(story.endTime)
-    if (!started) {
-      storiesSoFar.upcoming.push(story)
-    } else if (started && !ended) {
-      storiesSoFar.inProgress.push(story)
-    } else if (ended && story.auction.duration.gt(0)) {
-      storiesSoFar.onAuction.push(story)
-    } else if (ended && story.auction.duration.isZero()) {
-      storiesSoFar.completed.push(story)
+    if (auction.bidder === AddressZero) { 
+      story.auction = Object.assign({}, auction, { duration: auctionDuration })
     }
+    const started = presentOrPast(story.startTime)
+    const storyEnded = presentOrPast(story.endTime)
+    const auctionEnded = presentOrPast(story.endTime.add(story.auction.duration))
+    if (!storiesSoFar[storyIndex]) {
+      storiesSoFar[storyIndex] = {
+        upcoming: [],
+        inProgress: [],
+        onAuction: [],
+        completed: []
+      }
+    }
+    if (!started) {
+      storiesSoFar[storyIndex].upcoming.push(story)
+    } else if (started && !storyEnded) {
+      storiesSoFar[storyIndex].inProgress.push(story)
+    } else if (storyEnded && !auctionEnded) {
+      storiesSoFar[storyIndex].onAuction.push(story)
+    } else if (storyEnded && auctionEnded) {
+      storiesSoFar[storyIndex].completed.push(story)
+    }
+    storiesSoFar[storyIndex].upcoming.sort(sortStories)
+    storiesSoFar[storyIndex].inProgress.sort(sortStories)
+    storiesSoFar[storyIndex].onAuction.sort(sortStories)
+    storiesSoFar[storyIndex].completed.sort(sortStories)
   }
-  storiesSoFar.upcoming.sort(sortStories)
-  storiesSoFar.inProgress.sort(sortStories)
-  storiesSoFar.onAuction.sort(sortStories)
-  storiesSoFar.completed.sort(sortStories)
   return storiesSoFar
 }

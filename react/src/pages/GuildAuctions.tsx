@@ -14,6 +14,9 @@ export default () => {
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
   const { addNotification } = useNotifications()
+  if (guild) {
+    console.log('auctions', narrator.stories[guild.id].onAuction)
+  }
 
   return (
     <>
@@ -23,17 +26,17 @@ export default () => {
           <div className="block">
             New pages for the guild logbook are being auctioned. Will you sponsor these quests?
           </div>
+          <div className="block">
+            {narrator.stories[guild.id].onAuction.map(s => { 
+              return <StoryAuction 
+                key={s.collectionIndex} 
+                publisher={publisher}
+                story={s} 
+                addNotification={addNotification}
+              />
+            })}
+          </div>
         </>}
-        <div className="block">
-          {narrator.stories.onAuction.map(s => { 
-            return <StoryAuction 
-              key={s.collectionIndex} 
-              publisher={publisher}
-              story={s} 
-              addNotification={addNotification}
-            />
-          })}
-        </div>
       </div>
     </>
   )

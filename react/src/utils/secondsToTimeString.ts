@@ -8,8 +8,8 @@ export function secondsToTimeString(seconds: number): string {
   let secondString: string
   let minuteString: string
   let hourString: string
-  seconds === 0 ? secondString = "00" : secondString = seconds.toString()
-  minutes === 0 ? minuteString = "00" : minuteString = minutes.toString()
-  hours === 0 ? hourString = "00" : hourString = hours.toString()
+  seconds < 10 ? secondString = `0${seconds}` : secondString = seconds.toString()
+  minutes < 10 ? minuteString = `0${minutes}` : minuteString = minutes.toString()
+  hours < 10 ? hourString = `0${hours}` : hourString = hours.toString()
   return `${hourString}:${minuteString}:${secondString}`
 }
