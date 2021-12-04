@@ -3,6 +3,7 @@ import { useWallet } from 'use-wallet'
 
 import { shortAddress } from '../utils'
 import MetamaskSVG from '../assets/images/metamask-fox.svg'
+import WalletConnectSVG from '../assets/images/walletconnect-logo.svg'
 
 export default () => {
   const [modalActive, setModalActive] = useState("")
@@ -51,3 +52,18 @@ export default () => {
 }
 
 // TODO Walletconnect
+/*
+<section className="section">
+  <a 
+    className="button is-ghost has-text-black"
+    onClick={()=>{
+      console.log('trying to do walletconnect')
+      wallet.connect("walletconnect").then(() => console.log('wallet', wallet))
+      setModalActive("")
+    }}
+  >
+    <img src={WalletConnectSVG} alt="WalletConnect" width="80px"/>
+    <h2 className="subtitle pl-5">WalletConnect</h2>
+  </a>
+</section>
+*/

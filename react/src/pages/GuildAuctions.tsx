@@ -13,10 +13,7 @@ export default () => {
   const narrator = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
-  const { addNotification } = useNotifications()
-  if (guild) {
-    console.log('auctions', narrator.stories[guild.id].onAuction)
-  }
+  const { addNotification, removeNotification } = useNotifications()
 
   return (
     <>
@@ -33,6 +30,7 @@ export default () => {
                 publisher={publisher}
                 story={s} 
                 addNotification={addNotification}
+                removeNotification={removeNotification}
               />
             })}
           </div>

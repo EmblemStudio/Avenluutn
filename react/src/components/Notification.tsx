@@ -1,8 +1,14 @@
 import React from 'react'
 
-export default (text: string, color: string, key: number, close: React.MouseEventHandler) => {
+interface NotificationProps {
+  text: string,
+  color: string,
+  close: React.MouseEventHandler
+}
+
+export default ({ text, color, close }: NotificationProps) => {
   return (
-    <div className={`notification has-text-${color}`} key={key}>
+    <div className={`notification is-fixed has-text-${color}`}>
       <nav className="level">
         <div className="level-left">
           <div className="level-item">

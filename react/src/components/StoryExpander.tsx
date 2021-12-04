@@ -6,11 +6,12 @@ interface StoryExpanderProps {
   children: ReactElement;
   index: number;
   name: string;
+  claimable: boolean;
   expanders: Expanders;
   setExpanders: Function;
 }
 
-export default ({children, index, name, expanders, setExpanders}: StoryExpanderProps) => {
+export default ({children, index, name, claimable, expanders, setExpanders}: StoryExpanderProps) => {
   let expanded: boolean | undefined = expanders[index]
 
   function toggle() {
@@ -32,14 +33,22 @@ export default ({children, index, name, expanders, setExpanders}: StoryExpanderP
       { expanded ?
         <>
           <a className="has-text-white is-size-4" onClick={toggle}>
-            V <span className="is-garamond is-italic">{name}</span>
+            {"V "} 
+            <span className="is-garamond is-italic">
+              {name}
+            </span>
+            { claimable && <span> ✨ </span> }
           </a>
           {children}
         </>
       :
         <>
           <a className="has-text-white is-size-4" onClick={toggle}>
-            > <span className="is-garamond is-italic">{name}</span>
+            {"> "} 
+            <span className="is-garamond is-italic">
+              {name}
+            </span>
+            { claimable && <span> ✨ </span> }
           </a>
         </>
       }

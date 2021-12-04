@@ -1,20 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { AddressZero } from '@ethersproject/constants';
+import { parseEther, formatEther } from '@ethersproject/units'
+import { TransactionResponse, TransactionReceipt } from '@ethersproject/providers'
 
 import Countdown from './Countdown'
 import StoryBox from './StoryBox'
-import { Story, shortAddress, presentOrPast } from '../utils'
+import { Story, shortAddress, presentOrPast, NotificationFunction } from '../utils'
+import { STATUS } from '../constants'
+
+// TODO Error notifications if not enough funds or bid not high enough
 
 interface StoryAuctionProps {
   story: Story;
   publisher: Contract | string;
-  addNotification: Function;
+  addNotification: NotificationFunction;
+  removeNotification: NotificationFunction;
 }
 
-export default ({story, publisher, addNotification}: StoryAuctionProps) => {
-  // console.log('story auction', story)
+export default ({ story, publisher, addNotification, removeNotification }: StoryAuctionProps) => {
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
+  const [bid, setBid] = useState<BigNumber>(parseEther("0"))
+
+  const handleSetBid = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value
+    if (value === null) return
+    if (value === "") value = "0"
+    setBid(parseEther(value))
+  }
+
+  const handleBid = () => {
+    if (typeof publisher === "string") { 
+      addNotification("warnings", publisher)
+    } else {
+      publisher.signer.getAddress()
+        .then(address => {
+          publisher.bid(
+            story.narratorIndex,
+            story.collectionIndex,
+            story.storyIndex,
+            address,
+            { value: bid }
+          )
+            .then((res: TransactionResponse) => {
+              addNotification("status", STATUS.tx_submitted)
+              res.wait().then((rec: TransactionReceipt) => {
+                removeNotification("status", STATUS.tx_submitted)
+                addNotification("status", STATUS.tx_confirmed)
+              })
+            })
+        })
+    }
+  }
 
   const handleClaim = () => {
     if (typeof publisher === "string") { 
@@ -28,6 +66,13 @@ export default ({story, publisher, addNotification}: StoryAuctionProps) => {
             story.storyIndex,
             address
           )
+            .then((res: TransactionResponse) => {
+              addNotification("status", STATUS.tx_submitted)
+              res.wait().then((rec: TransactionReceipt) => {
+                removeNotification("status", STATUS.tx_submitted)
+                addNotification("status", STATUS.tx_confirmed)
+              })
+            })
         })
     }
   }
@@ -42,6 +87,13 @@ export default ({story, publisher, addNotification}: StoryAuctionProps) => {
         story.storyIndex,
         story.auction.bidder
       )
+        .then((res: TransactionResponse) => {
+          addNotification("status", STATUS.tx_submitted)
+          res.wait().then((rec: TransactionReceipt) => {
+            removeNotification("status", STATUS.tx_submitted)
+            addNotification("status", STATUS.tx_confirmed)
+          })
+        })
     }
   }
 
@@ -56,10 +108,10 @@ export default ({story, publisher, addNotification}: StoryAuctionProps) => {
         </div>
         <div className="level-item is-vertical">
           <div className="container">
-            Last bid: {story.auction.amount.toString()} ETH
+            Last bid: <span className="has-text-grey">{formatEther(story.auction.amount)} ETH</span>
           </div>
           {story.auction.bidder !== AddressZero &&
-            <div className="container is-size-7">
+            <div className="container is-size-7 has-text-grey">
               by {shortAddress(story.auction.bidder)}
             </div>
           }
@@ -67,9 +119,11 @@ export default ({story, publisher, addNotification}: StoryAuctionProps) => {
         <div className="level-item">
           {!auctionOver ? 
             <div className="container has-text-centered is-flex-row">
-              <input className="input is-ibm is-size-6 mr-1" type="text" placeholder="0" />
-              <span className="is-text-grey mr-1">ETH</span>
-              <a className="button is-ghost is-underlined">Bid</a>
+              <div className="outer-border mr-1">
+                <input className="input has-text-black is-ibm is-size-6" type="text" placeholder="0" onChange={handleSetBid}/>
+              </div>
+              <span className="has-text-grey mr-1">ETH</span>
+              <a className="button is-ghost is-underlined" onClick={handleBid}>Bid</a>
             </div>
           :
             story.minted ?
@@ -86,12 +140,3 @@ export default ({story, publisher, addNotification}: StoryAuctionProps) => {
     </div>
   )
 }
-
-// if auction is over
-//   if story is minted
-//     already minted 
-//   else
-//     if bids
-//        claim for winner
-//     else 
-//        open claim

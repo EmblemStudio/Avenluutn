@@ -1,6 +1,6 @@
 import React, { useState, createContext, ReactElement } from 'react'
 
-import { Notifications } from '../utils'
+import { Notifications, NotificationFunction } from '../utils'
 
 const emptyNotifs: Notifications = {
   errors: [],
@@ -10,14 +10,14 @@ const emptyNotifs: Notifications = {
 
 interface INotificationsContext {
   notifications: Notifications,
-  addNotification: Function,
-  removeNotification: Function
+  addNotification: NotificationFunction,
+  removeNotification: NotificationFunction
 }
 
 export const NotificationsContext = createContext<INotificationsContext>({
   notifications: emptyNotifs,
-  addNotification: () => {},
-  removeNotification: () => {}
+  addNotification: (type: "errors" | "warnings" | "status", text: string) => {},
+  removeNotification: (type: "errors" | "warnings" | "status", text: string) => {}
 })
 
 export default ({ children }: { children: ReactElement }) => {

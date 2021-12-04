@@ -6,8 +6,6 @@ import Notification from './Notification'
 import { noConnection, wrongNetwork } from '../utils'
 import { NARRATOR_PARAMS, WARNINGS } from '../constants'
 
-// TODO Notification block should float and freeze on screen so visible from anywhere
-
 export default () => {
   const { notifications, removeNotification } = useNotifications()
   const wallet = useWallet()
@@ -26,13 +24,13 @@ export default () => {
   return (
     <div className="container is-fluid pl-4 pb-3">
       {notifications.errors.map((e, i) => {
-        return Notification("Error: " + e, "red", i, closeFactory("errors", e))
+        return <Notification key={i} text={"Error: " + e} color="red" close={closeFactory("errors", e)}/>
       })}
       {notifications.warnings.map((w, i) => {
-        return Notification("Warning: " + w, "orange", i, closeFactory("warnings", w))
+        return <Notification key={i} text={"Warning: " + w} color="orange" close={closeFactory("warnings", w)}/>
       })}
       {notifications.status.map((s, i) => {
-        return Notification("Status: " + s, "green", i, closeFactory("status", s))
+        return <Notification key={i} text={"Status: " + s} color="green" close={closeFactory("status", s)}/>
       })}
     </div>
   )

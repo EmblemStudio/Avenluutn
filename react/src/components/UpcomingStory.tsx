@@ -9,8 +9,8 @@ interface UpcomingStoryProps {
 
 export default ({ story }: UpcomingStoryProps) => {
   return (
-    <div className="block has-text-grey has-text-centered">
-      Leaving in <Countdown to={Number(story.startTime)} />
+    <div className="block has-text-grey">
+      "They'll be leaving in <Countdown to={Number(story.startTime)} />"
     </div>
   )
 }

@@ -138,7 +138,18 @@ html {
   text-decoration: none;
 }
 
+.is-fixed {
+  position: fixed;
+  width: 90%;
+  left: 5%;
+  z-index: 1;
+}
+
 /* Forms */
+
+.input {
+  height: 30px;
+}
 
 .textarea, .input {
   box-shadow: none;

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { AddressZero } from '@ethersproject/constants'
+import { useWallet } from 'use-wallet'
 
 import GuildHeader from '../components/GuildHeader'
 import StoryAuction from '../components/StoryAuction'
@@ -8,14 +10,24 @@ import useNarratorState from '../hooks/useNarratorState'
 import usePublisher from '../hooks/usePublisher'
 import useGuild from '../hooks/useGuild'
 import { NARRATOR_PARAMS } from '../constants'
-import { coloredBoldStyle, storyName } from '../utils'
+import { coloredBoldStyle, storyName, Story } from '../utils'
 
 export default () => {
   const narrator = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
+  const wallet = useWallet()
   const { guild, color } = useGuild(narrator)
   const [expanders, setExpanders] = useState<{ [key: number]: boolean }>({})
-  const { addNotification } = useNotifications()
+  const { addNotification, removeNotification } = useNotifications()
+
+  function isClaimable(s: Story): boolean {
+    if (!s.minted) {
+      if (s.auction.bidder === AddressZero) return true
+      if (typeof publisher === "string") return false
+      if (wallet.account === s.auction.bidder) return true
+    }
+    return false
+  }
 
   return (
     <>
@@ -41,10 +53,16 @@ export default () => {
                       key={s.collectionIndex} 
                       index={s.collectionIndex} 
                       name={storyName(s)} 
+                      claimable={isClaimable(s)}
                       expanders={expanders} 
                       setExpanders={setExpanders}
                     >
-                      <StoryAuction story={s} publisher={publisher} addNotification={addNotification} />
+                      <StoryAuction 
+                        story={s} 
+                        publisher={publisher} 
+                        addNotification={addNotification} 
+                        removeNotification={removeNotification}
+                      />
                     </StoryExpander>
                   )
                 })

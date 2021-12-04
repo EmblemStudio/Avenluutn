@@ -7,6 +7,8 @@ export interface Notifications {
   status: string[];
 }
 
+export type NotificationFunction = (type: "errors" | "warnings" | "status", text: string) => void
+
 export interface NarratorParams { network: string; narratorIndex: number }
 
 export interface Narrator {
