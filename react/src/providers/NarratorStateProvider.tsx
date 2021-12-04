@@ -1,3 +1,4 @@
+import assert from 'assert'
 import React, { useState, useEffect, createContext, ReactElement } from 'react'
 import { Contract } from '@ethersproject/contracts'
 import { BigNumber } from '@ethersproject/bignumber'
@@ -26,15 +27,24 @@ const emptyNarrator: Narrator = {
   }
 }
 
+// requireDefined asserts that the value is just the value as opposed to nothing
+function requireDefined<T>(val: T, msg?: string): asserts val is NonNullable<T> {
+  if (val === undefined || val === null) {
+    throw new Error(
+      msg ?? `'val' required to be defined, but received ${val}`
+    );
+  }
+}
+
 export const NarratorStateContext = createContext({
-  narratorState: { 
+  narratorState: {
     narrator: emptyNarrator,
     lastUpdate: 0
   }
 })
 
 export default ({ params, children }: { params: NarratorParams, children: ReactElement }) => {
-  const [narratorState, setNarratorState] = useState({ 
+  const [narratorState, setNarratorState] = useState({
     narrator: emptyNarrator,
     lastUpdate: 0
   })
@@ -43,8 +53,9 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
     if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
       return
     }
-    
+
     const address = ADDRESSES[params.network]
+    requireDefined(address, "Address for ${params.netowrk} required")
     const publisher = useContractReadable(address, artifact.abi, params.network)
     if (!publisher) return
 
@@ -61,7 +72,7 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
             completed: []
           }
         }
-        
+
         const totalCollections = Number(newNarrator.totalCollections)
         console.log('total', totalCollections)
         for (let i = 0; i < totalCollections; i++) {
@@ -71,7 +82,7 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
                 console.log('c', c)
                 newNarrator.collections.push(c)
                 concatCategorizedStories(
-                  publisher, 
+                  publisher,
                   params.narratorIndex,
                   Number(newNarrator.collectionSize),
                   newNarrator.collectionLength,
@@ -137,6 +148,10 @@ async function concatCategorizedStories(
     console.log('contract story', contractStory)
     const auction: Auction = contractStory.auction
     const text = scriptResult.stories[j]
+    if (text === undefined) {
+      console.warn("scriptResult missing story at index", j)
+      continue
+    }
     const story: Story = {
       narratorIndex,
       collectionIndex,

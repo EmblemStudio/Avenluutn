@@ -1,5 +1,5 @@
 export const NARRATOR_PARAMS = {
-  network: "ropsten", 
+  network: "ropsten",
   narratorIndex: 0
 }
 
@@ -21,6 +21,7 @@ export const API_URIS: { [network: string]: string } = {
 }
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]
+export const DEFAULT_COLOR = "gray"
 
 export const LOADING = ". . ."
 

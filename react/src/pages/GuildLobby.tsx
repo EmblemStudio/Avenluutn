@@ -21,17 +21,17 @@ export default () => {
           </div>
           <div className="block">
             {"A plaque over the door reads "}
-            <span className={coloredBoldStyle(color)}>
+            <span className={coloredBoldStyle(color ?? null)}>
               "{guild.motto}"
             </span>
             .
           </div>
         </>}
         <div className="block">
-          {narrator.stories.inProgress.map(s => { 
+          {narrator.stories.inProgress.map(s => {
             return <StoryInProgress key={s.collectionIndex} story={s} />
           })}
-          {narrator.stories.upcoming.map(s => { 
+          {narrator.stories.upcoming.map(s => {
             return <UpcomingStory key={s.collectionIndex} story={s} />
           })}
         </div>

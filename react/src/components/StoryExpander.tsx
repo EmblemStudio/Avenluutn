@@ -39,7 +39,7 @@ export default ({children, index, name, expanders, setExpanders}: StoryExpanderP
       :
         <>
           <a className="has-text-white is-size-4" onClick={toggle}>
-            > <span className="is-garamond is-italic">{name}</span>
+            <span className="is-garamond is-italic">{name}</span>
           </a>
         </>
       }

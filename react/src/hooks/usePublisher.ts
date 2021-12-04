@@ -7,6 +7,9 @@ import { ADDRESSES } from '../constants'
 
 export default (params: NarratorParams): Contract | string => {
   const address = ADDRESSES[params.network]
+  if (address === undefined) {
+    throw new Error(`Missing required address for ${params.network}`)
+  }
   let publisher = useContractWritable(address, artifact.abi, params.network)
   return publisher
 }
