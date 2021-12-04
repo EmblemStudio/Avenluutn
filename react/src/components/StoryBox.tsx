@@ -29,16 +29,16 @@ export default ({ story }: StoryBoxProps) => {
                     <div className="block">
                       {o}
                       {" "}
-                      {story.text.richText.middle.outcomeText[i].main}
+                      {story.text.richText.middle.outcomeText[i]?.main ?? "Unknown outcome"}
                     </div>
                     <div className="block">
-                      {story.text.richText.middle.outcomeText[i].results.map((r, i) => {
+                      {story.text.richText.middle.outcomeText[i]?.results.map((r, i) => {
                         return (
                           <div className="container has-text-grey" key={i}>
                             {r}
                           </div>
                         )
-                      })}
+                      }) ?? "Unknown result"}
                     </div>
                   </div>
                 )

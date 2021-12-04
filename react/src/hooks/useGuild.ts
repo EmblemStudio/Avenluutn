@@ -12,8 +12,11 @@ export default (narrator: Narrator) => {
     color = guildColor(guildIndex)
     if (narrator.collections.length > 0) {
       // get most recent guild state
-      guild = narrator.collections[narrator.collections.length - 1]
-        .scriptResult.nextState.guilds[guildIndex]
+      const collection = narrator.collections[narrator.collections.length - 1]
+      if (collection === undefined) {
+        return { guild: null, collor: null }
+      }
+      guild = collection.scriptResult.nextState.guilds[guildIndex] ?? null
     }
   }
   return { guild, color }

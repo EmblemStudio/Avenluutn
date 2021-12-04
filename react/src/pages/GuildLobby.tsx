@@ -21,7 +21,7 @@ export default () => {
           </div>
           <div className="block">
             {"A plaque over the door reads "}
-            <span className={coloredBoldStyle(color)}>
+            <span className={coloredBoldStyle(color ?? null)}>
               "{guild.motto}"
             </span>
             .

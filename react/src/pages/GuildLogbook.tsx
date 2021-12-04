@@ -35,8 +35,8 @@ export default () => {
       <div className="block p-4">
         {guild && <>
           <div className="block">
-            {"The logbook is engraved with the guild motto: "} 
-            <span className={coloredBoldStyle(color)}>
+            {"The logbook is engraved with the guild motto: "}
+            <span className={coloredBoldStyle(color ?? null)}>
               “{guild.motto}”
             </span>
             . It records deeds past:
