@@ -42,7 +42,7 @@ async function main() {
    */
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://gist.githubusercontent.com/jessebmiller/9295f7e34e05efc7c6e66b84c9f459de/raw/7a1c1583ca68cfb71fb3f351176a9468b0667669/bundle.js"
+    "https://gist.githubusercontent.com/jessebmiller/e7b6cab916151b176278d43ccf0946db/raw/4600ba92972119db1a4645e6c64e5e8da5465fea/bundle_2021-12-02.js"
   )
 
   // add test narrator

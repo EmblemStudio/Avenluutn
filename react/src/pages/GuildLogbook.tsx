@@ -13,7 +13,7 @@ import { NARRATOR_PARAMS } from '../constants'
 import { coloredBoldStyle, storyName, Story } from '../utils'
 
 export default () => {
-  const narrator = useNarratorState()
+  const { narrator } = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
   const wallet = useWallet()
   const { guild, color } = useGuild(narrator)

@@ -11,6 +11,12 @@ export type NotificationFunction = (type: "errors" | "warnings" | "status", text
 
 export interface NarratorParams { network: string; narratorIndex: number }
 
+export interface NarratorState {
+  narrator: Narrator,
+  updateNarrator: () => void,
+  lastUpdate: number
+}
+
 export interface Narrator {
   NFTAddress: string;
   NFTId: BigNumber;

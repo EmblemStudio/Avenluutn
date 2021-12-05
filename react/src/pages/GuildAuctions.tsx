@@ -10,7 +10,7 @@ import { coloredBoldStyle } from '../utils'
 import { NARRATOR_PARAMS } from '../constants'
 
 export default () => {
-  const narrator = useNarratorState()
+  const { narrator } = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
   const { addNotification, removeNotification } = useNotifications()
@@ -24,7 +24,7 @@ export default () => {
             New pages for the guild logbook are being auctioned. Will you sponsor these quests?
           </div>
           <div className="block">
-            {narrator.stories[guild.id].onAuction.map(s => { 
+            {narrator.stories[guild.id]?.onAuction.map(s => { 
               return <StoryAuction 
                 key={s.collectionIndex} 
                 publisher={publisher}

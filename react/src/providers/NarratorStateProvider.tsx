@@ -1,4 +1,3 @@
-import assert from 'assert'
 import React, { useState, useEffect, createContext, ReactElement } from 'react'
 import { Contract } from '@ethersproject/contracts'
 import { BigNumber } from '@ethersproject/bignumber'
@@ -8,7 +7,7 @@ import axios from 'axios'
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
 import { ScriptResult } from '../../../scripts/src'
-import { NarratorParams, Narrator, Auction, Collection, Story, StoriesByGuild, CategorizedStories, presentOrPast } from '../utils'
+import { NarratorParams, Narrator, Auction, Collection, Story, StoriesByGuild, NarratorState, presentOrPast } from '../utils'
 import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
 
 const emptyNarrator: Narrator = {
@@ -32,74 +31,85 @@ function requireDefined<T>(val: T, msg?: string): asserts val is NonNullable<T> 
   }
 }
 
-export const NarratorStateContext = createContext({
-  narratorState: {
-    narrator: emptyNarrator,
-    lastUpdate: 0
-  }
+export const NarratorStateContext = createContext<NarratorState>({
+  narrator: emptyNarrator,
+  updateNarrator: () => {},
+  lastUpdate: 0
 })
 
 export default ({ params, children }: { params: NarratorParams, children: ReactElement }) => {
-  const [narratorState, setNarratorState] = useState({
+  const [narratorState, setNarratorState] = useState<NarratorState>({
     narrator: emptyNarrator,
+    updateNarrator: () => {},
     lastUpdate: 0
   })
 
+  // TODO narrator should reload if cache is stale on page load
+  // TODO narrator statue is re-rendering or updating too many times
   useEffect(() => {
-    console.log('narrator use effect')
-    if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
-      return
-    }
-
-    const address = ADDRESSES[params.network]
-    requireDefined(address, "Address for ${params.netowrk} required")
-    const publisher = useContractReadable(address, artifact.abi, params.network)
-    if (!publisher) return
-
-    publisher.baseAuctionDuration()
-      .then((baseAuctionDuration: BigNumber) => {
-        publisher.narrators(params.narratorIndex)
-        .then((nData: any) => {
-          let newNarrator: Narrator = {
-            ...nData,
-            collections: [],
-            stories: {}
-          }
-          const totalCollections = Number(newNarrator.totalCollections)
-          for (let i = 0; i < totalCollections; i++) {
-            getCollection(params.narratorIndex, i)
-              .then(c => {
-                if (c) {
-                  newNarrator.collections.push(c)
-                  concatCategorizedStories(
-                    publisher, 
-                    baseAuctionDuration,
-                    params.narratorIndex,
-                    Number(newNarrator.collectionSize),
-                    newNarrator.collectionLength,
-                    c,
-                    newNarrator.stories,
-                    c.scriptResult
-                  )
-                    .then((newStories: StoriesByGuild) => {
-                      newNarrator.stories = newStories
-                      setNarratorState({
-                        narrator: newNarrator,
-                        lastUpdate: Date.now()
-                      })
-                    })
-                }
-              })
-          }
-        })
-      })
+    updateNarratorState(narratorState, setNarratorState, params)
+    setInterval(
+      () => { 
+        console.log('Polling narrator data')
+        updateNarratorState(narratorState, setNarratorState, params) 
+      },
+      60000
+    )
   }, [narratorState])
 
   return (
-    <NarratorStateContext.Provider value={{ narratorState }}>
+    <NarratorStateContext.Provider value={narratorState}>
       {children}
     </NarratorStateContext.Provider>
   )
+}
+
+async function updateNarratorState(
+  narratorState: NarratorState, 
+  setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
+  params: NarratorParams, 
+) {
+  if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
+    return
+  }
+
+  const address = ADDRESSES[params.network]
+  requireDefined(address, "Address for ${params.netowrk} required")
+  const publisher = useContractReadable(address, artifact.abi, params.network)
+  if (!publisher) return
+
+  const baseAuctionDuration = await publisher.baseAuctionDuration()
+  const narratorData = await publisher.narrators(params.narratorIndex)
+  let newNarrator: Narrator = {...narratorData, collections: [], stories: {}}
+  const totalCollections = Number(newNarrator.totalCollections)
+  const promises: Promise<void>[] = []
+  for (let i = 0; i < totalCollections; i++) {
+    promises.push(new Promise(
+      async () => {
+        const collection = await getCollection(params.narratorIndex, i)
+        if (collection) {
+          newNarrator.collections.push(collection)
+          newNarrator.stories = await concatCategorizedStories(
+            publisher, 
+            baseAuctionDuration,
+            params.narratorIndex,
+            Number(newNarrator.collectionSize),
+            newNarrator.collectionLength,
+            collection,
+            newNarrator.stories,
+            collection.scriptResult
+          )
+        }
+        setNarratorState({
+          narrator: newNarrator,
+          updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
+          lastUpdate: Date.now()
+        })
+      }
+    ))
+  }
+  await Promise.all(promises)
+  console.log('awaited all promises')
 }
 
 function sortStories(s1: Story, s2: Story) { return Number(s1.startTime.sub(s2.startTime)) }

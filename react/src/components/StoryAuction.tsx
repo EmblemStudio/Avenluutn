@@ -46,8 +46,8 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
             .then((res: TransactionResponse) => {
               addNotification("status", STATUS.tx_submitted)
               res.wait().then((rec: TransactionReceipt) => {
-                removeNotification("status", STATUS.tx_submitted)
                 addNotification("status", STATUS.tx_confirmed)
+                removeNotification("status", STATUS.tx_submitted)
               })
             })
         })
@@ -69,8 +69,8 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
             .then((res: TransactionResponse) => {
               addNotification("status", STATUS.tx_submitted)
               res.wait().then((rec: TransactionReceipt) => {
-                removeNotification("status", STATUS.tx_submitted)
                 addNotification("status", STATUS.tx_confirmed)
+                removeNotification("status", STATUS.tx_submitted)
               })
             })
         })
@@ -90,8 +90,8 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
         .then((res: TransactionResponse) => {
           addNotification("status", STATUS.tx_submitted)
           res.wait().then((rec: TransactionReceipt) => {
-            removeNotification("status", STATUS.tx_submitted)
             addNotification("status", STATUS.tx_confirmed)
+            removeNotification("status", STATUS.tx_submitted)
           })
         })
     }

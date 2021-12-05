@@ -1,8 +1,4 @@
-enum NetworkName {
-  mainnet = "mainnet",
-  ropsten = "ropsten",
-  polygon = "polygon"
-}
+type NetworkName = "mainnet" | "ropsten" | "polygon"
 
 interface NarratorParams {
   network: NetworkName,
@@ -10,8 +6,8 @@ interface NarratorParams {
 }
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: NetworkName.ropsten,
-  narratorIndex: 3
+  network: "ropsten",
+  narratorIndex: 6
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -30,7 +26,7 @@ export const STATUS = {
   tx_confirmed: `transacton confirmed`
 }
 
-export const ADDRESSES: { [key in NetworkName]: string } = {
+export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
   "polygon": ""
@@ -58,10 +54,5 @@ export const etherscanBases: { [key in NetworkName]: string }  = {
 const etherscanBase = etherscanBases[NARRATOR_PARAMS.network]
 
 export const GITHUB = "https://github.com/EmblemStudio/Aavenluutn"
-<<<<<<< HEAD
 export const ETHERSCAN = `${etherscanBase}address/${ADDRESSES.ropsten}`
 export const DISCORD = "https://discord.gg/VfvtD6NDuM"
-=======
-export const ETHERSCAN = `https://ropsten.etherscan.io/address/${ADDRESSES.ropsten}`
-export const DISCORD = "https://discord.gg/VfvtD6NDuM"
->>>>>>> noUncheckedIndexedAccess-fixes

@@ -5,7 +5,8 @@ import useNarratorState from '../hooks/useNarratorState'
 import { NARRATOR_PARAMS, LOADING } from '../constants'
 
 export default () => {
-  const narrator = useNarratorState()
+  const { narrator, updateNarrator } = useNarratorState()
+  // updateNarrator()
 
   return (
     <>
