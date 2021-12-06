@@ -14,7 +14,7 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  console.log(hre.network)
+  // console.log(hre.network)
 
   // We get the contracts to deploy
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
@@ -41,11 +41,12 @@ async function main() {
    * add test narratorNFT
    */
   const narratorTx = await narratorNFTs.mint(
-    "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
-    "data:text/javascript;base64,YXN5bmMgZnVuY3Rpb24gdGVsbFN0b3JpZXMocmVzdWx0LCBhLCBiLCBjLCBkKSB7CiAgICBpZiAocmVzdWx0ID09PSBudWxsKSB7CiAgICAgICAgbGV0IHN0YXRlID0geyBob3dXZVdlcmU6ICAiY3VyaW91cyJ9CiAgICAgICAgcmVzdWx0ID0geyBuZXh0U3RhdGU6IHN0YXRlLCBzdG9yaWVzOiBbXSB9CiAgICB9CiAgICByZXR1cm4gewogICAgICAgIG5leHRTdGF0ZTogT2JqZWN0LmFzc2lnbihyZXN1bHQubmV4dFN0YXRlLCB7YTogYX0pLAogICAgICAgIHN0b3JpZXM6IFtgV2Ugd2VyZSAke3Jlc3VsdC5uZXh0U3RhdGUuaG93V2VXZXJlfS5gXQogIH0KfQoKbW9kdWxlLmV4cG9ydHMgPSB7IHRlbGxTdG9yaWVzIH0="
+    "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
+    "https://gist.githubusercontent.com/jessebmiller/e7b6cab916151b176278d43ccf0946db/raw/4600ba92972119db1a4645e6c64e5e8da5465fea/bundle_2021-12-02.js"
   )
 
   // add test narrator
+  /*
   let pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
@@ -55,19 +56,22 @@ async function main() {
     1000,
     10000,
   )
+  */
   await narratorTx.wait()
-  await pubTx.wait()
+  // await pubTx.wait()
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
-  pubTx = await publisher.addNarrator(
+  const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
-    now, // start
-    100,           // totalCollections
-    60 * 60 * 12,  // collectionLength
-    60 * 60 * 15,  // collectionSpacing
-    3,             // collectionSize
+    now,              // start
+    100,              // totalCollections
+    60 * 60,          // collectionLength
+    60 * 60 * 3 / 2,  // collectionSpacing
+    5,                // collectionSize
   )
+  const receipt = await pubTx.wait()
+  console.log("New narrator added at index:", Number(receipt.events[0].args.count))
 }
 
 // We recommend this pattern to be able to use async/await everywhere

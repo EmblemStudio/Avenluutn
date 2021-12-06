@@ -1,26 +1,163 @@
 html {
-    background-color: #1a1a1a;
-    color: white;
+  background-color: black;
 }
 
 .App {
-    text-align: center;
-    font-size: calc(10px + 1.2vmin);
+  font-family: "EB Garamond";
+  color: white;
 }
 
-.subtitle {
-    font-size: calc(10px + 0.2em);
+#top {
+  min-height: 85vh;
 }
 
-.App-header {
-  min-height: 15vmin;
+.title {
+  color: white;
+  font-weight: 100;
+}
+
+.button.is-ghost {
+  color: white;
+}
+
+.button.is-ghost:hover {
+  color: white;
+}
+
+.has-hover-underline:hover {
+  text-decoration: underline;
+}
+
+.is-ibm {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.is-garamond {
+  font-family: "EB Garamond";
+}
+
+.is-vertical {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 8vmin);
 }
 
-.App-link {
-  color: #61dafb;
+.is-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-half-width {
+  width: 50%;
+}
+
+/* Borders */
+
+.outer-border {
+  border: 1px solid;
+  padding: 2px;
+}
+
+.inner-border {
+  border: 1px solid;
+}
+
+.has-border-green {
+  border-color: green;
+}
+
+.has-border-red {
+  border-color: red;
+}
+
+.has-border-blue {
+  border-color: blue;
+}
+
+.has-border-yellow {
+  border-color: yellow;
+}
+
+.has-border-purple {
+  border-color: purple;
+}
+
+.has-border-orange {
+  border-color: orange;
+}
+
+/* Text */
+
+.has-text-green, .is-ghost.has-text-green {
+  color: green;
+}
+
+.has-text-red, .is-ghost.has-text-red {
+  color: red;
+}
+
+.has-text-blue, .is-ghost.has-text-blue {
+  color: blue;
+}
+
+.has-text-yellow, .is-ghost.has-text-yellow {
+  color: yellow;
+}
+
+.has-text-purple, .is-ghost.has-text-purple {
+  color: purple;
+}
+
+.has-text-orange, .is-ghost.has-text-orange {
+  color: orange;
+}
+
+/* Guild Buttons */
+
+.guild-button {
+  width: 200px;
+}
+
+.level-left .level-item {
+  margin-left: 0;
+}
+
+.does-wrap {
+  flex-wrap: wrap;
+}
+
+/* Notifications */
+
+.notification {
+  border-radius: 0;
+  padding: 1rem 2rem 1rem 1.25rem;
+}
+
+.notification a:not(.button):not(.dropdown-item) {
+  text-decoration: none;
+}
+
+.is-fixed {
+  position: fixed;
+  width: 90%;
+  left: 5%;
+  z-index: 1;
+}
+
+/* Forms */
+
+.input {
+  height: 30px;
+}
+
+.textarea, .input {
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  width: 75px;
+}
+
+.input:focus, .input:active {
+  border: none;
 }
