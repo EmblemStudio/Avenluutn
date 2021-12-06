@@ -1,30 +1,39 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from 'react'
+import { UseWalletProvider } from 'use-wallet'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import 'bulma'
 
-function App() {
+import './App.css'
+import NotificationsProvider from './providers/NotificationsProvider'
+import NarratorStateProvider from './providers/NarratorStateProvider'
+import { NARRATOR_PARAMS } from './constants'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import GuildLobby from './pages/GuildLobby'
+import GuildAuctions from './pages/GuildAuctions'
+import GuildLogbook from './pages/GuildLogbook'
+import About from './pages/About'
+
+export default () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Aavenluutn
-          <br />
-          <span className="subtitle">(AH-ven-LOO-tn)</span>
-        </p>
-      </header>
-      <p>
-        Adventure stories in the <a
-                                   target="_blank"
-                                   href="https://lootproject.com"
-                                 >lootverse</a>
-        .
-      </p>
-
-      <footer>
-        <p> By <a href="https://squad.games">Squad.Games</a></p>
-      </footer>
+      <UseWalletProvider>
+        <NotificationsProvider>
+          <NarratorStateProvider params={NARRATOR_PARAMS}>
+            <BrowserRouter>
+              <Layout>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/:guildId/lobby" element={<GuildLobby />} />
+                    <Route path="/:guildId/auctions" element={<GuildAuctions />} />
+                    <Route path="/:guildId/logbook" element={<GuildLogbook />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
+              </Layout>
+            </BrowserRouter>
+          </NarratorStateProvider>
+        </NotificationsProvider>
+      </UseWalletProvider>
     </div>
   )
 }
-
-export default App

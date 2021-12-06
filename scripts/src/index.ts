@@ -3,18 +3,33 @@ import {
   makeProvider,
   nextBlockHash,
   randomStartingState,
-  boundingBlocks,
+  OutcomeText,
 } from './utils'
 import { State, Result } from './content/interfaces'
-import { Story, tellStory } from './tellStory'
+import { tellStory } from './tellStory'
 import { nextState } from './nextState'
 import { fetch } from 'cross-fetch'
 
 globalThis.fetch = fetch
 
+export * from './content/interfaces'
+
 export interface ScriptResult {
   stories: Story[];
   nextState: State;
+}
+
+export interface Story {
+  plainText: string[];
+  richText: {
+    beginning: string[];
+    middle: {
+      obstacleText: string[];
+      outcomeText: OutcomeText[];
+    };
+    ending: string[];
+  }
+  events: Result[];
 }
 
 export async function tellStories(

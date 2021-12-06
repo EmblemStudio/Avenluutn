@@ -241,7 +241,7 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         story.auction.amount = msg.value;
         emit Bid(narratorIndex, collectionIndex, storyIndex, msg.value, msg.sender);
 
-        // return previous bidder their bid
+         // return previous bidder their bid
         if (previousBidder != address(0)) {
             (bool sent,) = previousBidder.call{value: previousAmount}("");
             // TODO what happens when the refund to previous bidder fails?
@@ -271,7 +271,13 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
             (bool sent, bytes memory data) = beneficiary.call{
                 value: story.auction.amount
             }("");
-        } // otherwise fine you can mint
+        } else {
+            // otherwise fine you can mint, but initialize the story first
+            story.narratorIndex = narratorIndex;
+            story.collectionIndex = collectionIndex;
+            story.index = storyIndex;
+            story.auction.duration += baseAuctionDuration;
+        }
 
         // mint
         _mint(to, nftIds.current());
