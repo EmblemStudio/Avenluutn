@@ -15,19 +15,7 @@ import {
   randomParty 
 } from './utils'
 import { State, Adventurer, Quest, Obstacle, Outcome, Result, Success, ResultType, Guild } from './content/interfaces'
-
-export interface Story {
-  plainText: string[];
-  richText: {
-    beginning: string[];
-    middle: {
-      obstacleText: string[];
-      outcomeText: OutcomeText[];
-    };
-    ending: string[];
-  }
-  events: Result[];
-}
+import { Story } from './index'
 
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 // TODO return results in a different list from story text, so they can be formatted differently by a front end?

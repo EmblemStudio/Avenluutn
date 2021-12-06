@@ -8,7 +8,8 @@
   "scripts": {
     "up": "yarn build && npx hardhat node",
     "test": "npx hardhat test",
-    "deploy": "npx hardhat run --network localhost scripts/deploy.js",
+    "deploy": "npx hardhat run scripts/deploy.js",
+    "new-narrator": "npx hardhat run scripts/newNarrator.js",
     "build": "npx hardhat compile && yarn get-abi && yarn get-bin",
     "get-abi": "yarn get-abi:nft && yarn get-abi:pub",
     "get-bin": "yarn get-bin:nft && yarn get-bin:pub",
