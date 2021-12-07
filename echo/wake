@@ -4,9 +4,6 @@ function wake () {
     tag=emblemstudio/aavenluutn:test
     pubtag=emblem/avenluutn:latest
     container_name=aavenluutn
-    ipfs_staging=`pwd`/ipfs/staging
-    ipfs_data=`pwd`/ipfs/data
-    ipfs_container_name=ipfs_host
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
     abigen_out_path=`pwd`/publisher
     store_path=`pwd`/store
@@ -57,18 +54,10 @@ function wake () {
             ;;
         "dev")
             wake build
-            docker run -d --rm \
-                   --name $ipfs_container_name \
-                   -v $ipfs_staging:/export \
-                   -v $ipfs_data:/data/ipfs \
-                   -p 4001:4001 \
-                   -p 127.0.0.1:8080:8080 \
-                   -p 127.0.0.1:5001:5001 \
-                   ipfs/go-ipfs:latest
             wake run
             ;;
         "stop")
-            docker stop $container_name $ipfs_container_name
+            docker stop $container_name
             ;;
         "format")
             go fmt

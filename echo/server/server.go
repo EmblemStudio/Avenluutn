@@ -82,7 +82,12 @@ func (ps PubServer) runNarratorScript(
 		return publisher.ScriptResult{}, err
 	}
 
-	if err := ps.store.Set(key(narratorIndex, collectionIndex), result); err != nil {
+	expires := time.Time(ScriptResult.Expires, 0)
+
+	if err := ps.store.Set(
+		key(narratorIndex, collectionIndex, expires),
+		result,
+	); err != nil {
 		log.Println("WARNING: Could not cache result:", err)
 	}
 

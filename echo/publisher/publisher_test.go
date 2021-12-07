@@ -174,6 +174,7 @@ func TestGetCachedResult(t *testing.T) {
 			},
 		},
 		pub,
+		make(map[string]time.Time),
 	}
 
 	// While we are here let's test our test method for latest block time
@@ -214,6 +215,7 @@ func TestGetStoryFirstCall(t *testing.T) {
 		time.Unix(95, 0), // five seconds after the highest block
 		map[string]ScriptResult{},
 		pub,
+		make(map[string]time.Time),
 	}
 
 	haveStory, err := pub.GetStory(client, testPubStore, 0, 0, 0)
@@ -245,6 +247,7 @@ func TestGetStory(t *testing.T) {
 			},
 		},
 		pub,
+		make(map[string]time.Time),
 	}
 
 	wantStory := "We were well."

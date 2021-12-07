@@ -116,7 +116,7 @@ func TestEthLocalStore(t *testing.T) {
 		t.Errorf("\nwant non-nil error,\nhave %v", err)
 	}
 
-	err = localStore.Set(key, wantResult)
+	err = localStore.Set(key, wantResult, time.Now().Add(time.Minute))
 	if err != nil {
 		t.Errorf("\nwant <nil>\nhave %v", err)
 	}
