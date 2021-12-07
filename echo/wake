@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function wake () {
-    tag=emblemstudio/aavenluutn:test
+    tag=emblem/avenluutn:test
     pubtag=emblem/avenluutn:latest
     container_name=aavenluutn
     ipfs_staging=`pwd`/ipfs/staging
