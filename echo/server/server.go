@@ -8,6 +8,8 @@ import (
 	"encoding/json"
 	"errors"
 	"encoding/hex"
+	"text/template"
+	"bytes"
 
 	"golang.org/x/crypto/sha3"
 
@@ -168,46 +170,73 @@ func (ps PubServer) RunTestScript(c echo.Context) error {
 	collectionSize, err := getInt64FormValue(c, "collection-size")
 	if err != nil { return badRequest(err) }
 
+	iterations, err := getInt64FormValue(c, "iterations")
+	if err != nil { return badRequest(err) }
+
 	cacheBuster := c.FormValue("cache-buster")
+	responseTemplate := c.FormValue("template")
 
 	testHash := make([]byte, 32)
 	sha3.ShakeSum128(testHash, []byte(fmt.Sprintf(
-		"%v%v%v%v%v%v",
+		"%v%v%v%v%v%v%v",
 		script,
 		previousResult,
 		collectionStart,
 		collectionLength,
 		collectionSize,
+		iterations,
 		cacheBuster,
 	)))
 
 	testKey := hex.EncodeToString(testHash)
 
-	cachedResult, err := ps.store.Get(testKey)
+	result, err := ps.store.Get(testKey)
 	if err == nil {
 		// we have the result
 		log.Println("Cache Hit", testKey)
-		response, err := cachedResult.JSON()
-		if err != nil { return serverError(err)}
-		return c.String(http.StatusOK, response)
+	} else {
+		for iterations > 0 {
+			result, err := ps.pub.RunNarratorScript(
+				script,
+				previousResult,
+				collectionStart,
+				collectionLength,
+				collectionSize,
+			)
+			if err != nil { return serverError(err) }
+
+			previousResult = result
+			iterations -= 1
+		}
+		if err := ps.store.Set(testKey, result); err != nil {
+			log.Println("WARNING: Could not cache result:", err)
+		}
 	}
 
-	result, err := ps.pub.RunNarratorScript(
-		script,
-		previousResult,
-		collectionStart,
-		collectionLength,
-		collectionSize,
-	)
-	if err != nil { return serverError(err) }
-
-	if err := ps.store.Set(testKey, result); err != nil {
-		log.Println("WARNING: Could not cache result:", err)
-	}
-
-	response, err := result.JSON()
+	responseJSON, err := result.JSON()
 	if err != nil {
 		return serverError(err)
 	}
-	return c.String(http.StatusOK, response)
+
+	if responseTemplate != "" {
+		responseTemplate, err := template.New("response").Parse(responseTemplate)
+		if err != nil {
+			return c.String(http.StatusOK, fmt.Sprintf(
+				"%v\n\n%v",
+				err,
+				responseJSON,
+			))
+		}
+		var b bytes.Buffer
+		if err := responseTemplate.Execute(&b, result); err != nil {
+			return c.String(http.StatusOK, fmt.Sprintf(
+				"%v\n\n%v",
+				err,
+				responseJSON,
+			))
+		}
+		return c.String(http.StatusOK, b.String())
+	}
+
+	return c.String(http.StatusOK, responseJSON)
 }

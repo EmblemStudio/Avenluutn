@@ -119,6 +119,12 @@ func (sr ScriptResult) JSON() (string, error) {
 	return string(data), nil
 }
 
+func (sr ScriptResult) PrettyJSON() (string, error) {
+	data, err := json.MarshalIndent(sr, "", "  ")
+	if err != nil { return "", err }
+	return string(data), nil
+}
+
 // RunNarratorScript run a narrator script in node, return next state and some stories
 func (pub *Publisher) RunNarratorScript(
 	script string,
@@ -186,8 +192,9 @@ script.tellStories(%v, %v, %v, %v, "%v")
 		len(previousResultJSON),
 	)
 	out, err := exec.Command("node", runScriptPath).CombinedOutput()
+	ioutil.WriteFile("./node_command_out.txt", out, 0644)
 	if err != nil {
-		ioutil.WriteFile("./node_command_out.txt", out, 0644)
+//		ioutil.WriteFile("./node_command_out.txt", out, 0644)
 		fmt.Println("NodeJS Error:", err)
 	}
 	resultJSON, err := ioutil.ReadFile(resultFilePath)

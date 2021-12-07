@@ -4,12 +4,12 @@ import { providers } from 'ethers'
 import { getRandomName, getRandomClass, getRandomLootPiece } from '../content/loot'
 import { State, Guild, Character, Adventurer, Stats } from '../content/interfaces'
 import {
-  pronounsSource, 
-  skills, 
-  traits, 
-  guildNames, 
-  guildMottos, 
-  guildLocations 
+  pronounsSource,
+  skills,
+  traits,
+  guildNames,
+  guildMottos,
+  guildLocations
 } from '../content/original/sourceArrays'
 
 export async function randomStartingState(
@@ -33,8 +33,8 @@ async function randomGuild(
   provider?: providers.BaseProvider | string
 ): Promise<Guild> {
   const adventurers = await makeRandomAdventurers(
-    prng.nextInt(3, 5), 
-    prng, 
+    prng.nextInt(3, 5),
+    prng,
     provider
   )
   /*
@@ -92,7 +92,7 @@ function makeRandomParties(
    * if there are > 8 adventurers left, break off 3-5 into a party and go again
    * if there are 6, 7, or 8 adventurers left, break off 3, then break off the rest, then return
    * if there are 5 or fewer, break them off and return
-   
+
   const res: number[][] = []
   let adventurersLeft = [...Object.keys(adventurers)]
   while (Object.keys(adventurersLeft).length > 8) {
@@ -114,7 +114,7 @@ function makeRandomParties(
 */
 
 async function randomCharacter(
-  prng: Prando, 
+  prng: Prando,
   provider?: providers.BaseProvider | string,
   traitCount?: number
 ): Promise<Character> {
@@ -167,7 +167,7 @@ async function makeRandomAdventurers(
 
 async function randomAdventurer(
   id: number,
-  prng: Prando, 
+  prng: Prando,
   provider?: providers.BaseProvider | string
 ): Promise<Adventurer> {
   const newChar = await randomCharacter(prng, provider)
@@ -205,8 +205,8 @@ export function randomUnusedItem<T>(
 
 /*
 function uniqueArrayItem<T, S>(
-  prng: Prando, 
-  array: T[], 
+  prng: Prando,
+  array: T[],
   alreadyChosen: S[],
   same: Function
 ): T {
@@ -229,7 +229,7 @@ function uniqueArrayItem<T, S>(
 
 /*
 function addRandomUnusedElement<T>(
-  target: T[], 
+  target: T[],
   source: T[],
   prng: Prando
 ): T[] {

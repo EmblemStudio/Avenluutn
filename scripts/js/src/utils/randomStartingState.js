@@ -61,7 +61,7 @@ function makeRandomParties(
    * if there are > 8 adventurers left, break off 3-5 into a party and go again
    * if there are 6, 7, or 8 adventurers left, break off 3, then break off the rest, then return
    * if there are 5 or fewer, break them off and return
-   
+
   const res: number[][] = []
   let adventurersLeft = [...Object.keys(adventurers)]
   while (Object.keys(adventurersLeft).length > 8) {
