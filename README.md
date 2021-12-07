@@ -31,4 +31,4 @@ First build the backend as above then publish. This will require being
 logged into the "emblem" docker hub account. TODO put those
 credentials on keybase
 
-`echo/ $ wake publish
+`echo/ $ wake publish`
