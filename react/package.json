@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "backend": "cp -r dist ../echo/ui",
     "todo-list": "grep -rnw './src' './test' -e 'TODO'",
     "serve": "vite preview",
     "lint": "ts-standard",

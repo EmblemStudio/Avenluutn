@@ -50,7 +50,9 @@ func main() {
 	e.GET("/runs/:narrator/:collection", s.RunNarratorScript)
 	e.GET("/stories/:narrator/:collection/:story", s.GetStory)
 
-	e.GET("/", func(c echo.Context) error {
+	e.Static("/", "ui")
+
+	e.GET("/settings", func(c echo.Context) error {
 		return c.HTML(
 			http.StatusOK,
 			fmt.Sprintf(

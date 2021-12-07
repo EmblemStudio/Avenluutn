@@ -46,6 +46,8 @@ function wake () {
             mkdir store
             docker run \
                    -p 8000:8000 \
+                   --env AVENLUUTN_PUB_ADDR="0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4" \
+                   --env AVENLUUTN_PROVIDER="https://ropsten.infura.io/v3/46801402492348e480a7e18d9830eab8" \
                    --rm \
                    --net host \
                    -v $store_path:/store \

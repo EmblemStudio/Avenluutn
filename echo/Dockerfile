@@ -20,7 +20,7 @@ RUN go build -o /avenluutn
 FROM node:lts
 
 COPY --from=builder /avenluutn /avenluutn
-COPY ./static/* ./static/
+COPY ./ui/ ./ui/
 
 ENV HTTP_PORT="8000"
 
