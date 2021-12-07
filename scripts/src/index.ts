@@ -40,11 +40,9 @@ export async function tellStories(
   providerUrl?: string,
 ): Promise<ScriptResult> {
   const provider = makeProvider(providerUrl)
-
   const startBlockHash = await nextBlockHash(startTime, provider)
   if (!startBlockHash) { throw new Error('No starting block hash') }
 
-  console.log(startBlockHash)
   const prng = new Prando(startBlockHash)
 
   let state: State
@@ -53,18 +51,18 @@ export async function tellStories(
   } else {
     state = prevResult.nextState
   }
-
   const stories: Story[] = []
   let events: Result[] = []
   for (let i = 0; i < totalStories; i++) {
     const story = await tellStory(
-      prng,
+      `${startBlockHash}{i}`, // prng,
       state,
       startTime,
       length,
       i,
       provider
     )
+    console.log("got story", story)
     stories.push(story)
     events = [...events, ...story.events]
   }
@@ -76,3 +74,4 @@ export async function tellStories(
 
   return result
 }
+

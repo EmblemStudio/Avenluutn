@@ -7,15 +7,11 @@ const utils_1 = require("./utils");
 const interfaces_1 = require("./content/interfaces");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 // TODO return results in a different list from story text, so they can be formatted differently by a front end?
-async function tellStory(prng, state, startTime, length, guildId, provider) {
-    console.log("tellStory", guildId, state, startTime);
-    const subPrng = new prando_1.default(prng.nextInt() + guildId);
-    console.log("telling beginning...", guildId);
-    const beginning = await tellBeginning(subPrng, state, startTime, length, guildId);
-    console.log("telling middle", beginning);
-    const middle = await tellMiddle(state, beginning, provider);
-    console.log("telling end", beginning, middle);
-    const ending = await tellEnding(beginning, middle, provider);
+async function tellStory(seed, //prng: Prando,
+state, startTime, length, guildId, provider) {
+    const beginning = await tellBeginning(seed, state, startTime, length, guildId);
+    const middle = await tellMiddle(guildId, state, beginning, provider);
+    const ending = await tellEnding(guildId, beginning, middle, provider);
     let res = {
         plainText: [],
         richText: {
@@ -44,9 +40,11 @@ async function tellStory(prng, state, startTime, length, guildId, provider) {
     return res;
 }
 exports.tellStory = tellStory;
-async function tellBeginning(prng, state, startTime, length, guildId
+async function tellBeginning(seed, // prng: Prando,
+state, startTime, length, guildId
 // provider: providers.BaseProvider
 ) {
+    const prng = new prando_1.default(seed);
     // Load guild
     const guild = state.guilds[guildId];
     if (!guild) {
@@ -102,9 +100,7 @@ async function tellBeginning(prng, state, startTime, length, guildId
         text: [guildText, questText]
     };
 }
-async function tellMiddle(
-// prng: Prando,
-state, beginning, provider) {
+async function tellMiddle(guildId, state, beginning, provider) {
     const middle = {
         questSuccess: interfaces_1.Success.failure,
         obstacles: [],
@@ -121,8 +117,9 @@ state, beginning, provider) {
                 throw new Error("No obstacle time");
             }
             const obstacleHash = await (0, utils_1.nextBlockHash)(obstacleTime, provider);
-            if (obstacleHash) {
-                const obsPrng = new prando_1.default(obstacleHash);
+            if (obstacleHash !== null) {
+                const obsSeed = obstacleHash + guildId + i;
+                const obsPrng = new prando_1.default(obsSeed);
                 if (i + 1 === beginning.obstacleTimes.length) {
                     const obstacle = (0, utils_1.questObstacle)(obsPrng, beginning.quest);
                     middle.obstacles.push(obstacle);
@@ -141,7 +138,8 @@ state, beginning, provider) {
             const outcomeHash = await (0, utils_1.nextBlockHash)(outcomeTime, provider);
             const obstacle = middle.obstacles[i];
             if (obstacle && outcomeHash) {
-                const outPrng = new prando_1.default(outcomeHash);
+                const outcomeSeed = outcomeHash + guildId + i;
+                const outPrng = new prando_1.default(outcomeSeed);
                 const outcome = await (0, utils_1.findOutcome)(outPrng, beginning.guild.id, obstacle, beginning.party, middle.allResults, provider);
                 if (outcome.success === interfaces_1.Success.failure)
                     allOutcomesSucceeded = false;
@@ -156,7 +154,7 @@ state, beginning, provider) {
     }
     return middle;
 }
-async function tellEnding(beginning, middle, provider) {
+async function tellEnding(guildId, beginning, middle, provider) {
     /**
      * check if everyone died
      * --> everyone died ending
@@ -175,7 +173,8 @@ async function tellEnding(beginning, middle, provider) {
     let everyoneDied = false;
     let oneLeft = false;
     if (endingHash) {
-        const prng = new prando_1.default(endingHash);
+        const endingSeed = endingHash + guildId;
+        const prng = new prando_1.default(endingSeed);
         for (let i = 0; i < middle.allResults.length; i++) {
             const result = middle.allResults[i];
             if (!result) {
