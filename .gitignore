@@ -1,3 +1,5 @@
+
+
 # Logs
 logs
 *.log
@@ -104,6 +106,9 @@ dist
 # TernJS port file
 .tern-port
 
-# Scripts build 
+# Scripts build
 ./scripts/js
 ./scripts/dist
+
+# UI build artifact
+./echo/ui
