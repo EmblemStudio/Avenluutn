@@ -1,9 +1,11 @@
-import Prando from 'prando'
+// import Prando from 'prando'
 import {
   makeProvider,
-  nextBlockHash,
+  // nextBlockHash,
   randomStartingState,
   OutcomeText,
+  newCheckpoint,
+  checkPointErrors
 } from './utils'
 import { State, Result } from './content/interfaces'
 import { tellStory } from './tellStory'
@@ -17,6 +19,7 @@ export * from './content/interfaces'
 export interface ScriptResult {
   stories: Story[];
   nextState: State;
+  nextUpdateTime: number;
 }
 
 export interface Story {
@@ -30,6 +33,7 @@ export interface Story {
     ending: string[];
   }
   events: Result[];
+  nextUpdateTime: number;
 }
 
 export async function tellStories(
@@ -40,36 +44,53 @@ export async function tellStories(
   providerUrl?: string,
 ): Promise<ScriptResult> {
   const provider = makeProvider(providerUrl)
-  const startBlockHash = await nextBlockHash(startTime, provider)
-  if (!startBlockHash) { throw new Error('No starting block hash') }
-
-  const prng = new Prando(startBlockHash)
+  const checkpoint = await newCheckpoint(startTime, provider)
+  if (checkpoint.error) {
+    if (checkpoint.error.message === checkPointErrors.timeInFuture) {
+      return {
+        stories: [],
+        nextState: prevResult ? prevResult.nextState : { guilds: [] },
+        nextUpdateTime: startTime
+      }
+    }
+    return {
+      stories: [],
+      nextState: prevResult ? prevResult.nextState : { guilds: [] },
+      nextUpdateTime: -1
+    }
+  }
 
   let state: State
   if (!prevResult) {
-    state = await randomStartingState(totalStories, prng, provider)
+    state = await randomStartingState(totalStories, checkpoint.prng, provider)
   } else {
     state = prevResult.nextState
   }
   const stories: Story[] = []
   let events: Result[] = []
+  let nextUpdateTime = -1
   for (let i = 0; i < totalStories; i++) {
     const story = await tellStory(
-      `${startBlockHash}{i}`, // prng,
+      checkpoint.prng,
       state,
       startTime,
       length,
       i,
       provider
     )
-    console.log("got story", story)
+    if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) { 
+      nextUpdateTime = story.nextUpdateTime
+    }
+    console.log(`ran story guild ${i}. Current next update time: ${nextUpdateTime}`)
+    // console.log("got story", story)
     stories.push(story)
     events = [...events, ...story.events]
   }
 
   const result = {
     stories,
-    nextState: nextState(state, events)
+    nextState: nextState(state, events),
+    nextUpdateTime
   }
 
   return result

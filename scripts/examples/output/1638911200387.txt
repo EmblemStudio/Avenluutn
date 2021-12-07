@@ -1,0 +1,69 @@
+STORY 0-0 
+At Cherished Heart Temple in Farshi District, Chinyelu Broberg, Rorik Woodd the Savior, Jonas Chad, and Martin Wintermute have gathered.
+Consulting the guild, they choose their quest: to befriend the voracious, deathly lord at the Headless crypt.
+They had to solve a maze.
+After a fraught brainstorm, they solved the maze.
+Chinyelu Broberg found Wand!
+Rorik Woodd the Savior found "Pandemonium Peak" Silk Slippers of Power +1!
+They came across a voracious tunnel dweller.
+After a hard-earned negotiation, they defeated the tunnel dweller.
+Jonas Chad broke their leg.
+Martin Wintermute found Hood!
+Martin Wintermute was stabbed in the torso.
+They arrived at the Headless crypt, where they came across a voracious deathly lord.
+After a hard-earned conversation, they struck a deal with the lord.
+Chinyelu Broberg dislocated her shoulder.
+Jonas Chad dislocated their shoulder.
+The adventurers returned to Cherished Heart Temple, exhausted but successful.
+Martin Wintermute now has cowardice.
+
+STORY 0-1 
+At Harcourt Smithy in the Flying Stones, Fabien Pelletier, Efraim Bunker, and Alma Ledger have gathered.
+Consulting the guild, they choose their quest: to retrieve the entrancing secret at the Darshish forest.
+They were confronted with a hedge.
+After a testing trek, they crossed the hedge.
+Efraim Bunker now has unluckiness!
+Efraim Bunker broke their leg.
+Efraim Bunker had their confidence shaken.
+Alma Ledger found "Rune Glow" Holy Chestplate of Giants!
+Alma Ledger found Amulet!
+They arrived at the Darshish forest, where they had to solve a entrancing secret.
+After a rough mission, they did not acquire the secret.
+Fabien Pelletier had their arm crushed.
+The adventurers slunk back to Harcourt Smithy in disgrace.
+Efraim Bunker now has self-doubt.
+
+STORY 0-2 
+At Union of Scientists in Varajao District, Hana Egede, Ed Nigiri, and Serge Karlsen have gathered.
+Consulting the guild, they choose their quest: to befriend the violent, reknowned doctor at the Red pass.
+They had to solve a maze.
+After an epic brainstorm, they solved the maze.
+Ed Nigiri found Wand!
+Serge Karlsen found "Pandemonium Peak" Silk Slippers of Power +1!
+They came across a voracious tunnel dweller.
+After a rough negotiation, they failled to pass the tunnel dweller.
+The adventurers slunk back to Union of Scientists in disgrace.
+
+STORY 1-0 
+At Cherished Heart Temple in Farshi District, Rorik Woodd the Savior, Jennifer Crassus, Chinyelu Broberg, and Jonas Chad have gathered.
+Consulting the guild, they choose their quest: to befriend the doctor at the Can-ton forest.
+
+
+STORY 1-1 
+At Harcourt Smithy in the Flying Stones, Alma Ledger, Efraim Bunker, and Fabien Pelletier have gathered.
+Consulting the guild, they choose their quest: to defeat the voracious, impossible warlock at the Headless crypt.
+They met a bird folk.
+After a grueling negotiation, they passed by the bird folk.
+
+
+STORY 1-2 
+At Union of Scientists in Varajao District, Amou Delphine, Hana Egede, and Serge Karlsen have gathered.
+Consulting the guild, they choose their quest: to explore the hidden passage at the Boreal desert.
+
+
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+

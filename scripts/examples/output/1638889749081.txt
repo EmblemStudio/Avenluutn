@@ -1,0 +1,18 @@
+STORY 0-0 
+
+STORY 0-1 
+
+STORY 0-2 
+
+STORY 1-0 
+
+STORY 1-1 
+
+STORY 1-2 
+
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+

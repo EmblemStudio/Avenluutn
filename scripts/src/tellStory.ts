@@ -11,8 +11,9 @@ import {
   makeObstacleText,
   makeOutcomeText,
   OutcomeText,
-  nextBlockHash,
-  randomParty
+  // nextBlockHash,
+  randomParty,
+  newCheckpoint
 } from './utils'
 
 import {
@@ -32,7 +33,7 @@ import { Story } from './index'
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 // TODO return results in a different list from story text, so they can be formatted differently by a front end?
 export async function tellStory(
-  seed: string, //prng: Prando,
+  prng: Prando,
   state: State,
   startTime: number,
   length: number,
@@ -40,7 +41,7 @@ export async function tellStory(
   provider: providers.BaseProvider
 ): Promise<Story> {
   const beginning = await tellBeginning(
-    seed,
+    prng,
     state,
     startTime,
     length,
@@ -69,6 +70,7 @@ export async function tellStory(
       ending: ending.text,
     },
     events: ending.results,
+    nextUpdateTime: findNextUpdateTime(beginning)
   }
   res.plainText = beginning.text
   res.richText.middle.obstacleText.forEach((str, i) => {
@@ -86,6 +88,30 @@ export async function tellStory(
   return res
 }
 
+function findNextUpdateTime(beginning: Beginning): number {
+  let now = Math.floor(Date.now()/1000)
+  let nextUpdateTime
+  for(let i = beginning.obstacleTimes.length; i > 0; i--) {
+    // outcome times are after obstacle times
+    // the first time checkpoint time has been reached, return the next chronological checkpoint
+    let checkpointTime = beginning.outcomeTimes[i]
+    if (checkpointTime) {
+      if (checkpointTime < now) {
+        nextUpdateTime = beginning.obstacleTimes[i + 1]
+        if (!nextUpdateTime) return -1
+        return nextUpdateTime
+      }
+    }
+    checkpointTime = beginning.obstacleTimes[i]
+    if (checkpointTime) {
+      nextUpdateTime = beginning.outcomeTimes[i]
+      if (!nextUpdateTime) return -1
+      return nextUpdateTime
+    }
+  }
+  return -1
+}
+
 interface Beginning {
   guild: Guild;
   party: Adventurer[];
@@ -97,14 +123,14 @@ interface Beginning {
 }
 
 async function tellBeginning(
-  seed: string, // prng: Prando,
+  prng: Prando,
   state: State,
   startTime: number,
   length: number,
   guildId: number
   // provider: providers.BaseProvider
 ): Promise<Beginning> {
-  const prng = new Prando(seed)
+  // const prng = new Prando(seed)
   // Load guild
   const guild = state.guilds[guildId]
   if (!guild) { throw new Error("No guild") }
@@ -192,6 +218,21 @@ async function tellMiddle(
       const obstacleTime = beginning.obstacleTimes[i]
       if (!obstacleTime) { throw new Error("No obstacle time") }
 
+      let checkpoint = await newCheckpoint(obstacleTime, provider)
+
+      if (!checkpoint.error) {
+        if (i + 1 === beginning.obstacleTimes.length) {
+          const obstacle = questObstacle(checkpoint.prng, beginning.quest)
+          middle.obstacles.push(obstacle)
+          middle.obstacleText.push(makeObstacleText(obstacle))
+        } else {
+          const obstacle = randomObstacle(checkpoint.prng, i + 1)
+          middle.obstacles.push(obstacle)
+          middle.obstacleText.push(makeObstacleText(obstacle))
+        }
+      }
+
+      /*
       const obstacleHash = await nextBlockHash(obstacleTime, provider)
       if (obstacleHash !== null) {
         const obsSeed = obstacleHash + guildId + i
@@ -206,9 +247,32 @@ async function tellMiddle(
           middle.obstacleText.push(makeObstacleText(obstacle))
         }
       }
+      */
 
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
+
+      checkpoint = await newCheckpoint(outcomeTime, provider)
+      const obstacle = middle.obstacles[i]
+
+      if (!checkpoint.error && obstacle) {
+        const outcome = await findOutcome(
+          checkpoint.prng,
+          beginning.guild.id,
+          obstacle,
+          beginning.party,
+          middle.allResults,
+          provider
+        )
+        if (outcome.success === Success.failure) allOutcomesSucceeded = false
+        if (i + 1 === beginning.obstacleTimes.length) middle.questSuccess = outcome.success
+        middle.outcomes.push(outcome)
+        middle.allResults = [...middle.allResults, ...outcome.results]
+        // TODO outcome text should differentiate between main text and results text for UI purposes
+        middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome)]
+      }
+
+      /*
       const outcomeHash = await nextBlockHash(outcomeTime, provider)
       const obstacle = middle.obstacles[i]
       if (obstacle && outcomeHash) {
@@ -229,6 +293,7 @@ async function tellMiddle(
         // TODO outcome text should differentiate between main text and results text for UI purposes
         middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome)]
       }
+      */
     }
   }
 
@@ -260,16 +325,14 @@ async function tellEnding(
   }
 
   // TODO check that this is after the quest is finished, not at the same time
-  const endingHash = await nextBlockHash(beginning.endTime, provider)
+  const checkpoint = await newCheckpoint(beginning.endTime, provider)
+  // const endingHash = await nextBlockHash(beginning.endTime, provider)
 
   let deathCount = 0
   let everyoneDied = false
   let oneLeft = false
 
-  if (endingHash) {
-    const endingSeed = endingHash + guildId
-    const prng = new Prando(endingSeed)
-
+  if (!checkpoint.error) {
     for (let i = 0; i < middle.allResults.length; i++) {
       const result = middle.allResults[i]
       if (!result) { throw new Error("No result") }
@@ -283,7 +346,7 @@ async function tellEnding(
       if (result.type !== ResultType.Injury) {
         ending.results.push(result)
       } else {
-        const roll = prng.nextInt(1, 100)
+        const roll = checkpoint.prng.nextInt(1, 100)
         if (roll <= 5) {
           const newResult = {
             guildId: beginning.guild.id,
@@ -298,22 +361,22 @@ async function tellEnding(
         }
       }
     }
-  }
 
-  if (everyoneDied) {
-    ending.text[0] = `None who set out returned alive.`
-  } else {
-    if (oneLeft) {
-      ending.text[0] += `The last adventurer `
+    if (everyoneDied) {
+      ending.text[0] = `None who set out returned alive.`
     } else {
-      ending.text[0] += `The adventurers `
-    }
-    if (middle.questSuccess === Success.failure) {
-      ending.text[0] += `slunk back to ${beginning.guild.name} in disgrace.`
-    } else if (middle.questSuccess === Success.mixed) {
-      ending.text[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
-    } else if (middle.questSuccess === Success.success) {
-      ending.text[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
+      if (oneLeft) {
+        ending.text[0] += `The last adventurer `
+      } else {
+        ending.text[0] += `The adventurers `
+      }
+      if (middle.questSuccess === Success.failure) {
+        ending.text[0] += `slunk back to ${beginning.guild.name} in disgrace.`
+      } else if (middle.questSuccess === Success.mixed) {
+        ending.text[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
+      } else if (middle.questSuccess === Success.success) {
+        ending.text[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
+      }
     }
   }
 

@@ -1,4 +1,5 @@
 import { providers, utils } from 'ethers'
+import Prando from 'prando';
 
 export function makeProvider(providerUrl?: string): providers.BaseProvider {
   if (providerUrl) { return new providers.JsonRpcProvider(providerUrl) }
@@ -12,6 +13,41 @@ export function makeProvider(providerUrl?: string): providers.BaseProvider {
 // TODO consider renaming this to `blockHashAsOf` or `blockHashIfReady`
 // TODO consider changing this to `getCheckpoint` which returns a unique
 // Prando as well
+// TODO this should return { prng | Error(string) }, so that we can know whether to return with next update being this time
+// (i.e. it hasn't yet been reached), or there was some other problem
+
+interface Checkpoint {
+  prng: Prando;
+  error?: Error;
+}
+
+export const checkPointErrors = {
+  timeInFuture: `Time is in the future.`,
+  unknown: `Unreachable: no mined block found before time.`
+}
+
+export async function newCheckpoint(
+  time: number,
+  provider: providers.BaseProvider
+): Promise<Checkpoint> {
+  const now = Math.floor(Date.now()/1000)
+  if (time > now) {
+    const error = new Error(checkPointErrors.timeInFuture)
+    console.warn(error)
+    return { error, prng: new Prando(-1) }
+  }
+
+  const startBlockHash = await closestEarlierBlockHash(time, provider)
+  if (!startBlockHash) {
+    const error = new Error(checkPointErrors.unknown)
+    console.warn(error)
+    return { error, prng: new Prando(-1) }
+  }
+  console.log(`Found checkout for time ${time}`)
+  return { prng: new Prando(startBlockHash) }
+}
+
+/*
 export async function nextBlockHash(
   time: number,
   provider: providers.BaseProvider
@@ -31,6 +67,7 @@ export async function nextBlockHash(
 
   return startBlockHash
 }
+*/
 
 /**
  * Find closest block before the target time
@@ -191,7 +228,7 @@ export async function boundingBlocks(
   if (upperBound === undefined) {
     upperBound = await getLatestBlock(provider)
     if (targetTime > upperBound.timestamp) {
-      console.warn("target time after latest block")
+      console.warn(`target time ${targetTime} after latest block`)
       return null
     }
   }
