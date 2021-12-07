@@ -1,12 +1,11 @@
+
 package publisher
 
 import (
-//	"fmt"
+	"fmt"
 	"math/big"
 	"testing"
 	"os"
-	"time"
-	"reflect"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -60,12 +59,13 @@ func EthSetup(t *testing.T) (
 	return pub, publisherAddress, nfts, nftAddress, client
 }
 
-func TestGetNarrator(t *testing.T) {
+func skipTestGetNarrator(t *testing.T) {
 
 	// Setup
 	var narratorIndex int64 = 0
 	pub, _, _, nftAddress, _ := EthSetup(t)
 
+	fmt.Println(nftAddress)
 	expectedNarrator := PublisherNarrator{
 		nftAddress,
 		big.NewInt(0),
@@ -162,135 +162,6 @@ func TestGetScriptURI(t *testing.T) {
 	}
 }
 
-func TestGetCachedResult(t *testing.T) {
-	pub, _, _, _, _ := EthSetup(t)
-
-	testPubStore := &MockStore{
-		time.Unix(15, 0),
-		map[string]ScriptResult{
-			"0.0.10": ScriptResult{
-				Stories: []Story{"a", "b"},
-				NextState: map[string]interface{}{},
-			},
-		},
-		pub,
-		make(map[string]time.Time),
-	}
-
-	// While we are here let's test our test method for latest block time
-	wantTime := time.Unix(10, 0)
-	haveTime, err := testPubStore.LatestBlockTimeAsOf(testPubStore.Now())
-	if err != nil {
-		t.Fatalf("could not get mock latest block time:\n%v", err)
-	}
-	if wantTime != haveTime {
-		t.Fatalf(
-			"Wrong latest block time.\nhave: %v\nwant: %v",
-			haveTime,
-			wantTime,
-		)
-	}
-
-	// so we want the state to be the one at key 0.0.0.10
-	wantState, ok := testPubStore.state["0.0.10"]
-	if !ok {
-		t.Fatal("could not read expected state")
-	}
-	haveState, err := GetCachedResult(testPubStore, 0, 0, time.Unix(10, 0))
-	if err != nil {
-		t.Errorf("Expected no error, got: %v", err)
-	}
-	if !reflect.DeepEqual(haveState, wantState) {
-		t.Errorf(
-			"GetState(0, 0, 0)\nhave: %v, _\nwant: %v, _",
-			haveState,
-			wantState,
-		)
-	}
-}
-
-func TestGetStoryFirstCall(t *testing.T) {
-	pub, _, _, _, client := EthSetup(t)
-	testPubStore := &MockStore{
-		time.Unix(95, 0), // five seconds after the highest block
-		map[string]ScriptResult{},
-		pub,
-		make(map[string]time.Time),
-	}
-
-	haveStory, err := pub.GetStory(client, testPubStore, 0, 0, 0)
-
-	wantStory := "We were curious."
-	if haveStory != wantStory || err != nil {
-		t.Errorf(
-			"GetStory\nwant: %v, %v\nhave: %v, %v",
-			wantStory,
-			nil,
-			haveStory,
-			err,
-		)
-	}
-}
-
-func TestGetStory(t *testing.T) {
-	pub, _, _, _, client := EthSetup(t)
-
-	testPubStore := &MockStore{
-		time.Unix(15, 0),
-		map[string]ScriptResult{
-			"0.0.10": ScriptResult{
-				Stories: []Story{"a", "b"},
-				NextState: map[string]interface{}{
-					"next": "state",
-					"howWeWere": "well",
-				},
-			},
-		},
-		pub,
-		make(map[string]time.Time),
-	}
-
-	wantStory := "We were well."
-	haveStory, err := pub.GetStory(client, testPubStore, 0, 0, 0); if err != nil {
-		t.Fatalf("Could not get Story: %v", err)
-	}
-	if haveStory != wantStory {
-		t.Errorf(
-			"GetStory(...)\nhave: %v\nwant: %v",
-			haveStory,
-			wantStory,
-		)
-	}
-
-	// after the next block we should be able to get the next state
-	// which should have been put there by getting the story
-
-	/** the test script at narrator 0
-
-function tellStory(state, a, b, c, d) {
-if (!state.howWeWere) {
-        state.howWeWere = "curious"
-    }
-    return {
-        nextState: Object.assign(state, {a: a}),
-        stories: [`We were ${state.howWeWere}.`]
-  }
-}
-         */
-
-	testPubStore.setTime(time.Unix(25, 0))
-	pub.GetStory(client, testPubStore, 0, 0, 0)
-	haveResult, err := GetCachedResult(testPubStore, 0, 0, time.Unix(20, 0))
-	wantNextState := map[string]interface{}{
-		"howWeWere": "well",
-		"a": float64(1),
-		"next": "state",
-	}
-	if !reflect.DeepEqual(wantNextState, haveResult.NextState) {
-		t.Errorf(
-			"Next state:\nhave: %v\nwant: %v",
-			haveResult.NextState,
-			wantNextState,
-		)
-	}
+func TestRunNarratorScript(t *testing.T) {
+	t.Errorf("Not Implemented")
 }

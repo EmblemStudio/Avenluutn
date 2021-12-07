@@ -17,7 +17,7 @@ import (
 type PublisherStore interface {
 	Now() time.Time
 
-	Set(key string, value ScriptResult, validUntil time.Time) error
+	Set(key string, value ScriptResult) error
 	Get(key string) (ScriptResult, error)
 
 	LatestBlockTimeAsOf(t time.Time) (time.Time, error)
@@ -27,11 +27,10 @@ type PublisherStore interface {
 type EthLocalStore struct {
 	path string
 	client *ethclient.Client
-	expirationTimes map[string]time.Time
 }
 
 func NewEthLocalStore(path string, client *ethclient.Client) *EthLocalStore {
-	return &EthLocalStore{path, client, make(map[string]time.Time)}
+	return &EthLocalStore{path, client}
 }
 
 func (els *EthLocalStore) Now() time.Time {
@@ -46,28 +45,33 @@ func (els *EthLocalStore) getKeyPath(key string) string {
 func (els *EthLocalStore) Set(
 	key string,
 	value ScriptResult,
-	expires time.Time,
 ) error {
 	data, err := json.Marshal(value); if err != nil {
 		return err
 	}
-	els.expirationTimes[key] = expires
 	return os.WriteFile(els.getKeyPath(key), data, 0644)
 }
 
 func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
 	keyPath := els.getKeyPath(key)
-	// remove the cache file if it's expired
-	if els.expirationTimes[key].Before(els.Now()) {
-		os.Remove(keyPath)
-	}
+
 	data, err := os.ReadFile(keyPath); if err != nil {
 		return ScriptResult{}, err
 	}
+
 	var result ScriptResult
 	if err := json.Unmarshal(data, &result); err != nil {
 		return ScriptResult{}, err
 	}
+
+	// remove the cache file if it's expired
+	if time.Unix(result.NextUpdateTime, 0).Before(els.Now()) {
+		os.Remove(keyPath)
+		return ScriptResult{}, errors.New(
+			fmt.Sprintf("Value stored at '%v' has expired", key),
+		)
+	}
+
 	return result, nil
 }
 
@@ -205,7 +209,6 @@ type MockStore struct {
 	mockNow time.Time
 	state map[string]ScriptResult
 	pub *Publisher
-	expirationTimes map[string]time.Time
 }
 
 func NewMockStore(
@@ -213,7 +216,7 @@ func NewMockStore(
 	state map[string]ScriptResult,
 	pub *Publisher,
 ) MockStore {
-	return MockStore{now, state, pub, make(map[string]time.Time)}
+	return MockStore{now, state, pub}
 }
 
 func (ms *MockStore) Publisher() *Publisher {
@@ -231,20 +234,14 @@ func (ms *MockStore) setTime(t time.Time) {
 func (ms *MockStore) Set(
 	key string,
 	value ScriptResult,
-	expires time.Time,
 ) error {
-	ms.expirationTimes[key] = expires
 	ms.state[key] = value
 	return nil
 }
 
 func (ms *MockStore) Get(key string) (ScriptResult, error) {
-	if expires, present := ms.expirationTimes[key]; present {
-		if expires.Before(ms.Now()) {
-			return ScriptResult{}, errors.New("Key expired")
-		}
-	}
-	if val, present := ms.state[key]; present {
+	val, present := ms.state[key]
+	if present && !time.Unix(val.NextUpdateTime, 0).Before(ms.Now()) {
 		return val, nil
 	}
 	return ScriptResult{}, errors.New("Key not found")
@@ -309,4 +306,3 @@ func (ms *MockStore) LatestBlockTimeAsOf(t time.Time) (time.Time, error) {
 func (ms *MockStore) GetFullStateForTest() map[string]ScriptResult {
 	return ms.state
 }
-

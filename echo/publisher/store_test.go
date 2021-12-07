@@ -106,9 +106,9 @@ func TestEthLocalStore(t *testing.T) {
 			"a": float64(1),
 			"b": float64(2),
 		},
+		NextUpdateTime: time.Now().Add(time.Hour).Unix(),
 	}
 	key := "testKey"
-
 
 	// Run SUT
 	_, err := localStore.Get(key)
@@ -116,7 +116,7 @@ func TestEthLocalStore(t *testing.T) {
 		t.Errorf("\nwant non-nil error,\nhave %v", err)
 	}
 
-	err = localStore.Set(key, wantResult, time.Now().Add(time.Minute))
+	err = localStore.Set(key, wantResult)
 	if err != nil {
 		t.Errorf("\nwant <nil>\nhave %v", err)
 	}
