@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextState = void 0;
 const interfaces_1 = require("./content/interfaces");
 function nextState(state, events) {
-    console.log("nextState", state, events);
+    // console.log("nextState", state, events)
     const newState = Object.assign({}, state);
     events.forEach(event => {
         const guild = newState.guilds[event.guildId];
