@@ -11,7 +11,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tellStories = void 0;
-const prando_1 = require("prando");
+// import Prando from 'prando'
 const utils_1 = require("./utils");
 const tellStory_1 = require("./tellStory");
 const nextState_1 = require("./nextState");
@@ -20,30 +20,45 @@ globalThis.fetch = cross_fetch_1.fetch;
 __exportStar(require("./content/interfaces"), exports);
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
     const provider = (0, utils_1.makeProvider)(providerUrl);
-    const startBlockHash = await (0, utils_1.nextBlockHash)(startTime, provider);
-    if (!startBlockHash) {
-        throw new Error('No starting block hash');
+    const checkpoint = await (0, utils_1.newCheckpoint)(startTime, provider);
+    if (checkpoint.error) {
+        if (checkpoint.error.message === utils_1.checkPointErrors.timeInFuture) {
+            return {
+                stories: [],
+                nextState: prevResult ? prevResult.nextState : { guilds: [] },
+                nextUpdateTime: startTime
+            };
+        }
+        return {
+            stories: [],
+            nextState: prevResult ? prevResult.nextState : { guilds: [] },
+            nextUpdateTime: -1
+        };
     }
-    const prng = new prando_1.default(startBlockHash);
     let state;
     if (!prevResult) {
-        state = await (0, utils_1.randomStartingState)(totalStories, prng, provider);
+        state = await (0, utils_1.randomStartingState)(totalStories, checkpoint.prng, provider);
     }
     else {
         state = prevResult.nextState;
     }
     const stories = [];
     let events = [];
+    let nextUpdateTime = -1;
     for (let i = 0; i < totalStories; i++) {
-        const story = await (0, tellStory_1.tellStory)(`${startBlockHash}{i}`, // prng,
-        state, startTime, length, i, provider);
-        console.log("got story", story);
+        const story = await (0, tellStory_1.tellStory)(checkpoint.prng, state, startTime, length, i, provider);
+        if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) {
+            nextUpdateTime = story.nextUpdateTime;
+        }
+        console.log(`ran story guild ${i}. Current next update time: ${nextUpdateTime}`);
+        // console.log("got story", story)
         stories.push(story);
         events = [...events, ...story.events];
     }
     const result = {
         stories,
-        nextState: (0, nextState_1.nextState)(state, events)
+        nextState: (0, nextState_1.nextState)(state, events),
+        nextUpdateTime
     };
     return result;
 }

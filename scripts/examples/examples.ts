@@ -13,36 +13,47 @@ import { tellStories, ScriptResult } from '../src'
 // TODO set up secret management
 const alchemyAPI = "https://eth-mainnet.alchemyapi.io/v2/PPujLNqHqSdJjZwxxytSUA68DA_xf8Mm"
 
-const collections = 1
+const collections = 3
 const parallelStories = 3
 
 async function main() {
   let output = ""
   let state = null
-  let time = 1600031000
-  for(let i = 0; i < collections; i++) {
-    console.log("Making stories", i)
-    let result = await tellStories(
+  let length = 1000
+  let time = Math.floor(Date.now()/1000) - (length * 1.5)
+  for (let i = 0; i < collections; i++) {
+    console.log("Making stories",
+    time,
+    length,
+    parallelStories,
+    alchemyAPI,
+    i)
+    let result: ScriptResult = await tellStories(
       state,
       time,
-      100,
+      length,
       parallelStories,
       alchemyAPI
     )
-    console.log(result.stories)
+    console.log('group nextUpdateTime', result.nextUpdateTime)
     time += 1000
+    state = result
+    console.log(`Made stories ${i} ${result}`)
     /*
     output += `STATE ${i} \r\n`
     output += JSON.stringify(result.state) + "\r\n"
     output += "\r\n"
     */
     for(let j = 0; j < parallelStories; j++) {
-      const story = result.stories[j]
-      if (!story) throw new Error("No story")
       output += `STORY ${i}-${j} \r\n`
-      story.plainText.forEach(line => {
-        output += line + "\r\n"
-      })
+      let story = result.stories[j]
+      if (!story) {
+        console.warn("No story")
+      } else {
+        story.plainText.forEach(line => {
+          output += line + "\r\n"
+        })
+      }
       output += "\r\n"
     }
   }
