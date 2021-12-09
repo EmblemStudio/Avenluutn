@@ -45,7 +45,7 @@ async function main() {
   console.log("Minting test NFT")
   const narratorTx = await narratorNFTs.mint(
     narratorNFTs.address, // "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "http://localhost:8000/test_script.js",
+    "http://localhost:8000/test/bundle.js",
     //"https://gist.githubusercontent.com/jessebmiller/e7b6cab916151b176278d43ccf0946db/raw/4600ba92972119db1a4645e6c64e5e8da5465fea/bundle_2021-12-02.js"
   )
 
@@ -70,7 +70,7 @@ async function main() {
     narratorNFTs.address,
     0,
     now,              // start
-    100,              // totalCollections
+    10,               // totalCollections
     60 * 60,          // collectionLength
     60 * 60 * 3 / 2,  // collectionSpacing
     5,                // collectionSize

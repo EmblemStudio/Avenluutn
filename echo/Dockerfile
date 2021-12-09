@@ -21,6 +21,7 @@ FROM node:lts
 
 COPY --from=builder /avenluutn /avenluutn
 COPY ./ui/ ./ui/
+COPY ./testAssets/ ./testAssets/
 
 ENV HTTP_PORT="8000"
 

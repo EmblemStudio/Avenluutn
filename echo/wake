@@ -1,22 +1,23 @@
 #!/bin/bash
 
 function wake () {
+    bname=$(basename $(pwd))
+    if [ $bname != "echo" ]
+    then
+        echo "wake must be run from the /echo folder"
+        return [1]
+    fi
     tag=emblem/avenluutn:test
     pubtag=emblem/avenluutn:latest
-    container_name=aavenluutn
-    ipfs_staging=`pwd`/ipfs/staging
-    ipfs_data=`pwd`/ipfs/data
-    ipfs_container_name=ipfs_host
+    container_name=avenluutn
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
     abigen_out_path=`pwd`/publisher
     store_path=`pwd`/store
-
+    pub_addr=`cat ../hardhat/PublisherAddress.txt`
     case $1 in
         "build")
-            cd ../hardhat
-            yarn build
-            cd ../echo
-
+            cp -r ../react/dist ./ui
+            cp -r ../scripts/dist ./testAssets
             docker run \
                    -u `id -u`:`id -g` \
                    -v $hardhat_abi_path:/sources \
@@ -46,31 +47,20 @@ function wake () {
             mkdir store
             docker run \
                    -p 8000:8000 \
-                   --env AVENLUUTN_PUB_ADDR="0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4" \
-                   --env AVENLUUTN_PROVIDER="https://ropsten.infura.io/v3/46801402492348e480a7e18d9830eab8" \
+                   --env AVENLUUTN_PUB_ADDR=$pub_addr \
+                   --env AVENLUUTN_PROVIDER="http://localhost:8545" \
                    --rm \
                    --net host \
+                   -d \
                    -v $store_path:/store \
-                   --name aavenluutn \
+                   --name $container_name \
                    $tag
             ;;
         "test")
             go test ./...
             ;;
-        "dev")
-            wake build
-            docker run -d --rm \
-                   --name $ipfs_container_name \
-                   -v $ipfs_staging:/export \
-                   -v $ipfs_data:/data/ipfs \
-                   -p 4001:4001 \
-                   -p 127.0.0.1:8080:8080 \
-                   -p 127.0.0.1:5001:5001 \
-                   ipfs/go-ipfs:latest
-            wake run
-            ;;
         "stop")
-            docker stop $container_name $ipfs_container_name
+            docker stop $container_name
             ;;
         "format")
             go fmt

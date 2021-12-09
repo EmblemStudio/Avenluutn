@@ -63,10 +63,12 @@ func main() {
 		)
 	})
 
+	e.Static("/test", "testAssets")
+
 	e.GET("/healthcheck", func(c echo.Context) error {
 		return c.JSON(
 			http.StatusOK,
-			struct{ Status string }{Status: "OK"},
+			struct{ Status string }{ Status: "OK" },
 		)
 	})
 

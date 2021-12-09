@@ -48,13 +48,13 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
   // TODO narrator statue is re-rendering or updating too many times
   useEffect(() => {
     updateNarratorState(narratorState, setNarratorState, params)
-    setInterval(
-      () => { 
-        console.log('Polling narrator data')
-        updateNarratorState(narratorState, setNarratorState, params) 
-      },
-      60000
-    )
+//    setInterval(
+//      () => { 
+//        console.log('Polling narrator data')
+//        updateNarratorState(narratorState, setNarratorState, params) 
+//      },
+//      60000
+//    )
   }, [narratorState])
 
   return (
@@ -73,7 +73,8 @@ async function updateNarratorState(
     return
   }
 
-  const address = ADDRESSES[params.network]
+  const searchParams = new URLSearchParams(window.location.search);
+  const address = searchParams.get("network") ?? ADDRESSES[params.network]
   requireDefined(address, "Address for ${params.netowrk} required")
   const publisher = useContractReadable(address, artifact.abi, params.network)
   if (!publisher) return

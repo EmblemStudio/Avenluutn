@@ -8,6 +8,7 @@
     "build": "tsc --build && npx webpack",
     "build-csv": "ts-node csv-to-json/index",
     "examples": "ts-node examples/examples",
+    "backend": "cp -r dist ../echo/testAssets",
     "lint": "ts-standard",
     "format": "ts-standard --fix",
     "ci": "yarn build && jest --no-colors --collect-coverage && yarn lint",

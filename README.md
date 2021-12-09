@@ -7,6 +7,22 @@ Adventure stories in the lootverse
 * docker
 * jq
 
+## To run locally
+
+1. Start a hardhat node
+   `hardhat $ yarn up`
+2. Deploy contracts to that node
+   `hardhat $ yarn deploy`
+3. Build the UI
+   `react $ yarn build`
+5. Build the script
+   `scripts $ yarn build`
+7. Build the backend
+   `echo $ source wake`
+   `echo $ wake build`
+8. Run the backend
+   `wake run`
+
 ## To publish the UI to the backend
 
 First, in the react folder, build the UI and move the build artifact
