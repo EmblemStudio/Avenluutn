@@ -47,8 +47,7 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
 
-	e.GET("/runs/:narrator/:collection", s.RunNarratorScript)
-	e.GET("/stories/:narrator/:collection/:story", s.GetStory)
+	e.GET("/runs/:narrator/:collection", s.ExecuteRun)
 
 	e.Static("/", "ui")
 

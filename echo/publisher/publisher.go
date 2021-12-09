@@ -110,6 +110,7 @@ type Story = interface{}
 type ScriptResult struct {
 	Stories []Story `json:"stories"`
 	NextState map[string]interface{} `json:"nextState"`
+	NextUpdateTime int64 `json:"nextUpdateTime"`
 }
 
 func (sr ScriptResult) JSON() (string, error) {

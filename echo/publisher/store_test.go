@@ -106,9 +106,9 @@ func TestEthLocalStore(t *testing.T) {
 			"a": float64(1),
 			"b": float64(2),
 		},
+		NextUpdateTime: time.Now().Add(time.Hour).Unix(),
 	}
 	key := "testKey"
-
 
 	// Run SUT
 	_, err := localStore.Get(key)

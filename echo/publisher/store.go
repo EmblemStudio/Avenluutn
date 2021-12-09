@@ -42,7 +42,10 @@ func (els *EthLocalStore) getKeyPath(key string) string {
 	return path.Join(els.path, fileName)
 }
 
-func (els *EthLocalStore) Set(key string, value ScriptResult) error {
+func (els *EthLocalStore) Set(
+	key string,
+	value ScriptResult,
+) error {
 	data, err := json.Marshal(value); if err != nil {
 		return err
 	}
@@ -50,13 +53,25 @@ func (els *EthLocalStore) Set(key string, value ScriptResult) error {
 }
 
 func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
-	data, err := os.ReadFile(els.getKeyPath(key)); if err != nil {
+	keyPath := els.getKeyPath(key)
+
+	data, err := os.ReadFile(keyPath); if err != nil {
 		return ScriptResult{}, err
 	}
+
 	var result ScriptResult
 	if err := json.Unmarshal(data, &result); err != nil {
 		return ScriptResult{}, err
 	}
+
+	// remove the cache file if it's expired
+	if time.Unix(result.NextUpdateTime, 0).Before(els.Now()) {
+		os.Remove(keyPath)
+		return ScriptResult{}, errors.New(
+			fmt.Sprintf("Value stored at '%v' has expired", key),
+		)
+	}
+
 	return result, nil
 }
 
@@ -216,13 +231,17 @@ func (ms *MockStore) setTime(t time.Time) {
 	ms.mockNow = t
 }
 
-func (ms *MockStore) Set(key string, value ScriptResult) error {
+func (ms *MockStore) Set(
+	key string,
+	value ScriptResult,
+) error {
 	ms.state[key] = value
 	return nil
 }
 
 func (ms *MockStore) Get(key string) (ScriptResult, error) {
-	if val, ok := ms.state[key]; ok {
+	val, present := ms.state[key]
+	if present && !time.Unix(val.NextUpdateTime, 0).Before(ms.Now()) {
 		return val, nil
 	}
 	return ScriptResult{}, errors.New("Key not found")
@@ -287,4 +306,3 @@ func (ms *MockStore) LatestBlockTimeAsOf(t time.Time) (time.Time, error) {
 func (ms *MockStore) GetFullStateForTest() map[string]ScriptResult {
 	return ms.state
 }
-
