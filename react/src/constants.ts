@@ -6,8 +6,8 @@ interface NarratorParams {
 }
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: "localhost",
-  narratorIndex: 0,
+  network: "goerli",
+  narratorIndex: 2,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {

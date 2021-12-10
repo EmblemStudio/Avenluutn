@@ -67,6 +67,7 @@ async function updateNarratorState(
   params: NarratorParams, 
 ) {
   if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
+    console.log("Cache still valid, skipping narrator state update")
     return
   }
 
@@ -90,10 +91,11 @@ async function updateNarratorState(
     narratorStart: Number(newNarrator.start),
     now: now(),
   })
+  console.log("updating narratorState from", narratorState)
   const promises: Promise<void>[] = []
   for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
-      async () => {
+      async (resolve, reject) => {
         const collection = await getCollection(params.narratorIndex, i)
         if (collection) {
           newNarrator.collections.push(collection)
@@ -113,12 +115,12 @@ async function updateNarratorState(
           updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
           lastUpdate: Date.now()
         })
-        console.log(narratorState, newNarrator)
+        resolve()
       }
     ))
   }
   await Promise.all(promises)
-  console.log('awaited all promises')
+  console.log("updated narratorState")
 }
 
 function sortStories(s1: Story, s2: Story) { return Number(s1.startTime.sub(s2.startTime)) }
