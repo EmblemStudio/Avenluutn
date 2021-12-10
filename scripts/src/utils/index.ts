@@ -1,4 +1,5 @@
 export * from './makeText'
-export * from './nextBlockHash'
+export * from './newCheckpoint'
 export * from './quests'
 export * from './randomStartingState'
+export * from './interfaces'

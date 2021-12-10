@@ -1,4 +1,4 @@
-import { State, Result, ResultType } from './content/interfaces'
+import { State, Result, ResultType } from './utils'
 
 export function nextState(state: State, events: Result[]): State {
   // console.log("nextState", state, events)

@@ -1,4 +1,4 @@
-import { Pronouns, ObstacleType, ResultType, Success } from '../interfaces'
+import { Pronouns, TriggerInfo, Traits } from '../../utils'
 
 // Outcome Sources // 
 
@@ -42,32 +42,33 @@ interface ResultCountOdds {
   3: number
 }
 
+// TODO use enum for index type in numberOfResultsOdds?
 export const numberOfResultsOdds: { 
   [difficulty: number]: ResultCountOdds;
-  1: ResultCountOdds; 
   2: ResultCountOdds; 
   3: ResultCountOdds; 
-  4: ResultCountOdds;
+  4: ResultCountOdds; 
+  5: ResultCountOdds;
 } = {
-  1: { // for obstacle with difficulty 1:
+  2: { // for obstacle with difficulty 1:
     0: 50, // 50% chance for 0 results
     1: 90, // 40% chance for 1 result, etc.
     2: 99,
     3: 100
   },
-  2: {
+  3: {
     0: 35,
     1: 85,
     2: 98,
     3: 100
   },
-  3: {
+  4: {
     0: 20,
     1: 70,
     2: 96,
     3: 100
   },
-  4: {
+  5: {
     0: 5,
     1: 60,
     2: 95,
@@ -275,6 +276,12 @@ Simple HP system =
 - otherwise, injuries are healed at end of adventure (rather, they don't persist)
 */
 
+export enum ObstacleType {
+  puzzle = "PUZZLE",
+  obstacle = "OBSTACLE",
+  entity = "ENTITY"
+}
+
 export const questObstacleMap: { [goalType: string]: ObstacleType } = {
   "DEFEAT": ObstacleType.entity,
   "EXPLORE": ObstacleType.obstacle,
@@ -286,16 +293,16 @@ export const questObstacleMap: { [goalType: string]: ObstacleType } = {
 // Quest Sources //
 
 export const questDifficulty: number[] = [
-  1,
-  1,
-  1,
-  1,
+  2,
   2,
   2,
   2,
   3,
   3,
-  4
+  3,
+  4,
+  4,
+  5
 ]
 
 export const questTypesAndInfo: {
@@ -518,21 +525,11 @@ import * as triggerMapJson from '../../../csv-to-json/json/triggerMap.json'
 
 export const triggerMap: {
   [keystring: string]: // string to search obstacle text for
-    {
-      chance: number; // percent chance to trigger
-      modifier: number, // amount to adjust roll by +/- (5, 10, 15, 20, 25, 30)
-      name: string, // name of trait, skill, loot word
-      type: "skills" | "loot" | "traits"
-    }[]
+    TriggerInfo[]
   
 } = JSON.parse(JSON.stringify(triggerMapJson))
 
-export const traits: { 
-  [trait: string]: { 
-    positiveTrigger: string | null, 
-    negativeTrigger: string | null 
-  } 
-} = {
+export const traits: Traits = {
   "a peg leg": {
     positiveTrigger: "protected by *depPossesive* peg leg",
     negativeTrigger: "hampered by *depPossesive* peg leg"

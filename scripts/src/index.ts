@@ -1,40 +1,22 @@
 // import Prando from 'prando'
 import {
   makeProvider,
-  // nextBlockHash,
   randomStartingState,
-  OutcomeText,
   newCheckpoint,
-  checkPointErrors
+  checkPointErrors,
+  ScriptResult,
+  Story,
+  State, 
+  Result
 } from './utils'
-import { State, Result } from './content/interfaces'
 import { tellStory } from './tellStory'
 import { nextState } from './nextState'
 import { fetch } from 'cross-fetch'
+import Prando from 'prando';
 
 globalThis.fetch = fetch
 
-export * from './content/interfaces'
-
-export interface ScriptResult {
-  stories: Story[];
-  nextState: State;
-  nextUpdateTime: number;
-}
-
-export interface Story {
-  plainText: string[];
-  richText: {
-    beginning: string[];
-    middle: {
-      obstacleText: string[];
-      outcomeText: OutcomeText[];
-    };
-    ending: string[];
-  }
-  events: Result[];
-  nextUpdateTime: number;
-}
+export * from './utils/interfaces'
 
 export async function tellStories(
   prevResult: ScriptResult | null,
@@ -45,6 +27,7 @@ export async function tellStories(
 ): Promise<ScriptResult> {
   const provider = makeProvider(providerUrl)
   const checkpoint = await newCheckpoint(startTime, provider)
+
   if (checkpoint.error) {
     if (checkpoint.error.message === checkPointErrors.timeInFuture) {
       return {
@@ -71,7 +54,7 @@ export async function tellStories(
   let nextUpdateTime = -1
   for (let i = 0; i < totalStories; i++) {
     const story = await tellStory(
-      checkpoint.prng,
+      new Prando(checkpoint.blockHash + `${i}`),
       state,
       startTime,
       length,
@@ -81,8 +64,7 @@ export async function tellStories(
     if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) { 
       nextUpdateTime = story.nextUpdateTime
     }
-    console.log(`ran story guild ${i}. Current next update time: ${nextUpdateTime}`)
-    // console.log("got story", story)
+
     stories.push(story)
     events = [...events, ...story.events]
   }
