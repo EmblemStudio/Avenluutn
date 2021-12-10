@@ -22,11 +22,13 @@ func main() {
 	if pubHexAddress == "" {
 		log.Fatal("Missing required AVENLUUTN_PUB_ADDR envar")
 	}
+	fmt.Println("Publisher address", pubHexAddress)
 
 	provider := os.Getenv("AVENLUUTN_PROVIDER")
 	if provider == "" {
 		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
 	}
+	fmt.Println("Provider", provider)
 
 	// make a server
 	client, err := ethclient.Dial(provider)

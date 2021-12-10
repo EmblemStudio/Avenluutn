@@ -4,7 +4,7 @@ function wake () {
     bname=$(basename $(pwd))
     if [ $bname != "echo" ]
     then
-        echo "wake must be run from the /echo folder"
+        echo "wake must be run from the Avenluutn/echo folder"
         return [1]
     fi
     tag=emblem/avenluutn:test
@@ -13,11 +13,15 @@ function wake () {
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
     abigen_out_path=`pwd`/publisher
     store_path=`pwd`/store
-    pub_addr=`cat ../hardhat/PublisherAddress.txt`
+    localhost_pub_addr=`cat ../hardhat/localhost_PublisherAddress.txt`
     case $1 in
         "build")
+            echo "copying in most recent ui"
             cp -r ../react/dist ./ui
+
+            echo "copying in most recent script"
             cp -r ../scripts/dist ./testAssets
+
             docker run \
                    -u `id -u`:`id -g` \
                    -v $hardhat_abi_path:/sources \
@@ -47,7 +51,7 @@ function wake () {
             mkdir store
             docker run \
                    -p 8000:8000 \
-                   --env AVENLUUTN_PUB_ADDR=$pub_addr \
+                   --env AVENLUUTN_PUB_ADDR=$localhost_pub_addr \
                    --env AVENLUUTN_PROVIDER="http://localhost:8545" \
                    --rm \
                    --net host \
@@ -65,12 +69,12 @@ function wake () {
         "format")
             go fmt
             ;;
+        "publish")
+            docker build -t $pubtag .
+            docker push $pubtag
+            ;;
         *)
             which wake
-            ;;
-        "publish")
-            docker build $pubtag .
-            docker push $pubtag
             ;;
     esac
 }

@@ -8,8 +8,9 @@ export default (
   network: string
 ): Contract | null => {
   const api = API_URIS[network]
+  console.log("provider api", api)
   if (!api) return null
   const provider = getDefaultProvider(api)
-  
+
   return new Contract(contractAddress, abi, provider)
 }

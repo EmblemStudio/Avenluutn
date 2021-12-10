@@ -46,32 +46,43 @@ func (els *EthLocalStore) Set(
 	key string,
 	value ScriptResult,
 ) error {
+	fmt.Println(key, "setting cache result")
 	data, err := json.Marshal(value); if err != nil {
+		fmt.Println(key, "could not marshal json", err)
 		return err
 	}
 	return os.WriteFile(els.getKeyPath(key), data, 0644)
 }
 
 func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
+	fmt.Println(key, "Getting cached result")
 	keyPath := els.getKeyPath(key)
 
 	data, err := os.ReadFile(keyPath); if err != nil {
+		fmt.Println(key, err)
 		return ScriptResult{}, err
 	}
 
 	var result ScriptResult
 	if err := json.Unmarshal(data, &result); err != nil {
+		fmt.Println(key, err)
 		return ScriptResult{}, err
 	}
 
+	fmt.Println(key, "Got result for")
+	fmt.Println(key, "    next update time  ", result.NextUpdateTime)
+	fmt.Println(key, "    valid for         ", result.NextUpdateTime - els.Now().Unix())
+
 	// remove the cache file if it's expired
-	if time.Unix(result.NextUpdateTime, 0).Before(els.Now()) {
+	if time.Unix(result.NextUpdateTime, 0).Before(els.Now()) && result.NextUpdateTime != -1 {
+		fmt.Println(key, "    expiring cache for")
 		os.Remove(keyPath)
 		return ScriptResult{}, errors.New(
 			fmt.Sprintf("Value stored at '%v' has expired", key),
 		)
 	}
 
+	fmt.Println(key, "    returning cached result for")
 	return result, nil
 }
 

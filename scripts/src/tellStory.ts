@@ -70,7 +70,7 @@ export async function tellStory(
       ending: ending.text,
     },
     events: ending.results,
-    nextUpdateTime: findNextUpdateTime(beginning)
+    nextUpdateTime: findNextUpdateTime(beginning, startTime)
   }
   res.plainText = beginning.text
   res.richText.middle.obstacleText.forEach((str, i) => {
@@ -88,27 +88,19 @@ export async function tellStory(
   return res
 }
 
-function findNextUpdateTime(beginning: Beginning): number {
+function findNextUpdateTime(beginning: Beginning, startTime: number): number {
   let now = Math.floor(Date.now()/1000)
   let nextUpdateTime
-  for(let i = beginning.obstacleTimes.length; i > 0; i--) {
-    // outcome times are after obstacle times
-    // the first time checkpoint time has been reached, return the next chronological checkpoint
-    let checkpointTime = beginning.outcomeTimes[i]
-    if (checkpointTime) {
-      if (checkpointTime < now) {
-        nextUpdateTime = beginning.obstacleTimes[i + 1]
-        if (!nextUpdateTime) return -1
-        return nextUpdateTime
-      }
-    }
-    checkpointTime = beginning.obstacleTimes[i]
-    if (checkpointTime) {
-      nextUpdateTime = beginning.outcomeTimes[i]
-      if (!nextUpdateTime) return -1
+  const updateTimes = [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes]
+  updateTimes.sort().reverse()
+  updateTimes.forEach((t, i) => {
+    if (t < now) {
+      if (i === 0) return -1
+      nextUpdateTime = updateTimes[i - 1]
+      if (nextUpdateTime === undefined) return -1 // should be unreachable
       return nextUpdateTime
     }
-  }
+  })
   return -1
 }
 

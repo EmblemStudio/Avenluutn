@@ -6,8 +6,7 @@ import { NarratorParams } from '../utils'
 import { ADDRESSES } from '../constants'
 
 export default (params: NarratorParams): Contract | string => {
-  const searchParams = new URLSearchParams(window.location.search);
-  const address = searchParams.get("network") ?? ADDRESSES[params.network]
+  const address = ADDRESSES[params.network]
   if (address === undefined) {
     throw new Error(`Missing required address for ${params.network}`)
   }

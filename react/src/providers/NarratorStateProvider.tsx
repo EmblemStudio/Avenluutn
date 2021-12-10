@@ -48,13 +48,6 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
   // TODO narrator statue is re-rendering or updating too many times
   useEffect(() => {
     updateNarratorState(narratorState, setNarratorState, params)
-//    setInterval(
-//      () => { 
-//        console.log('Polling narrator data')
-//        updateNarratorState(narratorState, setNarratorState, params) 
-//      },
-//      60000
-//    )
   }, [narratorState])
 
   return (
@@ -62,6 +55,10 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
       {children}
     </NarratorStateContext.Provider>
   )
+}
+
+function now() {
+  return Math.floor(Date.now() / 1000)
 }
 
 async function updateNarratorState(
@@ -73,8 +70,7 @@ async function updateNarratorState(
     return
   }
 
-  const searchParams = new URLSearchParams(window.location.search);
-  const address = searchParams.get("network") ?? ADDRESSES[params.network]
+  const address = ADDRESSES[params.network]
   requireDefined(address, "Address for ${params.netowrk} required")
   const publisher = useContractReadable(address, artifact.abi, params.network)
   if (!publisher) return
@@ -83,15 +79,26 @@ async function updateNarratorState(
   const narratorData = await publisher.narrators(params.narratorIndex)
   let newNarrator: Narrator = {...narratorData, collections: [], stories: {}}
   const totalCollections = Number(newNarrator.totalCollections)
+  const timeActive = now() - Number(newNarrator.start)
+  const relevantStories = Math.floor(
+    timeActive / Number(newNarrator.collectionSpacing)
+  ) + 2
+  console.log({
+    timeActive,
+    relevantStories,
+    collectionSpacing: Number(newNarrator.collectionSpacing),
+    narratorStart: Number(newNarrator.start),
+    now: now(),
+  })
   const promises: Promise<void>[] = []
-  for (let i = 0; i < totalCollections; i++) {
+  for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
       async () => {
         const collection = await getCollection(params.narratorIndex, i)
         if (collection) {
           newNarrator.collections.push(collection)
           newNarrator.stories = await concatCategorizedStories(
-            publisher, 
+            publisher,
             baseAuctionDuration,
             params.narratorIndex,
             Number(newNarrator.collectionSize),
@@ -106,6 +113,7 @@ async function updateNarratorState(
           updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
           lastUpdate: Date.now()
         })
+        console.log(narratorState, newNarrator)
       }
     ))
   }
