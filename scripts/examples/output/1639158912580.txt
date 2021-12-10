@@ -1,0 +1,455 @@
+STORY 0-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Victoria Thorne, 
+Daniel Jackson, 
+and 
+Vllad Mancini 
+gathered.
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ maze
+ at the 
+Jarred 
+sea
+.
+They
+ had to solve
+ a
+ puzzlebox
+.
+After 
+an exhausting 
+hundred guesses
+, they 
+found no way through
+ the 
+puzzlebox
+.
+Victoria Thorne
+ had their arm crushed.
+Daniel Jackson
+ had her arm crushed.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+
+STORY 0-1 
+
+At 
+Harcourt Smithy
+ in 
+Raft Town
+, 
+Abdelhak Crassus, 
+Chinyelu Strozak, 
+and 
+Laura Kwiatkowski 
+gathered.
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+ hidden passage
+ at the 
+Boreal 
+desert
+.
+They arrived at the 
+Boreal
+ desert
+, where they
+ were confronted with
+ a
+ hidden passage
+.
+After 
+a grueling 
+exploration
+, they 
+surveiled all of
+ the 
+hidden passage
+.
+Chinyelu Strozak
+ dislocated their shoulder.
+Laura Kwiatkowski
+ now has 
+deafness
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+
+STORY 0-2 
+
+At 
+Union of Scientists
+ in 
+Karkowa District
+, 
+Bolethe Trump, 
+Olgu Wixx, 
+Kerstin Courtois, 
+and 
+Adam zef West 
+gathered.
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+ tome
+ at the 
+Red 
+market
+.
+They arrived at the 
+Red
+ market
+, where they
+ stumbled upon
+ a
+ tome
+.
+After 
+a grueling 
+infiltration
+, they 
+grabbed
+ the 
+tome
+.
+Olgu Wixx
+ dislocated her shoulder.
+Kerstin Courtois
+ now has 
+deafness
+!
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+
+STORY 1-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Victoria Thorne, 
+Selam Holmberg the Unlucky, 
+Jason vibes Zhao, 
+and 
+Paulo in Hornblower 
+gathered.
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+decrepit
+, 
+unspeakable
+ fiend
+ at the 
+Craven 
+forest
+.
+They
+ snuck up on
+ some
+ brigands
+.
+After 
+a grueling 
+battle
+, they 
+passed by
+ the 
+brigands
+.
+Selam Holmberg the Unlucky
+ found 
+Gold Ring
+!
+They
+ discovered
+ a
+ violent
+ maze
+.
+After 
+a triumphant 
+attempt
+, they 
+figured out
+ the 
+maze
+.
+Selam Holmberg the Unlucky
+ found 
+Dragon's Crown
+!
+Selam Holmberg the Unlucky
+ found 
+Ornate Greaves
+!
+Paulo in Hornblower
+ found 
+Platinum Ring
+!
+They arrived at the 
+Craven
+ forest
+, where they
+ snuck up on
+ a
+ decrepit
+, unspeakable
+ fiend
+.
+After 
+a trying 
+audience
+, they 
+struck a deal with
+ the 
+fiend
+.
+Victoria Thorne
+ found 
+Silk Hood
+!
+Selam Holmberg the Unlucky
+ found 
+Holy Gauntlets
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+
+STORY 1-1 
+
+At 
+Harcourt Smithy
+ in 
+Raft Town
+, 
+Janet Elizondo, 
+Master Adam Rojo, 
+Kyle Trump, 
+and 
+Csilla Wood 
+gathered.
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+ giant spider
+ at the 
+Boreal 
+village
+.
+They arrived at the 
+Boreal
+ village
+, where they
+ were confronted by
+ a
+ giant spider
+.
+After 
+a strong 
+contest
+, they 
+overpowered
+ the 
+giant spider
+.
+Janet Elizondo
+ found 
+Scimitar of Protection
+!
+Master Adam Rojo
+ found 
+Bronze Ring
+!
+The adventurers 
+returned triumphantly to 
+Harcourt Smithy
+, basking in glory.
+
+STORY 1-2 
+
+At 
+Union of Scientists
+ in 
+Karkowa District
+, 
+Cindy Strozak, 
+Bolethe Trump, 
+Adam zef West, 
+and 
+Olgu Wixx 
+gathered.
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+ caravan
+ at the 
+Boreal 
+summit
+.
+They arrived at the 
+Boreal
+ summit
+, where they
+ were blocked by
+ a
+ caravan
+.
+After 
+a strong 
+attempt
+, they 
+protected
+ the 
+caravan
+.
+Cindy Strozak
+ found 
+Scimitar of Protection
+!
+Bolethe Trump
+ found 
+Bronze Ring
+!
+The adventurers 
+returned triumphantly to 
+Union of Scientists
+, basking in glory.
+
+STORY 2-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Isabella jai K, 
+Daniel Jackson, 
+Selam Holmberg the Unlucky, 
+James Kodou, 
+and 
+Jason vibes Zhao 
+gathered.
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+ hidden passage
+ at the 
+Can-ton 
+market
+.
+
+STORY 2-1 
+
+At 
+Harcourt Smithy
+ in 
+Raft Town
+, 
+Master Adam Rojo, 
+Jennifer Fellowes, 
+Csilla Wood, 
+Sarah Gannon, 
+and 
+Selam Berg 
+gathered.
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+voracious
+, 
+reknowned
+ swarm
+ at the 
+Headless 
+forest
+.
+They
+ snuck up on
+ a
+ beast
+.
+After 
+a powerful 
+battle
+, they 
+defeated
+ the 
+beast
+.
+Master Adam Rojo
+ found 
+"Kraken Bite" Shoes of Enlightenment +1
+!
+Csilla Wood
+ found 
+Grimoire
+!
+They
+ stumbled upon
+ a
+ voracious
+ cliff
+.
+After 
+a grueling 
+trek
+, they 
+overcame
+ the 
+cliff
+.
+Csilla Wood
+ had her arm crushed.
+Csilla Wood
+ now has 
+aggressive impulses
+!
+Sarah Gannon
+ found 
+Bone Wand
+!
+Selam Berg
+ had her arm crushed.
+
+STORY 2-2 
+
+At 
+Union of Scientists
+ in 
+Karkowa District
+, 
+Adam zef West, 
+Chalia Donaldson, 
+Olgu Wixx, 
+Kerstin Courtois, 
+and 
+Grace sixth of Woodd Jr. 
+gathered.
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+ fiend
+ at the 
+Red 
+market
+.
+

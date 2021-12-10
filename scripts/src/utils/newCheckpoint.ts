@@ -1,4 +1,4 @@
-import { providers, utils } from 'ethers'
+import { providers } from 'ethers'
 import Prando from 'prando';
 
 export function makeProvider(providerUrl?: string): providers.BaseProvider {
@@ -10,14 +10,9 @@ export function makeProvider(providerUrl?: string): providers.BaseProvider {
  * If `time` has been reached, try to get closest earlier block
  */
 
-// TODO consider renaming this to `blockHashAsOf` or `blockHashIfReady`
-// TODO consider changing this to `getCheckpoint` which returns a unique
-// Prando as well
-// TODO this should return { prng | Error(string) }, so that we can know whether to return with next update being this time
-// (i.e. it hasn't yet been reached), or there was some other problem
-
 interface Checkpoint {
   prng: Prando;
+  blockHash: string;
   error?: Error;
 }
 
@@ -28,26 +23,27 @@ export const checkPointErrors = {
 
 export async function newCheckpoint(
   time: number,
-  provider: providers.BaseProvider
+  provider: providers.BaseProvider,
+  seed?: string
 ): Promise<Checkpoint> {
   const now = Math.floor(Date.now()/1000)
   if (time > now) {
     const error = new Error(checkPointErrors.timeInFuture)
     console.warn(error)
-    return { error, prng: new Prando(-1) }
+    return { error, prng: new Prando(-1), blockHash: "" }
   }
 
   const startBlockHash = await closestEarlierBlockHash(time, provider)
   if (!startBlockHash) {
     const error = new Error(checkPointErrors.unknown)
     console.warn(error)
-    return { error, prng: new Prando(-1) }
+    return { error, prng: new Prando(-1), blockHash: "" }
   }
-  console.log(`Found checkout for time ${time}`)
-  return { prng: new Prando(startBlockHash) }
+  console.log(`Found checkpoint for time ${time}`)
+  return { prng: new Prando(startBlockHash + seed), blockHash: startBlockHash }
 }
 
-/*
+
 export async function nextBlockHash(
   time: number,
   provider: providers.BaseProvider
@@ -67,7 +63,6 @@ export async function nextBlockHash(
 
   return startBlockHash
 }
-*/
 
 /**
  * Find closest block before the target time

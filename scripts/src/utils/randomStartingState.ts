@@ -2,7 +2,7 @@ import Prando from 'prando'
 import { providers } from 'ethers'
 
 import { getRandomName, getRandomClass, getRandomLootPiece } from '../content/loot'
-import { State, Guild, Character, Adventurer, Stats } from '../content/interfaces'
+import { State, Guild, Character, Adventurer, Stats } from './interfaces'
 import {
   pronounsSource,
   skills,
@@ -33,7 +33,7 @@ async function randomGuild(
   provider?: providers.BaseProvider | string
 ): Promise<Guild> {
   const adventurers = await makeRandomAdventurers(
-    prng.nextInt(3, 5),
+    prng.nextInt(10, 15),
     prng,
     provider
   )
