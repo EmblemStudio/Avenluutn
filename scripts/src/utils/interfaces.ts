@@ -87,6 +87,7 @@ export interface LabeledString {
 export interface Obstacle {
   difficulty: number; // 1-4?
   type: ObstacleType;
+  arrival: string;
   discovery: string;
   firstAdjective?: string;
   secondAdjective?: string;

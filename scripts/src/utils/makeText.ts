@@ -81,7 +81,7 @@ export function makeObstacleText(obstacle: Obstacle): LabeledString[] {
     )
     // text += `They arrived at the ${obstacle.quest.locationName} ${obstacle.quest.locationType}, where they`
   } else {
-    res.push({ string: `They`, label: Label.conjunctive })
+    res.push({ string: `${obstacle.arrival}, they`, label: Label.conjunctive })
     // text += `They`
   }
   res.push({ string: ` ${obstacle.discovery}`, label: Label.obstacleDiscovery })

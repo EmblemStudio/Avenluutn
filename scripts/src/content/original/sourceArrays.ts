@@ -155,6 +155,19 @@ export const Injuries: { text: string, traits: string[] }[] = [
 ]
 
 // Obstacle Sources // 
+// TODO obstacle source indexes should also be done with an ENUM ideally
+export const obstacleArrivals = [
+  "During the journey",
+  "While traveling",
+  "On the way",
+  "Before reaching the destination",
+  "On the road there",
+  "Next",
+  "Soon enough",
+  "After going some distance",
+  "Venturing forth",
+  "In search of the goal"
+]
 
 export const obstacleInfo = {
   "PUZZLE": {

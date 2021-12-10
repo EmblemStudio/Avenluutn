@@ -30,7 +30,8 @@ import {
   traits,
   activityAdjectives,
   triggerMap,
-  ObstacleType
+  ObstacleType,
+  obstacleArrivals
 } from '../content/original/sourceArrays'
 import {
   makeInjuryText,
@@ -81,6 +82,7 @@ export function randomObstacle(prng: Prando, difficulty: number): Obstacle {
   const res: Obstacle = {
     difficulty,
     type,
+    arrival: prng.nextArrayItem(obstacleArrivals),
     discovery: prng.nextArrayItem(obstacleInfo[type].discovery),
     object: prng.nextArrayItem(obstacleInfo[type].objects),
     // additions: [] TODO additions
@@ -110,6 +112,7 @@ export function questObstacle(prng: Prando, quest: Quest): Obstacle {
   const res: Obstacle = {
     difficulty: quest.difficulty,
     type,
+    arrival: prng.nextArrayItem(obstacleArrivals),
     discovery: prng.nextArrayItem(obsInfo.discovery),
     object: quest.objective
     // additions: [] TODO additions
