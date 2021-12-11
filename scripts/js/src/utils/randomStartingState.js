@@ -15,7 +15,7 @@ async function randomStartingState(numberOfGuilds, prng, provider) {
 }
 exports.randomStartingState = randomStartingState;
 async function randomGuild(id, prng, previousState, provider) {
-    const adventurers = await makeRandomAdventurers(prng.nextInt(3, 5), prng, provider);
+    const adventurers = await makeRandomAdventurers(prng.nextInt(10, 15), prng, provider);
     /*
     const name = uniqueArrayItem<string, Guild>(
       prng,

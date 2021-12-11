@@ -11,7 +11,7 @@
     "deploy": "npx hardhat run scripts/deploy.js --network localhost",
     "deploy:ropsten": "npx hardhat run scripts/deploy.js --network ropsten",
     "deploy:goerli": "npx hardhat run scripts/deploy.js --network goerli",
-    "new-narrator": "npx hardhat run scripts/newNarrator.js --localhost",
+    "new-narrator": "npx hardhat run scripts/newNarrator.js --network localhost",
     "new-narrator:ropsten": "npx hardhat run scripts/newNarrator.js --network ropsten",
     "new-narrator:goerli": "npx hardhat run scripts/newNarrator.js --network goerli",
     "build": "npx hardhat compile && yarn get-abi && yarn get-bin",

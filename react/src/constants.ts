@@ -6,7 +6,7 @@ interface NarratorParams {
 }
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: "goerli",
+  network: "localhost",
   narratorIndex: 2,
 }
 
@@ -33,12 +33,16 @@ export const ADDRESSES: { [name: string]: string } = {
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
   "goerli": "0x854757c41Ba48ad8C53cF1890B2B8672ad8b0c15",
   "polygon": "",
-  "localhost": "0xA4899D35897033b927acFCf422bc745916139776",
+  "localhost": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
 }
 
 export const SERVER = {
-  "localhost": "http://localhost:8000"
-}[NARRATOR_PARAMS.network] ?? "http://67.205.138.92"
+  "localhost": "http://localhost:8000",
+  "mainnet": "http://67.205.138.92",
+  "ropsten": "http://67.205.138.92",
+  "polygon": "http://67.205.138.92",
+  "goerli": "http://67.205.138.92",
+}[NARRATOR_PARAMS.network]
 
 export const CACHE_PERIOD = 180000 // 3 minutes
 

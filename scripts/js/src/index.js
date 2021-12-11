@@ -16,8 +16,9 @@ const utils_1 = require("./utils");
 const tellStory_1 = require("./tellStory");
 const nextState_1 = require("./nextState");
 const cross_fetch_1 = require("cross-fetch");
+const prando_1 = require("prando");
 globalThis.fetch = cross_fetch_1.fetch;
-__exportStar(require("./content/interfaces"), exports);
+__exportStar(require("./utils/interfaces"), exports);
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
     const provider = (0, utils_1.makeProvider)(providerUrl);
     const checkpoint = await (0, utils_1.newCheckpoint)(startTime, provider);
@@ -46,12 +47,10 @@ async function tellStories(prevResult, startTime, length, totalStories, provider
     let events = [];
     let nextUpdateTime = -1;
     for (let i = 0; i < totalStories; i++) {
-        const story = await (0, tellStory_1.tellStory)(checkpoint.prng, state, startTime, length, i, provider);
+        const story = await (0, tellStory_1.tellStory)(new prando_1.default(checkpoint.blockHash + `${i}`), state, startTime, length, i, provider);
         if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) {
             nextUpdateTime = story.nextUpdateTime;
         }
-        console.log(`ran story guild ${i}. Current next update time: ${nextUpdateTime}`);
-        // console.log("got story", story)
         stories.push(story);
         events = [...events, ...story.events];
     }

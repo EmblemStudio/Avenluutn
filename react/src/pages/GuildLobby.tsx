@@ -11,6 +11,8 @@ export default () => {
   const { narrator } = useNarratorState()
   const { guild, color } = useGuild(narrator)
 
+  console.log("GuildLobby, narrator", narrator)
+
   return (
     <>
       <GuildHeader guild={guild} selected="lobby"/>

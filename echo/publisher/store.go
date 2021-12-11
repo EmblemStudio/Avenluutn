@@ -71,7 +71,15 @@ func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
 
 	fmt.Println(key, "Got result for")
 	fmt.Println(key, "    next update time  ", result.NextUpdateTime)
-	fmt.Println(key, "    valid for         ", result.NextUpdateTime - els.Now().Unix())
+	if (result.NextUpdateTime == -1) {
+		fmt.Println(key, "    valid forever")
+	} else {
+		fmt.Println(
+			key,
+			"    valid for         ",
+			result.NextUpdateTime - els.Now().Unix(),
+		)
+	}
 
 	// remove the cache file if it's expired
 	if time.Unix(result.NextUpdateTime, 0).Before(els.Now()) && result.NextUpdateTime != -1 {

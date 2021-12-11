@@ -17,10 +17,10 @@ function wake () {
     case $1 in
         "build")
             echo "copying in most recent ui"
-            cp -r ../react/dist ./ui
+            cp -r ../react/dist/* ./ui
 
             echo "copying in most recent script"
-            cp -r ../scripts/dist ./testAssets
+            cp -r ../scripts/dist* ./testAssets
 
             docker run \
                    -u `id -u`:`id -g` \

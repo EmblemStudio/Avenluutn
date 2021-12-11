@@ -21,7 +21,7 @@ async function main() {
    */
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://gist.githubusercontent.com/jessebmiller/a1a3b25b1332002cd8bb7a39950f896a/raw/2f6df058e619784ec642a16594569ec24551e607/bundle.js"
+    "http://localhost:8000/test/bundle.js" // "https://gist.githubusercontent.com/jessebmiller/a1a3b25b1332002cd8bb7a39950f896a/raw/2f6df058e619784ec642a16594569ec24551e607/bundle.js"
   )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
@@ -35,8 +35,8 @@ async function main() {
     Number(nftId),
     now,              // start
     1000,             // totalCollections
-    60 * 60,          // collectionLength
-    60 * 60 * 3 / 2,  // collectionSpacing
+    60 * 15,          // collectionLength
+    60 * 20,          // collectionSpacing
     5,                // collectionSize
   )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
