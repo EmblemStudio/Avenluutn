@@ -1,4 +1,5 @@
-import { providers, utils } from 'ethers'
+import { providers } from 'ethers'
+import Prando from 'prando';
 
 export function makeProvider(providerUrl?: string): providers.BaseProvider {
   if (providerUrl) { return new providers.JsonRpcProvider(providerUrl) }
@@ -9,9 +10,40 @@ export function makeProvider(providerUrl?: string): providers.BaseProvider {
  * If `time` has been reached, try to get closest earlier block
  */
 
-// TODO consider renaming this to `blockHashAsOf` or `blockHashIfReady`
-// TODO consider changing this to `getCheckpoint` which returns a unique
-// Prando as well
+interface Checkpoint {
+  prng: Prando;
+  blockHash: string;
+  error?: Error;
+}
+
+export const checkPointErrors = {
+  timeInFuture: `Time is in the future.`,
+  unknown: `Unreachable: no mined block found before time.`
+}
+
+export async function newCheckpoint(
+  time: number,
+  provider: providers.BaseProvider,
+  seed?: string
+): Promise<Checkpoint> {
+  const now = Math.floor(Date.now()/1000)
+  if (time > now) {
+    const error = new Error(checkPointErrors.timeInFuture)
+    console.warn(error)
+    return { error, prng: new Prando(-1), blockHash: "" }
+  }
+
+  const startBlockHash = await closestEarlierBlockHash(time, provider)
+  if (!startBlockHash) {
+    const error = new Error(checkPointErrors.unknown)
+    console.warn(error)
+    return { error, prng: new Prando(-1), blockHash: "" }
+  }
+  console.log(`Found checkpoint for time ${time}`)
+  return { prng: new Prando(startBlockHash + seed), blockHash: startBlockHash }
+}
+
+
 export async function nextBlockHash(
   time: number,
   provider: providers.BaseProvider
@@ -191,7 +223,7 @@ export async function boundingBlocks(
   if (upperBound === undefined) {
     upperBound = await getLatestBlock(provider)
     if (targetTime > upperBound.timestamp) {
-      console.warn("target time after latest block")
+      console.warn(`target time ${targetTime} after latest block`)
       return null
     }
   }

@@ -1,5 +1,8 @@
 const avenluutn = require("../dist/bundle.js")
 
+const now = Math.floor(Date.now() / 1000)
+const length = 1000000
+
 async function tellCollection(
   size,
   previousResult,
@@ -24,7 +27,7 @@ async function tellCollection(
   return tellCollection(
     size - 1,
     result,
-    start + Math.floor(length * 1.5),
+    start + Math.floor(length) + 100,
     length,
     totalStories,
     provider,
@@ -35,11 +38,9 @@ async function tellCollection(
 tellCollection(
   3,
   null,
-  1637168603,
-  400,
-  2,
+  now - (length + (length / 2)),
+  length,
+  1,
   "http://localhost:8545",
   [],
-).then(a => {
-  console.log(a)
-}).catch(console.error)
+).then(console.log).catch(console.error)

@@ -1,17 +1,12 @@
 package server
 
 import (
-	"io/ioutil"
 	"net/http"
 	"fmt"
 	"log"
 	"encoding/json"
 	"errors"
-	"encoding/hex"
-	"text/template"
-	"bytes"
-
-	"golang.org/x/crypto/sha3"
+	"sync"
 
 	"github.com/labstack/echo/v4"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -19,11 +14,17 @@ import (
 	"EmblemStudio/aavenluutn/echo/publisher"
 )
 
+type SyncChans struct {
+	result chan publisher.ScriptResult
+	err chan error
+}
 
 type PubServer struct {
 	pub *publisher.Publisher
 	store publisher.PublisherStore
 	client *ethclient.Client
+	syncChans map[string]SyncChans
+	resultsMutex sync.Mutex
 }
 
 func NewPubServer(
@@ -31,7 +32,7 @@ func NewPubServer(
 	s publisher.PublisherStore,
 	c *ethclient.Client,
 ) PubServer {
-	return PubServer{p, s, c}
+	return PubServer{p, s, c, make(map[string]SyncChans), sync.Mutex{}}
 }
 
 func key(a int64, b int64) string {
@@ -46,32 +47,85 @@ func (ps PubServer) runNarratorScript(
 		return publisher.ScriptResult{}, errors.New("Negative collection index")
 	}
 
-	cachedResult, err := ps.store.Get(key(narratorIndex, collectionIndex))
+	resultKey := key(narratorIndex, collectionIndex)
+
+	// if there is already a channel open for this result
+	ps.resultsMutex.Lock()
+	syncChans, present := ps.syncChans[resultKey]
+	if present {
+		// just wait for it
+		ps.resultsMutex.Unlock()
+		fmt.Println(resultKey, "Waiting for results")
+		select {
+		case result := <-syncChans.result:
+			fmt.Println("Got result from result chan")
+			return result, nil
+		case err := <-syncChans.err:
+			fmt.Println("Got error from error chan")
+			return publisher.ScriptResult{}, err
+		}
+	}
+	// otherwise make channels for it and send results through for anyone
+	// looking for this while we are working on it
+	resultChan := make(chan publisher.ScriptResult, 1)
+	errorChan := make(chan error, 1)
+	fmt.Println(resultKey, "adding sync chans")
+	ps.syncChans[resultKey] = SyncChans{resultChan, errorChan}
+	defer func() {
+		ps.resultsMutex.Lock()
+		fmt.Println(resultKey, "deleting sync chans")
+		delete(ps.syncChans, resultKey)
+		ps.resultsMutex.Unlock()
+	}()
+	ps.resultsMutex.Unlock()
+
+	prefix := fmt.Sprintf("%v ps.runNarratorScript", resultKey)
+	cachedResult, err := ps.store.Get(resultKey)
 	if err == nil {
 		// we have it cached
+		fmt.Println(prefix, "Cache hit!")
+		resultChan <- cachedResult
 		return cachedResult, nil
 	}
+	fmt.Println(prefix, "Cache miss")
 
 	narrator, err := ps.pub.GetNarrator(narratorIndex)
-	if err != nil { return publisher.ScriptResult{}, err }
+	if err != nil {
+		fmt.Println(prefix, "could not get narrator", err)
+		errorChan <- err
+		return publisher.ScriptResult{}, err
+	}
 
 	collectionStart := narrator.Start.Int64() +
 		(collectionIndex * narrator.CollectionLength.Int64())
 
 	script, err := ps.pub.GetScript(narratorIndex, ps.client)
-	if err != nil { return publisher.ScriptResult{}, err }
+	if err != nil {
+		fmt.Println(prefix, "could not get script", err)
+		errorChan <- err
+		return publisher.ScriptResult{}, err
+	}
 
 	var previousResult publisher.ScriptResult
 	if collectionIndex == 0 {
 		previousResult = publisher.ScriptResult{}
 	} else {
+		fmt.Println(key(narratorIndex, collectionIndex), "getting previous result")
+		// recurse
 		previousResult, err = ps.runNarratorScript(
 			narratorIndex,
 			collectionIndex - 1,
 		)
-		if err != nil {	return publisher.ScriptResult{}, err }
+		if err != nil {
+			fmt.Println(
+				prefix,
+				"could not get previous result",
+				err,
+			)
+			errorChan <- err
+			return publisher.ScriptResult{}, err
+		}
 	}
-
 
 	result, err := ps.pub.RunNarratorScript(
 		script,
@@ -81,157 +135,51 @@ func (ps PubServer) runNarratorScript(
 		narrator.CollectionSize.Int64(),
 	)
 	if err != nil {
+		fmt.Println(
+			key(narratorIndex, collectionIndex),
+			"could not get result",
+			err,
+		)
+		errorChan <- err
 		return publisher.ScriptResult{}, err
 	}
 
-	if err := ps.store.Set(key(narratorIndex, collectionIndex), result); err != nil {
-		log.Println("WARNING: Could not cache result:", err)
+	if err := ps.store.Set(
+		key(narratorIndex, collectionIndex),
+		result,
+	); err != nil {
+		log.Println(prefix, "WARNING: Could not cache result:", err)
 	}
 
+	resultChan <- result
 	return result, nil
 
 }
 
-func (ps PubServer) RunNarratorScript(c echo.Context) error {
+func (ps PubServer) ExecuteRun(c echo.Context) error {
 	narratorIndex, err := getInt64Param(c, "narrator")
 	if err != nil { return badRequest(err) }
 
 	collectionIndex, err := getInt64Param(c, "collection")
 	if err != nil { return badRequest(err) }
 
-	log.Println("RunNarratorScript", narratorIndex, collectionIndex)
+	fmt.Println(fmt.Sprintf(
+		"Executing run %v %v",
+		narratorIndex,
+		collectionIndex,
+	))
 
 	result, err := ps.runNarratorScript(narratorIndex, collectionIndex)
-	if err != nil { return serverError(err) }
-
-	responseJSONData, err := json.Marshal(result)
-	if err != nil { return serverError(err) }
-
-	return c.String(http.StatusOK, string(responseJSONData))
-}
-
-func (ps PubServer) GetStory(c echo.Context) error {
-	narratorIndex, err := getInt64Param(c, "narrator")
-	if err != nil { return badRequest(err) }
-
-	collectionIndex, err := getInt64Param(c, "collection")
-	if err != nil { return badRequest(err) }
-
-	storyIndex, err := getInt64Param(c, "story")
-	if err != nil { return badRequest(err) }
-
-	log.Println("GetStory", narratorIndex, collectionIndex, storyIndex)
-
-	result, err := ps.runNarratorScript(narratorIndex, collectionIndex)
-	if err != nil { return serverError(err) }
-
-	if int(storyIndex) >= len(result.Stories) {
-		return serverError(errors.New("Story index out of bounds"))
-	}
-	story := result.Stories[storyIndex]
-
-	jsonResponse, err := json.Marshal(story)
-	if err != nil { return serverError(err) }
-
-	return c.String(http.StatusOK, string(jsonResponse))
-}
-
-func (ps PubServer) RunTestScript(c echo.Context) error {
-
-	formFile, err := c.FormFile("file")
-	if err != nil { return badRequest(err) }
-
-	scriptFile, err := formFile.Open()
-	if err != nil { return badRequest(err) }
-	defer scriptFile.Close()
-
-	scriptData, err := ioutil.ReadAll(scriptFile)
-	if err != nil { return badRequest(err) }
-
-	script := string(scriptData)
-
-	previousResultText := c.FormValue("previous-result")
-	var previousResult publisher.ScriptResult
-	if err := json.Unmarshal([]byte(previousResultText), &previousResult); err != nil {
-		return badRequest(err)
-	}
-
-	collectionStart, err := getInt64FormValue(c, "collection-start")
-	if err != nil { return badRequest(err) }
-
-	collectionLength, err := getInt64FormValue(c, "collection-length")
-	if err != nil { return badRequest(err) }
-
-	collectionSize, err := getInt64FormValue(c, "collection-size")
-	if err != nil { return badRequest(err) }
-
-	iterations, err := getInt64FormValue(c, "iterations")
-	if err != nil { return badRequest(err) }
-
-	cacheBuster := c.FormValue("cache-buster")
-	responseTemplate := c.FormValue("template")
-
-	testHash := make([]byte, 32)
-	sha3.ShakeSum128(testHash, []byte(fmt.Sprintf(
-		"%v%v%v%v%v%v%v",
-		script,
-		previousResult,
-		collectionStart,
-		collectionLength,
-		collectionSize,
-		iterations,
-		cacheBuster,
-	)))
-
-	testKey := hex.EncodeToString(testHash)
-
-	result, err := ps.store.Get(testKey)
-	if err == nil {
-		// we have the result
-		log.Println("Cache Hit", testKey)
-	} else {
-		for iterations > 0 {
-			result, err := ps.pub.RunNarratorScript(
-				script,
-				previousResult,
-				collectionStart,
-				collectionLength,
-				collectionSize,
-			)
-			if err != nil { return serverError(err) }
-
-			previousResult = result
-			iterations -= 1
-		}
-		if err := ps.store.Set(testKey, result); err != nil {
-			log.Println("WARNING: Could not cache result:", err)
-		}
-	}
-
-	responseJSON, err := result.JSON()
 	if err != nil {
+		fmt.Println("==> ExecuteRun runNarratorScript error", err)
 		return serverError(err)
 	}
 
-	if responseTemplate != "" {
-		responseTemplate, err := template.New("response").Parse(responseTemplate)
-		if err != nil {
-			return c.String(http.StatusOK, fmt.Sprintf(
-				"%v\n\n%v",
-				err,
-				responseJSON,
-			))
-		}
-		var b bytes.Buffer
-		if err := responseTemplate.Execute(&b, result); err != nil {
-			return c.String(http.StatusOK, fmt.Sprintf(
-				"%v\n\n%v",
-				err,
-				responseJSON,
-			))
-		}
-		return c.String(http.StatusOK, b.String())
+	responseJSONData, err := json.Marshal(result)
+	if err != nil {
+		fmt.Println("==> ExecuteRun could not marshal result", err)
+		return serverError(err)
 	}
 
-	return c.String(http.StatusOK, responseJSON)
+	return c.String(http.StatusOK, string(responseJSONData))
 }

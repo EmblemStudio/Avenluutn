@@ -11,6 +11,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./makeText"), exports);
-__exportStar(require("./nextBlockHash"), exports);
+__exportStar(require("./newCheckpoint"), exports);
 __exportStar(require("./quests"), exports);
 __exportStar(require("./randomStartingState"), exports);
+__exportStar(require("./interfaces"), exports);

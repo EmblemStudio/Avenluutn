@@ -48,13 +48,6 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
   // TODO narrator statue is re-rendering or updating too many times
   useEffect(() => {
     updateNarratorState(narratorState, setNarratorState, params)
-    setInterval(
-      () => { 
-        console.log('Polling narrator data')
-        updateNarratorState(narratorState, setNarratorState, params) 
-      },
-      60000
-    )
   }, [narratorState])
 
   return (
@@ -64,12 +57,22 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
   )
 }
 
+function now() {
+  return Math.floor(Date.now() / 1000)
+}
+
+let baseAuctionDuration: BigNumber = BigNumber.from(-1)
+
+// TODO figure out what type narratorData is and update it from any
+let narratorData: any = undefined
+
 async function updateNarratorState(
   narratorState: NarratorState, 
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams, 
 ) {
   if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
+    console.log("Cache still valid, skipping narrator state update")
     return
   }
 
@@ -78,19 +81,32 @@ async function updateNarratorState(
   const publisher = useContractReadable(address, artifact.abi, params.network)
   if (!publisher) return
 
-  const baseAuctionDuration = await publisher.baseAuctionDuration()
-  const narratorData = await publisher.narrators(params.narratorIndex)
+  if (baseAuctionDuration.eq(-1)) {
+    baseAuctionDuration = await publisher.baseAuctionDuration()
+    console.log("fetched baseAuctionDuration", Number(baseAuctionDuration))
+  }
+
+  if (narratorData === undefined) {
+    narratorData = await publisher.narrators(params.narratorIndex)
+    console.log("Feched narratorData", narratorData)
+  }
+
   let newNarrator: Narrator = {...narratorData, collections: [], stories: {}}
   const totalCollections = Number(newNarrator.totalCollections)
+  const timeActive = now() - Number(newNarrator.start)
+  const relevantStories = Math.floor(
+    timeActive / Number(newNarrator.collectionSpacing)
+  ) + 2
+  console.log("updating narratorState from", narratorState)
   const promises: Promise<void>[] = []
-  for (let i = 0; i < totalCollections; i++) {
+  for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
-      async () => {
+      async (resolve, reject) => {
         const collection = await getCollection(params.narratorIndex, i)
         if (collection) {
           newNarrator.collections.push(collection)
           newNarrator.stories = await concatCategorizedStories(
-            publisher, 
+            publisher,
             baseAuctionDuration,
             params.narratorIndex,
             Number(newNarrator.collectionSize),
@@ -105,11 +121,12 @@ async function updateNarratorState(
           updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
           lastUpdate: Date.now()
         })
+        resolve()
       }
     ))
   }
   await Promise.all(promises)
-  console.log('awaited all promises')
+  console.log("updated narratorState")
 }
 
 function sortStories(s1: Story, s2: Story) { return Number(s1.startTime.sub(s2.startTime)) }
@@ -118,9 +135,11 @@ async function getCollection(
   narratorIndex: number,
   collectionIndex: number
 ): Promise<Collection | null> {
+  console.log("getting collection", narratorIndex, collectionIndex)
   const response = await axios.get(`${SERVER}/runs/${narratorIndex}/${collectionIndex}`)
   if (!response.data) return null
   const scriptResult: ScriptResult = response.data
+  console.log("got response", narratorIndex, collectionIndex, scriptResult)
   const collection: Collection = {
     collectionIndex,
     scriptResult
@@ -146,11 +165,11 @@ async function concatCategorizedStories(
     const endTime = startTime.add(collectionLength)
     const contractStory = await publisher.stories(id)
     const auction: Auction = contractStory.auction
-    const text = scriptResult.stories[j]
+    const text = scriptResult.stories[j] // ?? "A story only the future has beheld..."
     if (text === undefined) {
       console.warn("scriptResult missing story at index", j)
       continue
-    }
+    } 
     const story: Story = {
       narratorIndex,
       collectionIndex,

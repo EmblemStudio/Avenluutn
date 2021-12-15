@@ -22,11 +22,13 @@ func main() {
 	if pubHexAddress == "" {
 		log.Fatal("Missing required AVENLUUTN_PUB_ADDR envar")
 	}
+	fmt.Println("Publisher address", pubHexAddress)
 
 	provider := os.Getenv("AVENLUUTN_PROVIDER")
 	if provider == "" {
 		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
 	}
+	fmt.Println("Provider", provider)
 
 	// make a server
 	client, err := ethclient.Dial(provider)
@@ -47,10 +49,11 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
 
-	e.GET("/runs/:narrator/:collection", s.RunNarratorScript)
-	e.GET("/stories/:narrator/:collection/:story", s.GetStory)
+	e.GET("/runs/:narrator/:collection", s.ExecuteRun)
 
-	e.GET("/", func(c echo.Context) error {
+	e.Static("/", "ui")
+
+	e.GET("/settings", func(c echo.Context) error {
 		return c.HTML(
 			http.StatusOK,
 			fmt.Sprintf(
@@ -61,10 +64,12 @@ func main() {
 		)
 	})
 
+	e.Static("/test", "testAssets")
+
 	e.GET("/healthcheck", func(c echo.Context) error {
 		return c.JSON(
 			http.StatusOK,
-			struct{ Status string }{Status: "OK"},
+			struct{ Status string }{ Status: "OK" },
 		)
 	})
 

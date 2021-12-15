@@ -75,8 +75,8 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
     mapping(uint256 => bytes32) public mintedStories;
 
     constructor(
-        uint256 _timeBuffer, // min time with no bids to end an auction
         uint256 _baseAuctionDuration, // min auction time
+        uint256 _timeBuffer, // min time with no bids to end an auction
         uint256 _minBidAmount,
         uint8 _minBidIncrementPercentage,
         string memory name,

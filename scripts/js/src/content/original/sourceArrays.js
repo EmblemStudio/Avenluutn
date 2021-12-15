@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.guildLocations = exports.guildMottos = exports.guildNames = exports.skills = exports.traits = exports.triggerMap = exports.pronounsSource = exports.questLocationType = exports.questLocationName = exports.genericLastName = exports.genericFirstName = exports.genericSecondAdjectives = exports.genericFirstAdjectives = exports.questTypesAndInfo = exports.questDifficulty = exports.questObstacleMap = exports.boonTypes = exports.obstacleInfo = exports.Injuries = exports.typeOfResultOdds = exports.numberOfResultsOdds = exports.activityAdjectives = void 0;
-const interfaces_1 = require("../interfaces");
+exports.guildLocations = exports.guildMottos = exports.guildNames = exports.skills = exports.traits = exports.triggerMap = exports.pronounsSource = exports.questLocationType = exports.questLocationName = exports.genericLastName = exports.genericFirstName = exports.genericSecondAdjectives = exports.genericFirstAdjectives = exports.questTypesAndInfo = exports.questDifficulty = exports.questObstacleMap = exports.ObstacleType = exports.boonTypes = exports.obstacleInfo = exports.obstacleArrivals = exports.Injuries = exports.typeOfResultOdds = exports.numberOfResultsOdds = exports.activityAdjectives = void 0;
 // Outcome Sources // 
 exports.activityAdjectives = {
     0: [
@@ -35,26 +34,27 @@ exports.activityAdjectives = {
         "a strong"
     ]
 };
+// TODO use enum for index type in numberOfResultsOdds?
 exports.numberOfResultsOdds = {
-    1: {
+    2: {
         0: 50,
         1: 90,
         2: 99,
         3: 100
     },
-    2: {
+    3: {
         0: 35,
         1: 85,
         2: 98,
         3: 100
     },
-    3: {
+    4: {
         0: 20,
         1: 70,
         2: 96,
         3: 100
     },
-    4: {
+    5: {
         0: 5,
         1: 60,
         2: 95,
@@ -127,6 +127,19 @@ exports.Injuries = [
     }
 ];
 // Obstacle Sources // 
+// TODO obstacle source indexes should also be done with an ENUM ideally
+exports.obstacleArrivals = [
+    "During the journey",
+    "While traveling",
+    "On the way",
+    "Before reaching the destination",
+    "On the road there",
+    "Next",
+    "Soon enough",
+    "After going some distance",
+    "Venturing forth",
+    "In search of the goal"
+];
 exports.obstacleInfo = {
     "PUZZLE": {
         discovery: [
@@ -244,25 +257,31 @@ Simple HP system =
 - when you survive an adventure with an injury, chance to get a permanent injury trait
 - otherwise, injuries are healed at end of adventure (rather, they don't persist)
 */
+var ObstacleType;
+(function (ObstacleType) {
+    ObstacleType["puzzle"] = "PUZZLE";
+    ObstacleType["obstacle"] = "OBSTACLE";
+    ObstacleType["entity"] = "ENTITY";
+})(ObstacleType = exports.ObstacleType || (exports.ObstacleType = {}));
 exports.questObstacleMap = {
-    "DEFEAT": interfaces_1.ObstacleType.entity,
-    "EXPLORE": interfaces_1.ObstacleType.obstacle,
-    "RETRIEVE": interfaces_1.ObstacleType.puzzle,
-    "DEFEND": interfaces_1.ObstacleType.obstacle,
-    "BEFRIEND": interfaces_1.ObstacleType.entity
+    "DEFEAT": ObstacleType.entity,
+    "EXPLORE": ObstacleType.obstacle,
+    "RETRIEVE": ObstacleType.puzzle,
+    "DEFEND": ObstacleType.obstacle,
+    "BEFRIEND": ObstacleType.entity
 };
 // Quest Sources //
 exports.questDifficulty = [
-    1,
-    1,
-    1,
-    1,
+    2,
     2,
     2,
     2,
     3,
     3,
-    4
+    3,
+    4,
+    4,
+    5
 ];
 exports.questTypesAndInfo = {
     "defeat": {

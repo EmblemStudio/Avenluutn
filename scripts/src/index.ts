@@ -1,36 +1,22 @@
-import Prando from 'prando'
+// import Prando from 'prando'
 import {
   makeProvider,
-  nextBlockHash,
   randomStartingState,
-  OutcomeText,
+  newCheckpoint,
+  checkPointErrors,
+  ScriptResult,
+  Story,
+  State, 
+  Result
 } from './utils'
-import { State, Result } from './content/interfaces'
 import { tellStory } from './tellStory'
 import { nextState } from './nextState'
 import { fetch } from 'cross-fetch'
+import Prando from 'prando';
 
 globalThis.fetch = fetch
 
-export * from './content/interfaces'
-
-export interface ScriptResult {
-  stories: Story[];
-  nextState: State;
-}
-
-export interface Story {
-  plainText: string[];
-  richText: {
-    beginning: string[];
-    middle: {
-      obstacleText: string[];
-      outcomeText: OutcomeText[];
-    };
-    ending: string[];
-  }
-  events: Result[];
-}
+export * from './utils/interfaces'
 
 export async function tellStories(
   prevResult: ScriptResult | null,
@@ -40,36 +26,53 @@ export async function tellStories(
   providerUrl?: string,
 ): Promise<ScriptResult> {
   const provider = makeProvider(providerUrl)
-  const startBlockHash = await nextBlockHash(startTime, provider)
-  if (!startBlockHash) { throw new Error('No starting block hash') }
+  const checkpoint = await newCheckpoint(startTime, provider)
 
-  const prng = new Prando(startBlockHash)
+  if (checkpoint.error) {
+    if (checkpoint.error.message === checkPointErrors.timeInFuture) {
+      return {
+        stories: [],
+        nextState: prevResult ? prevResult.nextState : { guilds: [] },
+        nextUpdateTime: startTime
+      }
+    }
+    return {
+      stories: [],
+      nextState: prevResult ? prevResult.nextState : { guilds: [] },
+      nextUpdateTime: -1
+    }
+  }
 
   let state: State
   if (!prevResult) {
-    state = await randomStartingState(totalStories, prng, provider)
+    state = await randomStartingState(totalStories, checkpoint.prng, provider)
   } else {
     state = prevResult.nextState
   }
   const stories: Story[] = []
   let events: Result[] = []
+  let nextUpdateTime = -1
   for (let i = 0; i < totalStories; i++) {
     const story = await tellStory(
-      `${startBlockHash}{i}`, // prng,
+      new Prando(checkpoint.blockHash + `${i}`),
       state,
       startTime,
       length,
       i,
       provider
     )
-    console.log("got story", story)
+    if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) { 
+      nextUpdateTime = story.nextUpdateTime
+    }
+
     stories.push(story)
     events = [...events, ...story.events]
   }
 
   const result = {
     stories,
-    nextState: nextState(state, events)
+    nextState: nextState(state, events),
+    nextUpdateTime
   }
 
   return result

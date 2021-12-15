@@ -110,6 +110,7 @@ type Story = interface{}
 type ScriptResult struct {
 	Stories []Story `json:"stories"`
 	NextState map[string]interface{} `json:"nextState"`
+	NextUpdateTime int64 `json:"nextUpdateTime"`
 }
 
 func (sr ScriptResult) JSON() (string, error) {
@@ -189,11 +190,12 @@ script.tellStories(%v, %v, %v, %v, "%v")
 	fmt.Println(
 		"Running node command, previous result length",
 		len(previousResultJSON),
+		"invalid for",
+		time.Now().Unix() - previousResult.NextUpdateTime,
 	)
 	out, err := exec.Command("node", runScriptPath).CombinedOutput()
 	ioutil.WriteFile("./node_command_out.txt", out, 0644)
 	if err != nil {
-//		ioutil.WriteFile("./node_command_out.txt", out, 0644)
 		fmt.Println("NodeJS Error:", err)
 	}
 	resultJSON, err := ioutil.ReadFile(resultFilePath)

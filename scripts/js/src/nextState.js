@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextState = void 0;
-const interfaces_1 = require("./content/interfaces");
+const utils_1 = require("./utils");
 function nextState(state, events) {
-    console.log("nextState", state, events);
+    // console.log("nextState", state, events)
     const newState = Object.assign({}, state);
     events.forEach(event => {
         const guild = newState.guilds[event.guildId];
@@ -12,22 +12,22 @@ function nextState(state, events) {
             const adventurer = guild.adventurers[event.advId];
             if (adventurer) {
                 switch (event.type) {
-                    case interfaces_1.ResultType.Death:
+                    case utils_1.ResultType.Death:
                         // move adventurer to the graveyard
                         guild.graveyard[adventurer.id] = adventurer;
                         delete guild.adventurers[adventurer.id];
                         break;
-                    case interfaces_1.ResultType.Loot:
+                    case utils_1.ResultType.Loot:
                         // add loot to adventurer
                         adventurer.loot.push(event.component);
                         guild.adventurers[adventurer.id] = Object.assign({}, adventurer);
                         break;
-                    case interfaces_1.ResultType.Skill:
+                    case utils_1.ResultType.Skill:
                         // add skill to adventurer
                         adventurer.skills.push(event.component);
                         guild.adventurers[adventurer.id] = Object.assign({}, adventurer);
                         break;
-                    case interfaces_1.ResultType.Trait:
+                    case utils_1.ResultType.Trait:
                         // add trait to adventurer
                         adventurer.traits.push(event.component);
                         guild.adventurers[adventurer.id] = Object.assign({}, adventurer);

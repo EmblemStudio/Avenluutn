@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.boundingBlocks = exports.closestEarlierBlockHash = exports.nextBlockHash = exports.makeProvider = void 0;
+exports.boundingBlocks = exports.closestEarlierBlockHash = exports.newCheckpoint = exports.checkPointErrors = exports.makeProvider = void 0;
 const ethers_1 = require("ethers");
+const prando_1 = require("prando");
 function makeProvider(providerUrl) {
     if (providerUrl) {
         return new ethers_1.providers.JsonRpcProvider(providerUrl);
@@ -9,26 +10,48 @@ function makeProvider(providerUrl) {
     return ethers_1.providers.getDefaultProvider();
 }
 exports.makeProvider = makeProvider;
-/**
- * If `time` has been reached, try to get closest earlier block
- */
-// TODO consider renaming this to `blockHashAsOf` or `blockHashIfReady`
-// TODO consider changing this to `getCheckpoint` which returns a unique
-// Prando as well
-async function nextBlockHash(time, provider) {
+exports.checkPointErrors = {
+    timeInFuture: `Time is in the future.`,
+    unknown: `Unreachable: no mined block found before time.`
+};
+async function newCheckpoint(time, provider) {
     const now = Math.floor(Date.now() / 1000);
     if (time > now) {
-        console.warn(`Time ${time} is in the future.`);
-        return null;
+        const error = new Error(exports.checkPointErrors.timeInFuture);
+        console.warn(error);
+        return { error, prng: new prando_1.default(-1) };
     }
     const startBlockHash = await closestEarlierBlockHash(time, provider);
     if (!startBlockHash) {
-        console.warn(`Unreachable: no mined block found before time ${time}.`);
-        return null;
+        const error = new Error(exports.checkPointErrors.unknown);
+        console.warn(error);
+        return { error, prng: new prando_1.default(-1) };
     }
-    return startBlockHash;
+    console.log(`Found checkout for time ${time}`);
+    return { prng: new prando_1.default(startBlockHash) };
 }
-exports.nextBlockHash = nextBlockHash;
+exports.newCheckpoint = newCheckpoint;
+/*
+export async function nextBlockHash(
+  time: number,
+  provider: providers.BaseProvider
+): Promise<string | null> {
+  const now = Math.floor(Date.now()/1000)
+  if (time > now) {
+    console.warn(`Time ${time} is in the future.`)
+    return null
+  }
+
+  const startBlockHash = await closestEarlierBlockHash(time, provider)
+
+  if (!startBlockHash) {
+    console.warn(`Unreachable: no mined block found before time ${time}.`)
+    return null
+  }
+
+  return startBlockHash
+}
+*/
 /**
  * Find closest block before the target time
  */
@@ -158,7 +181,7 @@ async function boundingBlocks(targetTime, provider, upperBound, lowerBound) {
     if (upperBound === undefined) {
         upperBound = await getLatestBlock(provider);
         if (targetTime > upperBound.timestamp) {
-            console.warn("target time after latest block");
+            console.warn(`target time ${targetTime} after latest block`);
             return null;
         }
     }

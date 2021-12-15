@@ -3,17 +3,15 @@ import { providers } from 'ethers'
 
 import { 
   Adventurer,
-  Pronouns,
   Result,
   Quest, 
   Obstacle, 
-  ObstacleType, 
   Outcome, 
   QuestType,
   Success,
   ResultType,
   Results
-} from '../content/interfaces'
+} from './interfaces'
 import { 
   obstacleInfo,
   questDifficulty,
@@ -31,11 +29,22 @@ import {
   skills,
   traits,
   activityAdjectives,
-  triggerMap
+  triggerMap,
+  ObstacleType,
+  obstacleArrivals
 } from '../content/original/sourceArrays'
-import { getRandomLootPiece, nameString } from '../content/loot'
+import {
+  makeInjuryText,
+  makeDeathText,
+  makeLootText,
+  makeTraitText,
+  makeSkillText,
+  makeKnockoutText,
+  makeTriggerText
+} from './makeText'
+import { getRandomLootPiece } from '../content/loot'
 import { makeObstacleText } from './makeText'
-import { makeProvider } from './nextBlockHash'
+import { makeProvider } from './newCheckpoint'
 
 // 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
 // TODO adjust the RNG so characters are more likely to "select" quests that fit them?
@@ -67,11 +76,13 @@ export function randomQuest(guildId: number, prng: Prando): Quest {
 }
 
 export function randomObstacle(prng: Prando, difficulty: number): Obstacle {
-  if (![1,2,3,4].includes(difficulty)) { throw new Error ("Difficulty must be 1, 2, 3, or 4")}
+  // TODO use an enum for difficulty in randomObstacle
+  if (![2,3,4,5].includes(difficulty)) { throw new Error ("Difficulty must be 2, 3, 4, or 5")}
   const type: ObstacleType = prng.nextArrayItem(Object.values(ObstacleType))
   const res: Obstacle = {
     difficulty,
     type,
+    arrival: prng.nextArrayItem(obstacleArrivals),
     discovery: prng.nextArrayItem(obstacleInfo[type].discovery),
     object: prng.nextArrayItem(obstacleInfo[type].objects),
     // additions: [] TODO additions
@@ -101,6 +112,7 @@ export function questObstacle(prng: Prando, quest: Quest): Obstacle {
   const res: Obstacle = {
     difficulty: quest.difficulty,
     type,
+    arrival: prng.nextArrayItem(obstacleArrivals),
     discovery: prng.nextArrayItem(obsInfo.discovery),
     object: quest.objective
     // additions: [] TODO additions
@@ -179,9 +191,13 @@ export async function findOutcome(
 
       // Skill, loot, & trait triggers!
       Object.keys(triggerMap).forEach(keyword => {
-        const index = makeObstacleText(obstacle).indexOf(keyword)
+        let index = -1
+        makeObstacleText(obstacle).forEach(ls => {
+          const localIndex = ls.string.indexOf(keyword)
+          if (localIndex >= 0) index = localIndex
+        })
         if (index >= 0) {
-          // console.log(makeObstacleText(obstacle), keyword, index)
+          // console.log('found trigger keyword', makeObstacleText(obstacle), keyword, index)
           const triggerInfos = triggerMap[keyword]
           if (!triggerInfos) { throw new Error ("No trigger infos") }
           triggerInfos.forEach(triggerInfo => {
@@ -189,39 +205,18 @@ export async function findOutcome(
             if (!qualities) { throw new Error("No adventurer qualities") }
             // doing it like this because keywords are subsets of loot strings
             const hasName = qualities.join(" ").indexOf(triggerInfo.name)
-            // console.log(hasName, qualities.join(" "), triggerInfo.name)
+            // console.log('hasName', hasName, qualities.join(" "), triggerInfo)
             if (hasName >= 0) {
               const triggerRoll = prng.nextInt(1, 100)
               if (triggerRoll <= triggerInfo.chance) {
-                // TODO add trigger text
+                console.log('rolled trigger!', triggerInfo, triggerRoll, adventurer)
+                // TODO add trigger text to makeText and get it into final results
                 successRoll += triggerInfo.modifier
-                let verb = ""
-                if (triggerInfo.type === "traits") {
-                  const trait = traits[triggerInfo.name]
-                  if (!trait) throw new Error("No trait")
-                  if (triggerInfo.modifier > 0 && trait.positiveTrigger) { 
-                    verb = trait.positiveTrigger
-                  } else if (trait.negativeTrigger) {
-                    verb = trait.negativeTrigger
-                  }
-                } else if (triggerInfo.type === "skills") {
-                  verb = `${nameString(adventurer.name)} used ${adventurer.pronouns.depPossessive} ${triggerInfo.name} skills.`
-                } else if (triggerInfo.type === "loot") {
-                  let usedLoot = ""
-                  qualities.forEach(lootPiece => {
-                    const index = lootPiece.indexOf(triggerInfo.name)
-                    if (index >= 0) {
-                      usedLoot = lootPiece
-                    }
-                  })
-                  if (usedLoot !== "") {
-                    verb = `${nameString(adventurer.name)} used ${adventurer.pronouns.depPossessive} ${usedLoot}.`
-                  }
-                }
+                const text = makeTriggerText(triggerInfo, adventurer, traits, qualities)
                 outcome.triggers.push({
                   characterName: adventurer.name,
                   triggeredComponent: triggerInfo.name,
-                  verb
+                  text
                 })
               }
             }
@@ -248,10 +243,7 @@ export async function findOutcome(
         advName: adv.name,
         advId: adv.id,
         type: ResultType.Death,
-        text: insertPronouns(
-          `${nameString(adv.name)} died.`,
-          adv.pronouns
-        ),
+        text: makeDeathText(adv),
         component: ""
       })
     })
@@ -350,6 +342,7 @@ export async function findOutcome(
   return outcome
 }
 
+// TODO move result text-making to be with the rest of the text
 async function rollResults(
   prng: Prando,
   guildId: number,
@@ -362,7 +355,7 @@ async function rollResults(
   const results: Result[] = []
   let length = 0
   const lengthOdds = numberOfResultsOdds[difficulty]
-  if (!lengthOdds) { throw new Error("No odds") }
+  if (!lengthOdds) { console.log(difficulty, numberOfResultsOdds); throw new Error("No odds") }
   const zeroOdds = lengthOdds[0]
   const oneOdds = lengthOdds[1]
   const twoOdds = lengthOdds[2]
@@ -384,16 +377,15 @@ async function rollResults(
       advName: adventurer.name,
       advId: adventurer.id,
       type: ResultType.Injury,
-      text: "",
+      text: [],
       component: ""
     }
     const typeRoll = prng.nextInt(1, 100)
+
+    // TODO prevent repeat injuries?
     if (typeRoll <= typeOdds["INJURY"]) {
       const injury = prng.nextArrayItem(Injuries)
-      result.text = insertPronouns(
-        `${nameString(adventurer.name)} ${injury.text}.`,
-        adventurer.pronouns
-      )
+      result.text = makeInjuryText(adventurer, injury.text)
       result.component = prng.nextArrayItem(injury.traits)
       // if third injury, skip rest of results
       if (previousResults) {
@@ -401,38 +393,26 @@ async function rollResults(
       }
     } else if (typeRoll > typeOdds["INJURY"] && typeRoll <= typeOdds["DEATH"]) {
       result.type = ResultType.Death
-      result.text = insertPronouns(
-        `${nameString(adventurer.name)} died.`,
-        adventurer.pronouns
-      )
+      result.text = makeDeathText(adventurer)
       // if they died, skip rest of results
       i = length
     } else if (typeRoll > typeOdds["DEATH"] && typeRoll <= typeOdds["LOOT"]) {
       result.type = ResultType.Loot
       const lootPiece = await getRandomLootPiece(prng, provider)
       result.component = lootPiece
-      result.text = insertPronouns(
-        `${nameString(adventurer.name)} found ${lootPiece}!`,
-        adventurer.pronouns
-      )
+      result.text = makeLootText(adventurer, lootPiece)
     // TODO adventurers should not be able to get repeat skills
     } else if (typeRoll > typeOdds["LOOT"] && typeRoll <= typeOdds["SKILL"]) {
       result.type = ResultType.Skill
       const skill = prng.nextArrayItem(skills)
       result.component = skill
-      result.text = insertPronouns(
-        `${nameString(adventurer.name)} learned ${skill}!`,
-        adventurer.pronouns
-      )
+      result.text = makeSkillText(adventurer, skill)
     // TODO adventurers should not be able to get repeat traits
     } else if (typeRoll > typeOdds["SKILL"]) {
       result.type = ResultType.Trait
       const trait = prng.nextArrayItem(Object.keys(traits))
       result.component = trait
-      result.text = insertPronouns(
-        `${nameString(adventurer.name)} now has ${trait}!`,
-        adventurer.pronouns
-      )
+      result.text = makeTraitText(adventurer, trait)
     }
     results.push(result)
     // If this is the third injury, add a knockout result
@@ -443,27 +423,11 @@ async function rollResults(
           advName: adventurer.name,
           advId: adventurer.id,
           type: ResultType.Knockout,
-          text: `${nameString(adventurer.name)} was knocked out.`,
+          text: makeKnockoutText(adventurer),
           component: ""
         })
       }
     }
   }
   return results
-}
-
-function insertPronouns(string: string, pronouns: Pronouns): string {
-  const pronounTypes = Object.keys(pronouns)
-  const splitString = string.split("*")
-  if (splitString.length < 1) return string
-  splitString.forEach((s, i) => {
-    pronounTypes.forEach(pt => {
-      if (s === pt) {
-        const pronoun = pronouns[pt]
-        if (!pronoun) throw new Error("No pronoun")
-        splitString[i] = pronoun
-      }
-    })
-  })
-  return splitString.join('')
 }

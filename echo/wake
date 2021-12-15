@@ -1,21 +1,26 @@
 #!/bin/bash
 
 function wake () {
-    tag=emblemstudio/aavenluutn:test
+    bname=$(basename $(pwd))
+    if [ $bname != "echo" ]
+    then
+        echo "wake must be run from the Avenluutn/echo folder"
+        return [1]
+    fi
+    tag=emblem/avenluutn:test
     pubtag=emblem/avenluutn:latest
-    container_name=aavenluutn
-    ipfs_staging=`pwd`/ipfs/staging
-    ipfs_data=`pwd`/ipfs/data
-    ipfs_container_name=ipfs_host
+    container_name=avenluutn
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
     abigen_out_path=`pwd`/publisher
     store_path=`pwd`/store
-
+    localhost_pub_addr=`cat ../hardhat/localhost_PublisherAddress.txt`
     case $1 in
         "build")
-            cd ../hardhat
-            yarn build
-            cd ../echo
+            echo "copying in most recent ui"
+            cp -r ../react/dist/* ./ui
+
+            echo "copying in most recent script"
+            cp -r ../scripts/dist* ./testAssets
 
             docker run \
                    -u `id -u`:`id -g` \
@@ -46,39 +51,30 @@ function wake () {
             mkdir store
             docker run \
                    -p 8000:8000 \
+                   --env AVENLUUTN_PUB_ADDR=$localhost_pub_addr \
+                   --env AVENLUUTN_PROVIDER="http://localhost:8545" \
                    --rm \
                    --net host \
+                   -d \
                    -v $store_path:/store \
-                   --name aavenluutn \
+                   --name $container_name \
                    $tag
             ;;
         "test")
             go test ./...
             ;;
-        "dev")
-            wake build
-            docker run -d --rm \
-                   --name $ipfs_container_name \
-                   -v $ipfs_staging:/export \
-                   -v $ipfs_data:/data/ipfs \
-                   -p 4001:4001 \
-                   -p 127.0.0.1:8080:8080 \
-                   -p 127.0.0.1:5001:5001 \
-                   ipfs/go-ipfs:latest
-            wake run
-            ;;
         "stop")
-            docker stop $container_name $ipfs_container_name
+            docker stop $container_name
             ;;
         "format")
             go fmt
             ;;
+        "publish")
+            docker build -t $pubtag .
+            docker push $pubtag
+            ;;
         *)
             which wake
-            ;;
-        "publish")
-            docker build $pubtag .
-            docker push $pubtag
             ;;
     esac
 }

@@ -2,34 +2,44 @@ const hre = require("hardhat")
 const Contract = require("@ethersproject/contracts").Contract
 const nftAbi = require("../artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json").abi
 const publisherAbi = require("../artifacts/contracts/Publisher.sol/Publisher.json").abi
+const fs = require('fs')
 
 async function main() {
   // We get the contracts to deploy
   const signers = await hre.ethers.getSigners()
-  const narratorNFTs = new Contract("0x2F48fD01C3f03bD8E16481369c88d94c5588B0ae", nftAbi, signers[0]) 
-  const publisher = new Contract("0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4", publisherAbi, signers[0])
+  const narratorNFTsAddress = fs.readFileSync(`./${hre.network.name}_NarratorNFTsAddress.txt`).toString()
+  const publisherAddress = fs.readFileSync(`./${hre.network.name}_PublisherAddress.txt`).toString()
+  const narratorNFTs = new Contract(narratorNFTsAddress, nftAbi, signers[0])
+  const publisher = new Contract(publisherAddress, publisherAbi, signers[0])
 
   const nftId = await narratorNFTs.ids()
+
+  console.log("NFT id", Number(nftId))
 
   /**
    * mint narratorNFT
    */
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://gist.githubusercontent.com/jessebmiller/e7b6cab916151b176278d43ccf0946db/raw/4600ba92972119db1a4645e6c64e5e8da5465fea/bundle_2021-12-02.js"
+    "http://localhost:8000/test/bundle.js" // "https://gist.githubusercontent.com/jessebmiller/a1a3b25b1332002cd8bb7a39950f896a/raw/2f6df058e619784ec642a16594569ec24551e607/bundle.js"
   )
+
+  console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
   await narratorTx.wait()
+
+  console.log("minted NFT")
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
-    nftId,
+    Number(nftId),
     now,              // start
-    100,              // totalCollections
-    60 * 60,          // collectionLength
-    60 * 60 * 3 / 2,  // collectionSpacing
+    1000,             // totalCollections
+    60 * 15,          // collectionLength
+    60 * 20,          // collectionSpacing
     5,                // collectionSize
   )
+  console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
   const receipt = await pubTx.wait()
   console.log("New narrator added at index:", Number(receipt.events[0].args.count))
 }

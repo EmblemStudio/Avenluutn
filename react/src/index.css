@@ -8,6 +8,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.guildName {
+    font-weight: bold;
+}
+
+.adventurerName {
+    color: #ffe9ba;
+}
+
+.results, .triggers {
+    color: gray;
+}
+
+.object {
+    color: #979bb8;
+}
+
+.lootName {
+    font-style: italic;
+    font-weith: bolt;
+    color: #ffdc69;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

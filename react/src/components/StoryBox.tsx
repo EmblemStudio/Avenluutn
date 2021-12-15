@@ -6,46 +6,50 @@ import { LOADING } from '../constants'
 
 interface StoryBoxProps { story: Story }
 
+
+function label(text: { label: string, string: string }, key: number) {
+  return (
+    <span key={key} className={text.label}>{text.string}</span>
+  )
+}
+
 export default ({ story }: StoryBoxProps) => {
   return (
     <section className="section pt-2 pb-5">
       <div className="container outer-border">
         <div className="container inner-border">
           <section className="section pt-5 pb-5">
-            <div className="block">
-              {story.text.richText.beginning.map((b, i) => {
-                return (
-                  <span key={i}>
-                    {b}
-                    {" "}
-                  </span>
-                )
-              })}
+            <div className="block beginning">
+             {story.text.richText.beginning.map(label)}
             </div>
-            <div className="block">
-              {story.text.richText.middle.obstacleText.map((o, i) => {
+            <div className="block middle">
+              {story.text.richText.middle.obstacleText.map((obText, i) => {
                 return (
-                  <div className="block" key={i}>
-                    <div className="block">
-                      {o}
-                      {" "}
-                      {story.text.richText.middle.outcomeText[i]?.main ?? "Unknown outcome"}
+                  <div className="block middle obstacle" key={i}>
+                    <div className="block outcome main">
+                      <div>
+                        {obText.map(label)}
+                      </div>
+                      <div>
+                        {story.text.richText.middle.outcomeText[i]?.main.map(label)}
+                      </div>
                     </div>
-                    <div className="block">
-                      {story.text.richText.middle.outcomeText[i]?.results.map((r, i) => {
-                        return (
-                          <div className="container has-text-grey" key={i}>
-                            {r}
-                          </div>
-                        )
-                      }) ?? "Unknown result"}
+                    <div className="block outcome results">
+                    {story.text.richText.middle.outcomeText[i]?.resultTexts.map((r, i) => {
+                      return <div key={i}>{r.map(label)}</div>
+                    })}
+                    </div>
+                    <div className="block outcome triggers">
+                    {story.text.richText.middle.outcomeText[i]?.triggerTexts.map((t, i) => {
+                      return <div key={i}>{t.map(label)}</div>
+                    })}
                     </div>
                   </div>
                 )
               })}
             </div>
             <div className="block">
-              {story.text.richText.ending}
+              {story.text.richText.ending.map(label)}
             </div>
             {getTimeLeft(Number(story.endTime)) > 0 &&
               <div className="has-text-centered">

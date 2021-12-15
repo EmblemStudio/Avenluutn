@@ -1,38 +1,33 @@
 import Prando from 'prando'
 import { providers } from 'ethers'
 
-import { nameString } from './content/loot'
 import {
   randomQuest,
   randomObstacle,
   questObstacle,
   findOutcome,
+  makeGuildText,
   makeQuestText,
   makeObstacleText,
   makeOutcomeText,
-  OutcomeText,
-  nextBlockHash,
-  randomParty
-} from './utils'
-
-import {
+  makeEndingText,
+  randomParty,
+  newCheckpoint,
+  Story,
+  Beginning,
+  Middle,
+  Ending,
   State,
   Adventurer,
-  Quest,
-  Obstacle,
-  Outcome,
-  Result,
   Success,
+  Result,
   ResultType,
-  Guild
-} from './content/interfaces'
-
-import { Story } from './index'
+  makeTraitText
+} from './utils'
 
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
-// TODO return results in a different list from story text, so they can be formatted differently by a front end?
 export async function tellStory(
-  seed: string, //prng: Prando,
+  prng: Prando,
   state: State,
   startTime: number,
   length: number,
@@ -40,7 +35,7 @@ export async function tellStory(
   provider: providers.BaseProvider
 ): Promise<Story> {
   const beginning = await tellBeginning(
-    seed,
+    prng,
     state,
     startTime,
     length,
@@ -56,6 +51,7 @@ export async function tellStory(
     guildId,
     beginning,
     middle,
+    state,
     provider
   )
   let res: Story = {
@@ -69,47 +65,61 @@ export async function tellStory(
       ending: ending.text,
     },
     events: ending.results,
+    nextUpdateTime: findNextUpdateTime(beginning, startTime)
   }
-  res.plainText = beginning.text
-  res.richText.middle.obstacleText.forEach((str, i) => {
+  // res.plainText = beginning.text
+  res.richText.beginning.forEach(ls => res.plainText.push(ls.string))
+  res.richText.middle.obstacleText.forEach((lsa, i) => {
     const outcomeText = res.richText.middle.outcomeText[i]
     if (outcomeText) {
       const strs = [
-        str,
-        outcomeText.main,
-        ...outcomeText.results
+        ...lsa.map(ls => ls.string),
+        ...outcomeText.main.map(ls => ls.string)
       ]
-      res.plainText = res.plainText.concat(strs)
+      outcomeText.triggerTexts.forEach(lsa => {
+        lsa.forEach(ls => strs.push(ls.string))
+      })
+      outcomeText.resultTexts.forEach(lsa => {
+        lsa.forEach(ls => strs.push(ls.string))
+      })
+      res.plainText.push(...strs)
     }
   })
-  res.plainText = res.plainText.concat(ending.text)
+  ending.text.forEach(ls => res.plainText.push(ls.string))
   return res
 }
 
-interface Beginning {
-  guild: Guild;
-  party: Adventurer[];
-  quest: Quest;
-  endTime: number;
-  obstacleTimes: number[];
-  outcomeTimes: number[];
-  text: string[];
+function findNextUpdateTime(beginning: Beginning, startTime: number): number {
+  let now = Math.floor(Date.now()/1000)
+  let nextUpdateTime
+  const updateTimes = [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes]
+  updateTimes.sort().reverse()
+  updateTimes.forEach((t, i) => {
+    if (t < now) {
+      if (i === 0) return -1
+      nextUpdateTime = updateTimes[i - 1]
+      if (nextUpdateTime === undefined) return -1 // should be never
+      return nextUpdateTime
+    }
+  })
+  return -1 // should be never
 }
 
 async function tellBeginning(
-  seed: string, // prng: Prando,
+  prng: Prando,
   state: State,
   startTime: number,
   length: number,
   guildId: number
   // provider: providers.BaseProvider
 ): Promise<Beginning> {
-  const prng = new Prando(seed)
+  // const prng = new Prando(seed)
   // Load guild
   const guild = state.guilds[guildId]
   if (!guild) { throw new Error("No guild") }
   /**
    * Make random party
+   * TODO cover the case where the guild has <3 adventurers remaining
    */
   const party: Adventurer[] = randomParty(
     prng,
@@ -120,15 +130,7 @@ async function tellBeginning(
     if (!adv) { throw new Error("No adventurer") }
     return adv
   })
-  let partyNames = ""
-  party.forEach((a, i) => {
-    if (i === party.length - 1) {
-      partyNames += `and ${nameString(a.name)}`
-    } else {
-      partyNames += `${nameString(a.name)}, `
-    }
-  })
-  const guildText = `At ${guild.name} in ${guild.location}, ${partyNames} have gathered.`
+  const guildText = makeGuildText(guild, party)
 
   /**
    * Generate quest
@@ -159,17 +161,8 @@ async function tellBeginning(
     endTime,
     obstacleTimes,
     outcomeTimes,
-    text: [guildText, questText]
+    text: [...guildText, ...questText]
   }
-}
-
-interface Middle {
-  questSuccess: Success;
-  obstacles: Obstacle[];
-  outcomes: Outcome[];
-  allResults: Result[];
-  obstacleText: string[];
-  outcomeText: OutcomeText[];
 }
 
 async function tellMiddle(
@@ -192,16 +185,15 @@ async function tellMiddle(
       const obstacleTime = beginning.obstacleTimes[i]
       if (!obstacleTime) { throw new Error("No obstacle time") }
 
-      const obstacleHash = await nextBlockHash(obstacleTime, provider)
-      if (obstacleHash !== null) {
-        const obsSeed = obstacleHash + guildId + i
-        const obsPrng = new Prando(obsSeed)
+      let checkpoint = await newCheckpoint(obstacleTime, provider, `${guildId}`)
+
+      if (!checkpoint.error) {
         if (i + 1 === beginning.obstacleTimes.length) {
-          const obstacle = questObstacle(obsPrng, beginning.quest)
+          const obstacle = questObstacle(checkpoint.prng, beginning.quest)
           middle.obstacles.push(obstacle)
           middle.obstacleText.push(makeObstacleText(obstacle))
         } else {
-          const obstacle = randomObstacle(obsPrng, i + 1)
+          const obstacle = randomObstacle(checkpoint.prng, i + 2)
           middle.obstacles.push(obstacle)
           middle.obstacleText.push(makeObstacleText(obstacle))
         }
@@ -209,13 +201,13 @@ async function tellMiddle(
 
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
-      const outcomeHash = await nextBlockHash(outcomeTime, provider)
+
+      checkpoint = await newCheckpoint(outcomeTime, provider)
       const obstacle = middle.obstacles[i]
-      if (obstacle && outcomeHash) {
-        const outcomeSeed = outcomeHash + guildId + i
-        const outPrng = new Prando(outcomeSeed)
+
+      if (!checkpoint.error && obstacle) {
         const outcome = await findOutcome(
-          outPrng,
+          checkpoint.prng,
           beginning.guild.id,
           obstacle,
           beginning.party,
@@ -226,7 +218,6 @@ async function tellMiddle(
         if (i + 1 === beginning.obstacleTimes.length) middle.questSuccess = outcome.success
         middle.outcomes.push(outcome)
         middle.allResults = [...middle.allResults, ...outcome.results]
-        // TODO outcome text should differentiate between main text and results text for UI purposes
         middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome)]
       }
     }
@@ -235,15 +226,11 @@ async function tellMiddle(
   return middle
 }
 
-interface Ending {
-  results: Result[];
-  text: string[];
-}
-
 async function tellEnding(
   guildId: number,
   beginning: Beginning,
   middle: Middle,
+  state: State,
   provider: providers.BaseProvider
 ): Promise<Ending> {
   /**
@@ -256,20 +243,16 @@ async function tellEnding(
    */
   const ending: Ending = {
     results: [],
-    text: [""]
+    text: []
   }
 
-  // TODO check that this is after the quest is finished, not at the same time
-  const endingHash = await nextBlockHash(beginning.endTime, provider)
+  const checkpoint = await newCheckpoint(beginning.endTime, provider, `${guildId}`)
 
   let deathCount = 0
   let everyoneDied = false
   let oneLeft = false
 
-  if (endingHash) {
-    const endingSeed = endingHash + guildId
-    const prng = new Prando(endingSeed)
-
+  if (!checkpoint.error) {
     for (let i = 0; i < middle.allResults.length; i++) {
       const result = middle.allResults[i]
       if (!result) { throw new Error("No result") }
@@ -283,38 +266,29 @@ async function tellEnding(
       if (result.type !== ResultType.Injury) {
         ending.results.push(result)
       } else {
-        const roll = prng.nextInt(1, 100)
+        const roll = checkpoint.prng.nextInt(1, 100)
         if (roll <= 5) {
-          const newResult = {
-            guildId: beginning.guild.id,
-            advName: result.advName,
-            advId: result.advId,
-            type: ResultType.Trait,
-            text: `${nameString(result.advName)} now has ${result.component}.`,
-            component: result.component
+          const guild = state.guilds[guildId]
+          if (guild) {
+            const adv = guild.adventurers[result.advId]
+            if (adv) {
+              const newResult: Result = {
+                guildId: beginning.guild.id,
+                advName: result.advName,
+                advId: result.advId,
+                type: ResultType.Trait,
+                text: makeTraitText(adv, result.component),
+                component: result.component
+              }
+              ending.results.push(newResult)
+              ending.text.push(...newResult.text)
+            }
           }
-          ending.results.push(newResult)
-          ending.text.push(newResult.text)
         }
       }
     }
-  }
 
-  if (everyoneDied) {
-    ending.text[0] = `None who set out returned alive.`
-  } else {
-    if (oneLeft) {
-      ending.text[0] += `The last adventurer `
-    } else {
-      ending.text[0] += `The adventurers `
-    }
-    if (middle.questSuccess === Success.failure) {
-      ending.text[0] += `slunk back to ${beginning.guild.name} in disgrace.`
-    } else if (middle.questSuccess === Success.mixed) {
-      ending.text[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
-    } else if (middle.questSuccess === Success.success) {
-      ending.text[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
-    }
+    ending.text = makeEndingText(beginning, middle, everyoneDied, oneLeft)
   }
 
   return ending

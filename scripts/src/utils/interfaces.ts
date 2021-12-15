@@ -1,17 +1,93 @@
-import { Name } from './loot/methods/names'
+import { Name } from '../content/loot/methods/names'
+import { ObstacleType } from '../content/original/sourceArrays'
+
+export interface ScriptResult {
+  stories: Story[];
+  nextState: State;
+  nextUpdateTime: number;
+}
+
+export interface Story {
+  plainText: string[];
+  richText: {
+    beginning: LabeledString[];
+    middle: {
+      obstacleText: LabeledString[][];
+      outcomeText: OutcomeText[];
+    };
+    ending: LabeledString[];
+  }
+  events: Result[];
+  nextUpdateTime: number;
+}
+
+export interface Beginning {
+  guild: Guild;
+  party: Adventurer[];
+  quest: Quest;
+  endTime: number;
+  obstacleTimes: number[];
+  outcomeTimes: number[];
+  text: LabeledString[];
+}
+
+export interface OutcomeText {
+  main: LabeledString[];
+  triggerTexts: LabeledString[][];
+  resultTexts: LabeledString[][];
+}
+
+export interface Middle {
+  questSuccess: Success;
+  obstacles: Obstacle[];
+  outcomes: Outcome[];
+  allResults: Result[];
+  obstacleText: LabeledString[][];
+  outcomeText: OutcomeText[];
+}
+
+export interface Ending {
+  results: Result[];
+  text: LabeledString[];
+}
+
+export enum Label {
+  adventurerName = "adventurerName",
+  guildName = "guildName",
+  questType = "questType",
+  adjective = "adjective",
+  object = "object",
+  questObjective = "questObjective",
+  locationName = "locationName",
+  locationType = "locationType",
+  obstacleName = "obstacleName",
+  obstacleDiscovery = "obstacleDiscovery",
+  obstacleAddition = "obstacleAddition",
+  outcomeActivity = "outcomeActivity",
+  outcomeResolver = "outcomeResolver",
+  resultAdverb = "resultAdverb",
+  injuryName = "injuryName",
+  knockoutName = "knockoutName",
+  deathName = "deathName",
+  lootName = "lootName",
+  skillName = "skillName",
+  traitName = "traitName",
+  conjunctive = "conjunctive"
+}
+
+export interface LabeledString {
+  string: string;
+  label: Label;
+}
 
 // They [verb] [adjectives] [type] [name] [additions]
 // They [stumbled upon] a [man-eating] [puzzlebox] [, "The Most Stark Horcrux",] which was [instilled with a dragon's spirit]. 
 // adjectives and additions are connected to relevant skills / traits?
-export enum ObstacleType {
-  puzzle = "PUZZLE",
-  obstacle = "OBSTACLE",
-  entity = "ENTITY"
-}
 
 export interface Obstacle {
   difficulty: number; // 1-4?
   type: ObstacleType;
+  arrival: string;
   discovery: string;
   firstAdjective?: string;
   secondAdjective?: string;
@@ -51,7 +127,21 @@ export enum Success {
 export interface Trigger {
   characterName: Name;
   triggeredComponent: string;
-  verb: string;
+  text: LabeledString[];
+}
+
+export interface TriggerInfo {
+  chance: number; // percent chance to trigger
+  modifier: number, // amount to adjust roll by +/- (5, 10, 15, 20, 25, 30)
+  name: string, // name of trait, skill, loot word
+  type: "skills" | "loot" | "traits"
+}
+
+export interface Traits { [trait: string]: TraitInfo }
+
+export interface TraitInfo { 
+  positiveTrigger: string | null, 
+  negativeTrigger: string | null 
 }
 
 export interface Result {
@@ -59,7 +149,7 @@ export interface Result {
   advName: Name;
   advId: number;
   type: ResultType;
-  text: string;
+  text: LabeledString[];
   component: string;
 }
 

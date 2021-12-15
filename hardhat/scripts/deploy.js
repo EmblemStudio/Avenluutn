@@ -6,6 +6,7 @@
 const hre = require("hardhat");
 const fs = require('fs')
 
+
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
   // line interface.
@@ -14,64 +15,107 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  // console.log(hre.network)
+  const names = {
+    ropsten: "The Grand Adventure: Ropstenluutn",
+    localhost: "The Local Adventure: Localuutn"
+  }
+  const symbols = {
+    ropsten: "tgaRPSTNLTN",
+    localhost: "tlaLCLTN"
+  }
+  const name = names[hre.network.name] || "The Grand Adventure: Avenluutn"
+  const symbol = symbols[hre.network.name] || "tgaAVNLTN"
+
+  const baseAuctionDuration = 30 * 60
+  const timeBuffer = 10 * 60
+  const minBidAmount = hre.ethers.utils.parseEther('0.001')
+  const minBidIncrementPercentage = 5
 
   // We get the contracts to deploy
+  console.log("Deploying NarratorNFTs")
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
   const narratorNFTs = await NarratorNFTs.deploy()
+  console.log("Waiting for narratorNFTs to be deployed...")
+  await narratorNFTs.deployed();
+  console.log(
+    `NarratorNFTs deployed to ${hre.network.name} at ${narratorNFTs.address}`
+  )
+  fs.writeFileSync(
+    `${hre.network.name}_NarratorNFTsAddress.txt`,
+    narratorNFTs.address,
+  )
+
+  console.log("Deploying Publisher")
   const Publisher = await hre.ethers.getContractFactory("Publisher");
   const publisher = await Publisher.deploy(
-    15 * 60,
-    100 * 60,
-    hre.ethers.utils.parseEther('0.001'),
-    5,
-    "TESTavenluutn: the grand adventure",
-    "TATGA",
+    baseAuctionDuration,
+    timeBuffer,
+    minBidAmount,
+    minBidIncrementPercentage,
+    name,
+    symbol,
   );
-
-  await narratorNFTs.deployed();
+  console.log("Waiting for publisher to be deployed...")
   await publisher.deployed();
-
-  console.log("Publisher deployed to:", publisher.address);
-  fs.writeFileSync('PublisherAddress.txt', publisher.address)
-  console.log("NarratorNFTs deployed to:", narratorNFTs.address);
-  fs.writeFileSync('NarratorNFTsAddress.txt', narratorNFTs.address)
+  console.log(
+    `Publisher deployed to ${hre.network.name} at ${publisher.address}`,
+  );
+  fs.writeFileSync(
+    `${hre.network.name}_PublisherAddress.txt`,
+    publisher.address,
+  )
 
   /**
-   * add test narratorNFT
+   * add test narratorNFT. This first narrator will point to a script
+   * at localhost for testing purposes
    */
+  console.log("Minting test NFT")
   const narratorTx = await narratorNFTs.mint(
-    "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://gist.githubusercontent.com/jessebmiller/e7b6cab916151b176278d43ccf0946db/raw/4600ba92972119db1a4645e6c64e5e8da5465fea/bundle_2021-12-02.js"
+    narratorNFTs.address,
+    "http://localhost:8000/test/bundle.js",
   )
 
-  // add test narrator
-  /*
-  let pubTx = await publisher.addNarrator(
-    narratorNFTs.address,
-    0,
-    1,
-    10,
-    100,
-    1000,
-    10000,
-  )
-  */
+  console.log("Waiting for mint transaction...")
   await narratorTx.wait()
-  // await pubTx.wait()
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
+  console.log("adding test narratnodor")
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
-    now,              // start
-    100,              // totalCollections
-    60 * 60,          // collectionLength
-    60 * 60 * 3 / 2,  // collectionSpacing
-    5,                // collectionSize
+    now - 60 * 15 * 3,  // start
+    1000,               // totalCollections
+    60 * 10,            // collectionLength
+    60 * 15,            // collectionSpacing
+    5,                  // collectionSize
   )
   const receipt = await pubTx.wait()
   console.log("New narrator added at index:", Number(receipt.events[0].args.count))
+
+  // don't try to verify if we are on localhost or hardhat networks
+  if (hre.network.name === "localhost" || hre.network.name === "hardhat") {
+    return
+  }
+
+  console.log("verifying NarratorNFTs...")
+  await hre.run("verify:verify", {
+    address: narratorNFTs.address
+  })
+  console.log("Verified NarratorNFTs.")
+
+  console.log("Verifying Publisher...")
+  await hre.run("verify:verify", {
+    address: publisher.address,
+    constructorArguments: [
+      baseAuctionDuration,
+      timeBuffer,
+      minBidAmount,
+      minBidIncrementPercentage,
+      name,
+      symbol,
+    ]
+  })
+  console.log("Verified Publisher.")
 }
 
 // We recommend this pattern to be able to use async/await everywhere

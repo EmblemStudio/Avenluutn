@@ -1,7 +1,7 @@
-import { State, Result, ResultType } from './content/interfaces'
+import { State, Result, ResultType } from './utils'
 
 export function nextState(state: State, events: Result[]): State {
-  console.log("nextState", state, events)
+  // console.log("nextState", state, events)
   const newState = Object.assign({}, state)
   events.forEach(event => {
     const guild = newState.guilds[event.guildId]
