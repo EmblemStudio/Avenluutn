@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"sync"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -15,8 +16,9 @@ import (
 )
 
 type SyncChans struct {
-	result chan publisher.ScriptResult
-	err chan error
+	results []chan publisher.ScriptResult
+	errs []chan error
+	mutex sync.Mutex
 }
 
 type PubServer struct {
@@ -39,6 +41,85 @@ func key(a int64, b int64) string {
 	return fmt.Sprintf("%v.%v", a, b)
 }
 
+// KeepWarm keeps the cache for a given narrator warm by calling
+// runNarratorScript when caches become invalid, and when new
+// collections are scheduled
+func (ps PubServer) KeepWarm(
+	narratorIndexes chan(int64),
+	stop chan(bool),
+	errs chan(error),
+) {
+
+	type WarmResult struct {
+		scriptResult publisher.ScriptResult
+		err error
+		narratorIndex int64
+		collectionIndex int64
+	}
+	results := make(chan WarmResult)
+
+	// latest collection we've completed for each narrator
+	collections := make(map[int64]int64)
+
+	runScriptAsync := func(
+		narratorIndex int64,
+	) {
+		collectionIndex, _ := collections[narratorIndex]
+		scriptResult, err := ps.runNarratorScript(
+			narratorIndex,
+			collectionIndex,
+		)
+		if err != nil {
+			results <- WarmResult{
+				publisher.ScriptResult{},
+				err,
+				narratorIndex,
+				collectionIndex,
+			}
+		} else {
+			results <- WarmResult{
+				scriptResult,
+				nil,
+				narratorIndex,
+				collectionIndex,
+			}
+		}
+	}
+
+	for {
+		select {
+		case narratorIndex := <-narratorIndexes:
+			// runNarratorScript for the collection
+			go runScriptAsync(narratorIndex)
+		case result := <-results:
+			if result.err != nil {
+				errs <- result.err
+				continue
+			}
+			// if that collection is finished
+			// (nextUpdateTime == -1), run the next
+			// collection if there is one
+			if result.scriptResult.NextUpdateTime == -1 {
+				collections[result.narratorIndex] += 1
+				go runScriptAsync(result.narratorIndex)
+			} else {
+				// if that collection is not finished,
+				// wait until nextUpdateTime and run
+				// it again
+				secondsUntilUpdate := result.scriptResult.NextUpdateTime - time.Now().Unix()
+				go func() {
+					<-time.NewTimer(time.Duration(secondsUntilUpdate) * time.Second).C
+					runScriptAsync(result.narratorIndex)
+				}()
+			}
+		case done := <-stop:
+			if done == true {
+				break
+			}
+		}
+	}
+}
+
 func (ps PubServer) runNarratorScript(
 	narratorIndex int64,
 	collectionIndex int64,
@@ -55,29 +136,23 @@ func (ps PubServer) runNarratorScript(
 	if present {
 		// just wait for it
 		ps.resultsMutex.Unlock()
+		syncChans.mutex.Lock()
+		resultChan := make(chan publisher.ScriptResult{})
+		errChan := make(chan err)
+		syncChans.results = append(syncChans.results, resultChan)
+		syncChans.errs = append(syncChans.errs, errChan)
+		ps.syncChans[resultKey] = syncChans
+		syncChans.mutex.Unlock()
 		fmt.Println(resultKey, "Waiting for results")
 		select {
-		case result := <-syncChans.result:
+		case result := <-resultChan:
 			fmt.Println("Got result from result chan")
 			return result, nil
-		case err := <-syncChans.err:
+		case err := <-errChan:
 			fmt.Println("Got error from error chan")
 			return publisher.ScriptResult{}, err
 		}
 	}
-	// otherwise make channels for it and send results through for anyone
-	// looking for this while we are working on it
-	resultChan := make(chan publisher.ScriptResult, 1)
-	errorChan := make(chan error, 1)
-	fmt.Println(resultKey, "adding sync chans")
-	ps.syncChans[resultKey] = SyncChans{resultChan, errorChan}
-	defer func() {
-		ps.resultsMutex.Lock()
-		fmt.Println(resultKey, "deleting sync chans")
-		delete(ps.syncChans, resultKey)
-		ps.resultsMutex.Unlock()
-	}()
-	ps.resultsMutex.Unlock()
 
 	prefix := fmt.Sprintf("%v ps.runNarratorScript", resultKey)
 	cachedResult, err := ps.store.Get(resultKey)
@@ -140,7 +215,16 @@ func (ps PubServer) runNarratorScript(
 			"could not get result",
 			err,
 		)
-		errorChan <- err
+			// otherwise send results through to all the registered channels
+		syncChans, present := ps.syncChans[resultKey]
+		if present {
+			syncChans.mutex.Lock()
+			for _, errorChan := range syncChans.errs {
+				 // TODO give this a timeout
+				go func() { errorChan <- err }()
+			}
+			syncChans.mutex.Unlock()
+		}
 		return publisher.ScriptResult{}, err
 	}
 
@@ -151,7 +235,13 @@ func (ps PubServer) runNarratorScript(
 		log.Println(prefix, "WARNING: Could not cache result:", err)
 	}
 
-	resultChan <- result
+	syncChans, present := ps.syncChans[resultKey]
+	if present {
+		syncChans.mutex.Lock()
+		for _, resultChan := range syncChans.results {
+			go func() { resultChan <- result }()
+		}
+	}
 	return result, nil
 
 }
