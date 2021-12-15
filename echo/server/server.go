@@ -172,7 +172,7 @@ func (ps PubServer) runNarratorScript(
 	}
 
 	collectionStart := narrator.Start.Int64() +
-		(collectionIndex * narrator.CollectionLength.Int64())
+		(collectionIndex * narrator.CollectionSpacing.Int64())
 
 	script, err := ps.pub.GetScript(narratorIndex, ps.client)
 	if err != nil {
