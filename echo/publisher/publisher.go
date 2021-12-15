@@ -65,26 +65,6 @@ func (p *Publisher) GetScript(
 	}
 }
 
-func GetStateKey(
-	ps PublisherStore,
-	narrator int64,
-	collection int64,
-	t time.Time,
-) string {
-	return fmt.Sprintf("%v.%v.%v", narrator, collection, t.Unix())
-}
-
-func GetCachedResult(
-	ps PublisherStore,
-	narratorIndex int64,
-	collectionIndex int64,
-	t time.Time,
-) (ScriptResult, error) {
-	stateKey := GetStateKey(ps, narratorIndex, collectionIndex, t)
-	result, err := ps.Get(stateKey)
-	return result, err
-}
-
 func parseOpaqueData(opaque string) (string, string, error) {
 	mediaTypeSplit := strings.Split(opaque, ",")
 	if len(mediaTypeSplit) < 2 {

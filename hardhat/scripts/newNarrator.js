@@ -7,8 +7,8 @@ const fs = require('fs')
 async function main() {
   // We get the contracts to deploy
   const signers = await hre.ethers.getSigners()
-  const narratorNFTsAddress = fs.readFileSync(`./${hre.network.name}_NarratorNFTsAddress.txt`).toString()
-  const publisherAddress = fs.readFileSync(`./${hre.network.name}_PublisherAddress.txt`).toString()
+  const narratorNFTsAddress = fs.readFileSync(`./${hre.network.name}_NarratorNFTsAddress.txt`).toString().trim()
+  const publisherAddress = fs.readFileSync(`./${hre.network.name}_PublisherAddress.txt`).toString().trim()
   const narratorNFTs = new Contract(narratorNFTsAddress, nftAbi, signers[0])
   const publisher = new Contract(publisherAddress, publisherAbi, signers[0])
 

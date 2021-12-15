@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"fmt"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -13,7 +14,7 @@ import (
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/common"
 
-	"EmblemStudio/aavenluutn/echo/server"
+	"EmblemStudio/aavenluutn/echo/warmer"
 )
 
 func main() {
@@ -30,7 +31,7 @@ func main() {
 	}
 	fmt.Println("Provider", provider)
 
-	// make a server
+	// make a warmer
 	client, err := ethclient.Dial(provider)
 	if err != nil {
 		log.Fatal(err)
@@ -41,15 +42,42 @@ func main() {
 		log.Fatal(err)
 	}
 	pubStore := publisher.NewEthLocalStore("/store", client)
-	s := server.NewPubServer(pub, pubStore, client)
+	w := warmer.NewPubWarmer(pub, pubStore, client)
 
 	e := echo.New()
 
 	narratorCount, err := pub.NarratorCount(nil)
 	if err != nil { log.Fatal(err) }
+	warming := make(map[int]bool)
 	for n := 0; int64(n) < narratorCount.Int64(); n += 1 {
-		go s.KeepWarm(int64(n))
+		go w.KeepWarm(int64(n))
+		warming[n] = true
 	}
+
+	errorCount := 0
+	errorThreshold := 10
+	go func() {
+		for {
+			time.Sleep(5 * time.Second)
+			narratorCount, err := pub.NarratorCount(nil)
+			if err != nil {
+				fmt.Println("Could not get narator count.", err)
+				errorCount += 1
+				if errorCount > errorThreshold {
+					fmt.Println("too many errors, stopping looking for new narrators")
+					return
+				}
+			} else {
+				errorCount = 0
+				for n := 0; int64(n) < narratorCount.Int64(); n += 1 {
+					if !warming[n] {
+						go w.KeepWarm(int64(n))
+					}
+					warming[n] = true
+				}
+			}
+		}
+	}()
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())

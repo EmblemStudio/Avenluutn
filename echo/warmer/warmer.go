@@ -1,31 +1,28 @@
-package server
+package warmer
 
 import (
-	"net/http"
 	"fmt"
 	"log"
-	"encoding/json"
 	"errors"
 	"time"
 
-	"github.com/labstack/echo/v4"
 	"github.com/ethereum/go-ethereum/ethclient"
 
 	"EmblemStudio/aavenluutn/echo/publisher"
 )
 
-type PubServer struct {
+type PubWarmer struct {
 	pub *publisher.Publisher
 	store publisher.PublisherStore
 	client *ethclient.Client
 }
 
-func NewPubServer(
+func NewPubWarmer(
 	p *publisher.Publisher,
 	s publisher.PublisherStore,
 	c *ethclient.Client,
-) PubServer {
-	return PubServer{p, s, c}
+) PubWarmer {
+	return PubWarmer{p, s, c}
 }
 
 func key(a int64, b int64) string {
@@ -35,8 +32,8 @@ func key(a int64, b int64) string {
 // KeepWarm keeps the cache for a given narrator warm by calling
 // runNarratorScript when caches become invalid, and when new
 // collections are scheduled
-func (ps PubServer) KeepWarm(narratorIndex int64) {
-	narrator, err := ps.pub.GetNarrator(narratorIndex)
+func (pw PubWarmer) KeepWarm(narratorIndex int64) {
+	narrator, err := pw.pub.GetNarrator(narratorIndex)
 	if err != nil {
 		fmt.Println("KeepWarm: ERR", err)
 		return
@@ -52,7 +49,7 @@ func (ps PubServer) KeepWarm(narratorIndex int64) {
 			narratorIndex,
 			collectionIndex,
 		)
-		result, err := ps.runNarratorScript(
+		result, err := pw.runNarratorScript(
 			narratorIndex,
 			collectionIndex,
 		)
@@ -89,7 +86,7 @@ func (ps PubServer) KeepWarm(narratorIndex int64) {
 	fmt.Println("KeepWarm: Done with narrator", narratorIndex)
 }
 
-func (ps PubServer) runNarratorScript(
+func (pw PubWarmer) runNarratorScript(
 	narratorIndex int64,
 	collectionIndex int64,
 ) (publisher.ScriptResult, error) {
@@ -99,8 +96,8 @@ func (ps PubServer) runNarratorScript(
 
 	resultKey := key(narratorIndex, collectionIndex)
 
-	prefix := fmt.Sprintf("%v ps.runNarratorScript", resultKey)
-	cachedResult, err := ps.store.Get(resultKey)
+	prefix := fmt.Sprintf("%v pw.runNarratorScript", resultKey)
+	cachedResult, err := pw.store.Get(resultKey)
 	if err == nil {
 		// we have it cached
 		fmt.Println(prefix, "Cache hit!")
@@ -108,7 +105,7 @@ func (ps PubServer) runNarratorScript(
 	}
 	fmt.Println(prefix, "Cache miss")
 
-	narrator, err := ps.pub.GetNarrator(narratorIndex)
+	narrator, err := pw.pub.GetNarrator(narratorIndex)
 	if err != nil {
 		fmt.Println(prefix, "could not get narrator", err)
 		return publisher.ScriptResult{}, err
@@ -117,7 +114,7 @@ func (ps PubServer) runNarratorScript(
 	collectionStart := narrator.Start.Int64() +
 		(collectionIndex * narrator.CollectionSpacing.Int64())
 
-	script, err := ps.pub.GetScript(narratorIndex, ps.client)
+	script, err := pw.pub.GetScript(narratorIndex, pw.client)
 	if err != nil {
 		fmt.Println(prefix, "could not get script", err)
 		return publisher.ScriptResult{}, err
@@ -129,7 +126,7 @@ func (ps PubServer) runNarratorScript(
 	} else {
 		fmt.Println(key(narratorIndex, collectionIndex), "getting previous result")
 		// recurse
-		previousResult, err = ps.runNarratorScript(
+		previousResult, err = pw.runNarratorScript(
 			narratorIndex,
 			collectionIndex - 1,
 		)
@@ -143,7 +140,7 @@ func (ps PubServer) runNarratorScript(
 		}
 	}
 
-	result, err := ps.pub.RunNarratorScript(
+	result, err := pw.pub.RunNarratorScript(
 		script,
 		previousResult,
 		collectionStart,
@@ -158,7 +155,7 @@ func (ps PubServer) runNarratorScript(
 		)
 	}
 
-	if err := ps.store.Set(
+	if err := pw.store.Set(
 		key(narratorIndex, collectionIndex),
 		result,
 	); err != nil {
@@ -166,32 +163,4 @@ func (ps PubServer) runNarratorScript(
 	}
 
 	return result, nil
-}
-
-func (ps PubServer) ExecuteRun(c echo.Context) error {
-	narratorIndex, err := getInt64Param(c, "narrator")
-	if err != nil { return badRequest(err) }
-
-	collectionIndex, err := getInt64Param(c, "collection")
-	if err != nil { return badRequest(err) }
-
-	fmt.Println(fmt.Sprintf(
-		"Executing run %v %v",
-		narratorIndex,
-		collectionIndex,
-	))
-
-	result, err := ps.runNarratorScript(narratorIndex, collectionIndex)
-	if err != nil {
-		fmt.Println("==> ExecuteRun runNarratorScript error", err)
-		return serverError(err)
-	}
-
-	responseJSONData, err := json.Marshal(result)
-	if err != nil {
-		fmt.Println("==> ExecuteRun could not marshal result", err)
-		return serverError(err)
-	}
-
-	return c.String(http.StatusOK, string(responseJSONData))
 }

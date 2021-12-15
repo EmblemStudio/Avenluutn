@@ -13,7 +13,7 @@ RUN go mod download
 
 COPY ./*.go ./
 COPY ./publisher/*.go ./publisher/
-COPY ./server/*.go ./server/
+COPY ./warmer/*.go ./warmer/
 
 RUN go build -o /avenluutn
 
