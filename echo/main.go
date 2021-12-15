@@ -43,32 +43,19 @@ func main() {
 	pubStore := publisher.NewEthLocalStore("/store", client)
 	s := server.NewPubServer(pub, pubStore, client)
 
-	narratorIndexes := make(chan(int64))
-	stop := make(chan(bool))
-	errs := make(chan(error))
-	go s.KeepWarm(narratorIndexes, stop, errs)
-	narratorCount, err := pub.NarratorCount(nil)
-	if err != nil {
-		fmt.Println("WARNING: could not get narrator count", err)
-	}
-	for n := 0; n < int(narratorCount.Int64()); n++ {
-		fmt.Println("warming narrator", n)
-		narratorIndexes <- int64(n)
-	}
-	go func() {
-		for {
-			err := <- errs
-			fmt.Println("Keep Warm ERROR:", err)
-		}
-	}()
-
 	e := echo.New()
+
+	narratorCount, err := pub.NarratorCount(nil)
+	if err != nil { log.Fatal(err) }
+	for n := 0; int64(n) < narratorCount.Int64(); n += 1 {
+		go s.KeepWarm(int64(n))
+	}
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
 
-	e.GET("/runs/:narrator/:collection", s.ExecuteRun)
+	e.Static("/runs/", "store")
 
 	e.Static("/", "ui")
 

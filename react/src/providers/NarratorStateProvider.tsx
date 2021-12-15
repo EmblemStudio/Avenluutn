@@ -136,10 +136,10 @@ async function getCollection(
   collectionIndex: number
 ): Promise<Collection | null> {
   console.log("getting collection", narratorIndex, collectionIndex)
-  const response = await axios.get(`${SERVER}/runs/${narratorIndex}/${collectionIndex}`)
+  const response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json?cb=${Math.random()}`)
   if (!response.data) return null
   const scriptResult: ScriptResult = response.data
-  console.log("got response", narratorIndex, collectionIndex, scriptResult)
+  console.log("got collection", narratorIndex, collectionIndex, scriptResult)
   const collection: Collection = {
     collectionIndex,
     scriptResult
@@ -165,7 +165,7 @@ async function concatCategorizedStories(
     const endTime = startTime.add(collectionLength)
     const contractStory = await publisher.stories(id)
     const auction: Auction = contractStory.auction
-    const text = scriptResult.stories[j] // ?? "A story only the future has beheld..."
+    const text = scriptResult.stories[j]
     if (text === undefined) {
       console.warn("scriptResult missing story at index", j)
       continue

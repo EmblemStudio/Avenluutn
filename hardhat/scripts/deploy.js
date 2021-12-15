@@ -79,7 +79,7 @@ async function main() {
   await narratorTx.wait()
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
-  console.log("adding test narratnodor")
+  console.log("adding test narrator")
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,

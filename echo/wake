@@ -17,10 +17,12 @@ function wake () {
     case $1 in
         "build")
             echo "copying in most recent ui"
+            mkdir -p ./ui
             cp -r ../react/dist/* ./ui
 
             echo "copying in most recent script"
-            cp -r ../scripts/dist* ./testAssets
+            mkdir -p ./testAssets
+            cp -r ../scripts/dist/* ./testAssets
 
             docker run \
                    -u `id -u`:`id -g` \
@@ -55,7 +57,6 @@ function wake () {
                    --env AVENLUUTN_PROVIDER="http://localhost:8545" \
                    --rm \
                    --net host \
-                   -d \
                    -v $store_path:/store \
                    --name $container_name \
                    $tag
