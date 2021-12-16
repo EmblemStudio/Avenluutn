@@ -7,7 +7,7 @@ interface NarratorParams {
 
 export const NARRATOR_PARAMS: NarratorParams = {
   network: "goerli",
-  narratorIndex: 5,
+  narratorIndex: 6,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {

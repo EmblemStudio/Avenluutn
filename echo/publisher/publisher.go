@@ -8,6 +8,8 @@ import (
 	"net/url"
 	"io"
 	"io/ioutil"
+	"log"
+	"os"
 	"os/exec"
 	"strings"
 	"encoding/base64"
@@ -84,9 +86,6 @@ func parseOpaqueData(opaque string) (string, string, error) {
 
 type Story = interface{}
 
-// TODO refactor so the server is result generic.
-// rather than returning stories it retuns generic results
-// allowing the UI and Script to coordinate on that
 type ScriptResult struct {
 	Stories []Story `json:"stories"`
 	NextState map[string]interface{} `json:"nextState"`
@@ -131,6 +130,10 @@ func (pub *Publisher) RunNarratorScript(
 		previousResultJSON = string(previousResultJSONData)
 	}
 
+	provider := os.Getenv("AVENLUUTN_PROVIDER")
+	if provider == "" {
+		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
+	}
 
 	resultFilePath := "./result.json"
 	runScript := []byte(fmt.Sprintf(
@@ -160,7 +163,7 @@ script.tellStories(%v, %v, %v, %v, "%v")
 		collectionLength,
 		collectionSize,
 		// TODO make eth network configurable
-		"https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8",
+		provider,
 	))
 	runScriptPath := "./runScript.js"
 	if err := ioutil.WriteFile(runScriptPath, runScript, 0644); err != nil {
