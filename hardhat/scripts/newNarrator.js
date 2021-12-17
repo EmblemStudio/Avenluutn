@@ -34,7 +34,7 @@ async function main() {
     narratorNFTs.address,
     Number(nftId),
     now,              // start
-    1000,             // totalCollections
+    30,             // totalCollections
     60 * 15,          // collectionLength
     60 * 20,          // collectionSpacing
     5,                // collectionSize

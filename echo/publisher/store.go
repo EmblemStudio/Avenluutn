@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"fmt"
+	"log"
 	"errors"
 	"path"
 	"context"
@@ -47,7 +48,7 @@ func (els *EthLocalStore) Set(
 	value ScriptResult,
 ) error {
 	data, err := json.Marshal(value); if err != nil {
-		fmt.Println(key, "could not marshal json", err)
+		log.Println(key, "could not marshal json", err)
 		return err
 	}
 	return os.WriteFile(els.getKeyPath(key), data, 0644)
@@ -57,13 +58,13 @@ func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
 	keyPath := els.getKeyPath(key)
 
 	data, err := os.ReadFile(keyPath); if err != nil {
-		fmt.Println(key, err)
+		log.Println(key, err)
 		return ScriptResult{}, err
 	}
 
 	var result ScriptResult
 	if err := json.Unmarshal(data, &result); err != nil {
-		fmt.Println(key, err)
+		log.Println(key, err)
 		return ScriptResult{}, err
 	}
 
@@ -77,7 +78,6 @@ func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
 		)
 	}
 
-	fmt.Println(key, "    returning cached result for")
 	return result, nil
 }
 

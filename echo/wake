@@ -13,16 +13,12 @@ function wake () {
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
     abigen_out_path=`pwd`/publisher
     store_path=`pwd`/store
+    info_path=`pwd`/info
     localhost_pub_addr=`cat ../hardhat/localhost_PublisherAddress.txt`
     case $1 in
         "build")
-            echo "copying in most recent ui"
-            mkdir -p ./ui
-            cp -r ../react/dist/* ./ui
-
-            echo "copying in most recent script"
-            mkdir -p ./testAssets
-            cp -r ../scripts/dist/* ./testAssets
+            echo "copying latest script"
+            cp ../scripts/dist/* ./testAssets
 
             docker run \
                    -u `id -u`:`id -g` \
@@ -58,6 +54,7 @@ function wake () {
                    --rm \
                    --net host \
                    -v $store_path:/store \
+                   -v $info_path:/info \
                    --name $container_name \
                    $tag
             ;;

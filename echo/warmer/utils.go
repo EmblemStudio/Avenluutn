@@ -20,6 +20,10 @@ func serverError(e error) error {
 	return echoHTTPError(http.StatusInternalServerError, e)
 }
 
+func notFound() error {
+	return echoHTTPError(http.StatusNotFound, nil)
+}
+
 func getInt64Param(c echo.Context, k string) (int64, error) {
 	param := c.Param(k)
 	return strconv.ParseInt(param, 10, 64)

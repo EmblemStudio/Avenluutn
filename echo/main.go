@@ -83,15 +83,13 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
 
-	e.Static("/runs/", "store")
-
-	e.Static("/", "ui")
+	e.GET("/status/:narrator/:collection", w.GetCollectionInfo)
 
 	e.GET("/settings", func(c echo.Context) error {
 		return c.HTML(
 			http.StatusOK,
 			fmt.Sprintf(
-				"Publisher address: %v\nProvider URL: %v",
+				"Warmer\nPublisher address: %v\nProvider URL: %v",
 				pubHexAddress,
 				provider,
 			),
@@ -107,7 +105,7 @@ func main() {
 		)
 	})
 
-	httpPort := os.Getenv("HTTP_PORT")
+	httpPort := os.Getenv("WARMER_HTTP_PORT")
 	if httpPort == "" {
 		httpPort = "8000"
 	}
