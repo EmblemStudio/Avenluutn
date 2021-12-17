@@ -30,7 +30,6 @@ to the backend
 
 ```
 react/ $ yarn build
-react/ $ yarn backend
 ```
 
 Then build the backend and run it locally

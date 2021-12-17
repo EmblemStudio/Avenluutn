@@ -1,0 +1,356 @@
+STORY 0-0 
+
+At 
+Harcourt Smithy
+ in 
+North Bank Street
+, 
+Benevolent Dictator Olgu Zhu, 
+Jason Rodrigue, 
+and 
+Helga Marblemaw 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+succulent
+ doctor
+ at the 
+Red 
+village
+.
+Before reaching the destination, they
+ were ambushed by
+ an
+ entrancing
+ bird folk
+.
+After 
+a hard-earned 
+game of wits
+, they 
+moved on from
+ the 
+bird folk
+.
+Benevolent Dictator Olgu Zhu
+ broke his leg.
+Jason Rodrigue
+ found 
+Wool Shoes
+!
+They arrived at the 
+Red
+ village
+, where they
+ came across
+ a
+ succulent
+ doctor
+.
+After 
+a trying 
+introduction
+, they 
+gained favor with
+ the 
+doctor
+.
+Jason Rodrigue 
+used their 
+Baking 
+skills!
+Benevolent Dictator Olgu Zhu
+ found 
+Studded Leather Gloves
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+
+STORY 0-1 
+
+At 
+Union of Scientists
+ in 
+Farshi District
+, 
+Vesryn Jenkins, 
+Serge Schneider, 
+and 
+Mayor Mira Quenneville 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+, 
+black-hearted
+ warlock
+ at the 
+Can-ton 
+summit
+.
+In search of the goal, they
+ were confronted by
+ a
+ violent
+ bird folk
+.
+After 
+a grueling 
+game of wits
+, they 
+passed by
+ the 
+bird folk
+.
+Vesryn Jenkins
+ found 
+Divine Slippers
+!
+While traveling, they
+ were blocked by
+ an
+ invisible
+, reknowned
+ dead end
+.
+After 
+a trying 
+attempt
+, they 
+found a way through
+ the 
+dead end
+.
+Mayor Mira Quenneville
+ found 
+Bone Wand
+!
+They arrived at the 
+Can-ton
+ summit
+, where they
+ snuck up on
+ a
+ violent
+, black-hearted
+ warlock
+.
+After 
+an out-of-control 
+struggle
+, they 
+were defeated by
+ the 
+warlock
+.
+Vesryn Jenkins
+ bruised her ribs.
+Serge Schneider
+ had his confidence shaken.
+Serge Schneider
+ was stabbed in the torso.
+Mayor Mira Quenneville
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+
+STORY 0-2 
+
+At 
+Platinum Branch Club
+ in 
+the Last Stop
+, 
+Comrade Zaki Hidalgo, 
+Mackenzie McLellan, 
+and 
+Druid David Kjeldsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+, 
+black-hearted
+ caves
+ at the 
+Headless 
+pass
+.
+Soon enough, they
+ came across
+ a
+ violent
+ beast
+.
+After 
+a grueling 
+game of wits
+, they 
+passed by
+ the 
+beast
+.
+Comrade Zaki Hidalgo
+ found 
+Divine Slippers
+!
+Before reaching the destination, they
+ discovered
+ a
+ voracious
+, horrifying
+ maze
+.
+After 
+a trying 
+attempt
+, they 
+found a way through
+ the 
+maze
+.
+Druid David Kjeldsen
+ found 
+Bone Wand
+!
+They arrived at the 
+Headless
+ pass
+, where they
+ were blocked by
+ some
+ violent
+, black-hearted
+ caves
+.
+After 
+an out-of-control 
+exploration
+, they 
+were unable to navigate
+ the 
+caves
+.
+Comrade Zaki Hidalgo
+ bruised her ribs.
+Mackenzie McLellan
+ had his confidence shaken.
+Mackenzie McLellan
+ was stabbed in the torso.
+Druid David Kjeldsen
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+
+STORY 1-0 
+
+At 
+Harcourt Smithy
+ in 
+North Bank Street
+, 
+Miguel Gresham, 
+Couch Caspian de la Gotou, 
+Angor Hornblower, 
+Benevolent Dictator Olgu Zhu, 
+and 
+Dennis groovy Skotnik 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+many-eyed
+ prisoner
+ at the 
+Boreal 
+forest
+.
+
+STORY 1-1 
+
+At 
+Union of Scientists
+ in 
+Farshi District
+, 
+Gogu Amsel, 
+Janet Courtois, 
+Serge Schneider, 
+Abigail Sos, 
+and 
+Ravil Goldfeder 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+decrepit
+, 
+magical
+ maze
+ "Carcosan Ulula"
+ at the 
+Red 
+forest
+.
+Soon enough, they
+ stumbled upon
+ a
+ decrepit
+ maze
+.
+After 
+a strenuous 
+attempt
+, they 
+solved
+ the 
+maze
+.
+Gogu Amsel
+ got fried nerves.
+Janet Courtois
+ broke their leg.
+Janet Courtois
+ had their confidence shaken.
+Ravil Goldfeder
+ broke their leg.
+
+STORY 1-2 
+
+At 
+Platinum Branch Club
+ in 
+the Last Stop
+, 
+Joseph Henrichon, 
+Ebony Berg, 
+Sirius Fellowes, 
+Ravil Hermanns, 
+and 
+Remy Davis 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+succulent
+ sanctum
+ at the 
+Headless 
+market
+.
+
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+

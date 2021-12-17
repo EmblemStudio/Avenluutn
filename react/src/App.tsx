@@ -6,7 +6,7 @@ import 'bulma'
 import './App.css'
 import NotificationsProvider from './providers/NotificationsProvider'
 import NarratorStateProvider from './providers/NarratorStateProvider'
-import { NARRATOR_PARAMS } from './constants'
+import { NARRATOR_PARAMS, NETWORK_IDS, RPC_URIS } from './constants'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import GuildLobby from './pages/GuildLobby'
@@ -15,9 +15,20 @@ import GuildLogbook from './pages/GuildLogbook'
 import About from './pages/About'
 
 export default () => {
+  console.log({ 
+    [NETWORK_IDS[NARRATOR_PARAMS.network]]: RPC_URIS[NARRATOR_PARAMS.network]
+  })
   return (
     <div className="App">
-      <UseWalletProvider>
+      <UseWalletProvider
+        connectors={{
+          walletconnect: {
+            rpc: { 
+              [NETWORK_IDS[NARRATOR_PARAMS.network]]: RPC_URIS[NARRATOR_PARAMS.network]
+            },
+          },
+        }}
+      >
         <NotificationsProvider>
           <NarratorStateProvider params={NARRATOR_PARAMS}>
             <BrowserRouter>

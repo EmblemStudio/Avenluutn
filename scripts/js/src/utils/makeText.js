@@ -4,6 +4,9 @@ exports.makeTriggerText = exports.makeKnockoutText = exports.makeTraitText = exp
 const interfaces_1 = require("./interfaces");
 const loot_1 = require("../content/loot");
 function makeGuildText(guild, party) {
+    if (party.length < 3) {
+        return [{ string: `With too few adventurers to embark, the guild stagnates. `, label: interfaces_1.Label.conjunctive }];
+    }
     const res = [
         { string: ``, label: interfaces_1.Label.conjunctive },
         { string: `At `, label: interfaces_1.Label.conjunctive },
@@ -21,7 +24,7 @@ function makeGuildText(guild, party) {
             res.push({ string: `${(0, loot_1.nameString)(a.name)}, `, label: interfaces_1.Label.adventurerName });
         }
     });
-    res.push({ string: `gathered.`, label: interfaces_1.Label.conjunctive });
+    res.push({ string: `gathered. `, label: interfaces_1.Label.conjunctive });
     return res;
 }
 exports.makeGuildText = makeGuildText;

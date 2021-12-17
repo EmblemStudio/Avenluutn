@@ -43,6 +43,19 @@ export default () => {
                 <h2 className="subtitle pl-5">Metamask</h2>
               </a>
             </section>
+            <section className="section">
+              <a 
+                className="button is-ghost has-text-black"
+                onClick={()=>{
+                  console.log('trying to do walletconnect')
+                  wallet.connect("walletconnect").then(() => console.log('wallet', wallet))
+                  setModalActive("")
+                }}
+              >
+                <img src={WalletConnectSVG} alt="WalletConnect" width="80px"/>
+                <h2 className="subtitle pl-5">WalletConnect</h2>
+              </a>
+            </section>
           </div>
         </div>
         <button className="modal-close is-large" onClick={()=>setModalActive("")} />

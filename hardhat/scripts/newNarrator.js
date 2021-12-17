@@ -21,8 +21,8 @@ async function main() {
    */
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "http://localhost:8000/test/bundle.js" // "https://gist.githubusercontent.com/jessebmiller/a1a3b25b1332002cd8bb7a39950f896a/raw/2f6df058e619784ec642a16594569ec24551e607/bundle.js"
-  )
+    "https://gist.githubusercontent.com/EzraWeller/a90b4ff0f6a4b7356e8277135d7e391d/raw/07cfb153559b5332ddc60aa34b161d03671b051a/avenluutn_bundle_161221.js"
+    )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
   await narratorTx.wait()
@@ -34,10 +34,10 @@ async function main() {
     narratorNFTs.address,
     Number(nftId),
     now,              // start
-    1000,             // totalCollections
-    60 * 15,          // collectionLength
-    60 * 20,          // collectionSpacing
-    5,                // collectionSize
+    10,             // totalCollections
+    60 * 10,          // collectionLength
+    60 * 15,          // collectionSpacing
+    10,                // collectionSize
   )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
   const receipt = await pubTx.wait()

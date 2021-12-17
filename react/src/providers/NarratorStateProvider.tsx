@@ -6,8 +6,8 @@ import axios from 'axios'
 
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
-import { ScriptResult } from '../../../scripts/src'
-import { NarratorParams, Narrator, Auction, Collection, Story, StoriesByGuild, NarratorState, presentOrPast } from '../utils'
+import { ScriptResult, Label } from '../../../scripts/src'
+import { NarratorParams, Narrator, Auction, Collection, Story, StoriesByGuild, NarratorState, presentOrPast, NetworkName } from '../utils'
 import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
 
 const emptyNarrator: Narrator = {
@@ -78,7 +78,7 @@ async function updateNarratorState(
 
   const address = ADDRESSES[params.network]
   requireDefined(address, "Address for ${params.netowrk} required")
-  const publisher = useContractReadable(address, artifact.abi, params.network)
+  const publisher = useContractReadable(address, artifact.abi, params.network as NetworkName)
   if (!publisher) return
 
   if (baseAuctionDuration.eq(-1)) {
@@ -88,7 +88,7 @@ async function updateNarratorState(
 
   if (narratorData === undefined) {
     narratorData = await publisher.narrators(params.narratorIndex)
-    console.log("Feched narratorData", narratorData)
+    console.log("fetched narratorData", narratorData)
   }
 
   let newNarrator: Narrator = {...narratorData, collections: [], stories: {}}
@@ -97,25 +97,36 @@ async function updateNarratorState(
   const relevantStories = Math.floor(
     timeActive / Number(newNarrator.collectionSpacing)
   ) + 2
+  console.log('trying to get relevant stories:', relevantStories, timeActive, Number(newNarrator.collectionSpacing))
   console.log("updating narratorState from", narratorState)
   const promises: Promise<void>[] = []
   for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
       async (resolve, reject) => {
-        const collection = await getCollection(params.narratorIndex, i)
-        if (collection) {
+        let collection = await getCollection(params.narratorIndex, i)
+        if (collection === null) {
+          collection = {
+            collectionIndex: i,
+            scriptResult: {
+              stories: [],
+              nextState: { guilds: [] },
+              nextUpdateTime: -1
+            }
+          }
+        } else {
           newNarrator.collections.push(collection)
-          newNarrator.stories = await concatCategorizedStories(
-            publisher,
-            baseAuctionDuration,
-            params.narratorIndex,
-            Number(newNarrator.collectionSize),
-            newNarrator.collectionLength,
-            collection,
-            newNarrator.stories,
-            collection.scriptResult
-          )
         }
+        newNarrator.stories = await concatCategorizedStories(
+          publisher,
+          baseAuctionDuration,
+          params.narratorIndex,
+          Number(newNarrator.collectionSize),
+          newNarrator.collectionLength,
+          collection,
+          newNarrator.stories,
+          collection.scriptResult
+        )
+        console.log('setting narrator state', newNarrator)
         setNarratorState({
           narrator: newNarrator,
           updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
@@ -136,7 +147,13 @@ async function getCollection(
   collectionIndex: number
 ): Promise<Collection | null> {
   console.log("getting collection", narratorIndex, collectionIndex)
-  const response = await axios.get(`${SERVER}/runs/${narratorIndex}/${collectionIndex}`)
+  let response
+  try { 
+    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json`) 
+  } catch (err) { 
+    console.warn(`Bad Response: ${err}`)
+    return null
+  }
   if (!response.data) return null
   const scriptResult: ScriptResult = response.data
   console.log("got response", narratorIndex, collectionIndex, scriptResult)
@@ -165,10 +182,20 @@ async function concatCategorizedStories(
     const endTime = startTime.add(collectionLength)
     const contractStory = await publisher.stories(id)
     const auction: Auction = contractStory.auction
-    const text = scriptResult.stories[j] // ?? "A story only the future has beheld..."
+    let text = scriptResult.stories[j] // ?? "A story only the future has beheld..."
     if (text === undefined) {
       console.warn("scriptResult missing story at index", j)
-      continue
+      text = {
+        plainText: ["A story only the future has beheld..."],
+        richText: {
+          beginning: [{ string: "A story only the future has beheld...", label: Label.conjunctive }],
+          middle: { obstacleText: [], outcomeText: [] },
+          ending: []
+        },
+        events: [],
+        nextUpdateTime: -1
+      }
+      // continue
     } 
     const story: Story = {
       narratorIndex,
@@ -188,6 +215,15 @@ async function concatCategorizedStories(
     const started = presentOrPast(story.startTime)
     const storyEnded = presentOrPast(story.endTime)
     const auctionEnded = presentOrPast(story.endTime.add(story.auction.duration))
+    console.log(
+      'catting times', 
+      Number(story.startTime), 
+      Number(story.endTime), 
+      Number(story.endTime.add(story.auction.duration)), 
+      Number(story.auction.duration),
+      Math.floor(Date.now()/1000)
+    )
+    console.log('catting story', story.narratorIndex, story.storyIndex, story.collectionIndex, started, storyEnded, auctionEnded)
     if (!storiesSoFar[storyIndex]) {
       storiesSoFar[storyIndex] = {
         upcoming: [],
@@ -197,12 +233,18 @@ async function concatCategorizedStories(
       }
     }
     if (!started) {
+      console.log('upcoming')
       storiesSoFar[storyIndex].upcoming.push(story)
     } else if (started && !storyEnded) {
+      console.log('in progress')
+      // hack
+      if (story.text.nextUpdateTime === -1) story.text.nextUpdateTime = Number(story.endTime)
       storiesSoFar[storyIndex].inProgress.push(story)
     } else if (storyEnded && !auctionEnded) {
+      console.log('on auction')
       storiesSoFar[storyIndex].onAuction.push(story)
     } else if (storyEnded && auctionEnded) {
+      console.log('completed')
       storiesSoFar[storyIndex].completed.push(story)
     }
     storiesSoFar[storyIndex].upcoming.sort(sortStories)

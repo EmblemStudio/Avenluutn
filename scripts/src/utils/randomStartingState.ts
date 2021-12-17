@@ -21,8 +21,10 @@ export async function randomStartingState(
   for(let i = 0; i < numberOfGuilds; i++) {
     const subPrng = new Prando(prng.nextInt(0, 1000000)+i)
     const guild = await randomGuild(i, subPrng, state, provider)
+    console.log('guild adventurers', guild.adventurers)
     state.guilds.push(guild)
   }
+  console.log('made state', state)
   return state
 }
 

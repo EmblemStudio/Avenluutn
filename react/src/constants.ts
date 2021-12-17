@@ -1,4 +1,4 @@
-type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
+import { NetworkName } from './utils'
 
 interface NarratorParams {
   network: NetworkName,
@@ -6,8 +6,8 @@ interface NarratorParams {
 }
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: "localhost",
-  narratorIndex: 2,
+  network: "goerli",
+  narratorIndex: 8,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -31,7 +31,7 @@ export const STATUS = {
 export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0x854757c41Ba48ad8C53cF1890B2B8672ad8b0c15",
+  "goerli": "0x3cc6Ce718E778c471d4183A625eB4446503f947b",
   "polygon": "",
   "localhost": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
 }
@@ -46,10 +46,12 @@ export const SERVER = {
 
 export const CACHE_PERIOD = 180000 // 3 minutes
 
-export const API_URIS: { [network: string]: string } = {
+export const RPC_URIS: { [key in NetworkName]: string } = {
   ropsten: "https://eth-ropsten.alchemyapi.io/v2/tDTu2vhfHnGOWJuM0p1DrA6BBJn0uDL3",
   goerli: "https://eth-goerli.alchemyapi.io/v2/tDTu2vhfHnGOWJuM0p1DrA6BBJn0uDL3",
   localhost: "http://localhost:8545",
+  polygon: "",
+  mainnet: ""
 }
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]

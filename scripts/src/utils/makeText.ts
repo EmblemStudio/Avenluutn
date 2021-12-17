@@ -17,6 +17,9 @@ import {
 import { nameString } from '../content/loot'
 
 export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[] {
+  if (party.length < 3 ) {
+    return [{ string: `With too few adventurers to embark, the guild stagnates. `, label: Label.conjunctive }]
+  }
   const res: LabeledString[] = [
     { string: ``, label: Label.conjunctive },
     { string: `At `, label: Label.conjunctive },
@@ -33,7 +36,7 @@ export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[
       res.push({string: `${nameString(a.name)}, `, label: Label.adventurerName })
     }
   })
-  res.push({ string: `gathered.`, label: Label.conjunctive })
+  res.push({ string: `gathered. `, label: Label.conjunctive })
   return res
 }
 

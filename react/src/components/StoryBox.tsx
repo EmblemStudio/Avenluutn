@@ -14,6 +14,7 @@ function label(text: { label: string, string: string }, key: number) {
 }
 
 export default ({ story }: StoryBoxProps) => {
+  
   return (
     <section className="section pt-2 pb-5">
       <div className="container outer-border">
@@ -34,15 +35,15 @@ export default ({ story }: StoryBoxProps) => {
                         {story.text.richText.middle.outcomeText[i]?.main.map(label)}
                       </div>
                     </div>
-                    <div className="block outcome results">
-                    {story.text.richText.middle.outcomeText[i]?.resultTexts.map((r, i) => {
-                      return <div key={i}>{r.map(label)}</div>
-                    })}
-                    </div>
                     <div className="block outcome triggers">
-                    {story.text.richText.middle.outcomeText[i]?.triggerTexts.map((t, i) => {
-                      return <div key={i}>{t.map(label)}</div>
-                    })}
+                      {story.text.richText.middle.outcomeText[i]?.triggerTexts.map((t, i) => {
+                        return <div key={i}>{t.map(label)}</div>
+                      })}
+                    </div>
+                    <div className="block outcome results">
+                      {story.text.richText.middle.outcomeText[i]?.resultTexts.map((r, i) => {
+                        return <div key={i}>{r.map(label)}</div>
+                      })}
                     </div>
                   </div>
                 )
@@ -57,7 +58,7 @@ export default ({ story }: StoryBoxProps) => {
                   {LOADING}
                 </div>
                 <div className="block">
-                  <Countdown to={Number(story.endTime)}/>
+                  <Countdown to={story.text.nextUpdateTime}/>
                 </div>
               </div>
             }

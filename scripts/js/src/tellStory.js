@@ -3,11 +3,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.tellStory = void 0;
 const utils_1 = require("./utils");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
+// TODO during quests, handle grammar if only one adventurer is left conscious
 async function tellStory(prng, state, startTime, length, guildId, provider) {
     const beginning = await tellBeginning(prng, state, startTime, length, guildId);
+    if (beginning.party.length < 3) {
+        const res = {
+            plainText: [],
+            richText: {
+                beginning: beginning.text,
+                middle: {
+                    obstacleText: [],
+                    outcomeText: []
+                },
+                ending: [],
+            },
+            events: [],
+            nextUpdateTime: (0, utils_1.findNextUpdateTime)([startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
+        };
+        return res;
+    }
     const middle = await tellMiddle(guildId, state, beginning, provider);
     const ending = await tellEnding(guildId, beginning, middle, state, provider);
-    let res = {
+    const res = {
         plainText: [],
         richText: {
             beginning: beginning.text,
@@ -18,9 +35,8 @@ async function tellStory(prng, state, startTime, length, guildId, provider) {
             ending: ending.text,
         },
         events: ending.results,
-        nextUpdateTime: findNextUpdateTime(beginning, startTime)
+        nextUpdateTime: (0, utils_1.findNextUpdateTime)([startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
     };
-    // res.plainText = beginning.text
     res.richText.beginning.forEach(ls => res.plainText.push(ls.string));
     res.richText.middle.obstacleText.forEach((lsa, i) => {
         const outcomeText = res.richText.middle.outcomeText[i];
@@ -42,23 +58,6 @@ async function tellStory(prng, state, startTime, length, guildId, provider) {
     return res;
 }
 exports.tellStory = tellStory;
-function findNextUpdateTime(beginning, startTime) {
-    let now = Math.floor(Date.now() / 1000);
-    let nextUpdateTime;
-    const updateTimes = [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes];
-    updateTimes.sort().reverse();
-    updateTimes.forEach((t, i) => {
-        if (t < now) {
-            if (i === 0)
-                return -1;
-            nextUpdateTime = updateTimes[i - 1];
-            if (nextUpdateTime === undefined)
-                return -1; // should be never
-            return nextUpdateTime;
-        }
-    });
-    return -1; // should be never
-}
 async function tellBeginning(prng, state, startTime, length, guildId
 // provider: providers.BaseProvider
 ) {
@@ -84,7 +83,10 @@ async function tellBeginning(prng, state, startTime, length, guildId
      * Generate quest
      */
     const quest = (0, utils_1.randomQuest)(guildId, prng);
-    const questText = (0, utils_1.makeQuestText)(quest);
+    let questText = [];
+    if (party.length > 3) {
+        questText = (0, utils_1.makeQuestText)(quest);
+    }
     /**
      * Create obstacle times, outcome times, and end time
      *
@@ -100,6 +102,7 @@ async function tellBeginning(prng, state, startTime, length, guildId
         obstacleTimes.push(startTime + delay);
         outcomeTimes.push(startTime + delay + outcomeDelay);
     }
+    console.log('made update times', startTime, obstacleTimes, outcomeTimes, endTime);
     return {
         guild,
         party,
