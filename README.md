@@ -23,6 +23,11 @@ Adventure stories in the lootverse
 8. Run the backend
    `wake run`
 
+## To deploy or add narrators to test nets
+
+You'll need keybase cli set up with the squad_games team file system synced
+THIS IS UNTESTED and MIGHT NOT WORK!
+
 ## To publish the UI to the backend
 
 First, in the react folder, build the UI and move the build artifact
