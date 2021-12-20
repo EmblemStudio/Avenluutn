@@ -33,11 +33,11 @@ async function main() {
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     Number(nftId),
-    now,              // start
-    30,             // totalCollections
-    60 * 15,          // collectionLength
-    60 * 20,          // collectionSpacing
-    5,                // collectionSize
+    now - 60 * 10 * 3, // start
+    30,                // totalCollections
+    60 * 10,           // collectionLength
+    60 * 15,           // collectionSpacing
+    5,                 // collectionSize
   )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
   const receipt = await pubTx.wait()

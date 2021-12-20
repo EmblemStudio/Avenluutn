@@ -51,6 +51,7 @@ function wake () {
                    -p 8000:8000 \
                    --env AVENLUUTN_PUB_ADDR=$localhost_pub_addr \
                    --env AVENLUUTN_PROVIDER="http://localhost:8545" \
+                   --env AVENLUUTN_SCRIPT_PROVIDER="http://localhost:8545" \
                    --rm \
                    --net host \
                    -v $store_path:/store \

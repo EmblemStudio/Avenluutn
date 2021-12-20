@@ -17,11 +17,13 @@ async function main() {
 
   const names = {
     ropsten: "The Grand Adventure: Ropstenluutn",
-    localhost: "The Local Adventure: Localuutn"
+    localhost: "The Local Adventure: Localuutn",
+    goerli: "The Goerand Adventure: Goenluutn"
   }
   const symbols = {
     ropsten: "tgaRPSTNLTN",
-    localhost: "tlaLCLTN"
+    localhost: "tlaLCLTN",
+    goerli: "tgaGNLTN"
   }
   const name = names[hre.network.name] || "The Grand Adventure: Avenluutn"
   const symbol = symbols[hre.network.name] || "tgaAVNLTN"
@@ -72,7 +74,7 @@ async function main() {
   console.log("Minting test NFT")
   const narratorTx = await narratorNFTs.mint(
     narratorNFTs.address,
-    "http://localhost:8000/test/bundle.js",
+    "https://gist.githubusercontent.com/EzraWeller/a90b4ff0f6a4b7356e8277135d7e391d/raw/07cfb153559b5332ddc60aa34b161d03671b051a/avenluutn_bundle_161221.js"
   )
 
   console.log("Waiting for mint transaction...")
@@ -97,6 +99,7 @@ async function main() {
     return
   }
 
+  // TODO wait for 5 confirmations before verifying
   console.log("verifying NarratorNFTs...")
   await hre.run("verify:verify", {
     address: narratorNFTs.address

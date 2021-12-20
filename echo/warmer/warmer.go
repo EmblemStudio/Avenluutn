@@ -8,6 +8,9 @@ import (
 	"time"
 	"net/http"
 	"encoding/json"
+	"html/template"
+	"bytes"
+	"sort"
 
 	"github.com/labstack/echo/v4"
 	"github.com/ethereum/go-ethereum/ethclient"
@@ -48,6 +51,22 @@ func (rs CollectionStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal("Invalid")
 }
 
+func (rs CollectionStatus) String() (string) {
+	switch rs {
+	case Unknown:
+		return "Unknown"
+	case Running:
+		return "Running"
+	case Scheduled:
+		return "Scheduled"
+	case Complete:
+		return "Complete"
+	case Failed:
+		return "Failed"
+	}
+	return "Invalid"
+}
+
 type CollectionInfo struct {
 	Status CollectionStatus
 	ScriptOutputHistory map[time.Time] string // paths to historic output
@@ -58,6 +77,7 @@ type CollectionInfo struct {
 
 type NarratorInfo struct {
 	totalCollections int64
+	scriptErrors []string
 	collections map[int64]CollectionInfo
 }
 
@@ -68,8 +88,16 @@ func (pw PubWarmer) GetCollectionInfo(c echo.Context) error {
 	collectionIndex, err := getInt64Param(c, "collection")
 	if err != nil { return badRequest(err) }
 
+	// Maybe the warmer failed, if so there should be a failure file
+	failurePath := fmt.Sprintf(
+		"/info/failure_%v.%v.json",
+		narratorIndex,
+		collectionIndex,
+	)
+	failureData, _ := os.ReadFile(failurePath)
+
 	narratorInfo, present := pw.info[narratorIndex]
-	if !present { return notFound()	}
+	if !present { return notFound() }
 
 	collectionInfo, present := narratorInfo.collections[collectionIndex]
 	if !present { return notFound()	}
@@ -94,27 +122,78 @@ func (pw PubWarmer) GetCollectionInfo(c echo.Context) error {
 		}
 	}
 
-	response, err := json.MarshalIndent(
-		struct{
-			NarratorIndex int64
-			CollectionIndex int64
-			CollectionInfo CollectionInfo
-			FullOutputHistory map[time.Time]string
-			FullRunHistory map[time.Time]string
-		}{
-			narratorIndex,
-			collectionIndex,
-			collectionInfo,
-			fullOutputHistory,
-			fullRunHistory,
-		},
-		"",
-		"  ",
-	)
-	if err != nil {
+	allCollectionsByStatus := make(map[string][]int64)
+	for collectionIndex, collectionInfo := range narratorInfo.collections {
+		status := collectionInfo.Status.String()
+		indexes := allCollectionsByStatus[status]
+		indexes = append(indexes, collectionIndex)
+		sort.Slice(indexes, func(i, j int) bool { return indexes[i] < indexes[j] })
+		allCollectionsByStatus[status] = indexes
+	}
+
+	fmt.Println("getting updatesin")
+	updatesIn := collectionInfo.NextUpdateTime.Sub(time.Now()).Round(time.Second)
+	fmt.Println("Updates in", updatesIn)
+
+	const tmplText = `
+<h1>Narrator Index:   {{ .NarratorIndex }}</h1>
+<h1>Collection Index: {{ .CollectionIndex }}</h1>
+<h1>Updates In        {{ .UpdatesIn }}</h1>
+<h4>Next Update Time: {{ .CollectionInfo.NextUpdateTime }}</h4>
+
+<h2>Full Output History </h2>
+{{- range $key, $val := .FullOutputHistory }}
+  <details>
+    <summary>{{ $key }}</summary>
+    <pre>{{ $val }}</pre>
+  </details>
+{{- end }}
+<h2>Full Run History</h1>
+{{- range $key, $val := .FullRunHistory }}
+  <details>
+    <summary>{{ $key }}</summary>
+    <pre>{{ $val }}</pre>
+  </details>
+{{- end }}
+<h2>Failure</h2>
+<pre> {{ .Failure }} </pre>
+<h2>All Collections By Status</h2>
+  {{- range $status, $collectionIndexes := .AllCollectionsByStatus }}
+    <h3>{{ $status }}</h3>
+    {{- range $i := $collectionIndexes }}
+      <a href="/status/{{ $.NarratorIndex }}/{{ $i }}">/status/{{ $.NarratorIndex }}/{{ $i }}</a><br>
+    {{- end }}
+  {{- end }}
+`
+	// template execute into buffer from
+	tmpl, err := template.New("status").Parse(tmplText)
+	data := struct{
+		NarratorIndex int64
+		CollectionIndex int64
+		CollectionInfo CollectionInfo
+		UpdatesIn time.Duration
+		FullOutputHistory map[time.Time]string
+		FullRunHistory map[time.Time]string
+		AllCollectionsByStatus map[string][]int64
+		Failure string
+	}{
+		narratorIndex,
+		collectionIndex,
+		collectionInfo,
+		updatesIn,
+		fullOutputHistory,
+		fullRunHistory,
+		allCollectionsByStatus,
+		string(failureData),
+	}
+
+	var resBuffer bytes.Buffer
+
+	if err = tmpl.Execute(&resBuffer, data); err != nil {
 		return serverError(err)
 	}
-	return c.String(http.StatusOK, string(response))
+
+	return c.HTML(http.StatusOK, resBuffer.String())
 }
 
 func NewPubWarmer(
@@ -173,7 +252,24 @@ func (pw PubWarmer) KeepWarm(narratorIndex int64) {
 		)
 		if err != nil {
 			log.Println("KeepWarm ERR:", err)
-			return
+			failurePath := fmt.Sprintf(
+				"/info/failure_%v.%v.json",
+				narratorIndex,
+				collectionIndex,
+			)
+			_ = os.WriteFile(failurePath, []byte(output), 0644)
+			// try again in 30 minutes
+			currentCollection.StatusHistory[now] = Failed
+			currentCollection.Status = Failed
+			log.Println(
+				"Script failed\n\n",
+				output,
+				"\n\nWaiting 30 minutes and trying again",
+			)
+			time.Sleep(30 * time.Minute)
+			currentCollection.StatusHistory[now] = Unknown
+			currentCollection.Status = Unknown
+			continue
 		}
 
 		resultPath := fmt.Sprintf(
@@ -182,7 +278,7 @@ func (pw PubWarmer) KeepWarm(narratorIndex int64) {
 			collectionIndex,
 			now.Unix(),
 		)
-		resultData, err := json.Marshal(result)
+		resultData, err := json.MarshalIndent(result, "", "  ")
 		if err != nil {
 			resultData = []byte(fmt.Sprintf(
 				"Error marshaling result %v",
@@ -230,6 +326,7 @@ func (pw PubWarmer) KeepWarm(narratorIndex int64) {
 				key(narratorIndex, collectionIndex),
 			)
 			collectionIndex += 1
+			// TODO wait until the next collection starts before trying to run it
 		} else {
 			// if that collection is not finished, wait
 			// until nextUpdateTime and run it again
@@ -250,7 +347,12 @@ func (pw PubWarmer) KeepWarm(narratorIndex int64) {
 			}
 			currentCollection.StatusHistory[now] = Scheduled
 			currentCollection.NextUpdateTime = time.Unix(
-				result.NextUpdateTime,
+				// update the collection one second
+				// after it's scheduled so we are sure
+				// it should be updated... Do we
+				// actually need to wait for a full
+				// block to be mined though?
+				result.NextUpdateTime + 1,
 				0,
 			)
 			collections[collectionIndex] = currentCollection
@@ -328,6 +430,7 @@ func (pw PubWarmer) runNarratorScript(
 			"could not get result",
 			err,
 		)
+		return publisher.ScriptResult{}, output, err
 	}
 
 	if err := pw.store.Set(

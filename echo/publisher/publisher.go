@@ -2,7 +2,6 @@ package publisher
 
 import (
 	"math/big"
-	"time"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -130,9 +129,9 @@ func (pub *Publisher) RunNarratorScript(
 		previousResultJSON = string(previousResultJSONData)
 	}
 
-	provider := os.Getenv("AVENLUUTN_PROVIDER")
+	provider := os.Getenv("AVENLUUTN_SCRIPT_PROVIDER")
 	if provider == "" {
-		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
+		log.Fatal("Missing required AVENLUUTN_SCRIPT_PROVIDER envar")
 	}
 
 	resultFilePath := "./result.json"
@@ -162,7 +161,6 @@ script.tellStories(%v, %v, %v, %v, "%v")
 		collectionStart,
 		collectionLength,
 		collectionSize,
-		// TODO make eth network configurable
 		provider,
 	))
 	runScriptPath := "./runScript.js"
@@ -177,13 +175,13 @@ script.tellStories(%v, %v, %v, %v, "%v")
 	resultJSON, err := ioutil.ReadFile(resultFilePath)
 	if err != nil {
 		log.Println("read result file error:", err)
-		return ScriptResult{}, "", err
+		return ScriptResult{}, string(out), err
 	}
 
 	var result ScriptResult
 	if err := json.Unmarshal(resultJSON, &result); err != nil {
 		log.Println("json unmarshal error", err)
-		return ScriptResult{}, "", err
+		return ScriptResult{}, string(out), err
 	}
 	return result, string(out), nil
 }
