@@ -233,7 +233,7 @@ async function concatCategorizedStories(
         richText: {
           beginning: [{ string: "A story only the future has beheld...", label: Label.conjunctive }],
           middle: { obstacleText: [], outcomeText: [] },
-          ending: []
+          ending: { main: [], resultTexts: [] }
         },
         events: [],
         nextUpdateTime: startTime
