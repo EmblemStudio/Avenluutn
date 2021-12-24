@@ -1,7 +1,7 @@
 import React from 'react'
 
 import StoryBox from './StoryBox'
-import { Story, storyName } from '../utils'
+import { Story } from '../utils'
 
 interface StoryInProgressProps {
   story: Story

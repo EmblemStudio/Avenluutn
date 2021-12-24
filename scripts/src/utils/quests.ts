@@ -42,6 +42,7 @@ import {
   makeKnockoutText,
   makeTriggerText
 } from './makeText'
+import { processResults } from './processResults'
 import { getRandomLootPiece } from '../content/loot'
 import { makeObstacleText } from './makeText'
 import { makeProvider } from './newCheckpoint'
@@ -147,22 +148,7 @@ export async function findOutcome(
   }
 
   // reorganize results
-  const processedResults: { [advId: number]: Results } = {}
-  previousResults.forEach(result => { 
-    let advResults = processedResults[result.advId]
-    if (!advResults) {
-      advResults = {
-        "INJURY": [],
-        "KNOCKOUT": [],
-        "DEATH": [],
-        "LOOT": [],
-        "SKILL": [],
-        "TRAIT": [],
-      }
-    }
-    advResults[result.type].push(result)
-    processedResults[result.advId] = advResults
-  })
+  const processedResults = processResults(previousResults)
 
   let everyoneKnockedOut = false
   let knockOutCount = 0
@@ -192,7 +178,7 @@ export async function findOutcome(
       // Skill, loot, & trait triggers!
       Object.keys(triggerMap).forEach(keyword => {
         let index = -1
-        makeObstacleText(obstacle).forEach(ls => {
+        makeObstacleText(obstacle, party, previousResults).forEach(ls => {
           const localIndex = ls.string.indexOf(keyword)
           if (localIndex >= 0) index = localIndex
         })
@@ -342,7 +328,6 @@ export async function findOutcome(
   return outcome
 }
 
-// TODO move result text-making to be with the rest of the text
 async function rollResults(
   prng: Prando,
   guildId: number,

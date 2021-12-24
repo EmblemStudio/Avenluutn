@@ -20,7 +20,7 @@ async function main() {
   let output = ""
   let state = null
   let length = 1000
-  let time = Math.floor(Date.now()/1000) - (length * (collections - 1.5))
+  let time = Math.floor(Date.now()/1000) - length
   for (let i = 0; i < collections; i++) {
     console.log("Making stories",
     time,

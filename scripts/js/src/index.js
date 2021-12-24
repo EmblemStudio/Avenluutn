@@ -21,19 +21,14 @@ globalThis.fetch = cross_fetch_1.fetch;
 __exportStar(require("./utils/interfaces"), exports);
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
     const provider = (0, utils_1.makeProvider)(providerUrl);
-    const checkpoint = await (0, utils_1.newCheckpoint)(startTime, provider);
+    const runStart = Math.floor(Date.now() / 1000);
+    const checkpoint = await (0, utils_1.newCheckpoint)(runStart, startTime, provider);
+    let nextUpdateTime = startTime;
     if (checkpoint.error) {
-        if (checkpoint.error.message === utils_1.checkPointErrors.timeInFuture) {
-            return {
-                stories: [],
-                nextState: prevResult ? prevResult.nextState : { guilds: [] },
-                nextUpdateTime: startTime
-            };
-        }
         return {
             stories: [],
             nextState: prevResult ? prevResult.nextState : { guilds: [] },
-            nextUpdateTime: -1
+            nextUpdateTime: startTime
         };
     }
     let state;
@@ -45,10 +40,10 @@ async function tellStories(prevResult, startTime, length, totalStories, provider
     }
     const stories = [];
     let events = [];
-    let nextUpdateTime = -1;
     for (let i = 0; i < totalStories; i++) {
-        const story = await (0, tellStory_1.tellStory)(new prando_1.default(checkpoint.blockHash + `${i}`), state, startTime, length, i, provider);
-        if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) {
+        const story = await (0, tellStory_1.tellStory)(runStart, new prando_1.default(checkpoint.blockHash + `${i}`), state, startTime, length, i, provider);
+        // if nextUpdateTime hasn't been updated yet OR this time is earlier
+        if (nextUpdateTime === startTime || nextUpdateTime > story.nextUpdateTime) {
             nextUpdateTime = story.nextUpdateTime;
         }
         stories.push(story);

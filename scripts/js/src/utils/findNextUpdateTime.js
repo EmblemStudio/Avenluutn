@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findNextUpdateTime = void 0;
-function findNextUpdateTime(updateTimes) {
-    let now = Math.floor(Date.now() / 1000);
+function findNextUpdateTime(runStart, updateTimes) {
+    // let now = Math.floor(Date.now()/1000)
     let nextUpdateTime;
     let set = false;
     updateTimes.sort().reverse();
     updateTimes.forEach((t, i) => {
-        if (t < now && set === false) {
+        if (t < runStart && set === false) {
             if (i === 0) {
                 nextUpdateTime = -1;
             }

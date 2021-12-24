@@ -2,7 +2,9 @@ import React from 'react'
 
 import Countdown from './Countdown'
 import { Story, storyName, getTimeLeft } from '../utils'
-import { LOADING } from '../constants' 
+import { WAITING_FOR_SERVER } from '../constants' 
+import LoadingAnimation from './LoadingAnimation'
+import useNarratorState from '../hooks/useNarratorState';
 
 interface StoryBoxProps { story: Story }
 
@@ -14,6 +16,7 @@ function label(text: { label: string, string: string }, key: number) {
 }
 
 export default ({ story }: StoryBoxProps) => {
+  const narratorState = useNarratorState()
   
   return (
     <section className="section pt-2 pb-5">
@@ -28,12 +31,10 @@ export default ({ story }: StoryBoxProps) => {
                 return (
                   <div className="block middle obstacle" key={i}>
                     <div className="block outcome main">
-                      <div>
-                        {obText.map(label)}
-                      </div>
-                      <div>
-                        {story.text.richText.middle.outcomeText[i]?.main.map(label)}
-                      </div>
+                      {obText.map(label)}
+                    </div>
+                    <div className="block outcome main">
+                      {story.text.richText.middle.outcomeText[i]?.main.map(label)}
                     </div>
                     <div className="block outcome triggers">
                       {story.text.richText.middle.outcomeText[i]?.triggerTexts.map((t, i) => {
@@ -49,17 +50,33 @@ export default ({ story }: StoryBoxProps) => {
                 )
               })}
             </div>
-            <div className="block">
-              {story.text.richText.ending.map(label)}
+            <div className="block ending">
+              <div className="block ending main">
+                {story.text.richText.ending.main.map(label)}
+              </div>
+              <div className="block ending results">
+                {story.text.richText.ending.resultTexts.map((r, i) => {
+                  return <div key={i}>{r.map(label)}</div>
+                })}
+              </div>
             </div>
-            {getTimeLeft(Number(story.endTime)) > 0 &&
-              <div className="has-text-centered">
-                <div className="block">
-                  {LOADING}
-                </div>
-                <div className="block">
-                  <Countdown to={story.text.nextUpdateTime}/>
-                </div>
+            {story.text.nextUpdateTime !== -1 &&
+              <div className="block">
+                <LoadingAnimation />
+              </div>
+            }
+            {getTimeLeft(story.text.nextUpdateTime) > 0 ?
+              <div className="block">
+                <Countdown 
+                  to={story.text.nextUpdateTime} 
+                  collectionIndex={story.collectionIndex}
+                />
+              </div>
+            :
+              story.text.nextUpdateTime !== -1 &&
+              <div className="block has-text-grey">
+                {narratorState.queryUntilUpdate(narratorState)}
+                {WAITING_FOR_SERVER}
               </div>
             }
           </section>

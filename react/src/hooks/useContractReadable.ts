@@ -1,6 +1,7 @@
 import { getDefaultProvider } from '@ethersproject/providers'
 import { Contract, ContractInterface } from '@ethersproject/contracts'
-import { RPC_URIS, NetworkName } from '../constants'
+import { RPC_URIS } from '../constants'
+import { NetworkName } from '../utils'
 
 export default (
   contractAddress: string,
@@ -8,7 +9,6 @@ export default (
   network: NetworkName
 ): Contract | null => {
   const api = RPC_URIS[network]
-  console.log("provider api", api)
   if (!api) return null
   const provider = getDefaultProvider(api)
 

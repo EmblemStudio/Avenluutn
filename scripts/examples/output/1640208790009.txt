@@ -1,0 +1,457 @@
+STORY 0-0 
+
+At 
+Cult of 973
+ in 
+the Dregs
+, 
+Anya Mikulanc, 
+Raff Bozzelli, 
+Polycarp Cronje, 
+and 
+Gawel Zidek 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+, 
+cursed
+ egregore
+ "Melifluent Fecund"
+ at the 
+Macrosign 
+crypt
+.
+Soon enough, 
+they 
+had to solve 
+a 
+many-eyed
+ maze
+.
+After 
+a testing 
+hundred guesses
+, they 
+found a way through
+ the 
+maze
+.
+Anya Mikulanc 
+used her 
+Portraiture 
+skills!
+Raff Bozzelli
+ was stabbed in the torso.
+Gawel Zidek
+ found 
+Wool Shoes of Vitriol
+!
+Gawel Zidek
+ was stabbed in the torso.
+Next, 
+they 
+discovered 
+an 
+entrancing
+, deathly
+ maze
+.
+After 
+a testing 
+brainstorm
+, they 
+found a way through
+ the 
+maze
+.
+Anya Mikulanc
+ now has 
+self-doubt
+!
+Gawel Zidek
+ found 
+Necklace
+!
+During the journey, 
+they 
+stumbled upon 
+the 
+many-eyed
+, deathly
+ dead end
+ "Blistered Butcher"
+.
+After 
+a grueling 
+brainstorm
+, they 
+solved
+ the 
+dead end
+.
+Anya Mikulanc 
+used her 
+Portraiture 
+skills!
+Raff Bozzelli
+ found 
+Sash
+!
+Raff Bozzelli
+ found 
+Studded Leather Gloves
+!
+Polycarp Cronje
+ found 
+Leather Gloves
+!
+Gawel Zidek
+ had his confidence shaken.
+Gawel Zidek
+ learned 
+Archery
+!
+After going some distance, 
+they 
+had to solve 
+the 
+voracious
+, horrifying
+ maze
+ "Carcosan Ellishment"
+.
+After 
+a fraught 
+hundred guesses
+, they 
+solved
+ the 
+maze
+.
+Raff Bozzelli 
+used her 
+Baking 
+skills!
+Anya Mikulanc
+ was frightened half to death.
+Raff Bozzelli
+ found 
+Titanium Ring
+!
+Polycarp Cronje
+ found 
+Grave Wand
+!
+Gawel Zidek
+ had his arm crushed.
+Gawel Zidek
+ was knocked out.
+They 
+arrived at the 
+Macrosign
+ crypt
+, where 
+they 
+were blocked by 
+the 
+decrepit
+, cursed
+ egregore
+ "Melifluent Fecund"
+.
+After 
+a weak 
+search
+, they 
+never found
+ the 
+egregore
+.
+Anya Mikulanc
+ now has 
+a peg leg
+!
+Raff Bozzelli
+ suffered slash wounds.
+Polycarp Cronje
+ learned 
+Deception
+!
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+
+STORY 0-1 
+
+At 
+Marsh's Sewerworks
+ in 
+the basement of Porcine Castle
+, 
+Count Alma de la Huxley, 
+Jessica St. James, 
+Stani Adler, 
+and 
+Paulo Yarrow 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+crepuscular
+, 
+cursed
+ outskirts
+ "Blistered Nail"
+ at the 
+Headless 
+desert
+.
+During the journey, 
+they 
+were confronted by 
+a 
+crepuscular
+ elemental
+.
+After 
+a testing 
+battle
+, they 
+parted ways with
+ the 
+elemental
+.
+Count Alma de la Huxley
+ found 
+Ornate Greaves
+!
+Jessica St. James
+ found 
+Silk Slippers
+!
+While traveling, 
+they 
+were confronted by 
+some 
+many-eyed
+, cursed
+ brigands
+.
+After 
+a strenuous 
+negotiation
+, they 
+passed by
+ the 
+brigands
+.
+Count Alma de la Huxley
+ was frightened half to death.
+Paulo Yarrow
+ was stabbed in the torso.
+While traveling, 
+they 
+stumbled upon 
+the 
+lightless
+, ancient
+ river
+ "Vivisected Ellishment"
+.
+After 
+a grueling 
+trek
+, they 
+traversed
+ the 
+river
+.
+Count Alma de la Huxley
+ now has 
+a prosthetic arm
+!
+Stani Adler
+ found 
+Linen Robe
+!
+Paulo Yarrow
+ suffered slash wounds.
+They 
+arrived at the 
+Headless
+ desert
+, where 
+they 
+discovered 
+the 
+crepuscular
+, cursed
+ outskirts
+ "Blistered Nail"
+.
+After 
+a misjudged 
+battle
+, they 
+failed to defend
+ the 
+outskirts
+.
+Count Alma de la Huxley
+ bruised their ribs.
+Count Alma de la Huxley
+ had their confidence shaken.
+Count Alma de la Huxley
+ learned 
+Deception
+!
+Stani Adler
+ dislocated their shoulder.
+Stani Adler
+ was stabbed in the torso.
+Paulo Yarrow
+ got fried nerves.
+Paulo Yarrow
+ was knocked out.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+
+STORY 0-2 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Monica Wintermute the Unlucky, 
+Darfin Oliveira, 
+Chinonyelum K, 
+and 
+Master Ambrogino Mailhot 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+ tome
+ at the 
+Macrosign 
+valley
+.
+Soon enough, 
+they 
+stumbled upon 
+an 
+invisible
+ locked gate
+.
+After 
+a strenuous 
+brainstorm
+, they 
+found a way through
+ the 
+locked gate
+.
+They 
+arrived at the 
+Macrosign
+ valley
+, where 
+they 
+had to solve 
+a 
+decrepit
+ tome
+.
+After 
+a testing 
+mission
+, they 
+retrieved
+ the 
+tome
+.
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+
+STORY 1-0 
+
+At 
+Cult of 973
+ in 
+the Dregs
+, 
+Anya Mikulanc, 
+Bogdan Horak, 
+and 
+Jhaan Izmaylov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+succulent
+ caves
+ at the 
+Craven 
+city
+.
+
+STORY 1-1 
+
+At 
+Marsh's Sewerworks
+ in 
+the basement of Porcine Castle
+, 
+Sultan Fortinbras Amsel, 
+Count Alma de la Huxley, 
+and 
+Cathy Udobata 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+violent
+ egregore
+ at the 
+Illusid 
+valley
+.
+
+STORY 1-2 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Jason Bazhenov, 
+Darfin Oliveira, 
+Monica Wintermute the Unlucky, 
+and 
+Filippa Chad 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+violent
+ outskirts
+ at the 
+Boreal 
+sea
+.
+
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+

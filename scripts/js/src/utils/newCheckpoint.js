@@ -12,22 +12,22 @@ function makeProvider(providerUrl) {
 exports.makeProvider = makeProvider;
 exports.checkPointErrors = {
     timeInFuture: `Time is in the future.`,
-    unknown: `Unreachable: no mined block found before time.`
+    unmined: `No mined block found before time--not mined yet?`
 };
-async function newCheckpoint(time, provider, seed) {
-    const now = Math.floor(Date.now() / 1000);
-    if (time > now) {
+async function newCheckpoint(runStart, checkpointTime, provider, seed) {
+    console.log('finding checkpoint', runStart, checkpointTime);
+    if (checkpointTime > runStart) {
         const error = new Error(exports.checkPointErrors.timeInFuture);
         console.warn(error);
         return { error, prng: new prando_1.default(-1), blockHash: "" };
     }
-    const startBlockHash = await closestEarlierBlockHash(time, provider);
+    const startBlockHash = await closestEarlierBlockHash(checkpointTime, provider);
     if (!startBlockHash) {
-        const error = new Error(exports.checkPointErrors.unknown);
+        const error = new Error(exports.checkPointErrors.unmined);
         console.warn(error);
         return { error, prng: new prando_1.default(-1), blockHash: "" };
     }
-    console.log(`Found checkpoint for time ${time}`);
+    console.log(`Found checkpoint for time ${checkpointTime}`);
     return { prng: new prando_1.default(startBlockHash + seed), blockHash: startBlockHash };
 }
 exports.newCheckpoint = newCheckpoint;
@@ -50,8 +50,8 @@ exports.nextBlockHash = nextBlockHash;
  */
 const cachedBlocks = new Map();
 let latestBlockCache = undefined;
-async function getLatestBlock(provider) {
-    if (latestBlockCache === undefined) {
+async function getLatestBlock(provider, refresh) {
+    if (latestBlockCache === undefined || refresh === true) {
         latestBlockCache = await provider.getBlock("latest");
     }
     return latestBlockCache;
@@ -83,24 +83,26 @@ async function closestEarlierBlockHash(targetTime, provider) {
     return bounds[0].hash;
 }
 exports.closestEarlierBlockHash = closestEarlierBlockHash;
-function sleep(ms) {
-    console.warn("sleeping", ms);
-    return new Promise(resolve => setTimeout(resolve, ms));
+/*
+function sleep(ms: number) {
+  console.warn("sleeping", ms)
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
-function logBlockInfo(aName, bName, a, b, t) {
-    if (a.number === b.number) {
-        console.log(`${aName} and ${bName} are the same`);
-    }
-    else {
-        console.log(`Blocks        ${aName}:${a.number} ${bName}:${b.number} TargetTime ${t}
+
+function logBlockInfo(aName: string, bName: string, a: providers.Block, b: providers.Block, t: number) {
+  if (a.number === b.number) {
+    console.log(`${aName} and ${bName} are the same`)
+  } else {
+    console.log(`Blocks        ${aName}:${a.number} ${bName}:${b.number} TargetTime ${t}
 ${aName} - ${bName}
 Number diff   ${a.number - b.number} blocks
 Time diff     ${a.timestamp - b.timestamp} secs
 ${aName} off target  ${a.timestamp - t} secs
 ${bName} off target  ${b.timestamp - t} secs
-`);
-    }
+`)
+  }
 }
+*/
 // refineBounds returns the tightest upper and lower bounds available
 let seenBlocks = [];
 async function bestBounds(targetTime, blocks, provider) {
@@ -156,7 +158,8 @@ async function estimateBlocks(targetTime, block, provider) {
     }
     return likelyBlocks;
 }
-async function boundingBlocks(targetTime, provider, upperBound, lowerBound) {
+async function boundingBlocks(targetTime, provider, timeout = Date.now() + 1000 * 60 * 10, // 10 minutes
+upperBound, lowerBound) {
     if (typeof provider === "string") {
         provider = makeProvider(provider);
     }
@@ -172,10 +175,15 @@ async function boundingBlocks(targetTime, provider, upperBound, lowerBound) {
         }
     }
     if (upperBound === undefined) {
-        upperBound = await getLatestBlock(provider);
+        upperBound = await getLatestBlock(provider, true);
         if (targetTime > upperBound.timestamp) {
-            console.warn(`target time ${targetTime} after latest block`);
-            return null;
+            console.warn(`target time ${targetTime} after latest block ${upperBound.timestamp}`);
+            if (Date.now() >= timeout) {
+                console.error(`boundingBlocks timed out after 10 minutes`);
+                return null;
+            }
+            await (new Promise(r => setTimeout(r, 1000 * 10))); // wait 10 seconds
+            return boundingBlocks(targetTime, provider, timeout, undefined, lowerBound);
         }
     }
     // are they bounding blocks?
@@ -213,6 +221,6 @@ async function boundingBlocks(targetTime, provider, upperBound, lowerBound) {
     }
     const [newLowerBound, newUpperBound] = newBounds;
     // recurse
-    return boundingBlocks(targetTime, provider, newUpperBound, newLowerBound);
+    return boundingBlocks(targetTime, provider, timeout, newUpperBound, newLowerBound);
 }
 exports.boundingBlocks = boundingBlocks;

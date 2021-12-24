@@ -1,10 +1,10 @@
-export function findNextUpdateTime(updateTimes: number[]): number {
-  let now = Math.floor(Date.now()/1000)
+export function findNextUpdateTime(runStart: number, updateTimes: number[]): number {
+  // let now = Math.floor(Date.now()/1000)
   let nextUpdateTime
   let set: boolean = false
   updateTimes.sort().reverse()
   updateTimes.forEach((t, i) => {
-    if (t < now && set === false) {
+    if (t < runStart && set === false) {
       if (i === 0) {
         nextUpdateTime = -1
       } else {

@@ -16,7 +16,9 @@ export interface NarratorParams { network: string; narratorIndex: number }
 export interface NarratorState {
   narrator: Narrator,
   updateNarrator: () => void,
-  lastUpdate: number
+  lastUpdate: number,
+  queryUntilUpdate: (state: NarratorState) => void,
+  querying: boolean
 }
 
 export interface Narrator {

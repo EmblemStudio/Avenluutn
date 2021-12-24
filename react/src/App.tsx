@@ -15,9 +15,6 @@ import GuildLogbook from './pages/GuildLogbook'
 import About from './pages/About'
 
 export default () => {
-  console.log({ 
-    [NETWORK_IDS[NARRATOR_PARAMS.network]]: RPC_URIS[NARRATOR_PARAMS.network]
-  })
   return (
     <div className="App">
       <UseWalletProvider

@@ -23,6 +23,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
   const [bid, setBid] = useState<BigNumber>(parseEther("0"))
 
+  // TODO refresh state after transaction confirmations
   const handleSetBid = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value
     if (value === null) return
@@ -104,6 +105,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
           <span className="pr-1">Time left: </span>
           <Countdown 
             to={Number(story.endTime.add(story.auction.duration))} 
+            collectionIndex={story.collectionIndex}
           />
         </div>
         <div className="level-item is-vertical">

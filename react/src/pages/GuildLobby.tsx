@@ -5,7 +5,7 @@ import StoryBox from '../components/StoryBox'
 import UpcomingStory from '../components/UpcomingStory'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
-import { coloredBoldStyle, CategorizedStories } from '../utils'
+import { coloredBoldStyle } from '../utils'
 
 export default () => {
   const { narrator } = useNarratorState()
@@ -36,12 +36,18 @@ export default () => {
               })}
             </div>
           }
-          {narrator.stories[guild.id]?.upcoming[0] && 
+          {narrator.stories[guild.id]?.upcoming[0] &&
             <div className="block">
               <div className="block">
                 The bard indicates a shadowed crew in the corner:
               </div>
               <UpcomingStory story={narrator.stories[guild.id]?.upcoming[0]} />
+            </div>
+          }
+          {narrator.stories[guild.id]?.inProgress.length === 0 && 
+            narrator.stories[guild.id]?.upcoming.length === 0 &&
+            <div className="block">
+              People mill about.
             </div>
           }
         </>}
