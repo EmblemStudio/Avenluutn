@@ -68,8 +68,7 @@ export default ({ story }: StoryBoxProps) => {
             {getTimeLeft(story.text.nextUpdateTime) > 0 ?
               <div className="block">
                 <Countdown 
-                  to={story.text.nextUpdateTime} 
-                  collectionIndex={story.collectionIndex}
+                  to={story.text.nextUpdateTime}
                 />
               </div>
             :

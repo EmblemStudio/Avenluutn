@@ -75,7 +75,6 @@ async function updateNarratorState(
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
-  console.log('Running updateNarratorState')
   if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
     console.warn('Cache warm, stopping updateNarratorState')
     return

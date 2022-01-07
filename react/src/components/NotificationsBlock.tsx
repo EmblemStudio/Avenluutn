@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useWallet } from 'use-wallet'
+import { useProvider } from 'wagmi'
 
 import useNotifications from '../hooks/useNotifications'
 import Notification from './Notification'
@@ -8,12 +8,12 @@ import { NARRATOR_PARAMS, WARNINGS } from '../constants'
 
 export default () => {
   const { notifications, removeNotification } = useNotifications()
-  const wallet = useWallet()
+  const provider = useProvider()
 
   useEffect(() => {
-    if (!noConnection(wallet)) removeNotification("warnings", WARNINGS.no_connection)
-    if (!wrongNetwork(wallet, NARRATOR_PARAMS.network)) removeNotification("warnings", WARNINGS.wrong_network) 
-  }, [wallet])
+    if (!noConnection(provider)) removeNotification("warnings", WARNINGS.no_connection)
+    if (!wrongNetwork(provider, NARRATOR_PARAMS.network)) removeNotification("warnings", WARNINGS.wrong_network) 
+  }, [notifications])
 
   function closeFactory(type: "errors" | "warnings" | "status", text: string) {
     return () => {

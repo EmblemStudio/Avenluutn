@@ -1,3 +1,5 @@
-export function noConnection(wallet: any): boolean {
-  return !wallet.ethereum
+import { BaseProvider } from '@ethersproject/providers'
+
+export function noConnection(provider: BaseProvider): boolean {
+  return provider.anyNetwork === false
 }

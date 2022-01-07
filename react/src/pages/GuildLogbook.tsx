@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AddressZero } from '@ethersproject/constants'
-import { useWallet } from 'use-wallet'
+import { useAccount } from 'wagmi'
 
 import GuildHeader from '../components/GuildHeader'
 import StoryAuction from '../components/StoryAuction'
@@ -15,16 +15,16 @@ import { coloredBoldStyle, storyName, Story } from '../utils'
 export default () => {
   const { narrator } = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
-  const wallet = useWallet()
   const { guild, color } = useGuild(narrator)
   const [expanders, setExpanders] = useState<{ [key: number]: boolean }>({})
   const { addNotification, removeNotification } = useNotifications()
+  const [{ data }] = useAccount()
 
   function isClaimable(s: Story): boolean {
-    if (!s.minted) {
-      if (s.auction.bidder === AddressZero) return true
+    if (s.minted === false) {
       if (typeof publisher === "string") return false
-      if (wallet.account === s.auction.bidder) return true
+      if (s.auction.bidder === AddressZero) return true
+      if (s.auction.bidder === data?.address) return true
     }
     return false
   }
@@ -59,7 +59,7 @@ export default () => {
                     >
                       <StoryAuction 
                         story={s} 
-                        publisher={publisher} 
+                        publisher={publisher}
                         addNotification={addNotification} 
                         removeNotification={removeNotification}
                       />

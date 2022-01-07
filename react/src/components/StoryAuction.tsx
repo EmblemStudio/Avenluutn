@@ -104,8 +104,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
         <div className="level-item">
           <span className="pr-1">Time left: </span>
           <Countdown 
-            to={Number(story.endTime.add(story.auction.duration))} 
-            collectionIndex={story.collectionIndex}
+            to={Number(story.endTime.add(story.auction.duration))}
           />
         </div>
         <div className="level-item is-vertical">
