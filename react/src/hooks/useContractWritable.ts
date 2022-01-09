@@ -1,17 +1,18 @@
 import { ContractInterface, Contract } from '@ethersproject/contracts'
-import { useContract, useProvider } from 'wagmi'
+import { useContract, useNetwork } from 'wagmi'
 
-import { noConnection, wrongNetwork } from '../utils'
+import useSigner from './useSigner'
 import { WARNINGS } from '../constants'
 
 export default (contractAddress: string, abi: ContractInterface, network: string): Contract | string => {
+  const { data: signer } = useSigner()
   const contract: Contract = useContract({
     addressOrName: contractAddress,
-    contractInterface: abi
+    contractInterface: abi,
+    signerOrProvider: signer
   })
-  const provider = useProvider()
-  console.log('writable contract', contract, provider)
-  if (noConnection(provider)) return WARNINGS.no_connection
-  if (wrongNetwork(provider, network)) return WARNINGS.wrong_network
+  const [{ data: currentNetwork }] = useNetwork()
+  if (signer?.provider === undefined) return WARNINGS.no_connection
+  if (network === currentNetwork.chain?.name) return WARNINGS.wrong_network
   return contract
 }

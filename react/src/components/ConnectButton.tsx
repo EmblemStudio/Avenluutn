@@ -10,7 +10,7 @@ const connectorImgs = [MetaMaskSVG, WalletConnectSVG, WalletLinkLogo]
 
 export default () => {
   const [modalActive, setModalActive] = useState("")
-  const [{ data, error }, connect] = useConnect()
+  const [{ data }, connect] = useConnect()
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
   })
@@ -45,9 +45,10 @@ export default () => {
             {data.connectors.map((x, i) => (
               <section className="section" key={x.id} >
                 <a 
-                  className="button is-ghost has-text-black" 
-                  // disabled={!x.ready} 
-                  onClick={() => { connect(x).then(() => setModalActive("")) }}
+                  className="button is-ghost has-text-black"
+                  onClick={() => { connect(x).then((res) => { 
+                    if (res?.data !== undefined) setModalActive("")
+                  })}}
                 >
                   <img src={connectorImgs[i]} alt={x.name} width="80px"/>
                   <h2 className="subtitle pl-5">
@@ -57,8 +58,6 @@ export default () => {
                 </a>
               </section>
             ))}
-
-            {error && <div>{error?.message ?? 'Failed to connect'}</div>}
           </div>
         </div>
         <button className="modal-close is-large" onClick={()=>setModalActive("")} />

@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react'
-import { useProvider } from 'wagmi'
+import { useNetwork } from 'wagmi'
 
 import useNotifications from '../hooks/useNotifications'
 import Notification from './Notification'
-import { noConnection, wrongNetwork } from '../utils'
+import useSigner from '../hooks/useSigner'
 import { NARRATOR_PARAMS, WARNINGS } from '../constants'
 
 export default () => {
   const { notifications, removeNotification } = useNotifications()
-  const provider = useProvider()
+  const {data: signer} = useSigner()
+  const [{data: network}] = useNetwork()
 
   useEffect(() => {
-    if (!noConnection(provider)) removeNotification("warnings", WARNINGS.no_connection)
-    if (!wrongNetwork(provider, NARRATOR_PARAMS.network)) removeNotification("warnings", WARNINGS.wrong_network) 
+    if (signer?.provider !== undefined) removeNotification("warnings", WARNINGS.no_connection)
+    if (NARRATOR_PARAMS.network !== network.chain?.name) removeNotification("warnings", WARNINGS.wrong_network)
   }, [notifications])
 
   function closeFactory(type: "errors" | "warnings" | "status", text: string) {

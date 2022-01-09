@@ -13,7 +13,7 @@ import { NARRATOR_PARAMS } from '../constants'
 import { coloredBoldStyle, storyName, Story } from '../utils'
 
 export default () => {
-  const { narrator } = useNarratorState()
+  const { narrator, updateNarrator } = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
   const [expanders, setExpanders] = useState<{ [key: number]: boolean }>({})
@@ -22,7 +22,7 @@ export default () => {
 
   function isClaimable(s: Story): boolean {
     if (s.minted === false) {
-      if (typeof publisher === "string") return false
+      // if (typeof publisher === "string") return false
       if (s.auction.bidder === AddressZero) return true
       if (s.auction.bidder === data?.address) return true
     }
@@ -60,6 +60,7 @@ export default () => {
                       <StoryAuction 
                         story={s} 
                         publisher={publisher}
+                        updateNarrator={updateNarrator}
                         addNotification={addNotification} 
                         removeNotification={removeNotification}
                       />
