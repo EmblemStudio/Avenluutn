@@ -13,7 +13,7 @@ export default () => {
 
   useEffect(() => {
     if (signer?.provider !== undefined) removeNotification("warnings", WARNINGS.no_connection)
-    if (NARRATOR_PARAMS.network !== network.chain?.name) removeNotification("warnings", WARNINGS.wrong_network)
+    if (NARRATOR_PARAMS.network === network.chain?.name) removeNotification("warnings", WARNINGS.wrong_network)
   }, [notifications])
 
   function closeFactory(type: "errors" | "warnings" | "status", text: string) {

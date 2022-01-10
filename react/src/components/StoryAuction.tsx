@@ -58,7 +58,6 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleClaim = () => {
-    console.log(publisher)
     if (typeof publisher === "string") { 
       addNotification("warnings", publisher)
     } else {

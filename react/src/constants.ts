@@ -1,4 +1,5 @@
 import { NetworkName } from './utils'
+import env from "../.env.json"
 
 interface NarratorParams {
   network: NetworkName,
@@ -7,7 +8,7 @@ interface NarratorParams {
 
 export const NARRATOR_PARAMS: NarratorParams = {
   network: "goerli",
-  narratorIndex: 12,
+  narratorIndex: 13,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -47,13 +48,7 @@ export const SERVER = {
 
 export const CACHE_PERIOD = 180000 // 3 minutes
 
-export const RPC_URIS: { [key in NetworkName]: string } = {
-  ropsten: "https://eth-ropsten.alchemyapi.io/v2/tDTu2vhfHnGOWJuM0p1DrA6BBJn0uDL3",
-  goerli: "https://eth-goerli.alchemyapi.io/v2/PHCB0UVg3sD5vc6TEqrPy-E37xOSUbg8",
-  localhost: "http://localhost:8545",
-  polygon: "",
-  mainnet: ""
-}
+export const RPC_URIS: { [key in NetworkName]: string } = env.RPC_URIS
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]
 export const DEFAULT_COLOR = "gray"

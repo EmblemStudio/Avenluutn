@@ -13,6 +13,6 @@ export default (contractAddress: string, abi: ContractInterface, network: string
   })
   const [{ data: currentNetwork }] = useNetwork()
   if (signer?.provider === undefined) return WARNINGS.no_connection
-  if (network === currentNetwork.chain?.name) return WARNINGS.wrong_network
+  if (network !== currentNetwork.chain?.name?.toLowerCase()) return WARNINGS.wrong_network
   return contract
 }

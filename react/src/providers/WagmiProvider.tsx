@@ -10,12 +10,13 @@ import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 // import { WalletLinkConnector } from 'wagmi/connectors/walletLink'
 import { providers } from 'ethers'
+import env from "../../.env.json"
 
 // Disclaimer: this is copy-pasted from the Wagmi examples, and I don't completely understand it
 const chains = [...defaultChains, ...defaultL2Chains, ...developmentChains]
 
 // TODO move everything to private / local env 
-const infuraId = "f13aa25ab1994feba460795247d5d002"
+const infuraId = env.INFURA_KEY
 
 type Config = { chainId?: number }
 const connectors = ({ chainId }: Config) => {
