@@ -1,13 +1,18 @@
-import { useWallet } from 'use-wallet'
 import { ContractInterface, Contract } from '@ethersproject/contracts'
+import { useContract, useNetwork } from 'wagmi'
 
-import { getContractWritable, noConnection, wrongNetwork } from '../utils'
+import useSigner from './useSigner'
 import { WARNINGS } from '../constants'
 
 export default (contractAddress: string, abi: ContractInterface, network: string): Contract | string => {
-  const wallet = useWallet()
-  if (noConnection(wallet)) return WARNINGS.no_connection
-  if (wrongNetwork(wallet, network)) return WARNINGS.wrong_network
-  const contract = getContractWritable(contractAddress, abi, wallet.ethereum)
+  const { data: signer } = useSigner()
+  const contract: Contract = useContract({
+    addressOrName: contractAddress,
+    contractInterface: abi,
+    signerOrProvider: signer
+  })
+  const [{ data: currentNetwork }] = useNetwork()
+  if (signer?.provider === undefined) return WARNINGS.no_connection
+  if (network !== currentNetwork.chain?.name?.toLowerCase()) return WARNINGS.wrong_network
   return contract
 }

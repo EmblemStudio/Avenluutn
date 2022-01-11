@@ -8,9 +8,9 @@ const LoadingAnimation = () => (
       y1="10" 
       y2="10" 
       stroke="white"
-      stroke-width="3"
-      stroke-linecap="round"
-      stroke-dasharray="0.25, 15.75"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeDasharray="0.25, 15.75"
     >
       <animate
         attributeName="x2"

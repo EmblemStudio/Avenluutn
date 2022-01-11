@@ -302,7 +302,7 @@ function makeTriggerText(triggerInfo, adventurer, traits, qualities) {
             }
         });
         if (usedLoot !== "") {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${usedLoot} `, label: interfaces_1.Label.lootName }, { string: `!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${usedLoot}`, label: interfaces_1.Label.lootName }, { string: `!`, label: interfaces_1.Label.conjunctive });
         }
     }
     return res;

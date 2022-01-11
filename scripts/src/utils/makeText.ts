@@ -348,7 +348,7 @@ export function makeTriggerText(
       res.push(
         { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
         { string: `used ${adventurer.pronouns.depPossessive} `, label: Label.conjunctive },
-        { string: `${usedLoot} `, label: Label.lootName },
+        { string: `${usedLoot}`, label: Label.lootName },
         { string: `!`, label: Label.conjunctive }
       )
     }

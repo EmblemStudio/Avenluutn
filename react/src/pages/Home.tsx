@@ -4,7 +4,6 @@ import GuildButtons from '../components/GuildButtons'
 import Countdown from '../components/Countdown'
 import useNarratorState from '../hooks/useNarratorState'
 import { getTimeLeft } from '../utils'
-import { LOADING } from '../constants'
 import LoadingAnimation from '../components/LoadingAnimation'
 
 export default () => {
@@ -39,7 +38,6 @@ export default () => {
             <div className="block">
               <Countdown 
                 to={Number(narrator.start)}
-                collectionIndex={0}
               />
             </div>
           :

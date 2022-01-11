@@ -3,7 +3,6 @@ import {
   makeProvider,
   randomStartingState,
   newCheckpoint,
-  checkPointErrors,
   ScriptResult,
   Story,
   State, 
@@ -14,7 +13,8 @@ import { nextState } from './nextState'
 import { fetch } from 'cross-fetch'
 import Prando from 'prando';
 
-globalThis.fetch = fetch
+// does this break anything? it was throwing errors in browser
+if (typeof window === 'undefined') globalThis.fetch = fetch
 
 export * from './utils/interfaces'
 

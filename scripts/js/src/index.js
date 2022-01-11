@@ -17,7 +17,9 @@ const tellStory_1 = require("./tellStory");
 const nextState_1 = require("./nextState");
 const cross_fetch_1 = require("cross-fetch");
 const prando_1 = require("prando");
-globalThis.fetch = cross_fetch_1.fetch;
+// does this break anything? it was throwing errors in browser
+if (typeof window === 'undefined')
+    globalThis.fetch = cross_fetch_1.fetch;
 __exportStar(require("./utils/interfaces"), exports);
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
     const provider = (0, utils_1.makeProvider)(providerUrl);
