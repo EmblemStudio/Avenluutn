@@ -14,8 +14,7 @@ export default ({ story }: UpcomingStoryProps) => {
       {getTimeLeft(story.text.nextUpdateTime) > 0 ?
         <div className="block has-text-grey">
           "They'll be leaving in <Countdown 
-            to={Number(story.startTime)} 
-            collectionIndex={story.collectionIndex}
+            to={Number(story.startTime)}
           />"
         </div>
       :
