@@ -1,14 +1,16 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 import { Signer } from 'ethers'
 
 export default () => {
+  const [{ data: network }] = useNetwork()
   const [{ data: account }] = useAccount()
   const [data, setData] = useState<Signer>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error>()
 
   const getSigner = useCallback(async () => {
+    console.log('running callback')
     setLoading(true)
     setError(undefined)
 
@@ -21,7 +23,7 @@ export default () => {
     }
 
     setLoading(false)
-  }, [account?.connector])
+  }, [network.chain?.id, account?.connector])
 
   useEffect(() => {
     getSigner()
