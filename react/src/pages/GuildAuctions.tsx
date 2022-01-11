@@ -9,7 +9,7 @@ import useGuild from '../hooks/useGuild'
 import { NARRATOR_PARAMS } from '../constants'
 
 export default () => {
-  const { narrator } = useNarratorState()
+  const { narrator, updateNarrator } = useNarratorState()
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild } = useGuild(narrator)
   const { addNotification, removeNotification } = useNotifications()
@@ -29,6 +29,7 @@ export default () => {
                   return <StoryAuction 
                     key={s.collectionIndex} 
                     publisher={publisher}
+                    updateNarrator={updateNarrator}
                     story={s} 
                     addNotification={addNotification}
                     removeNotification={removeNotification}
