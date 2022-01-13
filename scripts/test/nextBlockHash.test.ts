@@ -1,4 +1,4 @@
-import { nextBlockHash, makeProvider, boundingBlocks } from '../src/utils'
+import { newCheckpoint, makeProvider, boundingBlocks } from '../src/utils'
 
 /**
  * Test spec
@@ -25,7 +25,7 @@ test("Gets consistant block hashes", async () => {
   for (let i in cases) {
     const c = cases[i]
     if (c === undefined) { throw new Error("Never, but it type narrows") }
-    const result = await nextBlockHash(c.t, provider)
+    const result = await newCheckpoint(c.t, provider)
     expect(result).toStrictEqual(c.expected)
   }
 

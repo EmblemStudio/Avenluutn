@@ -14,4 +14,5 @@ __exportStar(require("./makeText"), exports);
 __exportStar(require("./newCheckpoint"), exports);
 __exportStar(require("./quests"), exports);
 __exportStar(require("./randomStartingState"), exports);
+__exportStar(require("./findNextUpdateTime"), exports);
 __exportStar(require("./interfaces"), exports);

@@ -12,11 +12,17 @@ import {
   LabeledString,
   Label,
   TriggerInfo,
-  Traits
+  Traits,
+  Result,
+  ResultType,
+  EndingText
 } from './interfaces'
 import { nameString } from '../content/loot'
 
 export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[] {
+  if (party.length < 3 ) {
+    return [{ string: `With too few adventurers to embark, the guild stagnates. `, label: Label.conjunctive }]
+  }
   const res: LabeledString[] = [
     { string: ``, label: Label.conjunctive },
     { string: `At `, label: Label.conjunctive },
@@ -33,7 +39,7 @@ export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[
       res.push({string: `${nameString(a.name)}, `, label: Label.adventurerName })
     }
   })
-  res.push({ string: `gathered.`, label: Label.conjunctive })
+  res.push({ string: `gathered. `, label: Label.conjunctive })
   return res
 }
 
@@ -68,26 +74,55 @@ export function makeQuestText(quest: Quest): LabeledString[] {
   return res
 }
 
-// TODO account for only one adventurer being left in obstacle text
-export function makeObstacleText(obstacle: Obstacle): LabeledString[] {
+function lastAdventurer(party: Adventurer[], results: Result[]): Adventurer | undefined {
+  let lastAdv: Adventurer | undefined
+  const stillUp = [...party]
+  results.forEach(r => {
+    if (r.type === ResultType.Death || r.type === ResultType.Knockout) {
+      stillUp.forEach((adv, i) => {
+        if (adv.id === r.advId) delete stillUp[i]
+      })
+      if (Object.keys(stillUp).length === 1) {
+        lastAdv = stillUp[0]
+      }
+    }
+  })
+  return lastAdv
+}
+
+export function makeObstacleText(obstacle: Obstacle, party: Adventurer[], results: Result[]): LabeledString[] {
+  const lastAdv = lastAdventurer(party, results)
   const res: LabeledString[] = []
-  // let text = ``
   if (obstacle.quest) {
+    if (lastAdv !== undefined) {
+      res.push({ string: `${lastAdv.name.firstName} `, label: Label.conjunctive })
+    } else {
+      res.push({ string: `They `, label: Label.conjunctive })
+    }
     res.push(
-      { string: `They arrived at the `, label: Label.conjunctive },
+      { string: `arrived at the `, label: Label.conjunctive },
       { string: obstacle.quest.locationName, label: Label.locationName },
       { string: ` ${obstacle.quest.locationType}`, label: Label.locationType },
-      { string: `, where they`, label: Label.conjunctive }
+      { string: `, where `, label: Label.conjunctive }
     )
+    if (lastAdv !== undefined) {
+      res.push({ string: `${lastAdv.pronouns.subject} `, label: Label.conjunctive })
+    } else {
+      res.push({ string: `they `, label: Label.conjunctive })
+    }
     // text += `They arrived at the ${obstacle.quest.locationName} ${obstacle.quest.locationType}, where they`
   } else {
-    res.push({ string: `${obstacle.arrival}, they`, label: Label.conjunctive })
-    // text += `They`
+    res.push({ string: `${obstacle.arrival}, `, label: Label.conjunctive })
+    if (lastAdv !== undefined) {
+      res.push({ string: `${lastAdv.name.firstName} `, label: Label.conjunctive })
+    } else {
+      res.push({ string: `they `, label: Label.conjunctive })
+    }
   }
-  res.push({ string: ` ${obstacle.discovery}`, label: Label.obstacleDiscovery })
+  res.push({ string: `${obstacle.discovery} `, label: Label.obstacleDiscovery })
   // text += ` ${obstacle.discovery}`
   if (obstacle.firstName) {
-    res.push({ string: ` the`, label: Label.conjunctive })
+    res.push({ string: `the `, label: Label.conjunctive })
     // text += ` the`
   } else {
     let firstWord = obstacle.object[0]
@@ -98,17 +133,17 @@ export function makeObstacleText(obstacle: Obstacle): LabeledString[] {
     const lastChar = obstacle.object[obstacle.object.length - 1]
     if (!lastChar) { throw new Error("No last character") }
     if (lastChar === "s") {
-      res.push({ string: ` some`, label: Label.conjunctive })
+      res.push({ string: `some `, label: Label.conjunctive })
       // text += ` some` 
     } else if (['a', 'e', 'i', 'o', 'u'].includes(firstChar)) {
-      res.push({ string: ` an`, label: Label.conjunctive })
+      res.push({ string: `an `, label: Label.conjunctive })
       // text += ` an`
     } else {
-      res.push({ string: ` a`, label: Label.conjunctive })
+      res.push({ string: `a `, label: Label.conjunctive })
       // text += ` a`
     }
   }
-  if (obstacle.firstAdjective) res.push({ string: ` ${obstacle.firstAdjective}`, label: Label.adjective })
+  if (obstacle.firstAdjective) res.push({ string: `${obstacle.firstAdjective}`, label: Label.adjective })
     // text += ` ${obstacle.firstAdjective}`
   if (obstacle.secondAdjective) res.push({ string: `, ${obstacle.secondAdjective}`, label: Label.adjective })
     // text += ` ${obstacle.secondAdjective}`
@@ -129,13 +164,20 @@ export function makeObstacleText(obstacle: Obstacle): LabeledString[] {
 }
 
 // TODO account for one adventurer being left in outcome text
-export function makeOutcomeText(outcome: Outcome): OutcomeText {
+export function makeOutcomeText(outcome: Outcome, party: Adventurer[], results: Result[]): OutcomeText {
+  const lastAdv = lastAdventurer(party, results)
   let res: OutcomeText = { main: [], triggerTexts: [], resultTexts: [] }
   res.main.push(
     { string: `After `, label: Label.conjunctive },
     { string:  `${outcome.adjective} `, label: Label.adjective },
-    { string:  `${outcome.activity}`, label: Label.outcomeActivity },
-    { string: `, they `, label: Label.conjunctive },
+    { string:  `${outcome.activity}`, label: Label.outcomeActivity }
+  )
+  if (lastAdv !== undefined) {
+    res.main.push({ string: `, ${lastAdv.name.firstName} `, label: Label.conjunctive })
+  } else {
+    res.main.push({ string: `, they `, label: Label.conjunctive })
+  }
+  res.main.push(
     { string:  `${outcome.resolver}`, label: Label.outcomeResolver },
     { string:  ` the `, label: Label.conjunctive },
     { string:  `${outcome.obstacle.object}`, label: Label.object },
@@ -151,35 +193,44 @@ export function makeOutcomeText(outcome: Outcome): OutcomeText {
   return res
 }
 
-export function makeEndingText(beginning: Beginning, middle: Middle, everyoneDied: boolean, oneLeft: boolean): LabeledString[] {
-  const res: LabeledString[] = []
+export function makeEndingText(
+  beginning: Beginning, 
+  middle: Middle, 
+  everyoneDied: boolean, 
+  oneLeft: boolean,
+  endingResults: Result[]
+): EndingText {
+  const res: EndingText = {
+    main: [],
+    resultTexts: []
+  }
   if (everyoneDied) {
-    res.push({ string: `None who set out returned alive.`, label: Label.conjunctive })
+    res.main.push({ string: `None who set out returned alive.`, label: Label.conjunctive })
     // res[0] = `None who set out returned alive.`
   } else {
     if (oneLeft) {
-      res.push({ string: `The last adventurer `, label: Label.conjunctive })
+      res.main.push({ string: `The last adventurer `, label: Label.conjunctive })
       // res[0] += `The last adventurer `
     } else {
-      res.push({ string: `The adventurers `, label: Label.conjunctive })
+      res.main.push({ string: `The adventurers `, label: Label.conjunctive })
       // res[0] += `The adventurers `
     }
     if (middle.questSuccess === Success.failure) {
-      res.push(
+      res.main.push(
         { string: `slunk back to `, label: Label.conjunctive },
         { string: `${beginning.guild.name}`, label: Label.guildName },
         { string: ` in disgrace.`, label: Label.conjunctive }
       )
       // res[0] += `slunk back to ${beginning.guild.name} in disgrace.`
     } else if (middle.questSuccess === Success.mixed) {
-      res.push(
+      res.main.push(
         { string: `returned to `, label: Label.conjunctive },
         { string: `${beginning.guild.name}`, label: Label.guildName },
         { string: `, exhausted but successful.`, label: Label.conjunctive }
       )
       // res[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
     } else if (middle.questSuccess === Success.success) {
-      res.push(
+      res.main.push(
         { string: `returned triumphantly to `, label: Label.conjunctive },
         { string: `${beginning.guild.name}`, label: Label.guildName },
         { string: `, basking in glory.`, label: Label.conjunctive }
@@ -187,6 +238,9 @@ export function makeEndingText(beginning: Beginning, middle: Middle, everyoneDie
       // res[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
     }
   }
+  endingResults.forEach(result => {
+    res.resultTexts.push(result.text)
+  })
   return res
 }
 
@@ -294,7 +348,7 @@ export function makeTriggerText(
       res.push(
         { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
         { string: `used ${adventurer.pronouns.depPossessive} `, label: Label.conjunctive },
-        { string: `${usedLoot} `, label: Label.lootName },
+        { string: `${usedLoot}`, label: Label.lootName },
         { string: `!`, label: Label.conjunctive }
       )
     }

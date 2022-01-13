@@ -3,11 +3,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.tellStory = void 0;
 const utils_1 = require("./utils");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
-async function tellStory(prng, state, startTime, length, guildId, provider) {
+async function tellStory(runStart, prng, state, startTime, length, guildId, provider) {
     const beginning = await tellBeginning(prng, state, startTime, length, guildId);
-    const middle = await tellMiddle(guildId, state, beginning, provider);
-    const ending = await tellEnding(guildId, beginning, middle, state, provider);
-    let res = {
+    if (beginning.party.length < 3) {
+        const res = {
+            plainText: [],
+            richText: {
+                beginning: beginning.text,
+                middle: {
+                    obstacleText: [],
+                    outcomeText: []
+                },
+                ending: { main: [], resultTexts: [] },
+            },
+            events: [],
+            nextUpdateTime: (0, utils_1.findNextUpdateTime)(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
+        };
+        return res;
+    }
+    const middle = await tellMiddle(runStart, guildId, state, beginning, provider);
+    const ending = await tellEnding(runStart, guildId, beginning, middle, state, provider);
+    const res = {
         plainText: [],
         richText: {
             beginning: beginning.text,
@@ -18,9 +34,9 @@ async function tellStory(prng, state, startTime, length, guildId, provider) {
             ending: ending.text,
         },
         events: ending.results,
-        nextUpdateTime: findNextUpdateTime(beginning, startTime)
+        nextUpdateTime: (0, utils_1.findNextUpdateTime)(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
     };
-    // res.plainText = beginning.text
+    // make plainText
     res.richText.beginning.forEach(ls => res.plainText.push(ls.string));
     res.richText.middle.obstacleText.forEach((lsa, i) => {
         const outcomeText = res.richText.middle.outcomeText[i];
@@ -38,27 +54,13 @@ async function tellStory(prng, state, startTime, length, guildId, provider) {
             res.plainText.push(...strs);
         }
     });
-    ending.text.forEach(ls => res.plainText.push(ls.string));
+    ending.text.main.forEach(ls => res.plainText.push(ls.string));
+    ending.text.resultTexts.forEach(lsa => {
+        lsa.forEach(ls => res.plainText.push(ls.string));
+    });
     return res;
 }
 exports.tellStory = tellStory;
-function findNextUpdateTime(beginning, startTime) {
-    let now = Math.floor(Date.now() / 1000);
-    let nextUpdateTime;
-    const updateTimes = [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes];
-    updateTimes.sort().reverse();
-    updateTimes.forEach((t, i) => {
-        if (t < now) {
-            if (i === 0)
-                return -1;
-            nextUpdateTime = updateTimes[i - 1];
-            if (nextUpdateTime === undefined)
-                return -1; // should be never
-            return nextUpdateTime;
-        }
-    });
-    return -1; // should be never
-}
 async function tellBeginning(prng, state, startTime, length, guildId
 // provider: providers.BaseProvider
 ) {
@@ -84,7 +86,10 @@ async function tellBeginning(prng, state, startTime, length, guildId
      * Generate quest
      */
     const quest = (0, utils_1.randomQuest)(guildId, prng);
-    const questText = (0, utils_1.makeQuestText)(quest);
+    let questText = [];
+    if (party.length >= 3) {
+        questText = (0, utils_1.makeQuestText)(quest);
+    }
     /**
      * Create obstacle times, outcome times, and end time
      *
@@ -100,6 +105,7 @@ async function tellBeginning(prng, state, startTime, length, guildId
         obstacleTimes.push(startTime + delay);
         outcomeTimes.push(startTime + delay + outcomeDelay);
     }
+    console.log('made update times', startTime, obstacleTimes, outcomeTimes, endTime);
     return {
         guild,
         party,
@@ -110,7 +116,7 @@ async function tellBeginning(prng, state, startTime, length, guildId
         text: [...guildText, ...questText]
     };
 }
-async function tellMiddle(guildId, state, beginning, provider) {
+async function tellMiddle(runStart, guildId, state, beginning, provider) {
     const middle = {
         questSuccess: utils_1.Success.failure,
         obstacles: [],
@@ -126,24 +132,24 @@ async function tellMiddle(guildId, state, beginning, provider) {
             if (!obstacleTime) {
                 throw new Error("No obstacle time");
             }
-            let checkpoint = await (0, utils_1.newCheckpoint)(obstacleTime, provider, `${guildId}`);
+            let checkpoint = await (0, utils_1.newCheckpoint)(runStart, obstacleTime, provider, `${guildId}`);
             if (!checkpoint.error) {
                 if (i + 1 === beginning.obstacleTimes.length) {
                     const obstacle = (0, utils_1.questObstacle)(checkpoint.prng, beginning.quest);
                     middle.obstacles.push(obstacle);
-                    middle.obstacleText.push((0, utils_1.makeObstacleText)(obstacle));
+                    middle.obstacleText.push((0, utils_1.makeObstacleText)(obstacle, beginning.party, middle.allResults));
                 }
                 else {
                     const obstacle = (0, utils_1.randomObstacle)(checkpoint.prng, i + 2);
                     middle.obstacles.push(obstacle);
-                    middle.obstacleText.push((0, utils_1.makeObstacleText)(obstacle));
+                    middle.obstacleText.push((0, utils_1.makeObstacleText)(obstacle, beginning.party, middle.allResults));
                 }
             }
             const outcomeTime = beginning.outcomeTimes[i];
             if (!outcomeTime) {
                 throw new Error("No outcome time");
             }
-            checkpoint = await (0, utils_1.newCheckpoint)(outcomeTime, provider);
+            checkpoint = await (0, utils_1.newCheckpoint)(runStart, outcomeTime, provider);
             const obstacle = middle.obstacles[i];
             if (!checkpoint.error && obstacle) {
                 const outcome = await (0, utils_1.findOutcome)(checkpoint.prng, beginning.guild.id, obstacle, beginning.party, middle.allResults, provider);
@@ -153,13 +159,13 @@ async function tellMiddle(guildId, state, beginning, provider) {
                     middle.questSuccess = outcome.success;
                 middle.outcomes.push(outcome);
                 middle.allResults = [...middle.allResults, ...outcome.results];
-                middle.outcomeText = [...middle.outcomeText, (0, utils_1.makeOutcomeText)(outcome)];
+                middle.outcomeText = [...middle.outcomeText, (0, utils_1.makeOutcomeText)(outcome, beginning.party, middle.allResults)];
             }
         }
     }
     return middle;
 }
-async function tellEnding(guildId, beginning, middle, state, provider) {
+async function tellEnding(runStart, guildId, beginning, middle, state, provider) {
     /**
      * check if everyone died
      * --> everyone died ending
@@ -170,9 +176,12 @@ async function tellEnding(guildId, beginning, middle, state, provider) {
      */
     const ending = {
         results: [],
-        text: []
+        text: {
+            main: [],
+            resultTexts: []
+        }
     };
-    const checkpoint = await (0, utils_1.newCheckpoint)(beginning.endTime, provider, `${guildId}`);
+    const checkpoint = await (0, utils_1.newCheckpoint)(runStart, beginning.endTime, provider, `${guildId}`);
     let deathCount = 0;
     let everyoneDied = false;
     let oneLeft = false;
@@ -189,10 +198,7 @@ async function tellEnding(guildId, beginning, middle, state, provider) {
                 if (deathCount === beginning.party.length - 1)
                     oneLeft = true;
             }
-            if (result.type !== utils_1.ResultType.Injury) {
-                ending.results.push(result);
-            }
-            else {
+            if (result.type === utils_1.ResultType.Injury) {
                 const roll = checkpoint.prng.nextInt(1, 100);
                 if (roll <= 5) {
                     const guild = state.guilds[guildId];
@@ -208,13 +214,12 @@ async function tellEnding(guildId, beginning, middle, state, provider) {
                                 component: result.component
                             };
                             ending.results.push(newResult);
-                            ending.text.push(...newResult.text);
                         }
                     }
                 }
             }
         }
-        ending.text = (0, utils_1.makeEndingText)(beginning, middle, everyoneDied, oneLeft);
+        ending.text = (0, utils_1.makeEndingText)(beginning, middle, everyoneDied, oneLeft, ending.results);
     }
     return ending;
 }

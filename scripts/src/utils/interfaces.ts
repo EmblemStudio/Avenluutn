@@ -15,7 +15,7 @@ export interface Story {
       obstacleText: LabeledString[][];
       outcomeText: OutcomeText[];
     };
-    ending: LabeledString[];
+    ending: EndingText;
   }
   events: Result[];
   nextUpdateTime: number;
@@ -48,7 +48,12 @@ export interface Middle {
 
 export interface Ending {
   results: Result[];
-  text: LabeledString[];
+  text: EndingText;
+}
+
+export interface EndingText {
+  main: LabeledString[];
+  resultTexts: LabeledString[][];
 }
 
 export enum Label {

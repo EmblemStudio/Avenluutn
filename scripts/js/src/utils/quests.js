@@ -4,6 +4,7 @@ exports.findOutcome = exports.questObstacle = exports.randomObstacle = exports.r
 const interfaces_1 = require("./interfaces");
 const sourceArrays_1 = require("../content/original/sourceArrays");
 const makeText_1 = require("./makeText");
+const processResults_1 = require("./processResults");
 const loot_1 = require("../content/loot");
 const makeText_2 = require("./makeText");
 const newCheckpoint_1 = require("./newCheckpoint");
@@ -114,22 +115,7 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
         results: []
     };
     // reorganize results
-    const processedResults = {};
-    previousResults.forEach(result => {
-        let advResults = processedResults[result.advId];
-        if (!advResults) {
-            advResults = {
-                "INJURY": [],
-                "KNOCKOUT": [],
-                "DEATH": [],
-                "LOOT": [],
-                "SKILL": [],
-                "TRAIT": [],
-            };
-        }
-        advResults[result.type].push(result);
-        processedResults[result.advId] = advResults;
-    });
+    const processedResults = (0, processResults_1.processResults)(previousResults);
     let everyoneKnockedOut = false;
     let knockOutCount = 0;
     let successSum = 0;
@@ -158,7 +144,7 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
             // Skill, loot, & trait triggers!
             Object.keys(sourceArrays_1.triggerMap).forEach(keyword => {
                 let index = -1;
-                (0, makeText_2.makeObstacleText)(obstacle).forEach(ls => {
+                (0, makeText_2.makeObstacleText)(obstacle, party, previousResults).forEach(ls => {
                     const localIndex = ls.string.indexOf(keyword);
                     if (localIndex >= 0)
                         index = localIndex;
@@ -323,7 +309,6 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
     return outcome;
 }
 exports.findOutcome = findOutcome;
-// TODO move result text-making to be with the rest of the text
 async function rollResults(prng, guildId, difficulty, success, adventurer, provider, previousResults) {
     const results = [];
     let length = 0;
