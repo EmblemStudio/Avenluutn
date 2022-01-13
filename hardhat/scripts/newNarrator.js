@@ -29,15 +29,23 @@ async function main() {
 
   console.log("minted NFT")
 
+  const minutes = 60
+  const hours = minutes * 60
+  const start = 1641985200
+        /* Unix Timestamp   1641985200
+           GMT	            Wed Jan 12 2022 11:00:00 GMT+0000
+           Your Time Zone   Wed Jan 12 2022 05:00:00 GMT-0600 (Central Standard Time)
+        */
+
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     Number(nftId),
-    now,              // start
-    10,             // totalCollections
-    60 * 10,          // collectionLength
-    60 * 15,          // collectionSpacing
-    10,                // collectionSize
+    start,            // start
+    60,               // totalCollections
+    11 * hours,       // collectionLength
+    12 * hours,       // collectionSpacing
+    5,                // collectionSize
   )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
   const receipt = await pubTx.wait()
