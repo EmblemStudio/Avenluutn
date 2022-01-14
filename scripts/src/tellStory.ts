@@ -215,7 +215,7 @@ async function tellMiddle(
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
 
-      checkpoint = await newCheckpoint(runStart, outcomeTime, provider)
+      checkpoint = await newCheckpoint(runStart, outcomeTime, provider, `${guildId}`)
       const obstacle = middle.obstacles[i]
 
       if (!checkpoint.error && obstacle) {
