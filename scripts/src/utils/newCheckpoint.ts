@@ -27,7 +27,7 @@ export async function newCheckpoint(
   provider: providers.BaseProvider,
   seed?: string
 ): Promise<Checkpoint> {
-  console.log('finding checkpoint', runStart, checkpointTime)
+  console.log('finding checkpoint', checkpointTime, seed)
   if (checkpointTime > runStart) {
     const error = new Error(checkPointErrors.timeInFuture)
     console.warn(error)
@@ -40,7 +40,6 @@ export async function newCheckpoint(
     console.warn(error)
     return { error, prng: new Prando(-1), blockHash: "" }
   }
-  console.log(`Found checkpoint for time ${checkpointTime}`)
   return { prng: new Prando(startBlockHash + seed), blockHash: startBlockHash }
 }
 

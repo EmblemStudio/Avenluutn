@@ -131,6 +131,7 @@ async function randomCharacter(
 
 const existingAdv: { [id: string]: Adventurer } = {}
 
+// TODO reroll any repeat names
 async function makeRandomAdventurers(
   numberToMake: number,
   prng: Prando,

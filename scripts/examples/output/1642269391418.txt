@@ -1,0 +1,589 @@
+STORY 0-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Ulster's Jeweltown
+, 
+Dorath Udobata, 
+Arch-ape Tyler Chad, 
+and 
+Carly Thatcher 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+ wyrm
+ at the 
+Macrosign 
+city
+.
+On the road there, 
+they 
+came across 
+a 
+sharp
+ elemental
+.
+After 
+an exhausting 
+contest
+, they 
+were driven back by
+ the 
+elemental
+.
+Arch-ape Tyler Chad
+ got blasted eardrums.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: 1642269261
+STORY 0-1 
+
+At 
+Hall of Heads
+ in 
+the Dregs
+, 
+Mackenzie Mancini, 
+Satoshi Thorne, 
+and 
+Dennis Thomsen the Pale 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+invisible
+, 
+cursed
+ mindscape
+ at the 
+Darshish 
+sea
+.
+Next, 
+they 
+were blocked by 
+a 
+many-eyed
+ waste
+.
+After 
+a testing 
+exertion
+, they 
+overcame
+ the 
+waste
+.
+During the journey, 
+they 
+came across 
+a 
+violent
+, black-hearted
+ bird folk
+.
+After 
+a hard-earned 
+game of wits
+, they 
+parted ways with
+ the 
+bird folk
+.
+Satoshi Thorne
+ found 
+Cap of Protection
+!
+Satoshi Thorne
+ found 
+Necklace
+!
+Dennis Thomsen the Pale
+ dislocated her shoulder.
+Dennis Thomsen the Pale
+ had her confidence shaken.
+They 
+arrived at the 
+Darshish
+ sea
+, where 
+they 
+were confronted with 
+an 
+invisible
+, cursed
+ mindscape
+.
+After 
+an epic 
+overwatch
+, they 
+safe-guarded
+ the 
+mindscape
+.
+Mackenzie Mancini
+ died.
+Satoshi Thorne
+ got fried nerves.
+Dennis Thomsen the Pale
+ was stabbed in the torso.
+Dennis Thomsen the Pale
+ was knocked out.
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: 1642269261
+STORY 0-2 
+
+At 
+Union of Scientists
+ in 
+the Last Stop
+, 
+Martin Broberg, 
+William Bryant, 
+and 
+Joseph Havlikova 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+voracious
+, 
+cursed
+ lord
+ at the 
+Illusid 
+summit
+.
+In search of the goal, 
+they 
+stumbled upon 
+a 
+crepuscular
+ river
+.
+After 
+a bungled 
+exertion
+, they 
+failed to traverse
+ the 
+river
+.
+Martin Broberg
+ died.
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+nextUpdateTime: 1642269261
+STORY 0-3 
+
+At 
+Cult of 973
+ in 
+the Flying Stones
+, 
+Jan Plain, 
+Paulo Thatcher, 
+and 
+Nym Donkervoort 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+many-eyed
+ gemstone
+ at the 
+Boreal 
+sea
+.
+After going some distance, 
+they 
+were confronted by 
+a 
+violent
+ tunnel dweller
+.
+After 
+a hard-earned 
+contest
+, they 
+parted ways with
+ the 
+tunnel dweller
+.
+They 
+arrived at the 
+Boreal
+ sea
+, where 
+they 
+were blocked by 
+a 
+many-eyed
+ gemstone
+.
+After 
+a weak 
+infiltration
+, they 
+left without
+ the 
+gemstone
+.
+Paulo Thatcher 
+used his 
+Archery 
+skills!
+Jan Plain
+ dislocated his shoulder.
+Nym Donkervoort
+ found 
+"Behemoth Root" Linen Hood of the Twins
+!
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+nextUpdateTime: 1642269261
+STORY 0-4 
+
+At 
+Klaxon Messengerhall
+ in 
+Ulster's Jeweltown
+, 
+Zabbas Dias, 
+Imperator Dennis Udobata, 
+and 
+Geoffrey Gannon 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+decrepit
+, 
+magical
+ fiend
+ "Diphonic Prant"
+ at the 
+Jarred 
+summit
+.
+Next, 
+they 
+discovered 
+a 
+succulent
+ hedge
+.
+After 
+a grueling 
+trek
+, they 
+overcame
+ the 
+hedge
+.
+Geoffrey Gannon
+ suffered slash wounds.
+Geoffrey Gannon
+ suffered slash wounds.
+In search of the goal, 
+they 
+were confronted with 
+a 
+violent
+, magical
+ canyon
+.
+After 
+a grueling 
+trek
+, they 
+overcame
+ the 
+canyon
+.
+Zabbas Dias
+ had his arm crushed.
+Zabbas Dias
+ was stabbed in the torso.
+Geoffrey Gannon
+ got blasted eardrums.
+Geoffrey Gannon
+ was knocked out.
+While traveling, 
+they 
+were confronted with 
+the 
+entrancing
+, ancient
+ waste
+ "Melifluent Ellishment"
+.
+After 
+a misjudged 
+exertion
+, they 
+failed to overcome
+ the 
+waste
+.
+Zabbas Dias
+ got fried nerves.
+Zabbas Dias
+ was knocked out.
+Imperator Dennis Udobata
+ now has 
+dragon obsession
+!
+Imperator Dennis Udobata
+ dislocated her shoulder.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+Zabbas Dias
+ now has 
+martyr complex
+!
+nextUpdateTime: 1642269261
+STORY 0-5 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Jody K the Bastard, 
+Serge Gresham, 
+and 
+Darda Ives 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+entrancing
+, 
+unspeakable
+ wyrm
+ at the 
+Darshish 
+forest
+.
+Soon enough, 
+they 
+had to solve 
+a 
+decrepit
+ locked gate
+.
+After 
+a fraught 
+hundred guesses
+, they 
+solved
+ the 
+locked gate
+.
+Jody K the Bastard
+ got blasted eardrums.
+Venturing forth, 
+they 
+were ambushed by 
+a 
+succulent
+, reknowned
+ elemental
+.
+After 
+a doomed 
+stand off
+, they 
+were forced to turn back by
+ the 
+elemental
+.
+Jody K the Bastard
+ was stabbed in the torso.
+Serge Gresham
+ had her arm crushed.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: 1642269261
+STORY 1-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Ulster's Jeweltown
+, 
+Mackenzie Nystrom, 
+Jessica vibes Ranth, 
+Chief Ape Svatava Ashbluff, 
+Arch-ape Tyler Chad, 
+and 
+Florus Gandhi 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+lightless
+, 
+horrifying
+ hidden passage
+ at the 
+Jarred 
+village
+.
+nextUpdateTime: 1642270261
+STORY 1-1 
+
+At 
+Hall of Heads
+ in 
+the Dregs
+, 
+Khal Noah Vasiliev, 
+Arch-ape Tyler Kiyomizu, 
+Gandor Ford, 
+Mackenzie Mancini, 
+and 
+Sarah Zhao 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+lightless
+ psychopomp
+ at the 
+Craven 
+crypt
+.
+nextUpdateTime: 1642270261
+STORY 1-2 
+
+At 
+Union of Scientists
+ in 
+the Last Stop
+, 
+Monica Gotou, 
+Dzemail mons Galt, 
+William Bryant, 
+Jens Gotou, 
+and 
+Monica Araujo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+, 
+cursed
+ nephilim
+ "Xtophila Limpet"
+ at the 
+Can-ton 
+city
+.
+nextUpdateTime: 1642270261
+STORY 1-3 
+
+At 
+Cult of 973
+ in 
+the Flying Stones
+, 
+Remus Bozzelli the Monk, 
+Hilarij Hines, 
+Eva Egede, 
+Nym Donkervoort, 
+and 
+Doge Raff Nakamoto 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ dunes
+ at the 
+Macrosign 
+pass
+.
+nextUpdateTime: 1642270261
+STORY 1-4 
+
+At 
+Klaxon Messengerhall
+ in 
+Ulster's Jeweltown
+, 
+Serge Collymore, 
+George zef Zhao, 
+Abdelhak Jackson, 
+Thomas first of Thomsen the Grim, 
+and 
+Imperator Dennis Udobata 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+entrancing
+, 
+black-hearted
+ walls
+ "Asla-Kratom Butcher"
+ at the 
+Macrosign 
+pass
+.
+nextUpdateTime: 1642270261
+STORY 1-5 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Jody K the Bastard, 
+Jennifer Quenneville, 
+Aniela Amsel, 
+Darda Ives, 
+and 
+Abigail Fellowes 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+ doctor
+ at the 
+Boreal 
+valley
+.
+nextUpdateTime: 1642270261
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 2-3 
+
+STORY 2-4 
+
+STORY 2-5 
+

@@ -44,6 +44,7 @@ export interface Middle {
   allResults: Result[];
   obstacleText: LabeledString[][];
   outcomeText: OutcomeText[];
+  allOutcomesSucceeded: boolean;
 }
 
 export interface Ending {

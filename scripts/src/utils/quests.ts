@@ -195,7 +195,6 @@ export async function findOutcome(
             if (hasName >= 0) {
               const triggerRoll = prng.nextInt(1, 100)
               if (triggerRoll <= triggerInfo.chance) {
-                console.log('rolled trigger!', triggerInfo, triggerRoll, adventurer)
                 // TODO add trigger text to makeText and get it into final results
                 successRoll += triggerInfo.modifier
                 const text = makeTriggerText(triggerInfo, adventurer, traits, qualities)
@@ -340,7 +339,7 @@ async function rollResults(
   const results: Result[] = []
   let length = 0
   const lengthOdds = numberOfResultsOdds[difficulty]
-  if (!lengthOdds) { console.log(difficulty, numberOfResultsOdds); throw new Error("No odds") }
+  if (!lengthOdds) throw new Error("No odds")
   const zeroOdds = lengthOdds[0]
   const oneOdds = lengthOdds[1]
   const twoOdds = lengthOdds[2]

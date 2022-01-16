@@ -14,7 +14,7 @@ import { tellStories, ScriptResult } from '../src'
 const alchemyAPI = "https://eth-mainnet.alchemyapi.io/v2/PPujLNqHqSdJjZwxxytSUA68DA_xf8Mm"
 
 const collections = 3
-const parallelStories = 3
+const parallelStories = 6
 
 async function main() {
   let output = ""
@@ -22,12 +22,6 @@ async function main() {
   let length = 1000
   let time = Math.floor(Date.now()/1000) - length
   for (let i = 0; i < collections; i++) {
-    console.log("Making stories",
-    time,
-    length,
-    parallelStories,
-    alchemyAPI,
-    i)
     let result: ScriptResult = await tellStories(
       state,
       time,
@@ -35,7 +29,6 @@ async function main() {
       parallelStories,
       alchemyAPI
     )
-    console.log('group nextUpdateTime', result.nextUpdateTime)
     time += length
     state = result
     /*
@@ -52,6 +45,7 @@ async function main() {
         story.plainText.forEach(line => {
           output += line + "\r\n"
         })
+        output += `nextUpdateTime: ${story.nextUpdateTime}`
       }
       output += "\r\n"
     }

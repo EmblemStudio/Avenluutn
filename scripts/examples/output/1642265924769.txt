@@ -1,0 +1,417 @@
+STORY 0-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Jhaan Lelkova, 
+Geoffrey Frederiksen, 
+and 
+Harriet Maki the Tall 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+lightless
+ outskirts
+ at the 
+Craven 
+sea
+.
+In search of the goal, 
+they 
+stumbled upon 
+a 
+violent
+ river
+.
+After 
+a strenuous 
+trek
+, they 
+overcame
+ the 
+river
+.
+Harriet Maki the Tall
+ broke their leg.
+They 
+arrived at the 
+Craven
+ sea
+, where 
+they 
+stumbled upon 
+some 
+lightless
+ outskirts
+.
+After 
+a grueling 
+overwatch
+, they 
+defended
+ the 
+outskirts
+.
+Geoffrey Frederiksen 
+used her 
+Deception 
+skills!
+Jhaan Lelkova
+ dislocated his shoulder.
+Jhaan Lelkova
+ found 
+Hard Leather Belt
+!
+Harriet Maki the Tall
+ found 
+Amulet
+!
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+nextUpdateTime: 1642265795
+STORY 0-1 
+
+At 
+Harcourt Smithy
+ in 
+the Last Stop
+, 
+Filippa Sandgreen, 
+Isak Hermanns, 
+and 
+Fren Bogdan Ashbluff 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+, 
+deathly
+ fiend
+ at the 
+Macrosign 
+desert
+.
+On the road there, 
+they 
+discovered 
+a 
+lightless
+ locked gate
+.
+After 
+a fraught 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Filippa Sandgreen
+ got blasted eardrums.
+Isak Hermanns
+ found 
+Ornate Chestplate
+!
+Fren Bogdan Ashbluff
+ was stabbed in the torso.
+Fren Bogdan Ashbluff
+ now has 
+monsterphobia
+!
+Soon enough, 
+they 
+had to solve 
+a 
+decrepit
+, ancient
+ locked gate
+.
+After 
+a trying 
+attempt
+, they 
+figured out
+ the 
+locked gate
+.
+They 
+arrived at the 
+Macrosign
+ desert
+, where 
+they 
+snuck up on 
+an 
+entrancing
+, deathly
+ fiend
+.
+After 
+a strenuous 
+introduction
+, they 
+found common ground with
+ the 
+fiend
+.
+Filippa Sandgreen
+ died.
+Isak Hermanns
+ had his arm crushed.
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+Filippa Sandgreen
+ now has 
+deafness
+!
+nextUpdateTime: 1642265795
+STORY 0-2 
+
+At 
+Cherished Heart Temple
+ in 
+Karkowa District
+, 
+Domonkos Blau the Tyrant, 
+Gustave zef Viragh, 
+Miguel Goldfeder, 
+and 
+Yuukou Collymore 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+invisible
+, 
+magical
+ wyrm
+ "Melifluent Limpet"
+ at the 
+Craven 
+desert
+.
+On the road there, 
+they 
+were blocked by 
+a 
+crepuscular
+ cliff
+.
+After 
+a fraught 
+attempt
+, they 
+traversed
+ the 
+cliff
+.
+Domonkos Blau the Tyrant
+ was stabbed in the torso.
+Gustave zef Viragh
+ got blasted eardrums.
+While traveling, 
+they 
+discovered 
+a 
+sharp
+, ancient
+ canyon
+.
+After 
+a testing 
+attempt
+, they 
+traversed
+ the 
+canyon
+.
+Gustave zef Viragh
+ found 
+Book
+!
+Miguel Goldfeder
+ found 
+Mace
+!
+Yuukou Collymore
+ found 
+War Belt
+!
+Before reaching the destination, 
+they 
+came across 
+the 
+violent
+, cursed
+ bird folk
+ "Xtophila Osprin"
+.
+After 
+a testing 
+game of wits
+, they 
+passed by
+ the 
+bird folk
+.
+Domonkos Blau the Tyrant
+ suffered slash wounds.
+Domonkos Blau the Tyrant
+ had his confidence shaken.
+Gustave zef Viragh
+ broke their leg.
+Miguel Goldfeder
+ found 
+Dragonskin Gloves
+!
+Yuukou Collymore
+ had his arm crushed.
+Yuukou Collymore
+ found 
+Falchion of the Fox
+!
+They 
+arrived at the 
+Craven
+ desert
+, where 
+they 
+were ambushed by 
+the 
+invisible
+, magical
+ wyrm
+ "Melifluent Limpet"
+.
+After 
+a challenging 
+contest
+, they 
+overpowered
+ the 
+wyrm
+.
+Domonkos Blau the Tyrant
+ found 
+Greaves
+!
+Miguel Goldfeder
+ broke his leg.
+Miguel Goldfeder
+ found 
+Brightsilk Sash
+!
+Yuukou Collymore
+ found 
+Greaves
+!
+The adventurers 
+returned to 
+Cherished Heart Temple
+, exhausted but successful.
+Domonkos Blau the Tyrant
+ now has 
+martyr complex
+!
+nextUpdateTime: 1642265795
+STORY 1-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Sarah von Beckett, 
+Count James Donaldson, 
+and 
+Harriet Maki the Tall 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+ ruins
+ at the 
+Red 
+forest
+.
+nextUpdateTime: 1642266795
+STORY 1-1 
+
+At 
+Harcourt Smithy
+ in 
+the Last Stop
+, 
+Mohammed Kwiatkowski da gay, 
+Mikael Delphine, 
+and 
+Filippa Sandgreen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+ relic
+ at the 
+Can-ton 
+sea
+.
+nextUpdateTime: 1642266795
+STORY 1-2 
+
+At 
+Cherished Heart Temple
+ in 
+Karkowa District
+, 
+Chalia Ledger, 
+Onyekachukwu Cronje, 
+and 
+Yuukou Collymore 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+many-eyed
+, 
+impossible
+ fiend
+ "Pillskin Quartzile"
+ at the 
+Headless 
+summit
+.
+nextUpdateTime: 1642266795
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 3-0 
+
+STORY 3-1 
+
+STORY 3-2 
+
+STORY 4-0 
+
+STORY 4-1 
+
+STORY 4-2 
+
+STORY 5-0 
+
+STORY 5-1 
+
+STORY 5-2 
+

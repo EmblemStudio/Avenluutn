@@ -1,0 +1,416 @@
+STORY 0-0 
+
+At 
+Hall of Heads
+ in 
+the Dregs
+, 
+Thomas Rojo, 
+Chief Ape Ilona Donaldson, 
+Chishou mise Cronje the Gentle, 
+and 
+Filippa Zimmerman 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+crepuscular
+ hidden passage
+ at the 
+Illusid 
+sea
+.
+Soon enough, 
+they 
+were blocked by 
+a 
+many-eyed
+ locked gate
+.
+After 
+a challenging 
+brainstorm
+, they 
+found a way through
+ the 
+locked gate
+.
+Thomas Rojo
+ found 
+Ornate Chestplate
+!
+Thomas Rojo
+ dislocated his shoulder.
+Chief Ape Ilona Donaldson
+ got fried nerves.
+Chishou mise Cronje the Gentle
+ found 
+Ornate Gauntlets
+!
+Chishou mise Cronje the Gentle
+ was frightened half to death.
+Filippa Zimmerman
+ found 
+Cap
+!
+They 
+arrived at the 
+Illusid
+ sea
+, where 
+they 
+discovered 
+a 
+crepuscular
+ hidden passage
+.
+After 
+a hard-earned 
+journey
+, they 
+surveiled all of
+ the 
+hidden passage
+.
+Thomas Rojo
+ suffered slash wounds.
+Thomas Rojo
+ found 
+Club
+!
+Chief Ape Ilona Donaldson
+ found 
+Linen Hood of Skill
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: 1642268599
+STORY 0-1 
+
+At 
+Marsh's Sewerworks
+ in 
+the Flying Stones
+, 
+Jan Amsel, 
+Adelbert Mikulanc, 
+Yvanna Izmaylov, 
+and 
+Jason Marblemaw 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+decrepit
+, 
+black-hearted
+ walls
+ at the 
+Illusid 
+city
+.
+Venturing forth, 
+they 
+discovered 
+a 
+voracious
+ locked gate
+.
+After 
+a grueling 
+attempt
+, they 
+found a way through
+ the 
+locked gate
+.
+Jan Amsel
+ found 
+Wand
+!
+Adelbert Mikulanc
+ found 
+Divine Slippers
+!
+Yvanna Izmaylov
+ found 
+Pendant of Vitriol
+!
+Jason Marblemaw
+ got blasted eardrums.
+Venturing forth, 
+they 
+were confronted by 
+a 
+decrepit
+, magical
+ beast
+.
+After 
+a challenging 
+negotiation
+, they 
+moved on from
+ the 
+beast
+.
+Jan Amsel
+ got fried nerves.
+Jan Amsel
+ found 
+Necklace
+!
+Jan Amsel
+ dislocated their shoulder.
+Adelbert Mikulanc
+ found 
+Chain Boots of Protection
+!
+Yvanna Izmaylov
+ found 
+Shirt
+!
+Jason Marblemaw
+ got blasted eardrums.
+They 
+arrived at the 
+Illusid
+ city
+, where 
+they 
+stumbled upon 
+some 
+decrepit
+, black-hearted
+ walls
+.
+After 
+a fraught 
+attempt
+, they 
+safe-guarded
+ the 
+walls
+.
+Adelbert Mikulanc
+ was frightened half to death.
+Jason Marblemaw
+ found 
+"Demon Bite" Demon Crown of Power +1
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: 1642268599
+STORY 0-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the basement of Porcine Castle
+, 
+Ebony Torma, 
+Molly Mailhot the Old, 
+Robert Chibugo, 
+and 
+Eva McLellan 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+succulent
+, 
+impossible
+ hidden passage
+ at the 
+Illusid 
+forest
+.
+Soon enough, 
+they 
+discovered 
+an 
+invisible
+ waste
+.
+After 
+a fraught 
+exertion
+, they 
+crossed
+ the 
+waste
+.
+Molly Mailhot the Old
+ was stabbed in the torso.
+Robert Chibugo
+ found 
+Crown
+!
+Before reaching the destination, 
+they 
+came across 
+a 
+voracious
+, ancient
+ tunnel dweller
+.
+After 
+a testing 
+negotiation
+, they 
+parted ways with
+ the 
+tunnel dweller
+.
+Robert Chibugo
+ found 
+Amulet
+!
+Eva McLellan
+ got blasted eardrums.
+They 
+arrived at the 
+Illusid
+ forest
+, where 
+they 
+discovered 
+a 
+succulent
+, impossible
+ hidden passage
+.
+After 
+a challenging 
+reconnoiter
+, they 
+completely mapped out
+ the 
+hidden passage
+.
+Ebony Torma
+ was frightened half to death.
+Ebony Torma
+ found 
+Leather Armor
+!
+Molly Mailhot the Old
+ got blasted eardrums.
+Robert Chibugo
+ found 
+Pendant
+!
+Eva McLellan
+ found 
+Dragonskin Armor of the Fox
+!
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+nextUpdateTime: 1642268599
+STORY 1-0 
+
+At 
+Hall of Heads
+ in 
+the Dregs
+, 
+Thomas Rojo, 
+Ambrogino Mancini, 
+Archibaldo Benes, 
+Chishou mise Cronje the Gentle, 
+and 
+Filippa Zimmerman 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+many-eyed
+, 
+ancient
+ wyrm
+ at the 
+Illusid 
+pass
+.
+nextUpdateTime: 1642269599
+STORY 1-1 
+
+At 
+Marsh's Sewerworks
+ in 
+the Flying Stones
+, 
+Yvanna Izmaylov, 
+Ed Nigiri, 
+Hayden Zidek, 
+Jason Marblemaw, 
+and 
+Jesper Strozak the Fortunate 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+ doctor
+ at the 
+Jarred 
+summit
+.
+nextUpdateTime: 1642269599
+STORY 1-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the basement of Porcine Castle
+, 
+Eva McLellan, 
+Selam Strozak, 
+Molly Mailhot the Old, 
+Ebony Torma, 
+and 
+Ravil Lennon 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+impossible
+ hidden passage
+ "Asla-Kratom Osprin"
+ at the 
+Boreal 
+city
+.
+nextUpdateTime: 1642269599
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 3-0 
+
+STORY 3-1 
+
+STORY 3-2 
+
+STORY 4-0 
+
+STORY 4-1 
+
+STORY 4-2 
+
+STORY 5-0 
+
+STORY 5-1 
+
+STORY 5-2 
+
