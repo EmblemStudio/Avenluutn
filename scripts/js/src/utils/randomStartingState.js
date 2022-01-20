@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.randomUnusedItem = exports.randomParty = exports.randomStartingState = void 0;
 const prando_1 = require("prando");
 const loot_1 = require("../content/loot");
-const sourceArrays_1 = require("../content/original/sourceArrays");
+const originalContent_1 = require("../content/original/originalContent");
 async function randomStartingState(numberOfGuilds, prng, provider) {
     let state = { guilds: [] };
     for (let i = 0; i < numberOfGuilds; i++) {
@@ -16,12 +16,12 @@ async function randomStartingState(numberOfGuilds, prng, provider) {
 exports.randomStartingState = randomStartingState;
 async function randomGuild(id, prng, previousState, provider) {
     const adventurers = await makeRandomAdventurers(prng.nextInt(10, 15), prng, provider);
-    const name = randomUnusedItem(previousState.guilds.map(g => g.name), () => prng.nextArrayItem(sourceArrays_1.guildNames));
+    const name = randomUnusedItem(previousState.guilds.map(g => g.name), () => prng.nextArrayItem(originalContent_1.guildNames));
     return {
         id,
         name,
-        motto: prng.nextArrayItem(sourceArrays_1.guildMottos),
-        location: prng.nextArrayItem(sourceArrays_1.guildLocations),
+        motto: prng.nextArrayItem(originalContent_1.guildMottos),
+        location: prng.nextArrayItem(originalContent_1.guildLocations),
         bard: await randomCharacter(prng, provider, 2),
         adventurers,
         graveyard: {},
@@ -75,21 +75,29 @@ function makeRandomParties(
 */
 async function randomCharacter(prng, provider, traitCount) {
     const classInstance = await (0, loot_1.getRandomClass)(prng, provider);
+    const pronounKey = Number(prng.nextArrayItem(Object.keys(originalContent_1.pronounsSource)));
+    const pronounsArray = originalContent_1.pronounsSource[pronounKey];
+    if (pronounsArray === undefined)
+        throw new Error("pronounsArray");
+    const pronouns = pronounsArray[0];
+    if (pronouns === undefined)
+        throw new Error("No pronouns");
     const newChar = {
         name: await (0, loot_1.getRandomName)(prng, provider),
-        pronouns: prng.nextArrayItem(sourceArrays_1.pronounsSource),
+        pronouns,
         species: [classInstance.race],
         age: prng.nextInt(19, 105),
         traits: []
     };
     if (traitCount) {
         for (let i = 0; i < traitCount; i++) {
-            newChar.traits.push(randomUnusedItem(newChar.traits, () => prng.nextArrayItem(Object.keys(sourceArrays_1.traits))));
+            newChar.traits.push(randomUnusedItem(newChar.traits, () => prng.nextArrayItem(Object.keys(originalContent_1.traits))));
         }
     }
     return newChar;
 }
 const existingAdv = {};
+// TODO reroll any repeat names
 async function makeRandomAdventurers(numberToMake, prng, provider) {
     const res = {};
     const numberExisting = Object.keys(existingAdv).length;
@@ -106,7 +114,7 @@ async function randomAdventurer(id, prng, provider) {
         id,
         class: [(await (0, loot_1.getRandomClass)(prng, provider)).class],
         stats: randomStats(prng),
-        skills: [prng.nextArrayItem(sourceArrays_1.skills)],
+        skills: [prng.nextArrayItem(originalContent_1.skills)],
         loot: [await (0, loot_1.getRandomLootPiece)(prng, provider)]
     });
     return newAdv;

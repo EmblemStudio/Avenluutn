@@ -1,0 +1,116 @@
+{
+    "a peg leg": [
+        {
+            "positiveTrigger": "protected by *depPossesive* peg leg",
+            "negativeTrigger": "hampered by *depPossesive* peg leg"
+        }
+    ],
+    "anxiety": [
+        {
+            "positiveTrigger": "",
+            "negativeTrigger": "feels anxious"
+        }
+    ],
+    "weakness": [
+        {
+            "positiveTrigger": "",
+            "negativeTrigger": "feels weak"
+        }
+    ],
+    "deafness": [
+        {
+            "positiveTrigger": "is unharmed by the sound",
+            "negativeTrigger": "cannot hear a thing"
+        }
+    ],
+    "self-doubt": [
+        {
+            "positiveTrigger": "",
+            "negativeTrigger": "is consumed by self-doubt"
+        }
+    ],
+    "a prosthetic arm": [
+        {
+            "positiveTrigger": "uses *depPossesive* prosthetic arm",
+            "negativeTrigger": "struggles with *depPossesive* prosthetic arm"
+        }
+    ],
+    "aggressive impulses": [
+        {
+            "positiveTrigger": "charges forward fearlessly",
+            "negativeTrigger": "rushes in too eagerly"
+        }
+    ],
+    "cowardice": [
+        {
+            "positiveTrigger": "",
+            "negativeTrigger": "is frozen in fear"
+        }
+    ],
+    "greed": [
+        {
+            "positiveTrigger": "greedily spots something no one else saw",
+            "negativeTrigger": "lingers too long looking for treasure"
+        }
+    ],
+    "dragon obsession": [
+        {
+            "positiveTrigger": "has a deep understanding of dragons",
+            "negativeTrigger": "can't get over *depPossesive* dragon obsession"
+        }
+    ],
+    "gambling addiction": [
+        {
+            "positiveTrigger": "is willing to risk it all",
+            "negativeTrigger": "takes a foolish gamble"
+        }
+    ],
+    "martyr complex": [
+        {
+            "positiveTrigger": "sacrifices for the good of the party",
+            "negativeTrigger": "seems too willing too sacrifice *reflexive*"
+        }
+    ],
+    "optimistism": [
+        {
+            "positiveTrigger": "helps everyone see the bright side",
+            "negativeTrigger": "is taking things too lightly"
+        }
+    ],
+    "unluckiness": [
+        {
+            "positiveTrigger": "",
+            "negativeTrigger": "can't catch a break"
+        }
+    ],
+    "trauma": [
+        {
+            "positiveTrigger": "remembers not to make the same mistakes again",
+            "negativeTrigger": "is haunted by their past"
+        }
+    ],
+    "monsterphobia": [
+        {
+            "positiveTrigger": "",
+            "negativeTrigger": "is terrified of strange beasts"
+        }
+    ],
+    "quick-wit": [
+        {
+            "positiveTrigger": "conjures smiles with a clever joke",
+            "negativeTrigger": "doesn't know when to stop talking"
+        }
+    ],
+    "elegance": [
+        {
+            "positiveTrigger": "moves with cat-like elegance",
+            "negativeTrigger": ""
+        }
+    ],
+    "great destiny": [
+        {
+            "positiveTrigger": "feels *depPossessive* great destiny calling",
+            "negativeTrigger": "feels the icy touch of fate"
+        }
+    ]
+}

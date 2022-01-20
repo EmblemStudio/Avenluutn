@@ -1,14 +1,14 @@
-import { 
-  Obstacle, 
-  Quest, 
-  Outcome, 
-  Adventurer, 
-  Guild, 
-  Success, 
-  OutcomeText, 
-  Beginning, 
-  Middle, 
-  Pronouns, 
+import {
+  Obstacle,
+  Quest,
+  Outcome,
+  Adventurer,
+  Guild,
+  Success,
+  OutcomeText,
+  Beginning,
+  Middle,
+  Pronouns,
   LabeledString,
   Label,
   TriggerInfo,
@@ -20,7 +20,7 @@ import {
 import { nameString } from '../content/loot'
 
 export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[] {
-  if (party.length < 3 ) {
+  if (party.length < 3) {
     return [{ string: `With too few adventurers to embark, the guild stagnates. `, label: Label.conjunctive }]
   }
   const res: LabeledString[] = [
@@ -34,9 +34,9 @@ export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[
   party.forEach((a, i) => {
     if (i === party.length - 1) {
       res.push({ string: `and `, label: Label.conjunctive })
-      res.push({string: `${nameString(a.name)} `, label: Label.adventurerName })
+      res.push({ string: `${nameString(a.name)} `, label: Label.adventurerName })
     } else {
-      res.push({string: `${nameString(a.name)}, `, label: Label.adventurerName })
+      res.push({ string: `${nameString(a.name)}, `, label: Label.adventurerName })
     }
   })
   res.push({ string: `gathered. `, label: Label.conjunctive })
@@ -46,22 +46,22 @@ export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[
 export function makeQuestText(quest: Quest): LabeledString[] {
   const res: LabeledString[] = [
     { string: `Consulting the guild, they chose their quest: to `, label: Label.conjunctive },
-    { string: quest.type, label: Label.questType},
+    { string: quest.type.toLowerCase(), label: Label.questType },
     { string: ` the `, label: Label.conjunctive }
   ]
   // let text = `Consulting the guild, they chose their quest: to ${quest.type} the`
-  if (quest.firstAdjective) res.push({ string: quest.firstAdjective, label: Label.adjective})
+  if (quest.firstAdjective) res.push({ string: quest.firstAdjective, label: Label.adjective })
   if (quest.secondAdjective) {
     res.push(
-      { string: `, `, label: Label.conjunctive},
+      { string: `, `, label: Label.conjunctive },
       { string: quest.secondAdjective, label: Label.adjective }
     )
     // text += `, ${quest.secondAdjective}`
   }
-  res.push({ string: ` ${quest.objective}`, label: Label.questObjective})
+  res.push({ string: ` ${quest.objective}`, label: Label.questObjective })
   // text += ` ${quest.objective}`
   if (quest.firstName) {
-    res.push({ string: ` "${quest.firstName} ${quest.lastName}"`, label: Label.obstacleName})
+    res.push({ string: ` "${quest.firstName} ${quest.lastName}"`, label: Label.obstacleName })
     // text += ` "${quest.firstName} ${quest.lastName}"`
   }
   res.push(
@@ -144,13 +144,13 @@ export function makeObstacleText(obstacle: Obstacle, party: Adventurer[], result
     }
   }
   if (obstacle.firstAdjective) res.push({ string: `${obstacle.firstAdjective}`, label: Label.adjective })
-    // text += ` ${obstacle.firstAdjective}`
+  // text += ` ${obstacle.firstAdjective}`
   if (obstacle.secondAdjective) res.push({ string: `, ${obstacle.secondAdjective}`, label: Label.adjective })
-    // text += ` ${obstacle.secondAdjective}`
+  // text += ` ${obstacle.secondAdjective}`
   res.push({ string: ` ${obstacle.object}`, label: Label.object })
   // text += ` ${obstacle.object}`
   if (obstacle.firstName) res.push({ string: ` "${obstacle.firstName} ${obstacle.lastName}"`, label: Label.obstacleName })
-    // text += ` ${obstacle.firstName} ${obstacle.lastName}`
+  // text += ` ${obstacle.firstName} ${obstacle.lastName}`
   if (obstacle.additions) {
     obstacle.additions.forEach(addition => {
       res.push({ string: `, ${addition}`, label: Label.conjunctive })
@@ -169,8 +169,8 @@ export function makeOutcomeText(outcome: Outcome, party: Adventurer[], results: 
   let res: OutcomeText = { main: [], triggerTexts: [], resultTexts: [] }
   res.main.push(
     { string: `After `, label: Label.conjunctive },
-    { string:  `${outcome.adjective} `, label: Label.adjective },
-    { string:  `${outcome.activity}`, label: Label.outcomeActivity }
+    { string: `${outcome.adjective} `, label: Label.adjective },
+    { string: `${outcome.activity}`, label: Label.outcomeActivity }
   )
   if (lastAdv !== undefined) {
     res.main.push({ string: `, ${lastAdv.name.firstName} `, label: Label.conjunctive })
@@ -178,9 +178,9 @@ export function makeOutcomeText(outcome: Outcome, party: Adventurer[], results: 
     res.main.push({ string: `, they `, label: Label.conjunctive })
   }
   res.main.push(
-    { string:  `${outcome.resolver}`, label: Label.outcomeResolver },
-    { string:  ` the `, label: Label.conjunctive },
-    { string:  `${outcome.obstacle.object}`, label: Label.object },
+    { string: `${outcome.resolver}`, label: Label.outcomeResolver },
+    { string: ` the `, label: Label.conjunctive },
+    { string: `${outcome.obstacle.object}`, label: Label.object },
     { string: `.`, label: Label.conjunctive }
   )
   // res.main = `After ${outcome.adjective} ${outcome.activity}, they ${outcome.resolver} the ${outcome.obstacle.object}.`
@@ -194,9 +194,9 @@ export function makeOutcomeText(outcome: Outcome, party: Adventurer[], results: 
 }
 
 export function makeEndingText(
-  beginning: Beginning, 
-  middle: Middle, 
-  everyoneDied: boolean, 
+  beginning: Beginning,
+  middle: Middle,
+  everyoneDied: boolean,
   oneLeft: boolean,
   endingResults: Result[]
 ): EndingText {
@@ -260,7 +260,7 @@ function insertPronouns(string: string, pronouns: Pronouns): string {
   return splitString.join('')
 }
 
-export function makeInjuryText(adventurer: Adventurer, injuryString: string, ): LabeledString[] {
+export function makeInjuryText(adventurer: Adventurer, injuryString: string,): LabeledString[] {
   return [
     { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
     { string: insertPronouns(` ${injuryString}.`, adventurer.pronouns), label: Label.conjunctive }
@@ -309,24 +309,26 @@ export function makeKnockoutText(adventurer: Adventurer): LabeledString[] {
 }
 
 export function makeTriggerText(
-  triggerInfo: TriggerInfo, 
-  adventurer: Adventurer, 
+  triggerInfo: TriggerInfo,
+  adventurer: Adventurer,
   traits: Traits,
   qualities: string[]
 ): LabeledString[] {
   const res: LabeledString[] = []
   if (triggerInfo.type === "traits") {
-    const trait = traits[triggerInfo.name]
+    const traitArray = traits[triggerInfo.name]
+    if (!traitArray) throw new Error("No traitArray")
+    const trait = traitArray[0]
     if (!trait) throw new Error("No trait")
-    if (triggerInfo.modifier > 0 && trait.positiveTrigger) { 
+    if (triggerInfo.modifier > 0 && trait.positiveTrigger) {
       res.push(
         { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
-        { string:  `${trait.positiveTrigger}!`, label: Label.conjunctive }
+        { string: `${trait.positiveTrigger}!`, label: Label.conjunctive }
       )
     } else if (trait.negativeTrigger) {
       res.push(
         { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
-        { string:  `${trait.negativeTrigger}!`, label: Label.conjunctive }
+        { string: `${trait.negativeTrigger}!`, label: Label.conjunctive }
       )
     }
   } else if (triggerInfo.type === "skills") {

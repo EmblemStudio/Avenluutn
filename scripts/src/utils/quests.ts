@@ -1,21 +1,30 @@
 import Prando from 'prando'
 import { providers } from 'ethers'
 
-import { 
+import {
   Adventurer,
   Result,
-  Quest, 
-  Obstacle, 
-  Outcome, 
-  QuestType,
+  Quest,
+  Obstacle,
+  Outcome,
   Success,
   ResultType,
   Results
 } from './interfaces'
-import { 
-  obstacleInfo,
+import {
+  // obstacleInfo,
+  obstacleActivities,
+  obstacleDiscoveries,
+  obstacleObjects,
+  obstaclePositiveResolvers,
+  obstacleNegativeResolvers,
+  QuestType,
   questDifficulty,
-  questTypesAndInfo,
+  // questTypesAndInfo,
+  questActivities,
+  questObjectives,
+  questPositiveResolvers,
+  questNegativeResolvers,
   genericFirstAdjectives,
   genericSecondAdjectives,
   genericFirstName,
@@ -25,14 +34,15 @@ import {
   questObstacleMap,
   numberOfResultsOdds,
   typeOfResultOdds,
-  Injuries,
+  injuries,
   skills,
   traits,
   activityAdjectives,
   triggerMap,
   ObstacleType,
-  obstacleArrivals
-} from '../content/original/sourceArrays'
+  obstacleArrivals,
+  SuccessType
+} from '../content/original/originalContent'
 import {
   makeInjuryText,
   makeDeathText,
@@ -50,16 +60,22 @@ import { makeProvider } from './newCheckpoint'
 // 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
 // TODO adjust the RNG so characters are more likely to "select" quests that fit them?
 export function randomQuest(guildId: number, prng: Prando): Quest {
-  const type = prng.nextArrayItem(
-    Object.keys(questTypesAndInfo)
-  ) as QuestType
-  const questInfo = questTypesAndInfo[type]
-  if (!questInfo) { throw new Error("No quest info") }
-  const res: Quest = { 
+  const type = prng.nextArrayItem(QuestType)
+  const activities = questActivities[type]
+  if (!activities) { throw new Error("No quest activities") }
+  const objectives = questObjectives[type]
+  if (!objectives) { throw new Error("No quest objectives") }
+  const positiveResolvers = questPositiveResolvers[type]
+  if (!positiveResolvers) { throw new Error("No quest positiveResolvers") }
+  const negativeResolvers = questNegativeResolvers[type]
+  if (!negativeResolvers) { throw new Error("No quest negativeResolvers") }
+  // const questInfo = questTypesAndInfo[type]
+  // if (!questInfo) { throw new Error("No quest info") }
+  const res: Quest = {
     guildId,
     difficulty: prng.nextArrayItem(questDifficulty),
     type,
-    objective: prng.nextArrayItem(questInfo.objectives),
+    objective: prng.nextArrayItem(objectives).objective,
     locationName: prng.nextArrayItem(questLocationName),
     locationType: prng.nextArrayItem(questLocationType)
   }
@@ -78,14 +94,18 @@ export function randomQuest(guildId: number, prng: Prando): Quest {
 
 export function randomObstacle(prng: Prando, difficulty: number): Obstacle {
   // TODO use an enum for difficulty in randomObstacle
-  if (![2,3,4,5].includes(difficulty)) { throw new Error ("Difficulty must be 2, 3, 4, or 5")}
-  const type: ObstacleType = prng.nextArrayItem(Object.values(ObstacleType))
+  if (![2, 3, 4, 5].includes(difficulty)) { throw new Error("Difficulty must be 2, 3, 4, or 5") }
+  const type = prng.nextArrayItem(ObstacleType)
+  const discoveries = obstacleDiscoveries[type]
+  if (!discoveries) { throw new Error("No obstacle discoveries") }
+  const objects = obstacleObjects[type]
+  if (!objects) { throw new Error("No obstacle objects") }
   const res: Obstacle = {
     difficulty,
     type,
     arrival: prng.nextArrayItem(obstacleArrivals),
-    discovery: prng.nextArrayItem(obstacleInfo[type].discovery),
-    object: prng.nextArrayItem(obstacleInfo[type].objects),
+    discovery: prng.nextArrayItem(discoveries).discovery,
+    object: prng.nextArrayItem(objects).object,
     // additions: [] TODO additions
   }
   if (res.difficulty > 1) {
@@ -103,18 +123,21 @@ export function randomObstacle(prng: Prando, difficulty: number): Obstacle {
 
 export function questObstacle(prng: Prando, quest: Quest): Obstacle {
   const goal = quest.type.toUpperCase()
-  const type = questObstacleMap[goal]
-  if (!type) { throw new Error("No type") }
+  const typeArray = questObstacleMap[goal]
+  if (!typeArray) { throw new Error("No typeArray") }
+  const typeObj = typeArray[0]
+  if (!typeObj) { throw new Error("No type obj") }
+  const type = typeObj.obstacleType
   if (type === goal) {
     return randomObstacle(prng, quest.difficulty)
   }
-  const obsInfo = obstacleInfo[type]
-  if (!obsInfo) { throw new Error("No obstacle info") }
+  const discoveries = obstacleDiscoveries[type]
+  if (!discoveries) { throw new Error("No obstacle discoveries") }
   const res: Obstacle = {
     difficulty: quest.difficulty,
     type,
     arrival: prng.nextArrayItem(obstacleArrivals),
-    discovery: prng.nextArrayItem(obsInfo.discovery),
+    discovery: prng.nextArrayItem(discoveries).discovery,
     object: quest.objective
     // additions: [] TODO additions
   }
@@ -127,21 +150,21 @@ export function questObstacle(prng: Prando, quest: Quest): Obstacle {
 }
 
 export async function findOutcome(
-  prng: Prando, 
+  prng: Prando,
   guildId: number,
-  obstacle: Obstacle, 
+  obstacle: Obstacle,
   party: Adventurer[],
   previousResults: Result[],
   provider: providers.BaseProvider | string,
 ): Promise<Outcome> {
-  if (typeof provider === "string") { provider = makeProvider(provider)}
-  const obsInfo = obstacleInfo[obstacle.type]
-  if (!obsInfo) { throw new Error("No obstacle info") }
+  if (typeof provider === "string") { provider = makeProvider(provider) }
+  const activities = obstacleActivities[obstacle.type]
+  if (!activities) { throw new Error("No obstacle activities") }
   const outcome: Outcome = {
     success: Success.failure,
     adjective: "",
     resolver: "",
-    activity: prng.nextArrayItem(obsInfo.activities),
+    activity: prng.nextArrayItem(activities).activity,
     obstacle,
     triggers: [],
     results: []
@@ -154,21 +177,21 @@ export async function findOutcome(
   let knockOutCount = 0
   let successSum: number = 0
 
-  for(let i = 0; i < party.length; i++) {
+  for (let i = 0; i < party.length; i++) {
     const adventurer = party[i]
     if (!adventurer) { throw new Error("No adventurer") }
     const advResults = processedResults[adventurer.id]
     let knockoutOrDeath = false
     if (advResults) {
       // If an adventurer is knocked out or dead, skip them
-      if (advResults[ResultType.Knockout].length > 0) { 
+      if (advResults[ResultType.Knockout].length > 0) {
         knockOutCount += 1
         if (knockOutCount === party.length) {
           everyoneKnockedOut = true
         }
         knockoutOrDeath = true
-      } 
-      if (advResults[ResultType.Death].length > 0) { 
+      }
+      if (advResults[ResultType.Death].length > 0) {
         knockoutOrDeath = true
       }
     }
@@ -185,7 +208,7 @@ export async function findOutcome(
         if (index >= 0) {
           // console.log('found trigger keyword', makeObstacleText(obstacle), keyword, index)
           const triggerInfos = triggerMap[keyword]
-          if (!triggerInfos) { throw new Error ("No trigger infos") }
+          if (!triggerInfos) { throw new Error("No trigger infos") }
           triggerInfos.forEach(triggerInfo => {
             const qualities = adventurer[triggerInfo.type]
             if (!qualities) { throw new Error("No adventurer qualities") }
@@ -237,66 +260,92 @@ export async function findOutcome(
   }
 
   if (successSum <= 3) {
-    const adjectives = activityAdjectives[Success.failure]
+    const adjectives = activityAdjectives["FAILURE"]
     if (!adjectives) { throw new Error("No adjectives") }
-    outcome.adjective = prng.nextArrayItem(adjectives)
+    outcome.adjective = prng.nextArrayItem(adjectives).text
 
     if (obstacle.quest) {
-      const questInfo = questTypesAndInfo[obstacle.quest.type]
-      if (!questInfo) { throw new Error("No quest info") }
-      outcome.activity = prng.nextArrayItem(questInfo.activities)
-      const resolver = prng.nextArrayItem(questInfo.resolvers)[1]
-      if (!resolver) { throw new Error("No resolver") }
-      outcome.resolver = resolver
+      const activities = questActivities[obstacle.quest.type]
+      if (!activities) { throw new Error("No quest activities") }
+      outcome.activity = prng.nextArrayItem(activities).activity
+      const resolvers = questNegativeResolvers[obstacle.quest.type]
+      if (!resolvers) { throw new Error("No quest resolvers") }
+      outcome.resolver = prng.nextArrayItem(resolvers).negativeResolver
     } else {
-      const resolver = prng.nextArrayItem(obsInfo.resolvers)[1]
-      if (!resolver) { throw new Error("No resolver") }
-      outcome.resolver = resolver
+      const resolvers = obstacleNegativeResolvers[obstacle.type]
+      if (!resolvers) { throw new Error("No quest resolvers") }
+      outcome.resolver = prng.nextArrayItem(resolvers).negativeResolver
     }
 
   } else if (successSum > 3 && successSum <= 7) {
     outcome.success = Success.mixed
-    
-    const adjectives = activityAdjectives[Success.mixed]
+
+    const adjectives = activityAdjectives["MIXED"]
     if (!adjectives) { throw new Error("No adjectives") }
-    outcome.adjective = prng.nextArrayItem(adjectives)
+    outcome.adjective = prng.nextArrayItem(adjectives).text
 
     if (obstacle.quest) {
+      /*
       const questInfo = questTypesAndInfo[obstacle.quest.type]
       if (!questInfo) { throw new Error("No quest info") }
       outcome.activity = prng.nextArrayItem(questInfo.activities)
       const resolver = prng.nextArrayItem(questInfo.resolvers)[0]
       if (!resolver) { throw new Error("No resolver") }
       outcome.resolver = resolver
+      */
+      const activities = questActivities[obstacle.quest.type]
+      if (!activities) { throw new Error("No quest activities") }
+      outcome.activity = prng.nextArrayItem(activities).activity
+      const resolvers = questPositiveResolvers[obstacle.quest.type]
+      if (!resolvers) { throw new Error("No quest resolvers") }
+      outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver
     } else {
+      /*
       const resolver = prng.nextArrayItem(obsInfo.resolvers)[0]
       if (!resolver) { throw new Error("No resolver") }
       outcome.resolver = resolver
+      */
+      const resolvers = obstaclePositiveResolvers[obstacle.type]
+      if (!resolvers) { throw new Error("No quest resolvers") }
+      outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver
     }
 
   } else if (successSum > 7) {
     outcome.success = Success.success
-    
-    const adjectives = activityAdjectives[Success.success]
+
+    const adjectives = activityAdjectives["SUCCESS"]
     if (!adjectives) { throw new Error("No adjectives") }
-    outcome.adjective = prng.nextArrayItem(adjectives)
+    outcome.adjective = prng.nextArrayItem(adjectives).text
 
     if (obstacle.quest) {
+      /*
       const questInfo = questTypesAndInfo[obstacle.quest.type]
       if (!questInfo) { throw new Error("No quest info") }
       outcome.activity = prng.nextArrayItem(questInfo.activities)
       const resolver = prng.nextArrayItem(questInfo.resolvers)[0]
       if (!resolver) { throw new Error("No resolver") }
       outcome.resolver = resolver
+      */
+      const activities = questActivities[obstacle.quest.type]
+      if (!activities) { throw new Error("No quest activities") }
+      outcome.activity = prng.nextArrayItem(activities).activity
+      const resolvers = questPositiveResolvers[obstacle.quest.type]
+      if (!resolvers) { throw new Error("No quest resolvers") }
+      outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver
     } else {
+      /*
       const resolver = prng.nextArrayItem(obsInfo.resolvers)[0]
       if (!resolver) { throw new Error("No resolver") }
       outcome.resolver = resolver
+      */
+      const resolvers = obstaclePositiveResolvers[obstacle.type]
+      if (!resolvers) { throw new Error("No quest resolvers") }
+      outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver
     }
   }
 
   // TODO awkward to have to loop through adventurers again here
-  for(let i = 0; i < party.length; i++) {
+  for (let i = 0; i < party.length; i++) {
     const adventurer = party[i]
     if (!adventurer) { throw new Error("No adventurer") }
     const advResults = processedResults[adventurer.id]
@@ -306,9 +355,9 @@ export async function findOutcome(
       if (
         advResults[ResultType.Knockout].length > 0 ||
         advResults[ResultType.Death].length > 0
-      ) { 
+      ) {
         knockoutOrDeath = true
-      } 
+      }
     }
     if (knockoutOrDeath === false) {
       const results = await rollResults(
@@ -331,15 +380,17 @@ async function rollResults(
   prng: Prando,
   guildId: number,
   difficulty: number,
-  success: Success, 
-  adventurer: Adventurer, 
+  success: Success,
+  adventurer: Adventurer,
   provider: providers.BaseProvider,
   previousResults?: Results,
 ): Promise<Result[]> {
   const results: Result[] = []
   let length = 0
-  const lengthOdds = numberOfResultsOdds[difficulty]
-  if (!lengthOdds) throw new Error("No odds")
+  const oddsArray = numberOfResultsOdds[difficulty]
+  if (oddsArray === undefined) throw new Error("No oddsArray")
+  const lengthOdds = oddsArray[0]
+  if (lengthOdds === undefined) throw new Error("No odds")
   const zeroOdds = lengthOdds[0]
   const oneOdds = lengthOdds[1]
   const twoOdds = lengthOdds[2]
@@ -354,8 +405,13 @@ async function rollResults(
   } else if (lengthRoll > twoOdds) {
     length = 3
   }
-  const typeOdds = typeOfResultOdds[success]
-  for(let i = 0; i < length; i++) {
+  const successStr = SuccessType[success]
+  if (successStr === undefined) throw new Error("No success string")
+  const typeOddsArray = typeOfResultOdds[successStr]
+  if (typeOddsArray === undefined) throw new Error("No type odds array")
+  const typeOdds = typeOddsArray[0]
+  if (typeOdds === undefined) throw new Error("No type odds")
+  for (let i = 0; i < length; i++) {
     const result: Result = {
       guildId,
       advName: adventurer.name,
@@ -367,32 +423,43 @@ async function rollResults(
     const typeRoll = prng.nextInt(1, 100)
 
     // TODO prevent repeat injuries?
-    if (typeRoll <= typeOdds["INJURY"]) {
-      const injury = prng.nextArrayItem(Injuries)
-      result.text = makeInjuryText(adventurer, injury.text)
-      result.component = prng.nextArrayItem(injury.traits)
+    const injuryOdds = typeOdds["INJURY"]
+    if (injuryOdds === undefined) throw new Error("No injuryOdds")
+    const deathOdds = typeOdds["DEATH"]
+    if (deathOdds === undefined) throw new Error("No deathOdds")
+    const lootOdds = typeOdds["LOOT"]
+    if (lootOdds === undefined) throw new Error("No lootOdds")
+    const skillOdds = typeOdds["SKILL"]
+    if (skillOdds === undefined) throw new Error("No skillOdds")
+
+    if (typeRoll <= injuryOdds) {
+      const injuryText = prng.nextArrayItem(Object.keys(injuries))
+      result.text = makeInjuryText(adventurer, injuryText)
+      const injury = injuries[injuryText]
+      if (injury === undefined) throw new Error("No injury")
+      result.component = prng.nextArrayItem(injury).trait
       // if third injury, skip rest of results
       if (previousResults) {
         if (previousResults[ResultType.Injury].length === 2) i = length
       }
-    } else if (typeRoll > typeOdds["INJURY"] && typeRoll <= typeOdds["DEATH"]) {
+    } else if (typeRoll > injuryOdds && typeRoll <= deathOdds) {
       result.type = ResultType.Death
       result.text = makeDeathText(adventurer)
       // if they died, skip rest of results
       i = length
-    } else if (typeRoll > typeOdds["DEATH"] && typeRoll <= typeOdds["LOOT"]) {
+    } else if (typeRoll > deathOdds && typeRoll <= lootOdds) {
       result.type = ResultType.Loot
       const lootPiece = await getRandomLootPiece(prng, provider)
       result.component = lootPiece
       result.text = makeLootText(adventurer, lootPiece)
-    // TODO adventurers should not be able to get repeat skills
-    } else if (typeRoll > typeOdds["LOOT"] && typeRoll <= typeOdds["SKILL"]) {
+      // TODO adventurers should not be able to get repeat skills
+    } else if (typeRoll > lootOdds && typeRoll <= skillOdds) {
       result.type = ResultType.Skill
       const skill = prng.nextArrayItem(skills)
       result.component = skill
       result.text = makeSkillText(adventurer, skill)
-    // TODO adventurers should not be able to get repeat traits
-    } else if (typeRoll > typeOdds["SKILL"]) {
+      // TODO adventurers should not be able to get repeat traits
+    } else if (typeRoll > skillOdds) {
       result.type = ResultType.Trait
       const trait = prng.nextArrayItem(Object.keys(traits))
       result.component = trait

@@ -52,3 +52,10 @@ logged into the "emblem" docker hub account. TODO put those
 credentials on keybase
 
 `echo/ $ wake publish`
+
+## To update original script content
+Create any updates in the [google sheet](https://docs.google.com/spreadsheets/d/1DWWUHyOv52j-nAPIGqscrVhzreicduFSnOR7B9Q1pRs/edit#gid=649398435)
+
+Use the `csv` menu to export all as csv. Download the resulting google drive folder and move its contents to `./scripts/csv-to-json/csv`.
+
+Run `scripts % yarn build-csv`

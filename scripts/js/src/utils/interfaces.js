@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QuestType = exports.ResultType = exports.Success = exports.Label = void 0;
+exports.ResultType = exports.Success = exports.Label = void 0;
 var Label;
 (function (Label) {
     Label["adventurerName"] = "adventurerName";
@@ -41,11 +41,3 @@ var ResultType;
     ResultType["Skill"] = "SKILL";
     ResultType["Trait"] = "TRAIT";
 })(ResultType = exports.ResultType || (exports.ResultType = {}));
-var QuestType;
-(function (QuestType) {
-    QuestType["defeat"] = "DEFEAT";
-    QuestType["explore"] = "EXPLORE";
-    QuestType["retrieve"] = "RETRIEVE";
-    QuestType["defend"] = "DEFEND";
-    QuestType["befriend"] = "BEFRIEND";
-})(QuestType = exports.QuestType || (exports.QuestType = {}));

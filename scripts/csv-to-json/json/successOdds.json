@@ -1,0 +1,30 @@
+{
+  "2": [
+    {
+      "Failure": "0",
+      "Mixed": "30",
+      "Success": "70"
+    }
+  ],
+  "3": [
+    {
+      "Failure": "0",
+      "Mixed": "35",
+      "Success": "75"
+    }
+  ],
+  "4": [
+    {
+      "Failure": "0",
+      "Mixed": "40",
+      "Success": "80"
+    }
+  ],
+  "5": [
+    {
+      "Failure": "0",
+      "Mixed": "45",
+      "Success": "85"
+    }
+  ]
+}

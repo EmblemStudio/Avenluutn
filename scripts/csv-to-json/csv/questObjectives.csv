@@ -1,0 +1,29 @@
+keystring,objective
+DEFEAT,ogre
+DEFEAT,giant spider
+DEFEAT,wyrm
+DEFEAT,warlock
+DEFEAT,swarm
+DEFEAT,psychopomp
+EXPLORE,dunes
+EXPLORE,caves
+EXPLORE,maze
+EXPLORE,hidden passage
+EXPLORE,ruins
+RETRIEVE,relic
+RETRIEVE,prisoner
+RETRIEVE,gemstone
+RETRIEVE,tome
+RETRIEVE,secret
+RETRIEVE,egregore
+DEFEND,citadel
+DEFEND,walls
+DEFEND,outskirts
+DEFEND,sanctum
+DEFEND,caravan
+DEFEND,mindscape
+BEFRIEND,lord
+BEFRIEND,doctor
+BEFRIEND,priest
+BEFRIEND,fiend
+BEFRIEND,nephilim

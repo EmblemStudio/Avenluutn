@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.findOutcome = exports.questObstacle = exports.randomObstacle = exports.randomQuest = void 0;
 const interfaces_1 = require("./interfaces");
-const sourceArrays_1 = require("../content/original/sourceArrays");
+const originalContent_1 = require("../content/original/originalContent");
 const makeText_1 = require("./makeText");
 const processResults_1 = require("./processResults");
 const loot_1 = require("../content/loot");
@@ -11,28 +11,42 @@ const newCheckpoint_1 = require("./newCheckpoint");
 // 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
 // TODO adjust the RNG so characters are more likely to "select" quests that fit them?
 function randomQuest(guildId, prng) {
-    const type = prng.nextArrayItem(Object.keys(sourceArrays_1.questTypesAndInfo));
-    const questInfo = sourceArrays_1.questTypesAndInfo[type];
-    if (!questInfo) {
-        throw new Error("No quest info");
+    const type = prng.nextArrayItem(originalContent_1.QuestType);
+    const activities = originalContent_1.questActivities[type];
+    if (!activities) {
+        throw new Error("No quest activities");
     }
+    const objectives = originalContent_1.questObjectives[type];
+    if (!objectives) {
+        throw new Error("No quest objectives");
+    }
+    const positiveResolvers = originalContent_1.questPositiveResolvers[type];
+    if (!positiveResolvers) {
+        throw new Error("No quest positiveResolvers");
+    }
+    const negativeResolvers = originalContent_1.questNegativeResolvers[type];
+    if (!negativeResolvers) {
+        throw new Error("No quest negativeResolvers");
+    }
+    // const questInfo = questTypesAndInfo[type]
+    // if (!questInfo) { throw new Error("No quest info") }
     const res = {
         guildId,
-        difficulty: prng.nextArrayItem(sourceArrays_1.questDifficulty),
+        difficulty: prng.nextArrayItem(originalContent_1.questDifficulty),
         type,
-        objective: prng.nextArrayItem(questInfo.objectives),
-        locationName: prng.nextArrayItem(sourceArrays_1.questLocationName),
-        locationType: prng.nextArrayItem(sourceArrays_1.questLocationType)
+        objective: prng.nextArrayItem(objectives).objective,
+        locationName: prng.nextArrayItem(originalContent_1.questLocationName),
+        locationType: prng.nextArrayItem(originalContent_1.questLocationType)
     };
     if (res.difficulty > 1) {
-        res.firstAdjective = prng.nextArrayItem(sourceArrays_1.genericFirstAdjectives);
+        res.firstAdjective = prng.nextArrayItem(originalContent_1.genericFirstAdjectives);
     }
     if (res.difficulty > 2) {
-        res.secondAdjective = prng.nextArrayItem(sourceArrays_1.genericSecondAdjectives);
+        res.secondAdjective = prng.nextArrayItem(originalContent_1.genericSecondAdjectives);
     }
     if (res.difficulty > 3) {
-        res.firstName = prng.nextArrayItem(sourceArrays_1.genericFirstName);
-        res.lastName = prng.nextArrayItem(sourceArrays_1.genericLastName);
+        res.firstName = prng.nextArrayItem(originalContent_1.genericFirstName);
+        res.lastName = prng.nextArrayItem(originalContent_1.genericLastName);
     }
     return res;
 }
@@ -42,46 +56,59 @@ function randomObstacle(prng, difficulty) {
     if (![2, 3, 4, 5].includes(difficulty)) {
         throw new Error("Difficulty must be 2, 3, 4, or 5");
     }
-    const type = prng.nextArrayItem(Object.values(sourceArrays_1.ObstacleType));
+    const type = prng.nextArrayItem(originalContent_1.ObstacleType);
+    const discoveries = originalContent_1.obstacleDiscoveries[type];
+    if (!discoveries) {
+        throw new Error("No obstacle discoveries");
+    }
+    const objects = originalContent_1.obstacleObjects[type];
+    if (!objects) {
+        throw new Error("No obstacle objects");
+    }
     const res = {
         difficulty,
         type,
-        arrival: prng.nextArrayItem(sourceArrays_1.obstacleArrivals),
-        discovery: prng.nextArrayItem(sourceArrays_1.obstacleInfo[type].discovery),
-        object: prng.nextArrayItem(sourceArrays_1.obstacleInfo[type].objects),
+        arrival: prng.nextArrayItem(originalContent_1.obstacleArrivals),
+        discovery: prng.nextArrayItem(discoveries).discovery,
+        object: prng.nextArrayItem(objects).object,
         // additions: [] TODO additions
     };
     if (res.difficulty > 1) {
-        res.firstAdjective = prng.nextArrayItem(sourceArrays_1.genericFirstAdjectives);
+        res.firstAdjective = prng.nextArrayItem(originalContent_1.genericFirstAdjectives);
     }
     if (res.difficulty > 2) {
-        res.secondAdjective = prng.nextArrayItem(sourceArrays_1.genericSecondAdjectives);
+        res.secondAdjective = prng.nextArrayItem(originalContent_1.genericSecondAdjectives);
     }
     if (res.difficulty > 3) {
-        res.firstName = prng.nextArrayItem(sourceArrays_1.genericFirstName);
-        res.lastName = prng.nextArrayItem(sourceArrays_1.genericLastName);
+        res.firstName = prng.nextArrayItem(originalContent_1.genericFirstName);
+        res.lastName = prng.nextArrayItem(originalContent_1.genericLastName);
     }
     return res;
 }
 exports.randomObstacle = randomObstacle;
 function questObstacle(prng, quest) {
     const goal = quest.type.toUpperCase();
-    const type = sourceArrays_1.questObstacleMap[goal];
-    if (!type) {
-        throw new Error("No type");
+    const typeArray = originalContent_1.questObstacleMap[goal];
+    if (!typeArray) {
+        throw new Error("No typeArray");
     }
+    const typeObj = typeArray[0];
+    if (!typeObj) {
+        throw new Error("No type obj");
+    }
+    const type = typeObj.obstacleType;
     if (type === goal) {
         return randomObstacle(prng, quest.difficulty);
     }
-    const obsInfo = sourceArrays_1.obstacleInfo[type];
-    if (!obsInfo) {
-        throw new Error("No obstacle info");
+    const discoveries = originalContent_1.obstacleDiscoveries[type];
+    if (!discoveries) {
+        throw new Error("No obstacle discoveries");
     }
     const res = {
         difficulty: quest.difficulty,
         type,
-        arrival: prng.nextArrayItem(sourceArrays_1.obstacleArrivals),
-        discovery: prng.nextArrayItem(obsInfo.discovery),
+        arrival: prng.nextArrayItem(originalContent_1.obstacleArrivals),
+        discovery: prng.nextArrayItem(discoveries).discovery,
         object: quest.objective
         // additions: [] TODO additions
     };
@@ -101,15 +128,15 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
     if (typeof provider === "string") {
         provider = (0, newCheckpoint_1.makeProvider)(provider);
     }
-    const obsInfo = sourceArrays_1.obstacleInfo[obstacle.type];
-    if (!obsInfo) {
-        throw new Error("No obstacle info");
+    const activities = originalContent_1.obstacleActivities[obstacle.type];
+    if (!activities) {
+        throw new Error("No obstacle activities");
     }
     const outcome = {
         success: interfaces_1.Success.failure,
         adjective: "",
         resolver: "",
-        activity: prng.nextArrayItem(obsInfo.activities),
+        activity: prng.nextArrayItem(activities).activity,
         obstacle,
         triggers: [],
         results: []
@@ -142,7 +169,7 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
         if (knockoutOrDeath === false) {
             let successRoll = prng.nextInt(1, 100);
             // Skill, loot, & trait triggers!
-            Object.keys(sourceArrays_1.triggerMap).forEach(keyword => {
+            Object.keys(originalContent_1.triggerMap).forEach(keyword => {
                 let index = -1;
                 (0, makeText_2.makeObstacleText)(obstacle, party, previousResults).forEach(ls => {
                     const localIndex = ls.string.indexOf(keyword);
@@ -151,7 +178,7 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
                 });
                 if (index >= 0) {
                     // console.log('found trigger keyword', makeObstacleText(obstacle), keyword, index)
-                    const triggerInfos = sourceArrays_1.triggerMap[keyword];
+                    const triggerInfos = originalContent_1.triggerMap[keyword];
                     if (!triggerInfos) {
                         throw new Error("No trigger infos");
                     }
@@ -166,10 +193,9 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
                         if (hasName >= 0) {
                             const triggerRoll = prng.nextInt(1, 100);
                             if (triggerRoll <= triggerInfo.chance) {
-                                console.log('rolled trigger!', triggerInfo, triggerRoll, adventurer);
                                 // TODO add trigger text to makeText and get it into final results
                                 successRoll += triggerInfo.modifier;
-                                const text = (0, makeText_1.makeTriggerText)(triggerInfo, adventurer, sourceArrays_1.traits, qualities);
+                                const text = (0, makeText_1.makeTriggerText)(triggerInfo, adventurer, originalContent_1.traits, qualities);
                                 outcome.triggers.push({
                                     characterName: adventurer.name,
                                     triggeredComponent: triggerInfo.name,
@@ -207,83 +233,109 @@ async function findOutcome(prng, guildId, obstacle, party, previousResults, prov
         successSum = 0;
     }
     if (successSum <= 3) {
-        const adjectives = sourceArrays_1.activityAdjectives[interfaces_1.Success.failure];
+        const adjectives = originalContent_1.activityAdjectives["FAILURE"];
         if (!adjectives) {
             throw new Error("No adjectives");
         }
-        outcome.adjective = prng.nextArrayItem(adjectives);
+        outcome.adjective = prng.nextArrayItem(adjectives).text;
         if (obstacle.quest) {
-            const questInfo = sourceArrays_1.questTypesAndInfo[obstacle.quest.type];
-            if (!questInfo) {
-                throw new Error("No quest info");
+            const activities = originalContent_1.questActivities[obstacle.quest.type];
+            if (!activities) {
+                throw new Error("No quest activities");
             }
-            outcome.activity = prng.nextArrayItem(questInfo.activities);
-            const resolver = prng.nextArrayItem(questInfo.resolvers)[1];
-            if (!resolver) {
-                throw new Error("No resolver");
+            outcome.activity = prng.nextArrayItem(activities).activity;
+            const resolvers = originalContent_1.questNegativeResolvers[obstacle.quest.type];
+            if (!resolvers) {
+                throw new Error("No quest resolvers");
             }
-            outcome.resolver = resolver;
+            outcome.resolver = prng.nextArrayItem(resolvers).negativeResolver;
         }
         else {
-            const resolver = prng.nextArrayItem(obsInfo.resolvers)[1];
-            if (!resolver) {
-                throw new Error("No resolver");
+            const resolvers = originalContent_1.obstacleNegativeResolvers[obstacle.type];
+            if (!resolvers) {
+                throw new Error("No quest resolvers");
             }
-            outcome.resolver = resolver;
+            outcome.resolver = prng.nextArrayItem(resolvers).negativeResolver;
         }
     }
     else if (successSum > 3 && successSum <= 7) {
         outcome.success = interfaces_1.Success.mixed;
-        const adjectives = sourceArrays_1.activityAdjectives[interfaces_1.Success.mixed];
+        const adjectives = originalContent_1.activityAdjectives["MIXED"];
         if (!adjectives) {
             throw new Error("No adjectives");
         }
-        outcome.adjective = prng.nextArrayItem(adjectives);
+        outcome.adjective = prng.nextArrayItem(adjectives).text;
         if (obstacle.quest) {
-            const questInfo = sourceArrays_1.questTypesAndInfo[obstacle.quest.type];
-            if (!questInfo) {
-                throw new Error("No quest info");
+            /*
+            const questInfo = questTypesAndInfo[obstacle.quest.type]
+            if (!questInfo) { throw new Error("No quest info") }
+            outcome.activity = prng.nextArrayItem(questInfo.activities)
+            const resolver = prng.nextArrayItem(questInfo.resolvers)[0]
+            if (!resolver) { throw new Error("No resolver") }
+            outcome.resolver = resolver
+            */
+            const activities = originalContent_1.questActivities[obstacle.quest.type];
+            if (!activities) {
+                throw new Error("No quest activities");
             }
-            outcome.activity = prng.nextArrayItem(questInfo.activities);
-            const resolver = prng.nextArrayItem(questInfo.resolvers)[0];
-            if (!resolver) {
-                throw new Error("No resolver");
+            outcome.activity = prng.nextArrayItem(activities).activity;
+            const resolvers = originalContent_1.questPositiveResolvers[obstacle.quest.type];
+            if (!resolvers) {
+                throw new Error("No quest resolvers");
             }
-            outcome.resolver = resolver;
+            outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver;
         }
         else {
-            const resolver = prng.nextArrayItem(obsInfo.resolvers)[0];
-            if (!resolver) {
-                throw new Error("No resolver");
+            /*
+            const resolver = prng.nextArrayItem(obsInfo.resolvers)[0]
+            if (!resolver) { throw new Error("No resolver") }
+            outcome.resolver = resolver
+            */
+            const resolvers = originalContent_1.obstaclePositiveResolvers[obstacle.type];
+            if (!resolvers) {
+                throw new Error("No quest resolvers");
             }
-            outcome.resolver = resolver;
+            outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver;
         }
     }
     else if (successSum > 7) {
         outcome.success = interfaces_1.Success.success;
-        const adjectives = sourceArrays_1.activityAdjectives[interfaces_1.Success.success];
+        const adjectives = originalContent_1.activityAdjectives["SUCCESS"];
         if (!adjectives) {
             throw new Error("No adjectives");
         }
-        outcome.adjective = prng.nextArrayItem(adjectives);
+        outcome.adjective = prng.nextArrayItem(adjectives).text;
         if (obstacle.quest) {
-            const questInfo = sourceArrays_1.questTypesAndInfo[obstacle.quest.type];
-            if (!questInfo) {
-                throw new Error("No quest info");
+            /*
+            const questInfo = questTypesAndInfo[obstacle.quest.type]
+            if (!questInfo) { throw new Error("No quest info") }
+            outcome.activity = prng.nextArrayItem(questInfo.activities)
+            const resolver = prng.nextArrayItem(questInfo.resolvers)[0]
+            if (!resolver) { throw new Error("No resolver") }
+            outcome.resolver = resolver
+            */
+            const activities = originalContent_1.questActivities[obstacle.quest.type];
+            if (!activities) {
+                throw new Error("No quest activities");
             }
-            outcome.activity = prng.nextArrayItem(questInfo.activities);
-            const resolver = prng.nextArrayItem(questInfo.resolvers)[0];
-            if (!resolver) {
-                throw new Error("No resolver");
+            outcome.activity = prng.nextArrayItem(activities).activity;
+            const resolvers = originalContent_1.questPositiveResolvers[obstacle.quest.type];
+            if (!resolvers) {
+                throw new Error("No quest resolvers");
             }
-            outcome.resolver = resolver;
+            outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver;
         }
         else {
-            const resolver = prng.nextArrayItem(obsInfo.resolvers)[0];
-            if (!resolver) {
-                throw new Error("No resolver");
+            /*
+            const resolver = prng.nextArrayItem(obsInfo.resolvers)[0]
+            if (!resolver) { throw new Error("No resolver") }
+            outcome.resolver = resolver
+            */
+            const resolvers = originalContent_1.obstaclePositiveResolvers[obstacle.type];
+            if (!resolvers) {
+                throw new Error("No quest resolvers");
             }
-            outcome.resolver = resolver;
+            outcome.resolver = prng.nextArrayItem(resolvers).positiveResolver;
         }
     }
     // TODO awkward to have to loop through adventurers again here
@@ -312,11 +364,12 @@ exports.findOutcome = findOutcome;
 async function rollResults(prng, guildId, difficulty, success, adventurer, provider, previousResults) {
     const results = [];
     let length = 0;
-    const lengthOdds = sourceArrays_1.numberOfResultsOdds[difficulty];
-    if (!lengthOdds) {
-        console.log(difficulty, sourceArrays_1.numberOfResultsOdds);
+    const oddsArray = originalContent_1.numberOfResultsOdds[difficulty];
+    if (oddsArray === undefined)
+        throw new Error("No oddsArray");
+    const lengthOdds = oddsArray[0];
+    if (lengthOdds === undefined)
         throw new Error("No odds");
-    }
     const zeroOdds = lengthOdds[0];
     const oneOdds = lengthOdds[1];
     const twoOdds = lengthOdds[2];
@@ -336,7 +389,15 @@ async function rollResults(prng, guildId, difficulty, success, adventurer, provi
     else if (lengthRoll > twoOdds) {
         length = 3;
     }
-    const typeOdds = sourceArrays_1.typeOfResultOdds[success];
+    const successStr = originalContent_1.SuccessType[success];
+    if (successStr === undefined)
+        throw new Error("No success string");
+    const typeOddsArray = originalContent_1.typeOfResultOdds[successStr];
+    if (typeOddsArray === undefined)
+        throw new Error("No type odds array");
+    const typeOdds = typeOddsArray[0];
+    if (typeOdds === undefined)
+        throw new Error("No type odds");
     for (let i = 0; i < length; i++) {
         const result = {
             guildId,
@@ -348,39 +409,54 @@ async function rollResults(prng, guildId, difficulty, success, adventurer, provi
         };
         const typeRoll = prng.nextInt(1, 100);
         // TODO prevent repeat injuries?
-        if (typeRoll <= typeOdds["INJURY"]) {
-            const injury = prng.nextArrayItem(sourceArrays_1.Injuries);
-            result.text = (0, makeText_1.makeInjuryText)(adventurer, injury.text);
-            result.component = prng.nextArrayItem(injury.traits);
+        const injuryOdds = typeOdds["INJURY"];
+        if (injuryOdds === undefined)
+            throw new Error("No injuryOdds");
+        const deathOdds = typeOdds["DEATH"];
+        if (deathOdds === undefined)
+            throw new Error("No deathOdds");
+        const lootOdds = typeOdds["LOOT"];
+        if (lootOdds === undefined)
+            throw new Error("No lootOdds");
+        const skillOdds = typeOdds["SKILL"];
+        if (skillOdds === undefined)
+            throw new Error("No skillOdds");
+        if (typeRoll <= injuryOdds) {
+            const injuryText = prng.nextArrayItem(Object.keys(originalContent_1.injuries));
+            result.text = (0, makeText_1.makeInjuryText)(adventurer, injuryText);
+            const injury = originalContent_1.injuries[injuryText];
+            if (injury === undefined)
+                throw new Error("No injury");
+            result.component = prng.nextArrayItem(injury).trait;
             // if third injury, skip rest of results
             if (previousResults) {
                 if (previousResults[interfaces_1.ResultType.Injury].length === 2)
                     i = length;
             }
         }
-        else if (typeRoll > typeOdds["INJURY"] && typeRoll <= typeOdds["DEATH"]) {
+        else if (typeRoll > injuryOdds && typeRoll <= deathOdds) {
             result.type = interfaces_1.ResultType.Death;
             result.text = (0, makeText_1.makeDeathText)(adventurer);
             // if they died, skip rest of results
             i = length;
         }
-        else if (typeRoll > typeOdds["DEATH"] && typeRoll <= typeOdds["LOOT"]) {
+        else if (typeRoll > deathOdds && typeRoll <= lootOdds) {
             result.type = interfaces_1.ResultType.Loot;
             const lootPiece = await (0, loot_1.getRandomLootPiece)(prng, provider);
             result.component = lootPiece;
             result.text = (0, makeText_1.makeLootText)(adventurer, lootPiece);
             // TODO adventurers should not be able to get repeat skills
         }
-        else if (typeRoll > typeOdds["LOOT"] && typeRoll <= typeOdds["SKILL"]) {
+        else if (typeRoll > lootOdds && typeRoll <= skillOdds) {
             result.type = interfaces_1.ResultType.Skill;
-            const skill = prng.nextArrayItem(sourceArrays_1.skills);
+            const skill = prng.nextArrayItem(originalContent_1.skills);
             result.component = skill;
             result.text = (0, makeText_1.makeSkillText)(adventurer, skill);
             // TODO adventurers should not be able to get repeat traits
         }
-        else if (typeRoll > typeOdds["SKILL"]) {
+        else if (typeRoll > skillOdds) {
             result.type = interfaces_1.ResultType.Trait;
-            const trait = prng.nextArrayItem(Object.keys(sourceArrays_1.traits));
+            const trait = prng.nextArrayItem(Object.keys(originalContent_1.traits));
             result.component = trait;
             result.text = (0, makeText_1.makeTraitText)(adventurer, trait);
         }

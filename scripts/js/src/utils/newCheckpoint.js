@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.boundingBlocks = exports.closestEarlierBlockHash = exports.nextBlockHash = exports.newCheckpoint = exports.checkPointErrors = exports.makeProvider = void 0;
-const ethers_1 = require("ethers");
+const providers_1 = require("@ethersproject/providers");
 const prando_1 = require("prando");
 function makeProvider(providerUrl) {
     if (providerUrl) {
-        return new ethers_1.providers.JsonRpcProvider(providerUrl);
+        return new providers_1.JsonRpcProvider(providerUrl);
     }
-    return ethers_1.providers.getDefaultProvider();
+    return (0, providers_1.getDefaultProvider)();
 }
 exports.makeProvider = makeProvider;
 exports.checkPointErrors = {
@@ -15,7 +15,7 @@ exports.checkPointErrors = {
     unmined: `No mined block found before time--not mined yet?`
 };
 async function newCheckpoint(runStart, checkpointTime, provider, seed) {
-    console.log('finding checkpoint', runStart, checkpointTime);
+    console.log('finding checkpoint', checkpointTime, seed);
     if (checkpointTime > runStart) {
         const error = new Error(exports.checkPointErrors.timeInFuture);
         console.warn(error);
@@ -27,7 +27,6 @@ async function newCheckpoint(runStart, checkpointTime, provider, seed) {
         console.warn(error);
         return { error, prng: new prando_1.default(-1), blockHash: "" };
     }
-    console.log(`Found checkpoint for time ${checkpointTime}`);
     return { prng: new prando_1.default(startBlockHash + seed), blockHash: startBlockHash };
 }
 exports.newCheckpoint = newCheckpoint;
@@ -89,7 +88,7 @@ function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function logBlockInfo(aName: string, bName: string, a: providers.Block, b: providers.Block, t: number) {
+function logBlockInfo(aName: string, bName: string, a: Block, b: Block, t: number) {
   if (a.number === b.number) {
     console.log(`${aName} and ${bName} are the same`)
   } else {

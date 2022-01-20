@@ -1,0 +1,20 @@
+keystring,positiveTrigger,negativeTrigger
+a peg leg,protected by *depPossesive* peg leg,hampered by *depPossesive* peg leg
+anxiety,,feels anxious
+weakness,,feels weak
+deafness,is unharmed by the sound,cannot hear a thing
+self-doubt,,is consumed by self-doubt
+a prosthetic arm,uses *depPossesive* prosthetic arm,struggles with *depPossesive* prosthetic arm
+aggressive impulses,charges forward fearlessly,rushes in too eagerly
+cowardice,,is frozen in fear
+greed,greedily spots something no one else saw,lingers too long looking for treasure
+dragon obsession,has a deep understanding of dragons,can't get over *depPossesive* dragon obsession
+gambling addiction,is willing to risk it all,takes a foolish gamble
+martyr complex,sacrifices for the good of the party,seems too willing too sacrifice *reflexive*
+optimistism,helps everyone see the bright side,is taking things too lightly
+unluckiness,,can't catch a break
+trauma,remembers not to make the same mistakes again,is haunted by their past
+monsterphobia,,is terrified of strange beasts
+quick-wit,conjures smiles with a clever joke,doesn't know when to stop talking
+elegance,moves with cat-like elegance,
+great destiny,feels *depPossessive* great destiny calling,feels the icy touch of fate
