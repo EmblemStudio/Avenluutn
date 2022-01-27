@@ -285,4 +285,15 @@ describe("Stories Auctions", () => {
     expect(story1.minted).to.be.true
     expect(story1.nftId).to.equal(1)
   })
+
+  it("Uses baseURI for tokenURIs", async () => {
+    // move to after the auction with no bidders
+    currentBlockTime = startTime + collectionLength + baseAuctionDuration + 1
+    await bobMint(1, 0, 0, currentBlockTime)
+    const nftId = await publisher.tokenOfOwnerByIndex(await bob.address, 0)
+    expect(await publisher.tokenURI(0)).to.equal(`https://example.com/${nftId}`)
+
+    const storyId = await publisher.getStoryId(1, 0, 0)
+    expect(await publisher.mintedStories(nftId)).to.equal(storyId)
+  })
 })
