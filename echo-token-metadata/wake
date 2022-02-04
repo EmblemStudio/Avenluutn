@@ -1,0 +1,67 @@
+#!/bin/bash
+
+function wake () {
+    bname=$(basename $(pwd))
+    if [ $bname != "echo-token-metadata" ]
+    then
+        echo "wake must be run from the Avenluutn/echo-token-metadata folder"
+        return [1]
+    fi
+
+    # Auto updating!!!
+    source ./wake
+    _wake "$@"
+}
+
+function _wake () {
+    tag=emblem/avenluutn-metadata:test
+    pubtag=emblem/avenluutn-metadata:latest
+    container_name=avenluutn-metadata
+    hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
+    abigen_out_path=`pwd`
+    localhost_pub_addr=`cat ../hardhat/localhost_PublisherAddress.txt`
+    goerli_pub_addr=`cat ../hardhat/goerli_PublisherAddress.txt`
+    case $1 in
+        "build")
+            docker run \
+                   -u `id -u`:`id -g` \
+                   -v $hardhat_abi_path:/sources \
+                   -v $abigen_out_path:/out \
+                   ethereum/client-go:alltools-latest abigen \
+                   --abi /sources/Publisher.sol/Publisher.abi \
+                   --out /out/artifact_Publisher_sol.go \
+                   --pkg main \
+                   --type Publisher \
+                   --bin /sources/Publisher.sol/Publisher.bin \
+
+            docker build -t $tag .
+            ;;
+        "run")
+            wake build
+            docker run \
+                   --env AVENLUUTN_PUB_ADDR=$goerli_pub_addr \
+                   --env AVENLUUTN_PROVIDER="https://goerli.infura.io/v3/46801402492348e480a7e18d9830eab8" \
+                   --rm \
+                   --net host \
+                   -d \
+                   --name $container_name \
+                   $tag
+            ;;
+        "test")
+            go test ./...
+            ;;
+        "stop")
+            docker stop $container_name
+            ;;
+        "format")
+            go fmt
+            ;;
+        "publish")
+            docker build -t $pubtag .
+            docker push $pubtag
+            ;;
+        *)
+            which wake
+            ;;
+    esac
+}
