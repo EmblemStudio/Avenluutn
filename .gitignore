@@ -112,3 +112,5 @@ dist
 
 # UI build artifact
 ./echo/ui
+
+store

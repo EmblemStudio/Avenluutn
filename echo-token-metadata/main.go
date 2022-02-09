@@ -24,9 +24,12 @@ import (
  */
 
 const (
-	APIbaseURI = "https://avenluutn-api.squad.games"
 	description = "Generative adventure stories in the lootverse"
 	baseExternalURI = "https://avenluutn.squad.games/story"
+)
+
+var (
+	APIbaseURI string
 )
 
 // main serves token metadata by token id /tokens/:tokenId -> Token
@@ -44,6 +47,11 @@ func main() {
 		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
 	}
 	log.Println("Provider", provider)
+
+	APIbaseURI = os.Getenv("AVENLUUTN_API_BASE_URI")
+	if APIbaseURI == "" {
+		log.Fatal("Missing requiredAVENLUUTN_API_BASE_URI")
+	}
 
 	client, err := ethclient.Dial(provider)
 	if err != nil {
@@ -75,13 +83,13 @@ func (p *Publisher) getStoryData(c echo.Context) error {
 
 	storyInfo, err := p.getStoryInfo(tokenID)
 	if err != nil {
-		e := errors.New("Could not get story")
+		e := errors.New(fmt.Sprintf("Could not get story\n%v", err))
 		return serverError(e);
 	}
 
 	run, err := p.GetRun(storyInfo)
 	if err != nil {
-		e := errors.New("Could not get run")
+		e := errors.New(fmt.Sprintf("Could not get run\n%v"))
 		return serverError(e)
 	}
 
@@ -91,7 +99,8 @@ func (p *Publisher) getStoryData(c echo.Context) error {
 		"<span style='color: lightgray'>|</span>  ",
 	)
 	if err != nil {
-		data = []byte("Could not unmarshal story")
+		e := errors.New(fmt.Sprintf("Could not unmarshal story\n%v", err))
+		return serverError(e)
 	}
 	return c.HTML(
 		http.StatusOK,
@@ -112,31 +121,36 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 
 	storyInfo, err := p.getStoryInfo(tokenID)
 	if err != nil {
-		e := errors.New("Could not get story")
+		e := errors.New(fmt.Sprintf("Could not get story\n%v", err))
 		return serverError(e);
 	}
 
 	run, err := p.GetRun(storyInfo)
 	if err != nil {
-		e := errors.New("Could not get run")
+		e := errors.New(fmt.Sprintf("Could not get run\n%v", err))
 		return serverError(e)
 	}
 
 	meta, err := newStoryMeta(run.Stories[storyInfo.Index], storyInfo)
 	if err != nil {
-		e := errors.New("Could not make metadata from story")
+		e := errors.New(
+			fmt.Sprintf(
+				"Could not make metadata from story\n%v",
+				err,
+			),
+		)
 		return serverError(e)
 	}
 	tokenMetadata, err := json.Marshal(meta)
 	if err != nil {
-		e := errors.New("Could not marshal storyMeta")
+		e := errors.New(fmt.Sprintf(
+			"Could not marshal storyMeta\n%v",
+			err,
+		))
 		return serverError(e)
 	}
 
-	return c.HTML(
-		http.StatusOK,
-		fmt.Sprintf("<pre>%v</pre>", string(tokenMetadata)),
-	)
+	return c.HTML(http.StatusOK, string(tokenMetadata))
 }
 
 // fmtStoryMetadata returns StoryMeta given a story
@@ -201,9 +215,13 @@ func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 func (p *Publisher) getStoryInfo(tokenID int64) (StoryInfo, error) {
 
 	storyID, err := p.MintedStories(nil, big.NewInt(tokenID))
-	if err != nil {	return StoryInfo{}, errors.New(
-		fmt.Sprintf("Could not get StoryInfo for tokenID %v", tokenID),
-	)}
+	if err != nil {
+		return StoryInfo{}, errors.New(fmt.Sprintf(
+			"Could not get StoryInfo for tokenID %v\n%v",
+			tokenID,
+			err,
+		))
+	}
 
 	s, err := p.Stories(nil, storyID)
 	if err != nil {
@@ -231,24 +249,34 @@ func (p *Publisher) GetRun(s StoryInfo) (Run, error) {
 	)
 
 	res, err := http.Get(runURL)
-	if err != nil {	return Run{}, errors.New(
-		fmt.Sprintf("Could not get run %v (%v)", runURL, err.Error),
-	)}
+	if err != nil {
+		return Run{}, errors.New(
+			fmt.Sprintf("Could not get run %v (%v)", runURL, err),
+		)
+	}
 
 	body, err := io.ReadAll(res.Body)
 	res.Body.Close()
-	if res.StatusCode > 299 { return Run{}, errors.New(
-		fmt.Sprintf("Get run error ($v: %v)", res.StatusCode, body),
-	)}
-	if err != nil { return Run{}, errors.New(
-		fmt.Sprintf("Get run error (%v)", err),
-	)}
+	if res.StatusCode > 299 {
+		return Run{}, errors.New(fmt.Sprintf(
+			"Get run error (%v)\n%v",
+			res.StatusCode,
+			string(body),
+		))
+	}
+	if err != nil {
+		return Run{}, errors.New(
+			fmt.Sprintf("Get run error\n%v", err),
+		)
+	}
 
 	var run Run
 	err = json.Unmarshal(body, &run)
-	if err != nil { return Run{}, errors.New(
-		fmt.Sprintf("Get run json error: (%v)", err),
-	)}
+	if err != nil {
+		return Run{}, errors.New(
+			fmt.Sprintf("Get run json error\n%v", err),
+		)
+	}
 
 	return run, nil
 }
