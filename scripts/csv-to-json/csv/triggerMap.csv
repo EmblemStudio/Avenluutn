@@ -37,7 +37,7 @@ reknowned,50,10,Bane,loot
 sea,50,10,Swimming,skills
 succulent,50,10,Baking,skills
 summit,50,-15,Weakness,traits
-unspeakable,10,-20,Monsterphobia,traits
+unspeakable,50,-20,Monsterphobia,traits
 village,50,-10,Greed,traits
 violent,50,-15,Cowardice,traits
 voracious,50,5,Baking,skills

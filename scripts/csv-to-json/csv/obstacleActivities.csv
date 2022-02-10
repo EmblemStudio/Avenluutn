@@ -2,9 +2,9 @@ keystring,activity
 PUZZLE,brainstorm
 PUZZLE,attempt
 PUZZLE,hundred guesses
-OBSTACLE,attempt
-OBSTACLE,exertion
-OBSTACLE,trek
+IMPEDIMENT,attempt
+IMPEDIMENT,exertion
+IMPEDIMENT,trek
 ENTITY,negotiation
 ENTITY,battle
 ENTITY,stand off

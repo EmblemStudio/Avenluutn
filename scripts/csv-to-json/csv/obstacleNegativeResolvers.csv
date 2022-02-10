@@ -2,9 +2,9 @@ keystring,negativeResolver
 PUZZLE,failed to solve
 PUZZLE,failed to figure out
 PUZZLE,found no way through
-OBSTACLE,failed to traverse
-OBSTACLE,failed to cross
-OBSTACLE,failed to overcome
+IMPEDIMENT,failed to traverse
+IMPEDIMENT,failed to cross
+IMPEDIMENT,failed to overcome
 ENTITY,were driven back by
 ENTITY,were defeated by
 ENTITY,failled to pass

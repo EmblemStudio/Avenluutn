@@ -2,9 +2,9 @@ keystring,positiveResolver
 PUZZLE,solved
 PUZZLE,figured out
 PUZZLE,found a way through
-OBSTACLE,traversed
-OBSTACLE,crossed
-OBSTACLE,overcame
+IMPEDIMENT,traversed
+IMPEDIMENT,crossed
+IMPEDIMENT,overcame
 ENTITY,parted ways with
 ENTITY,defeated
 ENTITY,passed by

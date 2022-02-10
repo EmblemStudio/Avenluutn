@@ -60,7 +60,7 @@ export const questActivities: { [questType: string]: { activity: string }[] } = 
 export const questDifficulty: number[] =
   JSON.parse(JSON.stringify(questDifficultyJson))
 export const questLocationName = questLocationNameJson
-export const questLocationType = questLocationTypeJson
+export const questLocationType = Object.keys(questLocationTypeJson)
 export const questPositiveResolvers: { [questType: string]: { positiveResolver: string }[] } = questPositiveResolversJson
 export const questNegativeResolvers: { [questType: string]: { negativeResolver: string }[] } = questNegativeResolversJson
 export const questObjectives: { [questType: string]: { objective: string }[] } = questObjectivesJson

@@ -1,12 +1,14 @@
 keystring,text
+ABYSMAL,an out-of-control
+ABYSMAL,a doomed
+EXEMPLARY,a dominating
+EXEMPLARY,an excellent
 FAILURE,an exhausting
 FAILURE,a misjudged
 FAILURE,a rough
 FAILURE,a weak
 FAILURE,a bungled
 FAILURE,a misguided
-FAILURE,an out-of-control
-FAILURE,a doomed
 MIXED,a fraught
 MIXED,a challenging
 MIXED,a trying
@@ -17,9 +19,7 @@ MIXED,a grueling
 MIXED,a testing
 SUCCESS,a successful
 SUCCESS,a triumphant
-SUCCESS,a dominating
 SUCCESS,an easy
-SUCCESS,an excellent
 SUCCESS,a breezy
 SUCCESS,a powerful
 SUCCESS,a strong
