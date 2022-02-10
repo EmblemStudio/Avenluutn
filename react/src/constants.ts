@@ -43,7 +43,7 @@ export const SERVER = {
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "http://67.205.138.92",
-  "goerli": "http://67.205.138.92",
+  "goerli": "https://avenluutn-api.squad.games",
 }[NARRATOR_PARAMS.network]
 
 export const CACHE_PERIOD = 180000 // 3 minutes
