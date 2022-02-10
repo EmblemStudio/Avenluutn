@@ -116,6 +116,8 @@ async function main() {
   console.log("Verified NarratorNFTs.")
   */
 
+  console.log("Waiting for 8 block confirmations")
+  await publisher.deployTransaction.wait(8)
   console.log("Verifying Publisher...")
   await hre.run("verify:verify", {
     address: publisher.address,
