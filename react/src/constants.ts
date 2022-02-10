@@ -8,7 +8,7 @@ interface NarratorParams {
 
 export const NARRATOR_PARAMS: NarratorParams = {
   network: "goerli",
-  narratorIndex: 15,
+  narratorIndex: 0,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -33,7 +33,7 @@ export const STATUS = {
 export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0xB1dDBe83e22450E3e4b02431681bf26733262F43",
+  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
   "polygon": "",
   "localhost": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
 }
