@@ -42,7 +42,7 @@ services:
     image: emblem/avenluutn:stable
     restart: always
     environment:
-      - AVENLUUTN_PUB_ADDR=0xB1dDBe83e22450E3e4b02431681bf26733262F43
+      - AVENLUUTN_PUB_ADDR=0x0F28D67D68b2904fC0A0B76FB0f5d4980199E7c4
       - AVENLUUTN_PROVIDER=http://goerli:8545
       - AVENLUUTN_SCRIPT_PROVIDER=http://mainnet:8545
 

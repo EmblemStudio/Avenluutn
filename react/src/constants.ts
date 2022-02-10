@@ -33,7 +33,7 @@ export const STATUS = {
 export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0xB1dDBe83e22450E3e4b02431681bf26733262F43",
+  "goerli": "0x0F28D67D68b2904fC0A0B76FB0f5d4980199E7c4",
   "polygon": "",
   "localhost": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
 }
@@ -43,7 +43,7 @@ export const SERVER = {
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "http://67.205.138.92",
-  "goerli": "http://67.205.138.92",
+  "goerli": "https://avenluutn-api.squad.games",
 }[NARRATOR_PARAMS.network]
 
 export const CACHE_PERIOD = 180000 // 3 minutes

@@ -17,21 +17,28 @@ async function main() {
 
   const names = {
     ropsten: "The Grand Adventure: Ropstenluutn",
-    localhost: "The Local Adventure: Localuutn"
+    localhost: "The Local Adventure: Localuutn",
+    goerli: "The Goerand Adventure: Govenluutn"
   }
   const symbols = {
     ropsten: "tgaRPSTNLTN",
-    localhost: "tlaLCLTN"
+    localhost: "tlaLCLTN",
+    goerli: "tgaGVNLTN"
+  }
+  const baseURIs = {
+    goreli: "https://avenluutn-api.squad.games"
   }
   const name = names[hre.network.name] || "The Grand Adventure: Avenluutn"
   const symbol = symbols[hre.network.name] || "tgaAVNLTN"
+  const baseURI = baseURIs[hre.network.name] || "https://avenluutn-api.squad.games"
 
-  const baseAuctionDuration = 30 * 60
-  const timeBuffer = 10 * 60
+  const baseAuctionDuration = 60 * 60
+  const timeBuffer = 30 * 60
   const minBidAmount = hre.ethers.utils.parseEther('0.001')
   const minBidIncrementPercentage = 5
 
   // We get the contracts to deploy
+  /* we have plenty of narrator nft conracts lol
   console.log("Deploying NarratorNFTs")
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
   const narratorNFTs = await NarratorNFTs.deploy()
@@ -44,6 +51,7 @@ async function main() {
     `${hre.network.name}_NarratorNFTsAddress.txt`,
     narratorNFTs.address,
   )
+  */
 
   console.log("Deploying Publisher")
   const Publisher = await hre.ethers.getContractFactory("Publisher");
@@ -52,6 +60,7 @@ async function main() {
     timeBuffer,
     minBidAmount,
     minBidIncrementPercentage,
+    baseURI,
     name,
     symbol,
   );
@@ -69,6 +78,7 @@ async function main() {
    * add test narratorNFT. This first narrator will point to a script
    * at localhost for testing purposes
    */
+  /*
   console.log("Minting test NFT")
   const narratorTx = await narratorNFTs.mint(
     narratorNFTs.address,
@@ -91,17 +101,20 @@ async function main() {
   )
   const receipt = await pubTx.wait()
   console.log("New narrator added at index:", Number(receipt.events[0].args.count))
+  */
 
   // don't try to verify if we are on localhost or hardhat networks
   if (hre.network.name === "localhost" || hre.network.name === "hardhat") {
     return
   }
 
+  /*
   console.log("verifying NarratorNFTs...")
   await hre.run("verify:verify", {
     address: narratorNFTs.address
   })
   console.log("Verified NarratorNFTs.")
+  */
 
   console.log("Verifying Publisher...")
   await hre.run("verify:verify", {
@@ -111,6 +124,7 @@ async function main() {
       timeBuffer,
       minBidAmount,
       minBidIncrementPercentage,
+      baseURI,
       name,
       symbol,
     ]
