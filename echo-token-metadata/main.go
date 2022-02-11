@@ -112,7 +112,7 @@ func (p *Publisher) getStoryData(c echo.Context) error {
 }
 
 func makeAdventurersByName(run Run) map[string]Adventurer {
-	var adventurersByName map[string]Adventurer
+	adventurersByName := make(map[string]Adventurer)
 	for _, g := range(run.NextState.Guilds) {
 		for _, a := range(g.Adventurers) {
 			nameParts := []string{}
