@@ -51,7 +51,9 @@ func findGuildName(textParts []TextPart) (string, error) {
 			return strings.TrimSpace(t.String), nil
 		}
 	}
-	return "", errors.New("No guild name found")
+	return "", errors.New(
+		fmt.Sprintf("No guild name found\nTextParts: %v", textParts),
+	)
 }
 
 func makeQuestText(textParts []TextPart) (string, error) {
@@ -68,7 +70,9 @@ func makeQuestText(textParts []TextPart) (string, error) {
 	if foundQuestType == true {
 		return strings.TrimSpace(questText), nil
 	}
-	return "", errors.New("No quest text found")
+	return "", errors.New(
+		fmt.Sprintf("No quest text found\ntextParts%v", textParts),
+	)
 }
 
 // findQuestConjunctive finds the word to use when refering to the quest
@@ -78,7 +82,9 @@ func findQuestConjunctive(textParts []TextPart) (string, error) {
 			return strings.TrimSpace(textParts[i + 1].String), nil
 		}
 	}
-	return "", errors.New("Could not find quest conjunctive")
+	return "", errors.New(
+		fmt.Sprintf("Could not find quest conjunctive\ntextParts%v", textParts),
+	)
 }
 
 func findQuestObjective(textParts []TextPart) (string, error) {
@@ -87,7 +93,9 @@ func findQuestObjective(textParts []TextPart) (string, error) {
 			return strings.TrimSpace(textParts[i].String), nil
 		}
 	}
-	return "", errors.New("Could not find quest objective")
+	return "", errors.New(
+		fmt.Sprintf("Could not find quest objective\ntextParts%v", textParts),
+	)
 }
 
 

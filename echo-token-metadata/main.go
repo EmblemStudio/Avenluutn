@@ -155,6 +155,7 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 	guildName, err := findGuildName(s.RichText.Beginning)
 	if err != nil {
+		log.Println(fmt.Sprintf("Could not find guild name\n%v", err))
 		guildName = "The Guild"
 	}
 	numAdventurers := countAdventurers(s.RichText.Beginning)
@@ -167,7 +168,8 @@ func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 
 	questText, err := makeQuestText(s.RichText.Beginning)
 	if err != nil {
-		questText = "do something daring and mighty!"
+		log.Println(fmt.Sprintf("Could not make quest text\n%v", err))
+		questText = "be daring and mighty!"
 	}
 	summary := fmt.Sprintf(
 		"In the name of %s,\n %s adventurers accept their quest to\n %s",
@@ -178,6 +180,7 @@ func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 
 	questConjunctive, err := findQuestConjunctive(s.RichText.Beginning)
 	if err != nil {
+		log.Println(fmt.Sprintf("Could not find quest conjunctive\n,%v", err))
 		questConjunctive = "a"
 	}
 
