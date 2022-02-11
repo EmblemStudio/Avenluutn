@@ -119,17 +119,23 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 		return badRequest(e);
 	}
 
+	log.Println("Getting token metadata: tokenID", tokenID)
+
 	storyInfo, err := p.getStoryInfo(tokenID)
 	if err != nil {
 		e := errors.New(fmt.Sprintf("Could not get story\n%v", err))
 		return serverError(e);
 	}
 
+	log.Println("Got StoryInfo", storyInfo)
+
 	run, err := p.GetRun(storyInfo)
 	if err != nil {
 		e := errors.New(fmt.Sprintf("Could not get run\n%v", err))
 		return serverError(e)
 	}
+
+	log.Println("Got story", run.Stories[storyInfo.Index])
 
 	meta, err := newStoryMeta(run.Stories[storyInfo.Index], storyInfo)
 	if err != nil {
@@ -149,7 +155,7 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 	guildName, err := findGuildName(s.RichText.Beginning)
 	if err != nil {
-		guildName = "A guild"
+		guildName = "The Guild"
 	}
 	numAdventurers := countAdventurers(s.RichText.Beginning)
 	var adventurerQuantity string
@@ -177,7 +183,8 @@ func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 
 	questObjective, err := findQuestObjective(s.RichText.Beginning)
 	if err != nil {
-		questObjective = "a difficult problem"
+		log.Println(fmt.Sprintf("Could not find quest objective\n%v", err))
+		questObjective = "difficult problem"
 	}
 
 	name := fmt.Sprintf(
