@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"errors"
 	"math/big"
+	"strings"
 	"encoding/json"
 
 	"github.com/labstack/echo/v4"
@@ -49,7 +50,7 @@ func main() {
 
 	APIbaseURI = os.Getenv("AVENLUUTN_API_BASE_URI")
 	if APIbaseURI == "" {
-		log.Fatal("Missing requiredAVENLUUTN_API_BASE_URI")
+		log.Fatal("Missing required AVENLUUTN_API_BASE_URI")
 	}
 
 	client, err := ethclient.Dial(provider)
@@ -110,6 +111,33 @@ func (p *Publisher) getStoryData(c echo.Context) error {
 	)
 }
 
+func makeAdventurersByName(run Run) map[string]Adventurer {
+	var adventurersByName map[string]Adventurer
+	for _, g := range(run.NextState.Guilds) {
+		for _, a := range(g.Adventurers) {
+			nameParts := []string{}
+			if a.Name.Prefix != "" {
+				nameParts = append(nameParts, a.Name.Prefix)
+			}
+			if a.Name.FirstName != "" {
+				nameParts = append(nameParts, a.Name.FirstName)
+			}
+			if a.Name.MiddleName != "" {
+				nameParts = append(nameParts, a.Name.MiddleName)
+			}
+			if a.Name.LastName != "" {
+				nameParts = append(nameParts, a.Name.LastName)
+			}
+			if a.Name.Suffix != "" {
+				nameParts = append(nameParts, a.Name.Suffix)
+			}
+			name := strings.Join(nameParts, " ")
+			adventurersByName[name] = a
+		}
+	}
+	return adventurersByName
+}
+
 // getTokenMetadata handler to get token metadata
 func (p *Publisher) getTokenMetadata(c echo.Context) error {
 	tokenID, err := getInt64Param(c, "tokenID")
@@ -136,7 +164,11 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 
 	log.Println("Got story", run.Stories[storyInfo.Index])
 
-	meta, err := newStoryMeta(run.Stories[storyInfo.Index], storyInfo)
+	meta, err := newStoryMeta(
+		run.Stories[storyInfo.Index],
+		storyInfo,
+		makeAdventurersByName(run),
+	)
 	if err != nil {
 		e := errors.New(
 			fmt.Sprintf(
@@ -151,7 +183,11 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 }
 
 // fmtStoryMetadata returns StoryMeta given a story
-func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
+func newStoryMeta(
+	s Story,
+	si StoryInfo,
+	adventurersByName map[string]Adventurer,
+) (StoryMeta, error) {
 
 	guildName, err := findGuildName(s.RichText.Beginning)
 	if err != nil {
@@ -159,7 +195,7 @@ func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 		guildName = "The Guild"
 	}
 
-	adventurers, err := findAdventurers(s.RichText.Beginning)
+	adventurers, err := findAdventurers(s.RichText.Beginning, adventurersByName)
 	if err != nil {
 		log.Println(fmt.Sprintf("Could not find adventurers\n%v", err))
 		adventurers = "some adventurers"

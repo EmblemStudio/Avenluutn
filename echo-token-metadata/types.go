@@ -53,9 +53,30 @@ type StoryInfo struct {
 	NFTid           int64
 }
 
+type AdventurerName struct {
+	FirstName string `json:"firstName"`
+	LastName string `json:"lastName"`
+	MiddleName string `json:"MiddleName"`
+	Prefix string `json:"prefix"`
+	Suffix string `json:"suffix"`
+}
+
+type Adventurer struct {
+	Class []string `json:"class"`
+	Name AdventurerName `json:"name"`
+}
+
+type Guild struct {
+	Adventurers map[string]Adventurer `json:"adventurers"`
+}
+
+type NarratorState struct {
+	Guilds []Guild `json:"guilds"`
+}
+
 type Run struct {
 	Stories []Story `json:"stories"`
-	NextState map[string]interface{} `json:"nextState"`
+	NextState NarratorState `json:"nextState"`
 	NextUpdateTime int64 `json:"nextUpdateTime"`
 }
 

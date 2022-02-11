@@ -45,11 +45,26 @@ func countAdventurers(textParts []TextPart) int {
 	return count
 }
 
-func findAdventurers(textParts []TextPart) (string, error) {
+func formatAdventurerName(adventurer Adventurer, fullname string) string {
+	class := strings.Join(adventurer.Class, " ")
+	return fmt.Sprintf("The %v %v", class, fullname)
+}
+
+func findAdventurers(
+	textParts []TextPart,
+	adventurersByName map[string]Adventurer,
+) (string, error) {
 	adventurers := []string{}
 	for _, t := range(textParts) {
 		if t.Label == "adventurerName" {
-			adventurers = append(adventurers, t.String)
+			adventurer, present := adventurersByName[t.String]
+			var name string
+			if !present {
+				name = t.String
+			} else {
+				name = formatAdventurerName(adventurer, t.String)
+			}
+			adventurers = append(adventurers, name)
 		}
 	}
 	if len(adventurers) == 0 {
