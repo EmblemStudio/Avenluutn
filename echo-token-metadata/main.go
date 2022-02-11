@@ -132,7 +132,6 @@ func makeAdventurersByName(run Run) map[string]Adventurer {
 				nameParts = append(nameParts, a.Name.Suffix)
 			}
 			name := strings.Join(nameParts, " ")
-			log.Println(fmt.Sprintf("adding name (%v)", name))
 			adventurersByName[name] = a
 		}
 	}

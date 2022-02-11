@@ -58,7 +58,7 @@ func findAdventurers(
 	adventurers := []string{}
 	for _, t := range(textParts) {
 		if t.Label == "adventurerName" {
-			adventurer, present := adventurersByName[t.String]
+			adventurer, present := adventurersByName[strings.TrimSpace(t.String)]
 			var name string
 			if !present {
 				log.Println(fmt.Sprintf("name (%v) not present\n\n%+v", t.String, adventurersByName))
