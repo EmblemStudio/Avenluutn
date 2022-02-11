@@ -164,10 +164,12 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 
 	log.Println("Got story", run.Stories[storyInfo.Index])
 
+	aByName := makeAdventurersByName(run)
+	log.Println(fmt.Sprintf("%+v", aByName)
 	meta, err := newStoryMeta(
 		run.Stories[storyInfo.Index],
 		storyInfo,
-		makeAdventurersByName(run),
+		aByName,
 	)
 	if err != nil {
 		e := errors.New(
