@@ -153,6 +153,8 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 
 // fmtStoryMetadata returns StoryMeta given a story
 func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
+	fmt.Println("Beginning")
+	logTextParts(s.RichText.Beginning)
 	guildName, err := findGuildName(s.RichText.Beginning)
 	if err != nil {
 		log.Println(fmt.Sprintf("Could not find guild name\n%v", err))
