@@ -5,7 +5,7 @@ const publisherAbi = require("../artifacts/contracts/Publisher.sol/Publisher.jso
 const fs = require('fs')
 
 async function main() {
-  // We get the contracts to deploy
+  // We get the publisher and NFT contract
   const signers = await hre.ethers.getSigners()
   const narratorNFTsAddress = fs.readFileSync(`./${hre.network.name}_NarratorNFTsAddress.txt`).toString()
   const publisherAddress = fs.readFileSync(`./${hre.network.name}_PublisherAddress.txt`).toString()

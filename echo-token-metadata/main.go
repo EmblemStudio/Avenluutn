@@ -141,16 +141,8 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 		)
 		return serverError(e)
 	}
-	tokenMetadata, err := json.Marshal(meta)
-	if err != nil {
-		e := errors.New(fmt.Sprintf(
-			"Could not marshal storyMeta\n%v",
-			err,
-		))
-		return serverError(e)
-	}
 
-	return c.HTML(http.StatusOK, string(tokenMetadata))
+	return c.JSON(http.StatusOK, meta)
 }
 
 // fmtStoryMetadata returns StoryMeta given a story

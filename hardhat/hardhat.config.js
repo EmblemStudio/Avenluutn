@@ -5,6 +5,11 @@ require("@nomiclabs/hardhat-waffle");
 require("hardhat-gas-reporter");
 require("solidity-coverage");
 
+const Contract = require("@ethersproject/contracts").Contract
+const nftAbi = require("./artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json").abi
+const publisherAbi = require("./artifacts/contracts/Publisher.sol/Publisher.json").abi
+const fs = require('fs')
+
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 
@@ -15,6 +20,18 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+
+task("updateBaseURI", "Updates the publisher baseURI")
+  .addPositionalParam("uri")
+  .setAction(async (taskArgs, hre) => {
+    const signers = await hre.ethers.getSigners()
+    const publisherAddress = fs.readFileSync(`./${hre.network.name}_PublisherAddress.txt`).toString()
+    const publisher = new Contract(publisherAddress, publisherAbi, signers[0])
+
+    console.log("updating publisher baseURI to", taskArgs.uri)
+    await publisher.updateBaseURI(taskArgs.uri)
+    console.log("complete")
+  })
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
