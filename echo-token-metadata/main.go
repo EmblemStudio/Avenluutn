@@ -146,15 +146,11 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 		return badRequest(e);
 	}
 
-	log.Println("Getting token metadata: tokenID", tokenID)
-
 	storyInfo, err := p.getStoryInfo(tokenID)
 	if err != nil {
 		e := errors.New(fmt.Sprintf("Could not get story\n%v", err))
 		return serverError(e);
 	}
-
-	log.Println("Got StoryInfo", storyInfo)
 
 	run, err := p.GetRun(storyInfo)
 	if err != nil {
@@ -162,10 +158,7 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 		return serverError(e)
 	}
 
-	log.Println("Got story", run.Stories[storyInfo.Index])
-
 	aByName := makeAdventurersByName(run)
-	log.Println(fmt.Sprintf("%+v", aByName))
 	meta, err := newStoryMeta(
 		run.Stories[storyInfo.Index],
 		storyInfo,

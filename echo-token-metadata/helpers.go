@@ -60,6 +60,7 @@ func findAdventurers(
 			adventurer, present := adventurersByName[t.String]
 			var name string
 			if !present {
+				log.Println(fmt.Sprintf("name (%v) not present\n\n%+v", t.String, adventurersByName)
 				name = t.String
 			} else {
 				name = formatAdventurerName(adventurer, t.String)
