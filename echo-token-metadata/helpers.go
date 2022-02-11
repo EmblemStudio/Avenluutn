@@ -48,7 +48,7 @@ func countAdventurers(textParts []TextPart) int {
 
 func formatAdventurerName(adventurer Adventurer, fullname string) string {
 	class := strings.Join(adventurer.Class, " ")
-	return fmt.Sprintf("The %v %v", class, fullname)
+	return fmt.Sprintf("the %v %v", strings.ToLower(class), fullname)
 }
 
 func findAdventurers(
