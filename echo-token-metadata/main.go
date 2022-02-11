@@ -9,7 +9,6 @@ import (
 	"errors"
 	"math/big"
 	"encoding/json"
-	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -153,19 +152,17 @@ func (p *Publisher) getTokenMetadata(c echo.Context) error {
 
 // fmtStoryMetadata returns StoryMeta given a story
 func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
-	fmt.Println("Beginning")
-	logTextParts(s.RichText.Beginning)
+
 	guildName, err := findGuildName(s.RichText.Beginning)
 	if err != nil {
 		log.Println(fmt.Sprintf("Could not find guild name\n%v", err))
 		guildName = "The Guild"
 	}
-	numAdventurers := countAdventurers(s.RichText.Beginning)
-	var adventurerQuantity string
-	if numAdventurers == 0 {
-		adventurerQuantity = "some"
-	} else {
-		adventurerQuantity = strconv.Itoa(numAdventurers)
+
+	adventurers, err := findAdventurers(s.RichText.Beginning)
+	if err != nil {
+		log.Println(fmt.Sprintf("Could not find adventurers\n%v", err))
+		adventurers = "some adventurers"
 	}
 
 	questText, err := makeQuestText(s.RichText.Beginning)
@@ -174,9 +171,9 @@ func newStoryMeta(s Story, si StoryInfo) (StoryMeta, error) {
 		questText = "be daring and mighty!"
 	}
 	summary := fmt.Sprintf(
-		"In the name of %s,\n %s adventurers accept their quest to\n %s",
+		"In the name of %s,\n%s\naccept their quest to\n %s",
 		guildName,
-		adventurerQuantity,
+		adventurers,
 		questText,
 	)
 

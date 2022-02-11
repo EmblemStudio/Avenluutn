@@ -45,6 +45,19 @@ func countAdventurers(textParts []TextPart) int {
 	return count
 }
 
+func findAdventurers(textParts []TextPart) (string, error) {
+	adventurers := []string{}
+	for _, t := range(textParts) {
+		if t.Label == "adventurerName" {
+			adventurers = append(adventurers, t.String)
+		}
+	}
+	if len(adventurers) == 0 {
+		return "", errors.New("No adventurers found")
+	}
+	return strings.Join(adventurers, "\n"), nil
+}
+
 func findGuildName(textParts []TextPart) (string, error) {
 	for _, t := range(textParts) {
 		if t.Label == "guildName" {
