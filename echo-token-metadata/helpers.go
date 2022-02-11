@@ -76,6 +76,10 @@ func findAdventurers(
 	if len(adventurers) == 0 {
 		return "", errors.New("No adventurers found")
 	}
+	adventurers[len(adventurers) - 1] = strings.Join(
+		[]string{"and", adventurers[len(adventurers) - 1]},
+		" ",
+	)
 	return strings.Join(adventurers, "\n"), nil
 }
 
