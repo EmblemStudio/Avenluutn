@@ -31,7 +31,7 @@ type EndingPart struct {
 }
 
 type TextPart struct {
-	Label string `json:"string"`
+	Label string `json:"label"`
 	String string `json:"string"`
 }
 
