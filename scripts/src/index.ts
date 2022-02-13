@@ -5,7 +5,7 @@ import {
   newCheckpoint,
   ScriptResult,
   Story,
-  State, 
+  State,
   Result
 } from './utils'
 import { tellStory } from './tellStory'
@@ -26,7 +26,7 @@ export async function tellStories(
   providerUrl?: string,
 ): Promise<ScriptResult> {
   const provider = makeProvider(providerUrl)
-  const runStart = Math.floor(Date.now()/1000)
+  const runStart = Math.floor(Date.now() / 1000)
   const checkpoint = await newCheckpoint(runStart, startTime, provider)
   let nextUpdateTime = startTime
 
@@ -57,7 +57,7 @@ export async function tellStories(
       provider
     )
     // if nextUpdateTime hasn't been updated yet OR this time is earlier
-    if (nextUpdateTime === startTime || nextUpdateTime > story.nextUpdateTime) { 
+    if (nextUpdateTime === startTime || nextUpdateTime > story.nextUpdateTime) {
       nextUpdateTime = story.nextUpdateTime
     }
 

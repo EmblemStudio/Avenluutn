@@ -57,7 +57,7 @@ export async function tellStory(
       },
       events: [],
       nextUpdateTime: findNextUpdateTime(
-        runStart, 
+        runStart,
         [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime],
         true
       )
@@ -89,9 +89,9 @@ export async function tellStory(
       },
       ending: ending.text,
     },
-    events: ending.results,
+    events: [...middle.allResults, ...ending.results],
     nextUpdateTime: findNextUpdateTime(
-      runStart, 
+      runStart,
       [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime],
       middle.allOutcomesSucceeded
     )
@@ -115,7 +115,7 @@ export async function tellStory(
     }
   })
   ending.text.main.forEach(ls => res.plainText.push(ls.string))
-  ending.text.resultTexts.forEach(lsa => { 
+  ending.text.resultTexts.forEach(lsa => {
     lsa.forEach(ls => res.plainText.push(ls.string))
   })
   return res
@@ -166,7 +166,7 @@ async function tellBeginning(
   const outcomeTimes = []
   const obstacleLength = Math.floor(length / (quest.difficulty + 1))
   const outcomeDelay = Math.floor(obstacleLength / 2)
-  for(let i = 1; i <= quest.difficulty; i++) {
+  for (let i = 1; i <= quest.difficulty; i++) {
     const delay = obstacleLength * i
     obstacleTimes.push(startTime + delay)
     outcomeTimes.push(startTime + delay + outcomeDelay)
@@ -199,12 +199,11 @@ async function tellMiddle(
     outcomeText: [],
     allOutcomesSucceeded: true
   }
-  for(let i = 0; i < beginning.obstacleTimes.length; i++) {
+  for (let i = 0; i < beginning.obstacleTimes.length; i++) {
     if (middle.allOutcomesSucceeded) {
       const obstacleTime = beginning.obstacleTimes[i]
       if (!obstacleTime) { throw new Error("No obstacle time") }
 
-      console.log('finding checkpoint for', runStart, guildId)
       let checkpoint = await newCheckpoint(runStart, obstacleTime, provider, `${guildId}`)
 
       if (!checkpoint.error) {
@@ -222,7 +221,6 @@ async function tellMiddle(
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
 
-      console.log('finding checkpoint for', runStart, guildId)
       checkpoint = await newCheckpoint(runStart, outcomeTime, provider, `${guildId}`)
       const obstacle = middle.obstacles[i]
 
@@ -241,8 +239,6 @@ async function tellMiddle(
         middle.allResults = [...middle.allResults, ...outcome.results]
         middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome, beginning.party, middle.allResults)]
       }
-    } else {
-
     }
   }
 
@@ -273,7 +269,6 @@ async function tellEnding(
     }
   }
 
-  console.log('finding checkpoint for', runStart, guildId)
   const checkpoint = await newCheckpoint(runStart, beginning.endTime, provider, `${guildId}`)
 
   let deathCount = 0

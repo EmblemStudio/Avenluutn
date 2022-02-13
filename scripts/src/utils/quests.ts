@@ -452,18 +452,20 @@ async function rollResults(
       const lootPiece = await getRandomLootPiece(prng, provider)
       result.component = lootPiece
       result.text = makeLootText(adventurer, lootPiece)
-      // TODO adventurers should not be able to get repeat skills
     } else if (typeRoll > lootOdds && typeRoll <= skillOdds) {
       result.type = ResultType.Skill
       const skill = prng.nextArrayItem(skills)
-      result.component = skill
-      result.text = makeSkillText(adventurer, skill)
-      // TODO adventurers should not be able to get repeat traits
+      if (!adventurer.skills.includes(skill)) {
+        result.component = skill
+        result.text = makeSkillText(adventurer, skill)
+      }
     } else if (typeRoll > skillOdds) {
       result.type = ResultType.Trait
       const trait = prng.nextArrayItem(Object.keys(traits))
-      result.component = trait
-      result.text = makeTraitText(adventurer, trait)
+      if (!adventurer.traits.includes(trait)) {
+        result.component = trait
+        result.text = makeTraitText(adventurer, trait)
+      }
     }
     results.push(result)
     // If this is the third injury, add a knockout result

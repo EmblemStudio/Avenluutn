@@ -33,7 +33,7 @@ async function tellStory(runStart, prng, state, startTime, length, guildId, prov
             },
             ending: ending.text,
         },
-        events: ending.results,
+        events: [...middle.allResults, ...ending.results],
         nextUpdateTime: (0, utils_1.findNextUpdateTime)(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime], middle.allOutcomesSucceeded)
     };
     // make plainText
@@ -130,7 +130,6 @@ async function tellMiddle(runStart, guildId, state, beginning, provider) {
             if (!obstacleTime) {
                 throw new Error("No obstacle time");
             }
-            console.log('finding checkpoint for', runStart, guildId);
             let checkpoint = await (0, utils_1.newCheckpoint)(runStart, obstacleTime, provider, `${guildId}`);
             if (!checkpoint.error) {
                 if (i + 1 === beginning.obstacleTimes.length) {
@@ -148,7 +147,6 @@ async function tellMiddle(runStart, guildId, state, beginning, provider) {
             if (!outcomeTime) {
                 throw new Error("No outcome time");
             }
-            console.log('finding checkpoint for', runStart, guildId);
             checkpoint = await (0, utils_1.newCheckpoint)(runStart, outcomeTime, provider, `${guildId}`);
             const obstacle = middle.obstacles[i];
             if (!checkpoint.error && obstacle) {
@@ -161,8 +159,6 @@ async function tellMiddle(runStart, guildId, state, beginning, provider) {
                 middle.allResults = [...middle.allResults, ...outcome.results];
                 middle.outcomeText = [...middle.outcomeText, (0, utils_1.makeOutcomeText)(outcome, beginning.party, middle.allResults)];
             }
-        }
-        else {
         }
     }
     return middle;
@@ -183,7 +179,6 @@ async function tellEnding(runStart, guildId, beginning, middle, state, provider)
             resultTexts: []
         }
     };
-    console.log('finding checkpoint for', runStart, guildId);
     const checkpoint = await (0, utils_1.newCheckpoint)(runStart, beginning.endTime, provider, `${guildId}`);
     let deathCount = 0;
     let everyoneDied = false;

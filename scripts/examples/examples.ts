@@ -18,6 +18,7 @@ const parallelStories = 6
 
 async function main() {
   let output = ""
+  let lastState = {}
   let state = null
   let length = 1000
   let time = Math.floor(Date.now() / 1000) - length * 5
@@ -48,11 +49,16 @@ async function main() {
         output += `nextUpdateTime: ${story.nextUpdateTime}`
       }
       output += "\r\n"
+      lastState = result.nextState
     }
   }
   fs.writeFileSync(
     `${__dirname}/output/${Date.now()}.txt`,
     output
+  )
+  fs.writeFileSync(
+    `${__dirname}/output/lastResult.json`,
+    JSON.stringify(lastState)
   )
 }
 

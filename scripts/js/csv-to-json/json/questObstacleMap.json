@@ -1,1 +1,1 @@
-{ "DEFEAT": [{ "obstacleType": "ENTITY" }], "EXPLORE": [{ "obstacleType": "OBSTACLE" }], "RETRIEVE": [{ "obstacleType": "PUZZLE" }], "DEFEND": [{ "obstacleType": "OBSTACLE" }], "BEFRIEND": [{ "obstacleType": "ENTITY" }] }
+{ "DEFEAT": [{ "obstacleType": "ENTITY" }], "EXPLORE": [{ "obstacleType": "IMPEDIMENT" }], "RETRIEVE": [{ "obstacleType": "PUZZLE" }], "DEFEND": [{ "obstacleType": "IMPEDIMENT" }], "BEFRIEND": [{ "obstacleType": "ENTITY" }] }
