@@ -10,9 +10,10 @@ import { NARRATOR_PARAMS } from './constants'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import GuildLobby from './pages/GuildLobby'
-import GuildAuctions from './pages/GuildAuctions'
 import GuildLogbook from './pages/GuildLogbook'
 import About from './pages/About'
+import GuildDossier from './pages/GuildDossier'
+import Adventurer from './pages/Adventurer'
 
 export default () => {
   return (
@@ -23,11 +24,13 @@ export default () => {
             <BrowserRouter>
               <Layout>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/:guildId/lobby" element={<GuildLobby />} />
-                    <Route path="/:guildId/auctions" element={<GuildAuctions />} />
-                    <Route path="/:guildId/logbook" element={<GuildLogbook />} />
-                    <Route path="/about" element={<About />} />
+                  <Route path="/" element={<Home />} />
+                  <Route path="/:guildId/lobby" element={<GuildLobby />} />
+                  <Route path="/:guildId/dossier" element={<GuildDossier />} />
+                  <Route path="/:guildId/logbook" element={<GuildLogbook />} />
+                  <Route path="/:guildId/adventurers/:adventurerId" element={<Adventurer graveyard={false} />} />
+                  <Route path="/:guildId/graveyard/:adventurerId" element={<Adventurer graveyard={true} />} />
+                  <Route path="/about" element={<About />} />
                 </Routes>
               </Layout>
             </BrowserRouter>

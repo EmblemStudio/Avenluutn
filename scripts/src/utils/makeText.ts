@@ -26,7 +26,7 @@ export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[
   const res: LabeledString[] = [
     { string: ``, label: Label.conjunctive },
     { string: `At `, label: Label.conjunctive },
-    { string: guild.name, label: Label.guildName },
+    { string: guild.name, label: Label.guildName, entityId: guild.id },
     { string: ` in `, label: Label.conjunctive },
     { string: guild.location, label: Label.locationName },
     { string: `, `, label: Label.conjunctive }
@@ -34,9 +34,9 @@ export function makeGuildText(guild: Guild, party: Adventurer[]): LabeledString[
   party.forEach((a, i) => {
     if (i === party.length - 1) {
       res.push({ string: `and `, label: Label.conjunctive })
-      res.push({ string: `${nameString(a.name)} `, label: Label.adventurerName })
+      res.push({ string: `${nameString(a.name)} `, label: Label.adventurerName, entityId: a.id })
     } else {
-      res.push({ string: `${nameString(a.name)}, `, label: Label.adventurerName })
+      res.push({ string: `${nameString(a.name)}, `, label: Label.adventurerName, entityId: a.id })
     }
   })
   res.push({ string: `gathered. `, label: Label.conjunctive })
@@ -218,21 +218,21 @@ export function makeEndingText(
     if (middle.questSuccess === Success.failure) {
       res.main.push(
         { string: `slunk back to `, label: Label.conjunctive },
-        { string: `${beginning.guild.name}`, label: Label.guildName },
+        { string: `${beginning.guild.name}`, label: Label.guildName, entityId: beginning.guild.id },
         { string: ` in disgrace.`, label: Label.conjunctive }
       )
       // res[0] += `slunk back to ${beginning.guild.name} in disgrace.`
     } else if (middle.questSuccess === Success.mixed) {
       res.main.push(
         { string: `returned to `, label: Label.conjunctive },
-        { string: `${beginning.guild.name}`, label: Label.guildName },
+        { string: `${beginning.guild.name}`, label: Label.guildName, entityId: beginning.guild.id },
         { string: `, exhausted but successful.`, label: Label.conjunctive }
       )
       // res[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
     } else if (middle.questSuccess === Success.success) {
       res.main.push(
         { string: `returned triumphantly to `, label: Label.conjunctive },
-        { string: `${beginning.guild.name}`, label: Label.guildName },
+        { string: `${beginning.guild.name}`, label: Label.guildName, entityId: beginning.guild.id },
         { string: `, basking in glory.`, label: Label.conjunctive }
       )
       // res[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
@@ -262,21 +262,21 @@ function insertPronouns(string: string, pronouns: Pronouns): string {
 
 export function makeInjuryText(adventurer: Adventurer, injuryString: string,): LabeledString[] {
   return [
-    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
     { string: insertPronouns(` ${injuryString}.`, adventurer.pronouns), label: Label.conjunctive }
   ]
 }
 
 export function makeDeathText(adventurer: Adventurer): LabeledString[] {
   return [
-    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
     { string: ` died.`, label: Label.conjunctive }
   ]
 }
 
 export function makeLootText(adventurer: Adventurer, lootPiece: string): LabeledString[] {
   return [
-    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
     { string: ` found `, label: Label.conjunctive },
     { string: `${lootPiece}`, label: Label.lootName },
     { string: `!`, label: Label.conjunctive }
@@ -285,7 +285,7 @@ export function makeLootText(adventurer: Adventurer, lootPiece: string): Labeled
 
 export function makeSkillText(adventurer: Adventurer, skill: string): LabeledString[] {
   return [
-    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
     { string: ` learned `, label: Label.conjunctive },
     { string: `${skill}`, label: Label.skillName },
     { string: `!`, label: Label.conjunctive }
@@ -294,7 +294,7 @@ export function makeSkillText(adventurer: Adventurer, skill: string): LabeledStr
 
 export function makeTraitText(adventurer: Adventurer, trait: string): LabeledString[] {
   return [
-    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
     { string: ` now has `, label: Label.conjunctive },
     { string: `${trait}`, label: Label.traitName },
     { string: `!`, label: Label.conjunctive }
@@ -303,7 +303,7 @@ export function makeTraitText(adventurer: Adventurer, trait: string): LabeledStr
 
 export function makeKnockoutText(adventurer: Adventurer): LabeledString[] {
   return [
-    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName },
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
     { string: ` was knocked out.`, label: Label.conjunctive }
   ]
 }
@@ -322,18 +322,18 @@ export function makeTriggerText(
     if (!trait) throw new Error("No trait")
     if (triggerInfo.modifier > 0 && trait.positiveTrigger) {
       res.push(
-        { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
+        { string: `${nameString(adventurer.name)} `, label: Label.adventurerName, entityId: adventurer.id },
         { string: `${trait.positiveTrigger}!`, label: Label.conjunctive }
       )
     } else if (trait.negativeTrigger) {
       res.push(
-        { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
+        { string: `${nameString(adventurer.name)} `, label: Label.adventurerName, entityId: adventurer.id },
         { string: `${trait.negativeTrigger}!`, label: Label.conjunctive }
       )
     }
   } else if (triggerInfo.type === "skills") {
     res.push(
-      { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
+      { string: `${nameString(adventurer.name)} `, label: Label.adventurerName, entityId: adventurer.id },
       { string: `used ${adventurer.pronouns.depPossessive} `, label: Label.conjunctive },
       { string: `${triggerInfo.name} `, label: Label.skillName },
       { string: `skills!`, label: Label.conjunctive }
@@ -348,7 +348,7 @@ export function makeTriggerText(
     })
     if (usedLoot !== "") {
       res.push(
-        { string: `${nameString(adventurer.name)} `, label: Label.adventurerName },
+        { string: `${nameString(adventurer.name)} `, label: Label.adventurerName, entityId: adventurer.id },
         { string: `used ${adventurer.pronouns.depPossessive} `, label: Label.conjunctive },
         { string: `${usedLoot}`, label: Label.lootName },
         { string: `!`, label: Label.conjunctive }

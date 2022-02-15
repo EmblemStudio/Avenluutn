@@ -35,18 +35,18 @@ function requireDefined<T>(val: T, msg?: string): asserts val is NonNullable<T> 
 // until it finds an update if not already querying
 export const NarratorStateContext = createContext<NarratorState>({
   narrator: emptyNarrator,
-  updateNarrator: () => {},
+  updateNarrator: () => { },
   lastUpdate: 0,
-  queryUntilUpdate: (state: NarratorState) => {},
+  queryUntilUpdate: (state: NarratorState) => { },
   querying: false
 })
 
 export default ({ params, children }: { params: NarratorParams, children: ReactElement }) => {
   const [narratorState, setNarratorState] = useState<NarratorState>({
     narrator: emptyNarrator,
-    updateNarrator: () => {},
+    updateNarrator: () => { },
     lastUpdate: 0,
-    queryUntilUpdate: (state: NarratorState) => {},
+    queryUntilUpdate: (state: NarratorState) => { },
     querying: false
   })
 
@@ -71,7 +71,7 @@ let baseAuctionDuration: BigNumber = BigNumber.from(-1)
 let narratorData: any = undefined
 
 async function updateNarratorState(
-  narratorState: NarratorState, 
+  narratorState: NarratorState,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
@@ -84,7 +84,7 @@ async function updateNarratorState(
 }
 
 async function _updateNarratorState(
-  narratorState: NarratorState, 
+  narratorState: NarratorState,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
@@ -101,7 +101,7 @@ async function _updateNarratorState(
     narratorData = await publisher.narrators(params.narratorIndex)
   }
 
-  let newNarrator: Narrator = {...narratorData, collections: [], stories: {}}
+  let newNarrator: Narrator = { ...narratorData, collections: [], stories: {} }
   const totalCollections = Number(newNarrator.totalCollections)
   const timeActive = now() - Number(newNarrator.start)
   const relevantStories = Math.floor(
@@ -110,7 +110,7 @@ async function _updateNarratorState(
   const promises: Promise<void>[] = []
   for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
-      async (resolve, ) => {
+      async (resolve,) => {
         let collection = await getCollection(params.narratorIndex, i)
         if (collection === null) {
           collection = {
@@ -154,13 +154,13 @@ let querying: boolean = false
 let queryInterval: NodeJS.Timer
 
 function queryUntilStateUpdate(
-  narratorState: NarratorState, 
+  narratorState: NarratorState,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
   console.log('Starting querying for narrator state update')
   if (querying === true) {
-    return 
+    return
   }
   console.log('proceeding with querying')
   _updateNarratorState(narratorState, setNarratorState, params)
@@ -175,25 +175,25 @@ function queryUntilStateUpdate(
     const newCollection = narratorState.narrator.collections[lastCollectionIndex]
     if (newCollection === undefined) return
     if (newCollection.scriptResult.nextUpdateTime !== nextUpdateTime) {
-        // we got an update--stop querying
-        console.log('stopping querying')
-        clearInterval(queryInterval)
-        return
+      // we got an update--stop querying
+      console.log('stopping querying')
+      clearInterval(queryInterval)
+      return
     }
     _updateNarratorState(narratorState, setNarratorState, params)
   }, 1000 * 20) // retry every 20 seconds
 }
 
-function sortStories(s1: Story, s2: Story) { return Number(s1.startTime.sub(s2.startTime)) }
+function sortStories(s1: Story, s2: Story) { return Number(s2.startTime.sub(s1.startTime)) }
 
 async function getCollection(
   narratorIndex: number,
   collectionIndex: number
 ): Promise<Collection | null> {
   let response
-  try { 
-    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json`) 
-  } catch (err) { 
+  try {
+    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json`)
+  } catch (err) {
     console.warn(`Bad Response: ${err}`)
     return null
   }
@@ -238,7 +238,7 @@ async function concatCategorizedStories(
         nextUpdateTime: startTime
       }
       // continue
-    } 
+    }
     const story: Story = {
       narratorIndex,
       collectionIndex,
@@ -251,7 +251,7 @@ async function concatCategorizedStories(
       nftId: contractStory.nftId,
       text
     }
-    if (auction.bidder === AddressZero) { 
+    if (auction.bidder === AddressZero) {
       story.auction = Object.assign({}, auction, { duration: auctionDuration })
     }
     const started = presentOrPast(story.startTime)

@@ -1,30 +1,44 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Countdown from './Countdown'
 import { Story, storyName, getTimeLeft } from '../utils'
-import { WAITING_FOR_SERVER } from '../constants' 
+import { WAITING_FOR_SERVER } from '../constants'
 import LoadingAnimation from './LoadingAnimation'
 import useNarratorState from '../hooks/useNarratorState';
 
 interface StoryBoxProps { story: Story }
 
-
-function label(text: { label: string, string: string }, key: number) {
-  return (
-    <span key={key} className={text.label}>{text.string}</span>
-  )
-}
+const entityLabels = ["guildName", "adventurerName"]
 
 export default ({ story }: StoryBoxProps) => {
   const narratorState = useNarratorState()
-  
+
+  function label({ label, string, entityId }: { label: string, string: string, entityId?: number }, key: number) {
+    if (entityLabels.includes(label) && entityId !== undefined) {
+      let to = ""
+      if (label = "guildName") to = `/${story.storyIndex}/lobby`
+      if (label = "adventurerName") to = `/${story.storyIndex}/adventurers/${entityId}`
+      return (
+        <span key={key} className={`${label} is-underlined`}>
+          <Link to={to}>
+            {string}
+          </Link>
+        </span>
+      )
+    }
+    return (
+      <span key={key} className={label}>{string}</span>
+    )
+  }
+
   return (
-    <section className="section pt-2 pb-5">
+    <section className="section pt-2 pb-4">
       <div className="container outer-border">
         <div className="container inner-border">
           <section className="section pt-5 pb-5">
             <div className="block beginning">
-             {story.text.richText.beginning.map(label)}
+              {story.text.richText.beginning.map(label)}
             </div>
             <div className="block middle">
               {story.text.richText.middle.obstacleText.map((obText, i) => {
@@ -67,11 +81,11 @@ export default ({ story }: StoryBoxProps) => {
             }
             {getTimeLeft(story.text.nextUpdateTime) > 0 ?
               <div className="block">
-                <Countdown 
+                <Countdown
                   to={story.text.nextUpdateTime}
                 />
               </div>
-            :
+              :
               story.text.nextUpdateTime !== -1 &&
               <div className="block has-text-grey">
                 {narratorState.queryUntilUpdate(narratorState)}

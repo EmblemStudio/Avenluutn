@@ -83,6 +83,7 @@ export enum Label {
 export interface LabeledString {
   string: string;
   label: Label;
+  entityId?: number;
 }
 
 // They [verb] [adjectives] [type] [name] [additions]
@@ -216,6 +217,7 @@ export interface Pronouns {
 }
 
 export interface Stats {
+  [key: string]: number;
   strength: number;
   magic: number;
   agility: number;

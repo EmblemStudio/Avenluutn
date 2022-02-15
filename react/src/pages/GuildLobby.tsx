@@ -13,9 +13,9 @@ export default () => {
 
   return (
     <>
-      <GuildHeader guild={guild} selected="lobby"/>
-      <div className="block p-4">
-        {guild && <>
+      <GuildHeader guild={guild} selected="lobby" />
+      {guild &&
+        <div className="block p-4">
           <div className="block">
             You enter {guild.name} in {guild.location}.
           </div>
@@ -26,13 +26,13 @@ export default () => {
             </span>
             .
           </div>
-          {narrator.stories[guild.id]?.inProgress[0] && 
+          {narrator.stories[guild.id]?.inProgress[0] &&
             <div className="block mb-4">
               <div className="block">
                 Adventurers from {guild.name} have set forth. The bard tells their tales:
               </div>
               {narrator.stories[guild.id]?.inProgress.map(s => {
-                return <StoryBox key={s.collectionIndex} story={s}/>
+                return <StoryBox key={s.collectionIndex} story={s} />
               })}
             </div>
           }
@@ -44,14 +44,15 @@ export default () => {
               <UpcomingStory story={narrator.stories[guild.id]?.upcoming[0]} />
             </div>
           }
-          {narrator.stories[guild.id]?.inProgress.length === 0 && 
+          {narrator.stories[guild.id]?.inProgress.length === 0 &&
             narrator.stories[guild.id]?.upcoming.length === 0 &&
             <div className="block">
               People mill about.
             </div>
           }
-        </>}
-      </div>
+
+        </div>
+      }
     </>
   )
 }

@@ -20,7 +20,7 @@ interface GuildHeaderProps {
   selected: string
 }
 
-export default ({guild, selected }: GuildHeaderProps) => {
+export default ({ guild, selected }: GuildHeaderProps) => {
   if (!guild) return (
     <nav className="level">
       <div className="level-left">
@@ -45,9 +45,9 @@ export default ({guild, selected }: GuildHeaderProps) => {
           </Link>
         </div>
         <div className={`level-item ${padding}`}>
-          <Link to={`/${guild.id}/auctions`}>
-          <div className={"is-underlined" + selectedStyles(selected, "auctions", color)}>
-              Auctions
+          <Link to={`/${guild.id}/dossier`}>
+            <div className={"is-underlined" + selectedStyles(selected, "dossier", color)}>
+              Dossier
             </div>
           </Link>
         </div>
