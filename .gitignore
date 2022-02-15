@@ -115,3 +115,5 @@ dist
 
 store
 ops
+
+echo-token-metadata/artifact*
