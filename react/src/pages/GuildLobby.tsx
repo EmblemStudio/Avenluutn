@@ -3,9 +3,17 @@ import React from 'react'
 import GuildHeader from '../components/GuildHeader'
 import StoryBox from '../components/StoryBox'
 import UpcomingStory from '../components/UpcomingStory'
+import Bet from '../components/Bet'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
 import { coloredBoldStyle } from '../utils'
+
+interface Bet {
+  narratorIndex: number
+  collectionIndex: number
+  storyIndex: number
+  outcome: string
+}
 
 export default () => {
   const { narrator } = useNarratorState()
@@ -26,13 +34,18 @@ export default () => {
             </span>
             .
           </div>
-          {narrator.stories[guild.id]?.inProgress[0] && 
+          {narrator.stories[guild.id]?.inProgress[0] &&
             <div className="block mb-4">
               <div className="block">
                 Adventurers from {guild.name} have set forth. The bard tells their tales:
               </div>
               {narrator.stories[guild.id]?.inProgress.map(s => {
-                return <StoryBox key={s.collectionIndex} story={s}/>
+                return (
+                  <div key={s.collectionIndex}>
+                    <Bet story={s} guild={guild} />
+                    <StoryBox story={s} />
+                  </div>
+                )
               })}
             </div>
           }

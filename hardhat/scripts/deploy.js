@@ -38,7 +38,6 @@ async function main() {
   const minBidIncrementPercentage = 5
 
   // We get the contracts to deploy
-  /* we have plenty of narrator nft conracts lol
   console.log("Deploying NarratorNFTs")
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
   const narratorNFTs = await NarratorNFTs.deploy()
@@ -51,7 +50,6 @@ async function main() {
     `${hre.network.name}_NarratorNFTsAddress.txt`,
     narratorNFTs.address,
   )
-  */
 
   console.log("Deploying Publisher")
   const Publisher = await hre.ethers.getContractFactory("Publisher");
@@ -78,7 +76,7 @@ async function main() {
    * add test narratorNFT. This first narrator will point to a script
    * at localhost for testing purposes
    */
-  /*
+
   console.log("Minting test NFT")
   const narratorTx = await narratorNFTs.mint(
     narratorNFTs.address,
@@ -101,7 +99,6 @@ async function main() {
   )
   const receipt = await pubTx.wait()
   console.log("New narrator added at index:", Number(receipt.events[0].args.count))
-  */
 
   // don't try to verify if we are on localhost or hardhat networks
   if (hre.network.name === "localhost" || hre.network.name === "hardhat") {

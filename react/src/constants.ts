@@ -6,8 +6,16 @@ interface NarratorParams {
   narratorIndex: number
 }
 
+export const currentRelease = "goerli"
+let network
+if (window !== undefined) {
+  if (window.location.host === 'localhost:3000') {
+    network = "localhost"
+  }
+}
+
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: "goerli",
+  network: network ? network : currentRelease,
   narratorIndex: 0,
 }
 
@@ -35,11 +43,11 @@ export const ADDRESSES: { [name: string]: string } = {
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
   "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
   "polygon": "",
-  "localhost": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
+  "localhost": "0x02b0B4EFd909240FCB2Eb5FAe060dC60D112E3a4",
 }
 
 export const SERVER = {
-  "localhost": "http://localhost:8000",
+  "localhost": "http://localhost",
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "http://67.205.138.92",
@@ -69,3 +77,7 @@ const etherscanBase = etherscanBases[NARRATOR_PARAMS.network]
 export const GITHUB = "https://github.com/EmblemStudio/Aavenluutn"
 export const ETHERSCAN = `${etherscanBase}address/${ADDRESSES[NARRATOR_PARAMS.network]}`
 export const DISCORD = "https://discord.gg/VfvtD6NDuM"
+
+export const currencyName = "crin"
+export const defaultBetAmount = 50
+export const defaultBalance = 1000

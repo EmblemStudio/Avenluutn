@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Balance from './Balance'
 
 import ConnectButton from './ConnectButton'
 
@@ -16,6 +17,15 @@ export default () => {
               <h1 className="title">Avenluutn</h1>
             </div>
           </Link>
+        </div>
+      </div>
+      <div className="level-right">
+        <div className="level-item">
+          <Balance />
+          <a className="button is-underlined is-ghost is-medium is-size-5"
+             href="/my-bets">
+            My Bets
+          </a>
         </div>
       </div>
       <div className="level-right">

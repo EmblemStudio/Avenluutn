@@ -17,11 +17,9 @@ COPY ./server/*.go ./server/
 
 RUN go build -o /avenluutn
 
-FROM node:lts
+FROM scratch
 
 COPY --from=builder /avenluutn /avenluutn
-COPY ./ui/ ./ui/
-COPY ./testAssets/ ./testAssets/
 
 ENV HTTP_PORT="8000"
 
