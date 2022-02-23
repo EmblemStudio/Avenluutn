@@ -21,13 +21,21 @@ async function main() {
    */
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "http://localhost:8000/test/bundle.js" // "https://gist.githubusercontent.com/jessebmiller/a1a3b25b1332002cd8bb7a39950f896a/raw/2f6df058e619784ec642a16594569ec24551e607/bundle.js"
+    "https://gist.githubusercontent.com/EzraWeller/4a7468ec46ee6b83ed0b167c24339f4c/raw/04edc8559415d8067c0d3c51abe6d9cc8d9203a3/avenluutn_bundle_090122.js"
   )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
   await narratorTx.wait()
 
   console.log("minted NFT")
+
+  const minutes = 60
+  const hours = minutes * 60
+  const start = 1641985200
+        /* Unix Timestamp   1641985200
+           GMT	            Wed Jan 12 2022 11:00:00 GMT+0000
+           Your Time Zone   Wed Jan 12 2022 05:00:00 GMT-0600 (Central Standard Time)
+        */
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   const pubTx = await publisher.addNarrator(
@@ -38,7 +46,7 @@ async function main() {
     60 * 10,           // collectionLength
     60 * 15,           // collectionSpacing
     5,                 // collectionSize
-  )
+ )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
   const receipt = await pubTx.wait()
   console.log("New narrator added at index:", Number(receipt.events[0].args.count))

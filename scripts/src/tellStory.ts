@@ -22,11 +22,14 @@ import {
   Success,
   Result,
   ResultType,
-  makeTraitText
+  makeTraitText,
+  findNextUpdateTime,
+  LabeledString
 } from './utils'
 
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 export async function tellStory(
+  runStart: number,
   prng: Prando,
   state: State,
   startTime: number,
@@ -41,20 +44,38 @@ export async function tellStory(
     length,
     guildId
   )
+  if (beginning.party.length < 3) {
+    const res = {
+      plainText: [],
+      richText: {
+        beginning: beginning.text,
+        middle: {
+          obstacleText: [],
+          outcomeText: []
+        },
+        ending: { main: [], resultTexts: [] },
+      },
+      events: [],
+      nextUpdateTime: findNextUpdateTime(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
+    }
+    return res
+  }
   const middle = await tellMiddle(
+    runStart,
     guildId,
     state,
     beginning,
     provider
   )
   const ending = await tellEnding(
+    runStart,
     guildId,
     beginning,
     middle,
     state,
     provider
   )
-  let res: Story = {
+  const res: Story = {
     plainText: [],
     richText: {
       beginning: beginning.text,
@@ -65,9 +86,9 @@ export async function tellStory(
       ending: ending.text,
     },
     events: ending.results,
-    nextUpdateTime: findNextUpdateTime(beginning, startTime)
+    nextUpdateTime: findNextUpdateTime(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
   }
-  // res.plainText = beginning.text
+  // make plainText
   res.richText.beginning.forEach(ls => res.plainText.push(ls.string))
   res.richText.middle.obstacleText.forEach((lsa, i) => {
     const outcomeText = res.richText.middle.outcomeText[i]
@@ -85,24 +106,11 @@ export async function tellStory(
       res.plainText.push(...strs)
     }
   })
-  ending.text.forEach(ls => res.plainText.push(ls.string))
-  return res
-}
-
-function findNextUpdateTime(beginning: Beginning, startTime: number): number {
-  let now = Math.floor(Date.now()/1000)
-  let nextUpdateTime
-  const updateTimes = [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes]
-  updateTimes.sort().reverse()
-  updateTimes.forEach((t, i) => {
-    if (t < now) {
-      if (i === 0) return -1
-      nextUpdateTime = updateTimes[i - 1]
-      if (nextUpdateTime === undefined) return -1 // should be never
-      return nextUpdateTime
-    }
+  ending.text.main.forEach(ls => res.plainText.push(ls.string))
+  ending.text.resultTexts.forEach(lsa => { 
+    lsa.forEach(ls => res.plainText.push(ls.string))
   })
-  return -1 // should be never
+  return res
 }
 
 async function tellBeginning(
@@ -136,7 +144,10 @@ async function tellBeginning(
    * Generate quest
    */
   const quest = randomQuest(guildId, prng)
-  const questText = makeQuestText(quest)
+  let questText: LabeledString[] = []
+  if (party.length >= 3) {
+    questText = makeQuestText(quest)
+  }
 
   /**
    * Create obstacle times, outcome times, and end time
@@ -153,6 +164,7 @@ async function tellBeginning(
     obstacleTimes.push(startTime + delay)
     outcomeTimes.push(startTime + delay + outcomeDelay)
   }
+  console.log('made update times', startTime, obstacleTimes, outcomeTimes, endTime)
 
   return {
     guild,
@@ -166,6 +178,7 @@ async function tellBeginning(
 }
 
 async function tellMiddle(
+  runStart: number,
   guildId: number,
   state: State,
   beginning: Beginning,
@@ -185,24 +198,24 @@ async function tellMiddle(
       const obstacleTime = beginning.obstacleTimes[i]
       if (!obstacleTime) { throw new Error("No obstacle time") }
 
-      let checkpoint = await newCheckpoint(obstacleTime, provider, `${guildId}`)
+      let checkpoint = await newCheckpoint(runStart, obstacleTime, provider, `${guildId}`)
 
       if (!checkpoint.error) {
         if (i + 1 === beginning.obstacleTimes.length) {
           const obstacle = questObstacle(checkpoint.prng, beginning.quest)
           middle.obstacles.push(obstacle)
-          middle.obstacleText.push(makeObstacleText(obstacle))
+          middle.obstacleText.push(makeObstacleText(obstacle, beginning.party, middle.allResults))
         } else {
           const obstacle = randomObstacle(checkpoint.prng, i + 2)
           middle.obstacles.push(obstacle)
-          middle.obstacleText.push(makeObstacleText(obstacle))
+          middle.obstacleText.push(makeObstacleText(obstacle, beginning.party, middle.allResults))
         }
       }
 
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
 
-      checkpoint = await newCheckpoint(outcomeTime, provider)
+      checkpoint = await newCheckpoint(runStart, outcomeTime, provider)
       const obstacle = middle.obstacles[i]
 
       if (!checkpoint.error && obstacle) {
@@ -218,7 +231,7 @@ async function tellMiddle(
         if (i + 1 === beginning.obstacleTimes.length) middle.questSuccess = outcome.success
         middle.outcomes.push(outcome)
         middle.allResults = [...middle.allResults, ...outcome.results]
-        middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome)]
+        middle.outcomeText = [...middle.outcomeText, makeOutcomeText(outcome, beginning.party, middle.allResults)]
       }
     }
   }
@@ -227,6 +240,7 @@ async function tellMiddle(
 }
 
 async function tellEnding(
+  runStart: number,
   guildId: number,
   beginning: Beginning,
   middle: Middle,
@@ -243,10 +257,13 @@ async function tellEnding(
    */
   const ending: Ending = {
     results: [],
-    text: []
+    text: {
+      main: [],
+      resultTexts: []
+    }
   }
 
-  const checkpoint = await newCheckpoint(beginning.endTime, provider, `${guildId}`)
+  const checkpoint = await newCheckpoint(runStart, beginning.endTime, provider, `${guildId}`)
 
   let deathCount = 0
   let everyoneDied = false
@@ -263,9 +280,7 @@ async function tellEnding(
         if (deathCount === beginning.party.length - 1) oneLeft = true
       }
 
-      if (result.type !== ResultType.Injury) {
-        ending.results.push(result)
-      } else {
+      if (result.type === ResultType.Injury) {
         const roll = checkpoint.prng.nextInt(1, 100)
         if (roll <= 5) {
           const guild = state.guilds[guildId]
@@ -281,14 +296,13 @@ async function tellEnding(
                 component: result.component
               }
               ending.results.push(newResult)
-              ending.text.push(...newResult.text)
             }
           }
         }
       }
     }
 
-    ending.text = makeEndingText(beginning, middle, everyoneDied, oneLeft)
+    ending.text = makeEndingText(beginning, middle, everyoneDied, oneLeft, ending.results)
   }
 
   return ending

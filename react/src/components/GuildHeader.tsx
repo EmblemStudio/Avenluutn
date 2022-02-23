@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import GuildButton from './GuildButton'
 import { Guild } from '../../../scripts/src'
 import { guildColor, coloredBoldStyle } from '../utils'
-import { LOADING } from '../constants';
+import LoadingAnimation from './LoadingAnimation'
 
 const padding = "pl-3 pr-3"
 
@@ -23,7 +23,11 @@ interface GuildHeaderProps {
 export default ({guild, selected }: GuildHeaderProps) => {
   if (!guild) return (
     <nav className="level">
-      <div className="level-item">{LOADING}</div>
+      <div className="level-left">
+        <div className={`level-item ${padding} mt-5`}>
+          <LoadingAnimation />
+        </div>
+      </div>
     </nav>
   )
 

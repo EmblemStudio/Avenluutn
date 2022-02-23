@@ -1,4 +1,5 @@
-type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
+import { NetworkName } from './utils'
+import env from "../.env.json"
 
 interface NarratorParams {
   network: NetworkName,
@@ -6,7 +7,7 @@ interface NarratorParams {
 }
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: "goerli",
+  network: "localhost",
   narratorIndex: 0,
 }
 
@@ -28,6 +29,7 @@ export const STATUS = {
   tx_confirmed: `transacton confirmed`
 }
 
+// Publishers
 export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
@@ -46,16 +48,13 @@ export const SERVER = {
 
 export const CACHE_PERIOD = 180000 // 3 minutes
 
-export const API_URIS: { [network: string]: string } = {
-  ropsten: "https://eth-ropsten.alchemyapi.io/v2/tDTu2vhfHnGOWJuM0p1DrA6BBJn0uDL3",
-  goerli: "https://eth-goerli.alchemyapi.io/v2/tDTu2vhfHnGOWJuM0p1DrA6BBJn0uDL3",
-  localhost: "http://localhost:8545",
-}
+export const RPC_URIS: { [key in NetworkName]: string } = env.RPC_URIS
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]
 export const DEFAULT_COLOR = "gray"
 
 export const LOADING = ". . ."
+export const WAITING_FOR_SERVER = "The bard is scribbling..."
 
 export const etherscanBases: { [key in NetworkName]: string }  = {
   "ropsten": "https://ropsten.etherscan.io/",

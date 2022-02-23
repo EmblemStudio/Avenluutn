@@ -3,7 +3,6 @@ import {
   makeProvider,
   randomStartingState,
   newCheckpoint,
-  checkPointErrors,
   ScriptResult,
   Story,
   State, 
@@ -14,7 +13,8 @@ import { nextState } from './nextState'
 import { fetch } from 'cross-fetch'
 import Prando from 'prando';
 
-globalThis.fetch = fetch
+// does this break anything? it was throwing errors in browser
+if (typeof window === 'undefined') globalThis.fetch = fetch
 
 export * from './utils/interfaces'
 
@@ -26,20 +26,15 @@ export async function tellStories(
   providerUrl?: string,
 ): Promise<ScriptResult> {
   const provider = makeProvider(providerUrl)
-  const checkpoint = await newCheckpoint(startTime, provider)
+  const runStart = Math.floor(Date.now()/1000)
+  const checkpoint = await newCheckpoint(runStart, startTime, provider)
+  let nextUpdateTime = startTime
 
   if (checkpoint.error) {
-    if (checkpoint.error.message === checkPointErrors.timeInFuture) {
-      return {
-        stories: [],
-        nextState: prevResult ? prevResult.nextState : { guilds: [] },
-        nextUpdateTime: startTime
-      }
-    }
     return {
       stories: [],
       nextState: prevResult ? prevResult.nextState : { guilds: [] },
-      nextUpdateTime: -1
+      nextUpdateTime: startTime
     }
   }
 
@@ -51,9 +46,9 @@ export async function tellStories(
   }
   const stories: Story[] = []
   let events: Result[] = []
-  let nextUpdateTime = -1
   for (let i = 0; i < totalStories; i++) {
     const story = await tellStory(
+      runStart,
       new Prando(checkpoint.blockHash + `${i}`),
       state,
       startTime,
@@ -61,7 +56,8 @@ export async function tellStories(
       i,
       provider
     )
-    if (nextUpdateTime === -1 || nextUpdateTime > story.nextUpdateTime) { 
+    // if nextUpdateTime hasn't been updated yet OR this time is earlier
+    if (nextUpdateTime === startTime || nextUpdateTime > story.nextUpdateTime) { 
       nextUpdateTime = story.nextUpdateTime
     }
 

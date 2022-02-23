@@ -1,9 +1,9 @@
 import React from 'react'
-import { UseWalletProvider } from 'use-wallet'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bulma'
 
 import './App.css'
+import WagmiProvider from './providers/WagmiProvider'
 import NotificationsProvider from './providers/NotificationsProvider'
 import NarratorStateProvider from './providers/NarratorStateProvider'
 import { NARRATOR_PARAMS } from './constants'
@@ -17,7 +17,7 @@ import About from './pages/About'
 export default () => {
   return (
     <div className="App">
-      <UseWalletProvider>
+      <WagmiProvider>
         <NotificationsProvider>
           <NarratorStateProvider params={NARRATOR_PARAMS}>
             <BrowserRouter>
@@ -33,7 +33,7 @@ export default () => {
             </BrowserRouter>
           </NarratorStateProvider>
         </NotificationsProvider>
-      </UseWalletProvider>
+      </WagmiProvider>
     </div>
   )
 }

@@ -1,12 +1,13 @@
 import React from 'react'
 
 import GuildButtons from '../components/GuildButtons'
+import Countdown from '../components/Countdown'
 import useNarratorState from '../hooks/useNarratorState'
-import { NARRATOR_PARAMS, LOADING } from '../constants'
+import { getTimeLeft } from '../utils'
+import LoadingAnimation from '../components/LoadingAnimation'
 
 export default () => {
-  const { narrator, updateNarrator } = useNarratorState()
-  // updateNarrator()
+  const { narrator } = useNarratorState()
 
   return (
     <>
@@ -33,9 +34,16 @@ export default () => {
             Return in [timer]
           </div>
           */
-          <div className="block">
-            {LOADING}
-          </div>
+          getTimeLeft(Number(narrator.start)) > 0 ?
+            <div className="block">
+              <Countdown 
+                to={Number(narrator.start)}
+              />
+            </div>
+          :
+            <div className="block">
+              <LoadingAnimation />
+            </div>
       }
     </>
   )

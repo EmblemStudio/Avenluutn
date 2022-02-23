@@ -16,14 +16,6 @@ async function randomStartingState(numberOfGuilds, prng, provider) {
 exports.randomStartingState = randomStartingState;
 async function randomGuild(id, prng, previousState, provider) {
     const adventurers = await makeRandomAdventurers(prng.nextInt(10, 15), prng, provider);
-    /*
-    const name = uniqueArrayItem<string, Guild>(
-      prng,
-      guildNames,
-      previousState.guilds,
-      (name: string, guild: Guild) => name === guild.name
-    )
-    */
     const name = randomUnusedItem(previousState.guilds.map(g => g.name), () => prng.nextArrayItem(sourceArrays_1.guildNames));
     return {
         id,
@@ -92,13 +84,6 @@ async function randomCharacter(prng, provider, traitCount) {
     };
     if (traitCount) {
         for (let i = 0; i < traitCount; i++) {
-            /*
-            newChar.traits = addRandomUnusedElement(
-              newChar.traits,
-              Object.keys(traits),
-              prng
-            )
-            */
             newChar.traits.push(randomUnusedItem(newChar.traits, () => prng.nextArrayItem(Object.keys(sourceArrays_1.traits))));
         }
     }
@@ -121,7 +106,6 @@ async function randomAdventurer(id, prng, provider) {
         id,
         class: [(await (0, loot_1.getRandomClass)(prng, provider)).class],
         stats: randomStats(prng),
-        // skills: addRandomUnusedElement<string>([], skills, prng),
         skills: [prng.nextArrayItem(sourceArrays_1.skills)],
         loot: [await (0, loot_1.getRandomLootPiece)(prng, provider)]
     });
@@ -144,41 +128,3 @@ function randomUnusedItem(used, randomItem) {
     return item;
 }
 exports.randomUnusedItem = randomUnusedItem;
-/*
-function uniqueArrayItem<T, S>(
-  prng: Prando,
-  array: T[],
-  alreadyChosen: S[],
-  same: Function
-): T {
-  let item = prng.nextArrayItem(array)
-  let itemRepeat = true
-  while (itemRepeat === true) {
-    let repeat = false
-    alreadyChosen.forEach(t => {
-      if (same(item, t)) repeat = true
-    })
-    if (repeat === false) {
-      itemRepeat = false
-    } else {
-      item = prng.nextArrayItem(array)
-    }
-  }
-  return item
-}
-*/
-/*
-function addRandomUnusedElement<T>(
-  target: T[],
-  source: T[],
-  prng: Prando
-): T[] {
-  let newItem = target[0]
-  if (!newItem) { return [prng.nextArrayItem(source)] }
-  while (target.includes(newItem)) {
-    newItem = prng.nextArrayItem(source)
-  }
-  target.push(newItem)
-  return target
-}
-*/

@@ -1,6 +1,8 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ScriptResult, Story as StoryText } from '../../../scripts/src'
 
+export type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
+
 export interface Notifications {
   warnings: string[];
   errors: string[];
@@ -14,7 +16,9 @@ export interface NarratorParams { network: string; narratorIndex: number }
 export interface NarratorState {
   narrator: Narrator,
   updateNarrator: () => void,
-  lastUpdate: number
+  lastUpdate: number,
+  queryUntilUpdate: (state: NarratorState) => void,
+  querying: boolean
 }
 
 export interface Narrator {

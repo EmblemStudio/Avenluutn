@@ -4,6 +4,9 @@ exports.makeTriggerText = exports.makeKnockoutText = exports.makeTraitText = exp
 const interfaces_1 = require("./interfaces");
 const loot_1 = require("../content/loot");
 function makeGuildText(guild, party) {
+    if (party.length < 3) {
+        return [{ string: `With too few adventurers to embark, the guild stagnates. `, label: interfaces_1.Label.conjunctive }];
+    }
     const res = [
         { string: ``, label: interfaces_1.Label.conjunctive },
         { string: `At `, label: interfaces_1.Label.conjunctive },
@@ -21,7 +24,7 @@ function makeGuildText(guild, party) {
             res.push({ string: `${(0, loot_1.nameString)(a.name)}, `, label: interfaces_1.Label.adventurerName });
         }
     });
-    res.push({ string: `gathered.`, label: interfaces_1.Label.conjunctive });
+    res.push({ string: `gathered. `, label: interfaces_1.Label.conjunctive });
     return res;
 }
 exports.makeGuildText = makeGuildText;
@@ -49,22 +52,54 @@ function makeQuestText(quest) {
     return res;
 }
 exports.makeQuestText = makeQuestText;
-// TODO account for only one adventurer being left in obstacle text
-function makeObstacleText(obstacle) {
+function lastAdventurer(party, results) {
+    let lastAdv;
+    const stillUp = [...party];
+    results.forEach(r => {
+        if (r.type === interfaces_1.ResultType.Death || r.type === interfaces_1.ResultType.Knockout) {
+            stillUp.forEach((adv, i) => {
+                if (adv.id === r.advId)
+                    delete stillUp[i];
+            });
+            if (Object.keys(stillUp).length === 1) {
+                lastAdv = stillUp[0];
+            }
+        }
+    });
+    return lastAdv;
+}
+function makeObstacleText(obstacle, party, results) {
+    const lastAdv = lastAdventurer(party, results);
     const res = [];
-    // let text = ``
     if (obstacle.quest) {
-        res.push({ string: `They arrived at the `, label: interfaces_1.Label.conjunctive }, { string: obstacle.quest.locationName, label: interfaces_1.Label.locationName }, { string: ` ${obstacle.quest.locationType}`, label: interfaces_1.Label.locationType }, { string: `, where they`, label: interfaces_1.Label.conjunctive });
+        if (lastAdv !== undefined) {
+            res.push({ string: `${lastAdv.name.firstName} `, label: interfaces_1.Label.conjunctive });
+        }
+        else {
+            res.push({ string: `They `, label: interfaces_1.Label.conjunctive });
+        }
+        res.push({ string: `arrived at the `, label: interfaces_1.Label.conjunctive }, { string: obstacle.quest.locationName, label: interfaces_1.Label.locationName }, { string: ` ${obstacle.quest.locationType}`, label: interfaces_1.Label.locationType }, { string: `, where `, label: interfaces_1.Label.conjunctive });
+        if (lastAdv !== undefined) {
+            res.push({ string: `${lastAdv.pronouns.subject} `, label: interfaces_1.Label.conjunctive });
+        }
+        else {
+            res.push({ string: `they `, label: interfaces_1.Label.conjunctive });
+        }
         // text += `They arrived at the ${obstacle.quest.locationName} ${obstacle.quest.locationType}, where they`
     }
     else {
-        res.push({ string: `${obstacle.arrival}, they`, label: interfaces_1.Label.conjunctive });
-        // text += `They`
+        res.push({ string: `${obstacle.arrival}, `, label: interfaces_1.Label.conjunctive });
+        if (lastAdv !== undefined) {
+            res.push({ string: `${lastAdv.name.firstName} `, label: interfaces_1.Label.conjunctive });
+        }
+        else {
+            res.push({ string: `they `, label: interfaces_1.Label.conjunctive });
+        }
     }
-    res.push({ string: ` ${obstacle.discovery}`, label: interfaces_1.Label.obstacleDiscovery });
+    res.push({ string: `${obstacle.discovery} `, label: interfaces_1.Label.obstacleDiscovery });
     // text += ` ${obstacle.discovery}`
     if (obstacle.firstName) {
-        res.push({ string: ` the`, label: interfaces_1.Label.conjunctive });
+        res.push({ string: `the `, label: interfaces_1.Label.conjunctive });
         // text += ` the`
     }
     else {
@@ -83,20 +118,20 @@ function makeObstacleText(obstacle) {
             throw new Error("No last character");
         }
         if (lastChar === "s") {
-            res.push({ string: ` some`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `some `, label: interfaces_1.Label.conjunctive });
             // text += ` some` 
         }
         else if (['a', 'e', 'i', 'o', 'u'].includes(firstChar)) {
-            res.push({ string: ` an`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `an `, label: interfaces_1.Label.conjunctive });
             // text += ` an`
         }
         else {
-            res.push({ string: ` a`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `a `, label: interfaces_1.Label.conjunctive });
             // text += ` a`
         }
     }
     if (obstacle.firstAdjective)
-        res.push({ string: ` ${obstacle.firstAdjective}`, label: interfaces_1.Label.adjective });
+        res.push({ string: `${obstacle.firstAdjective}`, label: interfaces_1.Label.adjective });
     // text += ` ${obstacle.firstAdjective}`
     if (obstacle.secondAdjective)
         res.push({ string: `, ${obstacle.secondAdjective}`, label: interfaces_1.Label.adjective });
@@ -119,9 +154,17 @@ function makeObstacleText(obstacle) {
 }
 exports.makeObstacleText = makeObstacleText;
 // TODO account for one adventurer being left in outcome text
-function makeOutcomeText(outcome) {
+function makeOutcomeText(outcome, party, results) {
+    const lastAdv = lastAdventurer(party, results);
     let res = { main: [], triggerTexts: [], resultTexts: [] };
-    res.main.push({ string: `After `, label: interfaces_1.Label.conjunctive }, { string: `${outcome.adjective} `, label: interfaces_1.Label.adjective }, { string: `${outcome.activity}`, label: interfaces_1.Label.outcomeActivity }, { string: `, they `, label: interfaces_1.Label.conjunctive }, { string: `${outcome.resolver}`, label: interfaces_1.Label.outcomeResolver }, { string: ` the `, label: interfaces_1.Label.conjunctive }, { string: `${outcome.obstacle.object}`, label: interfaces_1.Label.object }, { string: `.`, label: interfaces_1.Label.conjunctive });
+    res.main.push({ string: `After `, label: interfaces_1.Label.conjunctive }, { string: `${outcome.adjective} `, label: interfaces_1.Label.adjective }, { string: `${outcome.activity}`, label: interfaces_1.Label.outcomeActivity });
+    if (lastAdv !== undefined) {
+        res.main.push({ string: `, ${lastAdv.name.firstName} `, label: interfaces_1.Label.conjunctive });
+    }
+    else {
+        res.main.push({ string: `, they `, label: interfaces_1.Label.conjunctive });
+    }
+    res.main.push({ string: `${outcome.resolver}`, label: interfaces_1.Label.outcomeResolver }, { string: ` the `, label: interfaces_1.Label.conjunctive }, { string: `${outcome.obstacle.object}`, label: interfaces_1.Label.object }, { string: `.`, label: interfaces_1.Label.conjunctive });
     // res.main = `After ${outcome.adjective} ${outcome.activity}, they ${outcome.resolver} the ${outcome.obstacle.object}.`
     outcome.triggers.forEach(trigger => {
         res.triggerTexts.push(trigger.text);
@@ -132,34 +175,40 @@ function makeOutcomeText(outcome) {
     return res;
 }
 exports.makeOutcomeText = makeOutcomeText;
-function makeEndingText(beginning, middle, everyoneDied, oneLeft) {
-    const res = [];
+function makeEndingText(beginning, middle, everyoneDied, oneLeft, endingResults) {
+    const res = {
+        main: [],
+        resultTexts: []
+    };
     if (everyoneDied) {
-        res.push({ string: `None who set out returned alive.`, label: interfaces_1.Label.conjunctive });
+        res.main.push({ string: `None who set out returned alive.`, label: interfaces_1.Label.conjunctive });
         // res[0] = `None who set out returned alive.`
     }
     else {
         if (oneLeft) {
-            res.push({ string: `The last adventurer `, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `The last adventurer `, label: interfaces_1.Label.conjunctive });
             // res[0] += `The last adventurer `
         }
         else {
-            res.push({ string: `The adventurers `, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `The adventurers `, label: interfaces_1.Label.conjunctive });
             // res[0] += `The adventurers `
         }
         if (middle.questSuccess === interfaces_1.Success.failure) {
-            res.push({ string: `slunk back to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: ` in disgrace.`, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `slunk back to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: ` in disgrace.`, label: interfaces_1.Label.conjunctive });
             // res[0] += `slunk back to ${beginning.guild.name} in disgrace.`
         }
         else if (middle.questSuccess === interfaces_1.Success.mixed) {
-            res.push({ string: `returned to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: `, exhausted but successful.`, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `returned to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: `, exhausted but successful.`, label: interfaces_1.Label.conjunctive });
             // res[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
         }
         else if (middle.questSuccess === interfaces_1.Success.success) {
-            res.push({ string: `returned triumphantly to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: `, basking in glory.`, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `returned triumphantly to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: `, basking in glory.`, label: interfaces_1.Label.conjunctive });
             // res[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
         }
     }
+    endingResults.forEach(result => {
+        res.resultTexts.push(result.text);
+    });
     return res;
 }
 exports.makeEndingText = makeEndingText;
@@ -253,7 +302,7 @@ function makeTriggerText(triggerInfo, adventurer, traits, qualities) {
             }
         });
         if (usedLoot !== "") {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${usedLoot} `, label: interfaces_1.Label.lootName }, { string: `!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${usedLoot}`, label: interfaces_1.Label.lootName }, { string: `!`, label: interfaces_1.Label.conjunctive });
         }
     }
     return res;

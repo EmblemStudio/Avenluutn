@@ -15,14 +15,16 @@ import { STATUS } from '../constants'
 interface StoryAuctionProps {
   story: Story;
   publisher: Contract | string;
+  updateNarrator: Function;
   addNotification: NotificationFunction;
   removeNotification: NotificationFunction;
 }
 
-export default ({ story, publisher, addNotification, removeNotification }: StoryAuctionProps) => {
+export default ({ story, publisher, updateNarrator, addNotification, removeNotification }: StoryAuctionProps) => {
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
   const [bid, setBid] = useState<BigNumber>(parseEther("0"))
 
+  // TODO refresh state after transaction confirmations
   const handleSetBid = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value
     if (value === null) return
@@ -48,6 +50,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
+                updateNarrator()
               })
             })
         })
@@ -71,6 +74,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
+                updateNarrator()
               })
             })
         })
@@ -92,6 +96,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
           res.wait().then((rec: TransactionReceipt) => {
             addNotification("status", STATUS.tx_confirmed)
             removeNotification("status", STATUS.tx_submitted)
+            updateNarrator()
           })
         })
     }
@@ -103,7 +108,7 @@ export default ({ story, publisher, addNotification, removeNotification }: Story
         <div className="level-item">
           <span className="pr-1">Time left: </span>
           <Countdown 
-            to={Number(story.endTime.add(story.auction.duration))} 
+            to={Number(story.endTime.add(story.auction.duration))}
           />
         </div>
         <div className="level-item is-vertical">

@@ -86,9 +86,9 @@ async function main() {
     narratorNFTs.address,
     0,
     now - 60 * 15 * 3,  // start
-    30,                 // totalCollections
-    60 * 10,            // collectionLength
-    60 * 15,            // collectionSpacing
+    10,               // totalCollections
+    60 * 60 * 10,            // collectionLength
+    60 * 60 * 15,            // collectionSpacing
     5,                  // collectionSize
   )
   const receipt = await pubTx.wait()

@@ -37,14 +37,6 @@ async function randomGuild(
     prng,
     provider
   )
-  /*
-  const name = uniqueArrayItem<string, Guild>(
-    prng,
-    guildNames,
-    previousState.guilds,
-    (name: string, guild: Guild) => name === guild.name
-  )
-  */
  const name = randomUnusedItem<string>(
    previousState.guilds.map(g => g.name),
    () => prng.nextArrayItem(guildNames)
@@ -128,13 +120,6 @@ async function randomCharacter(
   }
   if (traitCount) {
     for(let i = 0; i < traitCount; i++) {
-      /*
-      newChar.traits = addRandomUnusedElement(
-        newChar.traits,
-        Object.keys(traits),
-        prng
-      )
-      */
       newChar.traits.push(randomUnusedItem(
         newChar.traits,
         () => prng.nextArrayItem(Object.keys(traits))
@@ -175,7 +160,6 @@ async function randomAdventurer(
     id,
     class: [(await getRandomClass(prng, provider)).class],
     stats: randomStats(prng),
-    // skills: addRandomUnusedElement<string>([], skills, prng),
     skills: [prng.nextArrayItem(skills)],
     loot: [await getRandomLootPiece(prng, provider)]
   })
@@ -202,43 +186,3 @@ export function randomUnusedItem<T>(
   }
   return item
 }
-
-/*
-function uniqueArrayItem<T, S>(
-  prng: Prando,
-  array: T[],
-  alreadyChosen: S[],
-  same: Function
-): T {
-  let item = prng.nextArrayItem(array)
-  let itemRepeat = true
-  while (itemRepeat === true) {
-    let repeat = false
-    alreadyChosen.forEach(t => {
-      if (same(item, t)) repeat = true
-    })
-    if (repeat === false) {
-      itemRepeat = false
-    } else {
-      item = prng.nextArrayItem(array)
-    }
-  }
-  return item
-}
-*/
-
-/*
-function addRandomUnusedElement<T>(
-  target: T[],
-  source: T[],
-  prng: Prando
-): T[] {
-  let newItem = target[0]
-  if (!newItem) { return [prng.nextArrayItem(source)] }
-  while (target.includes(newItem)) {
-    newItem = prng.nextArrayItem(source)
-  }
-  target.push(newItem)
-  return target
-}
-*/
