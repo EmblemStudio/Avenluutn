@@ -17,10 +17,9 @@ COPY ./warmer/*.go ./warmer/
 
 RUN go build -o /avenluutn
 
-FROM node:lts
+FROM scratch
 
 COPY --from=builder /avenluutn /avenluutn
-COPY ./testAssets/ ./testAssets/
 
 ENV HTTP_PORT="8000"
 

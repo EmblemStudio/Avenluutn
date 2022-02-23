@@ -1,3 +1,4 @@
+/* global require describe beforeEach it network expect */
 const { expect } = require("chai")
 const { ethers } = require("hardhat")
 
@@ -40,7 +41,9 @@ describe("Publisher", () => {
     expect(firstNarrator.collectionSize).to.equal(collectionSize)
 
     const futureNarrator = await Publisher.narrators(1)
-    expect(futureNarrator.NFTAddress).to.equal("0x0000000000000000000000000000000000000000")
+    expect(futureNarrator.NFTAddress).to.equal(
+      "0x0000000000000000000000000000000000000000"
+    )
     expect(futureNarrator.collectionSpacing).to.equal(0)
 
     const nextNFTId = 2
@@ -156,4 +159,18 @@ describe("Publisher", () => {
       collectionSize
     )).to.be.revertedWith("Ownable: caller is not the owner")
   })
+
+  it("Allows the owner to update the base URI", async () => {
+    expect(await Publisher.baseURI()).to.equal("https://example.com/")
+    await expect(
+      bobPublisher.updateBaseURI("https://bob.example.com/")
+    ).to.be.revertedWith("Ownable: caller is not the owner")
+    await expect(
+      Publisher.updateBaseURI("https://alice.example.com/")
+    ).to.emit(
+      Publisher, "BaseURIupdated"
+    ).withArgs(
+      "https://example.com/", "https://alice.example.com/"
+    )
+  });
 })
