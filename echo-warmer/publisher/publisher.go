@@ -2,12 +2,13 @@ package publisher
 
 import (
 	"math/big"
-	"time"
 	"fmt"
 	"net/http"
 	"net/url"
 	"io"
 	"io/ioutil"
+	"log"
+	"os"
 	"os/exec"
 	"strings"
 	"encoding/base64"
@@ -53,36 +54,16 @@ func (p *Publisher) GetScript(
 		return script, nil
 	default:
 		resp, err := http.Get(scriptURI.String()); if err != nil {
-			fmt.Println("script get err:", err)
+			log.Println("script get err:", err)
 			return "", err
 		}
 		defer resp.Body.Close()
 		body, err := io.ReadAll(resp.Body); if err != nil {
-			fmt.Println("script request body read error:", err)
+			log.Println("script request body read error:", err)
 			return "", err
 		}
 		return string(body), nil
 	}
-}
-
-func GetStateKey(
-	ps PublisherStore,
-	narrator int64,
-	collection int64,
-	t time.Time,
-) string {
-	return fmt.Sprintf("%v.%v.%v", narrator, collection, t.Unix())
-}
-
-func GetCachedResult(
-	ps PublisherStore,
-	narratorIndex int64,
-	collectionIndex int64,
-	t time.Time,
-) (ScriptResult, error) {
-	stateKey := GetStateKey(ps, narratorIndex, collectionIndex, t)
-	result, err := ps.Get(stateKey)
-	return result, err
 }
 
 func parseOpaqueData(opaque string) (string, string, error) {
@@ -104,9 +85,6 @@ func parseOpaqueData(opaque string) (string, string, error) {
 
 type Story = interface{}
 
-// TODO refactor so the server is result generic.
-// rather than returning stories it retuns generic results
-// allowing the UI and Script to coordinate on that
 type ScriptResult struct {
 	Stories []Story `json:"stories"`
 	NextState map[string]interface{} `json:"nextState"`
@@ -132,11 +110,11 @@ func (pub *Publisher) RunNarratorScript(
 	collectionStart int64,
 	collectionLength int64,
 	collectionSize int64,
-) (ScriptResult, error) {
+) (ScriptResult, string, error) {
 	scriptFilePath := "./script.js"
 	if err := ioutil.WriteFile(scriptFilePath, []byte(script), 0644); err != nil {
-		fmt.Println("script.js write error:", err)
-		return ScriptResult{}, err
+		log.Println("script.js write error:", err)
+		return ScriptResult{}, "", err
 	}
 
 	var previousResultJSON string
@@ -145,12 +123,16 @@ func (pub *Publisher) RunNarratorScript(
 	} else {
 		previousResultJSONData, err := json.Marshal(previousResult)
 		if err != nil {
-			fmt.Println("previousResult json marshal error", err)
-			return ScriptResult{}, err
+			log.Println("previousResult json marshal error", err)
+			return ScriptResult{}, "", err
 		}
 		previousResultJSON = string(previousResultJSONData)
 	}
 
+	provider := os.Getenv("AVENLUUTN_SCRIPT_PROVIDER")
+	if provider == "" {
+		log.Fatal("Missing required AVENLUUTN_SCRIPT_PROVIDER envar")
+	}
 
 	resultFilePath := "./result.json"
 	runScript := []byte(fmt.Sprintf(
@@ -179,35 +161,27 @@ script.tellStories(%v, %v, %v, %v, "%v")
 		collectionStart,
 		collectionLength,
 		collectionSize,
-		// TODO make eth network configurable
-		"https://mainnet.infura.io/v3/46801402492348e480a7e18d9830eab8",
+		provider,
 	))
 	runScriptPath := "./runScript.js"
 	if err := ioutil.WriteFile(runScriptPath, runScript, 0644); err != nil {
-		fmt.Println("runScript.js write error:", err)
-		return ScriptResult{}, err
+		log.Println("runScript.js write error:", err)
+		return ScriptResult{}, "", err
 	}
-	fmt.Println(
-		"Running node command, previous result length",
-		len(previousResultJSON),
-		"invalid for",
-		time.Now().Unix() - previousResult.NextUpdateTime,
-	)
 	out, err := exec.Command("node", runScriptPath).CombinedOutput()
-	ioutil.WriteFile("./node_command_out.txt", out, 0644)
 	if err != nil {
-		fmt.Println("NodeJS Error:", err)
+		log.Println("NodeJS Error:", err)
 	}
 	resultJSON, err := ioutil.ReadFile(resultFilePath)
 	if err != nil {
-		fmt.Println("read result file error:", err)
-		return ScriptResult{}, err
+		log.Println("read result file error:", err)
+		return ScriptResult{}, string(out), err
 	}
 
 	var result ScriptResult
 	if err := json.Unmarshal(resultJSON, &result); err != nil {
-		fmt.Println("json unmarshal error", err)
-		return ScriptResult{}, err
+		log.Println("json unmarshal error", err)
+		return ScriptResult{}, string(out), err
 	}
-	return result, nil
+	return result, string(out), nil
 }

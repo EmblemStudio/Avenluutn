@@ -13,7 +13,6 @@ const entityLabels = ["guildName", "adventurerName"]
 
 export default ({ story }: StoryBoxProps) => {
   const narratorState = useNarratorState()
-
   function label({ label, string, entityId }: { label: string, string: string, entityId?: number }, key: number) {
     if (entityLabels.includes(label) && entityId !== undefined) {
       let to = ""
@@ -32,6 +31,9 @@ export default ({ story }: StoryBoxProps) => {
     )
   }
 
+  console.log("rendering StoryBox", story)
+  console.log("story end time", new Date(story.endTime.toNumber() * 1000).toLocaleString())
+
   return (
     <section className="section pt-2 pb-4">
       <div className="container outer-border">
@@ -41,37 +43,35 @@ export default ({ story }: StoryBoxProps) => {
               {story.text.richText.beginning.map(label)}
             </div>
             <div className="block middle">
-              {story.text.richText.middle.obstacleText.map((obText, i) => {
+              {story.text.richText.middle.obstacleText?.map((obText, i) => {
                 return (
                   <div className="block middle obstacle" key={i}>
                     <div className="block outcome main">
-                      {obText.map(label)}
+                      {obText?.map(label)}
                     </div>
                     <div className="block outcome main">
-                      {story.text.richText.middle.outcomeText[i]?.main.map(label)}
+                      {story.text.richText.middle.outcomeText[i]?.main?.map(label)}
                     </div>
                     <div className="block outcome triggers">
-                      {story.text.richText.middle.outcomeText[i]?.triggerTexts.map((t, i) => {
+                      {story.text.richText.middle.outcomeText[i]?.triggerTexts?.map((t, i) => {
                         return <div key={i}>{t.map(label)}</div>
                       })}
                     </div>
                     <div className="block outcome results">
-                      {story.text.richText.middle.outcomeText[i]?.resultTexts.map((r, i) => {
+                      {story.text.richText.middle.outcomeText[i]?.resultTexts?.map((r, i) => {
                         return <div key={i}>{r.map(label)}</div>
                       })}
                     </div>
                   </div>
                 )
-              })}
+              }) ?? "no obstacle text found"}
             </div>
             <div className="block ending">
               <div className="block ending main">
-                {story.text.richText.ending.main.map(label)}
+                {story.text.richText.ending.main?.map(label) ?? story.text.richText.ending.main?.map(label)}
               </div>
               <div className="block ending results">
-                {story.text.richText.ending.resultTexts.map((r, i) => {
-                  return <div key={i}>{r.map(label)}</div>
-                })}
+                {story.text.richText.ending.resultTexts?.map(label)}
               </div>
             </div>
             {story.text.nextUpdateTime !== -1 &&

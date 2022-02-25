@@ -11,6 +11,7 @@
     "deploy": "npx hardhat run scripts/deploy.js --network localhost",
     "deploy:ropsten": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/deploy.js --network ropsten",
     "deploy:goerli": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/deploy.js --network goerli",
+    "updateBaseURI:goerli": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat  --network goerli updateBaseURI",
     "new-narrator": "npx hardhat run scripts/newNarrator.js --network localhost",
     "new-narrator:ropsten": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/newNarrator.js --network ropsten",
     "new-narrator:goerli": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/newNarrator.js --network goerli",

@@ -192,13 +192,14 @@ async function getCollection(
 ): Promise<Collection | null> {
   let response
   try {
-    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json`)
+    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json?cb=${Math.random()}`)
   } catch (err) {
     console.warn(`Bad Response: ${err}`)
     return null
   }
   if (!response.data) return null
   const scriptResult: ScriptResult = response.data
+  console.log("got collection", narratorIndex, collectionIndex, scriptResult)
   const collection: Collection = {
     collectionIndex,
     scriptResult

@@ -6,9 +6,33 @@ interface NarratorParams {
   narratorIndex: number
 }
 
+/***** CHANGE THEeSE!!! ????**/
+
+
+export const currentRelease = "goerli"
+export const currentNarrator = 0
+// Publishers
+export const ADDRESSES: { [name: string]: string } = {
+  "mainnet": "",
+  "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
+  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
+  "polygon": "",
+  "localhost": import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR,
+  // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)
+}
+
+/***** CHANGE THEeSE!!! ????**/
+
+let network
+if (window !== undefined) {
+  if (window.location.host === 'localhost:3000') {
+    network = "localhost"
+  }
+}
+
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: "goerli",
-  narratorIndex: 0,
+  network: network ? network : currentRelease,
+  narratorIndex: currentNarrator,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -29,17 +53,8 @@ export const STATUS = {
   tx_confirmed: `transacton confirmed`
 }
 
-// Publishers
-export const ADDRESSES: { [name: string]: string } = {
-  "mainnet": "",
-  "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
-  "polygon": "",
-  "localhost": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
-}
-
 export const SERVER = {
-  "localhost": "http://localhost:8000",
+  "localhost": "http://localhost",
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "http://67.205.138.92",
@@ -69,3 +84,7 @@ const etherscanBase = etherscanBases[NARRATOR_PARAMS.network]
 export const GITHUB = "https://github.com/EmblemStudio/Aavenluutn"
 export const ETHERSCAN = `${etherscanBase}address/${ADDRESSES[NARRATOR_PARAMS.network]}`
 export const DISCORD = "https://discord.gg/VfvtD6NDuM"
+
+export const currencyName = "crin"
+export const defaultBetAmount = 50
+export const defaultBalance = 1000

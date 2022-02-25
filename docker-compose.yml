@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+
+  webserver:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8000:8000"
+    volumes:
+      - ./nginx/conf/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+      - ./store:/etc/nginx/www/runs:ro
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+    profiles: ["production"]
+
+  hardhat:
+    build: hardhat
+    ports:
+      - "8545:8545"
+    profiles: ["dev"]
+
+#  mainnet:
+#    image: ethereum/client-go:latest
+#    restart: always
+#    ports:
+#      - "30301:30301/tcp"
+#      - "30301:30301/udp"
+#    volumes:
+#      - ./ops/mainnet-data:/root/.ethereum
+#    command: "--port 30301 --syncmode light --http --http.addr '0.0.0.0' --http.vhosts=* --vmodule='rpc=5'"
+#  goerli:
+#    image: ethereum/client-go:latest
+#    restart: always
+#    ports:
+#      - "30305:30305/tcp"
+#      - "30305:30305/udp"
+#    volumes:
+#      - ./ops/goerli-data:/root/.ethereum
+#    command: "--port 30305 --syncmode light --goerli --http --http.addr '0.0.0.0' --http.vhosts=* --vmodule='rpc=5'"
+
+  keeper:
+    #    image: emblem/avenluutn:stable
+    build: echo-warmer
+    restart: always
+    volumes:
+      - ./store:/store:rw
+      - ./info:/info:rw
+    environment:
+      - AVENLUUTN_PUB_ADDR
+      - AVENLUUTN_PROVIDER=http://hardhat:8545
+      - AVENLUUTN_SCRIPT_PROVIDER=http://hardhat:8545
+
+  metadata:
+    build: echo-token-metadata
+    restart: always
+    environment:
+      - AVENLUUTN_API_BASE_URI=http://webserver
+      - AVENLUUTN_PROVIDER=http:hardhat:8545
+      - AVENLUUTN_PUB_ADDR
+    restart: always
+

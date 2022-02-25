@@ -58,7 +58,9 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
     uint8 public minBidIncrementPercentage;
 
     // The minimum bid amount
-    uint256 minBidAmount;
+    uint256 public minBidAmount;
+
+    string public baseURI;
 
     struct Auction {
         // The current highest bid amount
@@ -79,6 +81,7 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         uint256 _timeBuffer, // min time with no bids to end an auction
         uint256 _minBidAmount,
         uint8 _minBidIncrementPercentage,
+        string memory _baseURI,
         string memory name,
         string memory symbol
     ) ERC721(name, symbol) {
@@ -86,6 +89,7 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         baseAuctionDuration = _baseAuctionDuration;
         minBidAmount = _minBidAmount;
         minBidIncrementPercentage = _minBidIncrementPercentage;
+        baseURI = _baseURI;
     }
 
     event NarratorAdded (Narrator narrator, uint256 count);
@@ -271,6 +275,7 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
             (bool sent, bytes memory data) = beneficiary.call{
                 value: story.auction.amount
             }("");
+            // TODO use sent and data somehow
         } else {
             // otherwise fine you can mint, but initialize the story first
             story.narratorIndex = narratorIndex;
@@ -288,9 +293,14 @@ contract Publisher is ReentrancyGuard, Ownable, ERC721Enumerable {
         nftIds.increment();
     }
 
-    function tokenURI(uint256 nftId) public view virtual override returns (string memory) {
-        require(_exists(nftId), "StoryAuctionHouse.tokenURI id does not exist");
-        string memory storyId = string(abi.encodePacked(mintedStories[nftId]));
-        return string(abi.encodePacked("data:", storyId));
+    event BaseURIupdated(string oldBaseURI, string newBaseURI);
+
+    function updateBaseURI(string memory newBaseURI) external onlyOwner {
+        emit BaseURIupdated(baseURI, newBaseURI);
+        baseURI = newBaseURI;
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return baseURI;
     }
 }

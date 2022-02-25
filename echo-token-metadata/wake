@@ -2,26 +2,27 @@
 
 function wake () {
     bname=$(basename $(pwd))
-    if [ $bname != "echo" ]
+    if [ $bname != "echo-token-metadata" ]
     then
-        echo "wake must be run from the Avenluutn/echo folder"
+        echo "wake must be run from the Avenluutn/echo-token-metadata folder"
         return [1]
     fi
-    tag=emblem/avenluutn:test
-    pubtag=emblem/avenluutn:latest
-    container_name=avenluutn
+
+    # Auto updating!!!
+    source ./wake
+    _wake "$@"
+}
+
+function _wake () {
+    tag=emblem/avenluutn-metadata:test
+    pubtag=emblem/avenluutn-metadata:latest
+    container_name=avenluutn-metadata
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
-    abigen_out_path=`pwd`/publisher
-    store_path=`pwd`/store
+    abigen_out_path=`pwd`
     localhost_pub_addr=`cat ../hardhat/localhost_PublisherAddress.txt`
+    goerli_pub_addr=`cat ../hardhat/goerli_PublisherAddress.txt`
     case $1 in
         "build")
-            echo "copying in most recent ui"
-            cp -r ../react/dist/* ./ui
-
-            echo "copying in most recent script"
-            cp -r ../scripts/dist* ./testAssets
-
             docker run \
                    -u `id -u`:`id -g` \
                    -v $hardhat_abi_path:/sources \
@@ -29,34 +30,20 @@ function wake () {
                    ethereum/client-go:alltools-latest abigen \
                    --abi /sources/Publisher.sol/Publisher.abi \
                    --out /out/artifact_Publisher_sol.go \
-                   --pkg  publisher \
+                   --pkg main \
                    --type Publisher \
                    --bin /sources/Publisher.sol/Publisher.bin \
-
-            docker run \
-                   -u `id -u`:`id -g` \
-                   -v $hardhat_abi_path:/sources \
-                   -v $abigen_out_path:/out \
-                   ethereum/client-go:alltools-latest abigen \
-                   --abi /sources/NarratorNFTs.sol/NarratorNFTs.abi \
-                   --out /out/artifact_NarratorNFTs_sol.go \
-                   --pkg  publisher \
-                   --type NarratorNFTs \
-                   --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin
 
             docker build -t $tag .
             ;;
         "run")
             wake build
-            mkdir store
             docker run \
-                   -p 8000:8000 \
-                   --env AVENLUUTN_PUB_ADDR=$localhost_pub_addr \
-                   --env AVENLUUTN_PROVIDER="http://localhost:8545" \
+                   --env AVENLUUTN_PUB_ADDR=$goerli_pub_addr \
+                   --env AVENLUUTN_PROVIDER="https://goerli.infura.io/v3/46801402492348e480a7e18d9830eab8" \
                    --rm \
                    --net host \
                    -d \
-                   -v $store_path:/store \
                    --name $container_name \
                    $tag
             ;;

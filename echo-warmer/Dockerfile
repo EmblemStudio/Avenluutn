@@ -13,15 +13,13 @@ RUN go mod download
 
 COPY ./*.go ./
 COPY ./publisher/*.go ./publisher/
-COPY ./server/*.go ./server/
+COPY ./warmer/*.go ./warmer/
 
 RUN go build -o /avenluutn
 
 FROM node:lts
 
 COPY --from=builder /avenluutn /avenluutn
-COPY ./ui/ ./ui/
-COPY ./testAssets/ ./testAssets/
 
 ENV HTTP_PORT="8000"
 

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"fmt"
+	"log"
 	"errors"
 	"path"
 	"context"
@@ -46,51 +47,37 @@ func (els *EthLocalStore) Set(
 	key string,
 	value ScriptResult,
 ) error {
-	fmt.Println(key, "setting cache result")
 	data, err := json.Marshal(value); if err != nil {
-		fmt.Println(key, "could not marshal json", err)
+		log.Println(key, "could not marshal json", err)
 		return err
 	}
 	return os.WriteFile(els.getKeyPath(key), data, 0644)
 }
 
 func (els *EthLocalStore) Get(key string) (ScriptResult, error) {
-	fmt.Println(key, "Getting cached result")
 	keyPath := els.getKeyPath(key)
 
 	data, err := os.ReadFile(keyPath); if err != nil {
-		fmt.Println(key, err)
+		log.Println(key, err)
 		return ScriptResult{}, err
 	}
 
 	var result ScriptResult
 	if err := json.Unmarshal(data, &result); err != nil {
-		fmt.Println(key, err)
+		log.Println(key, err)
 		return ScriptResult{}, err
 	}
 
-	fmt.Println(key, "Got result for")
-	fmt.Println(key, "    next update time  ", result.NextUpdateTime)
-	if (result.NextUpdateTime == -1) {
-		fmt.Println(key, "    valid forever")
-	} else {
-		fmt.Println(
-			key,
-			"    valid for         ",
-			result.NextUpdateTime - els.Now().Unix(),
-		)
-	}
-
-	// remove the cache file if it's expired
+	// leave the cache file so the client has something to get,
+	// but also don't return the cached result. Something else
+	// somewhere is responsible for replacing the cache file when
+	// they can
 	if time.Unix(result.NextUpdateTime, 0).Before(els.Now()) && result.NextUpdateTime != -1 {
-		fmt.Println(key, "    expiring cache for")
-		os.Remove(keyPath)
 		return ScriptResult{}, errors.New(
 			fmt.Sprintf("Value stored at '%v' has expired", key),
 		)
 	}
 
-	fmt.Println(key, "    returning cached result for")
 	return result, nil
 }
 

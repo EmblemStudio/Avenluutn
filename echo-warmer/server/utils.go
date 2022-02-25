@@ -1,4 +1,4 @@
-package server
+package warmer
 
 import (
 	"net/http"
@@ -18,6 +18,10 @@ func badRequest(e error) error {
 
 func serverError(e error) error {
 	return echoHTTPError(http.StatusInternalServerError, e)
+}
+
+func notFound() error {
+	return echoHTTPError(http.StatusNotFound, nil)
 }
 
 func getInt64Param(c echo.Context, k string) (int64, error) {
