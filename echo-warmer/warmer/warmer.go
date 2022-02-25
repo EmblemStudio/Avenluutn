@@ -140,7 +140,6 @@ func (pw PubWarmer) GetCollectionInfo(c echo.Context) error {
 <h1>Collection Index: {{ .CollectionIndex }}</h1>
 <h1>Updates In        {{ .UpdatesIn }}</h1>
 <h4>Next Update Time: {{ .CollectionInfo.NextUpdateTime }}</h4>
-
 <h2>Full Output History </h2>
 {{- range $key, $val := .FullOutputHistory }}
   <details>
@@ -326,7 +325,20 @@ func (pw PubWarmer) KeepWarm(narratorIndex int64) {
 				key(narratorIndex, collectionIndex),
 			)
 			collectionIndex += 1
-			// TODO wait until the next collection starts before trying to run it
+			collectionStartTime := narrator.Start.Int64() + (
+				collectionIndex * narrator.CollectionSpacing.Int64())
+			untilCollectionStarts := time.Duration(
+				collectionStartTime - now.Unix(),
+			) * time.Second
+			log.Println(
+				fmt.Sprintf(
+					"KeepWarm: %v starts in",
+					key(narratorIndex, collectionIndex),
+				),
+				untilCollectionStarts,
+			)
+			time.Sleep(untilCollectionStarts + 3) // 3 sec buffer
+
 		} else {
 			// if that collection is not finished, wait
 			// until nextUpdateTime and run it again

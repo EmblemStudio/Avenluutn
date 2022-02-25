@@ -14,6 +14,7 @@ services:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
       - ./store:/etc/nginx/www/runs:ro
+
   certbot:
     image: certbot/certbot:latest
     volumes:
@@ -48,22 +49,22 @@ services:
 
   keeper:
     #    image: emblem/avenluutn:stable
-    build: echo-keeper
+    build: echo-warmer
     restart: always
     volumes:
       - ./store:/store:rw
       - ./info:/info:rw
     environment:
-      - AVENLUUTN_PUB_ADDR=0x02b0B4EFd909240FCB2Eb5FAe060dC60D112E3a4
+      - AVENLUUTN_PUB_ADDR
       - AVENLUUTN_PROVIDER=http://hardhat:8545
       - AVENLUUTN_SCRIPT_PROVIDER=http://hardhat:8545
 
   metadata:
-    build: ./echo-token-metadata
+    build: echo-token-metadata
     restart: always
     environment:
       - AVENLUUTN_API_BASE_URI=http://webserver
       - AVENLUUTN_PROVIDER=http:hardhat:8545
-      - AVENLUUTN_PUB_ADDR=0x02b0B4EFd909240FCB2Eb5FAe060dC60D112E3a4
+      - AVENLUUTN_PUB_ADDR
     restart: always
 

@@ -1,25 +1,22 @@
 #!/bin/bash
 
 function wake () {
+    source wake
+    _wake $@
+}
+
+function _wake () {
     bname=$(basename $(pwd))
-    if [ $bname != "echo" ]
+    if [ $bname != "echo-warmer" ]
     then
         echo "wake must be run from the Avenluutn/echo folder"
-        return [1]
+        return [127]
     fi
-    tag=emblem/avenluutn:test
-    pubtag=emblem/avenluutn:latest
-    container_name=avenluutn
     hardhat_abi_path=`pwd`/../hardhat/artifacts/contracts
     abigen_out_path=`pwd`/publisher
-    store_path=`pwd`/store
-    info_path=`pwd`/info
-    localhost_pub_addr=`cat ../hardhat/localhost_PublisherAddress.txt`
     case $1 in
-        "build")
-            echo "copying latest script"
-            cp ../scripts/dist/* ./testAssets
-
+        "abigen")
+            echo "running abigen"
             docker run \
                    -u `id -u`:`id -g` \
                    -v $hardhat_abi_path:/sources \
@@ -29,7 +26,7 @@ function wake () {
                    --out /out/artifact_Publisher_sol.go \
                    --pkg  publisher \
                    --type Publisher \
-                   --bin /sources/Publisher.sol/Publisher.bin \
+                   --bin /sources/Publisher.sol/Publisher.bin
 
             docker run \
                    -u `id -u`:`id -g` \
@@ -42,35 +39,13 @@ function wake () {
                    --type NarratorNFTs \
                    --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin
 
-            docker build -t $tag .
-            ;;
-        "run")
-            wake build
-            mkdir store
-            docker run \
-                   -p 8000:8000 \
-                   --env AVENLUUTN_PUB_ADDR=$localhost_pub_addr \
-                   --env AVENLUUTN_PROVIDER="http://localhost:8545" \
-                   --env AVENLUUTN_SCRIPT_PROVIDER="http://localhost:8545" \
-                   --rm \
-                   --net host \
-                   -v $store_path:/store \
-                   -v $info_path:/info \
-                   --name $container_name \
-                   $tag
+            echo "done."
             ;;
         "test")
             go test ./...
             ;;
-        "stop")
-            docker stop $container_name
-            ;;
         "format")
             go fmt
-            ;;
-        "publish")
-            docker build -t $pubtag .
-            docker push $pubtag
             ;;
         *)
             which wake

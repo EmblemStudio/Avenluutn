@@ -2,13 +2,14 @@ FROM node:16.4.2
 
 RUN apt-get update && apt-get install -y jq
 
-COPY contracts contracts
-COPY .nvmrc .nvmrc
-COPY scripts scripts
 COPY package.json package.json
-COPY hardhat.config.js hardhat.config.js
-
+COPY yarn.lock yarn.lock
 RUN yarn
+
+COPY contracts contracts
+COPY scripts scripts
+COPY hardhat.config.js hardhat.config.js
+COPY .nvmrc .nvmrc
 
 RUN yarn build
 

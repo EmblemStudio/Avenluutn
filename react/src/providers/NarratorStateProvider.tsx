@@ -220,7 +220,7 @@ async function concatCategorizedStories(
     const endTime = startTime.add(collectionLength)
     const contractStory = await publisher.stories(id)
     const auction: Auction = contractStory.auction
-    const text = scriptResult.stories[j]
+    let text = scriptResult.stories[j]
     if (text === undefined) {
       console.warn("scriptResult missing story at index", j)
       text = {

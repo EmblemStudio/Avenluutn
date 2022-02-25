@@ -29,24 +29,23 @@ export default ({ story }: StoryBoxProps) => {
             </div>
             <div className="block middle">
               {story.text.richText.middle.obstacleText?.map((obText, i) => {
-                console.log("rendering obstacle", obText)
                 return (
                   <div className="block middle obstacle" key={i}>
                     <div className="block outcome main">
                       {obText?.map(label)}
                     </div>
                     <div className="block outcome main">
-                      {story.text.richText.middle.outcomeText[i]?.main?.map(label) ?? "no main text found"}
+                      {story.text.richText.middle.outcomeText[i]?.main?.map(label)}
                     </div>
                     <div className="block outcome triggers">
                       {story.text.richText.middle.outcomeText[i]?.triggerTexts?.map((t, i) => {
-                        return <div key={i}>{t?.map(label)}</div>
-                      }) ?? "no trigger texts found"}
+                        return <div key={i}>{t.map(label)}</div>
+                      })}
                     </div>
                     <div className="block outcome results">
                       {story.text.richText.middle.outcomeText[i]?.resultTexts?.map((r, i) => {
-                        return <div key={i}>{r?.map(label)}</div>
-                      }) ?? "no result texts found"}
+                        return <div key={i}>{r.map(label)}</div>
+                      })}
                     </div>
                   </div>
                 )
@@ -54,12 +53,10 @@ export default ({ story }: StoryBoxProps) => {
             </div>
             <div className="block ending">
               <div className="block ending main">
-                {story.text.richText.ending.main?.map(label)}
+                {story.text.richText.ending.main?.map(label) ?? story.text.richText.ending.main?.map(label)}
               </div>
               <div className="block ending results">
-                {story.text.richText.ending?.map((r, i) => {
-                  return <div key={i}>{r?.map(label) ?? "no r found"}</div>
-                }) ?? "no ending results texts found"}
+                {story.text.richText.ending.resultTexts?.map(label)}
               </div>
             </div>
             {story.text.nextUpdateTime !== -1 &&

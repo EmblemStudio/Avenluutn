@@ -73,32 +73,55 @@ async function main() {
   )
 
   /**
-   * add test narratorNFT. This first narrator will point to a script
-   * at localhost for testing purposes
+   * add test narratorNFT.
    */
 
+  const minute = 60
+
+  const now = Math.floor(new Date() / 1000)
+  const totalCollections = 10
+  const collectionLength = minute * 10
+  const collectionSpacing = minute * 15
+  const start = now - (collectionSpacing * 3)
+  const collectionSize = 5
+
   console.log("Minting test NFT")
-  const narratorTx = await narratorNFTs.mint(
-    narratorNFTs.address,
-    "https://gist.githubusercontent.com/EzraWeller/a90b4ff0f6a4b7356e8277135d7e391d/raw/07cfb153559b5332ddc60aa34b161d03671b051a/avenluutn_bundle_161221.js"
-  )
+  const scriptURI = "https://gist.githubusercontent.com/EzraWeller/a90b4ff0f6a4b7356e8277135d7e391d/raw/07cfb153559b5332ddc60aa34b161d03671b051a/avenluutn_bundle_161221.js"
+  const narratorTx = await narratorNFTs.mint(narratorNFTs.address, scriptURI)
 
   console.log("Waiting for mint transaction...")
   await narratorTx.wait()
 
-  const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   console.log("adding test narrator")
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
-    now - 60 * 15 * 3,  // start
-    10,               // totalCollections
-    60 * 60 * 10,            // collectionLength
-    60 * 60 * 15,            // collectionSpacing
-    5,                  // collectionSize
+    start,
+    totalCollections,
+    collectionLength,
+    collectionSpacing,
+    collectionSize,
   )
   const receipt = await pubTx.wait()
-  console.log("New narrator added at index:", Number(receipt.events[0].args.count))
+  console.log(
+    "New narrator added at index:",
+    Number(receipt.events[0].args.count),
+  )
+  console.log("script URI", scriptURI)
+  console.log("total collections", totalCollections)
+  console.log("collection Length", collectionLength)
+  console.log("collection Spacing", collectionSpacing)
+  console.log("collection Size", collectionSize)
+
+  let startTime = start
+  // calculate and print run start times to help with debugging
+  console.log("Start Times (US Eastern)")
+  console.log(`Now: ${new Date(now * 1000).toLocaleString('en-US', { timeZone: 'America/New_York'})}`)
+  const startTimes = [...Array(totalCollections).keys()].forEach((collection) => {
+    const collectionStart = new Date((start + (collection * collectionSpacing)) * 1000)
+    console.log(`Collection ${collection}: ${collectionStart.toLocaleString('en-US', { timeZone: 'America/New_York'})}`)
+    collection += 1
+  })
 
   // don't try to verify if we are on localhost or hardhat networks
   if (hre.network.name === "localhost" || hre.network.name === "hardhat") {

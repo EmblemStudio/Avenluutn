@@ -58,7 +58,7 @@ func main() {
 	errorThreshold := 10
 	go func() {
 		for {
-			time.Sleep(5 * time.Second)
+			time.Sleep(30 * time.Second)
 			narratorCount, err := pub.NarratorCount(nil)
 			if err != nil {
 				fmt.Println("Could not get narator count.", err)

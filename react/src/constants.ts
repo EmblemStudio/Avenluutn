@@ -6,7 +6,23 @@ interface NarratorParams {
   narratorIndex: number
 }
 
+/***** CHANGE THEeSE!!! ????**/
+
+
 export const currentRelease = "goerli"
+export const currentNarrator = 0
+// Publishers
+export const ADDRESSES: { [name: string]: string } = {
+  "mainnet": "",
+  "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
+  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
+  "polygon": "",
+  "localhost": import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR,
+  // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)
+}
+
+/***** CHANGE THEeSE!!! ????**/
+
 let network
 if (window !== undefined) {
   if (window.location.host === 'localhost:3000') {
@@ -16,7 +32,7 @@ if (window !== undefined) {
 
 export const NARRATOR_PARAMS: NarratorParams = {
   network: network ? network : currentRelease,
-  narratorIndex: 0,
+  narratorIndex: currentNarrator,
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -35,15 +51,6 @@ export const WARNINGS = {
 export const STATUS = {
   tx_submitted: `transaction submitted--awaiting confirmation`,
   tx_confirmed: `transacton confirmed`
-}
-
-// Publishers
-export const ADDRESSES: { [name: string]: string } = {
-  "mainnet": "",
-  "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
-  "polygon": "",
-  "localhost": "0xD84379CEae14AA33C123Af12424A37803F885889",
 }
 
 export const SERVER = {

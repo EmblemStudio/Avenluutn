@@ -12,6 +12,7 @@ const outcomeViews = {
 
 export default () => {
   const [bets, setBets] = useStorage("bets", [])
+  console.log(bets)
   return (
     <div>
       My Bets

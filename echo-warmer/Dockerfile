@@ -17,7 +17,7 @@ COPY ./warmer/*.go ./warmer/
 
 RUN go build -o /avenluutn
 
-FROM scratch
+FROM node:lts
 
 COPY --from=builder /avenluutn /avenluutn
 
