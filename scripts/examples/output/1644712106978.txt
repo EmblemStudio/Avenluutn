@@ -1,0 +1,3465 @@
+STORY 0-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Couch Susan Yellen, 
+Remy Nilsson, 
+Sybella Schneider, 
+and 
+Jody Finnegan 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+crepuscular
+, 
+ancient
+ relic
+ "Melifluent Marauder"
+ at the 
+Red 
+market
+.
+In search of the goal, 
+they 
+snuck up on 
+a 
+diurnal
+ elemental
+.
+After 
+a hard-earned 
+contest
+, they 
+defeated
+ the 
+elemental
+.
+Couch Susan Yellen
+ found 
+Greaves
+!
+Sybella Schneider
+ learned 
+Archeology
+!
+Jody Finnegan
+ suffered slash wounds.
+Jody Finnegan
+ found 
+Ornate Helm
+!
+Soon enough, 
+they 
+had to solve 
+a 
+succulent
+, empowered
+ locked gate
+.
+After 
+a testing 
+hundred guesses
+, they 
+solved
+ the 
+locked gate
+.
+Couch Susan Yellen
+ got fried nerves.
+Sybella Schneider
+ broke their leg.
+Jody Finnegan
+ found 
+Gold Ring
+!
+While investigating the area, 
+they 
+were ambushed by 
+the 
+violent
+, hideous
+ bird folk
+ "Xtophila Clopse"
+.
+After 
+a grueling 
+contest
+, they 
+moved on from
+ the 
+bird folk
+.
+Couch Susan Yellen
+ found 
+Ornate Chestplate
+!
+Remy Nilsson
+ dislocated her shoulder.
+Sybella Schneider
+ had their arm crushed.
+Jody Finnegan
+ found 
+Titanium Ring of Reflection
+!
+They 
+arrived at the 
+Red
+ market
+, where 
+they 
+discovered 
+the 
+crepuscular
+, ancient
+ relic
+ "Melifluent Marauder"
+.
+After 
+a grueling 
+mission
+, they 
+retrieved
+ the 
+relic
+.
+Couch Susan Yellen
+ broke their leg.
+Couch Susan Yellen
+ bruised their ribs.
+Remy Nilsson
+ found 
+Shoes
+!
+Remy Nilsson
+ found 
+Greaves
+!
+Sybella Schneider
+ found 
+"Morbid Tear" Bronze Ring of Protection
+!
+Jody Finnegan
+ bruised their ribs.
+Jody Finnegan
+ found 
+Pendant of Titans
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+Jody Finnegan
+ now has 
+cowardice
+!
+nextUpdateTime: 1644707920
+STORY 0-1 
+
+At 
+Platinum Branch Club
+ in 
+North Bank Street
+, 
+Adelbert de la Lincoln the Comfy, 
+Based Chad Havlikova, 
+Faina Gresham, 
+and 
+Janet Courtois 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+ caravan
+ at the 
+Macrosign 
+city
+.
+While traveling, 
+they 
+stumbled upon 
+a 
+crepuscular
+ puzzlebox
+.
+After 
+a challenging 
+hundred guesses
+, they 
+solved
+ the 
+puzzlebox
+.
+Adelbert de la Lincoln the Comfy
+ broke his leg.
+Adelbert de la Lincoln the Comfy
+ dislocated his shoulder.
+Based Chad Havlikova
+ got blasted eardrums.
+Janet Courtois
+ learned 
+Politics
+!
+They 
+arrived at the 
+Macrosign
+ city
+, where 
+they 
+were confronted with 
+a 
+nocturnal
+ caravan
+.
+After 
+a trying 
+battle
+, they 
+protected
+ the 
+caravan
+.
+Adelbert de la Lincoln the Comfy
+ learned 
+Archeology
+!
+Janet Courtois
+ bruised her ribs.
+Janet Courtois
+ learned 
+Archeology
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+Adelbert de la Lincoln the Comfy
+ now has 
+a peg leg
+!
+nextUpdateTime: 1644707920
+STORY 0-2 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Andre Kjeldsen, 
+Generalissimo Michael Bryant, 
+and 
+Ebony Pelletier 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+, 
+deathly
+ maze
+ at the 
+Boreal 
+summit
+.
+Venturing forth, 
+they 
+discovered 
+a 
+succulent
+ cliff
+.
+After 
+a hard-earned 
+attempt
+, they 
+crossed
+ the 
+cliff
+.
+Generalissimo Michael Bryant
+ found 
+Silk Hood of Perfection
+!
+Ebony Pelletier
+ found 
+Linen Sash of Power
+!
+Following the path, 
+they 
+met 
+an 
+entrancing
+, fearsome
+ beast
+.
+After 
+a rough 
+contest
+, they 
+were forced to turn back by
+ the 
+beast
+.
+Ebony Pelletier
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+Ebony Pelletier
+ now has 
+anxiety
+!
+nextUpdateTime: -1
+STORY 0-3 
+
+At 
+Klaxon Messengerhall
+ in 
+North Bank Street
+, 
+James Stornik, 
+0x Dilibe Gandhi, 
+and 
+Eva Simon 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+ wyrm
+ at the 
+Jarred 
+pass
+.
+Before reaching the destination, 
+they 
+discovered 
+a 
+nocturnal
+ dead end
+.
+After 
+a grueling 
+hundred guesses
+, they 
+found a way through
+ the 
+dead end
+.
+0x Dilibe Gandhi
+ found 
+Linen Robe
+!
+They 
+arrived at the 
+Jarred
+ pass
+, where 
+they 
+snuck up on 
+a 
+violent
+ wyrm
+.
+After 
+a misguided 
+contest
+, they 
+were conquered by
+ the 
+wyrm
+.
+0x Dilibe Gandhi
+ was frightened half to death.
+Eva Simon
+ died.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-4 
+
+At 
+Marsh's Sewerworks
+ in 
+Farshi District
+, 
+Eva Nigiri, 
+Gogu Hornblower, 
+Lachlan Dias, 
+and 
+Darfin Schmidt 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+sharp
+ gemstone
+ at the 
+Geometric 
+forest
+.
+On the way, 
+they 
+stumbled upon 
+a 
+violent
+ maze
+.
+After 
+a fraught 
+hundred guesses
+, they 
+found a way through
+ the 
+maze
+.
+Gogu Hornblower
+ now has 
+anxiety
+!
+They 
+arrived at the 
+Geometric
+ forest
+, where 
+they 
+were blocked by 
+a 
+sharp
+ gemstone
+.
+After 
+a hard-earned 
+mission
+, they 
+grabbed
+ the 
+gemstone
+.
+Eva Nigiri
+ broke their leg.
+Gogu Hornblower
+ learned 
+Marketing
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: 1644707920
+STORY 0-5 
+
+At 
+Harcourt Smithy
+ in 
+Ulster's Jeweltown
+, 
+Helga Kwiatkowski, 
+Charles Bazhenov, 
+Jody Dias, 
+and 
+Ivan St. James 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+ancient
+ maze
+ "Vivisected Clopse"
+ at the 
+Craven 
+village
+.
+Pushing forward, 
+they 
+were blocked by 
+a 
+nocturnal
+ canyon
+.
+After 
+a challenging 
+exertion
+, they 
+crossed
+ the 
+canyon
+.
+Jody Dias
+ found 
+Heavy Belt
+!
+Ivan St. James
+ broke their leg.
+Before reaching the destination, 
+they 
+had to solve 
+a 
+voracious
+, jovial
+ dead end
+.
+After 
+a grueling 
+hundred guesses
+, they 
+figured out
+ the 
+dead end
+.
+Helga Kwiatkowski
+ found 
+Holy Greaves of Anger
+!
+Helga Kwiatkowski
+ died.
+Charles Bazhenov
+ learned 
+Leadership
+!
+Pushing forward, 
+they 
+met 
+the 
+nocturnal
+, grotesque
+ brigands
+ "Yule Ambusher"
+.
+After 
+a bungled 
+game of wits
+, they 
+were forced to turn back by
+ the 
+brigands
+.
+Charles Bazhenov
+ suffered slash wounds.
+Ivan St. James
+ found 
+Wool Shoes of Fury
+!
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Remy groovy Berg, 
+Evan McLellan, 
+and 
+Radim Langley 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+many-eyed
+, 
+jovial
+ ruins
+ "Pillskin Ambusher"
+ at the 
+Boreal 
+market
+.
+In search of the goal, 
+they 
+had to solve 
+a 
+nocturnal
+ dead end
+.
+After 
+a challenging 
+brainstorm
+, they 
+solved
+ the 
+dead end
+.
+Remy groovy Berg
+ found 
+Plate Mail
+!
+Evan McLellan
+ suffered slash wounds.
+During the journey, 
+they 
+were blocked by 
+a 
+many-eyed
+, hideous
+ river
+.
+After 
+a hard-earned 
+trek
+, they 
+overcame
+ the 
+river
+.
+Remy groovy Berg 
+used her 
+Portraiture 
+skills!
+Remy groovy Berg
+ found 
+Plated Belt of Protection
+!
+Next, 
+they 
+were confronted by 
+the 
+sharp
+, luminous
+ beast
+ "Pillskin Fecund"
+.
+After 
+a trying 
+contest
+, they 
+moved on from
+ the 
+beast
+.
+Remy groovy Berg
+ got fried nerves.
+Evan McLellan
+ found 
+Full Helm
+!
+Radim Langley
+ found 
+Wand
+!
+Before reaching the destination, 
+they 
+stumbled upon 
+the 
+succulent
+, cursed
+ maze
+ "Carcosan Limpet"
+.
+After 
+a weak 
+brainstorm
+, they 
+failed to solve
+ the 
+maze
+.
+Remy groovy Berg
+ suffered slash wounds.
+Evan McLellan
+ now has 
+a peg leg
+!
+Radim Langley
+ got blasted eardrums.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-1 
+
+At 
+Platinum Branch Club
+ in 
+North Bank Street
+, 
+Robert Mancini, 
+Linda Sandgreen the Musician, 
+and 
+Janet Courtois 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+voracious
+ warlock
+ at the 
+Illusid 
+crypt
+.
+Pushing forward, 
+they 
+were ambushed by 
+an 
+invisible
+ beast
+.
+After 
+a hard-earned 
+game of wits
+, they 
+moved on from
+ the 
+beast
+.
+Robert Mancini
+ learned 
+Haberdashery
+!
+They 
+arrived at the 
+Illusid
+ crypt
+, where 
+they 
+were ambushed by 
+a 
+voracious
+ warlock
+.
+After 
+a testing 
+battle
+, they 
+conquered
+ the 
+warlock
+.
+Robert Mancini
+ found 
+Amulet
+!
+Linda Sandgreen the Musician
+ now has 
+elegance
+!
+Janet Courtois
+ was frightened half to death.
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: 1644708920
+STORY 1-2 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+George Maki, 
+Monica Chibugo, 
+and 
+Empress Joseph Mancini 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+, 
+empowered
+ maze
+ "Asla-Kratom Fecund"
+ at the 
+Darshish 
+market
+.
+Following the path, 
+they 
+discovered 
+a 
+sharp
+ dead end
+.
+After 
+an epic 
+brainstorm
+, they 
+solved
+ the 
+dead end
+.
+George Maki
+ now has 
+greed
+!
+Monica Chibugo
+ got blasted eardrums.
+Before reaching the destination, 
+they 
+were confronted with 
+a 
+succulent
+, hideous
+ hedge
+.
+After 
+an epic 
+trek
+, they 
+crossed
+ the 
+hedge
+.
+George Maki
+ now has 
+optimistism
+!
+Monica Chibugo
+ now has 
+weakness
+!
+Empress Joseph Mancini
+ was cursed.
+On the way, 
+they 
+were blocked by 
+the 
+decrepit
+, jovial
+ maze
+ "Melifluent Ulula"
+.
+After 
+a testing 
+hundred guesses
+, they 
+solved
+ the 
+maze
+.
+George Maki
+ got blasted eardrums.
+Monica Chibugo
+ found 
+Platinum Ring
+!
+Empress Joseph Mancini
+ found 
+Silk Gloves
+!
+Before reaching the destination, 
+they 
+were blocked by 
+the 
+entrancing
+, ravenous
+ maze
+ "Melifluent Howler"
+.
+After 
+an exhausting 
+brainstorm
+, they 
+found no way through
+ the 
+maze
+.
+Monica Chibugo
+ was frightened half to death.
+Monica Chibugo
+ learned 
+Baking
+!
+Empress Joseph Mancini
+ learned 
+Leadership
+!
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+George Maki
+ now has 
+deafness
+!
+nextUpdateTime: -1
+STORY 1-3 
+
+At 
+Klaxon Messengerhall
+ in 
+North Bank Street
+, 
+0x Dilibe Gandhi, 
+Isabella Zhu, 
+and 
+Monica Fleischer 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+, 
+ancient
+ nephilim
+ "Xtophila Quartzile"
+ at the 
+Headless 
+pass
+.
+In search of the goal, 
+they 
+discovered 
+an 
+entrancing
+ locked gate
+.
+After 
+a testing 
+brainstorm
+, they 
+figured out
+ the 
+locked gate
+.
+Monica Fleischer 
+used her 
+Swimming 
+skills!
+Monica Fleischer
+ was stabbed in the torso.
+In transit, 
+they 
+met 
+an 
+invisible
+, impossible
+ bird folk
+.
+After 
+a trying 
+negotiation
+, they 
+parted ways with
+ the 
+bird folk
+.
+0x Dilibe Gandhi
+ learned 
+Metallurgy
+!
+Monica Fleischer
+ found 
+Wool Sash
+!
+On the road there, 
+they 
+discovered 
+the 
+sharp
+, reknowned
+ dead end
+ "Victorious Fecund"
+.
+After 
+an epic 
+brainstorm
+, they 
+solved
+ the 
+dead end
+.
+0x Dilibe Gandhi
+ got blasted eardrums.
+0x Dilibe Gandhi
+ found 
+Hard Leather Armor
+!
+Isabella Zhu
+ learned 
+Marketing
+!
+Monica Fleischer
+ had her confidence shaken.
+Monica Fleischer
+ found 
+Silk Sash of Rage
+!
+They 
+arrived at the 
+Headless
+ pass
+, where 
+they 
+met 
+the 
+nocturnal
+, ancient
+ nephilim
+ "Xtophila Quartzile"
+.
+After 
+a grueling 
+introduction
+, they 
+struck a deal with
+ the 
+nephilim
+.
+Isabella Zhu
+ got fried nerves.
+Isabella Zhu
+ was stabbed in the torso.
+Monica Fleischer
+ found 
+Leather Gloves
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: 1644708920
+STORY 1-4 
+
+At 
+Marsh's Sewerworks
+ in 
+Farshi District
+, 
+Lachlan Dias, 
+Jhaan Yarrow the Just, 
+and 
+Satoshi Lelkova 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+succulent
+ walls
+ at the 
+Can-ton 
+summit
+.
+Following the path, 
+they 
+were ambushed by 
+some 
+crepuscular
+ brigands
+.
+After 
+a bungled 
+game of wits
+, they 
+were driven back by
+ the 
+brigands
+.
+Lachlan Dias
+ got blasted eardrums.
+Satoshi Lelkova
+ had their confidence shaken.
+Satoshi Lelkova
+ was stabbed in the torso.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-5 
+
+At 
+Harcourt Smithy
+ in 
+Ulster's Jeweltown
+, 
+Florus Frederiksen, 
+Charles Bazhenov, 
+and 
+Gawel Sorokina 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+lightless
+, 
+unspeakable
+ priest
+ "Carcosan Ellishment"
+ at the 
+Macrosign 
+pass
+.
+Next, 
+they 
+discovered 
+a 
+crepuscular
+ maze
+.
+After 
+a bungled 
+brainstorm
+, they 
+failed to solve
+ the 
+maze
+.
+Gawel Sorokina
+ got fried nerves.
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Couch Susan Yellen, 
+Caspian Broberg, 
+Sybella Schneider, 
+and 
+Remy Nilsson 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+voracious
+, 
+hideous
+ mindscape
+ at the 
+Craven 
+sea
+.
+After going some distance, 
+they 
+discovered 
+an 
+entrancing
+ river
+.
+After 
+a strenuous 
+exertion
+, they 
+overcame
+ the 
+river
+.
+Couch Susan Yellen
+ suffered slash wounds.
+Caspian Broberg
+ had her arm crushed.
+Before reaching the destination, 
+they 
+were confronted with 
+a 
+crepuscular
+, deathly
+ river
+.
+After 
+a fraught 
+attempt
+, they 
+traversed
+ the 
+river
+.
+Couch Susan Yellen
+ now has 
+elegance
+!
+Caspian Broberg
+ found 
+Demonhide Belt
+!
+They 
+arrived at the 
+Craven
+ sea
+, where 
+they 
+were confronted with 
+a 
+voracious
+, hideous
+ mindscape
+.
+After 
+a challenging 
+battle
+, they 
+safe-guarded
+ the 
+mindscape
+.
+Couch Susan Yellen
+ found 
+Ornate Greaves
+!
+Caspian Broberg
+ now has 
+martyr complex
+!
+Sybella Schneider
+ now has 
+deafness
+!
+Sybella Schneider
+ learned 
+Politics
+!
+Remy Nilsson
+ found 
+Amulet
+!
+Remy Nilsson
+ learned 
+Streetwise
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: 1644709920
+STORY 2-1 
+
+At 
+Platinum Branch Club
+ in 
+North Bank Street
+, 
+Robert Mancini, 
+Janet Courtois, 
+Linda Sandgreen the Musician, 
+and 
+Daealla Jenkins the Saint 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+fearsome
+ maze
+ "Mighty Ellishment"
+ at the 
+Boreal 
+village
+.
+Pushing forward, 
+they 
+were confronted with 
+a 
+sharp
+ cliff
+.
+After 
+an epic 
+exertion
+, they 
+traversed
+ the 
+cliff
+.
+Pushing forward, 
+they 
+were confronted with 
+a 
+sharp
+, irresistible
+ cliff
+.
+After 
+a hard-earned 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Janet Courtois
+ found 
+Silk Robe
+!
+Linda Sandgreen the Musician
+ was cursed.
+Daealla Jenkins the Saint
+ found 
+Hood
+!
+On the road there, 
+they 
+discovered 
+the 
+succulent
+, luminous
+ canyon
+ "Victorious Butcher"
+.
+After 
+a challenging 
+attempt
+, they 
+overcame
+ the 
+canyon
+.
+Janet Courtois
+ got blasted eardrums.
+They 
+arrived at the 
+Boreal
+ village
+, where 
+they 
+were blocked by 
+the 
+sharp
+, fearsome
+ maze
+ "Mighty Ellishment"
+.
+After 
+a testing 
+journey
+, they 
+successfully navigated
+ the 
+maze
+.
+Robert Mancini
+ now has 
+trauma
+!
+Janet Courtois
+ found 
+Gold Ring
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: 1644709920
+STORY 2-2 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Thomas McLellan, 
+Archibaldo Pinette, 
+Susan Courtois, 
+and 
+Cringe Irene Gresham 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+lightless
+ sanctum
+ at the 
+Boreal 
+forest
+.
+Venturing forth, 
+they 
+stumbled upon 
+a 
+violent
+ river
+.
+After 
+a trying 
+exertion
+, they 
+crossed
+ the 
+river
+.
+Thomas McLellan
+ learned 
+Leadership
+!
+Archibaldo Pinette
+ dislocated their shoulder.
+They 
+arrived at the 
+Boreal
+ forest
+, where 
+they 
+were confronted with 
+a 
+lightless
+ sanctum
+.
+After 
+a challenging 
+attempt
+, they 
+protected
+ the 
+sanctum
+.
+Thomas McLellan
+ was cursed.
+Susan Courtois
+ suffered slash wounds.
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: 1644709920
+STORY 2-3 
+
+At 
+Klaxon Messengerhall
+ in 
+North Bank Street
+, 
+Chukwuebuka Hidalgo the Short, 
+0x Dilibe Gandhi, 
+Alma Zhu, 
+and 
+Isabella Zhu 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+, 
+hideous
+ relic
+ "Indefatigable Hunter"
+ at the 
+Macrosign 
+valley
+.
+In transit, 
+they 
+were blocked by 
+a 
+voracious
+ waste
+.
+After 
+an epic 
+exertion
+, they 
+crossed
+ the 
+waste
+.
+Alma Zhu
+ found 
+"Dusk Tear" Gold Ring of the Twins
+!
+Isabella Zhu
+ found 
+Full Helm of Fury
+!
+In transit, 
+they 
+were blocked by 
+a 
+voracious
+, irresistible
+ waste
+.
+After 
+a hard-earned 
+exertion
+, they 
+traversed
+ the 
+waste
+.
+Chukwuebuka Hidalgo the Short
+ now has 
+a peg leg
+!
+0x Dilibe Gandhi
+ bruised his ribs.
+Isabella Zhu
+ found 
+"Tempest Grasp" Great Helm of Detection +1
+!
+Soon enough, 
+they 
+stumbled upon 
+the 
+many-eyed
+, luminous
+ waste
+ "Xtophila Clopse"
+.
+After 
+an epic 
+attempt
+, they 
+crossed
+ the 
+waste
+.
+Isabella Zhu 
+used his 
+Portraiture 
+skills!
+Chukwuebuka Hidalgo the Short
+ found 
+Necklace
+!
+0x Dilibe Gandhi
+ was cursed.
+0x Dilibe Gandhi
+ dislocated his shoulder.
+Alma Zhu
+ now has 
+quick-wit
+!
+Isabella Zhu
+ broke his leg.
+Isabella Zhu
+ suffered slash wounds.
+They 
+arrived at the 
+Macrosign
+ valley
+, where 
+they 
+stumbled upon 
+the 
+lightless
+, hideous
+ relic
+ "Indefatigable Hunter"
+.
+After 
+a testing 
+mission
+, they 
+returned with
+ the 
+relic
+.
+Chukwuebuka Hidalgo the Short
+ found 
+Wool Shoes
+!
+0x Dilibe Gandhi
+ learned 
+Alchemy
+!
+Alma Zhu
+ now has 
+a prosthetic arm
+!
+Alma Zhu
+ found 
+Demon Crown
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: 1644709920
+STORY 2-4 
+
+At 
+Marsh's Sewerworks
+ in 
+Farshi District
+, 
+Gogu Hornblower, 
+Darfin Schmidt, 
+Sirius Ashbluff, 
+and 
+Lachlan Dias 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+ ruins
+ at the 
+Headless 
+desert
+.
+Pushing forward, 
+they 
+were confronted with 
+a 
+many-eyed
+ cliff
+.
+After 
+a fraught 
+trek
+, they 
+overcame
+ the 
+cliff
+.
+Gogu Hornblower
+ dislocated their shoulder.
+Darfin Schmidt
+ had their arm crushed.
+They 
+arrived at the 
+Headless
+ desert
+, where 
+they 
+were blocked by 
+some 
+sharp
+ ruins
+.
+After 
+a trying 
+exploration
+, they 
+surveiled all of
+ the 
+ruins
+.
+Gogu Hornblower
+ bruised their ribs.
+Gogu Hornblower
+ now has 
+optimistism
+!
+Darfin Schmidt
+ now has 
+trauma
+!
+Darfin Schmidt
+ now has 
+quick-wit
+!
+Sirius Ashbluff
+ now has 
+optimistism
+!
+Lachlan Dias
+ broke her leg.
+Lachlan Dias
+ was stabbed in the torso.
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+Lachlan Dias
+ now has 
+cowardice
+!
+nextUpdateTime: 1644709920
+STORY 2-5 
+
+At 
+Harcourt Smithy
+ in 
+Ulster's Jeweltown
+, 
+Kerstin light Felten the God-Given, 
+Charles Bazhenov, 
+Jody Dias, 
+and 
+Florus Frederiksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+ gemstone
+ at the 
+Headless 
+crypt
+.
+In search of the goal, 
+they 
+discovered 
+a 
+nocturnal
+ waste
+.
+After 
+a testing 
+trek
+, they 
+overcame
+ the 
+waste
+.
+Charles Bazhenov
+ dislocated her shoulder.
+Jody Dias
+ had their confidence shaken.
+Jody Dias
+ learned 
+Haberdashery
+!
+They 
+arrived at the 
+Headless
+ crypt
+, where 
+they 
+stumbled upon 
+a 
+lightless
+ gemstone
+.
+After 
+a hard-earned 
+search
+, they 
+retrieved
+ the 
+gemstone
+.
+Kerstin light Felten the God-Given
+ found 
+Brightsilk Sash
+!
+Kerstin light Felten the God-Given
+ learned 
+Portraiture
+!
+Charles Bazhenov
+ bruised her ribs.
+Jody Dias
+ learned 
+Streetwise
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: 1644709920
+STORY 3-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Jody Finnegan, 
+Evan McLellan, 
+and 
+Council Sirius Maki 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+many-eyed
+, 
+reknowned
+ relic
+ at the 
+Boreal 
+summit
+.
+Pushing forward, 
+they 
+met 
+a 
+voracious
+ tunnel dweller
+.
+After 
+an exhausting 
+contest
+, they 
+were driven back by
+ the 
+tunnel dweller
+.
+Evan McLellan
+ had his arm crushed.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-1 
+
+At 
+Platinum Branch Club
+ in 
+North Bank Street
+, 
+Daealla Jenkins the Saint, 
+Robert Mancini, 
+and 
+Based Chad Havlikova 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+ hidden passage
+ at the 
+Illusid 
+city
+.
+In search of the goal, 
+they 
+met 
+a 
+succulent
+ tunnel dweller
+.
+After 
+a misguided 
+stand off
+, they 
+were defeated by
+ the 
+tunnel dweller
+.
+Daealla Jenkins the Saint
+ found 
+Quarterstaff of Skill
+!
+Robert Mancini
+ now has 
+trauma
+!
+Based Chad Havlikova
+ had his confidence shaken.
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-2 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Ebony Pelletier, 
+Abigail Sos, 
+and 
+Susan Courtois 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+, 
+ancient
+ dunes
+ at the 
+Darshish 
+village
+.
+In transit, 
+they 
+stumbled upon 
+an 
+entrancing
+ dead end
+.
+After 
+a testing 
+hundred guesses
+, they 
+found a way through
+ the 
+dead end
+.
+Abigail Sos
+ suffered slash wounds.
+On the road there, 
+they 
+were blocked by 
+a 
+succulent
+, jovial
+ cliff
+.
+After 
+a rough 
+trek
+, they 
+failed to cross
+ the 
+cliff
+.
+Ebony Pelletier
+ had his confidence shaken.
+Abigail Sos
+ was cursed.
+Susan Courtois
+ was stabbed in the torso.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-3 
+
+At 
+Klaxon Messengerhall
+ in 
+North Bank Street
+, 
+Chukwuebuka Hidalgo the Short, 
+Nym Fleischer the Generous, 
+and 
+Helga Frederiksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+crepuscular
+ prisoner
+ at the 
+Jarred 
+village
+.
+After going some distance, 
+they 
+were ambushed by 
+a 
+decrepit
+ tunnel dweller
+.
+After 
+a grueling 
+game of wits
+, they 
+defeated
+ the 
+tunnel dweller
+.
+Nym Fleischer the Generous
+ learned 
+Deception
+!
+Helga Frederiksen
+ found 
+Quarterstaff
+!
+They 
+arrived at the 
+Jarred
+ village
+, where 
+they 
+discovered 
+a 
+crepuscular
+ prisoner
+.
+After 
+a hard-earned 
+mission
+, they 
+returned with
+ the 
+prisoner
+.
+Nym Fleischer the Generous
+ found 
+Dragonskin Gloves
+!
+Nym Fleischer the Generous
+ found 
+Scimitar
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: 1644710920
+STORY 3-4 
+
+At 
+Marsh's Sewerworks
+ in 
+Farshi District
+, 
+Gogu Hornblower, 
+Rotnam Gousse, 
+and 
+Lachlan Dias 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+, 
+unspeakable
+ warlock
+ at the 
+Boreal 
+village
+.
+Pushing forward, 
+they 
+discovered 
+a 
+violent
+ puzzlebox
+.
+After 
+a grueling 
+hundred guesses
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Gogu Hornblower
+ now has 
+aggressive impulses
+!
+Rotnam Gousse
+ now has 
+anxiety
+!
+Lachlan Dias
+ now has 
+martyr complex
+!
+Lachlan Dias
+ learned 
+Streetwise
+!
+On the way, 
+they 
+discovered 
+an 
+entrancing
+, deathly
+ cliff
+.
+After 
+a strenuous 
+attempt
+, they 
+overcame
+ the 
+cliff
+.
+Gogu Hornblower
+ had their arm crushed.
+Gogu Hornblower
+ suffered slash wounds.
+They 
+arrived at the 
+Boreal
+ village
+, where 
+they 
+were confronted by 
+a 
+decrepit
+, unspeakable
+ warlock
+.
+After 
+a misguided 
+battle
+, they 
+were overpowered by
+ the 
+warlock
+.
+Gogu Hornblower
+ learned 
+Ancient Lore
+!
+Rotnam Gousse
+ had his confidence shaken.
+Rotnam Gousse
+ learned 
+Swordskill
+!
+Lachlan Dias
+ found 
+Hard Leather Armor of Power
+!
+Lachlan Dias
+ was cursed.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-5 
+
+At 
+Harcourt Smithy
+ in 
+Ulster's Jeweltown
+, 
+Gawel Sorokina, 
+Florus Frederiksen, 
+Anya Huxley the Old, 
+Ivan St. James, 
+and 
+Jody Dias 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+, 
+horrifying
+ swarm
+ "Pillskin Ulula"
+ at the 
+Illusid 
+pass
+.
+Following the path, 
+they 
+were blocked by 
+a 
+sharp
+ maze
+.
+After 
+a challenging 
+attempt
+, they 
+figured out
+ the 
+maze
+.
+Gawel Sorokina
+ found 
+Platinum Ring
+!
+Florus Frederiksen
+ was stabbed in the torso.
+Ivan St. James
+ learned 
+Deception
+!
+While investigating the area, 
+they 
+were confronted by 
+an 
+entrancing
+, ferocious
+ bird folk
+.
+After 
+a trying 
+stand off
+, they 
+moved on from
+ the 
+bird folk
+.
+Gawel Sorokina
+ now has 
+great destiny
+!
+Florus Frederiksen
+ suffered slash wounds.
+Anya Huxley the Old
+ now has 
+self-doubt
+!
+Ivan St. James
+ found 
+"Dusk Roar" Linen Gloves of Perfection
+!
+Jody Dias
+ found 
+Grave Wand
+!
+Next, 
+they 
+discovered 
+the 
+nocturnal
+, black-hearted
+ locked gate
+ "Blistered Osprin"
+.
+After 
+an epic 
+attempt
+, they 
+found a way through
+ the 
+locked gate
+.
+Gawel Sorokina
+ broke her leg.
+Anya Huxley the Old
+ found 
+Amulet
+!
+Anya Huxley the Old
+ found 
+Hood
+!
+Ivan St. James
+ suffered slash wounds.
+Ivan St. James
+ found 
+Maul
+!
+Ivan St. James
+ found 
+Wool Sash of Titans
+!
+Jody Dias
+ got blasted eardrums.
+They 
+arrived at the 
+Illusid
+ pass
+, where 
+they 
+were confronted by 
+the 
+succulent
+, horrifying
+ swarm
+ "Pillskin Ulula"
+.
+After 
+a grueling 
+struggle
+, they 
+overpowered
+ the 
+swarm
+.
+Gawel Sorokina
+ found 
+Tome
+!
+Gawel Sorokina
+ learned 
+Haberdashery
+!
+Florus Frederiksen
+ found 
+Gold Ring
+!
+Florus Frederiksen
+ found 
+Ornate Greaves
+!
+Anya Huxley the Old
+ had their arm crushed.
+Ivan St. James
+ found 
+Dragon's Crown
+!
+Ivan St. James
+ learned 
+Alchemy
+!
+Jody Dias
+ bruised their ribs.
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+Ivan St. James
+ now has 
+martyr complex
+!
+nextUpdateTime: 1644710920
+STORY 4-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Evan McLellan, 
+Sybella Schneider, 
+and 
+Radim Langley 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+entrancing
+, 
+horrifying
+ outskirts
+ at the 
+Macrosign 
+market
+.
+Venturing forth, 
+they 
+were blocked by 
+an 
+invisible
+ hedge
+.
+After 
+a challenging 
+exertion
+, they 
+crossed
+ the 
+hedge
+.
+Sybella Schneider
+ bruised their ribs.
+Radim Langley
+ found 
+Silk Sash
+!
+In search of the goal, 
+they 
+discovered 
+a 
+lightless
+, irridescent
+ waste
+.
+After 
+a hard-earned 
+attempt
+, they 
+crossed
+ the 
+waste
+.
+Evan McLellan 
+used his 
+Swimming 
+skills!
+Sybella Schneider
+ learned 
+Arcane Arts
+!
+Radim Langley
+ found 
+Grave Wand of Protection
+!
+They 
+arrived at the 
+Macrosign
+ market
+, where 
+they 
+stumbled upon 
+some 
+entrancing
+, horrifying
+ outskirts
+.
+After 
+a rough 
+attempt
+, they 
+could not to protect
+ the 
+outskirts
+.
+Sybella Schneider
+ found 
+"Oblivion Peak" Demon Crown of Fury +1
+!
+Radim Langley
+ was cursed.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-1 
+
+At 
+Platinum Branch Club
+ in 
+North Bank Street
+, 
+Robert Mancini, 
+Adelbert de la Lincoln the Comfy, 
+and 
+Daealla Jenkins the Saint 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+sharp
+, 
+black-hearted
+ fiend
+ at the 
+Craven 
+market
+.
+Pushing forward, 
+they 
+discovered 
+a 
+lightless
+ waste
+.
+After 
+an epic 
+exertion
+, they 
+overcame
+ the 
+waste
+.
+Pushing forward, 
+they 
+were confronted with 
+an 
+invisible
+, deathly
+ cliff
+.
+After 
+a challenging 
+attempt
+, they 
+crossed
+ the 
+cliff
+.
+Robert Mancini
+ found 
+Ring Mail
+!
+Robert Mancini
+ dislocated their shoulder.
+Adelbert de la Lincoln the Comfy
+ got blasted eardrums.
+Daealla Jenkins the Saint
+ found 
+Titanium Ring
+!
+Daealla Jenkins the Saint
+ found 
+Ornate Helm
+!
+They 
+arrived at the 
+Craven
+ market
+, where 
+they 
+were ambushed by 
+a 
+sharp
+, black-hearted
+ fiend
+.
+After 
+a rough 
+introduction
+, they 
+annoyed
+ the 
+fiend
+.
+Robert Mancini
+ suffered slash wounds.
+Adelbert de la Lincoln the Comfy
+ dislocated his shoulder.
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-2 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Ebony Pelletier, 
+Andre Kjeldsen, 
+Monica Chibugo, 
+and 
+Cringe Irene Gresham 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+, 
+unsettling
+ secret
+ "Carcosan Ellishment"
+ at the 
+Macrosign 
+crypt
+.
+While investigating the area, 
+they 
+were blocked by 
+a 
+succulent
+ river
+.
+After 
+a grueling 
+exertion
+, they 
+overcame
+ the 
+river
+.
+Monica Chibugo 
+used their 
+Baking 
+skills!
+Andre Kjeldsen
+ now has 
+monsterphobia
+!
+Andre Kjeldsen
+ was cursed.
+In search of the goal, 
+they 
+were confronted with 
+an 
+invisible
+, horrifying
+ cliff
+.
+After 
+an epic 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Ebony Pelletier
+ was cursed.
+Andre Kjeldsen
+ was cursed.
+In search of the goal, 
+they 
+were confronted with 
+the 
+invisible
+, horrifying
+ cliff
+ "Victorious Osprin"
+.
+After 
+a testing 
+exertion
+, they 
+traversed
+ the 
+cliff
+.
+Ebony Pelletier
+ dislocated his shoulder.
+Ebony Pelletier
+ had his arm crushed.
+Andre Kjeldsen
+ found 
+Necklace of Anger
+!
+Monica Chibugo
+ suffered slash wounds.
+Monica Chibugo
+ now has 
+trauma
+!
+Cringe Irene Gresham
+ suffered slash wounds.
+After going some distance, 
+they 
+discovered 
+the 
+lightless
+, empowered
+ locked gate
+ "Asla-Kratom Clopse"
+.
+After 
+a hard-earned 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Ebony Pelletier
+ found 
+Hard Leather Boots of Anger
+!
+Andre Kjeldsen
+ found 
+Linen Gloves
+!
+Monica Chibugo
+ now has 
+unluckiness
+!
+Cringe Irene Gresham
+ got blasted eardrums.
+Cringe Irene Gresham
+ found 
+Full Helm
+!
+They 
+arrived at the 
+Macrosign
+ crypt
+, where 
+they 
+were blocked by 
+the 
+lightless
+, unsettling
+ secret
+ "Carcosan Ellishment"
+.
+After 
+a challenging 
+mission
+, they 
+acquired
+ the 
+secret
+.
+Ebony Pelletier
+ broke his leg.
+Andre Kjeldsen
+ got blasted eardrums.
+Andre Kjeldsen
+ was knocked out.
+Monica Chibugo
+ learned 
+Haberdashery
+!
+Monica Chibugo
+ found 
+"Skull Shout" Pendant of Giants +1
+!
+Cringe Irene Gresham
+ found 
+Tome
+!
+Cringe Irene Gresham
+ found 
+Gauntlets of the Twins
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+Andre Kjeldsen
+ now has 
+unluckiness
+!
+Ebony Pelletier
+ now has 
+a prosthetic arm
+!
+nextUpdateTime: 1644711920
+STORY 4-3 
+
+At 
+Klaxon Messengerhall
+ in 
+North Bank Street
+, 
+Susan McLellan, 
+Helga Frederiksen, 
+Monica Fleischer, 
+and 
+Adam Windward 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+voracious
+ walls
+ at the 
+Red 
+crypt
+.
+During the journey, 
+they 
+had to solve 
+a 
+succulent
+ puzzlebox
+.
+After 
+a challenging 
+attempt
+, they 
+figured out
+ the 
+puzzlebox
+.
+Adam Windward
+ had their confidence shaken.
+Adam Windward
+ found 
+Dragonskin Belt
+!
+They 
+arrived at the 
+Red
+ crypt
+, where 
+they 
+stumbled upon 
+some 
+voracious
+ walls
+.
+After 
+a testing 
+battle
+, they 
+defended
+ the 
+walls
+.
+Susan McLellan 
+used his 
+Ropework 
+skills!
+Susan McLellan
+ dislocated his shoulder.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+Susan McLellan
+ now has 
+weakness
+!
+nextUpdateTime: 1644711920
+STORY 4-4 
+
+At 
+Marsh's Sewerworks
+ in 
+Farshi District
+, 
+Darfin Schmidt, 
+Sirius Ashbluff, 
+and 
+Jhaan Yarrow the Just 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+, 
+deathly
+ ruins
+ at the 
+Red 
+desert
+.
+Soon enough, 
+they 
+stumbled upon 
+a 
+crepuscular
+ locked gate
+.
+After 
+a grueling 
+brainstorm
+, they 
+figured out
+ the 
+locked gate
+.
+Darfin Schmidt
+ found 
+Ornate Helm
+!
+Jhaan Yarrow the Just
+ learned 
+Swimming
+!
+Pushing forward, 
+they 
+were confronted with 
+a 
+crepuscular
+, irresistible
+ canyon
+.
+After 
+a testing 
+attempt
+, they 
+crossed
+ the 
+canyon
+.
+They 
+arrived at the 
+Red
+ desert
+, where 
+they 
+discovered 
+some 
+violent
+, deathly
+ ruins
+.
+After 
+a testing 
+reconnoiter
+, they 
+successfully navigated
+ the 
+ruins
+.
+Jhaan Yarrow the Just
+ broke their leg.
+Jhaan Yarrow the Just
+ found 
+Amulet
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: 1644711920
+STORY 4-5 
+
+At 
+Harcourt Smithy
+ in 
+Ulster's Jeweltown
+, 
+Gawel Sorokina, 
+Ivan St. James, 
+and 
+Charles Bazhenov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ dunes
+ at the 
+Craven 
+desert
+.
+On the way, 
+they 
+were blocked by 
+a 
+many-eyed
+ dead end
+.
+After 
+a trying 
+brainstorm
+, they 
+found a way through
+ the 
+dead end
+.
+Gawel Sorokina
+ got fried nerves.
+They 
+arrived at the 
+Craven
+ desert
+, where 
+they 
+stumbled upon 
+some 
+voracious
+ dunes
+.
+After 
+a strenuous 
+reconnoiter
+, they 
+fully explored
+ the 
+dunes
+.
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: 1644711920
+STORY 5-0 
+
+At 
+Hall of Heads
+ in 
+North Bank Street
+, 
+Remy Nilsson, 
+Sybella Schneider, 
+Jenci chadde Adler the Hunter, 
+Evan McLellan, 
+and 
+Couch Susan Yellen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+diurnal
+, 
+magical
+ swarm
+ "Edible Ambusher"
+ at the 
+Macrosign 
+city
+.
+Venturing forth, 
+they 
+stumbled upon 
+a 
+violent
+ maze
+.
+After 
+a grueling 
+attempt
+, they 
+solved
+ the 
+maze
+.
+Remy Nilsson
+ broke her leg.
+Evan McLellan
+ found 
+Platinum Ring
+!
+Couch Susan Yellen
+ found 
+Gold Ring
+!
+While investigating the area, 
+they 
+were blocked by 
+a 
+violent
+, irresistible
+ canyon
+.
+After 
+a trying 
+exertion
+, they 
+overcame
+ the 
+canyon
+.
+Sybella Schneider
+ suffered slash wounds.
+Jenci chadde Adler the Hunter
+ dislocated his shoulder.
+In search of the goal, 
+they 
+discovered 
+the 
+many-eyed
+, empowered
+ cliff
+ "Pillskin Hunter"
+.
+After 
+a triumphant 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Sybella Schneider 
+used their 
+Portraiture 
+skills!
+Evan McLellan 
+used his 
+Swimming 
+skills!
+Remy Nilsson
+ found 
+Bronze Ring
+!
+Jenci chadde Adler the Hunter
+ found 
+Chain Mail
+!
+Evan McLellan
+ found 
+Linen Shoes
+!
+They 
+arrived at the 
+Macrosign
+ city
+, where 
+they 
+snuck up on 
+the 
+diurnal
+, magical
+ swarm
+ "Edible Ambusher"
+.
+After 
+a challenging 
+contest
+, they 
+bested
+ the 
+swarm
+.
+Sybella Schneider
+ found 
+Dragonskin Belt of Brilliance
+!
+Jenci chadde Adler the Hunter
+ now has 
+quick-wit
+!
+Evan McLellan
+ broke his leg.
+Couch Susan Yellen
+ broke their leg.
+nextUpdateTime: 1644712920
+STORY 5-1 
+
+At 
+Platinum Branch Club
+ in 
+North Bank Street
+, 
+Janet Courtois, 
+Adelbert de la Lincoln the Comfy, 
+Faina Gresham, 
+Vesryn Yellen da gay, 
+and 
+Based Chad Havlikova 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+succulent
+ fiend
+ at the 
+Macrosign 
+city
+.
+Venturing forth, 
+they 
+stumbled upon 
+a 
+lightless
+ river
+.
+After 
+a breezy 
+exertion
+, they 
+crossed
+ the 
+river
+.
+Janet Courtois
+ found 
+"Hypnotic Roar" Linen Shoes of Fury
+!
+Janet Courtois
+ found 
+Wool Gloves
+!
+Faina Gresham
+ learned 
+Leadership
+!
+They 
+arrived at the 
+Macrosign
+ city
+, where 
+they 
+were confronted by 
+a 
+succulent
+ fiend
+.
+After 
+a trying 
+introduction
+, they 
+befriended
+ the 
+fiend
+.
+Janet Courtois
+ learned 
+Leadership
+!
+Janet Courtois
+ found 
+Warhammer
+!
+Vesryn Yellen da gay
+ found 
+"Skull Bender" Ornate Chestplate of Reflection +1
+!
+Based Chad Havlikova
+ had his confidence shaken.
+nextUpdateTime: 1644712920
+STORY 5-2 
+
+At 
+Zoanthropic Lodge
+ in 
+the Last Stop
+, 
+Abigail Sos, 
+Archibaldo Pinette, 
+George Maki, 
+and 
+Ilona Hermanns 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+ ruins
+ at the 
+Geometric 
+sea
+.
+On the way, 
+they 
+were blocked by 
+a 
+nocturnal
+ waste
+.
+After 
+an epic 
+exertion
+, they 
+traversed
+ the 
+waste
+.
+Abigail Sos
+ now has 
+self-doubt
+!
+They 
+arrived at the 
+Geometric
+ sea
+, where 
+they 
+were blocked by 
+some 
+violent
+ ruins
+.
+After 
+a grueling 
+exploration
+, they 
+successfully navigated
+ the 
+ruins
+.
+Abigail Sos
+ dislocated their shoulder.
+Archibaldo Pinette
+ found 
+Gloves of Giants
+!
+George Maki
+ found 
+Leather Boots of Power
+!
+Ilona Hermanns
+ now has 
+cowardice
+!
+nextUpdateTime: 1644712920
+STORY 5-3 
+
+At 
+Klaxon Messengerhall
+ in 
+North Bank Street
+, 
+Darfin Vespertine, 
+Nym Fleischer the Generous, 
+0x Dilibe Gandhi, 
+and 
+Helga Frederiksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+violent
+, 
+empowered
+ relic
+ at the 
+Craven 
+pass
+.
+Before reaching the destination, 
+they 
+were blocked by 
+a 
+succulent
+ maze
+.
+After 
+a trying 
+brainstorm
+, they 
+solved
+ the 
+maze
+.
+Darfin Vespertine
+ found 
+Necklace
+!
+Darfin Vespertine
+ had their confidence shaken.
+0x Dilibe Gandhi
+ found 
+Silk Robe
+!
+0x Dilibe Gandhi
+ found 
+Amulet
+!
+Helga Frederiksen
+ now has 
+cowardice
+!
+Venturing forth, 
+they 
+discovered 
+a 
+sharp
+, irridescent
+ canyon
+.
+After 
+a strenuous 
+exertion
+, they 
+traversed
+ the 
+canyon
+.
+Nym Fleischer the Generous
+ now has 
+greed
+!
+Nym Fleischer the Generous
+ was cursed.
+0x Dilibe Gandhi
+ found 
+Falchion of Fury
+!
+0x Dilibe Gandhi
+ found 
+Hard Leather Belt
+!
+Helga Frederiksen
+ found 
+Hood
+!
+They 
+arrived at the 
+Craven
+ pass
+, where 
+they 
+stumbled upon 
+a 
+violent
+, empowered
+ relic
+.
+After 
+a testing 
+infiltration
+, they 
+returned with
+ the 
+relic
+.
+0x Dilibe Gandhi 
+used his 
+Deception 
+skills!
+Nym Fleischer the Generous
+ now has 
+optimistism
+!
+Helga Frederiksen
+ got fried nerves.
+nextUpdateTime: 1644712920
+STORY 5-4 
+
+At 
+Marsh's Sewerworks
+ in 
+Farshi District
+, 
+Jessica Gotou, 
+Eva Nigiri, 
+Rotnam Gousse, 
+and 
+Molly Mancini 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+, 
+luminous
+ hidden passage
+ "Pillskin Limpet"
+ at the 
+Geometric 
+forest
+.
+Next, 
+they 
+discovered 
+a 
+crepuscular
+ maze
+.
+After 
+a weak 
+attempt
+, they 
+failed to solve
+ the 
+maze
+.
+Molly Mancini
+ got blasted eardrums.
+nextUpdateTime: 1644712920
+STORY 5-5 
+
+At 
+Harcourt Smithy
+ in 
+Ulster's Jeweltown
+, 
+Ivan St. James, 
+Jody Dias, 
+Kerstin light Felten the God-Given, 
+and 
+Florus Frederiksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+entrancing
+ outskirts
+ at the 
+Craven 
+village
+.
+Next, 
+they 
+discovered 
+a 
+succulent
+ hedge
+.
+After 
+a trying 
+exertion
+, they 
+traversed
+ the 
+hedge
+.
+Florus Frederiksen
+ got blasted eardrums.
+Florus Frederiksen
+ was frightened half to death.
+They 
+arrived at the 
+Craven
+ village
+, where 
+they 
+were confronted with 
+some 
+entrancing
+ outskirts
+.
+After 
+a hard-earned 
+attempt
+, they 
+safe-guarded
+ the 
+outskirts
+.
+Ivan St. James 
+used their 
+Deception 
+skills!
+Ivan St. James
+ found 
+Wool Shoes
+!
+Jody Dias
+ found 
+Gold Ring of Power
+!
+Kerstin light Felten the God-Given
+ bruised their ribs.
+Kerstin light Felten the God-Given
+ found 
+Gold Ring
+!
+Florus Frederiksen
+ found 
+Chain Boots
+!
+nextUpdateTime: 1644712920

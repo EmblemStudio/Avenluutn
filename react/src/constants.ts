@@ -71,7 +71,7 @@ export const DEFAULT_COLOR = "gray"
 export const LOADING = ". . ."
 export const WAITING_FOR_SERVER = "The bard is scribbling..."
 
-export const etherscanBases: { [key in NetworkName]: string }  = {
+export const etherscanBases: { [key in NetworkName]: string } = {
   "ropsten": "https://ropsten.etherscan.io/",
   "mainnet": "https://www.etherscan.io/",
   "polygon": "https://polygonscan.com/",

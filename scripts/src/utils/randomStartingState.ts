@@ -10,7 +10,7 @@ import {
   guildNames,
   guildMottos,
   guildLocations
-} from '../content/original/sourceArrays'
+} from '../content/original/originalContent'
 
 export async function randomStartingState(
   numberOfGuilds: number,
@@ -18,8 +18,8 @@ export async function randomStartingState(
   provider?: providers.BaseProvider | string
 ): Promise<State> {
   let state: State = { guilds: [] }
-  for(let i = 0; i < numberOfGuilds; i++) {
-    const subPrng = new Prando(prng.nextInt(0, 1000000)+i)
+  for (let i = 0; i < numberOfGuilds; i++) {
+    const subPrng = new Prando(prng.nextInt(0, 1000000) + i)
     const guild = await randomGuild(i, subPrng, state, provider)
     state.guilds.push(guild)
   }
@@ -37,10 +37,10 @@ async function randomGuild(
     prng,
     provider
   )
- const name = randomUnusedItem<string>(
-   previousState.guilds.map(g => g.name),
-   () => prng.nextArrayItem(guildNames)
- )
+  const name = randomUnusedItem<string>(
+    previousState.guilds.map(g => g.name),
+    () => prng.nextArrayItem(guildNames)
+  )
   return {
     id,
     name,
@@ -61,7 +61,7 @@ export function randomParty(
 ): { party: number[], adventurersLeft: string[] } {
   if (size > adventurersLeft.length) size = adventurersLeft.length
   const party: number[] = []
-  for(let i = 0; i < size; i++) {
+  for (let i = 0; i < size; i++) {
     const nextAdvId = prng.nextArrayItem(adventurersLeft)
     party.push(parseInt(nextAdvId))
     adventurersLeft.splice(
@@ -111,15 +111,20 @@ async function randomCharacter(
   traitCount?: number
 ): Promise<Character> {
   const classInstance = await getRandomClass(prng, provider)
+  const pronounKey = Number(prng.nextArrayItem(Object.keys(pronounsSource)))
+  const pronounsArray = pronounsSource[pronounKey]
+  if (pronounsArray === undefined) throw new Error("pronounsArray")
+  const pronouns = pronounsArray[0]
+  if (pronouns === undefined) throw new Error("No pronouns")
   const newChar: Character = {
     name: await getRandomName(prng, provider),
-    pronouns: prng.nextArrayItem(pronounsSource),
+    pronouns,
     species: [classInstance.race],
     age: prng.nextInt(19, 105),
     traits: []
   }
   if (traitCount) {
-    for(let i = 0; i < traitCount; i++) {
+    for (let i = 0; i < traitCount; i++) {
       newChar.traits.push(randomUnusedItem(
         newChar.traits,
         () => prng.nextArrayItem(Object.keys(traits))
@@ -131,6 +136,7 @@ async function randomCharacter(
 
 const existingAdv: { [id: string]: Adventurer } = {}
 
+// TODO reroll any repeat names
 async function makeRandomAdventurers(
   numberToMake: number,
   prng: Prando,
@@ -138,7 +144,7 @@ async function makeRandomAdventurers(
 ): Promise<{ [id: string]: Adventurer }> {
   const res: { [id: string]: Adventurer } = {}
   const numberExisting = Object.keys(existingAdv).length
-  for(let i = 0; i < numberToMake; i++) {
+  for (let i = 0; i < numberToMake; i++) {
     const newAdv = await randomAdventurer(
       numberExisting + i + 1,
       prng,

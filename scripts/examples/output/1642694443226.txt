@@ -1,0 +1,839 @@
+STORY 0-0 
+
+At 
+Harcourt Smithy
+ in 
+the Flying Stones
+, 
+Dennis Berg, 
+Miguel Mancini the Thunderbolt, 
+and 
+Ailmar Amsel 
+gathered. 
+Consulting the guild, they chose their quest: to 
+EXPLORE
+ the 
+sharp
+, 
+deathly
+ ruins
+ "Blistered Ellishment"
+ at the 
+Boreal 
+market
+.
+Soon enough, 
+they 
+were blocked by 
+a 
+violent
+ locked gate
+.
+After 
+a grueling 
+hundred guesses
+, they 
+found a way through
+ the 
+locked gate
+.
+Dennis Berg
+ found 
+Ring Mail
+!
+Miguel Mancini the Thunderbolt
+ got blasted eardrums.
+Ailmar Amsel
+ found 
+Pendant
+!
+Soon enough, 
+they 
+met 
+a 
+violent
+, irresistible
+ tunnel dweller
+.
+After 
+a doomed 
+negotiation
+, they 
+were forced to turn back by
+ the 
+tunnel dweller
+.
+Dennis Berg
+ broke his leg.
+Miguel Mancini the Thunderbolt
+ had their arm crushed.
+Miguel Mancini the Thunderbolt
+ was frightened half to death.
+Ailmar Amsel
+ had their arm crushed.
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+nextUpdateTime: 1642694359
+STORY 0-1 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+David Stoll, 
+Radim Donkervoort, 
+and 
+Csilla Pinette 
+gathered. 
+Consulting the guild, they chose their quest: to 
+DEFEAT
+ the 
+violent
+ warlock
+ at the 
+Illusid 
+forest
+.
+In search of the goal, 
+they 
+snuck up on 
+a 
+lightless
+ bird folk
+.
+After 
+a fraught 
+negotiation
+, they 
+parted ways with
+ the 
+bird folk
+.
+Csilla Pinette
+ found 
+Grave Wand
+!
+They 
+arrived at the 
+Illusid
+ forest
+, where 
+they 
+were confronted by 
+a 
+violent
+ warlock
+.
+After 
+an exhausting 
+struggle
+, they 
+were overpowered by
+ the 
+warlock
+.
+David Stoll
+ suffered slash wounds.
+Csilla Pinette
+ bruised her ribs.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: 1642694359
+STORY 0-2 
+
+At 
+Cult of 973
+ in 
+Karkowa District
+, 
+Hayden Broberg, 
+George sixth of Broberg, 
+and 
+Faina Galt 
+gathered. 
+Consulting the guild, they chose their quest: to 
+RETRIEVE
+ the 
+violent
+, 
+impossible
+ prisoner
+ "Vivisected Quartzile"
+ at the 
+Darshish 
+forest
+.
+Next, 
+they 
+had to solve 
+a 
+lightless
+ maze
+.
+After 
+a doomed 
+hundred guesses
+, they 
+found no way through
+ the 
+maze
+.
+George sixth of Broberg
+ died.
+Faina Galt
+ learned 
+Leadership
+!
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+nextUpdateTime: 1642694359
+STORY 0-3 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+John Pelletier, 
+Azura Skotnik, 
+and 
+Monica first of Woodd 
+gathered. 
+Consulting the guild, they chose their quest: to 
+DEFEND
+ the 
+succulent
+, 
+impossible
+ sanctum
+ "Blistered Ulula"
+ at the 
+Jarred 
+summit
+.
+Next, 
+they 
+were blocked by 
+a 
+many-eyed
+ dead end
+.
+After 
+a hard-earned 
+hundred guesses
+, they 
+solved
+ the 
+dead end
+.
+John Pelletier
+ had their arm crushed.
+Azura Skotnik
+ dislocated his shoulder.
+Azura Skotnik
+ found 
+Hard Leather Belt
+!
+Monica first of Woodd
+ found 
+Silk Gloves
+!
+Monica first of Woodd
+ was frightened half to death.
+Monica first of Woodd
+ was stabbed in the torso.
+Next, 
+they 
+met 
+a 
+decrepit
+, irresistible
+ elemental
+.
+After 
+a doomed 
+battle
+, they 
+were defeated by
+ the 
+elemental
+.
+John Pelletier
+ dislocated their shoulder.
+Azura Skotnik
+ suffered slash wounds.
+Monica first of Woodd
+ dislocated her shoulder.
+Monica first of Woodd
+ was knocked out.
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+nextUpdateTime: 1642694359
+STORY 0-4 
+
+At 
+Hall of Heads
+ in 
+the Last Stop
+, 
+Changpeng St. James, 
+Domonkos Fleischer, 
+and 
+Jenci Tjangamarra 
+gathered. 
+Consulting the guild, they chose their quest: to 
+BEFRIEND
+ the 
+succulent
+ doctor
+ at the 
+Boreal 
+sea
+.
+In search of the goal, 
+they 
+were confronted by 
+some 
+many-eyed
+ brigands
+.
+After 
+a strenuous 
+battle
+, they 
+passed by
+ the 
+brigands
+.
+Changpeng St. James
+ found 
+"Rune Root" War Cap of Giants
+!
+Jenci Tjangamarra
+ found 
+Demon Husk
+!
+They 
+arrived at the 
+Boreal
+ sea
+, where 
+they 
+snuck up on 
+a 
+succulent
+ doctor
+.
+After 
+a rough 
+conversation
+, they 
+made an enemy of
+ the 
+doctor
+.
+Jenci Tjangamarra
+ found 
+Hood
+!
+Jenci Tjangamarra
+ found 
+Silk Robe
+!
+Jenci Tjangamarra
+ found 
+Linen Gloves
+!
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: 1642694359
+STORY 0-5 
+
+At 
+Klaxon Messengerhall
+ in 
+Varajao District
+, 
+Bolethe Wood, 
+Raff Kodou, 
+and 
+Freya Woods 
+gathered. 
+Consulting the guild, they chose their quest: to 
+RETRIEVE
+ the 
+lightless
+, 
+impossible
+ relic
+ "Vivisected Prant"
+ at the 
+Illusid 
+summit
+.
+After going some distance, 
+they 
+had to solve 
+a 
+sharp
+ puzzlebox
+.
+After 
+a challenging 
+hundred guesses
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Bolethe Wood
+ dislocated her shoulder.
+Raff Kodou
+ bruised her ribs.
+Raff Kodou
+ broke her leg.
+In search of the goal, 
+they 
+were confronted by 
+an 
+invisible
+, black-hearted
+ tunnel dweller
+.
+After 
+a testing 
+contest
+, they 
+parted ways with
+ the 
+tunnel dweller
+.
+Raff Kodou 
+used her 
+Swimming 
+skills!
+Freya Woods
+ found 
+Amulet
+!
+Freya Woods
+ bruised their ribs.
+Freya Woods
+ found 
+Greaves
+!
+In search of the goal, 
+they 
+had to solve 
+the 
+decrepit
+, cursed
+ dead end
+ "Melifluent Butcher"
+.
+After 
+an epic 
+brainstorm
+, they 
+solved
+ the 
+dead end
+.
+Raff Kodou
+ bruised her ribs.
+Raff Kodou
+ was knocked out.
+Freya Woods
+ found 
+Brightsilk Sash
+!
+On the way, 
+they 
+stumbled upon 
+the 
+violent
+, cursed
+ waste
+ "Edible Prant"
+.
+After 
+a doomed 
+exertion
+, they 
+failed to traverse
+ the 
+waste
+.
+Bolethe Wood
+ dislocated her shoulder.
+Freya Woods
+ dislocated their shoulder.
+Freya Woods
+ was stabbed in the torso.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: 1642694359
+STORY 1-0 
+
+At 
+Harcourt Smithy
+ in 
+the Flying Stones
+, 
+John Crassus, 
+Rorik Mikulanc, 
+Tribune Isabella Strozak, 
+Monica Leehy, 
+and 
+Elizabeth Holmberg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+DEFEAT
+ the 
+lightless
+ psychopomp
+ at the 
+Headless 
+sea
+.
+Before reaching the destination, 
+they 
+discovered 
+an 
+invisible
+ hedge
+.
+After 
+a strenuous 
+attempt
+, they 
+crossed
+ the 
+hedge
+.
+John Crassus
+ was stabbed in the torso.
+Tribune Isabella Strozak
+ suffered slash wounds.
+Elizabeth Holmberg
+ had her arm crushed.
+Elizabeth Holmberg
+ now has 
+anxiety
+!
+nextUpdateTime: 1642695359
+STORY 1-1 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+David Stoll, 
+Radim Donkervoort, 
+Csilla Pinette, 
+Orion Hermanns, 
+and 
+Zabbas Windward 
+gathered. 
+Consulting the guild, they chose their quest: to 
+BEFRIEND
+ the 
+entrancing
+, 
+deathly
+ nephilim
+ "Carcosan Ulula"
+ at the 
+Macrosign 
+sea
+.
+Venturing forth, 
+they 
+met 
+a 
+voracious
+ beast
+.
+After 
+a challenging 
+stand off
+, they 
+moved on from
+ the 
+beast
+.
+David Stoll
+ dislocated his shoulder.
+Csilla Pinette
+ found 
+War Cap
+!
+Orion Hermanns
+ found 
+Chronicle of Skill
+!
+While traveling, 
+they 
+were confronted with 
+a 
+lightless
+, black-hearted
+ canyon
+.
+After 
+a strong 
+trek
+, they 
+crossed
+ the 
+canyon
+.
+Csilla Pinette
+ found 
+Demon Husk
+!
+Zabbas Windward
+ found 
+Demonhide Boots
+!
+nextUpdateTime: 1642695359
+STORY 1-2 
+
+At 
+Cult of 973
+ in 
+Karkowa District
+, 
+George sixth of Broberg, 
+James Steffensen, 
+and 
+Faina Galt 
+gathered. 
+Consulting the guild, they chose their quest: to 
+DEFEAT
+ the 
+entrancing
+ wyrm
+ at the 
+Jarred 
+market
+.
+On the road there, 
+they 
+stumbled upon 
+an 
+invisible
+ cliff
+.
+After 
+a challenging 
+exertion
+, they 
+traversed
+ the 
+cliff
+.
+James Steffensen
+ found 
+Linen Sash of Brilliance
+!
+James Steffensen
+ found 
+"Soul Root" Amulet of Giants
+!
+Faina Galt
+ found 
+"Dragon Tear" Linen Hood of Rage
+!
+nextUpdateTime: 1642695359
+STORY 1-3 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+John Pelletier, 
+Martin Davorin Feron, 
+and 
+Nahum Kulechov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+EXPLORE
+ the 
+lightless
+, 
+impossible
+ hidden passage
+ "Diphonic Clopse"
+ at the 
+Boreal 
+crypt
+.
+After going some distance, 
+they 
+snuck up on 
+a 
+lightless
+ elemental
+.
+After 
+a rough 
+stand off
+, they 
+were forced to turn back by
+ the 
+elemental
+.
+John Pelletier
+ got fried nerves.
+Nahum Kulechov
+ had her confidence shaken.
+nextUpdateTime: 1642694443
+STORY 1-4 
+
+At 
+Hall of Heads
+ in 
+the Last Stop
+, 
+Florus Horak, 
+Domonkos Fleischer, 
+and 
+Shunichi Frederiksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+DEFEAT
+ the 
+succulent
+ psychopomp
+ at the 
+Headless 
+market
+.
+Soon enough, 
+they 
+stumbled upon 
+a 
+decrepit
+ hedge
+.
+After 
+a hard-earned 
+attempt
+, they 
+overcame
+ the 
+hedge
+.
+Domonkos Fleischer
+ broke their leg.
+Shunichi Frederiksen
+ found 
+"Honour Shout" Silk Sash of Rage +1
+!
+nextUpdateTime: 1642695359
+STORY 1-5 
+
+At 
+Klaxon Messengerhall
+ in 
+Varajao District
+, 
+Bolethe Wood, 
+Mikael Nigiri .eth, 
+and 
+Prophet Jhaan Blau 
+gathered. 
+Consulting the guild, they chose their quest: to 
+EXPLORE
+ the 
+succulent
+, 
+impossible
+ caves
+ "Vivisected Ellishment"
+ at the 
+Can-ton 
+crypt
+.
+Soon enough, 
+they 
+came across 
+a 
+decrepit
+ elemental
+.
+After 
+a hard-earned 
+battle
+, they 
+parted ways with
+ the 
+elemental
+.
+Bolethe Wood
+ found 
+"Maelstrom Tear" Shirt of Protection
+!
+Mikael Nigiri .eth
+ found 
+Pendant
+!
+Prophet Jhaan Blau
+ found 
+Necklace
+!
+After going some distance, 
+they 
+were blocked by 
+a 
+sharp
+, ancient
+ cliff
+.
+After 
+a testing 
+exertion
+, they 
+traversed
+ the 
+cliff
+.
+Bolethe Wood
+ was frightened half to death.
+Bolethe Wood
+ learned 
+Deception
+!
+Mikael Nigiri .eth
+ was frightened half to death.
+Prophet Jhaan Blau
+ was frightened half to death.
+nextUpdateTime: 1642695359
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 2-3 
+
+STORY 2-4 
+
+STORY 2-5 
+

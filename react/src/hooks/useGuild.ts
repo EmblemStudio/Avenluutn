@@ -7,7 +7,7 @@ export default (narrator: Narrator) => {
   const { guildId } = useParams()
   let color: string | null = null
   let guild: Guild | null = null
-  if (guildId) {
+  if (guildId !== undefined) {
     const guildIndex = parseInt(guildId)
     color = guildColor(guildIndex)
     if (narrator.collections.length > 0) {

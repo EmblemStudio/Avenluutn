@@ -8,6 +8,21 @@ import WalletLinkLogo from '../assets/images/coinbase-wallet.png'
 
 const connectorImgs = [MetaMaskSVG, WalletConnectSVG, WalletLinkLogo]
 
+const connectorAlts = [
+  {
+    text: "Install Metamask",
+    url: "https://metamask.io/"
+  },
+  {
+    text: "Find wallets that use WalletConnect",
+    url: "https://walletconnect.com/"
+  },
+  {
+    text: "Find wallets that use WalletLink",
+    url: "https://walletlink.org/#/"
+  }
+]
+
 export default () => {
   const [modalActive, setModalActive] = useState("")
   const [{ data }, connect] = useConnect()
@@ -44,18 +59,29 @@ export default () => {
           <div className="box">
             {data.connectors.map((x, i) => (
               <section className="section" key={x.id} >
-                <a 
-                  className="button is-ghost has-text-black"
-                  onClick={() => { connect(x).then((res) => { 
-                    if (res?.data !== undefined) setModalActive("")
-                  })}}
-                >
-                  <img src={connectorImgs[i]} alt={x.name} width="80px"/>
-                  <h2 className="subtitle pl-5">
-                    {x.name}
-                    {!x.ready && ' (unsupported)'}
-                  </h2>
-                </a>
+                {x.ready ?
+                  <a 
+                    className="button is-ghost has-text-black"
+                    onClick={() => { connect(x).then((res) => { 
+                      if (res?.data !== undefined) setModalActive("")
+                    })}}
+                  >
+                    <img src={connectorImgs[i]} alt={x.name} width="80px"/>
+                    <h2 className="subtitle pl-5">
+                      {x.name}
+                    </h2>
+                  </a>
+                :
+                  <a 
+                    className="button is-ghost has-text-black"
+                    target="_blank" href={connectorAlts[i].url}
+                  >
+                    <img src={connectorImgs[i]} alt={x.name} width="80px"/>
+                    <h2 className="subtitle pl-5">
+                      {connectorAlts[i].text}
+                    </h2>
+                  </a>
+                }
               </section>
             ))}
           </div>

@@ -33,7 +33,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleBid = () => {
-    if (typeof publisher === "string") { 
+    if (typeof publisher === "string") {
       addNotification("warnings", publisher)
     } else {
       publisher.signer.getAddress()
@@ -58,14 +58,14 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleClaim = () => {
-    if (typeof publisher === "string") { 
+    if (typeof publisher === "string") {
       addNotification("warnings", publisher)
     } else {
       publisher.signer.getAddress()
         .then(address => {
           publisher.mint(
-            story.narratorIndex, 
-            story.collectionIndex, 
+            story.narratorIndex,
+            story.collectionIndex,
             story.storyIndex,
             address
           )
@@ -82,12 +82,12 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleClaimFor = () => {
-    if (typeof publisher === "string") { 
+    if (typeof publisher === "string") {
       addNotification("warnings", publisher)
     } else {
       publisher.mint(
-        story.narratorIndex, 
-        story.collectionIndex, 
+        story.narratorIndex,
+        story.collectionIndex,
         story.storyIndex,
         story.auction.bidder
       )
@@ -104,10 +104,10 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
 
   return (
     <div className="container">
-      <nav className="level mb-0 mt-5">
+      <nav className="level mb-0 mt-3">
         <div className="level-item">
           <span className="pr-1">Time left: </span>
-          <Countdown 
+          <Countdown
             to={Number(story.endTime.add(story.auction.duration))}
           />
         </div>
@@ -122,21 +122,21 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
           }
         </div>
         <div className="level-item">
-          {!auctionOver ? 
+          {!auctionOver ?
             <div className="container has-text-centered is-flex-row">
               <div className="outer-border mr-1">
-                <input className="input has-text-black is-ibm is-size-6" type="text" placeholder="0" onChange={handleSetBid}/>
+                <input className="input has-text-black is-ibm is-size-6" type="text" placeholder="0" onChange={handleSetBid} />
               </div>
               <span className="has-text-grey mr-1">ETH</span>
               <a className="button is-ghost is-underlined" onClick={handleBid}>Bid</a>
             </div>
-          :
+            :
             story.minted ?
               <span className="is-italic">Claimed</span>
-            :
+              :
               story.auction.bidder === AddressZero ?
                 <a className="button is-ghost is-underlined" onClick={handleClaim}>Claim</a>
-              :
+                :
                 <a className="button is-ghost is-underlined" onClick={handleClaimFor}>Claim for Winner</a>
           }
         </div>

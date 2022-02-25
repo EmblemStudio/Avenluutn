@@ -1,0 +1,3367 @@
+STORY 0-0 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Sarah Jenkins, 
+Serge chadde Mintz, 
+Charles Mikulanc, 
+and 
+Mikael Woods the Thunderbolt 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+invisible
+ nephilim
+ at the 
+Craven 
+desert
+.
+During the journey, 
+they 
+had to solve 
+a 
+nocturnal
+ maze
+.
+After 
+a rough 
+brainstorm
+, they 
+found no way through
+ the 
+maze
+.
+Charles Mikulanc
+ now has 
+deafness
+!
+Mikael Woods the Thunderbolt
+ now has 
+great destiny
+!
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-1 
+
+At 
+Hall of Heads
+ in 
+Ulster's Jeweltown
+, 
+Andre Bazhenov, 
+0x Rosvita Fellowes, 
+Isak Sos, 
+and 
+Jennifer Elizondo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+ wyrm
+ at the 
+Geometric 
+city
+.
+Next, 
+they 
+stumbled upon 
+a 
+decrepit
+ dead end
+.
+After 
+a strenuous 
+brainstorm
+, they 
+solved
+ the 
+dead end
+.
+Andre Bazhenov
+ found 
+Ornate Belt of Vitriol
+!
+Isak Sos
+ now has 
+monsterphobia
+!
+They 
+arrived at the 
+Geometric
+ city
+, where 
+they 
+came across 
+a 
+violent
+ wyrm
+.
+After 
+a hard-earned 
+contest
+, they 
+bested
+ the 
+wyrm
+.
+0x Rosvita Fellowes
+ now has 
+elegance
+!
+Isak Sos
+ was frightened half to death.
+Jennifer Elizondo
+ had her arm crushed.
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: 1644679060
+STORY 0-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Dregs
+, 
+Stanislaus McLellan, 
+Polycarp Hakugi, 
+Mira state Rodrigue, 
+and 
+Tyler Maciejewska 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+invisible
+, 
+horrifying
+ fiend
+ "Yule Ellishment"
+ at the 
+Craven 
+market
+.
+On the road there, 
+they 
+had to solve 
+a 
+voracious
+ locked gate
+.
+After 
+a fraught 
+attempt
+, they 
+solved
+ the 
+locked gate
+.
+Stanislaus McLellan 
+used their 
+Baking 
+skills!
+Mira state Rodrigue 
+used their 
+Baking 
+skills!
+Mira state Rodrigue
+ found 
+Plated Belt
+!
+Mira state Rodrigue
+ broke their leg.
+Tyler Maciejewska
+ had their confidence shaken.
+On the way, 
+they 
+were confronted by 
+a 
+many-eyed
+, ravenous
+ elemental
+.
+After 
+a testing 
+contest
+, they 
+passed by
+ the 
+elemental
+.
+Polycarp Hakugi
+ got fried nerves.
+Polycarp Hakugi
+ had their arm crushed.
+Tyler Maciejewska
+ was frightened half to death.
+On the way, 
+they 
+were blocked by 
+the 
+succulent
+, empowered
+ puzzlebox
+ "Mighty Ellishment"
+.
+After 
+a challenging 
+hundred guesses
+, they 
+solved
+ the 
+puzzlebox
+.
+Stanislaus McLellan 
+used their 
+Baking 
+skills!
+Mira state Rodrigue 
+used their 
+Baking 
+skills!
+Stanislaus McLellan
+ broke their leg.
+Polycarp Hakugi
+ found 
+Studded Leather Armor
+!
+Polycarp Hakugi
+ found 
+Divine Gloves
+!
+Polycarp Hakugi
+ found 
+Holy Chestplate
+!
+Mira state Rodrigue
+ found 
+Brightsilk Sash
+!
+Tyler Maciejewska
+ found 
+Pendant of Brilliance
+!
+They 
+arrived at the 
+Craven
+ market
+, where 
+they 
+snuck up on 
+the 
+invisible
+, horrifying
+ fiend
+ "Yule Ellishment"
+.
+After 
+a testing 
+introduction
+, they 
+struck a deal with
+ the 
+fiend
+.
+Polycarp Hakugi
+ found 
+Demon Crown
+!
+Mira state Rodrigue
+ dislocated their shoulder.
+Tyler Maciejewska
+ now has 
+great destiny
+!
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+nextUpdateTime: 1644679060
+STORY 0-3 
+
+At 
+Marsh's Sewerworks
+ in 
+Raft Town
+, 
+Joseph Skotnik, 
+Rosvita Zhu, 
+Chukwuebuka Lelkova, 
+and 
+Mayor Ilona Piest 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+invisible
+, 
+magical
+ citadel
+ at the 
+Illusid 
+pass
+.
+While traveling, 
+they 
+stumbled upon 
+a 
+many-eyed
+ river
+.
+After 
+a challenging 
+trek
+, they 
+crossed
+ the 
+river
+.
+Joseph Skotnik
+ now has 
+greed
+!
+Rosvita Zhu
+ now has 
+cowardice
+!
+Chukwuebuka Lelkova
+ got fried nerves.
+On the road there, 
+they 
+came across 
+a 
+diurnal
+, cursed
+ tunnel dweller
+.
+After 
+a testing 
+contest
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Joseph Skotnik
+ suffered slash wounds.
+Rosvita Zhu
+ found 
+Silver Ring of Enlightenment
+!
+Mayor Ilona Piest
+ now has 
+unluckiness
+!
+Mayor Ilona Piest
+ had her arm crushed.
+They 
+arrived at the 
+Illusid
+ pass
+, where 
+they 
+were blocked by 
+an 
+invisible
+, magical
+ citadel
+.
+After 
+a challenging 
+attempt
+, they 
+defended
+ the 
+citadel
+.
+Chukwuebuka Lelkova
+ got blasted eardrums.
+Mayor Ilona Piest
+ got fried nerves.
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: 1644679060
+STORY 0-4 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Chad Schmidt, 
+Charles Hendrix, 
+Florus Gandhi, 
+and 
+Molly Monroe 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+, 
+deathly
+ psychopomp
+ at the 
+Illusid 
+sea
+.
+Soon enough, 
+they 
+were blocked by 
+a 
+nocturnal
+ canyon
+.
+After 
+a misguided 
+trek
+, they 
+failed to traverse
+ the 
+canyon
+.
+Charles Hendrix
+ was cursed.
+Charles Hendrix
+ had her confidence shaken.
+Florus Gandhi
+ dislocated her shoulder.
+Florus Gandhi
+ got fried nerves.
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-5 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Geoffrey Oliveira, 
+Robert Gotou, 
+Thomas Lincoln, 
+and 
+Michael hi tuba Broberg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+, 
+deathly
+ priest
+ "Diphonic Limpet"
+ at the 
+Illusid 
+village
+.
+Soon enough, 
+they 
+had to solve 
+a 
+decrepit
+ dead end
+.
+After 
+a hard-earned 
+brainstorm
+, they 
+found a way through
+ the 
+dead end
+.
+Geoffrey Oliveira
+ had his arm crushed.
+Robert Gotou
+ found 
+Bronze Ring
+!
+Thomas Lincoln
+ now has 
+anxiety
+!
+Thomas Lincoln
+ found 
+Divine Gloves
+!
+Thomas Lincoln
+ found 
+Bronze Ring
+!
+Michael hi tuba Broberg
+ got fried nerves.
+Soon enough, 
+they 
+were confronted with 
+a 
+violent
+, ancient
+ hedge
+.
+After 
+a challenging 
+trek
+, they 
+overcame
+ the 
+hedge
+.
+Geoffrey Oliveira
+ now has 
+quick-wit
+!
+Robert Gotou
+ found 
+Pendant
+!
+Robert Gotou
+ now has 
+weakness
+!
+Thomas Lincoln
+ got blasted eardrums.
+Michael hi tuba Broberg
+ was frightened half to death.
+Michael hi tuba Broberg
+ was frightened half to death.
+Michael hi tuba Broberg
+ was cursed.
+Next, 
+they 
+were ambushed by 
+the 
+crepuscular
+, unspeakable
+ tunnel dweller
+ "Mighty Howler"
+.
+After 
+a challenging 
+contest
+, they 
+moved on from
+ the 
+tunnel dweller
+.
+Geoffrey Oliveira
+ now has 
+quick-wit
+!
+Geoffrey Oliveira
+ now has 
+dragon obsession
+!
+Robert Gotou
+ found 
+Plate Mail of Vitriol
+!
+Thomas Lincoln
+ got blasted eardrums.
+Thomas Lincoln
+ now has 
+weakness
+!
+In transit, 
+they 
+were ambushed by 
+the 
+succulent
+, hideous
+ bird folk
+ "Melifluent Osprin"
+.
+After 
+a testing 
+contest
+, they 
+parted ways with
+ the 
+bird folk
+.
+Geoffrey Oliveira
+ had his confidence shaken.
+Geoffrey Oliveira
+ suffered slash wounds.
+Robert Gotou
+ now has 
+a peg leg
+!
+Thomas Lincoln
+ found 
+Ring Mail of Detection
+!
+Thomas Lincoln
+ was cursed.
+Thomas Lincoln
+ was knocked out.
+They 
+arrived at the 
+Illusid
+ village
+, where 
+they 
+met 
+the 
+entrancing
+, deathly
+ priest
+ "Diphonic Limpet"
+.
+After 
+a fraught 
+introduction
+, they 
+struck a deal with
+ the 
+priest
+.
+Geoffrey Oliveira
+ bruised his ribs.
+Robert Gotou
+ found 
+War Cap
+!
+Robert Gotou
+ was stabbed in the torso.
+Michael hi tuba Broberg
+ now has 
+quick-wit
+!
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+Michael hi tuba Broberg
+ now has 
+anxiety
+!
+nextUpdateTime: 1644679060
+STORY 1-0 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Samuel Hendrix, 
+Sarah Jenkins, 
+Charles Mikulanc, 
+Yvanna West, 
+and 
+Olympia Feron 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+ fiend
+ at the 
+Boreal 
+market
+.
+While investigating the area, 
+they 
+discovered 
+a 
+violent
+ waste
+.
+After 
+a triumphant 
+exertion
+, they 
+traversed
+ the 
+waste
+.
+Samuel Hendrix
+ found 
+Amulet
+!
+Sarah Jenkins
+ found 
+Titanium Ring
+!
+Charles Mikulanc
+ found 
+Linen Robe
+!
+They 
+arrived at the 
+Boreal
+ market
+, where 
+they 
+came across 
+a 
+nocturnal
+ fiend
+.
+After 
+a fraught 
+introduction
+, they 
+befriended
+ the 
+fiend
+.
+Sarah Jenkins
+ dislocated her shoulder.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: 1644680060
+STORY 1-1 
+
+At 
+Hall of Heads
+ in 
+Ulster's Jeweltown
+, 
+Geoffrey Steffensen the Couch, 
+Thomas Hermanns, 
+Andre Bazhenov, 
+Daniel Feron, 
+and 
+Ilona Woods 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+, 
+grotesque
+ warlock
+ at the 
+Darshish 
+crypt
+.
+While traveling, 
+they 
+were ambushed by 
+an 
+invisible
+ tunnel dweller
+.
+After 
+a testing 
+battle
+, they 
+moved on from
+ the 
+tunnel dweller
+.
+Geoffrey Steffensen the Couch
+ bruised their ribs.
+Thomas Hermanns
+ now has 
+a prosthetic arm
+!
+Ilona Woods
+ found 
+Heavy Gloves
+!
+Venturing forth, 
+they 
+were confronted with 
+a 
+voracious
+, irridescent
+ river
+.
+After 
+a testing 
+trek
+, they 
+crossed
+ the 
+river
+.
+Geoffrey Steffensen the Couch
+ died.
+Thomas Hermanns
+ got fried nerves.
+Daniel Feron
+ was cursed.
+Ilona Woods
+ found 
+Demon Crown
+!
+Ilona Woods
+ got fried nerves.
+They 
+arrived at the 
+Darshish
+ crypt
+, where 
+they 
+came across 
+a 
+decrepit
+, grotesque
+ warlock
+.
+After 
+an epic 
+battle
+, they 
+overpowered
+ the 
+warlock
+.
+Ilona Woods 
+used their 
+Ropework 
+skills!
+Thomas Hermanns
+ found 
+Amulet
+!
+Daniel Feron
+ found 
+Holy Chestplate
+!
+Daniel Feron
+ had her arm crushed.
+Ilona Woods
+ was stabbed in the torso.
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: 1644680060
+STORY 1-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Dregs
+, 
+Ser Malok Sandheaver, 
+Irene Borkowska, 
+and 
+Daealla Amsel the Simple 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+decrepit
+, 
+reknowned
+ maze
+ at the 
+Jarred 
+village
+.
+On the road there, 
+they 
+were confronted by 
+a 
+lightless
+ elemental
+.
+After 
+a trying 
+negotiation
+, they 
+parted ways with
+ the 
+elemental
+.
+Ser Malok Sandheaver
+ found 
+Hard Leather Boots
+!
+Irene Borkowska
+ found 
+Necklace
+!
+Irene Borkowska
+ found 
+Ornate Greaves
+!
+Irene Borkowska
+ was stabbed in the torso.
+Daealla Amsel the Simple
+ found 
+Necklace of Reflection
+!
+Pushing forward, 
+they 
+stumbled upon 
+a 
+voracious
+, unspeakable
+ maze
+.
+After 
+a fraught 
+attempt
+, they 
+figured out
+ the 
+maze
+.
+Ser Malok Sandheaver
+ now has 
+anxiety
+!
+Irene Borkowska
+ was stabbed in the torso.
+Daealla Amsel the Simple
+ found 
+"Maelstrom Roar" Linen Shoes of Titans
+!
+Daealla Amsel the Simple
+ found 
+Studded Leather Boots
+!
+Daealla Amsel the Simple
+ was frightened half to death.
+They 
+arrived at the 
+Jarred
+ village
+, where 
+they 
+stumbled upon 
+a 
+decrepit
+, reknowned
+ maze
+.
+After 
+a weak 
+journey
+, they 
+were disoriented by
+ the 
+maze
+.
+Ser Malok Sandheaver
+ got blasted eardrums.
+Irene Borkowska
+ bruised their ribs.
+Irene Borkowska
+ was knocked out.
+Daealla Amsel the Simple
+ suffered slash wounds.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-3 
+
+At 
+Marsh's Sewerworks
+ in 
+Raft Town
+, 
+Khan Darfin groovy Ives, 
+William Sandheaver, 
+and 
+Joseph Skotnik 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+nocturnal
+, 
+magical
+ caves
+ at the 
+Boreal 
+city
+.
+On the way, 
+they 
+met 
+an 
+entrancing
+ tunnel dweller
+.
+After 
+a challenging 
+negotiation
+, they 
+moved on from
+ the 
+tunnel dweller
+.
+William Sandheaver
+ now has 
+aggressive impulses
+!
+Joseph Skotnik
+ was frightened half to death.
+Joseph Skotnik
+ found 
+Wool Sash
+!
+After going some distance, 
+they 
+had to solve 
+a 
+violent
+, fearsome
+ dead end
+.
+After 
+a misguided 
+attempt
+, they 
+found no way through
+ the 
+dead end
+.
+Joseph Skotnik
+ now has 
+self-doubt
+!
+Joseph Skotnik
+ broke their leg.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-4 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Radim Donkervoort, 
+Bellas Broberg, 
+and 
+Dilibe Hendrix 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+invisible
+ relic
+ at the 
+Illusid 
+village
+.
+In transit, 
+they 
+discovered 
+a 
+sharp
+ locked gate
+.
+After 
+an epic 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Dilibe Hendrix
+ found 
+Ring Mail
+!
+They 
+arrived at the 
+Illusid
+ village
+, where 
+they 
+were blocked by 
+an 
+invisible
+ relic
+.
+After 
+a challenging 
+mission
+, they 
+acquired
+ the 
+relic
+.
+Radim Donkervoort
+ found 
+Silver Ring
+!
+Radim Donkervoort
+ found 
+Hood
+!
+Bellas Broberg
+ broke their leg.
+Dilibe Hendrix
+ found 
+Wand
+!
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+nextUpdateTime: 1644680060
+STORY 1-5 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Robert Gotou, 
+Anastazja Ibekwe, 
+and 
+Linda Borkowska 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+lightless
+, 
+magical
+ swarm
+ "Asla-Kratom Nail"
+ at the 
+Can-ton 
+village
+.
+Venturing forth, 
+they 
+were blocked by 
+a 
+lightless
+ cliff
+.
+After 
+a fraught 
+attempt
+, they 
+overcame
+ the 
+cliff
+.
+Robert Gotou
+ now has 
+quick-wit
+!
+Robert Gotou
+ now has 
+monsterphobia
+!
+Linda Borkowska
+ found 
+Wool Gloves of Detection
+!
+In search of the goal, 
+they 
+were blocked by 
+an 
+entrancing
+, hideous
+ puzzlebox
+.
+After 
+a fraught 
+brainstorm
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Robert Gotou
+ now has 
+quick-wit
+!
+Robert Gotou
+ now has 
+monsterphobia
+!
+Anastazja Ibekwe
+ now has 
+trauma
+!
+In search of the goal, 
+they 
+were blocked by 
+the 
+entrancing
+, hideous
+ puzzlebox
+ "Victorious Hunter"
+.
+After 
+an epic 
+hundred guesses
+, they 
+solved
+ the 
+puzzlebox
+.
+Robert Gotou
+ bruised his ribs.
+Anastazja Ibekwe
+ suffered slash wounds.
+Linda Borkowska
+ found 
+Bone Wand
+!
+They 
+arrived at the 
+Can-ton
+ village
+, where 
+they 
+met 
+the 
+lightless
+, magical
+ swarm
+ "Asla-Kratom Nail"
+.
+After 
+a weak 
+battle
+, they 
+were conquered by
+ the 
+swarm
+.
+Robert Gotou
+ was stabbed in the torso.
+Anastazja Ibekwe
+ got fried nerves.
+Anastazja Ibekwe
+ got blasted eardrums.
+Anastazja Ibekwe
+ now has 
+trauma
+!
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-0 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Comrade Zaki Took-Took, 
+Geoffrey state Collymore, 
+and 
+Kerstin Gannon 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+succulent
+, 
+luminous
+ caves
+ at the 
+Red 
+market
+.
+While traveling, 
+they 
+had to solve 
+an 
+invisible
+ dead end
+.
+After 
+a challenging 
+brainstorm
+, they 
+figured out
+ the 
+dead end
+.
+Comrade Zaki Took-Took
+ now has 
+greed
+!
+During the journey, 
+they 
+had to solve 
+a 
+crepuscular
+, ferocious
+ maze
+.
+After 
+a bungled 
+brainstorm
+, they 
+found no way through
+ the 
+maze
+.
+Comrade Zaki Took-Took
+ now has 
+deafness
+!
+Kerstin Gannon
+ was cursed.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-1 
+
+At 
+Hall of Heads
+ in 
+Ulster's Jeweltown
+, 
+Daniel Feron, 
+Thomas Hermanns, 
+and 
+Faina Skotnik 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+nocturnal
+, 
+empowered
+ hidden passage
+ at the 
+Craven 
+crypt
+.
+On the way, 
+they 
+stumbled upon 
+a 
+diurnal
+ river
+.
+After 
+a testing 
+exertion
+, they 
+crossed
+ the 
+river
+.
+Faina Skotnik
+ found 
+Necklace
+!
+Next, 
+they 
+stumbled upon 
+a 
+decrepit
+, ancient
+ dead end
+.
+After 
+a bungled 
+brainstorm
+, they 
+failed to solve
+ the 
+dead end
+.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Dregs
+, 
+Baron Elisabeth Torma, 
+Astra Hayes, 
+Daealla Amsel the Simple, 
+and 
+Laura Hakugi 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+many-eyed
+ sanctum
+ at the 
+Darshish 
+pass
+.
+On the road there, 
+they 
+were blocked by 
+a 
+many-eyed
+ waste
+.
+After 
+a grueling 
+attempt
+, they 
+traversed
+ the 
+waste
+.
+Baron Elisabeth Torma
+ had her arm crushed.
+They 
+arrived at the 
+Darshish
+ pass
+, where 
+they 
+stumbled upon 
+a 
+many-eyed
+ sanctum
+.
+After 
+a testing 
+overwatch
+, they 
+defended
+ the 
+sanctum
+.
+Baron Elisabeth Torma
+ found 
+Chain Boots
+!
+Astra Hayes
+ bruised his ribs.
+Daealla Amsel the Simple
+ suffered slash wounds.
+Laura Hakugi
+ dislocated their shoulder.
+Laura Hakugi
+ now has 
+deafness
+!
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+Daealla Amsel the Simple
+ now has 
+martyr complex
+!
+nextUpdateTime: 1644681060
+STORY 2-3 
+
+At 
+Marsh's Sewerworks
+ in 
+Raft Town
+, 
+Mayor Ilona Piest, 
+Abigail Yarrow, 
+and 
+William Sandheaver 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+lightless
+ sanctum
+ at the 
+Can-ton 
+desert
+.
+While traveling, 
+they 
+discovered 
+a 
+crepuscular
+ river
+.
+After 
+a weak 
+attempt
+, they 
+failed to traverse
+ the 
+river
+.
+Mayor Ilona Piest
+ suffered slash wounds.
+Abigail Yarrow
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-4 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+George Stoll, 
+Molly Monroe, 
+Dilibe Hendrix, 
+and 
+Bogdan Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+, 
+grotesque
+ secret
+ "Blistered Nail"
+ at the 
+Can-ton 
+city
+.
+Venturing forth, 
+they 
+snuck up on 
+a 
+diurnal
+ beast
+.
+After 
+a trying 
+battle
+, they 
+defeated
+ the 
+beast
+.
+George Stoll
+ now has 
+cowardice
+!
+Dilibe Hendrix
+ bruised his ribs.
+Bogdan Berg
+ found 
+Brightsilk Sash
+!
+Soon enough, 
+they 
+stumbled upon 
+a 
+decrepit
+, impossible
+ puzzlebox
+.
+After 
+a challenging 
+brainstorm
+, they 
+solved
+ the 
+puzzlebox
+.
+George Stoll
+ now has 
+deafness
+!
+Bogdan Berg
+ got blasted eardrums.
+While investigating the area, 
+they 
+were blocked by 
+the 
+violent
+, unspeakable
+ maze
+ "Pillskin Limpet"
+.
+After 
+a strenuous 
+brainstorm
+, they 
+figured out
+ the 
+maze
+.
+George Stoll
+ suffered slash wounds.
+Molly Monroe
+ suffered slash wounds.
+Dilibe Hendrix
+ suffered slash wounds.
+Bogdan Berg
+ dislocated her shoulder.
+They 
+arrived at the 
+Can-ton
+ city
+, where 
+they 
+were blocked by 
+the 
+decrepit
+, grotesque
+ secret
+ "Blistered Nail"
+.
+After 
+a testing 
+mission
+, they 
+returned with
+ the 
+secret
+.
+George Stoll
+ was stabbed in the torso.
+Dilibe Hendrix
+ now has 
+dragon obsession
+!
+Bogdan Berg
+ bruised her ribs.
+Bogdan Berg
+ was knocked out.
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+George Stoll
+ now has 
+martyr complex
+!
+nextUpdateTime: 1644681060
+STORY 2-5 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Michael hi tuba Broberg, 
+Geoffrey Oliveira, 
+Linda Borkowska, 
+and 
+Anya Amsel 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+succulent
+ caves
+ at the 
+Darshish 
+market
+.
+During the journey, 
+they 
+stumbled upon 
+a 
+decrepit
+ puzzlebox
+.
+After 
+a testing 
+brainstorm
+, they 
+figured out
+ the 
+puzzlebox
+.
+Geoffrey Oliveira
+ suffered slash wounds.
+Linda Borkowska
+ had her arm crushed.
+Anya Amsel
+ now has 
+aggressive impulses
+!
+They 
+arrived at the 
+Darshish
+ market
+, where 
+they 
+discovered 
+some 
+succulent
+ caves
+.
+After 
+a trying 
+reconnoiter
+, they 
+fully explored
+ the 
+caves
+.
+Linda Borkowska 
+used her 
+Baking 
+skills!
+Geoffrey Oliveira
+ suffered slash wounds.
+Linda Borkowska
+ found 
+Dragonskin Gloves
+!
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+nextUpdateTime: 1644681060
+STORY 3-0 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Samuel Hendrix, 
+Azura Steffensen, 
+and 
+Mikael Woods the Thunderbolt 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+succulent
+ nephilim
+ at the 
+Illusid 
+crypt
+.
+In search of the goal, 
+they 
+snuck up on 
+some 
+succulent
+ brigands
+.
+After 
+a testing 
+game of wits
+, they 
+moved on from
+ the 
+brigands
+.
+They 
+arrived at the 
+Illusid
+ crypt
+, where 
+they 
+came across 
+a 
+succulent
+ nephilim
+.
+After 
+a testing 
+introduction
+, they 
+found common ground with
+ the 
+nephilim
+.
+Samuel Hendrix
+ found 
+Dragonskin Belt
+!
+Samuel Hendrix
+ now has 
+a prosthetic arm
+!
+Azura Steffensen
+ had their confidence shaken.
+Azura Steffensen
+ found 
+Sash
+!
+Mikael Woods the Thunderbolt
+ found 
+Linen Hood
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+Azura Steffensen
+ now has 
+self-doubt
+!
+nextUpdateTime: 1644682060
+STORY 3-1 
+
+At 
+Hall of Heads
+ in 
+Ulster's Jeweltown
+, 
+Geoffrey Steffensen the Couch, 
+Ed Stoll, 
+and 
+Lachlan Ranth 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+, 
+horrifying
+ walls
+ "Yule Clopse"
+ at the 
+Darshish 
+market
+.
+During the journey, 
+they 
+were confronted with 
+an 
+entrancing
+ hedge
+.
+After 
+an exhausting 
+exertion
+, they 
+failed to traverse
+ the 
+hedge
+.
+Geoffrey Steffensen the Couch
+ now has 
+unluckiness
+!
+Ed Stoll
+ was cursed.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Dregs
+, 
+Polycarp Hakugi, 
+Miguel Maki the Bastard, 
+and 
+Angor Benes 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+violent
+ priest
+ at the 
+Red 
+crypt
+.
+In transit, 
+they 
+had to solve 
+a 
+lightless
+ puzzlebox
+.
+After 
+a grueling 
+hundred guesses
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Polycarp Hakugi
+ dislocated their shoulder.
+Miguel Maki the Bastard
+ found 
+Wool Shoes of Skill
+!
+Angor Benes
+ now has 
+martyr complex
+!
+Angor Benes
+ now has 
+a peg leg
+!
+They 
+arrived at the 
+Red
+ crypt
+, where 
+they 
+came across 
+a 
+violent
+ priest
+.
+After 
+a testing 
+audience
+, they 
+struck a deal with
+ the 
+priest
+.
+Polycarp Hakugi
+ found 
+Pendant of Anger
+!
+Miguel Maki the Bastard
+ now has 
+unluckiness
+!
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+nextUpdateTime: 1644682060
+STORY 3-3 
+
+At 
+Marsh's Sewerworks
+ in 
+Raft Town
+, 
+Rosvita Zhu, 
+Carly McLellan, 
+and 
+Dennis Gotou 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+voracious
+, 
+horrifying
+ sanctum
+ "Carcosan Osprin"
+ at the 
+Craven 
+market
+.
+Soon enough, 
+they 
+stumbled upon 
+a 
+succulent
+ river
+.
+After 
+a strenuous 
+exertion
+, they 
+overcame
+ the 
+river
+.
+Rosvita Zhu
+ found 
+Ornate Chestplate of Giants
+!
+Dennis Gotou
+ found 
+Pendant of Reflection
+!
+Dennis Gotou
+ broke his leg.
+In transit, 
+they 
+stumbled upon 
+a 
+voracious
+, ravenous
+ hedge
+.
+After 
+a fraught 
+attempt
+, they 
+crossed
+ the 
+hedge
+.
+Rosvita Zhu
+ now has 
+trauma
+!
+In search of the goal, 
+they 
+stumbled upon 
+the 
+invisible
+, empowered
+ locked gate
+ "Victorious Howler"
+.
+After 
+a bungled 
+hundred guesses
+, they 
+failed to solve
+ the 
+locked gate
+.
+Rosvita Zhu
+ now has 
+cowardice
+!
+Carly McLellan
+ was cursed.
+Carly McLellan
+ was stabbed in the torso.
+Dennis Gotou
+ dislocated his shoulder.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-4 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Sugako Collymore, 
+Florus Gandhi, 
+Chad Schmidt, 
+Bellas Broberg, 
+and 
+Bogdan Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+ relic
+ at the 
+Can-ton 
+desert
+.
+Pushing forward, 
+they 
+were blocked by 
+a 
+voracious
+ dead end
+.
+After 
+a triumphant 
+attempt
+, they 
+found a way through
+ the 
+dead end
+.
+Bellas Broberg 
+used their 
+Baking 
+skills!
+Florus Gandhi
+ found 
+Bone Wand of the Fox
+!
+Chad Schmidt
+ found 
+Gauntlets of Detection
+!
+Bogdan Berg
+ now has 
+cowardice
+!
+They 
+arrived at the 
+Can-ton
+ desert
+, where 
+they 
+were blocked by 
+a 
+lightless
+ relic
+.
+After 
+a challenging 
+infiltration
+, they 
+grabbed
+ the 
+relic
+.
+Sugako Collymore
+ now has 
+deafness
+!
+Sugako Collymore
+ found 
+Full Helm of Power
+!
+Sugako Collymore
+ got fried nerves.
+Bellas Broberg
+ now has 
+aggressive impulses
+!
+Bogdan Berg
+ had her arm crushed.
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+nextUpdateTime: 1644682060
+STORY 3-5 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Linda Borkowska, 
+Caspian Pelletier, 
+Michael hi tuba Broberg, 
+Robert Gotou, 
+and 
+Filippa Mintz 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+, 
+magical
+ dunes
+ "Xtophila Clopse"
+ at the 
+Craven 
+sea
+.
+On the road there, 
+they 
+discovered 
+a 
+succulent
+ river
+.
+After 
+a successful 
+exertion
+, they 
+crossed
+ the 
+river
+.
+Linda Borkowska 
+used her 
+Baking 
+skills!
+Caspian Pelletier 
+used their 
+Baking 
+skills!
+Michael hi tuba Broberg
+ found 
+Ornate Chestplate
+!
+Filippa Mintz
+ found 
+Silver Ring
+!
+After going some distance, 
+they 
+discovered 
+an 
+invisible
+, irridescent
+ maze
+.
+After 
+a successful 
+hundred guesses
+, they 
+solved
+ the 
+maze
+.
+Linda Borkowska
+ found 
+Studded Leather Armor
+!
+Caspian Pelletier
+ broke their leg.
+Filippa Mintz
+ found 
+Tome of Titans
+!
+Filippa Mintz
+ found 
+Divine Slippers
+!
+Pushing forward, 
+they 
+were confronted with 
+the 
+entrancing
+, ferocious
+ cliff
+ "Pillskin Limpet"
+.
+After 
+a trying 
+attempt
+, they 
+overcame
+ the 
+cliff
+.
+Michael hi tuba Broberg
+ bruised his ribs.
+Michael hi tuba Broberg
+ now has 
+monsterphobia
+!
+Robert Gotou
+ broke his leg.
+Filippa Mintz
+ got blasted eardrums.
+They 
+arrived at the 
+Craven
+ sea
+, where 
+they 
+discovered 
+the 
+entrancing
+, magical
+ dunes
+ "Xtophila Clopse"
+.
+After 
+an epic 
+journey
+, they 
+surveiled all of
+ the 
+dunes
+.
+Linda Borkowska
+ now has 
+deafness
+!
+Caspian Pelletier
+ now has 
+great destiny
+!
+Michael hi tuba Broberg
+ now has 
+quick-wit
+!
+Robert Gotou
+ suffered slash wounds.
+Filippa Mintz
+ found 
+Robe
+!
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+nextUpdateTime: 1644682060
+STORY 4-0 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Mira Kjeldsen, 
+Serge chadde Mintz, 
+and 
+Chad Tjangamarra 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+crepuscular
+, 
+horrifying
+ sanctum
+ "Diphonic Clopse"
+ at the 
+Jarred 
+city
+.
+After going some distance, 
+they 
+discovered 
+a 
+diurnal
+ dead end
+.
+After 
+a testing 
+brainstorm
+, they 
+figured out
+ the 
+dead end
+.
+Mira Kjeldsen
+ found 
+Bronze Ring
+!
+Mira Kjeldsen
+ now has 
+a peg leg
+!
+After going some distance, 
+they 
+discovered 
+a 
+diurnal
+, irresistible
+ dead end
+.
+After 
+a bungled 
+hundred guesses
+, they 
+failed to figure out
+ the 
+dead end
+.
+Mira Kjeldsen
+ now has 
+anxiety
+!
+Serge chadde Mintz
+ now has 
+cowardice
+!
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-1 
+
+At 
+Hall of Heads
+ in 
+Ulster's Jeweltown
+, 
+Daniel Feron, 
+Ed Stoll, 
+and 
+Isak Sos 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+, 
+irresistible
+ wyrm
+ "Mighty Clopse"
+ at the 
+Darshish 
+valley
+.
+Pushing forward, 
+they 
+were blocked by 
+a 
+succulent
+ maze
+.
+After 
+a strenuous 
+brainstorm
+, they 
+solved
+ the 
+maze
+.
+Ed Stoll
+ now has 
+trauma
+!
+In transit, 
+they 
+were confronted with 
+a 
+many-eyed
+, magical
+ canyon
+.
+After 
+a challenging 
+exertion
+, they 
+crossed
+ the 
+canyon
+.
+Ed Stoll 
+used their 
+Arcane Arts 
+skills!
+Ed Stoll
+ was stabbed in the torso.
+Ed Stoll
+ found 
+Leather Belt
+!
+Isak Sos
+ dislocated her shoulder.
+In transit, 
+they 
+were confronted with 
+the 
+many-eyed
+, magical
+ canyon
+ "Pillskin Fecund"
+.
+After 
+a challenging 
+exertion
+, they 
+crossed
+ the 
+canyon
+.
+Ed Stoll 
+used their 
+Arcane Arts 
+skills!
+Daniel Feron
+ now has 
+anxiety
+!
+Ed Stoll
+ had their confidence shaken.
+Ed Stoll
+ now has 
+greed
+!
+They 
+arrived at the 
+Darshish
+ valley
+, where 
+they 
+snuck up on 
+the 
+violent
+, irresistible
+ wyrm
+ "Mighty Clopse"
+.
+After 
+an epic 
+contest
+, they 
+defeated
+ the 
+wyrm
+.
+Daniel Feron
+ broke her leg.
+Ed Stoll
+ now has 
+unluckiness
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+Ed Stoll
+ now has 
+self-doubt
+!
+nextUpdateTime: 1644683060
+STORY 4-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Dregs
+, 
+Angor Benes, 
+Mira state Rodrigue, 
+and 
+Astra Hayes 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ hidden passage
+ at the 
+Illusid 
+valley
+.
+Soon enough, 
+they 
+snuck up on 
+an 
+invisible
+ tunnel dweller
+.
+After 
+a grueling 
+stand off
+, they 
+moved on from
+ the 
+tunnel dweller
+.
+Mira state Rodrigue
+ now has 
+quick-wit
+!
+Astra Hayes
+ got blasted eardrums.
+Astra Hayes
+ bruised his ribs.
+They 
+arrived at the 
+Illusid
+ valley
+, where 
+they 
+were blocked by 
+a 
+voracious
+ hidden passage
+.
+After 
+an epic 
+exploration
+, they 
+successfully navigated
+ the 
+hidden passage
+.
+Astra Hayes 
+used his 
+Baking 
+skills!
+Angor Benes
+ had her confidence shaken.
+Astra Hayes
+ was cursed.
+Astra Hayes
+ was knocked out.
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+nextUpdateTime: 1644683060
+STORY 4-3 
+
+At 
+Marsh's Sewerworks
+ in 
+Raft Town
+, 
+Chukwuebuka Lelkova, 
+Jody formerly Yellen, 
+and 
+Dennis Gotou 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+many-eyed
+, 
+impossible
+ psychopomp
+ "Blistered Limpet"
+ at the 
+Craven 
+valley
+.
+Following the path, 
+they 
+had to solve 
+a 
+decrepit
+ locked gate
+.
+After 
+a strenuous 
+brainstorm
+, they 
+found a way through
+ the 
+locked gate
+.
+Chukwuebuka Lelkova
+ got fried nerves.
+Jody formerly Yellen
+ was stabbed in the torso.
+Jody formerly Yellen
+ now has 
+quick-wit
+!
+Dennis Gotou
+ now has 
+aggressive impulses
+!
+Dennis Gotou
+ was frightened half to death.
+Pushing forward, 
+they 
+were blocked by 
+a 
+decrepit
+, cursed
+ waste
+.
+After 
+a strenuous 
+exertion
+, they 
+traversed
+ the 
+waste
+.
+Chukwuebuka Lelkova
+ was cursed.
+Jody formerly Yellen
+ bruised his ribs.
+Jody formerly Yellen
+ had his arm crushed.
+Dennis Gotou
+ now has 
+deafness
+!
+Pushing forward, 
+they 
+were blocked by 
+the 
+decrepit
+, cursed
+ waste
+ "Mighty Marauder"
+.
+After 
+a strenuous 
+exertion
+, they 
+traversed
+ the 
+waste
+.
+Chukwuebuka Lelkova
+ was cursed.
+Chukwuebuka Lelkova
+ was knocked out.
+Jody formerly Yellen
+ bruised his ribs.
+Jody formerly Yellen
+ had his arm crushed.
+Dennis Gotou
+ now has 
+deafness
+!
+They 
+arrived at the 
+Craven
+ valley
+, where 
+they 
+were confronted by 
+the 
+many-eyed
+, impossible
+ psychopomp
+ "Blistered Limpet"
+.
+After 
+an exhausting 
+contest
+, they 
+were overpowered by
+ the 
+psychopomp
+.
+Jody formerly Yellen
+ broke his leg.
+Jody formerly Yellen
+ was cursed.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-4 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Radim Donkervoort, 
+Charles Hendrix, 
+and 
+Bellas Broberg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+diurnal
+ dunes
+ at the 
+Jarred 
+pass
+.
+On the road there, 
+they 
+were confronted by 
+a 
+violent
+ tunnel dweller
+.
+After 
+an exhausting 
+stand off
+, they 
+were forced to turn back by
+ the 
+tunnel dweller
+.
+Bellas Broberg
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-5 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Geoffrey Oliveira, 
+Anya Amsel, 
+and 
+Linda Borkowska 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+ fiend
+ at the 
+Geometric 
+market
+.
+Before reaching the destination, 
+they 
+met 
+some 
+lightless
+ brigands
+.
+After 
+an epic 
+stand off
+, they 
+parted ways with
+ the 
+brigands
+.
+Geoffrey Oliveira
+ now has 
+trauma
+!
+They 
+arrived at the 
+Geometric
+ market
+, where 
+they 
+were ambushed by 
+an 
+entrancing
+ fiend
+.
+After 
+an epic 
+audience
+, they 
+befriended
+ the 
+fiend
+.
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+nextUpdateTime: 1644683060
+STORY 5-0 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Geoffrey state Collymore, 
+Mira Kjeldsen, 
+Olympia Feron, 
+Sarah Jenkins, 
+and 
+Chad Tjangamarra 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ hidden passage
+ at the 
+Boreal 
+valley
+.
+While traveling, 
+they 
+were blocked by 
+a 
+nocturnal
+ locked gate
+.
+After 
+a testing 
+hundred guesses
+, they 
+figured out
+ the 
+locked gate
+.
+Geoffrey state Collymore
+ found 
+Hard Leather Boots
+!
+Mira Kjeldsen
+ now has 
+elegance
+!
+Chad Tjangamarra
+ was cursed.
+They 
+arrived at the 
+Boreal
+ valley
+, where 
+they 
+were confronted with 
+a 
+voracious
+ hidden passage
+.
+After 
+a testing 
+reconnoiter
+, they 
+successfully navigated
+ the 
+hidden passage
+.
+Geoffrey state Collymore
+ got fried nerves.
+Mira Kjeldsen
+ broke her leg.
+Chad Tjangamarra
+ dislocated their shoulder.
+nextUpdateTime: 1644684060
+STORY 5-1 
+
+At 
+Hall of Heads
+ in 
+Ulster's Jeweltown
+, 
+Isak Sos, 
+0x Rosvita Fellowes, 
+Andre Bazhenov, 
+and 
+Lachlan Ranth 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+, 
+magical
+ swarm
+ at the 
+Can-ton 
+forest
+.
+After going some distance, 
+they 
+discovered 
+an 
+entrancing
+ cliff
+.
+After 
+an epic 
+attempt
+, they 
+crossed
+ the 
+cliff
+.
+Isak Sos
+ was stabbed in the torso.
+During the journey, 
+they 
+were ambushed by 
+a 
+succulent
+, ancient
+ bird folk
+.
+After 
+a strenuous 
+battle
+, they 
+passed by
+ the 
+bird folk
+.
+0x Rosvita Fellowes
+ now has 
+martyr complex
+!
+Andre Bazhenov
+ found 
+Leather Gloves
+!
+Lachlan Ranth
+ found 
+Heavy Belt
+!
+They 
+arrived at the 
+Can-ton
+ forest
+, where 
+they 
+were confronted by 
+a 
+succulent
+, magical
+ swarm
+.
+After 
+a hard-earned 
+contest
+, they 
+defeated
+ the 
+swarm
+.
+Isak Sos
+ bruised her ribs.
+0x Rosvita Fellowes
+ now has 
+a prosthetic arm
+!
+nextUpdateTime: 1644684060
+STORY 5-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Dregs
+, 
+Laura Hakugi, 
+Irene Borkowska, 
+Polycarp Hakugi, 
+and 
+Ser Malok Sandheaver 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+many-eyed
+, 
+deathly
+ doctor
+ at the 
+Darshish 
+city
+.
+Pushing forward, 
+they 
+were confronted with 
+a 
+sharp
+ waste
+.
+After 
+a strenuous 
+attempt
+, they 
+overcame
+ the 
+waste
+.
+While traveling, 
+they 
+met 
+a 
+voracious
+, cursed
+ beast
+.
+After 
+an epic 
+battle
+, they 
+moved on from
+ the 
+beast
+.
+Ser Malok Sandheaver 
+used her 
+Baking 
+skills!
+Laura Hakugi
+ found 
+Wool Sash
+!
+Irene Borkowska
+ now has 
+cowardice
+!
+Ser Malok Sandheaver
+ now has 
+optimistism
+!
+They 
+arrived at the 
+Darshish
+ city
+, where 
+they 
+snuck up on 
+a 
+many-eyed
+, deathly
+ doctor
+.
+After 
+a trying 
+conversation
+, they 
+struck a deal with
+ the 
+doctor
+.
+Laura Hakugi
+ found 
+Divine Gloves
+!
+Polycarp Hakugi
+ now has 
+weakness
+!
+nextUpdateTime: 1644684060
+STORY 5-3 
+
+At 
+Marsh's Sewerworks
+ in 
+Raft Town
+, 
+Rosvita Zhu, 
+Serge Rodrigue, 
+Jody formerly Yellen, 
+and 
+Lachlan McLellan 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+ psychopomp
+ at the 
+Darshish 
+sea
+.
+While traveling, 
+they 
+were blocked by 
+an 
+entrancing
+ dead end
+.
+After 
+a testing 
+hundred guesses
+, they 
+solved
+ the 
+dead end
+.
+Rosvita Zhu
+ got blasted eardrums.
+Jody formerly Yellen
+ had his confidence shaken.
+They 
+arrived at the 
+Darshish
+ sea
+, where 
+they 
+snuck up on 
+a 
+decrepit
+ psychopomp
+.
+After 
+a triumphant 
+contest
+, they 
+conquered
+ the 
+psychopomp
+.
+Rosvita Zhu
+ found 
+"Rune Root" Ornate Greaves of Brilliance
+!
+Serge Rodrigue
+ bruised their ribs.
+Jody formerly Yellen
+ found 
+Wool Shoes
+!
+Lachlan McLellan
+ found 
+"Soul Tear" Wand of Protection
+!
+nextUpdateTime: 1644684060
+STORY 5-4 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+George Stoll, 
+Sugako Collymore, 
+Florus Gandhi, 
+and 
+Nahum Pelletier 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+decrepit
+, 
+magical
+ citadel
+ "Blistered Osprin"
+ at the 
+Darshish 
+pass
+.
+Before reaching the destination, 
+they 
+were confronted with 
+a 
+decrepit
+ cliff
+.
+After 
+a challenging 
+exertion
+, they 
+traversed
+ the 
+cliff
+.
+George Stoll
+ broke her leg.
+Sugako Collymore
+ was frightened half to death.
+Florus Gandhi
+ got fried nerves.
+After going some distance, 
+they 
+had to solve 
+a 
+sharp
+, horrifying
+ puzzlebox
+.
+After 
+a challenging 
+attempt
+, they 
+figured out
+ the 
+puzzlebox
+.
+Florus Gandhi
+ suffered slash wounds.
+On the way, 
+they 
+discovered 
+the 
+sharp
+, magical
+ waste
+ "Vivisected Ellishment"
+.
+After 
+a hard-earned 
+exertion
+, they 
+crossed
+ the 
+waste
+.
+George Stoll
+ broke her leg.
+Sugako Collymore
+ found 
+Hard Leather Boots
+!
+Sugako Collymore
+ found 
+Divine Hood
+!
+Florus Gandhi
+ got blasted eardrums.
+Florus Gandhi
+ was knocked out.
+Nahum Pelletier
+ now has 
+trauma
+!
+Nahum Pelletier
+ found 
+Short Sword
+!
+Nahum Pelletier
+ found 
+Hard Leather Gloves
+!
+They 
+arrived at the 
+Darshish
+ pass
+, where 
+they 
+were confronted with 
+the 
+decrepit
+, magical
+ citadel
+ "Blistered Osprin"
+.
+After 
+a weak 
+attempt
+, they 
+could not safe-guard
+ the 
+citadel
+.
+George Stoll
+ was cursed.
+George Stoll
+ was knocked out.
+Sugako Collymore
+ now has 
+self-doubt
+!
+Sugako Collymore
+ was frightened half to death.
+Nahum Pelletier
+ had her arm crushed.
+Nahum Pelletier
+ got fried nerves.
+nextUpdateTime: 1644684060
+STORY 5-5 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Caspian Pelletier, 
+Robert Gotou, 
+Anastazja Ibekwe, 
+and 
+Geoffrey Oliveira 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+decrepit
+ fiend
+ at the 
+Red 
+market
+.
+In transit, 
+they 
+were blocked by 
+a 
+crepuscular
+ puzzlebox
+.
+After 
+a misguided 
+attempt
+, they 
+found no way through
+ the 
+puzzlebox
+.
+Caspian Pelletier
+ got fried nerves.
+nextUpdateTime: 1644684060

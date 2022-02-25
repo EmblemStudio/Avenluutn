@@ -56,7 +56,11 @@ export async function tellStory(
         ending: { main: [], resultTexts: [] },
       },
       events: [],
-      nextUpdateTime: findNextUpdateTime(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
+      nextUpdateTime: findNextUpdateTime(
+        runStart,
+        [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime],
+        true
+      )
     }
     return res
   }
@@ -85,8 +89,12 @@ export async function tellStory(
       },
       ending: ending.text,
     },
-    events: ending.results,
-    nextUpdateTime: findNextUpdateTime(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime])
+    events: [...middle.allResults, ...ending.results],
+    nextUpdateTime: findNextUpdateTime(
+      runStart,
+      [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime],
+      middle.allOutcomesSucceeded
+    )
   }
   // make plainText
   res.richText.beginning.forEach(ls => res.plainText.push(ls.string))
@@ -107,7 +115,7 @@ export async function tellStory(
     }
   })
   ending.text.main.forEach(ls => res.plainText.push(ls.string))
-  ending.text.resultTexts.forEach(lsa => { 
+  ending.text.resultTexts.forEach(lsa => {
     lsa.forEach(ls => res.plainText.push(ls.string))
   })
   return res
@@ -127,7 +135,6 @@ async function tellBeginning(
   if (!guild) { throw new Error("No guild") }
   /**
    * Make random party
-   * TODO cover the case where the guild has <3 adventurers remaining
    */
   const party: Adventurer[] = randomParty(
     prng,
@@ -159,12 +166,11 @@ async function tellBeginning(
   const outcomeTimes = []
   const obstacleLength = Math.floor(length / (quest.difficulty + 1))
   const outcomeDelay = Math.floor(obstacleLength / 2)
-  for(let i = 1; i <= quest.difficulty; i++) {
+  for (let i = 1; i <= quest.difficulty; i++) {
     const delay = obstacleLength * i
     obstacleTimes.push(startTime + delay)
     outcomeTimes.push(startTime + delay + outcomeDelay)
   }
-  console.log('made update times', startTime, obstacleTimes, outcomeTimes, endTime)
 
   return {
     guild,
@@ -190,11 +196,11 @@ async function tellMiddle(
     outcomes: [],
     allResults: [],
     obstacleText: [],
-    outcomeText: []
+    outcomeText: [],
+    allOutcomesSucceeded: true
   }
-  let allOutcomesSucceeded = true
-  for(let i = 0; i < beginning.obstacleTimes.length; i++) {
-    if (allOutcomesSucceeded) {
+  for (let i = 0; i < beginning.obstacleTimes.length; i++) {
+    if (middle.allOutcomesSucceeded) {
       const obstacleTime = beginning.obstacleTimes[i]
       if (!obstacleTime) { throw new Error("No obstacle time") }
 
@@ -215,7 +221,7 @@ async function tellMiddle(
       const outcomeTime = beginning.outcomeTimes[i]
       if (!outcomeTime) { throw new Error("No outcome time") }
 
-      checkpoint = await newCheckpoint(runStart, outcomeTime, provider)
+      checkpoint = await newCheckpoint(runStart, outcomeTime, provider, `${guildId}`)
       const obstacle = middle.obstacles[i]
 
       if (!checkpoint.error && obstacle) {
@@ -227,7 +233,7 @@ async function tellMiddle(
           middle.allResults,
           provider
         )
-        if (outcome.success === Success.failure) allOutcomesSucceeded = false
+        if (outcome.success === Success.failure) middle.allOutcomesSucceeded = false
         if (i + 1 === beginning.obstacleTimes.length) middle.questSuccess = outcome.success
         middle.outcomes.push(outcome)
         middle.allResults = [...middle.allResults, ...outcome.results]

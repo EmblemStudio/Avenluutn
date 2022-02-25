@@ -31,7 +31,7 @@ exports.makeGuildText = makeGuildText;
 function makeQuestText(quest) {
     const res = [
         { string: `Consulting the guild, they chose their quest: to `, label: interfaces_1.Label.conjunctive },
-        { string: quest.type, label: interfaces_1.Label.questType },
+        { string: quest.type.toLowerCase(), label: interfaces_1.Label.questType },
         { string: ` the `, label: interfaces_1.Label.conjunctive }
     ];
     // let text = `Consulting the guild, they chose their quest: to ${quest.type} the`
@@ -280,7 +280,10 @@ exports.makeKnockoutText = makeKnockoutText;
 function makeTriggerText(triggerInfo, adventurer, traits, qualities) {
     const res = [];
     if (triggerInfo.type === "traits") {
-        const trait = traits[triggerInfo.name];
+        const traitArray = traits[triggerInfo.name];
+        if (!traitArray)
+            throw new Error("No traitArray");
+        const trait = traitArray[0];
         if (!trait)
             throw new Error("No trait");
         if (triggerInfo.modifier > 0 && trait.positiveTrigger) {

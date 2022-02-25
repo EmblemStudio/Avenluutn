@@ -1,0 +1,47 @@
+{
+  "ABYSMAL": [
+    {
+      "INJURY": "85",
+      "DEATH": "90",
+      "LOOT": "97",
+      "SKILL": "98",
+      "TRAIT": "100"
+    }
+  ],
+  "FAILURE": [
+    {
+      "INJURY": "75",
+      "DEATH": "78",
+      "LOOT": "85",
+      "SKILL": "92",
+      "TRAIT": "100"
+    }
+  ],
+  "MIXED": [
+    {
+      "INJURY": "40",
+      "DEATH": "41",
+      "LOOT": "75",
+      "SKILL": "85",
+      "TRAIT": "100"
+    }
+  ],
+  "SUCCESS": [
+    {
+      "INJURY": "15",
+      "DEATH": "15",
+      "LOOT": "70",
+      "SKILL": "83",
+      "TRAIT": "100"
+    }
+  ],
+  "EXEMPLARY": [
+    {
+      "INJURY": "5",
+      "DEATH": "5",
+      "LOOT": "62",
+      "SKILL": "80",
+      "TRAIT": "100"
+    }
+  ]
+}

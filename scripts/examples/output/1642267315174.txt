@@ -1,0 +1,357 @@
+STORY 0-0 
+
+At 
+Cult of 973
+ in 
+Farshi District
+, 
+Jody Sorokina, 
+Steven Hoskinson Hadrada, 
+Remus Finnegan, 
+and 
+Filippa Amsel 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+entrancing
+ prisoner
+ at the 
+Macrosign 
+valley
+.
+In search of the goal, 
+they 
+stumbled upon 
+a 
+lightless
+ canyon
+.
+After 
+a fraught 
+attempt
+, they 
+crossed
+ the 
+canyon
+.
+Steven Hoskinson Hadrada
+ found 
+Pendant
+!
+Filippa Amsel
+ had his arm crushed.
+They 
+arrived at the 
+Macrosign
+ valley
+, where 
+they 
+discovered 
+an 
+entrancing
+ prisoner
+.
+After 
+a doomed 
+search
+, they 
+could not retrieve
+ the 
+prisoner
+.
+Filippa Amsel
+ had his arm crushed.
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+nextUpdateTime: 1642267233
+STORY 0-1 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Darda West, 
+William Gousse, 
+Master Malok Wixx, 
+and 
+Susan Mintz 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+cursed
+ maze
+ at the 
+Geometric 
+market
+.
+Venturing forth, 
+they 
+came across 
+some 
+sharp
+ brigands
+.
+After 
+a grueling 
+game of wits
+, they 
+parted ways with
+ the 
+brigands
+.
+Susan Mintz
+ suffered slash wounds.
+On the way, 
+they 
+had to solve 
+a 
+crepuscular
+, ancient
+ maze
+.
+After 
+a grueling 
+hundred guesses
+, they 
+figured out
+ the 
+maze
+.
+Master Malok Wixx
+ found 
+Divine Gloves
+!
+Susan Mintz
+ found 
+Scimitar
+!
+They 
+arrived at the 
+Geometric
+ market
+, where 
+they 
+stumbled upon 
+a 
+sharp
+, cursed
+ maze
+.
+After 
+a fraught 
+reconnoiter
+, they 
+successfully navigated
+ the 
+maze
+.
+Darda West
+ broke his leg.
+William Gousse
+ found 
+Linen Robe of Power
+!
+Master Malok Wixx
+ found 
+Gold Ring
+!
+Susan Mintz
+ suffered slash wounds.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: 1642267233
+STORY 0-2 
+
+At 
+Cherished Heart Temple
+ in 
+Farshi District
+, 
+Raff Kjeldsen, 
+Vllad Zhao the Saint, 
+John Gandhi, 
+and 
+Lord Protector Azura Beckett 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+sharp
+ gemstone
+ at the 
+Craven 
+city
+.
+In search of the goal, 
+they 
+were confronted by 
+an 
+entrancing
+ bird folk
+.
+After 
+a testing 
+battle
+, they 
+defeated
+ the 
+bird folk
+.
+Lord Protector Azura Beckett
+ found 
+Demon Husk
+!
+They 
+arrived at the 
+Craven
+ city
+, where 
+they 
+stumbled upon 
+a 
+sharp
+ gemstone
+.
+After 
+a strenuous 
+infiltration
+, they 
+returned with
+ the 
+gemstone
+.
+Raff Kjeldsen
+ found 
+Gold Ring
+!
+Vllad Zhao the Saint
+ found 
+"Sorrow Shout" Hard Leather Belt of the Twins +1
+!
+Vllad Zhao the Saint
+ found 
+War Cap
+!
+John Gandhi
+ found 
+Greaves
+!
+John Gandhi
+ was frightened half to death.
+Lord Protector Azura Beckett
+ learned 
+Arcane Arts
+!
+The adventurers 
+returned to 
+Cherished Heart Temple
+, exhausted but successful.
+nextUpdateTime: 1642267233
+STORY 1-0 
+
+At 
+Cult of 973
+ in 
+Farshi District
+, 
+Jody Holmberg, 
+Jessica Karlsen, 
+Jody Sorokina, 
+and 
+Fortinbras Nilsson 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+, 
+cursed
+ dunes
+ at the 
+Headless 
+valley
+.
+nextUpdateTime: 1642268233
+STORY 1-1 
+
+At 
+Klaxon Messengerhall
+ in 
+Raft Town
+, 
+Susan Mintz, 
+Pope Efraim Hermanns, 
+Martin Davorin Cromwell, 
+Dilibe Crassus, 
+and 
+William Gousse 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+lightless
+, 
+cursed
+ caravan
+ "Carcosan Fecund"
+ at the 
+Macrosign 
+valley
+.
+nextUpdateTime: 1642268233
+STORY 1-2 
+
+At 
+Cherished Heart Temple
+ in 
+Farshi District
+, 
+John Gandhi, 
+Donald Skotnik, 
+Belle Probst, 
+and 
+Lord Protector Azura Beckett 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+ caves
+ at the 
+Headless 
+city
+.
+nextUpdateTime: 1642268233
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 3-0 
+
+STORY 3-1 
+
+STORY 3-2 
+
+STORY 4-0 
+
+STORY 4-1 
+
+STORY 4-2 
+
+STORY 5-0 
+
+STORY 5-1 
+
+STORY 5-2 
+

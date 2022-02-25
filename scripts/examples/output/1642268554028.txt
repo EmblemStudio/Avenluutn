@@ -1,0 +1,454 @@
+STORY 0-0 
+
+At 
+Royal Orchestra Theatre
+ in 
+Farshi District
+, 
+William Finnegan, 
+Zabbas Frederiksen, 
+Joseph Mailhot the Black, 
+Molly Kwiatkowski, 
+and 
+Mohammed Kwiatkowski da gay 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+, 
+impossible
+ swarm
+ "Carcosan Nail"
+ at the 
+Craven 
+desert
+.
+After going some distance, 
+they 
+were blocked by 
+an 
+entrancing
+ puzzlebox
+.
+After 
+a breezy 
+attempt
+, they 
+solved
+ the 
+puzzlebox
+.
+William Finnegan
+ found 
+Wool Sash
+!
+Zabbas Frederiksen
+ now has 
+trauma
+!
+Mohammed Kwiatkowski da gay
+ found 
+Pendant
+!
+Mohammed Kwiatkowski da gay
+ learned 
+Swords
+!
+Before reaching the destination, 
+they 
+were confronted with 
+a 
+many-eyed
+, reknowned
+ waste
+.
+After 
+a trying 
+exertion
+, they 
+crossed
+ the 
+waste
+.
+William Finnegan
+ had his arm crushed.
+Zabbas Frederiksen
+ found 
+Divine Hood
+!
+Zabbas Frederiksen
+ found 
+Pendant of Rage
+!
+Joseph Mailhot the Black
+ found 
+Dragon's Crown of Titans
+!
+Molly Kwiatkowski
+ found 
+"Sorrow Grasp" Katana of Skill +1
+!
+Mohammed Kwiatkowski da gay
+ had her arm crushed.
+On the road there, 
+they 
+were blocked by 
+the 
+decrepit
+, magical
+ hedge
+ "Vivisected Osprin"
+.
+After 
+a grueling 
+exertion
+, they 
+crossed
+ the 
+hedge
+.
+William Finnegan
+ found 
+Necklace of Anger
+!
+Joseph Mailhot the Black
+ was frightened half to death.
+Molly Kwiatkowski
+ got fried nerves.
+Molly Kwiatkowski
+ had her confidence shaken.
+They 
+arrived at the 
+Craven
+ desert
+, where 
+they 
+were confronted by 
+the 
+decrepit
+, impossible
+ swarm
+ "Carcosan Nail"
+.
+After 
+an excellent 
+battle
+, they 
+defeated
+ the 
+swarm
+.
+William Finnegan
+ had his confidence shaken.
+Zabbas Frederiksen
+ found 
+Robe
+!
+Molly Kwiatkowski
+ found 
+Tome
+!
+Mohammed Kwiatkowski da gay
+ found 
+Platinum Ring
+!
+The adventurers 
+returned triumphantly to 
+Royal Orchestra Theatre
+, basking in glory.
+nextUpdateTime: 1642268475
+STORY 0-1 
+
+At 
+Cherished Heart Temple
+ in 
+North Bank Street
+, 
+Harriet Fellowes, 
+Jessica Yellen, 
+Barbara Hoskinson, 
+His Majesty Abigail of Feron, 
+and 
+Kerstin Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+many-eyed
+ priest
+ at the 
+Red 
+sea
+.
+While traveling, 
+they 
+stumbled upon 
+a 
+succulent
+ river
+.
+After 
+a breezy 
+exertion
+, they 
+crossed
+ the 
+river
+.
+Harriet Fellowes
+ found 
+Titanium Ring
+!
+Jessica Yellen
+ now has 
+self-doubt
+!
+Barbara Hoskinson
+ found 
+Pendant of Vitriol
+!
+His Majesty Abigail of Feron
+ got blasted eardrums.
+Kerstin Berg
+ was stabbed in the torso.
+They 
+arrived at the 
+Red
+ sea
+, where 
+they 
+were confronted by 
+a 
+many-eyed
+ priest
+.
+After 
+a testing 
+conversation
+, they 
+struck a deal with
+ the 
+priest
+.
+Kerstin Berg 
+used his 
+Archery 
+skills!
+Harriet Fellowes
+ found 
+Titanium Ring of Fury
+!
+His Majesty Abigail of Feron
+ got fried nerves.
+The adventurers 
+returned to 
+Cherished Heart Temple
+, exhausted but successful.
+nextUpdateTime: 1642268475
+STORY 0-2 
+
+At 
+Klaxon Messengerhall
+ in 
+Varajao District
+, 
+Faina Allen, 
+Changpeng Lothran, 
+Jan Valova the Bad, 
+Stanislaus jai Jackson, 
+and 
+Dilibe Piest 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+, 
+deathly
+ wyrm
+ at the 
+Headless 
+desert
+.
+Before reaching the destination, 
+they 
+had to solve 
+a 
+succulent
+ puzzlebox
+.
+After 
+a strong 
+attempt
+, they 
+figured out
+ the 
+puzzlebox
+.
+Changpeng Lothran
+ got blasted eardrums.
+Jan Valova the Bad
+ found 
+Necklace
+!
+Next, 
+they 
+stumbled upon 
+a 
+violent
+, ancient
+ cliff
+.
+After 
+a hard-earned 
+trek
+, they 
+traversed
+ the 
+cliff
+.
+Faina Allen
+ found 
+Grimoire
+!
+Jan Valova the Bad
+ found 
+Club
+!
+Stanislaus jai Jackson
+ dislocated his shoulder.
+They 
+arrived at the 
+Headless
+ desert
+, where 
+they 
+met 
+a 
+succulent
+, deathly
+ wyrm
+.
+After 
+an epic 
+battle
+, they 
+defeated
+ the 
+wyrm
+.
+Changpeng Lothran
+ had their arm crushed.
+Changpeng Lothran
+ found 
+Holy Greaves
+!
+Jan Valova the Bad
+ dislocated her shoulder.
+Stanislaus jai Jackson
+ found 
+War Cap
+!
+Dilibe Piest
+ now has 
+greed
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: 1642268475
+STORY 1-0 
+
+At 
+Royal Orchestra Theatre
+ in 
+Farshi District
+, 
+Chad Kodou, 
+Su zef Humblecut the Couch, 
+and 
+Chad Humblecut 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+many-eyed
+, 
+magical
+ sanctum
+ "Xtophila Limpet"
+ at the 
+Boreal 
+sea
+.
+nextUpdateTime: 1642269475
+STORY 1-1 
+
+At 
+Cherished Heart Temple
+ in 
+North Bank Street
+, 
+Svatava West, 
+His Majesty Abigail of Feron, 
+and 
+Isabella West 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+succulent
+ outskirts
+ at the 
+Jarred 
+summit
+.
+nextUpdateTime: 1642269475
+STORY 1-2 
+
+At 
+Klaxon Messengerhall
+ in 
+Varajao District
+, 
+Ravil Karlsen, 
+Stanislaus jai Jackson, 
+and 
+Marcus von Allen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+ hidden passage
+ at the 
+Darshish 
+forest
+.
+nextUpdateTime: 1642269475
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 3-0 
+
+STORY 3-1 
+
+STORY 3-2 
+
+STORY 4-0 
+
+STORY 4-1 
+
+STORY 4-2 
+
+STORY 5-0 
+
+STORY 5-1 
+
+STORY 5-2 
+

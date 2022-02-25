@@ -1,5 +1,4 @@
 import { Name } from '../content/loot/methods/names'
-import { ObstacleType } from '../content/original/sourceArrays'
 
 export interface ScriptResult {
   stories: Story[];
@@ -44,6 +43,7 @@ export interface Middle {
   allResults: Result[];
   obstacleText: LabeledString[][];
   outcomeText: OutcomeText[];
+  allOutcomesSucceeded: boolean;
 }
 
 export interface Ending {
@@ -83,6 +83,7 @@ export enum Label {
 export interface LabeledString {
   string: string;
   label: Label;
+  entityId?: number;
 }
 
 // They [verb] [adjectives] [type] [name] [additions]
@@ -91,7 +92,7 @@ export interface LabeledString {
 
 export interface Obstacle {
   difficulty: number; // 1-4?
-  type: ObstacleType;
+  type: string;
   arrival: string;
   discovery: string;
   firstAdjective?: string;
@@ -142,11 +143,11 @@ export interface TriggerInfo {
   type: "skills" | "loot" | "traits"
 }
 
-export interface Traits { [trait: string]: TraitInfo }
+export interface Traits { [trait: string]: TraitInfo[] }
 
-export interface TraitInfo { 
-  positiveTrigger: string | null, 
-  negativeTrigger: string | null 
+export interface TraitInfo {
+  positiveTrigger: string | null,
+  negativeTrigger: string | null
 }
 
 export interface Result {
@@ -177,18 +178,10 @@ export interface Results {
   "TRAIT": Result[];
 }
 
-export enum QuestType {
-  defeat = "DEFEAT",
-  explore = "EXPLORE",
-  retrieve = "RETRIEVE",
-  defend = "DEFEND",
-  befriend = "BEFRIEND"
-}
-
 export interface Quest {
   guildId: number; // index of the guild going on the quest
   difficulty: number; // 1-4, not included in final text, but publicly available (equivalent to "greatness")
-  type: QuestType; // e.g. "Defeat"
+  type: string; // e.g. "Defeat"
   firstAdjective?: string; // e.g. "strong"
   secondAdjective?: string; // e.g. "putrescent"
   objective: string; // e.g. "ogre" --> we will need separate object lists for each verb, or at least different ones
@@ -196,7 +189,7 @@ export interface Quest {
   lastName?: string; // e.g. "Belcher"
   locationName: string; // e.g. "Sarong" (proper noun)
   locationType: string; // e.g. "Mountain"
-} 
+}
 
 export interface Character {
   name: Name;
@@ -224,6 +217,7 @@ export interface Pronouns {
 }
 
 export interface Stats {
+  [key: string]: number;
   strength: number;
   magic: number;
   agility: number;

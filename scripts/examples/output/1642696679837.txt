@@ -1,0 +1,932 @@
+STORY 0-0 
+
+At 
+Cult of 973
+ in 
+Ulster's Jeweltown
+, 
+Gandor Oliveira the Fighter, 
+Zaki from Thomsen, 
+Martin Davorin West, 
+Council Filippa formerly Maciejewska, 
+and 
+Jens Araujo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+ warlock
+ at the 
+Boreal 
+crypt
+.
+Next, 
+they 
+were confronted with 
+a 
+lightless
+ waste
+.
+After 
+a grueling 
+attempt
+, they 
+overcame
+ the 
+waste
+.
+Jens Araujo
+ had his arm crushed.
+They 
+arrived at the 
+Boreal
+ crypt
+, where 
+they 
+met 
+a 
+decrepit
+ warlock
+.
+After 
+a challenging 
+battle
+, they 
+conquered
+ the 
+warlock
+.
+Martin Davorin West
+ found 
+Full Helm
+!
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+nextUpdateTime: 1642696562
+STORY 0-1 
+
+At 
+Marsh's Sewerworks
+ in 
+the Dregs
+, 
+Florus Benes, 
+Mohammed Sandheaver, 
+Gandor sunarto Broberg, 
+Isabella Donkervoort, 
+and 
+Sugako Wood 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+succulent
+, 
+horrifying
+ fiend
+ "Diphonic Butcher"
+ at the 
+Darshish 
+market
+.
+While traveling, 
+they 
+met 
+a 
+crepuscular
+ tunnel dweller
+.
+After 
+a fraught 
+game of wits
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Mohammed Sandheaver
+ found 
+Pendant
+!
+After going some distance, 
+they 
+stumbled upon 
+an 
+invisible
+, cursed
+ hedge
+.
+After 
+a fraught 
+attempt
+, they 
+traversed
+ the 
+hedge
+.
+Mohammed Sandheaver
+ was frightened half to death.
+Isabella Donkervoort
+ bruised her ribs.
+After going some distance, 
+they 
+were blocked by 
+the 
+sharp
+, cursed
+ maze
+ "Diphonic Ulula"
+.
+After 
+a hard-earned 
+attempt
+, they 
+found a way through
+ the 
+maze
+.
+Mohammed Sandheaver
+ had her arm crushed.
+Gandor sunarto Broberg
+ found 
+Necklace
+!
+Isabella Donkervoort
+ found 
+Club
+!
+Isabella Donkervoort
+ found 
+Studded Leather Gloves
+!
+Sugako Wood
+ found 
+Dragon's Crown
+!
+They 
+arrived at the 
+Darshish
+ market
+, where 
+they 
+were ambushed by 
+the 
+succulent
+, horrifying
+ fiend
+ "Diphonic Butcher"
+.
+After 
+a trying 
+introduction
+, they 
+struck a deal with
+ the 
+fiend
+.
+Gandor sunarto Broberg 
+used his 
+Horsemanship 
+skills!
+Florus Benes
+ broke her leg.
+Mohammed Sandheaver
+ now has 
+dragon obsession
+!
+Mohammed Sandheaver
+ found 
+Dragonskin Boots
+!
+Gandor sunarto Broberg
+ was frightened half to death.
+Gandor sunarto Broberg
+ died.
+Isabella Donkervoort
+ found 
+Holy Gauntlets of Perfection
+!
+Isabella Donkervoort
+ now has 
+cowardice
+!
+Sugako Wood
+ found 
+"Dusk Whisper" War Cap of Anger
+!
+Sugako Wood
+ got fried nerves.
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: 1642696562
+STORY 0-2 
+
+At 
+Union of Scientists
+ in 
+Karkowa District
+, 
+Ed Rodrigue, 
+Matthew Zamfir, 
+Yuukou Donaldson, 
+and 
+Bolethe Simon 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+decrepit
+ outskirts
+ at the 
+Boreal 
+village
+.
+Soon enough, 
+they 
+were blocked by 
+a 
+violent
+ canyon
+.
+After 
+a fraught 
+attempt
+, they 
+crossed
+ the 
+canyon
+.
+Ed Rodrigue
+ got blasted eardrums.
+They 
+arrived at the 
+Boreal
+ village
+, where 
+they 
+stumbled upon 
+some 
+decrepit
+ outskirts
+.
+After 
+a testing 
+battle
+, they 
+defended
+ the 
+outskirts
+.
+Matthew Zamfir
+ dislocated her shoulder.
+Matthew Zamfir
+ found 
+Platinum Ring
+!
+Yuukou Donaldson
+ bruised their ribs.
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+nextUpdateTime: 1642696562
+STORY 0-3 
+
+At 
+Harcourt Smithy
+ in 
+the Last Stop
+, 
+Shunichi Viragh, 
+Thomas Windward, 
+James Ashbluff the Lame, 
+Belle Pelletier, 
+and 
+Rorik Karlsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+many-eyed
+, 
+black-hearted
+ lord
+ at the 
+Jarred 
+crypt
+.
+During the journey, 
+they 
+were confronted with 
+a 
+succulent
+ river
+.
+After 
+a trying 
+exertion
+, they 
+traversed
+ the 
+river
+.
+Shunichi Viragh
+ found 
+Studded Leather Boots
+!
+Thomas Windward
+ broke their leg.
+James Ashbluff the Lame
+ found 
+Silver Ring
+!
+James Ashbluff the Lame
+ found 
+Leather Belt of Power
+!
+James Ashbluff the Lame
+ found 
+Chain Mail
+!
+Belle Pelletier
+ broke his leg.
+Belle Pelletier
+ had his confidence shaken.
+Rorik Karlsen
+ found 
+Chronicle
+!
+During the journey, 
+they 
+discovered 
+a 
+violent
+, horrifying
+ dead end
+.
+After 
+a fraught 
+attempt
+, they 
+found a way through
+ the 
+dead end
+.
+Thomas Windward
+ got fried nerves.
+Thomas Windward
+ found 
+"Tempest Grasp" Katana of Protection +1
+!
+James Ashbluff the Lame
+ learned 
+Swordskill
+!
+Belle Pelletier
+ got fried nerves.
+Belle Pelletier
+ was knocked out.
+They 
+arrived at the 
+Jarred
+ crypt
+, where 
+they 
+came across 
+a 
+many-eyed
+, black-hearted
+ lord
+.
+After 
+a fraught 
+introduction
+, they 
+struck a deal with
+ the 
+lord
+.
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: 1642696562
+STORY 0-4 
+
+At 
+Hall of Heads
+ in 
+Varajao District
+, 
+Earth-Shaker Rosvita Finnegan, 
+Svatava Sandgreen, 
+Chief Ape Dilibe Gotou, 
+and 
+Karen Hakugi 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+decrepit
+, 
+impossible
+ walls
+ "Melifluent Nail"
+ at the 
+Craven 
+summit
+.
+On the road there, 
+they 
+discovered 
+a 
+succulent
+ cliff
+.
+After 
+a trying 
+exertion
+, they 
+traversed
+ the 
+cliff
+.
+Karen Hakugi
+ died.
+Venturing forth, 
+they 
+discovered 
+a 
+decrepit
+, magical
+ canyon
+.
+After 
+a doomed 
+attempt
+, they 
+failed to overcome
+ the 
+canyon
+.
+Svatava Sandgreen
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: 1642696562
+STORY 0-5 
+
+At 
+Klaxon Messengerhall
+ in 
+Ulster's Jeweltown
+, 
+Mary Mikulanc, 
+Noah Mikulanc, 
+Patrick Hidalgo, 
+and 
+President Chishou Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+crepuscular
+ secret
+ at the 
+Boreal 
+summit
+.
+Next, 
+they 
+were blocked by 
+a 
+many-eyed
+ river
+.
+After 
+a challenging 
+attempt
+, they 
+crossed
+ the 
+river
+.
+Noah Mikulanc
+ died.
+They 
+arrived at the 
+Boreal
+ summit
+, where 
+they 
+were blocked by 
+a 
+crepuscular
+ secret
+.
+After 
+a weak 
+infiltration
+, they 
+did not acquire
+ the 
+secret
+.
+Mary Mikulanc
+ had his confidence shaken.
+President Chishou Berg
+ bruised his ribs.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: 1642696562
+STORY 1-0 
+
+At 
+Cult of 973
+ in 
+Ulster's Jeweltown
+, 
+Jens Araujo, 
+Vlad Donaldson, 
+Ebony Hidalgo, 
+and 
+Chalia t11s Beckett 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+entrancing
+ gemstone
+ at the 
+Headless 
+summit
+.
+During the journey, 
+they 
+were confronted with 
+a 
+crepuscular
+ cliff
+.
+After 
+an exhausting 
+trek
+, they 
+failed to cross
+ the 
+cliff
+.
+Jens Araujo
+ had his confidence shaken.
+Vlad Donaldson
+ got blasted eardrums.
+Ebony Hidalgo
+ had their confidence shaken.
+nextUpdateTime: 1642696679
+STORY 1-1 
+
+At 
+Marsh's Sewerworks
+ in 
+the Dregs
+, 
+Polycarp Melo, 
+Chief Ape Svatava Ashbluff, 
+Khan Rotnam Nakamoto, 
+and 
+Mohammed Sandheaver 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+, 
+impossible
+ hidden passage
+ at the 
+Illusid 
+summit
+.
+During the journey, 
+they 
+were blocked by 
+an 
+invisible
+ hedge
+.
+After 
+a hard-earned 
+exertion
+, they 
+crossed
+ the 
+hedge
+.
+Polycarp Melo
+ had her confidence shaken.
+Khan Rotnam Nakamoto
+ dislocated her shoulder.
+Khan Rotnam Nakamoto
+ had her confidence shaken.
+Mohammed Sandheaver
+ found 
+Chain Gloves
+!
+While traveling, 
+they 
+snuck up on 
+a 
+succulent
+, ancient
+ bird folk
+.
+After 
+a hard-earned 
+battle
+, they 
+defeated
+ the 
+bird folk
+.
+Chief Ape Svatava Ashbluff
+ suffered slash wounds.
+Khan Rotnam Nakamoto
+ had her confidence shaken.
+Khan Rotnam Nakamoto
+ was knocked out.
+Mohammed Sandheaver
+ found 
+Gold Ring
+!
+Mohammed Sandheaver
+ bruised her ribs.
+nextUpdateTime: 1642697562
+STORY 1-2 
+
+At 
+Union of Scientists
+ in 
+Karkowa District
+, 
+Donald Geisler, 
+Ed Rodrigue, 
+Raff Adler, 
+and 
+Yuukou Donaldson 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+entrancing
+ relic
+ at the 
+Craven 
+crypt
+.
+On the road there, 
+they 
+stumbled upon 
+a 
+voracious
+ canyon
+.
+After 
+a hard-earned 
+trek
+, they 
+overcame
+ the 
+canyon
+.
+Donald Geisler
+ had her confidence shaken.
+Yuukou Donaldson
+ broke their leg.
+nextUpdateTime: 1642697562
+STORY 1-3 
+
+At 
+Harcourt Smithy
+ in 
+the Last Stop
+, 
+Ed sunarto Wixx the Lawgiver, 
+Basileus Grace Schmidt, 
+Selam Simon, 
+and 
+Thomas Windward 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+invisible
+, 
+impossible
+ caravan
+ at the 
+Craven 
+market
+.
+On the way, 
+they 
+were confronted with 
+an 
+entrancing
+ cliff
+.
+After 
+a bungled 
+exertion
+, they 
+failed to overcome
+ the 
+cliff
+.
+Ed sunarto Wixx the Lawgiver
+ was frightened half to death.
+Ed sunarto Wixx the Lawgiver
+ was frightened half to death.
+Ed sunarto Wixx the Lawgiver
+ broke his leg.
+Basileus Grace Schmidt
+ found 
+Helm
+!
+Thomas Windward
+ was stabbed in the torso.
+Thomas Windward
+ found 
+Mesh Belt
+!
+nextUpdateTime: 1642696674
+STORY 1-4 
+
+At 
+Hall of Heads
+ in 
+Varajao District
+, 
+Michael Dustfinger, 
+Chief Ape Dilibe Gotou, 
+Archduke Cathy light Delphine, 
+and 
+Svatava Sandgreen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+invisible
+, 
+horrifying
+ prisoner
+ "Blistered Prant"
+ at the 
+Craven 
+valley
+.
+Before reaching the destination, 
+they 
+discovered 
+a 
+voracious
+ waste
+.
+After 
+a trying 
+exertion
+, they 
+traversed
+ the 
+waste
+.
+Before reaching the destination, 
+they 
+discovered 
+a 
+voracious
+, unspeakable
+ waste
+.
+After 
+a testing 
+trek
+, they 
+traversed
+ the 
+waste
+.
+Michael Dustfinger
+ found 
+Necklace of Power
+!
+Chief Ape Dilibe Gotou
+ found 
+Chain Boots
+!
+Archduke Cathy light Delphine
+ now has 
+anxiety
+!
+Archduke Cathy light Delphine
+ broke his leg.
+Svatava Sandgreen
+ found 
+Long Sword
+!
+On the way, 
+they 
+discovered 
+the 
+violent
+, unspeakable
+ locked gate
+ "Carcosan Ulula"
+.
+After 
+a trying 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Michael Dustfinger
+ found 
+Silk Hood
+!
+Michael Dustfinger
+ broke his leg.
+Chief Ape Dilibe Gotou
+ got fried nerves.
+Archduke Cathy light Delphine
+ found 
+Dragonskin Belt
+!
+Svatava Sandgreen
+ found 
+Platinum Ring
+!
+nextUpdateTime: 1642697562
+STORY 1-5 
+
+At 
+Klaxon Messengerhall
+ in 
+Ulster's Jeweltown
+, 
+Zaki Marblemaw, 
+David Goncalves, 
+Efraim Piest, 
+and 
+John Quenneville 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+invisible
+ caravan
+ at the 
+Geometric 
+desert
+.
+While traveling, 
+they 
+were ambushed by 
+a 
+lightless
+ elemental
+.
+After 
+a challenging 
+negotiation
+, they 
+defeated
+ the 
+elemental
+.
+Zaki Marblemaw
+ found 
+Mace
+!
+nextUpdateTime: 1642697562
+STORY 2-0 
+
+STORY 2-1 
+
+STORY 2-2 
+
+STORY 2-3 
+
+STORY 2-4 
+
+STORY 2-5 
+

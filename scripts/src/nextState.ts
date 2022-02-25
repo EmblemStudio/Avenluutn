@@ -1,13 +1,11 @@
 import { State, Result, ResultType } from './utils'
 
 export function nextState(state: State, events: Result[]): State {
-  // console.log("nextState", state, events)
   const newState = Object.assign({}, state)
   events.forEach(event => {
     const guild = newState.guilds[event.guildId]
-
+    // TODO add these to state during quests so they can effect things instantly
     if (guild) {
-      // TODO store adventurers in state separately, just reference ids in guilds?
       const adventurer = guild.adventurers[event.advId]
       if (adventurer) {
         switch (event.type) {
@@ -32,7 +30,7 @@ export function nextState(state: State, events: Result[]): State {
             guild.adventurers[adventurer.id] = Object.assign({}, adventurer)
             break
           default:
-            // Result doesn't effect permanent state
+          // Result doesn't effect permanent state
         }
       }
 
