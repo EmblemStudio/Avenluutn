@@ -14,6 +14,7 @@ services:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
       - ./store:/etc/nginx/www/runs:ro
+      - ./scripts/dist/bundle.js:/etc/nginx/scripts/activeTestScript.js
 
   certbot:
     image: certbot/certbot:latest
@@ -24,6 +25,9 @@ services:
 
   hardhat:
     build: hardhat
+    volumes:
+      - ./hardhat/scripts:/scripts:ro
+      - ./hardhat/hardhat.config.js:/hardhat.config.js:ro
     ports:
       - "8545:8545"
     profiles: ["dev"]

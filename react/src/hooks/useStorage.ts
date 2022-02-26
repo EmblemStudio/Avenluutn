@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 // from https://usehooks.com/useLocalStorage/
 
 // TODO replace this with some backend storage when we need to
-export function useStorage(key, initialValue) {
+export function useStorage(key: string, initialValue: any) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState(() => {
@@ -23,7 +23,7 @@ export function useStorage(key, initialValue) {
   });
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = (value) => {
+  const setValue = (value: any) => {
     try {
       // Allow value to be a function so we have same API as useState
       const valueToStore =

@@ -68,10 +68,12 @@ export default ({ story }: StoryBoxProps) => {
             </div>
             <div className="block ending">
               <div className="block ending main">
-                {story.text.richText.ending.main?.map(label) ?? story.text.richText.ending.main?.map(label)}
+                {story.text.richText.ending.main?.map(label)}
               </div>
               <div className="block ending results">
-                {story.text.richText.ending.resultTexts?.map(label)}
+                {story.text.richText.ending.resultTexts?.map((labeledStrings) => {
+                  return <div>{labeledStrings.map(label)}</div>
+                })}
               </div>
             </div>
             {story.text.nextUpdateTime !== -1 &&

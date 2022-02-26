@@ -16,7 +16,7 @@ interface User {
 }
 
 const defaultUser = {
-  setUser: () => {},
+  setUser: (user: User) => {},
   user: { balance: defaultBalance, bets: [] },
 }
 

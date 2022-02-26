@@ -4,10 +4,10 @@ import { currencyName } from '../constants'
 import UserContext from '../providers/UserContext'
 
 export default () => {
-  const { balance, bets } = useContext(UserContext)
+  const { setUser, user } = useContext(UserContext)
   return (
     <div className="is-size-5">
-      {currencyName}: {balance}
+      {currencyName}: {user.balance}
     </div>
   )
 }

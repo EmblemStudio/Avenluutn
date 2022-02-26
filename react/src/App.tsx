@@ -21,7 +21,7 @@ import { useStorage } from './hooks/useStorage'
 export default () => {
   const [balance, setBalance] = useStorage("balance", 1000)
   const [bets, setBets] = useStorage("bets", [])
-  const storedUser = { balance, bets }
+  const storedUser = { setUser: () => {}, user: { balance, bets } }
   return (
     <div className="App">
       <WagmiProvider>
@@ -34,7 +34,6 @@ export default () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/:guildId/lobby" element={<GuildLobby />} />
                     <Route path="/:guildId/dossier" element={<GuildDossier />} />
-                    <Route path="/:guildId/auctions" element={<GuildAuctions />} />
                     <Route path="/:guildId/logbook" element={<GuildLogbook />} />
                     <Route path="/:guildId/adventurers/:adventurerId" element={<Adventurer graveyard={false} />} />
                     <Route path="/:guildId/graveyard/:adventurerId" element={<Adventurer graveyard={true} />} />

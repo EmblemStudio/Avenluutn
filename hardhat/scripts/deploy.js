@@ -77,16 +77,17 @@ async function main() {
    */
 
   const minute = 60
+  const hour = minute * 60
 
   const now = Math.floor(new Date() / 1000)
-  const totalCollections = 10
   const collectionLength = minute * 10
   const collectionSpacing = minute * 15
   const start = now - (collectionSpacing * 3)
+  const totalCollections = Math.floor((8 * hour) / collectionSpacing) // one work day
   const collectionSize = 5
 
   console.log("Minting test NFT")
-  const scriptURI = "https://gist.githubusercontent.com/EzraWeller/a90b4ff0f6a4b7356e8277135d7e391d/raw/07cfb153559b5332ddc60aa34b161d03671b051a/avenluutn_bundle_161221.js"
+  const scriptURI =  "http://webserver/scripts/activeTestScript.js"
   const narratorTx = await narratorNFTs.mint(narratorNFTs.address, scriptURI)
 
   console.log("Waiting for mint transaction...")

@@ -1,16 +1,16 @@
 import React from 'react'
 import { useContext } from 'react'
 import UserContext from '../providers/UserContext'
-import { useStorage } from '../hooks/useStorage.ts'
-import { Story, guildColor } from '../utils'
+import { useStorage } from '../hooks/useStorage'
+import { Story, Bet, guildColor } from '../utils'
 import { currencyName, defaultBetAmount } from '../constants'
 import { Guild } from '../../../scripts/src'
 
-interface BetsProps { story: Story, guild: Guild }
+interface BetOfferProps { story: Story, guild: Guild }
 
 // TODO make Success, Failure, GreatSuccess enums.
 
-export default ({ story, guild }: BetProps) => {
+export default ({ story, guild }: BetOfferProps) => {
   const betId = `${story.narratorIndex}-${story.storyIndex}-${story.collectionIndex}`
   const [bet, setBet] = useStorage(betId, "")
   const [bets, setBets] = useStorage("bets", [])
@@ -23,15 +23,13 @@ export default ({ story, guild }: BetProps) => {
       return
     }
 
-    bets.push([betId, defaultBetAmount, guild, story, outcome])
+    bets.push({betId, amount: defaultBetAmount, guild, story, outcome})
     setBets(bets)
     setBet(outcome)
     const newBalance = balance - defaultBetAmount
     setBalance(newBalance)
     setUser({ balance, bets })
   }
-
-  console.log("rendering Bet", bet)
 
   if (balance < defaultBetAmount) {
     return (

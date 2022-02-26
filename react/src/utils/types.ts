@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ScriptResult, Story as StoryText } from '../../../scripts/src'
+import { ScriptResult, Guild, Story as StoryText } from '../../../scripts/src'
 
 export type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
 
@@ -64,4 +64,12 @@ export interface Auction {
   amount: BigNumber;
   bidder: string;
   duration: BigNumber;
+}
+
+export interface Bet {
+  betId: string
+  amount: number
+  guild: Guild
+  story: Story
+  outcome: string
 }
