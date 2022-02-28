@@ -28,7 +28,7 @@ generate the go abis (from `echo-warmer`)
 /echo-warmer $ wake abigen
 ```
 
-generate the go abis (from `echo-warmer`)
+generate the go abis (from `echo-token-metadata`)
 
 ```
 /echo-token-metadata $ source wake
