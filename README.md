@@ -4,13 +4,24 @@ Adventure stories in the lootverse
 
 ## Dev env requirements
 
+* nodejs (v16.4.2)
+* yarn
 * docker
 * docker-compose
 * jq
 
 ## To run locally
 
-### Generate go contract bindings (from `/echo-warmer`)
+### Generate go contract abis 
+
+build the contracts (from `hardhat`)
+
+```
+/hardhat $ yarn
+/hardhat $ yarn build
+```
+
+generate the go abis (from `echo-warmer`)
 
 ```
 /echo-warmer $ source wake
