@@ -12,7 +12,7 @@ Adventure stories in the lootverse
 
 ## To run locally
 
-### Generate go contract abis 
+### Generate go contract abis (for both echo folders)
 
 build the contracts (from `hardhat`)
 
@@ -27,6 +27,15 @@ generate the go abis (from `echo-warmer`)
 /echo-warmer $ source wake
 /echo-warmer $ wake abigen
 ```
+
+generate the go abis (from `echo-warmer`)
+
+```
+/echo-token-metadata $ source wake
+/echo-token-metadata $ wake build
+```
+
+NOTE: TODO the two wake scripts is pretty bad, there is an issue to change that soon
 
 ### Run the dev stack
 
