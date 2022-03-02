@@ -10,15 +10,22 @@ Adventure stories in the lootverse
 
 ## To run locally
 
-Run the dev stack
+### Generate go contract bindings (from `/echo-warmer`)
+
+```
+/echo-warmer $ source wake
+/echo-warmer $ wake abigen
+```
+
+### Run the dev stack
 
 `$ docker-compose --profile dev up -d`
 
-Run the deploy script in the hardhat service
+### Run the deploy script in the hardhat service
 
 `$ docker-compose exec hardhat yarn deploy`
 
-Run the dev UI server (from `/react`)
+### Run the dev UI server (from `/react`)
 
 Find the publisher address from the hardhat logs and update
 `react/src/constants.ts`

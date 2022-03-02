@@ -12,9 +12,8 @@ async function main() {
   const narratorNFTs = new Contract(narratorNFTsAddress, nftAbi, signers[0])
   const publisher = new Contract(publisherAddress, publisherAbi, signers[0])
 
-  const nftId = await narratorNFTs.ids()
-
-  console.log("NFT id", Number(nftId))
+  // const nftId = await narratorNFTs.ids()
+  // console.log("NFT id", Number(nftId))
 
   /**
    * mint narratorNFT
@@ -32,25 +31,22 @@ async function main() {
   */
   const minutes = 60
   const hours = minutes * 60
-  const start = 1644534000
+  const start = 1645963200
   /*
-  Unix Timestamp	1644534000
-  GMT  Thu Feb 10 2022 23:00:00 GMT+0000
-  Your Time Zone	Thu Feb 10 2022 17:00:00 GMT-0600 (Central Standard Time)
+    Unix Timestamp      1645963200
+    GMT	                Sun Feb 27 2022 12:00:00 GMT+0000
+    Your Time Zone	Sun Feb 27 2022 06:00:00 GMT-0600 (Central Standard Time)
+    Relative	        a day ago
   */
-        /* Unix Timestamp   1641985200
-           GMT	            Wed Jan 12 2022 11:00:00 GMT+0000
-           Your Time Zone   Wed Jan 12 2022 05:00:00 GMT-0600 (Central Standard Time)
-        */
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   const pubTx = await publisher.addNarrator(
-    narratorNFTs.address,
-    Number(nftId),
-    now - 60 * 10 * 3, // start
+    "0x33A9d7DDB8f76B0c940010643B8774eDb1CB42e6", // narratorNFTs.address,
+    31, // Number(nftId),
+    start, // start
     30,                // totalCollections
-    60 * 10,           // collectionLength
-    60 * 15,           // collectionSpacing
+    11 * hours,           // collectionLength
+    12 * hours,           // collectionSpacing
     5,                 // collectionSize
  )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
