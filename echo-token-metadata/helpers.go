@@ -36,19 +36,13 @@ func makeImageSVG(name string, summary string) string {
 	return fmt.Sprintf("data:image/svg+xml;base64,%v", b64SVG)
 }
 
-func countAdventurers(textParts []TextPart) int {
-	count := 0
-	for _, t := range(textParts) {
-		if t.Label == "adventurerName" {
-			count += 1
-		}
-	}
-	return count
-}
-
 func formatAdventurerName(adventurer Adventurer, fullname string) string {
 	class := strings.Join(adventurer.Class, " ")
-	return fmt.Sprintf("the %v %v", strings.ToLower(class), fullname)
+	return fmt.Sprintf(
+		"%v the %v",
+		strings.TrimSuffix(strings.TrimSpace(fullname), ","),
+		class,
+	)
 }
 
 func findAdventurers(
@@ -80,7 +74,7 @@ func findAdventurers(
 		[]string{"and", adventurers[len(adventurers) - 1]},
 		" ",
 	)
-	return strings.Join(adventurers, "\n"), nil
+	return strings.Join(adventurers, ",\n"), nil
 }
 
 func findGuildName(textParts []TextPart) (string, error) {
@@ -104,7 +98,10 @@ func makeQuestText(textParts []TextPart) (string, error) {
 		}
 	}
 	if foundQuestType == true {
-		return strings.TrimSpace(questText), nil
+		return strings.Split(
+			strings.TrimSpace(questText),
+			" at ",
+		)[0], nil
 	}
 	return "", errors.New("No quest text found")
 }

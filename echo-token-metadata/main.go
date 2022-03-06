@@ -89,7 +89,7 @@ func (p *Publisher) getStoryData(c echo.Context) error {
 
 	run, err := p.GetRun(storyInfo)
 	if err != nil {
-		e := errors.New(fmt.Sprintf("Could not get run\n%v"))
+		e := errors.New(fmt.Sprintf("Could not get run\n%v", err))
 		return serverError(e)
 	}
 

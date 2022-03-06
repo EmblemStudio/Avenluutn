@@ -18,12 +18,12 @@ async function main() {
   const names = {
     ropsten: "The Grand Adventure: Ropstenluutn",
     localhost: "The Local Adventure: Localuutn",
-    goerli: "The Goerand Adventure: Goenluutn"
+    goerli: "The Grand Adventure: Avenluutn"
   }
   const symbols = {
     ropsten: "tgaRPSTNLTN",
     localhost: "tlaLCLTN",
-    goerli: "tgaGNLTN"
+    goerli: "tgaAVNLTN"
   }
   const baseURIs = {
     goreli: "https://avenluutn-api.squad.games"
