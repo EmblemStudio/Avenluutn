@@ -66,10 +66,18 @@ export interface Auction {
   duration: BigNumber;
 }
 
-export interface Bet {
-  betId: string
-  amount: number
-  guild: Guild
-  story: Story
-  outcome: string
+export interface User {
+  balance: number
+  shares: { [shareId: string]: Share }
+}
+
+export interface Share {
+  shareId: string;
+  size: string;
+  // story id
+  narratorIndex: number;
+  collectionIndex: number;
+  storyIndex: number;
+  //
+  outcome: string;
 }

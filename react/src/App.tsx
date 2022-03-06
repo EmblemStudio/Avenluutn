@@ -6,7 +6,7 @@ import './App.css'
 import WagmiProvider from './providers/WagmiProvider'
 import NotificationsProvider from './providers/NotificationsProvider'
 import NarratorStateProvider from './providers/NarratorStateProvider'
-import UserContext, { defaultUser } from './providers/UserContext'
+import UserProvider from './providers/UserProvider'
 import { NARRATOR_PARAMS } from './constants'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -15,19 +15,15 @@ import GuildLogbook from './pages/GuildLogbook'
 import About from './pages/About'
 import GuildDossier from './pages/GuildDossier'
 import Adventurer from './pages/Adventurer'
-import MyBets from './pages/MyBets'
-import { useStorage } from './hooks/useStorage'
+import MyAccount from './pages/MyAccount'
 
 export default () => {
-  const [balance, setBalance] = useStorage("balance", 1000)
-  const [bets, setBets] = useStorage("bets", [])
-  const storedUser = { setUser: () => {}, user: { balance, bets } }
   return (
     <div className="App">
       <WagmiProvider>
         <NotificationsProvider>
           <NarratorStateProvider params={NARRATOR_PARAMS}>
-            <UserContext.Provider value={storedUser}>
+            <UserProvider>
               <BrowserRouter>
                 <Layout>
                   <Routes>
@@ -37,12 +33,12 @@ export default () => {
                     <Route path="/:guildId/logbook" element={<GuildLogbook />} />
                     <Route path="/:guildId/adventurers/:adventurerId" element={<Adventurer graveyard={false} />} />
                     <Route path="/:guildId/graveyard/:adventurerId" element={<Adventurer graveyard={true} />} />
-                    <Route path="/my-bets" element={<MyBets />} />
+                    <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/about" element={<About />} />
                   </Routes>
                 </Layout>
               </BrowserRouter>
-            </UserContext.Provider>
+            </UserProvider>
           </NarratorStateProvider>
         </NotificationsProvider>
       </WagmiProvider>

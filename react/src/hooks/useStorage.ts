@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-// from https://usehooks.com/useLocalStorage/
+// from https://usehooks.com/useLocalStorage/ --> made some slight changes
 
 // TODO replace this with some backend storage when we need to
-export function useStorage(key: string, initialValue: any) {
+export default <T>(key: string, initialValue: T): [T, (value: T) => void] => {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState(() => {
+  const [storedValue, setStoredValue] = useState<T>(() => {
     if (typeof window === "undefined") {
       return initialValue;
     }
@@ -23,16 +23,13 @@ export function useStorage(key: string, initialValue: any) {
   });
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = (value: any) => {
+  const setValue = (value: T) => {
     try {
-      // Allow value to be a function so we have same API as useState
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
       // Save state
-      setStoredValue(valueToStore);
+      setStoredValue(value);
       // Save to local storage
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        window.localStorage.setItem(key, JSON.stringify(value));
       }
     } catch (error) {
       // A more advanced implementation would handle the error case

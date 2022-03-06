@@ -39,7 +39,7 @@ export default () => {
           <div className="block">
             {Object.keys(guild.graveyard).length > 0 &&
               <Expander text="Graveyard">
-                <div className="block is-underlined p-4 pl-5">
+                <div className="is-underlined">
                   {Object.keys(guild.graveyard).map(id => {
                     return (
                       <Link key={id} to={`/${guild.id}/graveyard/${Number(id)}`}>

@@ -1,4 +1,4 @@
-import { NetworkName } from './utils'
+import { NetworkName, User } from './utils'
 import env from "../.env.json"
 
 interface NarratorParams {
@@ -13,7 +13,7 @@ export const currentRelease = "goerli"
 export let currentNarrator = 0
 export const localTestNarrator = 0
 
-let localhostAddress = ﻿import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
+let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
 if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {
   localhostAddress = ""
 }
@@ -21,7 +21,7 @@ if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {
 export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
+  "goerli": "0x26dB36dEBDA19F63C4a1C2A05bC423Dd434dC053", // test: 0x26dB36dEBDA19F63C4a1C2A05bC423Dd434dC053, "prod": 0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf
   "polygon": "",
   "localhost": localhostAddress,
   // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)
@@ -32,7 +32,7 @@ export const ADDRESSES: { [name: string]: string } = {
 let network
 if (window !== undefined) {
   if (window.location.host === 'localhost:3000') {
-    network = "localhost" as NetworkName
+    network = "goerli" as NetworkName
     currentNarrator = localTestNarrator
   }
 }
@@ -65,7 +65,7 @@ export const SERVER = {
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "http://67.205.138.92",
-  "goerli": "https://avenluutn-api.squad.games",
+  "goerli": "https://avenluutn-api-dev.squad.games",
 }[NARRATOR_PARAMS.network]
 
 export const CACHE_PERIOD = 180000 // 3 minutes
@@ -92,6 +92,7 @@ export const GITHUB = "https://github.com/EmblemStudio/Aavenluutn"
 export const ETHERSCAN = `${etherscanBase}address/${ADDRESSES[NARRATOR_PARAMS.network]}`
 export const DISCORD = "https://discord.gg/VfvtD6NDuM"
 
-export const currencyName = "crin"
-export const defaultBetAmount = 50
-export const defaultBalance = 1000
+export const CURRENCY = "crin"
+export const DEFAULT_SHARE_PRICE = 50
+export const DEFAULT_SHARE = "1/50th"
+export const DEFAULT_USER: User = { balance: 1000, shares: {} }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { AddressZero } from '@ethersproject/constants'
 import { useAccount } from 'wagmi'
 
+import ConnectButton from '../components/ConnectButton'
 import GuildHeader from '../components/GuildHeader'
 import StoryAuction from '../components/StoryAuction'
 import useNotifications from '../hooks/useNotifications'
@@ -40,14 +41,24 @@ export default () => {
             <span className={coloredBoldStyle(color ?? null)}>
               “{guild.motto}”
             </span>
-            . It records deeds past:
+            . It records deeds past.
           </div>
           {[...narrator.stories[guild.id].onAuction, ...narrator.stories[guild.id].completed].length === 0 ?
             <div className="block">
-              "The pages are blank."
+              The pages are blank.
             </div>
             :
             <div className="block">
+              <div className="block">
+                Connect through the ether to sponsor a tale:
+              </div>
+              <div className="level">
+                <div className="level-left">
+                  <div className="level-item">
+                    <ConnectButton />
+                  </div>
+                </div>
+              </div>
               {narrator.stories[guild.id].onAuction.map(s => {
                 return (
                   <Expander key={s.collectionIndex} text={`${storyName(s)} 🔥`}>

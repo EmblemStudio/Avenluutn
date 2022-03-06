@@ -11,7 +11,7 @@ export function nextState(state: State, events: Result[]): State {
         switch (event.type) {
           case ResultType.Death:
             // move adventurer to the graveyard
-            guild.graveyard[adventurer.id] = adventurer
+            guild.graveyard[adventurer.id] = Object.assign({}, adventurer)
             delete guild.adventurers[adventurer.id]
             break
           case ResultType.Loot:

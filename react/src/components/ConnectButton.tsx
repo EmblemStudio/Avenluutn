@@ -32,51 +32,61 @@ export default () => {
 
   return (
     <div>
-      {accountData?.connector?.ready ? 
-        <a 
-          className="button is-ghost is-medium is-size-5 is-vertical"
-          onClick={() => disconnect()}
-        >
-          <span>Disconnect</span> 
-          <span className="is-size-6">{
-            accountData.ens ? 
-              accountData.ens.name
-            :
-              shortAddress(accountData.address)
-          }</span>
-        </a>
-       : 
-        <a 
-          className="button is-ghost is-medium is-size-5"
-          onClick={() => setModalActive("is-active")}
-        >
-          Connect
-        </a>
+      {accountData?.connector?.ready ?
+        <div className="outer-border">
+          <div className="inner-border">
+            <a
+              className="button is-ghost is-medium is-vertical is-size-6"
+              onClick={() => disconnect()}
+            >
+              <span>Disconnect</span>
+              <span className="is-size-6">{
+                accountData.ens ?
+                  accountData.ens.name
+                  :
+                  shortAddress(accountData.address)
+              }</span>
+            </a>
+          </div>
+        </div>
+        :
+        <div className="outer-border">
+          <div className="inner-border">
+            <a
+              className="button is-ghost is-medium is-size-6"
+              onClick={() => setModalActive("is-active")}
+            >
+              Connect
+            </a>
+          </div>
+        </div>
       }
       <div className={`modal ${modalActive}`}>
-        <div className="modal-background" onClick={()=>setModalActive("")} />
+        <div className="modal-background" onClick={() => setModalActive("")} />
         <div className="modal-content has-background-white">
           <div className="box">
             {data.connectors.map((x, i) => (
               <section className="section" key={x.id} >
                 {x.ready ?
-                  <a 
+                  <a
                     className="button is-ghost has-text-black"
-                    onClick={() => { connect(x).then((res) => { 
-                      if (res?.data !== undefined) setModalActive("")
-                    })}}
+                    onClick={() => {
+                      connect(x).then((res) => {
+                        if (res?.data !== undefined) setModalActive("")
+                      })
+                    }}
                   >
-                    <img src={connectorImgs[i]} alt={x.name} width="80px"/>
+                    <img src={connectorImgs[i]} alt={x.name} width="80px" />
                     <h2 className="subtitle pl-5">
                       {x.name}
                     </h2>
                   </a>
-                :
-                  <a 
+                  :
+                  <a
                     className="button is-ghost has-text-black"
                     target="_blank" href={connectorAlts[i].url}
                   >
-                    <img src={connectorImgs[i]} alt={x.name} width="80px"/>
+                    <img src={connectorImgs[i]} alt={x.name} width="80px" />
                     <h2 className="subtitle pl-5">
                       {connectorAlts[i].text}
                     </h2>
@@ -86,7 +96,7 @@ export default () => {
             ))}
           </div>
         </div>
-        <button className="modal-close is-large" onClick={()=>setModalActive("")} />
+        <button className="modal-close is-large" onClick={() => setModalActive("")} />
       </div>
     </div>
   )

@@ -21,16 +21,14 @@ export default () => {
       </div>
       <div className="level-right">
         <div className="level-item">
-          <Balance />
-          <a className="button is-underlined is-ghost is-medium is-size-5"
-             href="/my-bets">
-            My Bets
-          </a>
-        </div>
-      </div>
-      <div className="level-right">
-        <div className="level-item">
-          <ConnectButton />
+          <div className="is-vertical has-text-centered is-ibm is-size-6">
+            <Link to="/my-account">
+              <div className="is-underlined is-ghost is-medium has-text-white">
+                My account
+              </div>
+            </Link>
+            <Balance />
+          </div>
         </div>
       </div>
     </nav>
