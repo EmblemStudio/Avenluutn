@@ -15,6 +15,11 @@ services:
       - ./certbot/conf/:/etc/nginx/ssl/:ro
       - ./store:/etc/nginx/www/runs:ro
       - ./scripts/dist/bundle.js:/etc/nginx/scripts/activeTestScript.js
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
 
   certbot:
     image: certbot/certbot:latest
@@ -22,6 +27,11 @@ services:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
     profiles: ["production"]
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
 
   hardhat:
     build: hardhat
@@ -31,6 +41,11 @@ services:
     ports:
       - "8545:8545"
     profiles: ["dev"]
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
 
   keeper:
     build: echo-warmer
@@ -42,6 +57,11 @@ services:
       - AVENLUUTN_PUB_ADDR
       - AVENLUUTN_PROVIDER=http://hardhat:8545
       - AVENLUUTN_SCRIPT_PROVIDER=http://hardhat:8545
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
 
   metadata:
     build: echo-token-metadata
@@ -51,23 +71,8 @@ services:
       - AVENLUUTN_PROVIDER=http:hardhat:8545
       - AVENLUUTN_PUB_ADDR
     restart: always
-
-#  mainnet:
-#    image: ethereum/client-go:latest
-#    restart: always
-#    ports:
-#      - "30301:30301/tcp"
-#      - "30301:30301/udp"
-#    volumes:
-#      - ./ops/mainnet-data:/root/.ethereum
-#    command: "--port 30301 --syncmode light --http --http.addr '0.0.0.0' --http.vhosts=* --vmodule='rpc=5'"
-#  goerli:
-#    image: ethereum/client-go:latest
-#    restart: always
-#    ports:
-#      - "30305:30305/tcp"
-#      - "30305:30305/udp"
-#    volumes:
-#      - ./ops/goerli-data:/root/.ethereum
-#    command: "--port 30305 --syncmode light --goerli --http --http.addr '0.0.0.0' --http.vhosts=* --vmodule='rpc=5'"
-
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
