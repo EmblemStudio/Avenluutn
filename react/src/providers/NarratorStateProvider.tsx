@@ -227,6 +227,7 @@ async function concatCategorizedStories(
     if (text === undefined) {
       console.warn("scriptResult missing story at index", j)
       text = {
+        id: [-1, -1],
         plainText: ["A story only the future has beheld..."],
         richText: {
           beginning: [{ string: "A story only the future has beheld...", label: Label.conjunctive }],

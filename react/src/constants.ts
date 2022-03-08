@@ -10,7 +10,7 @@ interface NarratorParams {
 
 
 export const currentRelease = "goerli"
-export let currentNarrator = 5
+export let currentNarrator = 3
 export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
