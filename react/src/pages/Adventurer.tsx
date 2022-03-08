@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import useNarratorState from '../hooks/useNarratorState'
@@ -21,8 +21,11 @@ interface AdventurerParams {
 export default ({ graveyard }: AdventurerParams) => {
   const { narrator } = useNarratorState()
   const { user, setUser } = useUser()
-  updateUserFromNarrator(user, narrator, setUser)
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
+
+  useEffect(() => {
+    updateUserFromNarrator(user, narrator, setUser)
+  }, [narrator])
 
   if (adventurer === null || guild == null) return (
     <nav className="level">

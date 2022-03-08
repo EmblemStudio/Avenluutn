@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { AddressZero } from '@ethersproject/constants'
 import { useAccount } from 'wagmi'
 
@@ -17,11 +17,14 @@ import Expander from '../components/Expander'
 export default () => {
   const { narrator, updateNarrator } = useNarratorState()
   const { user, setUser } = useUser()
-  updateUserFromNarrator(user, narrator, setUser)
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
   const { addNotification, removeNotification } = useNotifications()
   const [{ data }] = useAccount()
+
+  useEffect(() => {
+    updateUserFromNarrator(user, narrator, setUser)
+  }, [narrator])
 
   function isClaimable(s: Story): boolean {
     if (s.minted === false) {

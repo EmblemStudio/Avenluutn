@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import GuildButtons from '../components/GuildButtons'
 import Countdown from '../components/Countdown'
@@ -10,7 +10,10 @@ import LoadingAnimation from '../components/LoadingAnimation'
 export default () => {
   const { narrator } = useNarratorState()
   const { user, setUser } = useUser()
-  updateUserFromNarrator(user, narrator, setUser)
+
+  useEffect(() => {
+    updateUserFromNarrator(user, narrator, setUser)
+  }, [narrator])
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import AccountHeader from '../components/AccountHeader'
 import useUser from '../hooks/useUser'
@@ -23,7 +23,10 @@ function outcomeString(outcome: Success): string {
 export default () => {
   const { user, setUser } = useUser()
   const { narrator } = useNarratorState()
-  // updateUserFromNarrator(user, narrator, setUser)
+
+  useEffect(() => {
+    updateUserFromNarrator(user, narrator, setUser)
+  }, [narrator])
 
   return (
     <>
