@@ -6,6 +6,7 @@ import (
 	"os"
 	"fmt"
 	"time"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -31,6 +32,9 @@ func main() {
 	}
 	fmt.Println("Provider", provider)
 
+	runAllNarrators := os.Getenv("AVENLUUTN_RUN_ALL_NARRATORS")
+	fmt.Println("Run all narrators (default 'false')", runAllNarrators)
+
 	// make a warmer
 	client, err := ethclient.Dial(provider)
 	if err != nil {
@@ -48,8 +52,13 @@ func main() {
 
 	narratorCount, err := pub.NarratorCount(nil)
 	if err != nil { log.Fatal(err) }
+	firstNarrator := 0
+	if runAllNarrators == "" || strings.ToLower(runAllNarrators) == "false" {
+		// default, don't run all narrators
+		firstNarrator = int(narratorCount.Int64() - 1)
+	}
 	warming := make(map[int]bool)
-	for n := 0; int64(n) < narratorCount.Int64(); n += 1 {
+	for n := firstNarrator; int64(n) < narratorCount.Int64(); n += 1 {
 		go w.KeepWarm(int64(n))
 		warming[n] = true
 	}
@@ -69,7 +78,7 @@ func main() {
 				}
 			} else {
 				errorCount = 0
-				for n := 0; int64(n) < narratorCount.Int64(); n += 1 {
+				for n := firstNarrator; int64(n) < narratorCount.Int64(); n += 1 {
 					if !warming[n] {
 						go w.KeepWarm(int64(n))
 					}

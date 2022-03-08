@@ -118,3 +118,5 @@ ops
 
 echo-token-metadata/artifact*
 info
+
+certbot/conf/csr/
