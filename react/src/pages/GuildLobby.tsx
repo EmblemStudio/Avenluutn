@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import GuildHeader from '../components/GuildHeader'
 import StoryBox from '../components/StoryBox'
@@ -11,8 +11,11 @@ import { coloredBoldStyle, updateUserFromNarrator } from '../utils'
 export default () => {
   const { narrator } = useNarratorState()
   const { user, setUser } = useUser()
-  updateUserFromNarrator(user, narrator, setUser)
   const { guild, color } = useGuild(narrator)
+
+  useEffect(() => {
+    updateUserFromNarrator(user, narrator, setUser)
+  }, [narrator])
 
   return (
     <>

@@ -78,7 +78,7 @@ async function updateNarratorState(
     return
   }
 
-  _updateNarratorState(narratorState, setNarratorState, params)
+  await _updateNarratorState(narratorState, setNarratorState, params)
 }
 
 async function _updateNarratorState(
