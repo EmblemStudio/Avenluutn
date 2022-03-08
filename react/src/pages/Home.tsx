@@ -3,11 +3,14 @@ import React from 'react'
 import GuildButtons from '../components/GuildButtons'
 import Countdown from '../components/Countdown'
 import useNarratorState from '../hooks/useNarratorState'
-import { getTimeLeft } from '../utils'
+import useUser from '../hooks/useUser'
+import { getTimeLeft, updateUserFromNarrator } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 
 export default () => {
   const { narrator } = useNarratorState()
+  const { user, setUser } = useUser()
+  updateUserFromNarrator(user, narrator, setUser)
 
   return (
     <>
@@ -28,7 +31,7 @@ export default () => {
               guilds={narrator.collections[narrator.collections.length - 1]?.scriptResult.nextState.guilds ?? null}
             />
           </>
-        :
+          :
           /* TODO Add a "Return in [timer]"
           <div className="block has-text-grey">
             Return in [timer]
@@ -36,11 +39,11 @@ export default () => {
           */
           getTimeLeft(Number(narrator.start)) > 0 ?
             <div className="block">
-              <Countdown 
+              <Countdown
                 to={Number(narrator.start)}
               />
             </div>
-          :
+            :
             <div className="block">
               <LoadingAnimation />
             </div>

@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ScriptResult, Guild, Story as StoryText } from '../../../scripts/src'
+import { ScriptResult, Story as StoryText, Success } from '../../../scripts/src'
 
 export type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
 
@@ -79,5 +79,5 @@ export interface Share {
   collectionIndex: number;
   storyIndex: number;
   //
-  outcome: string;
+  outcome: Success;
 }

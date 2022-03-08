@@ -5,7 +5,7 @@ import { DEFAULT_USER } from '../constants'
 
 interface IUserContext {
   user: User;
-  setUser: Function;
+  setUser: (user: User) => void;
 }
 
 const emptyUserContext = { user: DEFAULT_USER, setUser: () => { } }

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Balance from './Balance'
 
-import ConnectButton from './ConnectButton'
+import Balance from './Balance'
 
 export default () => {
   return (

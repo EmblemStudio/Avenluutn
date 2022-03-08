@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { LabeledString } from '../../../scripts/src'
+import { coloredBoldStyle, guildColor } from '../utils'
 
 const entityLabels = ["guildName", "adventurerName"]
 
@@ -13,14 +14,18 @@ interface LabeledStringProps {
 export default ({ labeledString: { label, string, entityId }, storyIndex }: LabeledStringProps) => {
   if (entityLabels.includes(label) && entityId !== undefined) {
     let to = ""
-    if (label === "guildName") to = `/${storyIndex}/lobby`
+    let style = ""
+    if (label === "guildName") {
+      to = `/${storyIndex}/lobby`
+      style = coloredBoldStyle(guildColor(storyIndex))
+    }
     if (label === "adventurerName") to = `/${storyIndex}/adventurers/${entityId}`
     return (
-      <span className={`${label} is-underlined`}>
-        <Link to={to}>
+      <Link to={to}>
+        <span className={`${label} ${style}`}>
           {string}
-        </Link>
-      </span>
+        </span>
+      </Link>
     )
   }
   return (

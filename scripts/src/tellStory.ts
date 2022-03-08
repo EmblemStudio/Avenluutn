@@ -56,6 +56,7 @@ export async function tellStory(
         ending: { main: [], resultTexts: [] },
       },
       events: [],
+      finalOutcome: Success.failure,
       nextUpdateTime: findNextUpdateTime(
         runStart,
         [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime],
@@ -90,6 +91,7 @@ export async function tellStory(
       ending: ending.text,
     },
     events: [...middle.allResults, ...ending.results],
+    finalOutcome: middle.questSuccess,
     nextUpdateTime: findNextUpdateTime(
       runStart,
       [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime],

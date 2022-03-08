@@ -2,10 +2,11 @@ import React from 'react'
 
 interface AdventurerHeaderProps {
   name: string;
+  class_: string;
   graveyard: boolean;
 }
 
-export default ({ name, graveyard }: AdventurerHeaderProps) => {
+export default ({ name, class_, graveyard }: AdventurerHeaderProps) => {
   if (!graveyard) return (
     <nav className="level">
       <div className="level-left">
@@ -13,7 +14,7 @@ export default ({ name, graveyard }: AdventurerHeaderProps) => {
           <div className="guild-button outer-border">
             <div className="container has-text-centered inner-border pt-3 pb-3">
               <div className="block">
-                {name}, adventurer
+                {name}, {class_}
               </div>
             </div>
           </div>
@@ -29,7 +30,7 @@ export default ({ name, graveyard }: AdventurerHeaderProps) => {
           <div className="guild-button outer-border">
             <div className="container has-text-centered inner-border pt-3 pb-3">
               <div className="block">
-                {name}, adventurer
+                {name}, {class_}
               </div>
               <div className="block is-garamond is-size-4">
                 R I P

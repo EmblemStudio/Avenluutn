@@ -1,13 +1,17 @@
 import React from 'react'
 
 import GuildHeader from '../components/GuildHeader'
+import StoryBox from '../components/StoryBox'
 import UpcomingStory from '../components/UpcomingStory'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
-import { coloredBoldStyle } from '../utils'
+import useUser from '../hooks/useUser'
+import { coloredBoldStyle, updateUserFromNarrator } from '../utils'
 
 export default () => {
   const { narrator } = useNarratorState()
+  const { user, setUser } = useUser()
+  updateUserFromNarrator(user, narrator, setUser)
   const { guild, color } = useGuild(narrator)
 
   return (
@@ -30,6 +34,7 @@ export default () => {
               <div className="block">
                 Adventurers from {guild.name} have set forth. The bard tells their tales:
               </div>
+              <StoryBox story={narrator.stories[guild.id]?.inProgress[0]} />
             </div>
           }
           {narrator.stories[guild.id]?.upcoming[0] &&

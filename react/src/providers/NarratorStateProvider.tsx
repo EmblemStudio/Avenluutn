@@ -31,8 +31,6 @@ function requireDefined<T>(val: T, msg?: string): asserts val is NonNullable<T> 
   }
 }
 
-// TODO also add to this a queryUntilUpdate function and a querying field that will run updateNarrator 
-// until it finds an update if not already querying
 export const NarratorStateContext = createContext<NarratorState>({
   narrator: emptyNarrator,
   updateNarrator: () => { },
@@ -236,6 +234,7 @@ async function concatCategorizedStories(
           ending: { main: [], resultTexts: [] }
         },
         events: [],
+        finalOutcome: 0,
         nextUpdateTime: startTime
       }
       // continue
@@ -259,6 +258,7 @@ async function concatCategorizedStories(
     // TODO the server will not have the finished story right at this time, so we need to show something about it still getting it
     const storyEnded = presentOrPast(story.endTime)
     const auctionEnded = presentOrPast(story.endTime.add(story.auction.duration))
+    console.log(story.id, started, storyEnded, auctionEnded)
     if (!storiesSoFar[storyIndex]) {
       storiesSoFar[storyIndex] = {
         upcoming: [],
@@ -270,6 +270,7 @@ async function concatCategorizedStories(
     if (!started) {
       storiesSoFar[storyIndex].upcoming.push(story)
     } else if (started && !storyEnded) {
+      console.log("found story in progress", story)
       // hack
       if (story.text.nextUpdateTime === -1) story.text.nextUpdateTime = Number(story.endTime)
       storiesSoFar[storyIndex].inProgress.push(story)

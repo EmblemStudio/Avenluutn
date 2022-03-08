@@ -17,6 +17,7 @@ export interface Story {
     ending: EndingText;
   }
   events: Result[];
+  finalOutcome: Success;
   nextUpdateTime: number;
 }
 

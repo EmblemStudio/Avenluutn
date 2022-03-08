@@ -9,12 +9,15 @@ import useNotifications from '../hooks/useNotifications'
 import useNarratorState from '../hooks/useNarratorState'
 import usePublisher from '../hooks/usePublisher'
 import useGuild from '../hooks/useGuild'
+import useUser from '../hooks/useUser'
 import { NARRATOR_PARAMS } from '../constants'
-import { coloredBoldStyle, storyName, Story } from '../utils'
+import { coloredBoldStyle, storyName, Story, updateUserFromNarrator } from '../utils'
 import Expander from '../components/Expander'
 
 export default () => {
   const { narrator, updateNarrator } = useNarratorState()
+  const { user, setUser } = useUser()
+  updateUserFromNarrator(user, narrator, setUser)
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
   const { addNotification, removeNotification } = useNotifications()

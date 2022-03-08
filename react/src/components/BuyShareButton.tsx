@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import useUser from '../hooks/useUser'
 import { Story, getTimeLeft } from '../utils'
@@ -6,12 +7,24 @@ import { CURRENCY, DEFAULT_SHARE_PRICE, DEFAULT_SHARE } from '../constants'
 
 export default ({ story }: { story: Story }) => {
   const { user, setUser } = useUser()
-  if (getTimeLeft(Number(story.endTime)) === 0) return (<></>)
-
+  const storyCompleted = getTimeLeft(story.endTime.toNumber()) === 0
   const share = user.shares[story.id]
+  if (share === undefined && storyCompleted) return (<></>)
   if (share !== undefined) {
+    let text = ""
+    if (storyCompleted) {
+      text = `You received a ${share.size} share`
+    } else {
+      text = `You own a ${share.size} share`
+    }
     return (
-      <span className="is-underlined">{`You own a ${share.size} share`}</span>
+      <a
+        className="button is-ghost is-medium is-size-6"
+      >
+        <Link to="/my-account">
+          <span className="is-underlined is-italic has-text-white">{text}</span>
+        </Link>
+      </a>
     )
   }
 
@@ -24,11 +37,12 @@ export default ({ story }: { story: Story }) => {
     newUser.shares[story.id] = {
       shareId: story.id,
       size: DEFAULT_SHARE,
-      outcome: "placeholder",
+      outcome: -1,
       narratorIndex: story.narratorIndex,
       collectionIndex: story.collectionIndex,
       storyIndex: story.storyIndex
     }
+    newUser.balance = user.balance - DEFAULT_SHARE_PRICE
     setUser(newUser)
   }
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import useNarratorState from '../hooks/useNarratorState'
 import useAdventurer from '../hooks/useAdventurer'
+import useUser from '../hooks/useUser'
+import { updateUserFromNarrator } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { nameString } from '../../../scripts/src/content/loot'
 import AdventurerHeader from '../components/AdventurerHeader'
@@ -18,6 +20,8 @@ interface AdventurerParams {
 
 export default ({ graveyard }: AdventurerParams) => {
   const { narrator } = useNarratorState()
+  const { user, setUser } = useUser()
+  updateUserFromNarrator(user, narrator, setUser)
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
 
   if (adventurer === null || guild == null) return (
@@ -32,7 +36,7 @@ export default ({ graveyard }: AdventurerParams) => {
 
   return (
     <>
-      <AdventurerHeader name={nameString(adventurer.name)} graveyard={graveyard} />
+      <AdventurerHeader name={nameString(adventurer.name)} class_={adventurer.class.join("")} graveyard={graveyard} />
       <div className="block p-4">
         <div>
           {"Pronouns: "}
@@ -45,10 +49,6 @@ export default ({ graveyard }: AdventurerParams) => {
         <div>
           {"Age: "}
           {adventurer.age}
-        </div>
-        <div>
-          {"Class: "}
-          {adventurer.class}
         </div>
         <div>
           {"Guild: "}

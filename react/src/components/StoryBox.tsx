@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import BuyShareButton from './BuyShareButton'
 import Countdown from './Countdown'
@@ -14,12 +13,8 @@ interface StoryBoxProps { story: Story }
 export default ({ story }: StoryBoxProps) => {
   const narratorState = useNarratorState()
 
-  console.log("rendering StoryBox", story)
-  console.log("story end time", new Date(story.endTime.toNumber() * 1000).toLocaleString())
-
   return (
     <section className="section pt-2 pb-4">
-      <BuyShareButton story={story} />
       <div className="container outer-border">
         <div className="container inner-border">
           <section className="section pt-5 pb-5">
@@ -95,9 +90,21 @@ export default ({ story }: StoryBoxProps) => {
           </section>
         </div>
       </div>
-      <div className="container has-text-right is-garamond is-italic is-size-5 pr-1">
-        {`NFT ${storyName(story)}`}
+      <div className="level">
+        <div className="level-left">
+          <div className="level-item">
+            <BuyShareButton story={story} />
+          </div>
+        </div>
+        <div className="level-right">
+          <div className="level-item">
+            <div className="is-garamond is-italic is-size-5 pr-1">
+              {`NFT ${storyName(story)}`}
+            </div>
+          </div>
+        </div>
       </div>
+
     </section>
   )
 }

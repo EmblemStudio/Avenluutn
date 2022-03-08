@@ -13,7 +13,7 @@ function nextState(state, events) {
                 switch (event.type) {
                     case utils_1.ResultType.Death:
                         // move adventurer to the graveyard
-                        guild.graveyard[adventurer.id] = adventurer;
+                        guild.graveyard[adventurer.id] = Object.assign({}, adventurer);
                         delete guild.adventurers[adventurer.id];
                         break;
                     case utils_1.ResultType.Loot:

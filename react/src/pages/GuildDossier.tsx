@@ -5,10 +5,14 @@ import GuildHeader from '../components/GuildHeader'
 import Expander from '../components/Expander'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
+import useUser from '../hooks/useUser'
+import { updateUserFromNarrator } from '../utils'
 import { nameString } from '../../../scripts/src/content/loot'
 
 export default () => {
   const { narrator } = useNarratorState()
+  const { user, setUser } = useUser()
+  updateUserFromNarrator(user, narrator, setUser)
   const { guild } = useGuild(narrator)
 
   return (

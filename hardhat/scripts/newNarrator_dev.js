@@ -8,7 +8,7 @@ async function main() {
   // We get the publisher and NFT contract
   const signers = await hre.ethers.getSigners()
   const narratorNFTsAddress = fs.readFileSync(`./${hre.network.name}_NarratorNFTsAddress.txt`).toString().trim()
-  const publisherAddress = fs.readFileSync(`./${hre.network.name}_PublisherAddress.txt`).toString().trim()
+  const publisherAddress = fs.readFileSync(`./${hre.network.name}_dev_PublisherAddress.txt`).toString().trim()
   const narratorNFTs = new Contract(narratorNFTsAddress, nftAbi, signers[0])
   const publisher = new Contract(publisherAddress, publisherAbi, signers[0])
 
@@ -18,7 +18,7 @@ async function main() {
   /**
    * mint narratorNFT
    */
-  
+
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
     "https://gist.githubusercontent.com/EzraWeller/30d5e8eb8fb00a7261c171957ff32c66/raw/f4f2064177ce0d83996f1dd0ccdc1b28324fde4c/avenluutn_bundle_070322.js"
@@ -28,7 +28,7 @@ async function main() {
   await narratorTx.wait()
 
   console.log("minted NFT")
-  
+
   const minutes = 60
   const hours = minutes * 60
   const start = 1645963200
@@ -39,16 +39,16 @@ async function main() {
     Relative	        a day ago
   */
 
-  const now = parseInt((new Date().getTime() / 1000).toFixed(0))
+  const now = Math.floor(new Date() / 1000)
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     Number(nftId),
-    start, // start
+    now, // start
     30,                // totalCollections
     1 * hours,           // collectionLength
-    1.1 * hours,           // collectionSpacing
+    parseInt(1.1 * hours),           // collectionSpacing
     5,                 // collectionSize
- )
+  )
   console.log("Waiting for addNarrator tx", pubTx.hash, pubTx.nonce)
   const receipt = await pubTx.wait()
   console.log("New narrator added at index:", Number(receipt.events[0].args.count))

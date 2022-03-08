@@ -30,14 +30,14 @@ function makeNames(provider?: providers.BaseProvider | string): Contract {
   )
 }
 
-const namesToOmit = ["Trump"]
+const namesToOmit = ["Trump", ".eth"]
 
 export async function getName(
-  nameId: number, 
+  nameId: number,
   provider?: providers.BaseProvider | string
 ): Promise<Name> {
-  if (nameId < MIN_ID || nameId > MAX_ID) { 
-    throw new Error(`nameId must be between ${MIN_ID} and ${MAX_ID}`) 
+  if (nameId < MIN_ID || nameId > MAX_ID) {
+    throw new Error(`nameId must be between ${MIN_ID} and ${MAX_ID}`)
   }
 
   const names = makeNames(provider)
@@ -53,7 +53,7 @@ export async function getName(
 
   let [prefix, firstName, middleName, lastName, suffix] = nameArray
 
-  for(let i = 0; i < namesToOmit.length; i++) {
+  for (let i = 0; i < namesToOmit.length; i++) {
     const name = namesToOmit[i]
     const index = nameArray.indexOf(name)
     switch (index) {

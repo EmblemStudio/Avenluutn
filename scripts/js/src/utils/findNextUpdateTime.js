@@ -11,29 +11,25 @@ exports.findNextUpdateTime = void 0;
 function findNextUpdateTime(runStart, // the time the script was run (a more consistant "now")
 updateTimes, // [scheduledStartTime, ...internalUpdateTimes]
 allOutcomesSucceeded) {
-    console.log(`called findNextUpdateTime(${runStart}, [${updateTimes}], ${allOutcomesSucceeded}`);
     updateTimes.sort();
     const endUpdateTime = updateTimes[updateTimes.length - 1];
     if (endUpdateTime === undefined) {
         // should only happen when updateTimes is empty
-        console.log("undefined endUpdateTime returning -1");
+        console.log("WARNING: Unexpected undefined endUpdateTime");
         return -1;
     }
     if (endUpdateTime < runStart) {
         // run started after last update time, no more updates
-        console.log(`endUpdateTime: ${endUpdateTime} < runStart ${runStart} returning -1`);
         return -1;
     }
     if (allOutcomesSucceeded !== false) { // why not === true?
         // if an outcome was failed, skip to the end update time
-        console.log(`allOutcomesSucceeded ${allOutcomesSucceeded} is not false, returning endUpdateTime ${endUpdateTime}`);
         return endUpdateTime;
     }
     for (const t of updateTimes) {
         if (runStart < t) {
             // this run was before the update time
             // the first time this is entered should be the next update time
-            console.log(`found update time (returning ${t}) after runStart (${runStart})`);
             return t;
         }
     }
