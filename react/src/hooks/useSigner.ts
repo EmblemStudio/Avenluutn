@@ -10,7 +10,6 @@ export default () => {
   const [error, setError] = useState<Error>()
 
   const getSigner = useCallback(async () => {
-    console.log('running callback')
     setLoading(true)
     setError(undefined)
 

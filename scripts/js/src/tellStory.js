@@ -4,9 +4,11 @@ exports.tellStory = void 0;
 const utils_1 = require("./utils");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 async function tellStory(runStart, prng, state, startTime, length, guildId, provider) {
+    const storyId = [startTime, guildId];
     const beginning = await tellBeginning(prng, state, startTime, length, guildId);
     if (beginning.party.length < 3) {
         const res = {
+            id: storyId,
             plainText: [],
             richText: {
                 beginning: beginning.text,
@@ -17,13 +19,17 @@ async function tellStory(runStart, prng, state, startTime, length, guildId, prov
                 ending: { main: [], resultTexts: [] },
             },
             events: [],
+            finalOutcome: utils_1.Success.failure,
             nextUpdateTime: (0, utils_1.findNextUpdateTime)(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime], true)
         };
         return res;
     }
+    // add story to adventurers
+    (0, utils_1.addStoryToAdventurers)(beginning.party, storyId);
     const middle = await tellMiddle(runStart, guildId, state, beginning, provider);
     const ending = await tellEnding(runStart, guildId, beginning, middle, state, provider);
     const res = {
+        id: [startTime, guildId],
         plainText: [],
         richText: {
             beginning: beginning.text,
@@ -34,6 +40,7 @@ async function tellStory(runStart, prng, state, startTime, length, guildId, prov
             ending: ending.text,
         },
         events: [...middle.allResults, ...ending.results],
+        finalOutcome: middle.questSuccess,
         nextUpdateTime: (0, utils_1.findNextUpdateTime)(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime], middle.allOutcomesSucceeded)
     };
     // make plainText

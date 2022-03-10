@@ -24,7 +24,7 @@ export function findNextUpdateTime(
     return -1
   }
 
-  if (allOutcomesSucceeded !== false) { // why not === true?
+  if (!allOutcomesSucceeded) {
     // if an outcome was failed, skip to the end update time
     return endUpdateTime
   }

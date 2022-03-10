@@ -3,16 +3,13 @@ import React from 'react'
 import BuyShareButton from './BuyShareButton'
 import Countdown from './Countdown'
 import LabeledString from './LabeledString'
-import { Story, storyName, getTimeLeft } from '../utils'
+import { Story, storyName, getTimeLeft, NarratorState, outcomeString } from '../utils'
 import { WAITING_FOR_SERVER } from '../constants'
 import LoadingAnimation from './LoadingAnimation'
-import useNarratorState from '../hooks/useNarratorState';
 
-interface StoryBoxProps { story: Story }
+interface StoryBoxProps { story: Story, narratorState: NarratorState }
 
-export default ({ story }: StoryBoxProps) => {
-  const narratorState = useNarratorState()
-
+export default ({ story, narratorState }: StoryBoxProps) => {
   return (
     <section className="section pt-2 pb-4">
       <div className="container outer-border">
@@ -62,8 +59,8 @@ export default ({ story }: StoryBoxProps) => {
                 })}
               </div>
               <div className="block ending results">
-                {story.text.richText.ending.resultTexts?.map((labeledStrings) => {
-                  return <div>{labeledStrings.map((l, i) => {
+                {story.text.richText.ending.resultTexts?.map((labeledStrings, i) => {
+                  return <div key={i}>{labeledStrings.map((l, i) => {
                     return <LabeledString labeledString={l} storyIndex={story.storyIndex} key={i} />
                   })}</div>
                 })}
@@ -78,6 +75,7 @@ export default ({ story }: StoryBoxProps) => {
               <div className="block">
                 <Countdown
                   to={story.text.nextUpdateTime}
+                  narratorState={narratorState}
                 />
               </div>
               :

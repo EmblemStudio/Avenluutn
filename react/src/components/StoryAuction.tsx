@@ -7,7 +7,7 @@ import { TransactionResponse, TransactionReceipt } from '@ethersproject/provider
 
 import Countdown from './Countdown'
 import StoryBox from './StoryBox'
-import { Story, shortAddress, presentOrPast, NotificationFunction } from '../utils'
+import { Story, shortAddress, presentOrPast, NotificationFunction, NarratorState } from '../utils'
 import { STATUS } from '../constants'
 
 // TODO Error notifications if not enough funds or bid not high enough
@@ -15,12 +15,12 @@ import { STATUS } from '../constants'
 interface StoryAuctionProps {
   story: Story;
   publisher: Contract | string;
-  updateNarrator: Function;
+  narratorState: NarratorState;
   addNotification: NotificationFunction;
   removeNotification: NotificationFunction;
 }
 
-export default ({ story, publisher, updateNarrator, addNotification, removeNotification }: StoryAuctionProps) => {
+export default ({ story, publisher, narratorState, addNotification, removeNotification }: StoryAuctionProps) => {
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
   const [bid, setBid] = useState<BigNumber>(parseEther("0"))
 
@@ -50,7 +50,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
-                updateNarrator()
+                narratorState.updateNarrator()
               })
             })
         })
@@ -74,7 +74,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
-                updateNarrator()
+                narratorState.updateNarrator()
               })
             })
         })
@@ -96,7 +96,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
           res.wait().then((rec: TransactionReceipt) => {
             addNotification("status", STATUS.tx_confirmed)
             removeNotification("status", STATUS.tx_submitted)
-            updateNarrator()
+            narratorState.updateNarrator()
           })
         })
     }
@@ -106,9 +106,10 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
     <div className="container">
       <nav className="level mb-0 mt-3">
         <div className="level-item">
-          <span className="pr-1">Time left: </span>
+          <span className="pr-1">Auction time: </span>
           <Countdown
             to={Number(story.endTime.add(story.auction.duration))}
+            narratorState={narratorState}
           />
         </div>
         <div className="level-item is-vertical">
@@ -141,7 +142,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
           }
         </div>
       </nav>
-      <StoryBox story={story} />
+      <StoryBox story={story} narratorState={narratorState} />
     </div>
   )
 }

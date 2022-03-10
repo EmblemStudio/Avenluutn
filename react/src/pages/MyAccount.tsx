@@ -1,24 +1,12 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import AccountHeader from '../components/AccountHeader'
+import ShareOutcome from '../components/ShareOutcome'
 import useUser from '../hooks/useUser'
 import useNarratorState from '../hooks/useNarratorState'
-import { CURRENCY } from '../constants'
-import { Share, updateUserFromNarrator } from '../utils'
-import { Success } from '../../../scripts/src'
-
-function outcomeString(outcome: Success): string {
-  switch (outcome) {
-    case Success.failure:
-      return "Failure"
-    case Success.mixed:
-      return "Success"
-    case Success.success:
-      return "Great Success"
-    default:
-      return "Unknown Outcome"
-  }
-}
+import { SHARE_PAYOUTS } from '../constants'
+import { Share, updateUserFromNarrator, outcomeString, storyId, storyName, storyCategory, StoryCategory } from '../utils'
 
 export default () => {
   const { user, setUser } = useUser()
@@ -31,24 +19,25 @@ export default () => {
   return (
     <>
       <AccountHeader />
-      <div>
+      <div className="block p-4">
         {Object.keys(user.shares).map((key) => {
           const share: Share = user.shares[key]
-          if (share !== undefined) {
-            const { size, storyIndex, outcome } = share
-            const recentCollection = narrator.collections[narrator.collections.length - 1]
-            if (recentCollection !== undefined) {
-              const guild = recentCollection.scriptResult.nextState.guilds[storyIndex]
-              if (guild !== undefined) {
-                return (
-                  <div key={key}>
-                    {size} {CURRENCY} on {guild.name} {outcomeString(outcome)}!
-                  </div>
-                )
-              }
-            }
-          }
-        })}
+          if (share === undefined) return (<span key={key}></span>)
+          const { size, storyIndex, collectionIndex } = share
+          const story = narrator.stories[storyId(collectionIndex, storyIndex)]
+          if (story === undefined) return (<span key={key}></span>)
+          return (
+            <div key={key}>
+              {`${size} loot share of `}
+              <Link to={`/${storyIndex}/stories/${collectionIndex}`}>
+                <span className="is-underlined has-text-white">{storyName(story)}</span>
+              </Link>
+              {` – `}
+              <ShareOutcome share={share} narrator={narrator} story={story} />
+            </div>
+          )
+        }
+        )}
       </div>
     </>
   )

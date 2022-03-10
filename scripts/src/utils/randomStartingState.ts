@@ -11,6 +11,7 @@ import {
   guildMottos,
   guildLocations
 } from '../content/original/originalContent'
+import { randomUnusedItem } from '.'
 
 export async function randomStartingState(
   numberOfGuilds: number,
@@ -167,7 +168,8 @@ async function randomAdventurer(
     class: [(await getRandomClass(prng, provider)).class],
     stats: randomStats(prng),
     skills: [prng.nextArrayItem(skills)],
-    loot: [await getRandomLootPiece(prng, provider)]
+    loot: [await getRandomLootPiece(prng, provider)],
+    stories: []
   })
   return newAdv
 }
@@ -180,15 +182,4 @@ function randomStats(prng: Prando): Stats {
     resourcefulness: prng.nextInt(0, 4),
     toughness: prng.nextInt(0, 4)
   }
-}
-
-export function randomUnusedItem<T>(
-  used: T[],
-  randomItem: Function
-): T {
-  let item = randomItem()
-  while (used.includes(item)) {
-    item = randomItem()
-  }
-  return item
 }

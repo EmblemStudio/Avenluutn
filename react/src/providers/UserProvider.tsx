@@ -1,20 +1,22 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import useStorage from '../hooks/useStorage'
 import { User } from '../utils'
-import { DEFAULT_USER } from '../constants'
+import { VERSION } from '../constants'
 
 interface IUserContext {
   user: User;
   setUser: (user: User) => void;
 }
 
-const emptyUserContext = { user: DEFAULT_USER, setUser: () => { } }
+const defaultUser: User = { balance: 1000, shares: {} }
+
+const emptyUserContext = { user: defaultUser, setUser: () => { } }
 
 export const UserContext = createContext<IUserContext>(emptyUserContext)
 
 export default ({ children }: { children: React.ReactElement }) => {
-  const [user, setUser] = useStorage<User>("user", emptyUserContext.user)
-
+  const [user, setUser] = useStorage<User>("user" + VERSION, emptyUserContext.user)
+  console.log('User', user)
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}

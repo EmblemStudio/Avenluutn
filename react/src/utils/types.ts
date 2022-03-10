@@ -21,16 +21,21 @@ export interface NarratorState {
   querying: boolean
 }
 
-export interface Narrator {
+export interface NarratorContractData {
   NFTAddress: string;
   NFTId: BigNumber;
+  collectionLength: BigNumber;
+  collectionSize: BigNumber;
+  collectionSpacing: BigNumber;
   start: BigNumber;
   totalCollections: BigNumber;
-  collectionLength: BigNumber;
-  collectionSpacing: BigNumber;
-  collectionSize: BigNumber;
+}
+
+// TODO stories should be stored in a dictionary by ID, categorized stories should just reference IDs
+export interface Narrator extends NarratorContractData {
   collections: Collection[];
-  stories: StoriesByGuild;
+  stories: { [id: string]: Story };
+  storiesByGuild: StoriesByGuild;
 }
 
 export interface Collection {
@@ -41,10 +46,10 @@ export interface Collection {
 export interface StoriesByGuild { [guildId: number]: CategorizedStories };
 
 export interface CategorizedStories {
-  upcoming: Story[];
-  inProgress: Story[];
-  onAuction: Story[];
-  completed: Story[];
+  upcoming: string[];
+  inProgress: string[];
+  onAuction: string[];
+  completed: string[];
 }
 
 export interface Story {
@@ -58,6 +63,14 @@ export interface Story {
   minted: boolean;
   nftId: BigNumber;
   text: StoryText;
+}
+
+export enum StoryCategory {
+  upcoming,
+  inProgress,
+  onAuction,
+  completed,
+  unknown
 }
 
 export interface Auction {
@@ -80,4 +93,5 @@ export interface Share {
   storyIndex: number;
   //
   outcome: Success;
+  resolved: boolean;
 }

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
-import { secondsToTimeString, getTimeLeft } from '../utils'
-import useNarratorState from '../hooks/useNarratorState'
+import { secondsToTimeString, getTimeLeft, NarratorState } from '../utils'
 
-interface CountdownProps { to: number }
+interface CountdownProps { to: number, narratorState: NarratorState }
 
-export default ({ to }: CountdownProps) => {
+export default ({ to, narratorState }: CountdownProps) => {
   const [timeLeft, setTimeLeft] = useState<number>(getTimeLeft(to))
-  const narratorState = useNarratorState()
 
   useEffect(() => {
     if (getTimeLeft(to) === 0) return

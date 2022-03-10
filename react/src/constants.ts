@@ -1,4 +1,5 @@
 import { NetworkName, User } from './utils'
+import { Success } from '../../scripts/src'
 import env from "../.env.json"
 
 interface NarratorParams {
@@ -8,9 +9,9 @@ interface NarratorParams {
 
 /***** CHANGE THEeSE!!! ????**/
 
-
+export const VERSION = "0.0.3"
 export const currentRelease = "goerli"
-export let currentNarrator = 3
+export let currentNarrator = 7
 export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
@@ -33,7 +34,7 @@ let network
 if (window !== undefined) {
   if (window.location.host === 'localhost:3000') {
     network = "goerli" as NetworkName
-    currentNarrator = localTestNarrator
+    // currentNarrator = localTestNarrator
   }
 }
 
@@ -95,4 +96,9 @@ export const DISCORD = "https://discord.gg/VfvtD6NDuM"
 export const CURRENCY = "crin"
 export const DEFAULT_SHARE_PRICE = 50
 export const DEFAULT_SHARE = "1/50th"
-export const DEFAULT_USER: User = { balance: 1000, shares: {} }
+
+export const SHARE_PAYOUTS = {
+  0: 0,
+  1: 100,
+  2: 150
+}

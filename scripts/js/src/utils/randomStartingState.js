@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.randomUnusedItem = exports.randomParty = exports.randomStartingState = void 0;
+exports.randomParty = exports.randomStartingState = void 0;
 const prando_1 = require("prando");
 const loot_1 = require("../content/loot");
 const originalContent_1 = require("../content/original/originalContent");
+const _1 = require(".");
 async function randomStartingState(numberOfGuilds, prng, provider) {
     let state = { guilds: [] };
     for (let i = 0; i < numberOfGuilds; i++) {
@@ -16,7 +17,7 @@ async function randomStartingState(numberOfGuilds, prng, provider) {
 exports.randomStartingState = randomStartingState;
 async function randomGuild(id, prng, previousState, provider) {
     const adventurers = await makeRandomAdventurers(prng.nextInt(10, 15), prng, provider);
-    const name = randomUnusedItem(previousState.guilds.map(g => g.name), () => prng.nextArrayItem(originalContent_1.guildNames));
+    const name = (0, _1.randomUnusedItem)(previousState.guilds.map(g => g.name), () => prng.nextArrayItem(originalContent_1.guildNames));
     return {
         id,
         name,
@@ -91,7 +92,7 @@ async function randomCharacter(prng, provider, traitCount) {
     };
     if (traitCount) {
         for (let i = 0; i < traitCount; i++) {
-            newChar.traits.push(randomUnusedItem(newChar.traits, () => prng.nextArrayItem(Object.keys(originalContent_1.traits))));
+            newChar.traits.push((0, _1.randomUnusedItem)(newChar.traits, () => prng.nextArrayItem(Object.keys(originalContent_1.traits))));
         }
     }
     return newChar;
@@ -115,7 +116,8 @@ async function randomAdventurer(id, prng, provider) {
         class: [(await (0, loot_1.getRandomClass)(prng, provider)).class],
         stats: randomStats(prng),
         skills: [prng.nextArrayItem(originalContent_1.skills)],
-        loot: [await (0, loot_1.getRandomLootPiece)(prng, provider)]
+        loot: [await (0, loot_1.getRandomLootPiece)(prng, provider)],
+        stories: []
     });
     return newAdv;
 }
@@ -128,11 +130,3 @@ function randomStats(prng) {
         toughness: prng.nextInt(0, 4)
     };
 }
-function randomUnusedItem(used, randomItem) {
-    let item = randomItem();
-    while (used.includes(item)) {
-        item = randomItem();
-    }
-    return item;
-}
-exports.randomUnusedItem = randomUnusedItem;

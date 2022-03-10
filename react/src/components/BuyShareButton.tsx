@@ -18,13 +18,13 @@ export default ({ story }: { story: Story }) => {
       text = `You own a ${share.size} share`
     }
     return (
-      <a
+      <div
         className="button is-ghost is-medium is-size-6"
       >
         <Link to="/my-account">
           <span className="is-underlined is-italic has-text-white">{text}</span>
         </Link>
-      </a>
+      </div>
     )
   }
 
@@ -40,7 +40,8 @@ export default ({ story }: { story: Story }) => {
       outcome: -1,
       narratorIndex: story.narratorIndex,
       collectionIndex: story.collectionIndex,
-      storyIndex: story.storyIndex
+      storyIndex: story.storyIndex,
+      resolved: false
     }
     newUser.balance = user.balance - DEFAULT_SHARE_PRICE
     setUser(newUser)

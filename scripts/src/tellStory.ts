@@ -2,6 +2,7 @@ import Prando from 'prando'
 import { providers } from 'ethers'
 
 import {
+  addStoryToAdventurers,
   randomQuest,
   randomObstacle,
   questObstacle,
@@ -14,6 +15,7 @@ import {
   randomParty,
   newCheckpoint,
   Story,
+  StoryId,
   Beginning,
   Middle,
   Ending,
@@ -37,6 +39,7 @@ export async function tellStory(
   guildId: number,
   provider: providers.BaseProvider
 ): Promise<Story> {
+  const storyId: StoryId = [startTime, guildId]
   const beginning = await tellBeginning(
     prng,
     state,
@@ -45,7 +48,8 @@ export async function tellStory(
     guildId
   )
   if (beginning.party.length < 3) {
-    const res = {
+    const res: Story = {
+      id: storyId,
       plainText: [],
       richText: {
         beginning: beginning.text,
@@ -65,6 +69,9 @@ export async function tellStory(
     }
     return res
   }
+  // add story to adventurers
+  addStoryToAdventurers(beginning.party, storyId)
+
   const middle = await tellMiddle(
     runStart,
     guildId,
@@ -81,6 +88,7 @@ export async function tellStory(
     provider
   )
   const res: Story = {
+    id: [startTime, guildId],
     plainText: [],
     richText: {
       beginning: beginning.text,

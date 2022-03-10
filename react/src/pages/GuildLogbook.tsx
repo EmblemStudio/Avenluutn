@@ -15,7 +15,8 @@ import { coloredBoldStyle, storyName, Story, updateUserFromNarrator } from '../u
 import Expander from '../components/Expander'
 
 export default () => {
-  const { narrator, updateNarrator } = useNarratorState()
+  const narratorState = useNarratorState()
+  const { narrator } = narratorState
   const { user, setUser } = useUser()
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
@@ -49,7 +50,7 @@ export default () => {
             </span>
             . It records deeds past.
           </div>
-          {[...narrator.stories[guild.id].onAuction, ...narrator.stories[guild.id].completed].length === 0 ?
+          {[...narrator.storiesByGuild[guild.id].onAuction, ...narrator.storiesByGuild[guild.id].completed].length === 0 ?
             <div className="block">
               The pages are blank.
             </div>
@@ -65,27 +66,29 @@ export default () => {
                   </div>
                 </div>
               </div>
-              {narrator.stories[guild.id].onAuction.map(s => {
+              {narrator.storiesByGuild[guild.id].onAuction.map(id => {
+                const s = narrator.stories[id]
                 return (
-                  <Expander key={s.collectionIndex} text={`${storyName(s)} 🔥`}>
+                  <Expander key={s?.collectionIndex} text={`${storyName(s)} 🔥`}>
                     <StoryAuction
                       story={s}
                       publisher={publisher}
-                      updateNarrator={updateNarrator}
+                      narratorState={narratorState}
                       addNotification={addNotification}
                       removeNotification={removeNotification}
                     />
                   </Expander>
                 )
               })}
-              {narrator.stories[guild.id].completed.map(s => {
+              {narrator.storiesByGuild[guild.id].completed.map(id => {
+                const s = narrator.stories[id]
                 isClaimable(s) ? emoji = "✨" : emoji = ""
                 return (
-                  <Expander key={s.collectionIndex} text={`${storyName(s)} ${emoji}`}>
+                  <Expander key={s?.collectionIndex} text={`${storyName(s)} ${emoji}`}>
                     <StoryAuction
                       story={s}
                       publisher={publisher}
-                      updateNarrator={updateNarrator}
+                      narratorState={narratorState}
                       addNotification={addNotification}
                       removeNotification={removeNotification}
                     />

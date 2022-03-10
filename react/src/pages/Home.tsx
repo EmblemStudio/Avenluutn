@@ -8,7 +8,8 @@ import { getTimeLeft, updateUserFromNarrator } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 
 export default () => {
-  const { narrator } = useNarratorState()
+  const narratorState = useNarratorState()
+  const { narrator } = narratorState
   const { user, setUser } = useUser()
 
   useEffect(() => {
@@ -44,6 +45,7 @@ export default () => {
             <div className="block">
               <Countdown
                 to={Number(narrator.start)}
+                narratorState={narratorState}
               />
             </div>
             :

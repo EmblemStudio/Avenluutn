@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import useNarratorState from '../hooks/useNarratorState'
 import useAdventurer from '../hooks/useAdventurer'
 import useUser from '../hooks/useUser'
-import { updateUserFromNarrator } from '../utils'
+import { storyId, storyName, updateUserFromNarrator, outcomeString, storyCategory, StoryCategory } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { nameString } from '../../../scripts/src/content/loot'
 import AdventurerHeader from '../components/AdventurerHeader'
@@ -20,6 +20,7 @@ interface AdventurerParams {
 
 export default ({ graveyard }: AdventurerParams) => {
   const { narrator } = useNarratorState()
+  console.log(narrator, narrator.collections.length)
   const { user, setUser } = useUser()
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
 
@@ -114,7 +115,27 @@ export default ({ graveyard }: AdventurerParams) => {
           </Expander>
         }
         <Expander text="Stories">
-          <div>Placeholder</div>
+          <>
+            {adventurer.stories.map((s, i) => {
+              const [startTime, storyIndex] = s
+              const collectionIndex = Math.floor((startTime - narrator.start.toNumber()) / narrator.collectionSpacing.toNumber())
+              const story = narrator.stories[storyId(collectionIndex, storyIndex)]
+              const category = storyCategory(narrator, story)
+              return (
+                <div key={i}>
+                  <Link to={`/${guild.id}/stories/${collectionIndex}`}>
+                    <span className="has-text-white is-underlined">
+                      {storyName(story)}
+                    </span>
+                  </Link>
+                  {` – ${outcomeString(
+                    story.text.finalOutcome,
+                    category === StoryCategory.onAuction || category === StoryCategory.completed
+                  )}`}
+                </div>
+              )
+            })}
+          </>
         </Expander>
       </div>
     </>

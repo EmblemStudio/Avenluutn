@@ -14,7 +14,7 @@ function makeNames(provider) {
     }
     return new ethers_1.Contract(NAMES_ADDR, namesAbi, provider);
 }
-const namesToOmit = ["Trump"];
+const namesToOmit = ["Trump", ".eth"];
 async function getName(nameId, provider) {
     if (nameId < MIN_ID || nameId > MAX_ID) {
         throw new Error(`nameId must be between ${MIN_ID} and ${MAX_ID}`);

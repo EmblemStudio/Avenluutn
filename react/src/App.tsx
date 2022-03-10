@@ -15,6 +15,7 @@ import GuildLogbook from './pages/GuildLogbook'
 import About from './pages/About'
 import GuildDossier from './pages/GuildDossier'
 import Adventurer from './pages/Adventurer'
+import Story from './pages/Story'
 import MyAccount from './pages/MyAccount'
 
 export default () => {
@@ -33,6 +34,7 @@ export default () => {
                     <Route path="/:guildId/logbook" element={<GuildLogbook />} />
                     <Route path="/:guildId/adventurers/:adventurerId" element={<Adventurer graveyard={false} />} />
                     <Route path="/:guildId/graveyard/:adventurerId" element={<Adventurer graveyard={true} />} />
+                    <Route path="/:guildId/stories/:collectionId" element={<Story />} />
                     <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/about" element={<About />} />
                   </Routes>

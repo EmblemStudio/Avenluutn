@@ -438,6 +438,7 @@ async function rollResults(
       const injury = injuries[injuryText]
       if (injury === undefined) throw new Error("No injury")
       result.component = prng.nextArrayItem(injury).trait
+      results.push(result)
       // if third injury, skip rest of results
       if (previousResults) {
         if (previousResults[ResultType.Injury].length === 2) i = length
@@ -445,6 +446,7 @@ async function rollResults(
     } else if (typeRoll > injuryOdds && typeRoll <= deathOdds) {
       result.type = ResultType.Death
       result.text = makeDeathText(adventurer)
+      results.push(result)
       // if they died, skip rest of results
       i = length
     } else if (typeRoll > deathOdds && typeRoll <= lootOdds) {
@@ -452,12 +454,14 @@ async function rollResults(
       const lootPiece = await getRandomLootPiece(prng, provider)
       result.component = lootPiece
       result.text = makeLootText(adventurer, lootPiece)
+      results.push(result)
     } else if (typeRoll > lootOdds && typeRoll <= skillOdds) {
       result.type = ResultType.Skill
       const skill = prng.nextArrayItem(skills)
       if (!adventurer.skills.includes(skill)) {
         result.component = skill
         result.text = makeSkillText(adventurer, skill)
+        results.push(result)
       }
     } else if (typeRoll > skillOdds) {
       result.type = ResultType.Trait
@@ -465,9 +469,10 @@ async function rollResults(
       if (!adventurer.traits.includes(trait)) {
         result.component = trait
         result.text = makeTraitText(adventurer, trait)
+        results.push(result)
       }
     }
-    results.push(result)
+
     // If this is the third injury, add a knockout result
     if (previousResults) {
       if (result.type === ResultType.Injury && previousResults[ResultType.Injury].length === 2) {
