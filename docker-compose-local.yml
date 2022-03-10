@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+  hardhat:
+    build: hardhat
+    volumes:
+      - ./hardhat/scripts:/scripts:ro
+      - ./hardhat/hardhat.config.js:/hardhat.config.js:ro
+    ports:
+      - "8545:8545"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: 5
+        max-size: 10m
