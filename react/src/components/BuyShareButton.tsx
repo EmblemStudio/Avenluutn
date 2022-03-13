@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import useUser from '../hooks/useUser'
-import { Story, getTimeLeft } from '../utils'
+import { Story, getTimeLeft, storyId } from '../utils'
 import { CURRENCY, DEFAULT_SHARE_PRICE, DEFAULT_SHARE } from '../constants'
 
 export default ({ story }: { story: Story }) => {
   const { user, setUser } = useUser()
   const storyCompleted = getTimeLeft(story.endTime.toNumber()) === 0
-  const share = user.shares[story.id]
+  const share = user.shares[storyId(story)]
   if (share === undefined && storyCompleted) return (<></>)
   if (share !== undefined) {
     let text = ""
@@ -34,8 +34,8 @@ export default ({ story }: { story: Story }) => {
       return
     }
     const newUser = Object.assign({}, user)
-    newUser.shares[story.id] = {
-      shareId: story.id,
+    newUser.shares[storyId(story)] = {
+      shareId: storyId(story),
       size: DEFAULT_SHARE,
       outcome: -1,
       narratorIndex: story.narratorIndex,

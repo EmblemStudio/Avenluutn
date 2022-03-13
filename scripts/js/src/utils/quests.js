@@ -32,7 +32,7 @@ function randomQuest(guildId, prng) {
     // if (!questInfo) { throw new Error("No quest info") }
     const res = {
         guildId,
-        difficulty: prng.nextArrayItem(originalContent_1.questDifficulty),
+        difficulty: Number(prng.nextArrayItem(originalContent_1.questDifficulty)),
         type,
         objective: prng.nextArrayItem(objectives).objective,
         locationName: prng.nextArrayItem(originalContent_1.questLocationName),

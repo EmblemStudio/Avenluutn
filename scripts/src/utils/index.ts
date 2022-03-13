@@ -1,4 +1,3 @@
-export * from './addStoryToAdventurers'
 export * from './makeText'
 export * from './newCheckpoint'
 export * from './quests'

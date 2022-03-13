@@ -11,7 +11,7 @@ import usePublisher from '../hooks/usePublisher'
 import useGuild from '../hooks/useGuild'
 import useUser from '../hooks/useUser'
 import { NARRATOR_PARAMS } from '../constants'
-import { coloredBoldStyle, storyName, Story, updateUserFromNarrator } from '../utils'
+import { coloredBoldStyle, storyId, Story, updateUserFromNarrator } from '../utils'
 import Expander from '../components/Expander'
 
 export default () => {
@@ -66,10 +66,11 @@ export default () => {
                   </div>
                 </div>
               </div>
-              {narrator.storiesByGuild[guild.id].onAuction.map(id => {
+              {narrator.storiesByGuild[guild.id].onAuction.map((id, i) => {
                 const s = narrator.stories[id]
+                if (s === undefined) return <div key={i}></div>
                 return (
-                  <Expander key={s?.collectionIndex} text={`${storyName(s)} 🔥`}>
+                  <Expander key={i} text={`${storyId(s)} 🔥`}>
                     <StoryAuction
                       story={s}
                       publisher={publisher}
@@ -80,11 +81,12 @@ export default () => {
                   </Expander>
                 )
               })}
-              {narrator.storiesByGuild[guild.id].completed.map(id => {
+              {narrator.storiesByGuild[guild.id].completed.map((id, i) => {
                 const s = narrator.stories[id]
+                if (s === undefined) return <div key={i}></div>
                 isClaimable(s) ? emoji = "✨" : emoji = ""
                 return (
-                  <Expander key={s?.collectionIndex} text={`${storyName(s)} ${emoji}`}>
+                  <Expander key={i} text={`${storyId(s)} ${emoji}`}>
                     <StoryAuction
                       story={s}
                       publisher={publisher}

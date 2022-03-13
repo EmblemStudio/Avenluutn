@@ -1,12 +1,14 @@
 
-import { User, Narrator, storyCategory, storyId, StoryCategory } from '.'
+import { User, Narrator, storyCategory, storyIdFromIndices, StoryCategory } from '.'
 import { SHARE_PAYOUTS } from '../constants'
 
 export function updateUserFromNarrator(user: User, narrator: Narrator, setUser: (value: User) => void) {
   const newUser = Object.assign({}, user)
   for (const shareId in user.shares) {
     const share = user.shares[shareId]
-    const story = narrator.stories[storyId(share?.collectionIndex, share?.storyIndex)]
+    const story = narrator.stories[
+      storyIdFromIndices(narrator.NFTId.toNumber(), share?.collectionIndex, share?.storyIndex)
+    ]
     if (story !== undefined) {
       const category = storyCategory(narrator, story)
       if (

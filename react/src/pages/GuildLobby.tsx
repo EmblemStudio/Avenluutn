@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import GuildHeader from '../components/GuildHeader'
 import StoryBox from '../components/StoryBox'
 import UpcomingStory from '../components/UpcomingStory'
+import EventFeed from '../components/EventFeed'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
 import useUser from '../hooks/useUser'
@@ -61,7 +62,19 @@ export default () => {
               People mill about.
             </div>
           }
-
+          <div className="block">
+            <div className="is-garamond is-italic is-size-4">
+              Recent Activity
+            </div>
+            <div className="block has-text-grey p-4">
+              <EventFeed
+                narrator={narrator}
+                events={narrator.eventsByGuild[guild.id]?.slice(
+                  narrator.eventsByGuild[guild.id].length - 31
+                )}
+              />
+            </div>
+          </div>
         </div>
       }
     </>

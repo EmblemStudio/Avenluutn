@@ -3,7 +3,7 @@ import React from 'react'
 import BuyShareButton from './BuyShareButton'
 import Countdown from './Countdown'
 import LabeledString from './LabeledString'
-import { Story, storyName, getTimeLeft, NarratorState, outcomeString } from '../utils'
+import { Story, storyId, getTimeLeft, NarratorState } from '../utils'
 import { WAITING_FOR_SERVER } from '../constants'
 import LoadingAnimation from './LoadingAnimation'
 
@@ -88,21 +88,22 @@ export default ({ story, narratorState }: StoryBoxProps) => {
           </section>
         </div>
       </div>
-      <div className="level">
-        <div className="level-left">
-          <div className="level-item">
-            <BuyShareButton story={story} />
+      <div className="container">
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <BuyShareButton story={story} />
+            </div>
           </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <div className="is-garamond is-italic is-size-5 pr-1">
-              {`NFT ${storyName(story)}`}
+          <div className="level-right">
+            <div className="level-item">
+              <div className="is-garamond is-italic is-size-5 pr-1">
+                {storyId(story)}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </section>
   )
 }

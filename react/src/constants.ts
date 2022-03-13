@@ -9,9 +9,9 @@ interface NarratorParams {
 
 /***** CHANGE THEeSE!!! ????**/
 
-export const VERSION = "0.0.3"
+export const VERSION = "0.0.5"
 export const currentRelease = "goerli"
-export let currentNarrator = 7
+export let currentNarrator = 9
 export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR

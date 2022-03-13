@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ScriptResult, Story as StoryText, Success } from '../../../scripts/src'
+import { ScriptResult, Story as StoryText, Success, Result } from '../../../scripts/src'
 
 export type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
 
@@ -36,6 +36,20 @@ export interface Narrator extends NarratorContractData {
   collections: Collection[];
   stories: { [id: string]: Story };
   storiesByGuild: StoriesByGuild;
+  eventsByGuild: { [guildId: number]: Event[] };
+}
+
+export enum EventType {
+  result,
+  adventureStart,
+  adventureEnd
+}
+
+export interface Event {
+  result?: Result;
+  storyId: string;
+  timestamp: number;
+  type: EventType;
 }
 
 export interface Collection {
@@ -56,7 +70,6 @@ export interface Story {
   narratorIndex: number;
   collectionIndex: number;
   storyIndex: number;
-  id: string;
   startTime: BigNumber;
   endTime: BigNumber;
   auction: Auction;

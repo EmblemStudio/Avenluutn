@@ -14,6 +14,7 @@ export default () => {
 
   useEffect(() => {
     updateUserFromNarrator(user, narrator, setUser)
+    console.log('narrator', narrator)
   }, [narrator])
 
   return (

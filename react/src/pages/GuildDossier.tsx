@@ -28,7 +28,7 @@ export default () => {
           </div>
           <div className="block">
             {Object.keys(guild.adventurers).length > 0 &&
-              <Expander text="Adventurers">
+              <Expander text={`Adventurers – ${Object.keys(guild.adventurers).length}`}>
                 <div className="is-underlined">
                   {Object.keys(guild.adventurers).map(id => {
                     return (
@@ -45,7 +45,7 @@ export default () => {
           </div>
           <div className="block">
             {Object.keys(guild.graveyard).length > 0 &&
-              <Expander text="Graveyard">
+              <Expander text={`Graveyard – ${Object.keys(guild.graveyard).length}`}>
                 <div className="is-underlined">
                   {Object.keys(guild.graveyard).map(id => {
                     return (

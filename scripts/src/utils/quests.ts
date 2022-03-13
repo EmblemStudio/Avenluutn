@@ -73,7 +73,7 @@ export function randomQuest(guildId: number, prng: Prando): Quest {
   // if (!questInfo) { throw new Error("No quest info") }
   const res: Quest = {
     guildId,
-    difficulty: prng.nextArrayItem(questDifficulty),
+    difficulty: Number(prng.nextArrayItem(questDifficulty)),
     type,
     objective: prng.nextArrayItem(objectives).objective,
     locationName: prng.nextArrayItem(questLocationName),
