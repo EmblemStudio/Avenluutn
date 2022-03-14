@@ -1,21 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import GuildButtons from '../components/GuildButtons'
 import Countdown from '../components/Countdown'
 import useNarratorState from '../hooks/useNarratorState'
-import useUser from '../hooks/useUser'
-import { getTimeLeft, updateUserFromNarrator } from '../utils'
+import { getTimeLeft } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 
 export default () => {
   const narratorState = useNarratorState()
   const { narrator } = narratorState
-  const { user, setUser } = useUser()
-
-  useEffect(() => {
-    updateUserFromNarrator(user, narrator, setUser)
-    console.log('narrator', narrator)
-  }, [narrator])
 
   return (
     <>
@@ -47,6 +40,9 @@ export default () => {
               <Countdown
                 to={Number(narrator.start)}
                 narratorState={narratorState}
+                collectionIndex={0}
+                storyIndex={0}
+                completed={false}
               />
             </div>
             :

@@ -3,8 +3,7 @@ import React from 'react'
 import BuyShareButton from './BuyShareButton'
 import Countdown from './Countdown'
 import LabeledString from './LabeledString'
-import { Story, storyId, getTimeLeft, NarratorState } from '../utils'
-import { WAITING_FOR_SERVER } from '../constants'
+import { Story, storyId, NarratorState, storyCategory, StoryCategory } from '../utils'
 import LoadingAnimation from './LoadingAnimation'
 
 interface StoryBoxProps { story: Story, narratorState: NarratorState }
@@ -71,20 +70,18 @@ export default ({ story, narratorState }: StoryBoxProps) => {
                 <LoadingAnimation />
               </div>
             }
-            {getTimeLeft(story.text.nextUpdateTime) > 0 ?
-              <div className="block">
-                <Countdown
-                  to={story.text.nextUpdateTime}
-                  narratorState={narratorState}
-                />
-              </div>
-              :
-              story.text.nextUpdateTime !== -1 &&
-              <div className="block has-text-grey">
-                {narratorState.queryUntilUpdate(narratorState)}
-                {WAITING_FOR_SERVER}
-              </div>
-            }
+            <div className="block">
+              <Countdown
+                to={story.text.nextUpdateTime}
+                narratorState={narratorState}
+                collectionIndex={story.collectionIndex}
+                storyIndex={story.storyIndex}
+                completed={
+                  storyCategory(narratorState.narrator, story) === StoryCategory.completed ||
+                  storyCategory(narratorState.narrator, story) === StoryCategory.onAuction
+                }
+              />
+            </div>
           </section>
         </div>
       </div>

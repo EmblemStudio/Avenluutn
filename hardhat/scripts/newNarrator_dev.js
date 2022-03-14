@@ -21,7 +21,7 @@ async function main() {
 
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://gist.githubusercontent.com/EzraWeller/ab6ef9d60890042af095a6d40d866d84/raw/61855616d33caa0ac7b21f328918070b07377af0/avenluutn_bundle_130322.js"
+    "https://gist.githubusercontent.com/EzraWeller/2ddf2897dec0e2c6529e0cd26bff5145/raw/5d9f7612734a7ad1268262d6e0e73ade6e4d8b22/avenluutn_bundle_130322-2.js"
   )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)

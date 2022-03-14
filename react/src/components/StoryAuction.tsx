@@ -110,6 +110,9 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
           <Countdown
             to={Number(story.endTime.add(story.auction.duration))}
             narratorState={narratorState}
+            collectionIndex={story.collectionIndex}
+            storyIndex={story.storyIndex}
+            completed={true}
           />
         </div>
         <div className="level-item is-vertical">

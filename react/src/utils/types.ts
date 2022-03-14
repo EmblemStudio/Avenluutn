@@ -17,7 +17,7 @@ export interface NarratorState {
   narrator: Narrator,
   updateNarrator: () => void,
   lastUpdate: number,
-  queryUntilUpdate: (state: NarratorState) => void,
+  queryUntilUpdate: (state: NarratorState, collectionIndex: number, storyIndex: number) => void,
   querying: boolean
 }
 

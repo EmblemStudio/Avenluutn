@@ -3,8 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import useNarratorState from '../hooks/useNarratorState'
 import useAdventurer from '../hooks/useAdventurer'
-import useUser from '../hooks/useUser'
-import { storyId, updateUserFromNarrator, outcomeString, storyCategory, StoryCategory, Story } from '../utils'
+import { storyId, outcomeString, storyCategory, StoryCategory, Story } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { nameString } from '../../../scripts/src/content/loot'
 import AdventurerHeader from '../components/AdventurerHeader'
@@ -20,15 +19,10 @@ interface AdventurerParams {
 
 export default ({ graveyard }: AdventurerParams) => {
   const { narrator } = useNarratorState()
-  const { user, setUser } = useUser()
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
   const [stories, setStories] = useState<Story[]>([])
   const navigate = useNavigate()
   const { pathname } = useLocation()
-
-  useEffect(() => {
-    updateUserFromNarrator(user, narrator, setUser)
-  }, [narrator])
 
   useEffect(() => {
     const stories: Story[] = []

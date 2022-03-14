@@ -287,10 +287,10 @@ function makeTriggerText(triggerInfo, adventurer, traits, qualities) {
         if (!trait)
             throw new Error("No trait");
         if (triggerInfo.modifier > 0 && trait.positiveTrigger) {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `${trait.positiveTrigger}!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `${insertPronouns(trait.positiveTrigger, adventurer.pronouns)}!`, label: interfaces_1.Label.conjunctive });
         }
         else if (trait.negativeTrigger) {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `${trait.negativeTrigger}!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `${insertPronouns(trait.negativeTrigger, adventurer.pronouns)}!`, label: interfaces_1.Label.conjunctive });
         }
     }
     else if (triggerInfo.type === "skills") {

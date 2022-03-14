@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import AccountHeader from '../components/AccountHeader'
 import ShareOutcome from '../components/ShareOutcome'
 import useUser from '../hooks/useUser'
 import useNarratorState from '../hooks/useNarratorState'
-import { Share, updateUserFromNarrator, storyIdFromIndices, storyId } from '../utils'
+import { Share, storyIdFromIndices, storyId } from '../utils'
 
 export default () => {
-  const { user, setUser } = useUser()
+  const { user } = useUser()
   const { narrator } = useNarratorState()
-
-  useEffect(() => {
-    updateUserFromNarrator(user, narrator, setUser)
-  }, [narrator])
 
   return (
     <>

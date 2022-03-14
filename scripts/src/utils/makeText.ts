@@ -323,12 +323,12 @@ export function makeTriggerText(
     if (triggerInfo.modifier > 0 && trait.positiveTrigger) {
       res.push(
         { string: `${nameString(adventurer.name)} `, label: Label.adventurerName, entityId: adventurer.id },
-        { string: `${trait.positiveTrigger}!`, label: Label.conjunctive }
+        { string: `${insertPronouns(trait.positiveTrigger, adventurer.pronouns)}!`, label: Label.conjunctive }
       )
     } else if (trait.negativeTrigger) {
       res.push(
         { string: `${nameString(adventurer.name)} `, label: Label.adventurerName, entityId: adventurer.id },
-        { string: `${trait.negativeTrigger}!`, label: Label.conjunctive }
+        { string: `${insertPronouns(trait.negativeTrigger, adventurer.pronouns)}!`, label: Label.conjunctive }
       )
     }
   } else if (triggerInfo.type === "skills") {

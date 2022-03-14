@@ -143,7 +143,11 @@ async function _updateNarratorState(
           narrator: newNarrator,
           updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
           lastUpdate: Date.now(),
-          queryUntilUpdate: (state: NarratorState) => { queryUntilStateUpdate(state, setNarratorState, params) },
+          queryUntilUpdate: (
+            state: NarratorState,
+            collectionIndex: number,
+            storyIndex: number
+          ) => { queryUntilStateUpdate(state, collectionIndex, storyIndex, setNarratorState, params) },
           querying
         })
         resolve()
@@ -158,37 +162,32 @@ let queryInterval: NodeJS.Timer
 
 function queryUntilStateUpdate(
   narratorState: NarratorState,
+  collectionIndex: number,
+  storyIndex: number,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
-  console.log('Starting querying for narrator state update')
+  console.log('starting querying for narrator state update')
   if (querying === true) {
+    console.log('already querying')
     return
   }
-  console.log('proceeding with querying')
-  _updateNarratorState(narratorState, setNarratorState, params)
-  const lastCollectionIndex = narratorState.narrator.collections.length - 1
-  const collection = narratorState.narrator.collections[lastCollectionIndex]
-  console.log('querying collection', collection, narratorState.narrator.collections)
-  if (collection === undefined) return
+  // _updateNarratorState(narratorState, setNarratorState, params)
   querying = true
-  const nextUpdateTime = collection.scriptResult.nextUpdateTime
-  queryInterval = setInterval(() => {
-    console.log('querying ...')
-    const newCollection = narratorState.narrator.collections[lastCollectionIndex]
-    if (newCollection === undefined) return
-    // I think this still isn't working
-    if (
-      newCollection.scriptResult.stories[0]?.plainText.length > collection.scriptResult.stories[0]?.plainText.length ||
-      nextUpdateTime === -1
-    ) {
-      // we got an update--stop querying
-      console.log('stopping querying')
+  const currentUpdateTime = narratorState.narrator.stories[
+    storyIdFromIndices(params.narratorIndex, storyIndex, collectionIndex)
+  ]?.text.nextUpdateTime
+  queryInterval = setInterval(async () => {
+    console.log('running interval')
+    const collection = await getCollection(params.narratorIndex, collectionIndex)
+    const newUpdateTime = collection?.scriptResult.stories[storyIndex].nextUpdateTime
+    if (newUpdateTime !== undefined && newUpdateTime > currentUpdateTime) {
+      console.log('updating and stopping querying')
+      _updateNarratorState(narratorState, setNarratorState, params)
       clearInterval(queryInterval)
-      return
+      querying = false
     }
-    _updateNarratorState(narratorState, setNarratorState, params)
-  }, 1000 * 20) // retry every 20 seconds
+  }, 1000 * 10) // 10 seconds
 }
 
 async function getCollection(
@@ -253,7 +252,7 @@ async function addStories(
       text.events.forEach(res => {
         narrator.eventsByGuild[storyIndex].push({
           type: EventType.result,
-          timestamp: Math.floor(startTime.add((endTime.sub(startTime)).div(2)).toNumber()), // mid-point-ish
+          timestamp: Math.floor(startTime.add(endTime).div(2).toNumber()), // mid-point-ish
           result: res,
           storyId: id
         })

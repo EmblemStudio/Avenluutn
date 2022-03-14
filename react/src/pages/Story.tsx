@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import LoadingAnimation from '../components/LoadingAnimation'
 import useNarratorState from '../hooks/useNarratorState'
@@ -15,6 +15,8 @@ export default () => {
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { addNotification, removeNotification } = useNotifications()
   const { story, category } = useStory(narratorState.narrator)
+
+  useEffect(() => { }, [narratorState])
 
   if (story === null || category === StoryCategory.unknown) return (
     <nav className="level">

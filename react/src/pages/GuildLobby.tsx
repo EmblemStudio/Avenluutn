@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import GuildHeader from '../components/GuildHeader'
 import StoryBox from '../components/StoryBox'
-import UpcomingStory from '../components/UpcomingStory'
+import Countdown from '../components/Countdown'
 import EventFeed from '../components/EventFeed'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
-import useUser from '../hooks/useUser'
-import { coloredBoldStyle, updateUserFromNarrator } from '../utils'
+import { coloredBoldStyle } from '../utils'
 
 export default () => {
   const narratorState = useNarratorState()
   const { narrator } = narratorState
-  const { user, setUser } = useUser()
   const { guild, color } = useGuild(narrator)
-
-  useEffect(() => {
-    updateUserFromNarrator(user, narrator, setUser)
-  }, [narrator])
 
   return (
     <>
@@ -50,10 +44,15 @@ export default () => {
               <div className="block">
                 The bard indicates a shadowed crew in the corner:
               </div>
-              <UpcomingStory
-                story={narrator.stories[narrator.storiesByGuild[guild.id]?.upcoming[0]]}
-                narratorState={narratorState}
-              />
+              <div className="block has-text-grey">
+                "The next adventure will begin in <Countdown
+                  to={narrator.stories[narrator.storiesByGuild[guild.id]?.upcoming[0]].startTime.toNumber()}
+                  narratorState={narratorState}
+                  collectionIndex={narrator.stories[narrator.storiesByGuild[guild.id]?.upcoming[0]].collectionIndex}
+                  storyIndex={narrator.stories[narrator.storiesByGuild[guild.id]?.upcoming[0]].storyIndex}
+                  completed={false}
+                />"
+              </div>
             </div>
           }
           {narrator.storiesByGuild[guild.id]?.inProgress.length === 0 &&
@@ -71,7 +70,7 @@ export default () => {
                 narrator={narrator}
                 events={narrator.eventsByGuild[guild.id]?.slice(
                   narrator.eventsByGuild[guild.id].length - 31
-                )}
+                ).reverse()}
               />
             </div>
           </div>
