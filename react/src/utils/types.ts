@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ScriptResult, Story as StoryText, Success, Result } from '../../../scripts/src'
 
-export type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
+export type NetworkName = "mainnet" | "ropsten" | "polygon" | "mumbai" | "localhost" | "goerli"
 
 export interface Notifications {
   warnings: string[];
