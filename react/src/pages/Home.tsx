@@ -1,7 +1,7 @@
 import React from 'react'
 
 import GuildButtons from '../components/GuildButtons'
-import Countdown from '../components/Countdown'
+import Countdown, { CountdownDisplayMode } from '../components/Countdown'
 import useNarratorState from '../hooks/useNarratorState'
 import { getTimeLeft } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
@@ -20,7 +20,8 @@ export default () => {
         Sweet wind rustles the treetops. You feel hopeful.
       </div>
       {
-        narrator.collections.length > 0 ?
+        narrator.collections.length > 0 &&
+          narrator.collections[0].scriptResult.nextState.guilds.length > 0 ?
           <>
             <div className="block">
               A sign in the road directs you. Choose a guild:
@@ -30,19 +31,14 @@ export default () => {
             />
           </>
           :
-          /* TODO Add a "Return in [timer]"
-          <div className="block has-text-grey">
-            Return in [timer]
-          </div>
-          */
           getTimeLeft(Number(narrator.start)) > 0 ?
             <div className="block">
-              <Countdown
+              {`Return in `}<Countdown
                 to={Number(narrator.start)}
                 narratorState={narratorState}
                 collectionIndex={0}
                 storyIndex={0}
-                completed={false}
+                displayMode={CountdownDisplayMode.waiting_for_server}
               />
             </div>
             :

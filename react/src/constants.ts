@@ -9,9 +9,9 @@ interface NarratorParams {
 
 /***** CHANGE THEeSE!!! ????**/
 
-export const VERSION = "0.0.6"
+export const STORAGE_VERSION = "0.0.8"
 export const currentRelease = "goerli"
-export let currentNarrator = 10
+export let currentNarrator = 12
 export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
@@ -32,9 +32,9 @@ export const ADDRESSES: { [name: string]: string } = {
 
 let network
 if (window !== undefined) {
-  if (window.location.host === 'localhost:3000') {
+  if (window.location.host === '127.0.0.1:3000') {
     network = "goerli" as NetworkName
-    // currentNarrator = localTestNarrator
+    currentNarrator = localTestNarrator
   }
 }
 
@@ -65,7 +65,7 @@ export const SERVER = {
   "localhost": "http://localhost",
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
-  "polygon": "http://67.205.138.92",
+  "polygon": "https://avenluutn-api.squad.games",
   "goerli": "https://avenluutn-api-dev.squad.games",
 }[NARRATOR_PARAMS.network]
 

@@ -3,19 +3,25 @@ import React, { useState, useEffect } from 'react'
 import { secondsToTimeString, getTimeLeft, NarratorState } from '../utils'
 import { WAITING_FOR_SERVER } from '../constants'
 
+export enum CountdownDisplayMode {
+  zeroes,
+  waiting_for_server
+}
+
 interface CountdownProps {
   to: number;
   narratorState: NarratorState;
   collectionIndex: number;
   storyIndex: number;
-  completed: boolean;
+  displayMode: CountdownDisplayMode;
 }
 
-export default ({ to, narratorState, collectionIndex, storyIndex, completed }: CountdownProps) => {
+export default ({ to, narratorState, collectionIndex, storyIndex, displayMode }: CountdownProps) => {
   const [timeLeft, setTimeLeft] = useState<number>(getTimeLeft(to))
 
   // we need an update--start query
-  if (getTimeLeft(to) === 0) narratorState.queryUntilUpdate(narratorState, collectionIndex, storyIndex)
+  if (getTimeLeft(to) === 0 && displayMode === CountdownDisplayMode.waiting_for_server)
+    narratorState.queryUntilUpdate(narratorState, collectionIndex, storyIndex)
 
   useEffect(() => {
     if (getTimeLeft(to) === 0) return
@@ -35,7 +41,7 @@ export default ({ to, narratorState, collectionIndex, storyIndex, completed }: C
 
   return (
     <span className="has-text-grey">
-      {timeLeft > 0 || completed ?
+      {timeLeft > 0 || displayMode === CountdownDisplayMode.zeroes ?
         secondsToTimeString(timeLeft)
         :
         WAITING_FOR_SERVER

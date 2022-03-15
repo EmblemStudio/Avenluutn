@@ -5,9 +5,9 @@ import { AddressZero } from '@ethersproject/constants';
 import { parseEther, formatEther } from '@ethersproject/units'
 import { TransactionResponse, TransactionReceipt } from '@ethersproject/providers'
 
-import Countdown from './Countdown'
+import Countdown, { CountdownDisplayMode } from './Countdown'
 import StoryBox from './StoryBox'
-import { Story, shortAddress, presentOrPast, NotificationFunction, NarratorState } from '../utils'
+import { Story, shortAddress, presentOrPast, NotificationFunction, NarratorState, secondsToTimeString } from '../utils'
 import { STATUS } from '../constants'
 
 // TODO Error notifications if not enough funds or bid not high enough
@@ -107,13 +107,17 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
       <nav className="level mb-0 mt-3">
         <div className="level-item">
           <span className="pr-1">Auction time: </span>
-          <Countdown
-            to={Number(story.endTime.add(story.auction.duration))}
-            narratorState={narratorState}
-            collectionIndex={story.collectionIndex}
-            storyIndex={story.storyIndex}
-            completed={true}
-          />
+          {presentOrPast(story.endTime.add(story.auction.duration)) ?
+            <span className="has-text-grey">{secondsToTimeString(0)}</span>
+            :
+            <Countdown
+              to={Number(story.endTime.add(story.auction.duration))}
+              narratorState={narratorState}
+              collectionIndex={story.collectionIndex}
+              storyIndex={story.storyIndex}
+              displayMode={CountdownDisplayMode.zeroes}
+            />
+          }
         </div>
         <div className="level-item is-vertical">
           <div className="container">

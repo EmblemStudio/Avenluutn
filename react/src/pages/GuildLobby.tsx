@@ -2,7 +2,7 @@ import React from 'react'
 
 import GuildHeader from '../components/GuildHeader'
 import StoryBox from '../components/StoryBox'
-import Countdown from '../components/Countdown'
+import Countdown, { CountdownDisplayMode } from '../components/Countdown'
 import EventFeed from '../components/EventFeed'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
@@ -50,7 +50,7 @@ export default () => {
                   narratorState={narratorState}
                   collectionIndex={narrator.stories[narrator.storiesByGuild[guild.id]?.upcoming[0]].collectionIndex}
                   storyIndex={narrator.stories[narrator.storiesByGuild[guild.id]?.upcoming[0]].storyIndex}
-                  completed={false}
+                  displayMode={CountdownDisplayMode.zeroes}
                 />"
               </div>
             </div>

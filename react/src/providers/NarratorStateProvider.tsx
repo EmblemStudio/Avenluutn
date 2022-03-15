@@ -108,6 +108,7 @@ async function _updateNarratorState(
       completed: []
     }
   }
+
   const totalCollections = Number(newNarrator.totalCollections)
   const timeActive = now() - Number(newNarrator.start)
   const relevantStories = Math.floor(
