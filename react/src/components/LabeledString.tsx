@@ -22,7 +22,7 @@ export default ({ labeledString: { label, string, entityId }, storyIndex }: Labe
     if (label === "adventurerName") to = `/${storyIndex}/adventurers/${entityId}`
     return (
       <Link to={to}>
-        <span className={`${label} ${style}`}>
+        <span className={`${label} ${style} has-hover-underline`}>
           {string}
         </span>
       </Link>

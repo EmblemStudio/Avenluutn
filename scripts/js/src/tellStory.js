@@ -4,11 +4,10 @@ exports.tellStory = void 0;
 const utils_1 = require("./utils");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 async function tellStory(runStart, prng, state, startTime, length, guildId, provider) {
-    const storyId = [startTime, guildId];
     const beginning = await tellBeginning(prng, state, startTime, length, guildId);
     if (beginning.party.length < 3) {
         const res = {
-            id: storyId,
+            party: beginning.party,
             plainText: [],
             richText: {
                 beginning: beginning.text,
@@ -24,12 +23,10 @@ async function tellStory(runStart, prng, state, startTime, length, guildId, prov
         };
         return res;
     }
-    // add story to adventurers
-    (0, utils_1.addStoryToAdventurers)(beginning.party, storyId);
     const middle = await tellMiddle(runStart, guildId, state, beginning, provider);
     const ending = await tellEnding(runStart, guildId, beginning, middle, state, provider);
     const res = {
-        id: [startTime, guildId],
+        party: beginning.party,
         plainText: [],
         richText: {
             beginning: beginning.text,
@@ -104,13 +101,18 @@ async function tellBeginning(prng, state, startTime, length, guildId
     const endTime = startTime + length;
     const obstacleTimes = [];
     const outcomeTimes = [];
-    const obstacleLength = Math.floor(length / (quest.difficulty + 1));
-    const outcomeDelay = Math.floor(obstacleLength / 2);
+    const obstacleLength = length / (quest.difficulty + 1);
+    const outcomeDelay = obstacleLength / 2;
     for (let i = 1; i <= quest.difficulty; i++) {
         const delay = obstacleLength * i;
-        obstacleTimes.push(startTime + delay);
-        outcomeTimes.push(startTime + delay + outcomeDelay);
+        obstacleTimes.push(Math.floor(startTime + delay));
+        outcomeTimes.push(Math.floor(startTime + delay + outcomeDelay));
+        console.log('i, diff', i, quest.difficulty);
     }
+    console.log('quest diff', quest.difficulty, quest.difficulty + 1);
+    console.log('story length', length);
+    console.log('obstacle length and outcome delay', obstacleLength, outcomeDelay);
+    console.log('times', startTime, obstacleTimes, outcomeTimes, endTime);
     return {
         guild,
         party,

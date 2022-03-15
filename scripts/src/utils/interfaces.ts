@@ -6,10 +6,8 @@ export interface ScriptResult {
   nextUpdateTime: number;
 }
 
-export type StoryId = [number, number]
-
 export interface Story {
-  id: StoryId;
+  party: Adventurer[];
   plainText: string[];
   richText: {
     beginning: LabeledString[];
@@ -209,7 +207,6 @@ export interface Adventurer extends Character {
   stats: Stats;
   skills: string[];
   loot: string[];
-  stories: StoryId[];
 }
 
 export interface Pronouns {

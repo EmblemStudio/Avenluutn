@@ -1,10 +1,9 @@
 import React from 'react'
 
 import BuyShareButton from './BuyShareButton'
-import Countdown from './Countdown'
+import Countdown, { CountdownDisplayMode } from './Countdown'
 import LabeledString from './LabeledString'
-import { Story, storyName, getTimeLeft, NarratorState, outcomeString } from '../utils'
-import { WAITING_FOR_SERVER } from '../constants'
+import { Story, storyId, NarratorState } from '../utils'
 import LoadingAnimation from './LoadingAnimation'
 
 interface StoryBoxProps { story: Story, narratorState: NarratorState }
@@ -71,38 +70,36 @@ export default ({ story, narratorState }: StoryBoxProps) => {
                 <LoadingAnimation />
               </div>
             }
-            {getTimeLeft(story.text.nextUpdateTime) > 0 ?
-              <div className="block">
+            <div className="block">
+              {story.text.nextUpdateTime !== -1 &&
                 <Countdown
                   to={story.text.nextUpdateTime}
                   narratorState={narratorState}
+                  collectionIndex={story.collectionIndex}
+                  storyIndex={story.storyIndex}
+                  displayMode={CountdownDisplayMode.waiting_for_server}
                 />
-              </div>
-              :
-              story.text.nextUpdateTime !== -1 &&
-              <div className="block has-text-grey">
-                {narratorState.queryUntilUpdate(narratorState)}
-                {WAITING_FOR_SERVER}
-              </div>
-            }
+              }
+            </div>
           </section>
         </div>
       </div>
-      <div className="level">
-        <div className="level-left">
-          <div className="level-item">
-            <BuyShareButton story={story} />
+      <div className="container">
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <BuyShareButton story={story} />
+            </div>
           </div>
-        </div>
-        <div className="level-right">
-          <div className="level-item">
-            <div className="is-garamond is-italic is-size-5 pr-1">
-              {`NFT ${storyName(story)}`}
+          <div className="level-right">
+            <div className="level-item">
+              <div className="is-garamond is-italic is-size-5 pr-1">
+                {storyId(story)}
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </section>
   )
 }

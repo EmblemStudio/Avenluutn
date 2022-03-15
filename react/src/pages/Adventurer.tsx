@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import useNarratorState from '../hooks/useNarratorState'
 import useAdventurer from '../hooks/useAdventurer'
-import useUser from '../hooks/useUser'
-import { storyId, storyName, updateUserFromNarrator, outcomeString, storyCategory, StoryCategory } from '../utils'
+import { storyId, outcomeString, storyCategory, StoryCategory, Story } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { nameString } from '../../../scripts/src/content/loot'
 import AdventurerHeader from '../components/AdventurerHeader'
@@ -20,13 +19,43 @@ interface AdventurerParams {
 
 export default ({ graveyard }: AdventurerParams) => {
   const { narrator } = useNarratorState()
-  console.log(narrator, narrator.collections.length)
-  const { user, setUser } = useUser()
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
+  const [stories, setStories] = useState<Story[]>([])
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    updateUserFromNarrator(user, narrator, setUser)
-  }, [narrator])
+    const stories: Story[] = []
+    for (const id in narrator.stories) {
+      const story = narrator.stories[id]
+      let includesAdv = false
+      story?.text.party.forEach(adv => {
+        if (adv.id === adventurer?.id) includesAdv = true
+      })
+      if (includesAdv) stories.push(story)
+    }
+    setStories(stories)
+  }, [narrator, adventurer])
+
+  // redirect if we've linked to an adventurer who is now dead or vice versa
+  useEffect(() => {
+    if (guild !== null) {
+      const newPathArr = pathname.split("/")
+      if (
+        graveyard === false &&
+        adventurer === null
+      ) {
+        newPathArr[2] = "graveyard"
+        navigate(newPathArr.join("/"))
+      } else if (
+        graveyard === true &&
+        adventurer === null
+      ) {
+        newPathArr[2] = "adventurers"
+        navigate(newPathArr.join("/"))
+      }
+    }
+  }, [narrator, adventurer, guild])
 
   if (adventurer === null || guild == null) return (
     <nav className="level">
@@ -40,7 +69,12 @@ export default ({ graveyard }: AdventurerParams) => {
 
   return (
     <>
-      <AdventurerHeader name={nameString(adventurer.name)} class_={adventurer.class.join("")} graveyard={graveyard} />
+      <AdventurerHeader
+        name={nameString(adventurer.name)}
+        class_={adventurer.class.join("")}
+        graveyard={graveyard}
+        lastStory={[...stories].pop()}
+      />
       <div className="block p-4">
         <div>
           {"Pronouns: "}
@@ -114,29 +148,28 @@ export default ({ graveyard }: AdventurerParams) => {
             </>
           </Expander>
         }
-        <Expander text="Stories">
-          <>
-            {adventurer.stories.map((s, i) => {
-              const [startTime, storyIndex] = s
-              const collectionIndex = Math.floor((startTime - narrator.start.toNumber()) / narrator.collectionSpacing.toNumber())
-              const story = narrator.stories[storyId(collectionIndex, storyIndex)]
-              const category = storyCategory(narrator, story)
-              return (
-                <div key={i}>
-                  <Link to={`/${guild.id}/stories/${collectionIndex}`}>
-                    <span className="has-text-white is-underlined">
-                      {storyName(story)}
-                    </span>
-                  </Link>
-                  {` – ${outcomeString(
-                    story.text.finalOutcome,
-                    category === StoryCategory.onAuction || category === StoryCategory.completed
-                  )}`}
-                </div>
-              )
-            })}
-          </>
-        </Expander>
+        {stories.length > 0 &&
+          <Expander text="Stories">
+            <>
+              {stories.map((story, i) => {
+                const category = storyCategory(narrator, story)
+                return (
+                  <div key={i}>
+                    <Link to={`/${guild.id}/stories/${story.collectionIndex}`}>
+                      <span className="has-text-white is-underlined">
+                        {storyId(story)}
+                      </span>
+                    </Link>
+                    {` – ${outcomeString(
+                      story.text.finalOutcome,
+                      category === StoryCategory.onAuction || category === StoryCategory.completed
+                    )}`}
+                  </div>
+                )
+              })}
+            </>
+          </Expander>
+        }
       </div>
     </>
   )

@@ -1,0 +1,3485 @@
+STORY 0-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Karkowa District
+, 
+Samuel Davis, 
+David Lennon, 
+and 
+Zabbas Araujo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+voracious
+ doctor
+ at the 
+Can-ton 
+valley
+.
+On the road there, 
+they 
+came across 
+some 
+many-eyed
+ brigands
+.
+After 
+a fraught 
+contest
+, they 
+defeated
+ the 
+brigands
+.
+Zabbas Araujo
+ learned 
+Investigation
+!
+Zabbas Araujo
+ had his confidence shaken.
+They 
+arrived at the 
+Can-ton
+ valley
+, where 
+they 
+were confronted by 
+a 
+voracious
+ doctor
+.
+After 
+a bungled 
+audience
+, they 
+offended
+ the 
+doctor
+.
+David Lennon
+ had her confidence shaken.
+Zabbas Araujo
+ found 
+Long Sword
+!
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-1 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Bella Yearwood, 
+Olympia Donkervoort, 
+and 
+Malok Kiss 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+invisible
+, 
+jovial
+ egregore
+ "Yule Clopse"
+ at the 
+Headless 
+pass
+.
+During the journey, 
+they 
+stumbled upon 
+a 
+diurnal
+ maze
+.
+After 
+a grueling 
+hundred guesses
+, they 
+found a way through
+ the 
+maze
+.
+Olympia Donkervoort
+ now has 
+quick-wit
+!
+While traveling, 
+they 
+discovered 
+a 
+nocturnal
+, impossible
+ dead end
+.
+After 
+a strenuous 
+hundred guesses
+, they 
+figured out
+ the 
+dead end
+.
+Bella Yearwood
+ found 
+Demonhide Boots
+!
+Olympia Donkervoort
+ found 
+Crown
+!
+Malok Kiss
+ found 
+Book of Skill
+!
+Next, 
+they 
+were blocked by 
+the 
+decrepit
+, renowned
+ maze
+ "Vivisected Butcher"
+.
+After 
+a misguided 
+brainstorm
+, they 
+found no way through
+ the 
+maze
+.
+Bella Yearwood
+ now has 
+optimistism
+!
+Olympia Donkervoort
+ suffered slash wounds.
+Malok Kiss
+ had her arm crushed.
+Malok Kiss
+ dislocated her shoulder.
+Malok Kiss
+ now has 
+gambling addiction
+!
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+Malok Kiss
+ now has 
+a prosthetic arm
+!
+Malok Kiss
+ now has 
+weakness
+!
+nextUpdateTime: -1
+STORY 0-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+Raft Town
+, 
+Satoshi from Borkowska, 
+Amou Skotnik, 
+and 
+Chalia Yellen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+, 
+luminous
+ fiend
+ at the 
+Geometric 
+valley
+.
+After going some distance, 
+they 
+were blocked by 
+a 
+lightless
+ puzzlebox
+.
+After 
+an exhausting 
+attempt
+, they 
+failed to solve
+ the 
+puzzlebox
+.
+Satoshi from Borkowska
+ found 
+Divine Slippers of Reflection
+!
+Chalia Yellen
+ was cursed.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-3 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+Hilarij October, 
+Monica Lincoln, 
+and 
+James Quenneville 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+succulent
+, 
+empowered
+ outskirts
+ at the 
+Macrosign 
+valley
+.
+Following the path, 
+they 
+stumbled upon 
+an 
+invisible
+ maze
+.
+After 
+a rough 
+attempt
+, they 
+failed to figure out
+ the 
+maze
+.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-4 
+
+At 
+Hall of Heads
+ in 
+the basement of Porcine Castle
+, 
+Svatava Zhao, 
+Patrick first of Lennon, 
+Geoffrey Sos, 
+and 
+Evan Finnegan the Bastard 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+invisible
+ wyrm
+ at the 
+Darshish 
+forest
+.
+During the journey, 
+they 
+met 
+an 
+entrancing
+ bird folk
+.
+After 
+a strenuous 
+contest
+, they 
+moved on from
+ the 
+bird folk
+.
+Geoffrey Sos
+ dislocated his shoulder.
+Geoffrey Sos
+ was frightened half to death.
+Evan Finnegan the Bastard
+ found 
+Dragonskin Belt
+!
+They 
+arrived at the 
+Darshish
+ forest
+, where 
+they 
+snuck up on 
+an 
+invisible
+ wyrm
+.
+After 
+a testing 
+contest
+, they 
+overpowered
+ the 
+wyrm
+.
+Svatava Zhao
+ dislocated her shoulder.
+Patrick first of Lennon
+ learned 
+Ancient Lore
+!
+Geoffrey Sos
+ found 
+Full Helm of Giants
+!
+Evan Finnegan the Bastard
+ found 
+Necklace
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-5 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Marcus from Vespertine, 
+Malok Berg, 
+Ravil Nigiri, 
+and 
+Patricia Bazhenov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+violent
+, 
+ancient
+ sanctum
+ "Melifluent Osprin"
+ at the 
+Darshish 
+village
+.
+Following the path, 
+they 
+had to solve 
+a 
+voracious
+ locked gate
+.
+After 
+an exhausting 
+brainstorm
+, they 
+failed to solve
+ the 
+locked gate
+.
+Malok Berg
+ now has 
+a prosthetic arm
+!
+Ravil Nigiri
+ got fried nerves.
+Patricia Bazhenov
+ had his confidence shaken.
+The adventurers 
+slunk back to 
+Cherished Heart Temple
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Karkowa District
+, 
+Amou Melo, 
+Lachlan Melo, 
+Hilarij Zhao, 
+Geoffrey Yearwood, 
+and 
+Sarah Yellen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+diurnal
+, 
+horrifying
+ egregore
+ "Carcosan Butcher"
+ at the 
+Headless 
+desert
+.
+While investigating the area, 
+they 
+discovered 
+an 
+entrancing
+ river
+.
+After 
+a fraught 
+trek
+, they 
+crossed
+ the 
+river
+.
+Lachlan Melo
+ now has 
+monsterphobia
+!
+Lachlan Melo
+ learned 
+Marketing
+!
+Geoffrey Yearwood
+ found 
+Demon Husk
+!
+Sarah Yellen
+ found 
+Silk Sash
+!
+Following the path, 
+they 
+met 
+a 
+crepuscular
+, irresistible
+ bird folk
+.
+After 
+an epic 
+contest
+, they 
+defeated
+ the 
+bird folk
+.
+Amou Melo
+ found 
+Linen Sash of Brilliance
+!
+Hilarij Zhao
+ was frightened half to death.
+Geoffrey Yearwood
+ found 
+Holy Greaves of Skill
+!
+Sarah Yellen
+ found 
+Studded Leather Gloves
+!
+In transit, 
+they 
+were confronted by 
+the 
+voracious
+, irridescent
+ elemental
+ "Edible Osprin"
+.
+After 
+a strong 
+game of wits
+, they 
+parted ways with
+ the 
+elemental
+.
+Lachlan Melo
+ was frightened half to death.
+Lachlan Melo
+ found 
+Ornate Helm
+!
+Hilarij Zhao
+ learned 
+Disguise
+!
+Geoffrey Yearwood
+ found 
+Plated Belt
+!
+Sarah Yellen
+ found 
+Gauntlets
+!
+In transit, 
+they 
+came across 
+the 
+crepuscular
+, grotesque
+ bird folk
+ "Victorious Fecund"
+.
+After 
+a testing 
+stand off
+, they 
+moved on from
+ the 
+bird folk
+.
+Amou Melo
+ found 
+Gold Ring
+!
+Amou Melo
+ found 
+Amulet
+!
+Lachlan Melo
+ had his confidence shaken.
+Lachlan Melo
+ broke his leg.
+Hilarij Zhao
+ bruised their ribs.
+Geoffrey Yearwood
+ learned 
+Streetwise
+!
+Sarah Yellen
+ now has 
+greed
+!
+They 
+arrived at the 
+Headless
+ desert
+, where 
+they 
+stumbled upon 
+the 
+diurnal
+, horrifying
+ egregore
+ "Carcosan Butcher"
+.
+After 
+a hard-earned 
+infiltration
+, they 
+returned with
+ the 
+egregore
+.
+Amou Melo 
+used his 
+Politics 
+skills!
+Amou Melo
+ learned 
+Swordskill
+!
+Amou Melo
+ had his confidence shaken.
+Lachlan Melo
+ found 
+Divine Hood
+!
+Lachlan Melo
+ had his confidence shaken.
+Hilarij Zhao
+ was stabbed in the torso.
+Hilarij Zhao
+ was knocked out.
+Geoffrey Yearwood
+ suffered slash wounds.
+Sarah Yellen
+ learned 
+Portraiture
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+Amou Melo
+ now has 
+self-doubt
+!
+nextUpdateTime: -1
+STORY 1-1 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Barbara Mikulanc, 
+Efraim Beckett, 
+Grace sixth of Woodd Jr., 
+and 
+Stani Maciejewska 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+nocturnal
+, 
+irridescent
+ ogre
+ "Mighty Butcher"
+ at the 
+Boreal 
+sea
+.
+Venturing forth, 
+they 
+were confronted by 
+a 
+sharp
+ elemental
+.
+After 
+a challenging 
+contest
+, they 
+moved on from
+ the 
+elemental
+.
+Grace sixth of Woodd Jr.
+ now has 
+unluckiness
+!
+Stani Maciejewska
+ found 
+Ornate Greaves
+!
+Stani Maciejewska
+ found 
+Hood
+!
+In transit, 
+they 
+came across 
+a 
+decrepit
+, jovial
+ beast
+.
+After 
+a testing 
+contest
+, they 
+passed by
+ the 
+beast
+.
+Barbara Mikulanc
+ found 
+Amulet of Enlightenment
+!
+Efraim Beckett
+ found 
+Leather Boots of Anger
+!
+Grace sixth of Woodd Jr.
+ now has 
+gambling addiction
+!
+Stani Maciejewska
+ broke his leg.
+Following the path, 
+they 
+met 
+the 
+violent
+, black-hearted
+ brigands
+ "Xtophila Marauder"
+.
+After 
+a hard-earned 
+contest
+, they 
+defeated
+ the 
+brigands
+.
+Efraim Beckett
+ learned 
+Metallurgy
+!
+Efraim Beckett
+ had their arm crushed.
+Grace sixth of Woodd Jr.
+ found 
+Gloves
+!
+In search of the goal, 
+they 
+met 
+the 
+decrepit
+, renowned
+ brigands
+ "Melifluent Howler"
+.
+After 
+a bungled 
+stand off
+, they 
+were driven back by
+ the 
+brigands
+.
+Barbara Mikulanc
+ now has 
+anxiety
+!
+Efraim Beckett
+ found 
+"Pandemonium Grasp" Ornate Chestplate of Rage +1
+!
+Grace sixth of Woodd Jr.
+ got fried nerves.
+Grace sixth of Woodd Jr.
+ got blasted eardrums.
+Stani Maciejewska
+ had his confidence shaken.
+Stani Maciejewska
+ had his arm crushed.
+The adventurers 
+slunk back to 
+Cult of 973
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+Raft Town
+, 
+Jhaan da Huxley, 
+Malok Pinette, 
+Grace Hines, 
+and 
+Count David Stornik 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+diurnal
+ mindscape
+ at the 
+Craven 
+pass
+.
+In search of the goal, 
+they 
+came across 
+a 
+sharp
+ tunnel dweller
+.
+After 
+a triumphant 
+game of wits
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Jhaan da Huxley
+ now has 
+self-doubt
+!
+Malok Pinette
+ had her arm crushed.
+Count David Stornik
+ found 
+Bronze Ring of Skill
+!
+They 
+arrived at the 
+Craven
+ pass
+, where 
+they 
+discovered 
+a 
+diurnal
+ mindscape
+.
+After 
+an epic 
+battle
+, they 
+protected
+ the 
+mindscape
+.
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-3 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+Caspian Pelletier, 
+Michael Hendrix, 
+Hilarij October, 
+and 
+Kerstin Lopez 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+crepuscular
+, 
+fearsome
+ giant spider
+ at the 
+Boreal 
+market
+.
+In search of the goal, 
+they 
+snuck up on 
+a 
+many-eyed
+ tunnel dweller
+.
+After 
+a challenging 
+game of wits
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Michael Hendrix 
+used their 
+Swimming 
+skills!
+Michael Hendrix
+ learned 
+Haberdashery
+!
+Michael Hendrix
+ found 
+Silk Slippers
+!
+Hilarij October
+ now has 
+dragon obsession
+!
+In search of the goal, 
+they 
+were confronted by 
+a 
+many-eyed
+, luminous
+ tunnel dweller
+.
+After 
+a fraught 
+stand off
+, they 
+moved on from
+ the 
+tunnel dweller
+.
+Michael Hendrix
+ found 
+Titanium Ring
+!
+They 
+arrived at the 
+Boreal
+ market
+, where 
+they 
+snuck up on 
+a 
+crepuscular
+, fearsome
+ giant spider
+.
+After 
+a rough 
+battle
+, they 
+were defeated by
+ the 
+giant spider
+.
+Caspian Pelletier
+ had their arm crushed.
+Caspian Pelletier
+ was stabbed in the torso.
+Michael Hendrix
+ found 
+Pendant
+!
+Kerstin Lopez
+ broke her leg.
+Kerstin Lopez
+ had her arm crushed.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-4 
+
+At 
+Hall of Heads
+ in 
+the basement of Porcine Castle
+, 
+Fortinbras K, 
+Patrick first of Lennon, 
+Sam chadde Ashbluff, 
+and 
+Samuel de la Vespertine 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+, 
+irridescent
+ fiend
+ at the 
+Boreal 
+village
+.
+Pushing forward, 
+they 
+came across 
+a 
+crepuscular
+ bird folk
+.
+After 
+a strong 
+game of wits
+, they 
+moved on from
+ the 
+bird folk
+.
+Sam chadde Ashbluff
+ learned 
+Baking
+!
+Samuel de la Vespertine
+ now has 
+anxiety
+!
+While investigating the area, 
+they 
+met 
+some 
+crepuscular
+, impossible
+ brigands
+.
+After 
+a trying 
+game of wits
+, they 
+passed by
+ the 
+brigands
+.
+Patrick first of Lennon
+ was frightened half to death.
+They 
+arrived at the 
+Boreal
+ village
+, where 
+they 
+were confronted by 
+a 
+crepuscular
+, irridescent
+ fiend
+.
+After 
+a trying 
+audience
+, they 
+found common ground with
+ the 
+fiend
+.
+Patrick first of Lennon
+ was stabbed in the torso.
+Sam chadde Ashbluff
+ found 
+Chain Boots
+!
+Sam chadde Ashbluff
+ found 
+Silk Gloves
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-5 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+John Crassus, 
+Angor Hornblower, 
+Mackenzie Kulechov, 
+and 
+Malok Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+ doctor
+ at the 
+Macrosign 
+desert
+.
+Pushing forward, 
+they 
+were blocked by 
+a 
+violent
+ hedge
+.
+After 
+a hard-earned 
+trek
+, they 
+overcame
+ the 
+hedge
+.
+Angor Hornblower
+ found 
+Robe
+!
+They 
+arrived at the 
+Macrosign
+ desert
+, where 
+they 
+were ambushed by 
+a 
+crepuscular
+ doctor
+.
+After 
+a fraught 
+conversation
+, they 
+found common ground with
+ the 
+doctor
+.
+Malok Berg 
+used *depPossessive* prosthetic arm!
+John Crassus
+ dislocated her shoulder.
+Mackenzie Kulechov
+ now has 
+gambling addiction
+!
+Malok Berg
+ now has 
+monsterphobia
+!
+The adventurers 
+returned to 
+Cherished Heart Temple
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Karkowa District
+, 
+Zabbas Araujo, 
+Patrick Hermanns, 
+Lachlan Melo, 
+and 
+Domonkos Vespertine 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+, 
+renowned
+ warlock
+ "Xtophila Limpet"
+ at the 
+Boreal 
+pass
+.
+On the road there, 
+they 
+were confronted with 
+a 
+succulent
+ cliff
+.
+After 
+a strenuous 
+attempt
+, they 
+overcame
+ the 
+cliff
+.
+Domonkos Vespertine 
+used his 
+Baking 
+skills!
+Domonkos Vespertine
+ bruised his ribs.
+Following the path, 
+they 
+discovered 
+a 
+many-eyed
+, fearsome
+ cliff
+.
+After 
+a challenging 
+exertion
+, they 
+crossed
+ the 
+cliff
+.
+Domonkos Vespertine
+ now has 
+cowardice
+!
+On the way, 
+they 
+discovered 
+the 
+sharp
+, unspeakable
+ puzzlebox
+ "Victorious Howler"
+.
+After 
+a challenging 
+attempt
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Lachlan Melo
+ learned 
+Baking
+!
+Domonkos Vespertine
+ found 
+Leather Belt
+!
+They 
+arrived at the 
+Boreal
+ pass
+, where 
+they 
+were ambushed by 
+the 
+decrepit
+, renowned
+ warlock
+ "Xtophila Limpet"
+.
+After 
+a misguided 
+contest
+, they 
+were defeated by
+ the 
+warlock
+.
+Zabbas Araujo
+ was cursed.
+Zabbas Araujo
+ got blasted eardrums.
+Patrick Hermanns
+ suffered slash wounds.
+Patrick Hermanns
+ was stabbed in the torso.
+Lachlan Melo
+ got blasted eardrums.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+Domonkos Vespertine
+ now has 
+weakness
+!
+nextUpdateTime: -1
+STORY 2-1 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Monica Bunker, 
+Bella Yearwood, 
+Karl Lincoln, 
+and 
+Stani Maciejewska 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+succulent
+ doctor
+ at the 
+Boreal 
+sea
+.
+Before reaching the destination, 
+they 
+stumbled upon 
+a 
+violent
+ river
+.
+After 
+a fraught 
+exertion
+, they 
+crossed
+ the 
+river
+.
+Monica Bunker
+ now has 
+elegance
+!
+Bella Yearwood
+ found 
+Robe
+!
+They 
+arrived at the 
+Boreal
+ sea
+, where 
+they 
+came across 
+a 
+succulent
+ doctor
+.
+After 
+an epic 
+introduction
+, they 
+gained favor with
+ the 
+doctor
+.
+Monica Bunker
+ found 
+Gold Ring
+!
+Monica Bunker
+ learned 
+Swordskill
+!
+Bella Yearwood
+ had his arm crushed.
+Bella Yearwood
+ was cursed.
+Karl Lincoln
+ bruised his ribs.
+Stani Maciejewska
+ found 
+Ornate Gauntlets of the Fox
+!
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+Bella Yearwood
+ now has 
+a prosthetic arm
+!
+nextUpdateTime: -1
+STORY 2-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+Raft Town
+, 
+Patrick Ermakov, 
+Amou Skotnik, 
+Marcus from Vespertine, 
+Jhaan da Huxley, 
+and 
+Fabien Sandgreen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+invisible
+, 
+ferocious
+ mindscape
+ at the 
+Illusid 
+summit
+.
+Next, 
+they 
+discovered 
+a 
+nocturnal
+ hedge
+.
+After 
+a successful 
+exertion
+, they 
+overcame
+ the 
+hedge
+.
+Patrick Ermakov
+ found 
+Holy Chestplate
+!
+Patrick Ermakov
+ now has 
+great destiny
+!
+Jhaan da Huxley
+ was cursed.
+After going some distance, 
+they 
+discovered 
+an 
+invisible
+, ravenous
+ canyon
+.
+After 
+a powerful 
+trek
+, they 
+overcame
+ the 
+canyon
+.
+Patrick Ermakov
+ now has 
+great destiny
+!
+Amou Skotnik
+ found 
+Necklace
+!
+Amou Skotnik
+ found 
+Ancient Helm of Reflection
+!
+Marcus from Vespertine
+ now has 
+monsterphobia
+!
+Jhaan da Huxley
+ found 
+Short Sword of Giants
+!
+Fabien Sandgreen
+ found 
+Crown of Vitriol
+!
+They 
+arrived at the 
+Illusid
+ summit
+, where 
+they 
+were confronted with 
+an 
+invisible
+, ferocious
+ mindscape
+.
+After 
+a strong 
+overwatch
+, they 
+defended
+ the 
+mindscape
+.
+Jhaan da Huxley 
+used her 
+Hard Leather Armor of Detection
+!
+Patrick Ermakov
+ found 
+Silk Slippers
+!
+Amou Skotnik
+ found 
+War Cap
+!
+Amou Skotnik
+ found 
+Holy Gauntlets
+!
+Jhaan da Huxley
+ found 
+Titanium Ring
+!
+Fabien Sandgreen
+ now has 
+deafness
+!
+The adventurers 
+returned triumphantly to 
+Royal Orchestra Theatre
+, basking in glory.
+nextUpdateTime: -1
+STORY 2-3 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+James Quenneville, 
+Hilarij October, 
+Monica Lincoln, 
+Caspian Pelletier, 
+and 
+His Grace Rosvita Gousse 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+hideous
+ ruins
+ at the 
+Jarred 
+pass
+.
+Soon enough, 
+they 
+stumbled upon 
+an 
+entrancing
+ cliff
+.
+After 
+a hard-earned 
+trek
+, they 
+traversed
+ the 
+cliff
+.
+Hilarij October
+ got blasted eardrums.
+Monica Lincoln
+ now has 
+weakness
+!
+Monica Lincoln
+ suffered slash wounds.
+Caspian Pelletier
+ now has 
+dragon obsession
+!
+In transit, 
+they 
+were blocked by 
+a 
+voracious
+, magical
+ cliff
+.
+After 
+a fraught 
+trek
+, they 
+traversed
+ the 
+cliff
+.
+James Quenneville
+ found 
+Amulet
+!
+Hilarij October
+ got fried nerves.
+Monica Lincoln
+ found 
+Long Sword of Perfection
+!
+Caspian Pelletier
+ was stabbed in the torso.
+His Grace Rosvita Gousse
+ found 
+Ornate Chestplate
+!
+His Grace Rosvita Gousse
+ dislocated her shoulder.
+They 
+arrived at the 
+Jarred
+ pass
+, where 
+they 
+were blocked by 
+some 
+sharp
+, hideous
+ ruins
+.
+After 
+a grueling 
+reconnoiter
+, they 
+successfully navigated
+ the 
+ruins
+.
+James Quenneville
+ found 
+Cap of the Fox
+!
+Monica Lincoln
+ found 
+Plate Mail
+!
+Caspian Pelletier
+ learned 
+Ancient Lore
+!
+Caspian Pelletier
+ found 
+Falchion of Perfection
+!
+His Grace Rosvita Gousse
+ suffered slash wounds.
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+Hilarij October
+ now has 
+deafness
+!
+nextUpdateTime: -1
+STORY 2-4 
+
+At 
+Hall of Heads
+ in 
+the basement of Porcine Castle
+, 
+Daniel Karlsen, 
+Jessica Nakamoto, 
+Susan Mintz, 
+Geoffrey Sos, 
+and 
+Svatava Zhao 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+sharp
+, 
+renowned
+ psychopomp
+ "Edible Quartzile"
+ at the 
+Craven 
+valley
+.
+On the road there, 
+they 
+discovered 
+a 
+crepuscular
+ canyon
+.
+After 
+an easy 
+attempt
+, they 
+overcame
+ the 
+canyon
+.
+Daniel Karlsen
+ found 
+Tome
+!
+Geoffrey Sos
+ found 
+Linen Sash
+!
+On the way, 
+they 
+stumbled upon 
+a 
+sharp
+, ancient
+ canyon
+.
+After 
+a trying 
+exertion
+, they 
+overcame
+ the 
+canyon
+.
+Jessica Nakamoto
+ found 
+"Storm Glow" Heavy Boots of Skill
+!
+Jessica Nakamoto
+ learned 
+Arcane Arts
+!
+Susan Mintz
+ found 
+Pendant
+!
+Geoffrey Sos
+ learned 
+Swimming
+!
+While traveling, 
+they 
+had to solve 
+the 
+violent
+, horrifying
+ maze
+ "Mighty Hunter"
+.
+After 
+an easy 
+attempt
+, they 
+solved
+ the 
+maze
+.
+Daniel Karlsen
+ found 
+Divine Gloves
+!
+Daniel Karlsen
+ found 
+Dragonskin Armor
+!
+Jessica Nakamoto
+ found 
+Studded Leather Belt
+!
+Jessica Nakamoto
+ was stabbed in the torso.
+Geoffrey Sos
+ now has 
+trauma
+!
+Geoffrey Sos
+ found 
+Amulet
+!
+Svatava Zhao
+ found 
+Katana of Skill
+!
+They 
+arrived at the 
+Craven
+ valley
+, where 
+they 
+came across 
+the 
+sharp
+, renowned
+ psychopomp
+ "Edible Quartzile"
+.
+After 
+a strenuous 
+battle
+, they 
+overpowered
+ the 
+psychopomp
+.
+Daniel Karlsen
+ learned 
+Tracking
+!
+Jessica Nakamoto
+ found 
+Chain Boots
+!
+Susan Mintz
+ died.
+Geoffrey Sos
+ found 
+Divine Hood of Protection
+!
+Geoffrey Sos
+ found 
+Amulet
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-5 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+John Crassus, 
+Patricia Bazhenov, 
+John Schneider, 
+Ed Nigiri, 
+and 
+Caspian October 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+ nephilim
+ at the 
+Geometric 
+valley
+.
+Soon enough, 
+they 
+stumbled upon 
+a 
+sharp
+ dead end
+.
+After 
+a breezy 
+attempt
+, they 
+found a way through
+ the 
+dead end
+.
+John Crassus
+ was cursed.
+Caspian October
+ suffered slash wounds.
+They 
+arrived at the 
+Geometric
+ valley
+, where 
+they 
+were ambushed by 
+an 
+entrancing
+ nephilim
+.
+After 
+an epic 
+audience
+, they 
+gained favor with
+ the 
+nephilim
+.
+John Crassus
+ now has 
+monsterphobia
+!
+The adventurers 
+returned to 
+Cherished Heart Temple
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Karkowa District
+, 
+Lachlan Melo, 
+Zabbas Araujo, 
+and 
+Sarah Yellen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+invisible
+, 
+fearsome
+ doctor
+ "Blistered Nail"
+ at the 
+Can-ton 
+city
+.
+Soon enough, 
+they 
+were blocked by 
+an 
+invisible
+ maze
+.
+After 
+a misjudged 
+attempt
+, they 
+failed to solve
+ the 
+maze
+.
+Lachlan Melo
+ got blasted eardrums.
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-1 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Bella Yearwood, 
+Efraim Beckett, 
+and 
+Monica Bunker 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+ egregore
+ at the 
+Headless 
+city
+.
+After going some distance, 
+they 
+were blocked by 
+a 
+lightless
+ canyon
+.
+After 
+a strenuous 
+trek
+, they 
+traversed
+ the 
+canyon
+.
+Monica Bunker
+ found 
+Holy Greaves
+!
+They 
+arrived at the 
+Headless
+ city
+, where 
+they 
+discovered 
+a 
+lightless
+ egregore
+.
+After 
+a hard-earned 
+infiltration
+, they 
+acquired
+ the 
+egregore
+.
+Bella Yearwood
+ had his arm crushed.
+Bella Yearwood
+ found 
+Long Sword of Perfection
+!
+Monica Bunker
+ suffered slash wounds.
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+Monica Bunker
+ now has 
+martyr complex
+!
+nextUpdateTime: -1
+STORY 3-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+Raft Town
+, 
+Satoshi from Borkowska, 
+Ophelia Nilsson, 
+and 
+Malok Pinette 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+succulent
+, 
+grotesque
+ sanctum
+ "Diphonic Hunter"
+ at the 
+Geometric 
+city
+.
+On the road there, 
+they 
+had to solve 
+an 
+entrancing
+ locked gate
+.
+After 
+a testing 
+hundred guesses
+, they 
+found a way through
+ the 
+locked gate
+.
+Satoshi from Borkowska
+ found 
+Studded Leather Boots
+!
+In transit, 
+they 
+discovered 
+an 
+invisible
+, unsettling
+ cliff
+.
+After 
+a grueling 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Satoshi from Borkowska
+ got fried nerves.
+Ophelia Nilsson
+ learned 
+Swordskill
+!
+Malok Pinette
+ found 
+Ghost Wand
+!
+While investigating the area, 
+they 
+met 
+the 
+diurnal
+, hideous
+ bird folk
+ "Xtophila Quartzile"
+.
+After 
+a hard-earned 
+contest
+, they 
+moved on from
+ the 
+bird folk
+.
+Satoshi from Borkowska
+ dislocated his shoulder.
+Satoshi from Borkowska
+ found 
+Ornate Greaves of Skill
+!
+Ophelia Nilsson
+ learned 
+Disguise
+!
+Ophelia Nilsson
+ got blasted eardrums.
+Malok Pinette
+ found 
+Holy Greaves
+!
+During the journey, 
+they 
+stumbled upon 
+the 
+sharp
+, deathly
+ cliff
+ "Yule Fecund"
+.
+After 
+a strenuous 
+attempt
+, they 
+overcame
+ the 
+cliff
+.
+Satoshi from Borkowska
+ found 
+Gold Ring
+!
+Ophelia Nilsson
+ found 
+Silk Gloves
+!
+Malok Pinette
+ was stabbed in the torso.
+Malok Pinette
+ suffered slash wounds.
+They 
+arrived at the 
+Geometric
+ city
+, where 
+they 
+were blocked by 
+the 
+succulent
+, grotesque
+ sanctum
+ "Diphonic Hunter"
+.
+After 
+a misguided 
+overwatch
+, they 
+failed to defend
+ the 
+sanctum
+.
+Satoshi from Borkowska
+ died.
+Ophelia Nilsson
+ broke his leg.
+Ophelia Nilsson
+ learned 
+Swimming
+!
+Malok Pinette
+ had her confidence shaken.
+Malok Pinette
+ was knocked out.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-3 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+Svatava Jenkins, 
+Michael Hendrix, 
+and 
+James Quenneville 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+diurnal
+ outskirts
+ at the 
+Macrosign 
+crypt
+.
+In search of the goal, 
+they 
+were confronted with 
+a 
+lightless
+ waste
+.
+After 
+a challenging 
+trek
+, they 
+crossed
+ the 
+waste
+.
+Michael Hendrix 
+used their 
+Swimming 
+skills!
+Michael Hendrix
+ had their arm crushed.
+They 
+arrived at the 
+Macrosign
+ crypt
+, where 
+they 
+were blocked by 
+some 
+diurnal
+ outskirts
+.
+After 
+a trying 
+overwatch
+, they 
+safe-guarded
+ the 
+outskirts
+.
+Svatava Jenkins
+ learned 
+Archery
+!
+James Quenneville
+ learned 
+Investigation
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-4 
+
+At 
+Hall of Heads
+ in 
+the basement of Porcine Castle
+, 
+Evan Finnegan the Bastard, 
+Fortinbras K, 
+Filippa Chibugo, 
+Her Majesty Vesryn Monroe, 
+and 
+Samuel de la Vespertine 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+voracious
+, 
+hideous
+ fiend
+ at the 
+Craven 
+pass
+.
+Before reaching the destination, 
+they 
+were ambushed by 
+a 
+crepuscular
+ beast
+.
+After 
+a grueling 
+stand off
+, they 
+parted ways with
+ the 
+beast
+.
+Fortinbras K
+ learned 
+Navigation
+!
+Filippa Chibugo
+ learned 
+Tracking
+!
+Her Majesty Vesryn Monroe
+ now has 
+quick-wit
+!
+Samuel de la Vespertine
+ found 
+Holy Gauntlets
+!
+Venturing forth, 
+they 
+were confronted by 
+a 
+voracious
+, renowned
+ elemental
+.
+After 
+a strenuous 
+battle
+, they 
+parted ways with
+ the 
+elemental
+.
+Evan Finnegan the Bastard
+ was cursed.
+Evan Finnegan the Bastard
+ learned 
+Ropework
+!
+Filippa Chibugo
+ found 
+Necklace of Titans
+!
+Her Majesty Vesryn Monroe
+ dislocated his shoulder.
+They 
+arrived at the 
+Craven
+ pass
+, where 
+they 
+met 
+a 
+voracious
+, hideous
+ fiend
+.
+After 
+a grueling 
+introduction
+, they 
+struck a deal with
+ the 
+fiend
+.
+Samuel de la Vespertine 
+used his 
+Deception 
+skills!
+Evan Finnegan the Bastard
+ suffered slash wounds.
+Evan Finnegan the Bastard
+ was frightened half to death.
+Fortinbras K
+ found 
+Grave Wand
+!
+Filippa Chibugo
+ found 
+Ghost Wand
+!
+Filippa Chibugo
+ had her arm crushed.
+Samuel de la Vespertine
+ now has 
+martyr complex
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-5 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Angor Hornblower, 
+Mackenzie Kulechov, 
+Ravil Nigiri, 
+Malok Berg, 
+and 
+Ed Nigiri 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+, 
+ferocious
+ warlock
+ at the 
+Can-ton 
+valley
+.
+Before reaching the destination, 
+they 
+were ambushed by 
+a 
+crepuscular
+ beast
+.
+After 
+a strenuous 
+game of wits
+, they 
+moved on from
+ the 
+beast
+.
+Mackenzie Kulechov
+ found 
+Divine Robe
+!
+Ravil Nigiri
+ learned 
+Portraiture
+!
+Ed Nigiri
+ found 
+Linen Sash
+!
+While investigating the area, 
+they 
+were ambushed by 
+some 
+violent
+, ravenous
+ brigands
+.
+After 
+an epic 
+battle
+, they 
+moved on from
+ the 
+brigands
+.
+Angor Hornblower
+ was cursed.
+Angor Hornblower
+ now has 
+gambling addiction
+!
+Ravil Nigiri
+ had her confidence shaken.
+Malok Berg
+ got fried nerves.
+Ed Nigiri
+ now has 
+self-doubt
+!
+Ed Nigiri
+ got fried nerves.
+They 
+arrived at the 
+Can-ton
+ valley
+, where 
+they 
+were confronted by 
+a 
+violent
+, ferocious
+ warlock
+.
+After 
+a breezy 
+battle
+, they 
+bested
+ the 
+warlock
+.
+Angor Hornblower
+ now has 
+deafness
+!
+Angor Hornblower
+ found 
+Demonhide Boots
+!
+Mackenzie Kulechov
+ found 
+Linen Robe
+!
+Ravil Nigiri
+ now has 
+weakness
+!
+Malok Berg
+ had their confidence shaken.
+Malok Berg
+ got blasted eardrums.
+Malok Berg
+ found 
+Demon Husk
+!
+Ed Nigiri
+ learned 
+Deception
+!
+The adventurers 
+returned triumphantly to 
+Cherished Heart Temple
+, basking in glory.
+nextUpdateTime: -1
+STORY 4-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Karkowa District
+, 
+Sarah Yellen, 
+Zabbas Araujo, 
+Bolethe Torma, 
+and 
+Domonkos Vespertine 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+, 
+ancient
+ priest
+ at the 
+Can-ton 
+sea
+.
+After going some distance, 
+they 
+came across 
+a 
+violent
+ beast
+.
+After 
+a testing 
+battle
+, they 
+parted ways with
+ the 
+beast
+.
+Bolethe Torma
+ found 
+Titanium Ring of the Fox
+!
+On the road there, 
+they 
+had to solve 
+a 
+voracious
+, horrifying
+ maze
+.
+After 
+a fraught 
+attempt
+, they 
+found a way through
+ the 
+maze
+.
+Sarah Yellen
+ suffered slash wounds.
+Zabbas Araujo
+ found 
+Necklace
+!
+Domonkos Vespertine
+ had his confidence shaken.
+They 
+arrived at the 
+Can-ton
+ sea
+, where 
+they 
+came across 
+a 
+crepuscular
+, ancient
+ priest
+.
+After 
+an epic 
+introduction
+, they 
+gained favor with
+ the 
+priest
+.
+Sarah Yellen
+ found 
+Plated Belt
+!
+Zabbas Araujo
+ had his confidence shaken.
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-1 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Barbara Mikulanc, 
+Efraim Beckett, 
+Eva Steffensen, 
+and 
+Angor Finnegan the Iron 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+nocturnal
+ ogre
+ at the 
+Darshish 
+village
+.
+On the road there, 
+they 
+were ambushed by 
+an 
+entrancing
+ tunnel dweller
+.
+After 
+a testing 
+battle
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Barbara Mikulanc
+ learned 
+Politics
+!
+Efraim Beckett
+ was frightened half to death.
+Angor Finnegan the Iron
+ had his confidence shaken.
+Angor Finnegan the Iron
+ had his confidence shaken.
+They 
+arrived at the 
+Darshish
+ village
+, where 
+they 
+came across 
+a 
+nocturnal
+ ogre
+.
+After 
+a grueling 
+contest
+, they 
+defeated
+ the 
+ogre
+.
+Barbara Mikulanc
+ had his confidence shaken.
+Barbara Mikulanc
+ now has 
+quick-wit
+!
+Efraim Beckett
+ broke their leg.
+Efraim Beckett
+ now has 
+greed
+!
+Angor Finnegan the Iron
+ found 
+Mesh Belt
+!
+The adventurers 
+returned to 
+Cult of 973
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+Raft Town
+, 
+Amou Skotnik, 
+Malok Pinette, 
+Chalia Yellen, 
+and 
+Ophelia Nilsson 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+diurnal
+, 
+irresistible
+ mindscape
+ "Asla-Kratom Ellishment"
+ at the 
+Darshish 
+forest
+.
+Following the path, 
+they 
+discovered 
+a 
+violent
+ locked gate
+.
+After 
+a trying 
+hundred guesses
+, they 
+found a way through
+ the 
+locked gate
+.
+Amou Skotnik
+ found 
+Necklace
+!
+Malok Pinette
+ got fried nerves.
+Malok Pinette
+ had her confidence shaken.
+Before reaching the destination, 
+they 
+were confronted by 
+a 
+lightless
+, deathly
+ beast
+.
+After 
+an epic 
+contest
+, they 
+passed by
+ the 
+beast
+.
+Amou Skotnik
+ was frightened half to death.
+Malok Pinette
+ had her arm crushed.
+Malok Pinette
+ was knocked out.
+Chalia Yellen
+ was stabbed in the torso.
+Ophelia Nilsson
+ found 
+Bronze Ring
+!
+On the road there, 
+they 
+stumbled upon 
+the 
+violent
+, unspeakable
+ dead end
+ "Xtophila Ellishment"
+.
+After 
+a strenuous 
+attempt
+, they 
+figured out
+ the 
+dead end
+.
+Amou Skotnik
+ found 
+Bronze Ring
+!
+Amou Skotnik
+ found 
+Ghost Wand of the Fox
+!
+Chalia Yellen
+ bruised their ribs.
+Chalia Yellen
+ dislocated their shoulder.
+Ophelia Nilsson
+ was cursed.
+Following the path, 
+they 
+met 
+the 
+succulent
+, irridescent
+ brigands
+ "Yule Limpet"
+.
+After 
+a fraught 
+negotiation
+, they 
+parted ways with
+ the 
+brigands
+.
+Amou Skotnik
+ found 
+Hard Leather Belt
+!
+Amou Skotnik
+ got blasted eardrums.
+Chalia Yellen
+ found 
+Bone Wand of Fury
+!
+Ophelia Nilsson
+ now has 
+trauma
+!
+Ophelia Nilsson
+ found 
+Amulet
+!
+They 
+arrived at the 
+Darshish
+ forest
+, where 
+they 
+stumbled upon 
+the 
+diurnal
+, irresistible
+ mindscape
+ "Asla-Kratom Ellishment"
+.
+After 
+a testing 
+attempt
+, they 
+protected
+ the 
+mindscape
+.
+Amou Skotnik
+ found 
+Necklace
+!
+Amou Skotnik
+ now has 
+trauma
+!
+Amou Skotnik
+ found 
+Ancient Helm
+!
+Chalia Yellen
+ found 
+Linen Robe of Rage
+!
+Ophelia Nilsson
+ was cursed.
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+Malok Pinette
+ now has 
+a prosthetic arm
+!
+nextUpdateTime: -1
+STORY 4-3 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+James Quenneville, 
+Monica Lincoln, 
+Svatava Jenkins, 
+and 
+Charles Ibekwe 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+diurnal
+ priest
+ at the 
+Macrosign 
+pass
+.
+On the way, 
+they 
+were confronted by 
+a 
+decrepit
+ bird folk
+.
+After 
+a testing 
+battle
+, they 
+parted ways with
+ the 
+bird folk
+.
+James Quenneville
+ now has 
+deafness
+!
+Monica Lincoln
+ found 
+Studded Leather Armor
+!
+Svatava Jenkins
+ got fried nerves.
+Svatava Jenkins
+ found 
+Ornate Greaves
+!
+They 
+arrived at the 
+Macrosign
+ pass
+, where 
+they 
+came across 
+a 
+diurnal
+ priest
+.
+After 
+a grueling 
+conversation
+, they 
+gained favor with
+ the 
+priest
+.
+James Quenneville
+ found 
+Titanium Ring
+!
+James Quenneville
+ was stabbed in the torso.
+Monica Lincoln
+ now has 
+self-doubt
+!
+Monica Lincoln
+ learned 
+Politics
+!
+Svatava Jenkins
+ learned 
+Baking
+!
+Charles Ibekwe
+ got blasted eardrums.
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-4 
+
+At 
+Hall of Heads
+ in 
+the basement of Porcine Castle
+, 
+Sam chadde Ashbluff, 
+Geoffrey Sos, 
+Zefram Zimmerman, 
+and 
+Jessica Nakamoto 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+nocturnal
+, 
+irresistible
+ warlock
+ "Carcosan Ulula"
+ at the 
+Red 
+sea
+.
+While traveling, 
+they 
+discovered 
+a 
+diurnal
+ maze
+.
+After 
+a strenuous 
+hundred guesses
+, they 
+found a way through
+ the 
+maze
+.
+Sam chadde Ashbluff
+ was frightened half to death.
+Geoffrey Sos
+ dislocated his shoulder.
+Zefram Zimmerman
+ suffered slash wounds.
+Zefram Zimmerman
+ bruised her ribs.
+Jessica Nakamoto
+ now has 
+gambling addiction
+!
+Before reaching the destination, 
+they 
+met 
+a 
+crepuscular
+, jovial
+ beast
+.
+After 
+a hard-earned 
+contest
+, they 
+moved on from
+ the 
+beast
+.
+Sam chadde Ashbluff
+ now has 
+gambling addiction
+!
+Zefram Zimmerman
+ learned 
+Swordskill
+!
+Zefram Zimmerman
+ now has 
+quick-wit
+!
+Soon enough, 
+they 
+discovered 
+the 
+entrancing
+, unspeakable
+ puzzlebox
+ "Mighty Fecund"
+.
+After 
+a hard-earned 
+attempt
+, they 
+figured out
+ the 
+puzzlebox
+.
+Sam chadde Ashbluff
+ found 
+Necklace of the Twins
+!
+Sam chadde Ashbluff
+ found 
+Warhammer
+!
+Geoffrey Sos
+ found 
+Linen Hood
+!
+Zefram Zimmerman
+ suffered slash wounds.
+Zefram Zimmerman
+ was knocked out.
+Jessica Nakamoto
+ learned 
+Portraiture
+!
+In search of the goal, 
+they 
+snuck up on 
+the 
+entrancing
+, irresistible
+ brigands
+ "Edible Limpet"
+.
+After 
+a testing 
+negotiation
+, they 
+moved on from
+ the 
+brigands
+.
+Sam chadde Ashbluff
+ found 
+Studded Leather Gloves
+!
+Geoffrey Sos
+ found 
+Warhammer
+!
+Geoffrey Sos
+ found 
+Plate Mail
+!
+Jessica Nakamoto
+ now has 
+cowardice
+!
+Jessica Nakamoto
+ was cursed.
+They 
+arrived at the 
+Red
+ sea
+, where 
+they 
+met 
+the 
+nocturnal
+, irresistible
+ warlock
+ "Carcosan Ulula"
+.
+After 
+a trying 
+battle
+, they 
+bested
+ the 
+warlock
+.
+Sam chadde Ashbluff
+ found 
+Maul
+!
+Sam chadde Ashbluff
+ got blasted eardrums.
+Geoffrey Sos
+ broke his leg.
+Geoffrey Sos
+ found 
+Grave Wand of Giants
+!
+Geoffrey Sos
+ learned 
+Navigation
+!
+Jessica Nakamoto
+ learned 
+Ropework
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+Sam chadde Ashbluff
+ now has 
+deafness
+!
+nextUpdateTime: -1
+STORY 4-5 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+John Crassus, 
+Angor Hornblower, 
+Ravil Nigiri, 
+and 
+Malok Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+, 
+irresistible
+ lord
+ "Indefatigable Limpet"
+ at the 
+Macrosign 
+city
+.
+Soon enough, 
+they 
+were blocked by 
+a 
+many-eyed
+ dead end
+.
+After 
+a breezy 
+attempt
+, they 
+figured out
+ the 
+dead end
+.
+Ravil Nigiri 
+used her 
+Portraiture 
+skills!
+Angor Hornblower
+ found 
+Necklace of Brilliance
+!
+Malok Berg
+ now has 
+elegance
+!
+Malok Berg
+ dislocated their shoulder.
+Next, 
+they 
+came across 
+a 
+decrepit
+, impossible
+ tunnel dweller
+.
+After 
+a fraught 
+battle
+, they 
+parted ways with
+ the 
+tunnel dweller
+.
+John Crassus
+ found 
+Bronze Ring
+!
+Angor Hornblower
+ now has 
+monsterphobia
+!
+Ravil Nigiri
+ learned 
+Haberdashery
+!
+On the road there, 
+they 
+were confronted with 
+the 
+voracious
+, empowered
+ waste
+ "Yule Butcher"
+.
+After 
+a grueling 
+trek
+, they 
+overcame
+ the 
+waste
+.
+Angor Hornblower 
+used their 
+Baking 
+skills!
+John Crassus
+ found 
+Full Helm of Detection
+!
+John Crassus
+ was cursed.
+Angor Hornblower
+ found 
+Robe
+!
+Angor Hornblower
+ suffered slash wounds.
+Ravil Nigiri
+ had her arm crushed.
+Malok Berg
+ learned 
+Archery
+!
+They 
+arrived at the 
+Macrosign
+ city
+, where 
+they 
+came across 
+the 
+crepuscular
+, irresistible
+ lord
+ "Indefatigable Limpet"
+.
+After 
+a hard-earned 
+audience
+, they 
+struck a deal with
+ the 
+lord
+.
+Malok Berg 
+used *depPossessive* prosthetic arm!
+John Crassus
+ now has 
+great destiny
+!
+Angor Hornblower
+ now has 
+optimistism
+!
+Ravil Nigiri
+ was stabbed in the torso.
+Ravil Nigiri
+ had her arm crushed.
+Malok Berg
+ suffered slash wounds.
+The adventurers 
+returned to 
+Cherished Heart Temple
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 5-0 
+
+At 
+Marsh's Sewerworks
+ in 
+Karkowa District
+, 
+Bolethe Torma, 
+Patrick Hermanns, 
+Lachlan Melo, 
+and 
+Zabbas Araujo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+, 
+jovial
+ priest
+ at the 
+Macrosign 
+desert
+.
+nextUpdateTime: 1647220999
+STORY 5-1 
+
+At 
+Cult of 973
+ in 
+Varajao District
+, 
+Olympia Donkervoort, 
+Angor Finnegan the Iron, 
+Grace sixth of Woodd Jr., 
+and 
+Malok Kiss 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+crepuscular
+, 
+jovial
+ psychopomp
+ "Xtophila Ulula"
+ at the 
+Red 
+crypt
+.
+nextUpdateTime: 1647220949
+STORY 5-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+Raft Town
+, 
+Ophelia Nilsson, 
+Stanislaus Ives, 
+Patrick Ermakov, 
+and 
+Fabien Sandgreen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+ lord
+ at the 
+Macrosign 
+market
+.
+nextUpdateTime: 1647221082
+STORY 5-3 
+
+At 
+Zoanthropic Lodge
+ in 
+Raft Town
+, 
+Monica Lincoln, 
+Michael Hendrix, 
+and 
+James Quenneville 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+, 
+grotesque
+ psychopomp
+ "Diphonic Clopse"
+ at the 
+Headless 
+sea
+.
+nextUpdateTime: 1647220915
+STORY 5-4 
+
+At 
+Hall of Heads
+ in 
+the basement of Porcine Castle
+, 
+Svatava Zhao, 
+Evan Finnegan the Bastard, 
+and 
+Sam chadde Ashbluff 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ dunes
+ at the 
+Can-ton 
+desert
+.
+nextUpdateTime: 1647221082
+STORY 5-5 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Mackenzie Kulechov, 
+Ed Nigiri, 
+and 
+Malok Berg 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+many-eyed
+, 
+hideous
+ giant spider
+ "Mighty Limpet"
+ at the 
+Jarred 
+desert
+.
+nextUpdateTime: 1647220949
