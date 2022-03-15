@@ -11,7 +11,7 @@ interface NarratorParams {
 
 export const VERSION = "0.0.3"
 export const currentRelease = "goerli"
-export let currentNarrator = 7
+export let currentNarrator = 5
 export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
@@ -22,7 +22,7 @@ if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {
 export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
-  "goerli": "0x26dB36dEBDA19F63C4a1C2A05bC423Dd434dC053", // test: 0x26dB36dEBDA19F63C4a1C2A05bC423Dd434dC053, "prod": 0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf
+  "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
   "polygon": "",
   "localhost": localhostAddress,
   // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)

@@ -16,28 +16,28 @@ async function main() {
   // await hre.run('compile');
 
   const names = {
-    ropsten: "The Grand Adventure: Ropstenluutn",
-    localhost: "The Local Adventure: Localuutn",
-    goerli: "The Grand Adventure: Avenluutn"
-  }
-  const symbols = {
-    ropsten: "tgaRPSTNLTN",
-    localhost: "tlaLCLTN",
-    goerli: "tgaAVNLTN"
+    ropsten: "The Grand Adventure: Avenluutn (ropsten)",
+    localhost: "The Grand Adventure: Avenluutn (localhost)",
+    goerli: "The Grand Adventure: Avenluutn (goerli)",
+    polygon: "The Grand Adventure: Avenluutn",
+    mumbai: "The Grand Adventure: Avenluutn (mumbai)"
   }
   const baseURIs = {
-    goreli: "https://avenluutn-api.squad.games"
+    goreli: "https://avenluutn-api.squad.games",
+    mumbai: "https://avenluutn-api.squad.games"
   }
   const name = names[hre.network.name] || "The Grand Adventure: Avenluutn"
-  const symbol = symbols[hre.network.name] || "tgaAVNLTN"
   const baseURI = baseURIs[hre.network.name] || "https://avenluutn-api.squad.games"
+  const symbol = "tgaAVNLTN"
 
-  const baseAuctionDuration = 60 * 60
-  const timeBuffer = 30 * 60
+  const minute = 60
+  const hour = minute * 60
+
+  const baseAuctionDuration = 24 * hour
+  const timeBuffer = 8 * hour
   const minBidAmount = hre.ethers.utils.parseEther('0.001')
   const minBidIncrementPercentage = 5
 
-  // We get the contracts to deploy
   console.log("Deploying NarratorNFTs")
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
   const narratorNFTs = await NarratorNFTs.deploy()
@@ -76,18 +76,20 @@ async function main() {
    * add test narratorNFT.
    */
 
-  const minute = 60
-  const hour = minute * 60
-
   const now = Math.floor(new Date() / 1000)
-  const collectionLength = minute * 10
-  const collectionSpacing = minute * 15
-  const start = now - (collectionSpacing * 3)
-  const totalCollections = Math.floor((8 * hour) / collectionSpacing) // one work day
+  const collectionLength = 23 * hour
+  const collectionSpacing = 24 * hour
+  /*
+    Unix Timestamp	1647378000
+    GMT         	Tue Mar 15 2022 21:00:00 GMT+0000
+    Your Time Zone	Tue Mar 15 2022 16:00:00 GMT-0500 (Central Daylight Time)
+*/
+  const start = 1647378000
+  const totalCollections = 7
   const collectionSize = 5
 
   console.log("Minting test NFT")
-  const scriptURI =  "http://webserver/scripts/activeTestScript.js"
+  const scriptURI =  "https://gist.githubusercontent.com/EzraWeller/2ddf2897dec0e2c6529e0cd26bff5145/raw/5d9f7612734a7ad1268262d6e0e73ade6e4d8b22/avenluutn_bundle_130322-2.js"
   const narratorTx = await narratorNFTs.mint(narratorNFTs.address, scriptURI)
 
   console.log("Waiting for mint transaction...")
@@ -129,16 +131,15 @@ async function main() {
     return
   }
 
-  /*
+  console.log("Waiting for 8 block confirmations")
+  await publisher.deployTransaction.wait(8)
+
   console.log("verifying NarratorNFTs...")
   await hre.run("verify:verify", {
     address: narratorNFTs.address
   })
   console.log("Verified NarratorNFTs.")
-  */
 
-  console.log("Waiting for 8 block confirmations")
-  await publisher.deployTransaction.wait(8)
   console.log("Verifying Publisher...")
   await hre.run("verify:verify", {
     address: publisher.address,
