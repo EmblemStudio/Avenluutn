@@ -6,13 +6,17 @@ import './App.css'
 import WagmiProvider from './providers/WagmiProvider'
 import NotificationsProvider from './providers/NotificationsProvider'
 import NarratorStateProvider from './providers/NarratorStateProvider'
+import UserProvider from './providers/UserProvider'
 import { NARRATOR_PARAMS } from './constants'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import GuildLobby from './pages/GuildLobby'
-import GuildAuctions from './pages/GuildAuctions'
 import GuildLogbook from './pages/GuildLogbook'
 import About from './pages/About'
+import GuildDossier from './pages/GuildDossier'
+import Adventurer from './pages/Adventurer'
+import Story from './pages/Story'
+import MyAccount from './pages/MyAccount'
 
 export default () => {
   return (
@@ -20,17 +24,23 @@ export default () => {
       <WagmiProvider>
         <NotificationsProvider>
           <NarratorStateProvider params={NARRATOR_PARAMS}>
-            <BrowserRouter>
-              <Layout>
-                <Routes>
+            <UserProvider>
+              <BrowserRouter>
+                <Layout>
+                  <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/:guildId/lobby" element={<GuildLobby />} />
-                    <Route path="/:guildId/auctions" element={<GuildAuctions />} />
+                    <Route path="/:guildId/dossier" element={<GuildDossier />} />
                     <Route path="/:guildId/logbook" element={<GuildLogbook />} />
+                    <Route path="/:guildId/adventurers/:adventurerId" element={<Adventurer graveyard={false} />} />
+                    <Route path="/:guildId/graveyard/:adventurerId" element={<Adventurer graveyard={true} />} />
+                    <Route path="/:guildId/stories/:collectionId" element={<Story />} />
+                    <Route path="/my-account" element={<MyAccount />} />
                     <Route path="/about" element={<About />} />
-                </Routes>
-              </Layout>
-            </BrowserRouter>
+                  </Routes>
+                </Layout>
+              </BrowserRouter>
+            </UserProvider>
           </NarratorStateProvider>
         </NotificationsProvider>
       </WagmiProvider>

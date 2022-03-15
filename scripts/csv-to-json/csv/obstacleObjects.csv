@@ -1,0 +1,15 @@
+keystring,object
+PUZZLE,puzzlebox
+PUZZLE,maze
+PUZZLE,locked gate
+PUZZLE,dead end
+IMPEDIMENT,canyon
+IMPEDIMENT,cliff
+IMPEDIMENT,river
+IMPEDIMENT,hedge
+IMPEDIMENT,waste
+ENTITY,beast
+ENTITY,brigands
+ENTITY,tunnel dweller
+ENTITY,bird folk
+ENTITY,elemental

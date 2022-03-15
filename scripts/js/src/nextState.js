@@ -3,18 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.nextState = void 0;
 const utils_1 = require("./utils");
 function nextState(state, events) {
-    // console.log("nextState", state, events)
     const newState = Object.assign({}, state);
     events.forEach(event => {
         const guild = newState.guilds[event.guildId];
+        // TODO add these to state during quests so they can effect things instantly
         if (guild) {
-            // TODO store adventurers in state separately, just reference ids in guilds?
             const adventurer = guild.adventurers[event.advId];
             if (adventurer) {
                 switch (event.type) {
                     case utils_1.ResultType.Death:
                         // move adventurer to the graveyard
-                        guild.graveyard[adventurer.id] = adventurer;
+                        guild.graveyard[adventurer.id] = Object.assign({}, adventurer);
                         delete guild.adventurers[adventurer.id];
                         break;
                     case utils_1.ResultType.Loot:

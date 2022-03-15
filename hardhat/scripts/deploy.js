@@ -16,22 +16,28 @@ async function main() {
   // await hre.run('compile');
 
   const names = {
-    ropsten: "The Grand Adventure: Ropstenluutn",
-    localhost: "The Local Adventure: Localuutn"
+    ropsten: "The Grand Adventure: Avenluutn (ropsten)",
+    localhost: "The Grand Adventure: Avenluutn (localhost)",
+    goerli: "The Grand Adventure: Avenluutn (goerli)",
+    polygon: "The Grand Adventure: Avenluutn",
+    mumbai: "The Grand Adventure: Avenluutn (mumbai)"
   }
-  const symbols = {
-    ropsten: "tgaRPSTNLTN",
-    localhost: "tlaLCLTN"
+  const baseURIs = {
+    goreli: "https://avenluutn-api.squad.games",
+    mumbai: "https://avenluutn-api.squad.games"
   }
   const name = names[hre.network.name] || "The Grand Adventure: Avenluutn"
-  const symbol = symbols[hre.network.name] || "tgaAVNLTN"
+  const baseURI = baseURIs[hre.network.name] || "https://avenluutn-api.squad.games"
+  const symbol = "tgaAVNLTN"
 
-  const baseAuctionDuration = 30 * 60
-  const timeBuffer = 10 * 60
+  const minute = 60
+  const hour = minute * 60
+
+  const baseAuctionDuration = 24 * hour
+  const timeBuffer = 8 * hour
   const minBidAmount = hre.ethers.utils.parseEther('0.001')
   const minBidIncrementPercentage = 5
 
-  // We get the contracts to deploy
   console.log("Deploying NarratorNFTs")
   const NarratorNFTs = await hre.ethers.getContractFactory("NarratorNFTs");
   const narratorNFTs = await NarratorNFTs.deploy()
@@ -52,6 +58,7 @@ async function main() {
     timeBuffer,
     minBidAmount,
     minBidIncrementPercentage,
+    baseURI,
     name,
     symbol,
   );
@@ -66,36 +73,66 @@ async function main() {
   )
 
   /**
-   * add test narratorNFT. This first narrator will point to a script
-   * at localhost for testing purposes
+   * add test narratorNFT.
    */
+
+  const now = Math.floor(new Date() / 1000)
+  const collectionLength = 23 * hour
+  const collectionSpacing = 24 * hour
+  /*
+    Unix Timestamp	1647378000
+    GMT         	Tue Mar 15 2022 21:00:00 GMT+0000
+    Your Time Zone	Tue Mar 15 2022 16:00:00 GMT-0500 (Central Daylight Time)
+*/
+  const start = 1647378000
+  const totalCollections = 7
+  const collectionSize = 5
+
   console.log("Minting test NFT")
-  const narratorTx = await narratorNFTs.mint(
-    narratorNFTs.address,
-    "http://localhost:8000/test/bundle.js",
-  )
+  const scriptURI =  "https://gist.githubusercontent.com/EzraWeller/2ddf2897dec0e2c6529e0cd26bff5145/raw/5d9f7612734a7ad1268262d6e0e73ade6e4d8b22/avenluutn_bundle_130322-2.js"
+  const narratorTx = await narratorNFTs.mint(narratorNFTs.address, scriptURI)
 
   console.log("Waiting for mint transaction...")
   await narratorTx.wait()
 
-  const now = parseInt((new Date().getTime() / 1000).toFixed(0))
   console.log("adding test narrator")
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     0,
-    now - 60 * 15 * 3,  // start
-    10,               // totalCollections
-    60 * 60 * 10,            // collectionLength
-    60 * 60 * 15,            // collectionSpacing
-    5,                  // collectionSize
+    start,
+    totalCollections,
+    collectionLength,
+    collectionSpacing,
+    collectionSize,
   )
   const receipt = await pubTx.wait()
-  console.log("New narrator added at index:", Number(receipt.events[0].args.count))
+  console.log(
+    "New narrator added at index:",
+    Number(receipt.events[0].args.count),
+  )
+  console.log("script URI", scriptURI)
+  console.log("total collections", totalCollections)
+  console.log("collection Length", collectionLength)
+  console.log("collection Spacing", collectionSpacing)
+  console.log("collection Size", collectionSize)
+
+  let startTime = start
+  // calculate and print run start times to help with debugging
+  console.log("Start Times (US Eastern)")
+  console.log(`Now: ${new Date(now * 1000).toLocaleString('en-US', { timeZone: 'America/New_York'})}`)
+  const startTimes = [...Array(totalCollections).keys()].forEach((collection) => {
+    const collectionStart = new Date((start + (collection * collectionSpacing)) * 1000)
+    console.log(`Collection ${collection}: ${collectionStart.toLocaleString('en-US', { timeZone: 'America/New_York'})}`)
+    collection += 1
+  })
 
   // don't try to verify if we are on localhost or hardhat networks
   if (hre.network.name === "localhost" || hre.network.name === "hardhat") {
     return
   }
+
+  console.log("Waiting for 8 block confirmations")
+  await publisher.deployTransaction.wait(8)
 
   console.log("verifying NarratorNFTs...")
   await hre.run("verify:verify", {
@@ -111,6 +148,7 @@ async function main() {
       timeBuffer,
       minBidAmount,
       minBidIncrementPercentage,
+      baseURI,
       name,
       symbol,
     ]

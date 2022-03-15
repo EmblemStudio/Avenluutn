@@ -1,22 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { AddressZero } from '@ethersproject/constants'
 import { useAccount } from 'wagmi'
 
+import ConnectButton from '../components/ConnectButton'
 import GuildHeader from '../components/GuildHeader'
 import StoryAuction from '../components/StoryAuction'
-import StoryExpander from '../components/StoryExpander'
 import useNotifications from '../hooks/useNotifications'
 import useNarratorState from '../hooks/useNarratorState'
 import usePublisher from '../hooks/usePublisher'
 import useGuild from '../hooks/useGuild'
 import { NARRATOR_PARAMS } from '../constants'
-import { coloredBoldStyle, storyName, Story } from '../utils'
+import { coloredBoldStyle, storyId, Story } from '../utils'
+import Expander from '../components/Expander'
 
 export default () => {
-  const { narrator, updateNarrator } = useNarratorState()
+  const narratorState = useNarratorState()
+  const { narrator } = narratorState
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)
-  const [expanders, setExpanders] = useState<{ [key: number]: boolean }>({})
   const { addNotification, removeNotification } = useNotifications()
   const [{ data }] = useAccount()
 
@@ -29,49 +30,71 @@ export default () => {
     return false
   }
 
+  let emoji = ""
+
   return (
     <>
-      <GuildHeader guild={guild} selected="logbook"/>
-      <div className="block p-4">
-        {guild && <>
+      <GuildHeader guild={guild} selected="logbook" />
+      {guild &&
+        <div className="block p-4">
           <div className="block">
             {"The logbook is engraved with the guild motto: "}
             <span className={coloredBoldStyle(color ?? null)}>
               “{guild.motto}”
             </span>
-            . It records deeds past:
+            . It records deeds past.
           </div>
-          { narrator.stories[guild.id].completed.length === 0 ?
+          {[...narrator.storiesByGuild[guild.id].onAuction, ...narrator.storiesByGuild[guild.id].completed].length === 0 ?
             <div className="block">
-              "The pages are blank."
+              The pages are blank.
             </div>
-          :
+            :
             <div className="block">
-              {narrator.stories[guild.id].completed.map(s => {
-                  return (
-                    <StoryExpander 
-                      key={s.collectionIndex} 
-                      index={s.collectionIndex} 
-                      name={storyName(s)} 
-                      claimable={isClaimable(s)}
-                      expanders={expanders} 
-                      setExpanders={setExpanders}
-                    >
-                      <StoryAuction 
-                        story={s} 
-                        publisher={publisher}
-                        updateNarrator={updateNarrator}
-                        addNotification={addNotification} 
-                        removeNotification={removeNotification}
-                      />
-                    </StoryExpander>
-                  )
-                })
-              }
+              <div className="block">
+                Connect through the ether to sponsor a tale:
+              </div>
+              <div className="level">
+                <div className="level-left">
+                  <div className="level-item">
+                    <ConnectButton />
+                  </div>
+                </div>
+              </div>
+              {narrator.storiesByGuild[guild.id].onAuction.map((id, i) => {
+                const s = narrator.stories[id]
+                if (s === undefined) return <div key={i}></div>
+                return (
+                  <Expander key={i} text={`${storyId(s)} 🔥`}>
+                    <StoryAuction
+                      story={s}
+                      publisher={publisher}
+                      narratorState={narratorState}
+                      addNotification={addNotification}
+                      removeNotification={removeNotification}
+                    />
+                  </Expander>
+                )
+              })}
+              {narrator.storiesByGuild[guild.id].completed.map((id, i) => {
+                const s = narrator.stories[id]
+                if (s === undefined) return <div key={i}></div>
+                isClaimable(s) ? emoji = "✨" : emoji = ""
+                return (
+                  <Expander key={i} text={`${storyId(s)} ${emoji}`}>
+                    <StoryAuction
+                      story={s}
+                      publisher={publisher}
+                      narratorState={narratorState}
+                      addNotification={addNotification}
+                      removeNotification={removeNotification}
+                    />
+                  </Expander>
+                )
+              })}
             </div>
           }
-        </>}
-      </div>
+        </div>
+      }
     </>
   )
 }

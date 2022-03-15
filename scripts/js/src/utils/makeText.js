@@ -10,7 +10,7 @@ function makeGuildText(guild, party) {
     const res = [
         { string: ``, label: interfaces_1.Label.conjunctive },
         { string: `At `, label: interfaces_1.Label.conjunctive },
-        { string: guild.name, label: interfaces_1.Label.guildName },
+        { string: guild.name, label: interfaces_1.Label.guildName, entityId: guild.id },
         { string: ` in `, label: interfaces_1.Label.conjunctive },
         { string: guild.location, label: interfaces_1.Label.locationName },
         { string: `, `, label: interfaces_1.Label.conjunctive }
@@ -18,10 +18,10 @@ function makeGuildText(guild, party) {
     party.forEach((a, i) => {
         if (i === party.length - 1) {
             res.push({ string: `and `, label: interfaces_1.Label.conjunctive });
-            res.push({ string: `${(0, loot_1.nameString)(a.name)} `, label: interfaces_1.Label.adventurerName });
+            res.push({ string: `${(0, loot_1.nameString)(a.name)} `, label: interfaces_1.Label.adventurerName, entityId: a.id });
         }
         else {
-            res.push({ string: `${(0, loot_1.nameString)(a.name)}, `, label: interfaces_1.Label.adventurerName });
+            res.push({ string: `${(0, loot_1.nameString)(a.name)}, `, label: interfaces_1.Label.adventurerName, entityId: a.id });
         }
     });
     res.push({ string: `gathered. `, label: interfaces_1.Label.conjunctive });
@@ -31,7 +31,7 @@ exports.makeGuildText = makeGuildText;
 function makeQuestText(quest) {
     const res = [
         { string: `Consulting the guild, they chose their quest: to `, label: interfaces_1.Label.conjunctive },
-        { string: quest.type, label: interfaces_1.Label.questType },
+        { string: quest.type.toLowerCase(), label: interfaces_1.Label.questType },
         { string: ` the `, label: interfaces_1.Label.conjunctive }
     ];
     // let text = `Consulting the guild, they chose their quest: to ${quest.type} the`
@@ -194,15 +194,15 @@ function makeEndingText(beginning, middle, everyoneDied, oneLeft, endingResults)
             // res[0] += `The adventurers `
         }
         if (middle.questSuccess === interfaces_1.Success.failure) {
-            res.main.push({ string: `slunk back to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: ` in disgrace.`, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `slunk back to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName, entityId: beginning.guild.id }, { string: ` in disgrace.`, label: interfaces_1.Label.conjunctive });
             // res[0] += `slunk back to ${beginning.guild.name} in disgrace.`
         }
         else if (middle.questSuccess === interfaces_1.Success.mixed) {
-            res.main.push({ string: `returned to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: `, exhausted but successful.`, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `returned to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName, entityId: beginning.guild.id }, { string: `, exhausted but successful.`, label: interfaces_1.Label.conjunctive });
             // res[0] += `returned to ${beginning.guild.name}, exhausted but successful.`
         }
         else if (middle.questSuccess === interfaces_1.Success.success) {
-            res.main.push({ string: `returned triumphantly to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName }, { string: `, basking in glory.`, label: interfaces_1.Label.conjunctive });
+            res.main.push({ string: `returned triumphantly to `, label: interfaces_1.Label.conjunctive }, { string: `${beginning.guild.name}`, label: interfaces_1.Label.guildName, entityId: beginning.guild.id }, { string: `, basking in glory.`, label: interfaces_1.Label.conjunctive });
             // res[0] += `returned triumphantly to ${beginning.guild.name}, basking in glory.`
         }
     }
@@ -231,21 +231,21 @@ function insertPronouns(string, pronouns) {
 }
 function makeInjuryText(adventurer, injuryString) {
     return [
-        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName },
+        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
         { string: insertPronouns(` ${injuryString}.`, adventurer.pronouns), label: interfaces_1.Label.conjunctive }
     ];
 }
 exports.makeInjuryText = makeInjuryText;
 function makeDeathText(adventurer) {
     return [
-        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName },
+        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
         { string: ` died.`, label: interfaces_1.Label.conjunctive }
     ];
 }
 exports.makeDeathText = makeDeathText;
 function makeLootText(adventurer, lootPiece) {
     return [
-        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName },
+        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
         { string: ` found `, label: interfaces_1.Label.conjunctive },
         { string: `${lootPiece}`, label: interfaces_1.Label.lootName },
         { string: `!`, label: interfaces_1.Label.conjunctive }
@@ -254,7 +254,7 @@ function makeLootText(adventurer, lootPiece) {
 exports.makeLootText = makeLootText;
 function makeSkillText(adventurer, skill) {
     return [
-        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName },
+        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
         { string: ` learned `, label: interfaces_1.Label.conjunctive },
         { string: `${skill}`, label: interfaces_1.Label.skillName },
         { string: `!`, label: interfaces_1.Label.conjunctive }
@@ -263,7 +263,7 @@ function makeSkillText(adventurer, skill) {
 exports.makeSkillText = makeSkillText;
 function makeTraitText(adventurer, trait) {
     return [
-        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName },
+        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
         { string: ` now has `, label: interfaces_1.Label.conjunctive },
         { string: `${trait}`, label: interfaces_1.Label.traitName },
         { string: `!`, label: interfaces_1.Label.conjunctive }
@@ -272,7 +272,7 @@ function makeTraitText(adventurer, trait) {
 exports.makeTraitText = makeTraitText;
 function makeKnockoutText(adventurer) {
     return [
-        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName },
+        { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
         { string: ` was knocked out.`, label: interfaces_1.Label.conjunctive }
     ];
 }
@@ -280,18 +280,21 @@ exports.makeKnockoutText = makeKnockoutText;
 function makeTriggerText(triggerInfo, adventurer, traits, qualities) {
     const res = [];
     if (triggerInfo.type === "traits") {
-        const trait = traits[triggerInfo.name];
+        const traitArray = traits[triggerInfo.name];
+        if (!traitArray)
+            throw new Error("No traitArray");
+        const trait = traitArray[0];
         if (!trait)
             throw new Error("No trait");
         if (triggerInfo.modifier > 0 && trait.positiveTrigger) {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `${trait.positiveTrigger}!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `${insertPronouns(trait.positiveTrigger, adventurer.pronouns)}!`, label: interfaces_1.Label.conjunctive });
         }
         else if (trait.negativeTrigger) {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `${trait.negativeTrigger}!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `${insertPronouns(trait.negativeTrigger, adventurer.pronouns)}!`, label: interfaces_1.Label.conjunctive });
         }
     }
     else if (triggerInfo.type === "skills") {
-        res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${triggerInfo.name} `, label: interfaces_1.Label.skillName }, { string: `skills!`, label: interfaces_1.Label.conjunctive });
+        res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${triggerInfo.name} `, label: interfaces_1.Label.skillName }, { string: `skills!`, label: interfaces_1.Label.conjunctive });
     }
     else if (triggerInfo.type === "loot") {
         let usedLoot = "";
@@ -302,7 +305,7 @@ function makeTriggerText(triggerInfo, adventurer, traits, qualities) {
             }
         });
         if (usedLoot !== "") {
-            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${usedLoot}`, label: interfaces_1.Label.lootName }, { string: `!`, label: interfaces_1.Label.conjunctive });
+            res.push({ string: `${(0, loot_1.nameString)(adventurer.name)} `, label: interfaces_1.Label.adventurerName, entityId: adventurer.id }, { string: `used ${adventurer.pronouns.depPossessive} `, label: interfaces_1.Label.conjunctive }, { string: `${usedLoot}`, label: interfaces_1.Label.lootName }, { string: `!`, label: interfaces_1.Label.conjunctive });
         }
     }
     return res;

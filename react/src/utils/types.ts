@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ScriptResult, Story as StoryText } from '../../../scripts/src'
+import { ScriptResult, Story as StoryText, Success, Result } from '../../../scripts/src'
 
-export type NetworkName = "mainnet" | "ropsten" | "polygon" | "localhost" | "goerli"
+export type NetworkName = "mainnet" | "ropsten" | "polygon" | "mumbai" | "localhost" | "goerli"
 
 export interface Notifications {
   warnings: string[];
@@ -17,20 +17,39 @@ export interface NarratorState {
   narrator: Narrator,
   updateNarrator: () => void,
   lastUpdate: number,
-  queryUntilUpdate: (state: NarratorState) => void,
+  queryUntilUpdate: (state: NarratorState, collectionIndex: number, storyIndex: number) => void,
   querying: boolean
 }
 
-export interface Narrator {
+export interface NarratorContractData {
   NFTAddress: string;
   NFTId: BigNumber;
+  collectionLength: BigNumber;
+  collectionSize: BigNumber;
+  collectionSpacing: BigNumber;
   start: BigNumber;
   totalCollections: BigNumber;
-  collectionLength: BigNumber;
-  collectionSpacing: BigNumber;
-  collectionSize: BigNumber;
+}
+
+// TODO stories should be stored in a dictionary by ID, categorized stories should just reference IDs
+export interface Narrator extends NarratorContractData {
   collections: Collection[];
-  stories: StoriesByGuild;
+  stories: { [id: string]: Story };
+  storiesByGuild: StoriesByGuild;
+  eventsByGuild: { [guildId: number]: Event[] };
+}
+
+export enum EventType {
+  result,
+  adventureStart,
+  adventureEnd
+}
+
+export interface Event {
+  result?: Result;
+  storyId: string;
+  timestamp: number;
+  type: EventType;
 }
 
 export interface Collection {
@@ -41,17 +60,16 @@ export interface Collection {
 export interface StoriesByGuild { [guildId: number]: CategorizedStories };
 
 export interface CategorizedStories {
-  upcoming: Story[];
-  inProgress: Story[];
-  onAuction: Story[];
-  completed: Story[];
+  upcoming: string[];
+  inProgress: string[];
+  onAuction: string[];
+  completed: string[];
 }
 
 export interface Story {
   narratorIndex: number;
   collectionIndex: number;
   storyIndex: number;
-  id: string;
   startTime: BigNumber;
   endTime: BigNumber;
   auction: Auction;
@@ -60,8 +78,33 @@ export interface Story {
   text: StoryText;
 }
 
+export enum StoryCategory {
+  upcoming,
+  inProgress,
+  onAuction,
+  completed,
+  unknown
+}
+
 export interface Auction {
   amount: BigNumber;
   bidder: string;
   duration: BigNumber;
+}
+
+export interface User {
+  balance: number
+  shares: { [shareId: string]: Share }
+}
+
+export interface Share {
+  shareId: string;
+  size: string;
+  // story id
+  narratorIndex: number;
+  collectionIndex: number;
+  storyIndex: number;
+  //
+  outcome: Success;
+  resolved: boolean;
 }

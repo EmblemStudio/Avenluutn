@@ -1,0 +1,29 @@
+{
+  "0": [
+    {
+      "subject": "she",
+      "object": "her",
+      "depPossessive": "her",
+      "indPossessive": "hers",
+      "reflexive": "herself"
+    }
+  ],
+  "1": [
+    {
+      "subject": "he",
+      "object": "him",
+      "depPossessive": "his",
+      "indPossessive": "his",
+      "reflexive": "himself"
+    }
+  ],
+  "2": [
+    {
+      "subject": "they",
+      "object": "them",
+      "depPossessive": "their",
+      "indPossessive": "theirs",
+      "reflexive": "themself"
+    }
+  ]
+}

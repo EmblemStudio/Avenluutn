@@ -5,9 +5,9 @@ import { AddressZero } from '@ethersproject/constants';
 import { parseEther, formatEther } from '@ethersproject/units'
 import { TransactionResponse, TransactionReceipt } from '@ethersproject/providers'
 
-import Countdown from './Countdown'
+import Countdown, { CountdownDisplayMode } from './Countdown'
 import StoryBox from './StoryBox'
-import { Story, shortAddress, presentOrPast, NotificationFunction } from '../utils'
+import { Story, shortAddress, presentOrPast, NotificationFunction, NarratorState, secondsToTimeString } from '../utils'
 import { STATUS } from '../constants'
 
 // TODO Error notifications if not enough funds or bid not high enough
@@ -15,12 +15,12 @@ import { STATUS } from '../constants'
 interface StoryAuctionProps {
   story: Story;
   publisher: Contract | string;
-  updateNarrator: Function;
+  narratorState: NarratorState;
   addNotification: NotificationFunction;
   removeNotification: NotificationFunction;
 }
 
-export default ({ story, publisher, updateNarrator, addNotification, removeNotification }: StoryAuctionProps) => {
+export default ({ story, publisher, narratorState, addNotification, removeNotification }: StoryAuctionProps) => {
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
   const [bid, setBid] = useState<BigNumber>(parseEther("0"))
 
@@ -33,7 +33,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleBid = () => {
-    if (typeof publisher === "string") { 
+    if (typeof publisher === "string") {
       addNotification("warnings", publisher)
     } else {
       publisher.signer.getAddress()
@@ -50,7 +50,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
-                updateNarrator()
+                narratorState.updateNarrator()
               })
             })
         })
@@ -58,14 +58,14 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleClaim = () => {
-    if (typeof publisher === "string") { 
+    if (typeof publisher === "string") {
       addNotification("warnings", publisher)
     } else {
       publisher.signer.getAddress()
         .then(address => {
           publisher.mint(
-            story.narratorIndex, 
-            story.collectionIndex, 
+            story.narratorIndex,
+            story.collectionIndex,
             story.storyIndex,
             address
           )
@@ -74,7 +74,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
-                updateNarrator()
+                narratorState.updateNarrator()
               })
             })
         })
@@ -82,12 +82,12 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
   }
 
   const handleClaimFor = () => {
-    if (typeof publisher === "string") { 
+    if (typeof publisher === "string") {
       addNotification("warnings", publisher)
     } else {
       publisher.mint(
-        story.narratorIndex, 
-        story.collectionIndex, 
+        story.narratorIndex,
+        story.collectionIndex,
         story.storyIndex,
         story.auction.bidder
       )
@@ -96,7 +96,7 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
           res.wait().then((rec: TransactionReceipt) => {
             addNotification("status", STATUS.tx_confirmed)
             removeNotification("status", STATUS.tx_submitted)
-            updateNarrator()
+            narratorState.updateNarrator()
           })
         })
     }
@@ -104,12 +104,20 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
 
   return (
     <div className="container">
-      <nav className="level mb-0 mt-5">
+      <nav className="level mb-0 mt-3">
         <div className="level-item">
-          <span className="pr-1">Time left: </span>
-          <Countdown 
-            to={Number(story.endTime.add(story.auction.duration))}
-          />
+          <span className="pr-1">Auction time: </span>
+          {presentOrPast(story.endTime.add(story.auction.duration)) ?
+            <span className="has-text-grey">{secondsToTimeString(0)}</span>
+            :
+            <Countdown
+              to={Number(story.endTime.add(story.auction.duration))}
+              narratorState={narratorState}
+              collectionIndex={story.collectionIndex}
+              storyIndex={story.storyIndex}
+              displayMode={CountdownDisplayMode.zeroes}
+            />
+          }
         </div>
         <div className="level-item is-vertical">
           <div className="container">
@@ -122,26 +130,26 @@ export default ({ story, publisher, updateNarrator, addNotification, removeNotif
           }
         </div>
         <div className="level-item">
-          {!auctionOver ? 
+          {!auctionOver ?
             <div className="container has-text-centered is-flex-row">
               <div className="outer-border mr-1">
-                <input className="input has-text-black is-ibm is-size-6" type="text" placeholder="0" onChange={handleSetBid}/>
+                <input className="input has-text-black is-ibm is-size-6" type="text" placeholder="0" onChange={handleSetBid} />
               </div>
               <span className="has-text-grey mr-1">ETH</span>
               <a className="button is-ghost is-underlined" onClick={handleBid}>Bid</a>
             </div>
-          :
+            :
             story.minted ?
               <span className="is-italic">Claimed</span>
-            :
+              :
               story.auction.bidder === AddressZero ?
                 <a className="button is-ghost is-underlined" onClick={handleClaim}>Claim</a>
-              :
+                :
                 <a className="button is-ghost is-underlined" onClick={handleClaimFor}>Claim for Winner</a>
           }
         </div>
       </nav>
-      <StoryBox story={story} />
+      <StoryBox story={story} narratorState={narratorState} />
     </div>
   )
 }

@@ -6,6 +6,10 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# VSCode config
+.vscode
+.vscode/*
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -112,3 +116,11 @@ dist
 
 # UI build artifact
 ./echo/ui
+
+store
+ops
+
+echo-token-metadata/artifact*
+info
+
+certbot/conf/csr/

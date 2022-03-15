@@ -1,19 +1,44 @@
-export function findNextUpdateTime(runStart: number, updateTimes: number[]): number {
-  // let now = Math.floor(Date.now()/1000)
-  let nextUpdateTime
-  let set: boolean = false
-  updateTimes.sort().reverse()
-  updateTimes.forEach((t, i) => {
-    if (t < runStart && set === false) {
-      if (i === 0) {
-        nextUpdateTime = -1
-      } else {
-        nextUpdateTime = updateTimes[i - 1]
-      }
-      set = true
+/*
+ * findNextUpdateTime returns the next time the script needs to be run or -1 if
+ * it does not need to be run again
+ *
+ * It returns the lowest element in updateTimes that is greater than runStart or
+ * -1 if all elements in updateTimes are lower than runStart
+ */
+export function findNextUpdateTime(
+  runStart: number, // the time the script was run (a more consistant "now")
+  updateTimes: number[], // [scheduledStartTime, ...internalUpdateTimes]
+  allOutcomesSucceeded: boolean
+): number {
+  updateTimes.sort()
+
+  const endUpdateTime = updateTimes[updateTimes.length - 1]
+  if (endUpdateTime === undefined) {
+    // should only happen when updateTimes is empty
+    console.log("WARNING: Unexpected undefined endUpdateTime")
+    return -1
+  }
+
+  if (endUpdateTime < runStart) {
+    // run started after last update time, no more updates
+    return -1
+  }
+
+  if (!allOutcomesSucceeded) {
+    // if an outcome was failed, skip to the end update time
+    return endUpdateTime
+  }
+
+  for (const t of updateTimes) {
+    if (runStart < t) {
+      // this run was before the update time
+      // the first time this is entered should be the next update time
+      return t
     }
-  })
-  if (set === false) nextUpdateTime = updateTimes[updateTimes.length - 1]
-  if (nextUpdateTime === undefined) return -1 // should be never
-  return nextUpdateTime
+  }
+
+  // if we haven't found it by now, don't update again
+  // should be never
+  console.log("WARNING: expected to find an update time. returning -1")
+  return -1
 }

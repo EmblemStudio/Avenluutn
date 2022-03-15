@@ -4,6 +4,7 @@ const timeBuffer = 15 * 60 // 15 minutes
 const baseAuctionDuration = 24 * 60 * 60 * 60 // 24 hours
 const minBidAmount = ethers.utils.parseEther("0.001")
 const minBidIncrementPercentage = 5
+const baseURI = "https://example.com/"
 const name = "TestAdventures"
 const symbol = "TA"
 
@@ -22,7 +23,8 @@ async function getPublisher(overrides) {
     minBidAmount,
     minBidIncrementPercentage,
     name,
-    symbol
+    symbol,
+    baseURI
   }
   const params = Object.assign({}, defaults, overrides)
   const Publisher = await ethers.getContractFactory("Publisher");
@@ -31,6 +33,7 @@ async function getPublisher(overrides) {
     params.baseAuctionDuration,
     params.minBidAmount,
     params.minBidIncrementPercentage,
+    params.baseURI,
     params.name,
     params.symbol,
   );

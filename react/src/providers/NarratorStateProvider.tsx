@@ -7,7 +7,7 @@ import axios from 'axios'
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
 import { ScriptResult, Label } from '../../../scripts/src'
-import { NarratorParams, Narrator, Auction, Collection, Story, StoriesByGuild, NarratorState, presentOrPast, NetworkName } from '../utils'
+import { NarratorParams, Narrator, Auction, Collection, Story, storyCategory, StoryCategory, NarratorState, NetworkName, storyId, NarratorContractData, EventType, presentOrPast, storyIdFromIndices } from '../utils'
 import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
 
 const emptyNarrator: Narrator = {
@@ -19,7 +19,9 @@ const emptyNarrator: Narrator = {
   collectionSize: BigNumber.from(0),
   collectionSpacing: BigNumber.from(0),
   collections: [],
-  stories: {}
+  stories: {},
+  storiesByGuild: {},
+  eventsByGuild: {}
 }
 
 // requireDefined asserts that the value is just the value as opposed to nothing
@@ -31,22 +33,20 @@ function requireDefined<T>(val: T, msg?: string): asserts val is NonNullable<T> 
   }
 }
 
-// TODO also add to this a queryUntilUpdate function and a querying field that will run updateNarrator 
-// until it finds an update if not already querying
 export const NarratorStateContext = createContext<NarratorState>({
   narrator: emptyNarrator,
-  updateNarrator: () => {},
+  updateNarrator: () => { },
   lastUpdate: 0,
-  queryUntilUpdate: (state: NarratorState) => {},
+  queryUntilUpdate: (state: NarratorState) => { },
   querying: false
 })
 
 export default ({ params, children }: { params: NarratorParams, children: ReactElement }) => {
   const [narratorState, setNarratorState] = useState<NarratorState>({
     narrator: emptyNarrator,
-    updateNarrator: () => {},
+    updateNarrator: () => { },
     lastUpdate: 0,
-    queryUntilUpdate: (state: NarratorState) => {},
+    queryUntilUpdate: (state: NarratorState) => { },
     querying: false
   })
 
@@ -67,24 +67,22 @@ function now() {
 
 let baseAuctionDuration: BigNumber = BigNumber.from(-1)
 
-// TODO figure out what type narratorData is and update it from any
-let narratorData: any = undefined
+let narratorData: NarratorContractData
 
 async function updateNarratorState(
-  narratorState: NarratorState, 
+  narratorState: NarratorState,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
   if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
-    console.warn('Cache warm, stopping updateNarratorState')
     return
   }
 
-  _updateNarratorState(narratorState, setNarratorState, params)
+  await _updateNarratorState(narratorState, setNarratorState, params)
 }
 
 async function _updateNarratorState(
-  narratorState: NarratorState, 
+  narratorState: NarratorState,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
@@ -101,7 +99,16 @@ async function _updateNarratorState(
     narratorData = await publisher.narrators(params.narratorIndex)
   }
 
-  let newNarrator: Narrator = {...narratorData, collections: [], stories: {}}
+  let newNarrator: Narrator = { ...narratorData, collections: [], stories: {}, storiesByGuild: {}, eventsByGuild: {} }
+  for (let i = 0; i <= Number(newNarrator.collectionSize); i++) {
+    newNarrator.storiesByGuild[i] = {
+      upcoming: [],
+      inProgress: [],
+      onAuction: [],
+      completed: []
+    }
+  }
+
   const totalCollections = Number(newNarrator.totalCollections)
   const timeActive = now() - Number(newNarrator.start)
   const relevantStories = Math.floor(
@@ -110,7 +117,7 @@ async function _updateNarratorState(
   const promises: Promise<void>[] = []
   for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
-      async (resolve, ) => {
+      async (resolve,) => {
         let collection = await getCollection(params.narratorIndex, i)
         if (collection === null) {
           collection = {
@@ -126,21 +133,22 @@ async function _updateNarratorState(
         } else {
           newNarrator.collections.push(collection)
         }
-        newNarrator.stories = await concatCategorizedStories(
+        await addStories(
           publisher,
           baseAuctionDuration,
           params.narratorIndex,
-          Number(newNarrator.collectionSize),
-          newNarrator.collectionLength,
           collection,
-          newNarrator.stories,
-          collection.scriptResult
+          newNarrator
         )
         setNarratorState({
           narrator: newNarrator,
           updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
           lastUpdate: Date.now(),
-          queryUntilUpdate: (state: NarratorState) => { queryUntilStateUpdate(state, setNarratorState, params) },
+          queryUntilUpdate: (
+            state: NarratorState,
+            collectionIndex: number,
+            storyIndex: number
+          ) => { queryUntilStateUpdate(state, collectionIndex, storyIndex, setNarratorState, params) },
           querying
         })
         resolve()
@@ -154,46 +162,43 @@ let querying: boolean = false
 let queryInterval: NodeJS.Timer
 
 function queryUntilStateUpdate(
-  narratorState: NarratorState, 
+  narratorState: NarratorState,
+  collectionIndex: number,
+  storyIndex: number,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
-  console.log('Starting querying for narrator state update')
+  console.log('starting querying for narrator state update')
   if (querying === true) {
-    return 
+    console.log('already querying')
+    return
   }
-  console.log('proceeding with querying')
-  _updateNarratorState(narratorState, setNarratorState, params)
-  const lastCollectionIndex = narratorState.narrator.collections.length - 1
-  const collection = narratorState.narrator.collections[lastCollectionIndex]
-  console.log('querying collection', collection, narratorState.narrator.collections)
-  if (collection === undefined) return
+  // _updateNarratorState(narratorState, setNarratorState, params)
   querying = true
-  const nextUpdateTime = collection.scriptResult.nextUpdateTime
-  queryInterval = setInterval(() => {
-    console.log('querying ...')
-    const newCollection = narratorState.narrator.collections[lastCollectionIndex]
-    if (newCollection === undefined) return
-    if (newCollection.scriptResult.nextUpdateTime !== nextUpdateTime) {
-        // we got an update--stop querying
-        console.log('stopping querying')
-        clearInterval(queryInterval)
-        return
+  const currentUpdateTime = narratorState.narrator.stories[
+    storyIdFromIndices(params.narratorIndex, storyIndex, collectionIndex)
+  ]?.text.nextUpdateTime
+  queryInterval = setInterval(async () => {
+    console.log('running interval')
+    const collection = await getCollection(params.narratorIndex, collectionIndex)
+    const newUpdateTime = collection?.scriptResult.stories[storyIndex].nextUpdateTime
+    if (newUpdateTime !== undefined && newUpdateTime > currentUpdateTime) {
+      console.log('updating and stopping querying')
+      _updateNarratorState(narratorState, setNarratorState, params)
+      clearInterval(queryInterval)
+      querying = false
     }
-    _updateNarratorState(narratorState, setNarratorState, params)
-  }, 1000 * 20) // retry every 20 seconds
+  }, 1000 * 10) // 10 seconds
 }
-
-function sortStories(s1: Story, s2: Story) { return Number(s1.startTime.sub(s2.startTime)) }
 
 async function getCollection(
   narratorIndex: number,
   collectionIndex: number
 ): Promise<Collection | null> {
   let response
-  try { 
-    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json`) 
-  } catch (err) { 
+  try {
+    response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json?cb=${Math.random()}`)
+  } catch (err) {
     console.warn(`Bad Response: ${err}`)
     return null
   }
@@ -206,28 +211,28 @@ async function getCollection(
   return collection
 }
 
-async function concatCategorizedStories(
+async function addStories(
   publisher: Contract,
   auctionDuration: BigNumber,
   narratorIndex: number,
-  collectionSize: number,
-  collectionLength: BigNumber,
   collection: Collection,
-  storiesSoFar: StoriesByGuild,
-  scriptResult: ScriptResult,
-): Promise<StoriesByGuild> {
+  narrator: Narrator
+) {
   const collectionIndex = collection.collectionIndex
-  for (let j = 0; j < collectionSize; j++) {
+  const newStories: Story[] = []
+  for (let j = 0; j < Number(narrator.collectionSize); j++) {
     const storyIndex = j
-    const id = await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex)
-    const startTime = await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex)
-    const endTime = startTime.add(collectionLength)
-    const contractStory = await publisher.stories(id)
+    const contractId = await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex)
+    const startTime: BigNumber = await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex)
+    const endTime = startTime.add(narrator.collectionLength)
+    const contractStory = await publisher.stories(contractId)
     const auction: Auction = contractStory.auction
-    let text = scriptResult.stories[j]
+    let text = collection.scriptResult.stories[j]
+    const id = storyIdFromIndices(narratorIndex, storyIndex, collectionIndex)
     if (text === undefined) {
       console.warn("scriptResult missing story at index", j)
       text = {
+        party: [],
         plainText: ["A story only the future has beheld..."],
         richText: {
           beginning: [{ string: "A story only the future has beheld...", label: Label.conjunctive }],
@@ -235,15 +240,36 @@ async function concatCategorizedStories(
           ending: { main: [], resultTexts: [] }
         },
         events: [],
-        nextUpdateTime: startTime
+        finalOutcome: 0,
+        nextUpdateTime: startTime.toNumber()
       }
-      // continue
-    } 
+    } else {
+      if (narrator.eventsByGuild[storyIndex] === undefined) narrator.eventsByGuild[storyIndex] = []
+      narrator.eventsByGuild[storyIndex].push({
+        type: EventType.adventureStart,
+        timestamp: startTime.toNumber(),
+        storyId: id
+      })
+      text.events.forEach(res => {
+        narrator.eventsByGuild[storyIndex].push({
+          type: EventType.result,
+          timestamp: Math.floor(startTime.add(endTime).div(2).toNumber()), // mid-point-ish
+          result: res,
+          storyId: id
+        })
+      })
+      if (presentOrPast(endTime)) {
+        narrator.eventsByGuild[storyIndex].push({
+          type: EventType.adventureEnd,
+          timestamp: endTime.toNumber(),
+          storyId: id
+        })
+      }
+    }
     const story: Story = {
       narratorIndex,
       collectionIndex,
       storyIndex,
-      id,
       startTime,
       endTime,
       auction,
@@ -251,36 +277,50 @@ async function concatCategorizedStories(
       nftId: contractStory.nftId,
       text
     }
-    if (auction.bidder === AddressZero) { 
+    newStories.push(story)
+    if (auction.bidder === AddressZero) {
       story.auction = Object.assign({}, auction, { duration: auctionDuration })
     }
-    const started = presentOrPast(story.startTime)
-    // TODO the server will not have the finished story right at this time, so we need to show something about it still getting it
-    const storyEnded = presentOrPast(story.endTime)
-    const auctionEnded = presentOrPast(story.endTime.add(story.auction.duration))
-    if (!storiesSoFar[storyIndex]) {
-      storiesSoFar[storyIndex] = {
-        upcoming: [],
-        inProgress: [],
-        onAuction: [],
-        completed: []
-      }
-    }
-    if (!started) {
-      storiesSoFar[storyIndex].upcoming.push(story)
-    } else if (started && !storyEnded) {
-      // hack
-      if (story.text.nextUpdateTime === -1) story.text.nextUpdateTime = Number(story.endTime)
-      storiesSoFar[storyIndex].inProgress.push(story)
-    } else if (storyEnded && !auctionEnded) {
-      storiesSoFar[storyIndex].onAuction.push(story)
-    } else if (storyEnded && auctionEnded) {
-      storiesSoFar[storyIndex].completed.push(story)
-    }
-    storiesSoFar[storyIndex].upcoming.sort(sortStories)
-    storiesSoFar[storyIndex].inProgress.sort(sortStories)
-    storiesSoFar[storyIndex].onAuction.sort(sortStories)
-    storiesSoFar[storyIndex].completed.sort(sortStories)
+    if (narrator.stories[id] !== undefined) console.warn("Unreachable: already loaded story")
+    narrator.stories[id] = story
   }
-  return storiesSoFar
+  sortStoriesByGuild(newStories, narrator)
+  for (const guildId in narrator.eventsByGuild) {
+    narrator.eventsByGuild[guildId]?.sort((a, b) => a.timestamp - b.timestamp)
+  }
+}
+
+function sortStoriesByGuild(stories: Story[], narrator: Narrator) {
+  stories.forEach(story => {
+    const category = storyCategory(narrator, story)
+    switch (category) {
+      case StoryCategory.upcoming:
+        narrator.storiesByGuild[story.storyIndex].upcoming.push(storyId(story))
+        break
+      case StoryCategory.inProgress:
+        narrator.storiesByGuild[story.storyIndex].inProgress.push(storyId(story))
+        break
+      case StoryCategory.onAuction:
+        narrator.storiesByGuild[story.storyIndex].onAuction.push(storyId(story))
+        break
+      case StoryCategory.completed:
+        narrator.storiesByGuild[story.storyIndex].completed.push(storyId(story))
+        break
+      default:
+        console.warn("Couldn't categorize story", story)
+        return
+    }
+
+    function sortStories(id1: string, id2: string) {
+      const s1 = narrator.stories[id1]
+      const s2 = narrator.stories[id2]
+      if (s1 === undefined || s2 === undefined) return 0
+      return Number(s2.startTime.sub(s1.startTime))
+    }
+
+    narrator.storiesByGuild[story.storyIndex].upcoming.sort(sortStories)
+    narrator.storiesByGuild[story.storyIndex].inProgress.sort(sortStories)
+    narrator.storiesByGuild[story.storyIndex].onAuction.sort(sortStories)
+    narrator.storiesByGuild[story.storyIndex].completed.sort(sortStories)
+  })
 }
