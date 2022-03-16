@@ -10,7 +10,7 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-export const currentRelease = "mumbai"
+export const currentRelease = "polygon testnet mumbai"
 export let currentNarrator = 0
 export const localTestNarrator = 0
 
@@ -24,7 +24,7 @@ export const ADDRESSES: { [name: string]: string } = {
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
   "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
   "polygon": "",
-  "mumbai": "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
+  "polygon testnet mumbai": "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
   "localhost": localhostAddress,
   // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)
 }
@@ -34,7 +34,7 @@ export const ADDRESSES: { [name: string]: string } = {
 let network
 if (window !== undefined) {
   if (window.location.host === '127.0.0.1:3000') {
-    network = "goerli" as NetworkName
+    network = "polygon testnet mumbai" as NetworkName
     currentNarrator = localTestNarrator
   }
 }
@@ -49,7 +49,7 @@ export const NETWORK_IDS: { [key in NetworkName]: number } = {
   "ropsten": 3,
   "goerli": 5,
   "polygon": 137,
-  "mumbai": 80001,
+  "polygon testnet mumbai": 80001,
   "localhost": 31337,
 }
 
@@ -68,7 +68,7 @@ export const SERVER = {
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "https://avenluutn-api.squad.games",
-  "mumbai": "https://avenluutn-api.squad.games",
+  "polygon testnet mumbai": "https://avenluutn-api.squad.games",
   "goerli": "https://avenluutn-api-dev.squad.games",
 }[NARRATOR_PARAMS.network]
 
@@ -86,7 +86,7 @@ export const etherscanBases: { [key in NetworkName]: string } = {
   "ropsten": "https://ropsten.etherscan.io/",
   "mainnet": "https://www.etherscan.io/",
   "polygon": "https://polygonscan.com/",
-  "mumbai": "https://mumbai.polygonscan.com/",
+  "polygon testnet mumbai": "https://polygon testnet mumbai.polygonscan.com/",
   "goerli": "https://goerli.etherscan.io/",
   "localhost": "",
 }
