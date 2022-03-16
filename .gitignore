@@ -76,6 +76,7 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+./react/.env.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
