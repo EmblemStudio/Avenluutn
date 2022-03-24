@@ -51,7 +51,8 @@ export default () => {
             :
             <div className="block">
               <div className="block">
-                Connect through the ether to sponsor a tale:
+                Will you add your seal to an entry and lend the guild support?
+                Connect through the ether to bid or claim:
               </div>
               <div className="level">
                 <div className="level-left">
