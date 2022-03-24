@@ -99,7 +99,6 @@ export interface User {
 
 export interface Share {
   shareId: string;
-  size: string;
   // story id
   narratorIndex: number;
   collectionIndex: number;

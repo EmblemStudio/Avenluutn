@@ -98,8 +98,7 @@ export const ETHERSCAN = `${etherscanBase}address/${ADDRESSES[NARRATOR_PARAMS.ne
 export const DISCORD = "https://discord.gg/VfvtD6NDuM"
 
 export const CURRENCY = "crin"
-export const DEFAULT_SHARE_PRICE = 50
-export const DEFAULT_SHARE = "1/50th"
+export const SHARE_PRICE = 50
 
 export const SHARE_PAYOUTS = {
   0: 0,
