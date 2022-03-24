@@ -16,7 +16,7 @@ export default () => {
       <AccountHeader />
       <div className="block p-4">
         <div className="block">
-          You are an Emissary to Avenluutn, governing the town on behalf of your distant sponsor.
+          You are an emissary to Avenluutn, governing the town on behalf of your distant sponsor.
         </div>
         <div className="block">
           <div className="block is-garamond is-italic is-size-4">
