@@ -14,7 +14,7 @@ export default () => {
   return (
     <>
       <div className="block">
-        Congratulations, newly appointed Emissary!
+        Congratulations, newly appointed emissary!
       </div>
       <div className="block">
         You have entered Avenluutn, a town on the edge of nowhere,
