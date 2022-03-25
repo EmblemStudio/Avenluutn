@@ -14,7 +14,7 @@ import { tellStories, ScriptResult } from '../src'
 const alchemyAPI = "https://eth-mainnet.alchemyapi.io/v2/PPujLNqHqSdJjZwxxytSUA68DA_xf8Mm"
 
 const collections = 6
-const parallelStories = 6
+const parallelStories = 5
 
 async function main() {
   let output = ""
