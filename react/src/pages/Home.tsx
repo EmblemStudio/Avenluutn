@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import GuildButtons from '../components/GuildButtons'
 import Countdown, { CountdownDisplayMode } from '../components/Countdown'
@@ -13,18 +14,19 @@ export default () => {
   return (
     <>
       <div className="block">
-        You have entered Avenluutn, on the edge of nowhere.
+        Congratulations, newly appointed emissary!
       </div>
       <div className="block">
-        The humble road into town smells of grass and earth.
-        Sweet wind rustles the treetops. You feel hopeful.
+        You have entered Avenluutn, a town on the edge of nowhere,
+        sponsored by the Alliance to study and secure the mysterious wastes.
+        You have been sent here as an emissary to govern the town of adventurers who have taken up this task.
       </div>
       {
         narrator.collections.length > 0 &&
           narrator.collections[0].scriptResult.nextState.guilds.length > 0 ?
           <>
             <div className="block">
-              A sign in the road directs you. Choose a guild:
+              Signs point to Avenluutn’s many adventuring guilds:
             </div>
             <GuildButtons
               guilds={narrator.collections[narrator.collections.length - 1]?.scriptResult.nextState.guilds ?? null}
@@ -46,6 +48,20 @@ export default () => {
               <LoadingAnimation />
             </div>
       }
+      <div className="block">
+        Behind you lies the Embassy, where emissaries such as you converse and collude:
+      </div>
+      <div className="level-item m-3">
+        <a href="https://discord.gg/kYcBdKa4eE" target="_blank">
+          <div className={`guild-button outer-border has-text-white`}>
+            <div className={`container has-text-centered inner-border has-text-white pt-3 pb-3`}>
+              <div className="block">
+                Embassy
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </>
   )
 }

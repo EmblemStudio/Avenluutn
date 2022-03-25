@@ -20,6 +20,7 @@ export default () => {
         <div className="block p-4">
           <div className="block">
             You enter {guild.name} in {guild.location}.
+            People murmur as you enter: “the emissary!”
           </div>
           <div className="block">
             {"A plaque over the door reads "}
@@ -58,7 +59,7 @@ export default () => {
           {narrator.storiesByGuild[guild.id]?.inProgress.length === 0 &&
             narrator.storiesByGuild[guild.id]?.upcoming.length === 0 &&
             <div className="block">
-              People mill about.
+              The crowd mills about.
             </div>
           }
           <div className="block">

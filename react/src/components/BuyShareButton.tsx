@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import useUser from '../hooks/useUser'
 import { Story, getTimeLeft, storyId } from '../utils'
-import { CURRENCY, DEFAULT_SHARE_PRICE, DEFAULT_SHARE } from '../constants'
+import { CURRENCY, SHARE_PRICE } from '../constants'
 
 export default ({ story }: { story: Story }) => {
   const { user, setUser } = useUser()
@@ -13,9 +13,9 @@ export default ({ story }: { story: Story }) => {
   if (share !== undefined) {
     let text = ""
     if (storyCompleted) {
-      text = `You received a ${share.size} share`
+      text = `You received a loot share`
     } else {
-      text = `You own a ${share.size} share`
+      text = `You own a loot share`
     }
     return (
       <div
@@ -29,21 +29,20 @@ export default ({ story }: { story: Story }) => {
   }
 
   const handleBuyShare = () => {
-    if (user.balance < DEFAULT_SHARE_PRICE) {
+    if (user.balance < SHARE_PRICE) {
       console.warn(`Too few ${CURRENCY} to purhase a share`)
       return
     }
     const newUser = Object.assign({}, user)
     newUser.shares[storyId(story)] = {
       shareId: storyId(story),
-      size: DEFAULT_SHARE,
       outcome: -1,
       narratorIndex: story.narratorIndex,
       collectionIndex: story.collectionIndex,
       storyIndex: story.storyIndex,
       resolved: false
     }
-    newUser.balance = user.balance - DEFAULT_SHARE_PRICE
+    newUser.balance = user.balance - SHARE_PRICE
     setUser(newUser)
   }
 
@@ -52,7 +51,7 @@ export default ({ story }: { story: Story }) => {
       className="button is-ghost is-medium is-size-6 is-underlined"
       onClick={handleBuyShare}
     >
-      {`Purchase a ${DEFAULT_SHARE} share for ${DEFAULT_SHARE_PRICE} ${CURRENCY}`}
+      {`Purchase a loot share for ${SHARE_PRICE} ${CURRENCY}`}
     </a>
   )
 }
