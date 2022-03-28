@@ -14,12 +14,11 @@ export default () => {
   return (
     <>
       <div className="block">
-        Congratulations, newly appointed emissary!
+        Another day dawns in Avenluutn, a town on the edge of nowhere,
+        created to study and secure the mysterious wastes.
       </div>
       <div className="block">
-        You have entered Avenluutn, a town on the edge of nowhere,
-        sponsored by the Alliance to study and secure the mysterious wastes.
-        You have been sent here as an emissary to govern the town of adventurers who have taken up this task.
+        You have been sent here as an Emissary to help govern this town of adventurers.
       </div>
       {
         narrator.collections.length > 0 &&
@@ -31,23 +30,34 @@ export default () => {
             <GuildButtons
               guilds={narrator.collections[narrator.collections.length - 1]?.scriptResult.nextState.guilds ?? null}
             />
+            <EmbassySection />
           </>
           :
           getTimeLeft(Number(narrator.start)) > 0 ?
-            <div className="block">
-              {`Return in `}<Countdown
-                to={Number(narrator.start)}
-                narratorState={narratorState}
-                collectionIndex={0}
-                storyIndex={0}
-                displayMode={CountdownDisplayMode.waiting_for_server}
-              />
-            </div>
+            <>
+              <div className="block">
+                {`Return in `}<Countdown
+                  to={Number(narrator.start)}
+                  narratorState={narratorState}
+                  collectionIndex={0}
+                  storyIndex={0}
+                  displayMode={CountdownDisplayMode.waiting_for_server}
+                />
+              </div>
+              <EmbassySection />
+            </>
             :
             <div className="block">
               <LoadingAnimation />
             </div>
       }
+    </>
+  )
+}
+
+function EmbassySection() {
+  return (
+    <>
       <div className="block">
         Behind you lies the Embassy, where emissaries such as you converse and collude:
       </div>
