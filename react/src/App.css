@@ -87,6 +87,11 @@ html {
   border-color: orange;
 }
 
+.dotted-bookends {
+  border-top: 1px dashed white;
+  border-bottom: 1px dashed white;
+}
+
 /* Text */
 
 .has-text-green, .is-ghost.has-text-green {

@@ -18,7 +18,8 @@ export interface NarratorState {
   updateNarrator: () => void,
   lastUpdate: number,
   queryUntilUpdate: (state: NarratorState, collectionIndex: number, storyIndex: number) => void,
-  querying: boolean
+  querying: boolean,
+  loadState: "loading" | "finished"
 }
 
 export interface NarratorContractData {
