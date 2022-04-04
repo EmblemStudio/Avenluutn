@@ -39,11 +39,13 @@ services:
     volumes:
       - ./store:/store:rw
       - ./info:/info:rw
+      - ./votes:/votes:rw
     environment:
       - AVENLUUTN_PUB_ADDR
       - AVENLUUTN_PROVIDER
       - AVENLUUTN_SCRIPT_PROVIDER
       - AVENLUUTN_RUN_ALL_NARRATORS
+      - AVENLUUTN_TWITTER_BEARER_TOKEN
     logging:
       driver: "json-file"
       options:

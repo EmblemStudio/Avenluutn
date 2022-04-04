@@ -1,0 +1,18 @@
+[
+  {
+    "matchString": "rock",
+    "startTime": 1617302680,
+    "endTime": 1648838680,
+    "refreshSeconds": 300,
+    "summary": "vote summary mock",
+    "description": "vote description mock",
+    "voteOptions": [
+      "Chris",
+      "The"
+    ],
+    "voteCount": {
+      "Chris": 16,
+      "The": 15
+    }
+  }
+]
