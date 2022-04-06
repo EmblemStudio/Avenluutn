@@ -15,7 +15,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/ethereum/go-ethereum/ethclient"
 
-	"EmblemStudio/aavenluutn/echo/publisher"
+	"EmblemStudio/Avenluutn/echo-warmer/publisher"
 )
 
 type PubWarmer struct {
@@ -334,7 +334,7 @@ func (pw PubWarmer) KeepWarm(narratorIndex int64) {
 				fmt.Sprintf(
 					"KeepWarm: %v starts in",
 					key(narratorIndex, collectionIndex),
-				),
+			),
 				untilCollectionStarts,
 			)
 			time.Sleep(untilCollectionStarts + 3) // 3 sec buffer

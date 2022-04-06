@@ -39,11 +39,7 @@ NOTE: TODO the two wake scripts is pretty bad, there is an issue to change that 
 
 ### Run the dev stack
 
-`$ docker-compose --profile dev up -d`
-
-### Run the deploy script in the hardhat service
-
-`$ docker-compose exec hardhat yarn deploy`
+`$ docker-compose -f docker-compose.yml -f docker-compose-local.yml up -d`
 
 ### Run the dev UI server (from `/react`)
 
@@ -72,7 +68,7 @@ Build it and then manually deploy the `dist` folder to netlify
 
 Run the production stack on the server
 
-`$ docker-compose --profile production up -d`
+`$ docker-compose up -d`
 
 ## To update original script content
 Create any updates in the [google sheet](https://docs.google.com/spreadsheets/d/1DWWUHyOv52j-nAPIGqscrVhzreicduFSnOR7B9Q1pRs/edit#gid=649398435)

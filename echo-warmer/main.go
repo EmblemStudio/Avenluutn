@@ -11,11 +11,12 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	"EmblemStudio/aavenluutn/echo/publisher"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/common"
 
-	"EmblemStudio/aavenluutn/echo/warmer"
+	"EmblemStudio/Avenluutn/echo-warmer/publisher"
+	"EmblemStudio/Avenluutn/echo-warmer/warmer"
+	"EmblemStudio/Avenluutn/echo-warmer/voteCounter"
 )
 
 func main() {
@@ -30,10 +31,24 @@ func main() {
 	if provider == "" {
 		log.Fatal("Missing required AVENLUUTN_PROVIDER envar")
 	}
-	fmt.Println("Provider", provider)
+	log.Println("Provider", provider)
 
 	runAllNarrators := os.Getenv("AVENLUUTN_RUN_ALL_NARRATORS")
-	fmt.Println("Run all narrators (default 'false')", runAllNarrators)
+	log.Println("Run all narrators (default 'false')", runAllNarrators)
+
+	twitterBearerToken := os.Getenv("AVENLUUTN_TWITTER_BEARER_TOKEN")
+	log.Println("Twitter bearer token length", len(twitterBearerToken))
+
+	// make a vote counter
+	tvc := voteCounter.NewTwitterVoteCounter(twitterBearerToken)
+
+	// start counting votes
+	errs := make(chan(error))
+	go tvc.CountAllVotes(errs)
+	go func() {
+		err := <-errs
+		log.Println(fmt.Sprintf("Twitter ERROR:\n%v", err))
+	}()
 
 	// make a warmer
 	client, err := ethclient.Dial(provider)
