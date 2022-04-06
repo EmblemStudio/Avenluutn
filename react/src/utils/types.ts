@@ -108,3 +108,20 @@ export interface Share {
   outcome: Success;
   resolved: boolean;
 }
+
+export interface Vote {
+  matchString: string;
+  startTime: number;
+  endTime: number;
+  refreshSeconds: number;
+  summary: string;
+  description: string;
+  voteOptions: string[];
+  voteCount: { [option: string]: number }
+}
+
+export interface CategorizedVotes {
+  upcoming: Vote[];
+  inProgress: Vote[];
+  completed: Vote[];
+}

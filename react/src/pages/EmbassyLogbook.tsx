@@ -1,8 +1,12 @@
 import React from "react"
 
 import EmbassyHeader from "../components/EmbassyHeader"
+import VoteBox from "../components/VoteBox"
+import Expander from "../components/Expander"
+import useVotes from "../hooks/useVotes"
 
 export default () => {
+  const { data: votes } = useVotes()
   return (
     <>
       <EmbassyHeader selected="logbook" />
@@ -11,7 +15,13 @@ export default () => {
           The embassy logbook records historical proposals.
         </div>
         <div className="block">
-          Notes in the native tongues of many emissaries are scrawled in the margins.
+          {votes?.completed.map((v, i) => {
+            return (
+              <Expander text={v.summary} key={i}>
+                <VoteBox vote={v} key={i} />
+              </Expander>
+            )
+          })}
         </div>
       </div>
     </>
