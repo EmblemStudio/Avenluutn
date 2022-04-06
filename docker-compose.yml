@@ -19,7 +19,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
+        max-file: "5"
         max-size: "10m"
 
   certbot:
@@ -31,7 +31,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
+        max-file: "5"
         max-size: "10m"
 
   keeper:
@@ -50,7 +50,7 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
+        max-file: "5"
         max-size: "10m"
 
   metadata:
@@ -64,5 +64,5 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
+        max-file: "5"
         max-size: "10m"
