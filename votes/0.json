@@ -1,0 +1,15 @@
+[
+  {
+    "matchString": "Avenluutn",
+    "startTime": 1648664511,
+    "endTime": 1649443469,
+    "refreshSeconds": 300,
+    "summary": "vote summary mock",
+    "description": "vote description mock",
+    "voteOptions": [
+      "a",
+      "b"
+    ],
+    "voteCount": {}
+  }
+]
