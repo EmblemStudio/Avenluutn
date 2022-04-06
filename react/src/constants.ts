@@ -68,7 +68,8 @@ export const SERVER = {
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "https://avenluutn-api.squad.games",
-  "polygon testnet mumbai": "https://avenluutn-api.squad.games",
+  // TODO should be swapped back to non-dev once votes are up there
+  "polygon testnet mumbai": "https://avenluutn-api-dev.squad.games",
   "goerli": "https://avenluutn-api-dev.squad.games",
 }[NARRATOR_PARAMS.network]
 

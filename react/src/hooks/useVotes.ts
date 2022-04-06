@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query'
+import axios from 'axios'
 
 import { Vote, CategorizedVotes } from '../utils'
+import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING, NARRATOR_PARAMS } from '../constants'
 
 export default () => {
   return useQuery(
@@ -11,52 +13,8 @@ export default () => {
 }
 
 async function mockVotes(): Promise<CategorizedVotes> {
-  const res: Vote[] = [{
-    "matchString": "rock",
-    "startTime": 1680719989,
-    "endTime": 1683311989,
-    "refreshSeconds": 300,
-    "summary": "Upcoming vote summary mock",
-    "description": "vote description mock",
-    "voteOptions": [
-      "Chris",
-      "The"
-    ],
-    "voteCount": {
-      "Chris": 16,
-      "The": 15
-    }
-  }, {
-    "matchString": "rock",
-    "startTime": 1646509189,
-    "endTime": 1651775989,
-    "refreshSeconds": 300,
-    "summary": "In progress vote summary mock",
-    "description": "vote description mock",
-    "voteOptions": [
-      "Chris",
-      "The"
-    ],
-    "voteCount": {
-      "Chris": 16,
-      "The": 15
-    }
-  }, {
-    "matchString": "rock",
-    "startTime": 1554489589,
-    "endTime": 1557081589,
-    "refreshSeconds": 300,
-    "summary": "Completed vote summary mock",
-    "description": "vote description mock",
-    "voteOptions": [
-      "Chris",
-      "The"
-    ],
-    "voteCount": {
-      "Chris": 16,
-      "The": 15
-    }
-  }]
+  // TODO '0' should be replaced with NARRATOR_PARAMS.narratorIndex once a valid votes object is up
+  const res: Vote[] = (await axios.get(`${SERVER}/votes/${0}.json`)).data
   const votes: CategorizedVotes = {
     upcoming: [], inProgress: [], completed: []
   }

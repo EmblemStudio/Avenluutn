@@ -16,7 +16,6 @@ export default () => {
   const narratorState = useNarratorState()
   const { narrator } = narratorState
   const { addNotification, removeNotification } = useNotifications()
-  console.log('home narrator', narratorState)
 
   return (
     <>
