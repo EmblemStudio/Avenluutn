@@ -47,7 +47,8 @@ func (els *EthLocalStore) Set(
 	key string,
 	value ScriptResult,
 ) error {
-	data, err := json.Marshal(value); if err != nil {
+	data, err := json.Marshal(value)
+	if err != nil {
 		log.Println(key, "could not marshal json", err)
 		return err
 	}

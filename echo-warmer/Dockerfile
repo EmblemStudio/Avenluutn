@@ -14,6 +14,7 @@ RUN go mod download
 COPY ./*.go ./
 COPY ./publisher/*.go ./publisher/
 COPY ./warmer/*.go ./warmer/
+COPY ./voteCounter/*.go ./voteCounter/
 
 RUN go build -o /avenluutn
 
