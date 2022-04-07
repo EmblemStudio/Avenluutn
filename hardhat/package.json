@@ -18,6 +18,7 @@
     "new-narrator:ropsten": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/newNarrator.js --network ropsten",
     "new-narrator:goerli": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/newNarrator.js --network goerli",
     "new-narrator:goerli-dev": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/newNarrator_dev.js --network goerli",
+    "new-narrator:mumbai": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/newNarrator.js --network mumbai",
     "build": "npx hardhat compile && yarn get-abi && yarn get-bin",
     "get-abi": "yarn get-abi:nft && yarn get-abi:pub",
     "get-bin": "yarn get-bin:nft && yarn get-bin:pub",

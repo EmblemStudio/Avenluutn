@@ -38,7 +38,8 @@ export const NarratorStateContext = createContext<NarratorState>({
   updateNarrator: () => { },
   lastUpdate: 0,
   queryUntilUpdate: (state: NarratorState) => { },
-  querying: false
+  querying: false,
+  loadState: "loading"
 })
 
 export default ({ params, children }: { params: NarratorParams, children: ReactElement }) => {
@@ -47,7 +48,8 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
     updateNarrator: () => { },
     lastUpdate: 0,
     queryUntilUpdate: (state: NarratorState) => { },
-    querying: false
+    querying: false,
+    loadState: "loading"
   })
 
   useEffect(() => {
@@ -149,13 +151,26 @@ async function _updateNarratorState(
             collectionIndex: number,
             storyIndex: number
           ) => { queryUntilStateUpdate(state, collectionIndex, storyIndex, setNarratorState, params) },
-          querying
+          querying,
+          loadState: "loading"
         })
         resolve()
       }
     ))
   }
   await Promise.all(promises)
+  setNarratorState({
+    narrator: newNarrator,
+    updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
+    lastUpdate: Date.now(),
+    queryUntilUpdate: (
+      state: NarratorState,
+      collectionIndex: number,
+      storyIndex: number
+    ) => { queryUntilStateUpdate(state, collectionIndex, storyIndex, setNarratorState, params) },
+    querying,
+    loadState: "finished"
+  })
 }
 
 let querying: boolean = false

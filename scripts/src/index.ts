@@ -12,6 +12,7 @@ import { tellStory } from './tellStory'
 import { nextState } from './nextState'
 import { fetch } from 'cross-fetch'
 import Prando from 'prando';
+import { startingState } from './startingState'; // use this if starting from a previous state
 
 // does this break anything? it was throwing errors in browser
 if (typeof window === 'undefined') globalThis.fetch = fetch
@@ -40,7 +41,8 @@ export async function tellStories(
 
   let state: State
   if (!prevResult) {
-    state = await randomStartingState(totalStories, checkpoint.prng, provider)
+    state = startingState // use this if starting from a previous state
+    // state = await randomStartingState(totalStories, checkpoint.prng, provider) // use this if starting fresh
   } else {
     state = prevResult.nextState
   }

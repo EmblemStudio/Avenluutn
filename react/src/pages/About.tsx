@@ -23,7 +23,7 @@ export default () => {
           "<a className="is-underlined has-text-grey" href="https://www.lootproject.com/" target="_blank">Lootverse</a>",
           an ecosystem of content with open-use licenses that also exists as NFTs.
           Remixes of the content share "credit" with the originals in the sense that successful remixes may boost the original NFTs' value.
-          The Grand Adventure is experimenting with that mechanic.
+          The Grand Adventure remixes Loot NFT content in this way.
         </div>
         <div className="block has-text-grey">
           Second, each story in The Grand Adventure can be "sponsored" by minting it as an NFT on an energy-cheap blockchain.

@@ -11,8 +11,8 @@ interface NarratorParams {
 
 export const STORAGE_VERSION = "0.0.0"
 export const currentRelease = "polygon testnet mumbai"
-export let currentNarrator = 0
-export const localTestNarrator = 0
+export let currentNarrator = 1
+export const localTestNarrator = 1
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
 if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {
@@ -68,7 +68,8 @@ export const SERVER = {
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon": "https://avenluutn-api.squad.games",
-  "polygon testnet mumbai": "https://avenluutn-api.squad.games",
+  // TODO should be swapped back to non-dev once votes are up there
+  "polygon testnet mumbai": "https://avenluutn-api-dev.squad.games",
   "goerli": "https://avenluutn-api-dev.squad.games",
 }[NARRATOR_PARAMS.network]
 

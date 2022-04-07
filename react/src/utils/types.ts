@@ -18,7 +18,8 @@ export interface NarratorState {
   updateNarrator: () => void,
   lastUpdate: number,
   queryUntilUpdate: (state: NarratorState, collectionIndex: number, storyIndex: number) => void,
-  querying: boolean
+  querying: boolean,
+  loadState: "loading" | "finished"
 }
 
 export interface NarratorContractData {
@@ -106,4 +107,21 @@ export interface Share {
   //
   outcome: Success;
   resolved: boolean;
+}
+
+export interface Vote {
+  matchString: string;
+  startTime: number;
+  endTime: number;
+  refreshSeconds: number;
+  summary: string;
+  description: string;
+  voteOptions: string[];
+  voteCount: { [option: string]: number }
+}
+
+export interface CategorizedVotes {
+  upcoming: Vote[];
+  inProgress: Vote[];
+  completed: Vote[];
 }

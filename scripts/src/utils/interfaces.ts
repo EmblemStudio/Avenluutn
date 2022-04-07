@@ -207,6 +207,7 @@ export interface Adventurer extends Character {
   stats: Stats;
   skills: string[];
   loot: string[];
+  stories: any;
 }
 
 export interface Pronouns {
