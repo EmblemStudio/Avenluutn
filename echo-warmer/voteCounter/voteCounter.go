@@ -130,7 +130,7 @@ func (tvc TwitterVoteCounter) monitorVotes(
 	)
 	time.Sleep(untilVoteStarts)
 
-	for time.Unix(pc.EndTime, 0).Before(time.Now()) {
+	for time.Now().Before(time.Unix(pc.EndTime, 0)) {
 		// Count up the votes on twitter
 		tvc.countVotes(pc, results)
 		time.Sleep(time.Duration(pc.RefreshSeconds) * time.Second)
