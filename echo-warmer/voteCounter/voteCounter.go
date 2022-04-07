@@ -52,7 +52,6 @@ func NewTwitterVoteCounter(
 			log.Println("Response body read error:", err)
 			return []string{}
 		}
-		log.Println("raw body", string(data))
 		var results TwitterResponse
 		err = json.Unmarshal(data, &results)
 		if err != nil {
@@ -110,7 +109,9 @@ func (tvc TwitterVoteCounter) CountAllVotes(errs chan(error)) {
 		results := make(chan(*Proposal))
 		go recordResults(results, f)
 		for _, p := range proposals {
-			go tvc.monitorVotes(&p, results)
+			go func (proposal Proposal) {
+				tvc.monitorVotes(&proposal, results)
+			}(p)
 		}
 	}
 }
@@ -148,7 +149,6 @@ func (tvc TwitterVoteCounter) countVotes(
 
 	// get the text of all the tweets
 	tweets := tvc.Search(pc.MatchString)
-	log.Println("Got tweets", tweets)
 
 	count := make(map[string]int)
 	for _, tweet := range tweets {
@@ -156,9 +156,7 @@ func (tvc TwitterVoteCounter) countVotes(
 		// This may result in counting as a vote for multiple options
 		// :shrug: that's fine!
 		for _, o := range pc.VoteOptions {
-			log.Println(tweet, "contains", o)
 			if strings.Contains(tweet, o) {
-				log.Println("yes")
 				count[o] += 1
 			}
 		}
@@ -229,7 +227,7 @@ func recordResults(
 				err,
 			)
 		}
-		log.Println("Writing updated proposals", filePath, proposals)
+		log.Println("Writing updated proposals", filePath)
 		os.WriteFile(filePath, data, 0644)
 	}
 }
