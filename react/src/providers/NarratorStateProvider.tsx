@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
-import { ScriptResult, Label } from '../../../scripts/src'
+import { ScriptResult, Label, Story as StoryText } from '../../../scripts/src'
 import { NarratorParams, Narrator, Auction, Collection, Story, storyCategory, StoryCategory, NarratorState, NetworkName, storyId, NarratorContractData, EventType, presentOrPast, storyIdFromIndices } from '../utils'
 import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
 
@@ -233,6 +233,7 @@ async function addStories(
   collection: Collection,
   narrator: Narrator
 ) {
+  console.log('collection', collection)
   const collectionIndex = collection.collectionIndex
   const newStories: Story[] = []
   for (let j = 0; j < Number(narrator.collectionSize); j++) {

@@ -17,7 +17,7 @@ const tellStory_1 = require("./tellStory");
 const nextState_1 = require("./nextState");
 const cross_fetch_1 = require("cross-fetch");
 const prando_1 = require("prando");
-const fs_1 = require("fs");
+const startingState_1 = require("./startingState"); // use this if starting from a previous state
 // does this break anything? it was throwing errors in browser
 if (typeof window === 'undefined')
     globalThis.fetch = cross_fetch_1.fetch;
@@ -36,7 +36,7 @@ async function tellStories(prevResult, startTime, length, totalStories, provider
     }
     let state;
     if (!prevResult) {
-        state = JSON.parse((0, fs_1.readFileSync)('../startingState.json').toString()); // use this if starting from a previous state
+        state = startingState_1.startingState; // use this if starting from a previous state
         // state = await randomStartingState(totalStories, checkpoint.prng, provider) // use this if starting fresh
     }
     else {
