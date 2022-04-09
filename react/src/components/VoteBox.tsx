@@ -20,6 +20,7 @@ export default ({ vote }: { vote: Vote }) => {
       winningOption = o
     }
   }
+  const over = presentOrPast(vote.endTime)
 
   return (
     <section className="section pt-2 pb-4">
@@ -27,7 +28,7 @@ export default ({ vote }: { vote: Vote }) => {
         <div className="level-left">
           <div className="level-item">
             <span className="pr-1">Time left: </span>
-            {presentOrPast(vote.endTime) ?
+            {over ?
               <span className="has-text-grey">{secondsToTimeString(0)}</span>
               :
               <Countdown
@@ -60,7 +61,9 @@ export default ({ vote }: { vote: Vote }) => {
                       {winningOption === o &&
                         <div className="has-text-gold mt-1" style={{ position: "absolute", top: 204, lineHeight: 0.7 }}>
                           <div>^^^^^^^^^^^^^^^^^^^^^</div>
-                          <div className="has-text-centered">Winning</div>
+                          <div className="has-text-centered">
+                            {over ? "Won" : "Winning"}
+                          </div>
                         </div>
                       }
                     </div>
