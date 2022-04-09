@@ -1,0 +1,59 @@
+[
+  {
+    "matchString": "rock",
+    "startTime": 1649357314,
+    "endTime": 1649358000,
+    "refreshSeconds": 300,
+    "summary": "vote summary mock",
+    "description": "vote description mock",
+    "voteOptions": [
+      "Chris",
+      "The"
+    ],
+    "voteCount": {
+      "Chris": 18,
+      "The": 14
+    }
+  },
+  {
+    "matchString": "playgrounds",
+    "startTime": 1649358000,
+    "endTime": 1649388012,
+    "refreshSeconds": 300,
+    "summary": "vote summary mock playgrounds",
+    "description": "vote description mock playgrounds",
+    "voteOptions": [
+      "children",
+      "crypto"
+    ],
+    "voteCount": {
+      "children": 26
+    }
+  },
+  {
+    "matchString": "romorrow",
+    "startTime": 1649388012,
+    "endTime": 1649474412,
+    "refreshSeconds": 300,
+    "summary": "vote summary mock",
+    "description": "vote description mock",
+    "voteOptions": [
+      "market",
+      "morning"
+    ],
+    "voteCount": {}
+  },
+  {
+    "matchString": "coming soon",
+    "startTime": 1649474412,
+    "endTime": 1649478012,
+    "refreshSeconds": 300,
+    "summary": "vote summary mock",
+    "description": "vote description mock",
+    "voteOptions": [
+      "full story",
+      "NFT"
+    ],
+    "voteCount": {}
+  }
+]

@@ -14,12 +14,13 @@ services:
       - ./certbot/www:/var/www/certbot/:ro
       - ./certbot/conf/:/etc/nginx/ssl/:ro
       - ./store:/etc/nginx/www/runs:ro
+      - ./votes:/etc/nginx/www/votes:ro
       - ./scripts/dist/bundle.js:/etc/nginx/scripts/activeTestScript.js
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-file: "5"
+        max-size: "10m"
 
   certbot:
     image: certbot/certbot:latest
@@ -30,8 +31,8 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-file: "5"
+        max-size: "10m"
 
   keeper:
     build: echo-warmer
@@ -39,16 +40,18 @@ services:
     volumes:
       - ./store:/store:rw
       - ./info:/info:rw
+      - ./votes:/votes:rw
     environment:
       - AVENLUUTN_PUB_ADDR
       - AVENLUUTN_PROVIDER
       - AVENLUUTN_SCRIPT_PROVIDER
       - AVENLUUTN_RUN_ALL_NARRATORS
+      - AVENLUUTN_TWITTER_BEARER_TOKEN
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-file: "5"
+        max-size: "10m"
 
   metadata:
     build: echo-token-metadata
@@ -61,5 +64,5 @@ services:
     logging:
       driver: "json-file"
       options:
-        max-file: 5
-        max-size: 10m
+        max-file: "5"
+        max-size: "10m"
