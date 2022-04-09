@@ -162,7 +162,7 @@ a, a:hover {
 
 /* Buttons */
 
-.guild-button, .vote-button {
+.guild-button, .vote-button, .vote-button-disabled {
   width: 200px;
 }
 

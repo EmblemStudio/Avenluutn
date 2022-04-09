@@ -57,6 +57,7 @@ export default ({ vote }: { vote: Vote }) => {
                         buttonText={o}
                         matchText={vote.matchString}
                         color={voteColors[i % 3 as 0 | 1 | 2 | 3]}
+                        disabled={over}
                       />
                       {winningOption === o &&
                         <div className="has-text-gold mt-1" style={{ position: "absolute", top: 204, lineHeight: 0.7 }}>
