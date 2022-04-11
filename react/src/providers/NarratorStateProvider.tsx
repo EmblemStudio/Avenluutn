@@ -233,7 +233,6 @@ async function addStories(
   collection: Collection,
   narrator: Narrator
 ) {
-  console.log('collection', collection)
   const collectionIndex = collection.collectionIndex
   const newStories: Story[] = []
   for (let j = 0; j < Number(narrator.collectionSize); j++) {

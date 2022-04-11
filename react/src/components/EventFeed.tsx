@@ -15,7 +15,6 @@ export default ({ events, narrator }: EventFeedProps) => {
       {events.map((event, i) => {
         const story = narrator.stories[event.storyId]
         const party = story?.text.party
-        console.log('story', story, party)
         const partyNames = party.map(adv => adv.name.firstName)
         return <EventString event={event} story={story} partyNames={partyNames} key={i} />
       })}
