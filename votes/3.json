@@ -1,28 +1,28 @@
 [
   {
-    "summary": 'Ghostly book asks politely for souls',
-    "description": 'The Grelvisanth Volume, an ancient tome held in the library archive, is haunting library visitors, humbly requesting we bring it souls.',
-    "matchString": 'Ghostly book asks politely for souls',
+    "summary": "Ghostly book asks politely for souls",
+    "description": "The Grelvisanth Volume, an ancient tome held in the library archive, is haunting library visitors, humbly requesting we bring it souls.",
+    "matchString": "Ghostly book asks politely for souls",
     "startTime": 1649797200,
     "endTime": 1650056400,
     "refreshSeconds": 120,
     "voteOptions": [
-      'Conduct the soul ritual as the book instructs',
-      'Burn the soul-hungry tome to ash',
-      'Excorcise the troublesome book-spirit'
+      "Conduct the soul ritual as the book instructs",
+      "Burn the soul-hungry tome to ash",
+      "Excorcise the troublesome book-spirit"
     ],
     "voteCount": {}
   }, {
     "summary": 'Rat infestation plagues local homes',
-    "description": 'Subterranean rats have colonized the dirt basements of many a townhome--a few too many, if you ask the townsfolk...',
-    "matchString": 'Rat infestation plagues local homes',
+    "description": "Subterranean rats have colonized the dirt basements of many a townhome--a few too many, if you ask the townsfolk...",
+    "matchString": "Rat infestation plagues local homes",
     "startTime": 1650056401,
     "endTime": 1650250869,
     "refreshSeconds": 120,
     "voteOptions": [
-      'Smoke the rats out ruthlessly',
-      'Learn to live with rodent neighbors',
-      'Offer the rats official town citizenship'
+      "Smoke the rats out ruthlessly",
+      "Learn to live with rodent neighbors",
+      "Offer the rats official town citizenship"
     ],
     "voteCount": {}
   }, {
@@ -33,9 +33,9 @@
     "endTime": 1650423669,
     "refreshSeconds": 120,
     "voteOptions": [
-      'Revenge! When adventurers die, we must avenge them.',
-      'Take it all! Adventurers should retreive new kinds of treasure',
-      'New recruits! Bolster the guild ranks with fresh faces'
+      "Revenge! When adventurers die, we must avenge them.",
+      "Take it all! Adventurers should retreive new kinds of treasure",
+      "New recruits! Bolster the guild ranks with fresh faces"
     ],
     "voteCount": {}
   }
