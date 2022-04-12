@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ../hardhat
+cd ../scripts
 yarn install
 yarn build
 
