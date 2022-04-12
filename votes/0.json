@@ -11,8 +11,8 @@
       "The"
     ],
     "voteCount": {
-      "Chris": 18,
-      "The": 14
+      "Chris": 6,
+      "The": 9
     }
   },
   {
@@ -27,7 +27,7 @@
       "crypto"
     ],
     "voteCount": {
-      "children": 26
+      "children": 1
     }
   },
   {
@@ -41,7 +41,9 @@
       "market",
       "morning"
     ],
-    "voteCount": {}
+    "voteCount": {
+      "market": 2
+    }
   },
   {
     "matchString": "coming soon",
@@ -54,6 +56,9 @@
       "full story",
       "NFT"
     ],
-    "voteCount": {}
+    "voteCount": {
+      "NFT": 5,
+      "full story": 1
+    }
   }
 ]
