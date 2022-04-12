@@ -1,6 +1,7 @@
 import { State } from "./utils";
 
 /*
+  Starting state from:
   network: "polygon mumbai",
   publisher: "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
   narrator: "0"

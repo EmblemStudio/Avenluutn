@@ -21,7 +21,7 @@ async function main() {
 
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://gist.githubusercontent.com/EzraWeller/0a71e10f2edea7547da6c07ace6cd833/raw/54846767fff08f961b591332623107264e14eff6/avenluutn_bundle_070422.js"
+    "https://arweave.net/cEmb56h28Kt5Vh7GWdCbRmRO3EXX7HztbFo_nGL6QSQ"
   )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
@@ -43,7 +43,7 @@ async function main() {
   const pubTx = await publisher.addNarrator(
     narratorNFTs.address,
     Number(nftId),
-    1649207238, // start
+    now - 48 * hours, // start
     7,                // totalCollections
     23 * hours,           // collectionLength
     24 * hours,           // collectionSpacing
