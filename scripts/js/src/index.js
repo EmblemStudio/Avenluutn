@@ -22,6 +22,7 @@ const startingState_1 = require("./startingState"); // use this if starting from
 if (typeof window === 'undefined')
     globalThis.fetch = cross_fetch_1.fetch;
 __exportStar(require("./utils/interfaces"), exports);
+const chapter = "0.0.1";
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
     const provider = (0, utils_1.makeProvider)(providerUrl);
     const runStart = Math.floor(Date.now() / 1000);

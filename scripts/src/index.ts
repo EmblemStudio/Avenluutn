@@ -19,6 +19,8 @@ if (typeof window === 'undefined') globalThis.fetch = fetch
 
 export * from './utils/interfaces'
 
+const chapter = "0.0.1"
+
 export async function tellStories(
   prevResult: ScriptResult | null,
   startTime: number,
