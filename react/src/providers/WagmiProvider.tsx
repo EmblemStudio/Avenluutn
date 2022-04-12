@@ -20,9 +20,11 @@ const infuraId = env.INFURA_KEY
 
 type Config = { chainId?: number }
 const connectors = ({ chainId }: Config) => {
+  /*
   const rpcUrl =
     chains.find((x) => x.id === chainId)?.rpcUrls?.[0] ??
     chain.mainnet.rpcUrls[0]
+  */
   return [
     new InjectedConnector({ chains }),
     new WalletConnectConnector({
@@ -44,19 +46,13 @@ const connectors = ({ chainId }: Config) => {
     */
   ]
 }
-const provider = ({ chainId }: Config) => 
-  new providers.InfuraProvider(chainId, infuraId)
-const webSocketProvider = ({ chainId }: Config) =>
-  new providers.InfuraWebSocketProvider(chainId, infuraId)
 
 export default ({ children }: { children: ReactElement }) => {
   return (
-    <Provider 
+    <Provider
       autoConnect
       connectorStorageKey="wagmi.wallet"
       connectors={connectors}
-      provider={provider}
-      webSocketProvider={webSocketProvider}
     >
       {children}
     </Provider>

@@ -1,7 +1,7 @@
 // import Prando from 'prando'
 import {
   makeProvider,
-  randomStartingState,
+  // randomStartingState, // use this if starting fresh
   newCheckpoint,
   ScriptResult,
   Story,
