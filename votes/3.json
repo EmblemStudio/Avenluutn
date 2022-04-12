@@ -1,11 +1,10 @@
 [
   {
-    // event
     "summary": 'Ghostly book asks politely for souls',
     "description": 'The Grelvisanth Volume, an ancient tome held in the library archive, is haunting library visitors, humbly requesting we bring it souls.',
     "matchString": 'Ghostly book asks politely for souls',
-    "startTime": 1649797200, // soon after the first adventure starts
-    "endTime": 1650056400, // about halfway through adventures
+    "startTime": 1649797200,
+    "endTime": 1650056400,
     "refreshSeconds": 120,
     "voteOptions": [
       'Conduct the soul ritual as the book instructs',
@@ -14,12 +13,11 @@
     ],
     "voteCount": {}
   }, {
-    // event
     "summary": 'Rat infestation plagues local homes',
     "description": 'Subterranean rats have colonized the dirt basements of many a townhome--a few too many, if you ask the townsfolk...',
     "matchString": 'Rat infestation plagues local homes',
-    "startTime": 1650056401, // right after the first vote ends
-    "endTime": 1650250869, // when the last story ends
+    "startTime": 1650056401,
+    "endTime": 1650250869,
     "refreshSeconds": 120,
     "voteOptions": [
       'Smoke the rats out ruthlessly',
@@ -28,12 +26,11 @@
     ],
     "voteCount": {}
   }, {
-    // policy
     "summary": "1st season's past: should Avenluutn adopt a new policy?",
     "description": "It is your duty to ensure the continue success of our adventuring town, Emissary: choose wisely.",
     "matchString": "1st season's past: should Avenluutn adopt a new policy?",
-    "startTime": 1650250869, // when the last story ends
-    "endTime": 1650423669, // 1-2 days later
+    "startTime": 1650250869,
+    "endTime": 1650423669,
     "refreshSeconds": 120,
     "voteOptions": [
       'Revenge! When adventurers die, we must avenge them.',
