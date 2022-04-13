@@ -11,8 +11,8 @@ interface NarratorParams {
 
 export const STORAGE_VERSION = "0.0.0"
 export const currentRelease = "polygon testnet mumbai"
-export let currentNarrator = 2
-export const localTestNarrator = 2
+export let currentNarrator = 3
+export const localTestNarrator = 3
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
 if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {

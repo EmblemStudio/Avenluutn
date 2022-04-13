@@ -14,7 +14,7 @@ export default () => {
 
 async function mockVotes(): Promise<CategorizedVotes> {
   // TODO '0' should be replaced with NARRATOR_PARAMS.narratorIndex once a valid votes object is up
-  const res: Vote[] = (await axios.get(`${SERVER}/votes/${0}.json`)).data
+  const res: Vote[] = (await axios.get(`${SERVER}/votes/${NARRATOR_PARAMS.narratorIndex}.json`)).data
   const votes: CategorizedVotes = {
     upcoming: [], inProgress: [], completed: []
   }
