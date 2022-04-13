@@ -49,10 +49,10 @@ export default ({ vote }: { vote: Vote }) => {
               {vote.description}
             </div>
             <div className="block">
-              <div className="level">
+              <div className="level" style={{ alignItems: "flex-start" }}>
                 {vote.voteOptions.map((o, i) => {
                   return (
-                    <div className="level-item" key={i}>
+                    <div className="level-item is-flex-column" key={i}>
                       <VoteButton
                         buttonText={o}
                         matchText={vote.matchString}
@@ -60,8 +60,8 @@ export default ({ vote }: { vote: Vote }) => {
                         disabled={over}
                       />
                       {winningOption === o &&
-                        <div className="has-text-gold mt-1" style={{ position: "absolute", top: 204, lineHeight: 0.7 }}>
-                          <div>^^^^^^^^^^^^^^^^^^^^^</div>
+                        <div className="has-text-gold mt-1">
+                          <div className="mt-2" style={{ lineHeight: 0 }}>^^^^^^^^^^^^^^^^^^^^^</div>
                           <div className="has-text-centered">
                             {over ? "Won" : "Winning"}
                           </div>
