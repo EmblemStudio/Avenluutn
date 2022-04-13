@@ -25,7 +25,8 @@
     "get-abi:pub": "cat artifacts/contracts/Publisher.sol/Publisher.json | jq .abi > artifacts/contracts/Publisher.sol/Publisher.abi",
     "get-bin:pub": "cat artifacts/contracts/Publisher.sol/Publisher.json | jq -r .bytecode > artifacts/contracts/Publisher.sol/Publisher.bin",
     "get-abi:nft": "cat artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json | jq .abi > artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.abi",
-    "get-bin:nft": "cat artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json | jq -r .bytecode > artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.bin"
+    "get-bin:nft": "cat artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.json | jq -r .bytecode > artifacts/contracts/NarratorNFTs.sol/NarratorNFTs.bin",
+    "verify:polygon": "REPORT_GAS=true PRIVATE_KEY=`keybase fs read /keybase/team/squad_games/squad\\ test\\ PK.txt` npx hardhat run scripts/verify.js --network polygon"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.0",
