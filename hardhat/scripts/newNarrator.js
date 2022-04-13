@@ -25,6 +25,7 @@ async function main() {
   )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
+  console.log('tx', narratorTx)
   await narratorTx.wait()
 
   console.log("minted NFT")
