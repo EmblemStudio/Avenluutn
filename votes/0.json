@@ -11,8 +11,8 @@
       "The"
     ],
     "voteCount": {
-      "Chris": 6,
-      "The": 9
+      "Chris": 1,
+      "The": 10
     }
   },
   {
@@ -27,7 +27,7 @@
       "crypto"
     ],
     "voteCount": {
-      "children": 1
+      "children": 2
     }
   },
   {
@@ -57,8 +57,7 @@
       "NFT"
     ],
     "voteCount": {
-      "NFT": 5,
-      "full story": 1
+      "NFT": 2
     }
   }
 ]

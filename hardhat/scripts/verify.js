@@ -14,16 +14,7 @@ async function main() {
   const minBidIncrementPercentage = 5
 
   await hre.run("verify:verify", {
-    address: "0x3cc6Ce718E778c471d4183A625eB4446503f947b",
-    constructorArguments: [
-      baseAuctionDuration,
-      timeBuffer,
-      minBidAmount,
-      minBidIncrementPercentage,
-      baseURI,
-      name,
-      symbol,
-    ]
+    address: "0x33A9d7DDB8f76B0c940010643B8774eDb1CB42e6"
   })
   console.log("verified")
 }

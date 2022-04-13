@@ -10,9 +10,9 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-export const currentRelease = "polygon testnet mumbai"
-export let currentNarrator = 3
-export const localTestNarrator = 3
+export const currentRelease = "polygon"
+export let currentNarrator = 0
+export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
 if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {
@@ -23,7 +23,7 @@ export const ADDRESSES: { [name: string]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
   "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
-  "polygon": "",
+  "polygon": "0x3cc6Ce718E778c471d4183A625eB4446503f947b",
   "polygon testnet mumbai": "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
   "localhost": localhostAddress,
   // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)
