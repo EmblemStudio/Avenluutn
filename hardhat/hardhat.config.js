@@ -73,7 +73,8 @@ module.exports = {
     mumbai: {
       url: process.env.MUMBAI_URL || "https://polygon-mumbai.g.alchemy.com/v2/WIh5gM_qhPEIcs_70kEhI8F3vGUKMf6G",
       accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : []
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 6000000000 // 6 gwei
     }
   },
   gasReporter: {
