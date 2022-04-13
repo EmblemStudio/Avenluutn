@@ -75,6 +75,7 @@ export const SERVER = {
 
 export const CACHE_PERIOD = 180000 // 3 minutes
 
+// TODO consolidate configuration either here or into env
 export const RPC_URIS: { [key in NetworkName]: string } = env.RPC_URIS
 
 export const COLORS = ["green", "red", "blue", "yellow", "purple", "orange"]
