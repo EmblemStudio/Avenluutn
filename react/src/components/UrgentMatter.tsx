@@ -116,14 +116,14 @@ function findUrgentMatter(narrator: Narrator, votes?: CategorizedVotes): UrgentM
   }
   if (votes !== undefined) {
     if (votes.inProgress.length > 0) {
-      const r = randomItem<Vote>(votes.inProgress)
-      um.matter = r[0]
-      um.voteIndex = r[1]
+      const r = votes.inProgress[0]
+      um.matter = r
+      um.voteIndex = 0
     } else if (votes.upcoming.length > 0) {
       um.type = MatterType.upcomingVote
-      const r = randomItem<Vote>(votes.upcoming)
-      um.matter = r[0]
-      um.voteIndex = r[1]
+      const r = votes.upcoming[0]
+      um.matter = r
+      um.voteIndex = 0
     }
   } else {
     let storyId: string | undefined
