@@ -6,7 +6,7 @@ import Countdown, { CountdownDisplayMode } from '../components/Countdown'
 import EventFeed from '../components/EventFeed'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
-import { coloredBoldStyle } from '../utils'
+import { coloredBoldStyle, Event } from '../utils'
 
 export default () => {
   const narratorState = useNarratorState()
@@ -62,21 +62,28 @@ export default () => {
               The crowd mills about.
             </div>
           }
-          <div className="block">
-            <div className="is-garamond is-italic is-size-4">
-              Recent Activity
+          {narrator.eventsByGuild[guild.id] !== undefined &&
+            <div className="block">
+              <div className="is-garamond is-italic is-size-4">
+                Recent Activity
+              </div>
+              <div className="block has-text-grey p-4">
+                <EventFeed
+                  narrator={narrator}
+                  events={eventsForFeed(narrator.eventsByGuild[guild.id])}
+                />
+              </div>
             </div>
-            <div className="block has-text-grey p-4">
-              <EventFeed
-                narrator={narrator}
-                events={narrator.eventsByGuild[guild.id]?.slice(
-                  narrator.eventsByGuild[guild.id].length - 31
-                ).reverse()}
-              />
-            </div>
-          </div>
+          }
         </div>
       }
     </>
   )
+}
+
+function eventsForFeed(events: Event[]): Event[] {
+  if (events.length > 31) {
+    return events.slice(events.length - 31).reverse()
+  }
+  return events.reverse()
 }

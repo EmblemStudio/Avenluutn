@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
-import { ScriptResult, Label } from '../../../scripts/src'
+import { ScriptResult, Label, Story as StoryText } from '../../../scripts/src'
 import { NarratorParams, Narrator, Auction, Collection, Story, storyCategory, StoryCategory, NarratorState, NetworkName, storyId, NarratorContractData, EventType, presentOrPast, storyIdFromIndices } from '../utils'
 import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
 

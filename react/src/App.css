@@ -48,6 +48,13 @@ html {
   justify-content: center;
 }
 
+.is-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .is-half-width {
   width: 50%;
 }
@@ -162,7 +169,7 @@ a, a:hover {
 
 /* Buttons */
 
-.guild-button, .vote-button {
+.guild-button, .vote-button, .vote-button-disabled {
   width: 200px;
 }
 

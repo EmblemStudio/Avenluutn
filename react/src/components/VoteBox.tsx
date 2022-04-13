@@ -20,6 +20,7 @@ export default ({ vote }: { vote: Vote }) => {
       winningOption = o
     }
   }
+  const over = presentOrPast(vote.endTime)
 
   return (
     <section className="section pt-2 pb-4">
@@ -27,7 +28,7 @@ export default ({ vote }: { vote: Vote }) => {
         <div className="level-left">
           <div className="level-item">
             <span className="pr-1">Time left: </span>
-            {presentOrPast(vote.endTime) ?
+            {over ?
               <span className="has-text-grey">{secondsToTimeString(0)}</span>
               :
               <Countdown
@@ -48,19 +49,22 @@ export default ({ vote }: { vote: Vote }) => {
               {vote.description}
             </div>
             <div className="block">
-              <div className="level">
+              <div className="level" style={{ alignItems: "flex-start" }}>
                 {vote.voteOptions.map((o, i) => {
                   return (
-                    <div className="level-item" key={i}>
+                    <div className="level-item is-flex-column" key={i}>
                       <VoteButton
                         buttonText={o}
                         matchText={vote.matchString}
                         color={voteColors[i % 3 as 0 | 1 | 2 | 3]}
+                        disabled={over}
                       />
                       {winningOption === o &&
-                        <div className="has-text-gold mt-1" style={{ position: "absolute", top: 204, lineHeight: 0.7 }}>
-                          <div>^^^^^^^^^^^^^^^^^^^^^</div>
-                          <div className="has-text-centered">Winning</div>
+                        <div className="has-text-gold mt-1">
+                          <div className="mt-2" style={{ lineHeight: 0 }}>^^^^^^^^^^^^^^^^^^^^^</div>
+                          <div className="has-text-centered">
+                            {over ? "Won" : "Winning"}
+                          </div>
                         </div>
                       }
                     </div>

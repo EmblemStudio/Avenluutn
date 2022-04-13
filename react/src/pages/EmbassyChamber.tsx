@@ -7,7 +7,6 @@ import { Vote } from "../utils"
 
 export default () => {
   const { data: votes } = useVotes()
-  console.log(votes)
 
   return (
     <>

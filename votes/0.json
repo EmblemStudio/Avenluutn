@@ -1,58 +1,43 @@
 [
   {
-    "matchString": "rock",
-    "startTime": 1649357314,
-    "endTime": 1649358000,
-    "refreshSeconds": 300,
-    "summary": "vote summary mock",
-    "description": "vote description mock",
+    "matchString": "Ghostly book asks politely for souls",
+    "startTime": 1649876400,
+    "endTime": 1650135600,
+    "refreshSeconds": 120,
+    "summary": "Ghostly book asks politely for souls",
+    "description": "The Grelvisanth Volume, an ancient tome held in the library archive, is haunting library visitors, humbly requesting we bring it souls.",
     "voteOptions": [
-      "Chris",
-      "The"
-    ],
-    "voteCount": {
-      "Chris": 18,
-      "The": 14
-    }
-  },
-  {
-    "matchString": "playgrounds",
-    "startTime": 1649358000,
-    "endTime": 1649388012,
-    "refreshSeconds": 300,
-    "summary": "vote summary mock playgrounds",
-    "description": "vote description mock playgrounds",
-    "voteOptions": [
-      "children",
-      "crypto"
-    ],
-    "voteCount": {
-      "children": 26
-    }
-  },
-  {
-    "matchString": "romorrow",
-    "startTime": 1649388012,
-    "endTime": 1649474412,
-    "refreshSeconds": 300,
-    "summary": "vote summary mock",
-    "description": "vote description mock",
-    "voteOptions": [
-      "market",
-      "morning"
+      "Conduct the soul ritual as the book instructs",
+      "Burn the soul-hungry tome to ash",
+      "Exorcise the troublesome book-spirit"
     ],
     "voteCount": {}
   },
   {
-    "matchString": "coming soon",
-    "startTime": 1649474412,
-    "endTime": 1649478012,
-    "refreshSeconds": 300,
-    "summary": "vote summary mock",
-    "description": "vote description mock",
+    "matchString": "Rat infestation plagues local homes",
+    "startTime": 1650135600,
+    "endTime": 1650477600,
+    "refreshSeconds": 120,
+    "summary": "Rat infestation plagues local homes",
+    "description": "Subterranean rats have colonized the dirt basements of many a townhome--a few too many, if you ask the townsfolk...",
     "voteOptions": [
-      "full story",
-      "NFT"
+      "Smoke the rats out ruthlessly",
+      "Learn to live with rodent neighbors",
+      "Offer the rats official town citizenship"
+    ],
+    "voteCount": {}
+  },
+  {
+    "matchString": "1st season's past: should Avenluutn adopt a new policy?",
+    "startTime": 1650477600,
+    "endTime": 1650736800,
+    "refreshSeconds": 120,
+    "summary": "1st season's past: should Avenluutn adopt a new policy?",
+    "description": "It is your duty to ensure the continue success of our adventuring town, Emissary: choose wisely.",
+    "voteOptions": [
+      "Revenge! When adventurers die, we must avenge them.",
+      "Take it all! Adventurers should retreive new kinds of treasure",
+      "New recruits! Bolster the guild ranks with fresh faces"
     ],
     "voteCount": {}
   }

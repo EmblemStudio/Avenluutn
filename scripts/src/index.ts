@@ -1,7 +1,7 @@
 // import Prando from 'prando'
 import {
   makeProvider,
-  randomStartingState,
+  // randomStartingState, // use this if starting fresh
   newCheckpoint,
   ScriptResult,
   Story,
@@ -18,6 +18,8 @@ import { startingState } from './startingState'; // use this if starting from a 
 if (typeof window === 'undefined') globalThis.fetch = fetch
 
 export * from './utils/interfaces'
+
+const chapter = "0.0.1"
 
 export async function tellStories(
   prevResult: ScriptResult | null,
