@@ -76,4 +76,4 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_ACCESS_TOKEN }}
 
       - name: Deploy Stack
-        run: doctl compute ssh avenluutn-stage --ssh-command cd Avenluutn && git branch && deploy.sh
+        run: doctl compute ssh avenluutn-stage --ssh-command cd Avenluutn && git branch && ./deploy.sh
