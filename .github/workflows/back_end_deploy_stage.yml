@@ -25,9 +25,13 @@ jobs:
           cd hardhat
           yarn
           yarn build
+          ls artifacts
 
       - name: Generate echo-warmer publisher go bindings
         run: |
+          ls
+          ls hardhat
+          ls hardhat/artifacts
           docker run \
             -u `id -u`:`id -g` \
             -v `pwd`/hardhat/artifacts/contracts:/sources \
@@ -41,19 +45,23 @@ jobs:
 
       - name: Generate echo-warmer narrator NFT go bindings
         run: |
-            docker run \
-              -u `id -u`:`id -g` \
-              -v `pwd`/hardhat/artifacts:/sources \
-              -v `pwd`/echo-warmer/publisher:/out \
-              ethereum/client-go:alltools-latest abigen \
-              --abi /sources/NarratorNFTs.sol/NarratorNFTs.abi \
-              --out /out/artifact_NarratorNFTs_sol.go \
-              --pkg  publisher \
-              --type NarratorNFTs \
-              --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin
+          ls
+          ls hardhat
+          ls hardhat/artifacts
+          docker run \
+            -u `id -u`:`id -g` \
+            -v `pwd`/hardhat/artifacts:/sources \
+            -v `pwd`/echo-warmer/publisher:/out \
+            ethereum/client-go:alltools-latest abigen \
+            --abi /sources/NarratorNFTs.sol/NarratorNFTs.abi \
+            --out /out/artifact_NarratorNFTs_sol.go \
+            --pkg  publisher \
+            --type NarratorNFTs \
+            --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin
 
       - name: Build echo-token-metadata contract go bindings
         run: |
+          ls
           docker run \
             -u `id -u`:`id -g` \
             -v `pwd`/hardhat/artifacts/contracts:/sources \
