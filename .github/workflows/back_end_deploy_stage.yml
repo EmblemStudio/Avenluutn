@@ -1,0 +1,31 @@
+name: Back End Deploy Stage
+
+on:
+  push:
+    branches: [stage]
+    paths:
+      - echo-token-metadata/*
+      - echo-warmer/*
+      - hardhat/artifacts/*
+      - votes/*
+      - nginx/*
+      - deploy.sh
+      - docker-compose.yml
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
+      - name: Build services
+        run: docker compose build
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_ACCESS_TOKEN }}
+
+      - name: Deploy Stack
+        run: doctl compute ssh Avenluutn-stage --ssh-command cd Avenluutn && git branch && deploy.sh
