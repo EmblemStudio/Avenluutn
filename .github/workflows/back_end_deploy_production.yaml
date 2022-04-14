@@ -1,4 +1,4 @@
-name: Server Deploy Production
+name: Back End Deploy Main
 
 on:
   push:
@@ -10,6 +10,7 @@ on:
       - votes/*
       - nginx/*
       - deploy.sh
+      - docker-compose.yml
 
 jobs:
   deploy:
@@ -27,6 +28,4 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Deploy Stack
-        run: doctl compute ssh Avenluutn-prod --ssh-command cd Avenluutn && git pull && deploy.sh
-
-
+        run: doctl compute ssh Avenluutn-prod --ssh-command cd Avenluutn && git branch && deploy.sh
