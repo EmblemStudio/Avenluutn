@@ -19,6 +19,43 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v2
 
+      - name: Build echo-warmer contract go bindings
+        run: |
+          docker run \
+            -u `id -u`:`id -g` \
+            -v `pwd`/hardhat/artifacts/contracts:/sources \
+            -v `pwd`/echo-warmer/publisher:/out \
+            ethereum/client-go:alltools-latest abigen \
+            --abi /sources/Publisher.sol/Publisher.abi \
+            --out /out/artifact_Publisher_sol.go \
+            --pkg  publisher \
+            --type Publisher \
+            --bin /sources/Publisher.sol/Publisher.bin
+
+            docker run \
+              -u `id -u`:`id -g` \
+              -v `pwd`/hardhat/artifacts:/sources \
+              -v `pwd`/echo-warmer/publisher:/out \
+              ethereum/client-go:alltools-latest abigen \
+              --abi /sources/NarratorNFTs.sol/NarratorNFTs.abi \
+              --out /out/artifact_NarratorNFTs_sol.go \
+              --pkg  publisher \
+              --type NarratorNFTs \
+              --bin /sources/NarratorNFTs.sol/NarratorNFTs.bin
+
+      - name: Build echo-token-metadata contract go bindings
+        run: |
+          docker run \
+            -u `id -u`:`id -g` \
+            -v `pwd`/hardhat/artifacts/contracts:/sources \
+            -v `pwd`/echo-token-metadata/publisher:/out \
+            ethereum/client-go:alltools-latest abigen \
+            --abi /sources/Publisher.sol/Publisher.abi \
+            --out /out/artifact_Publisher_sol.go \
+            --pkg  main \
+            --type Publisher \
+            --bin /sources/Publisher.sol/Publisher.bin
+
       - name: Build services
         run: docker compose build
 
