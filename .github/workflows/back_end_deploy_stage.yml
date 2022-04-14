@@ -11,7 +11,7 @@ on:
       - nginx/*
       - deploy.sh
       - docker-compose.yml
-      - .github/*
+      - .github/**/*
 
 jobs:
   deploy:
