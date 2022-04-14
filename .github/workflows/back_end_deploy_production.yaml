@@ -33,6 +33,8 @@ jobs:
             --type Publisher \
             --bin /sources/Publisher.sol/Publisher.bin
 
+      - name: Build echo-warmer narrator NFT go bindings
+        run: |
             docker run \
               -u `id -u`:`id -g` \
               -v `pwd`/hardhat/artifacts:/sources \
