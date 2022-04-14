@@ -4,11 +4,11 @@ on:
   push:
     branches: [stage]
     paths:
-      - echo-token-metadata/*
-      - echo-warmer/*
-      - hardhat/artifacts/*
-      - votes/*
-      - nginx/*
+      - echo-token-metadata/**/*
+      - echo-warmer/**/*
+      - hardhat/artifacts/**/*
+      - votes/**/*
+      - nginx/**/*
       - deploy.sh
       - docker-compose.yml
       - .github/**/*
