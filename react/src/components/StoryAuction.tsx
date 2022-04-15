@@ -8,7 +8,7 @@ import { TransactionResponse, TransactionReceipt } from '@ethersproject/provider
 import Countdown, { CountdownDisplayMode } from './Countdown'
 import StoryBox from './StoryBox'
 import { Story, shortAddress, presentOrPast, NotificationFunction, NarratorState, secondsToTimeString } from '../utils'
-import { STATUS } from '../constants'
+import { STATUS, NATIVE_TOKENS, NARRATOR_PARAMS } from '../constants'
 
 // TODO Error notifications if not enough funds or bid not high enough
 
@@ -23,6 +23,7 @@ interface StoryAuctionProps {
 export default ({ story, publisher, narratorState, addNotification, removeNotification }: StoryAuctionProps) => {
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
   const [bid, setBid] = useState<BigNumber>(parseEther("0"))
+  const tokenSymbol = NATIVE_TOKENS[NARRATOR_PARAMS.network]
 
   // TODO refresh state after transaction confirmations
   const handleSetBid = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +122,7 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
         </div>
         <div className="level-item is-vertical">
           <div className="container">
-            Last bid: <span className="has-text-grey">{formatEther(story.auction.amount)} ETH</span>
+            Last bid: <span className="has-text-grey">{`${formatEther(story.auction.amount)} ${tokenSymbol}`}</span>
           </div>
           {story.auction.bidder !== AddressZero &&
             <div className="container is-size-7 has-text-grey">
@@ -135,7 +136,7 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
               <div className="outer-border mr-1">
                 <input className="input has-text-black is-ibm is-size-6" type="text" placeholder="0" onChange={handleSetBid} />
               </div>
-              <span className="has-text-grey mr-1">ETH</span>
+              <span className="has-text-grey mr-1">{tokenSymbol}</span>
               <a className="button is-ghost is-underlined" onClick={handleBid}>Bid</a>
             </div>
             :

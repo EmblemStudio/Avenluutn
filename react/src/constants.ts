@@ -1,5 +1,4 @@
-import { NetworkName, User } from './utils'
-import { Success } from '../../scripts/src'
+import { NetworkName } from './utils'
 import env from "../.env.json"
 
 interface NarratorParams {
@@ -10,7 +9,7 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-export const currentRelease = "polygon"
+export const currentRelease: NetworkName = "polygon mainnet"
 export let currentNarrator = 0
 export const localTestNarrator = 0
 
@@ -19,14 +18,23 @@ if (typeof localhostAddress === "boolean" || localhostAddress === undefined) {
   localhostAddress = ""
 }
 // Publishers
-export const ADDRESSES: { [name: string]: string } = {
+export const ADDRESSES: { [key in NetworkName]: string } = {
   "mainnet": "",
   "ropsten": "0x2A7b3033c100044178E7c7FDdC939Be660178458",
   "goerli": "0x6bb7758DB5b475B4208A5735A8023fdEdD753aaf",
-  "polygon": "0x3cc6Ce718E778c471d4183A625eB4446503f947b",
+  "polygon mainnet": "0x3cc6Ce718E778c471d4183A625eB4446503f947b",
   "polygon testnet mumbai": "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
   "localhost": localhostAddress,
   // change in project root .env file! (avenluutn/.env is linked to avenluutn/react/.env)
+}
+
+export const NATIVE_TOKENS: { [key in NetworkName]: string } = {
+  "mainnet": "ETH",
+  "ropsten": "ETH",
+  "goerli": "ETH",
+  "polygon mainnet": "MATIC",
+  "polygon testnet mumbai": "MATIC",
+  "localhost": "ETH",
 }
 
 /***** CHANGE THEeSE!!! ????**/
@@ -48,7 +56,7 @@ export const NETWORK_IDS: { [key in NetworkName]: number } = {
   "mainnet": 1,
   "ropsten": 3,
   "goerli": 5,
-  "polygon": 137,
+  "polygon mainnet": 137,
   "polygon testnet mumbai": 80001,
   "localhost": 31337,
 }
@@ -67,7 +75,7 @@ export const SERVER = {
   "localhost": "http://localhost",
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
-  "polygon": "https://avenluutn-api.squad.games",
+  "polygon mainnet": "https://avenluutn-api.squad.games",
   // TODO should be swapped back to non-dev once votes are up there
   "polygon testnet mumbai": "https://avenluutn-api.squad.games",
   "goerli": "https://avenluutn-api-dev.squad.games",
@@ -87,7 +95,7 @@ export const WAITING_FOR_SERVER = "The bard is scribbling..."
 export const etherscanBases: { [key in NetworkName]: string } = {
   "ropsten": "https://ropsten.etherscan.io/",
   "mainnet": "https://www.etherscan.io/",
-  "polygon": "https://polygonscan.com/",
+  "polygon mainnet": "https://polygonscan.com/",
   "polygon testnet mumbai": "https://polygon testnet mumbai.polygonscan.com/",
   "goerli": "https://goerli.etherscan.io/",
   "localhost": "",
