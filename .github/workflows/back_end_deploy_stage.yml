@@ -76,7 +76,9 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_ACCESS_TOKEN }}
 
       - name: Install SSH key
-        run: echo -e "${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        run: |
+          mkdir ~/.ssh
+          echo -e "${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
 
       - name: Deploy services
         run: doctl compute ssh avenluutn-stage --ssh-command cd Avenluutn && git branch && ./deploy.sh
