@@ -88,7 +88,7 @@ async function _updateNarratorState(
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
-  const address = ADDRESSES[params.network]
+  const address = ADDRESSES[params.network as NetworkName]
   requireDefined(address, "Address for ${params.netowrk} required")
   const publisher = useContractReadable(address, artifact.abi, params.network as NetworkName)
   if (!publisher) return
@@ -102,7 +102,7 @@ async function _updateNarratorState(
   }
 
   let newNarrator: Narrator = { ...narratorData, collections: [], stories: {}, storiesByGuild: {}, eventsByGuild: {} }
-  for (let i = 0; i <= Number(newNarrator.collectionSize); i++) {
+  for (let i = 0; i <= Number(newNarrator.collectionSize) - 1; i++) {
     newNarrator.storiesByGuild[i] = {
       upcoming: [],
       inProgress: [],
