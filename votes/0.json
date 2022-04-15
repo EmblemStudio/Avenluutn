@@ -11,7 +11,11 @@
       "Burn the soul-hungry tome to ash",
       "Exorcise the troublesome book-spirit"
     ],
-    "voteCount": {}
+    "voteCount": {
+      "Burn the soul-hungry tome to ash": 3,
+      "Conduct the soul ritual as the book instructs": 8,
+      "Exorcise the troublesome book-spirit": 5
+    }
   },
   {
     "matchString": "Rat infestation plagues local homes",

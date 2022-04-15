@@ -25,7 +25,6 @@ jobs:
           cd hardhat
           yarn
           yarn build
-          ls artifacts
 
       - name: Generate echo-warmer publisher go bindings
         run: |
@@ -70,18 +69,18 @@ jobs:
       - name: Build services
         run: docker compose build
 
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_ACCESS_TOKEN }}
+#      - name: Install doctl
+#        uses: digitalocean/action-doctl@v2
+#        with:
+#          token: ${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_ACCESS_TOKEN }}
 
       - name: Deploy services
         uses: appleboy/ssh-action@master
         with:
           host: avenluutn-api-dev.squad.games
-          username: ROOT
+          username: root
           key: ${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_SSH_PRIVATE_KEY }}
           script: |
             cd Avenluutn
-            git branch
+            git status
             ./deploy.sh
