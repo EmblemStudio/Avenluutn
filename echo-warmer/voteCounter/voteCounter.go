@@ -91,7 +91,7 @@ func sendErr(err error, errs chan(error)) bool {
 }
 
 func (tvc TwitterVoteCounter) CountAllVotes(errs chan(error)) {
-	filePaths, err := filepath.Glob("/votes/*.json")
+	filePaths, err := filepath.Glob("/votes/*.json.conf")
 	log.Printf("Found %v vote files\n", len(filePaths))
 	if sendErr(err, errs) { return }
 
@@ -107,7 +107,7 @@ func (tvc TwitterVoteCounter) CountAllVotes(errs chan(error)) {
 
 		// Start the vote counting for this file
 		results := make(chan(*Proposal))
-		go recordResults(results, f)
+		go recordResults(results, strings.TrimSuffix(f, ".conf"))
 		for _, p := range proposals {
 			go func (proposal Proposal) {
 				tvc.monitorVotes(&proposal, results)
