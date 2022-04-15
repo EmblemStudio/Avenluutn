@@ -86,4 +86,4 @@ jobs:
           EOT
 
       - name: Deploy services
-        run: doctl compute ssh avenluutn-stage --ssh-command cd Avenluutn && git branch && ./deploy.sh
+        run: doctl compute ssh avenluutn-stage --ssh-command "cd Avenluutn && git branch && ./deploy.sh"
