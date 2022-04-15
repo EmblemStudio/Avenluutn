@@ -79,6 +79,11 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo -e "${{ secrets.DIGITALOCEAN_EMBLEM_STUDIO_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo <<EOT > ~/.ssh/known_hosts
+          159.223.140.70 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVjqRRzM/3lGt0ZIQXkDLz2lsvjRMn9G5XrgRUH29jm
+          159.223.140.70 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNr5sca16TYEfKYFQYK3EBKRanJKiDHi4boUbUY6obl+578jgP2ZKsNJMUMqAaZKLQeDubydAzjXSxE7Psc1nXZRdtGD0IykL3wRvcZyGjj6zc2J98QTBJS4kQrvfvWMrXd1TmRWGdeT154cFb2TGxFXgK77MncW4edv6EJLlfIfjFIPlb9vU+g5NMt6MXjjs8AJsOf+KCBv5g37oPzXenImxye56+uQV5w849kRkGLxP6SW7BPf7C8UWa0Yq7gjBPE0KIfuEIH/F7N87l7vGgv15s51mZtKStVgVOlUItD/L6pkxCpMUD7lr4H0ANTfCxW8pXL+Y5AZqPef4QXRKTKD+ajfpaFjpgFv7x960TztDzFd02W+0DiFBETeQZzM80VfK2JP3x3ipLmZH7fcTjAeAlEgsXbE2zE98awBlxfumJOTJv2k6Pr9L7QampTWFPxkV3Za4AE0IkO0/CUmiwCRXR6FHzE64UXqjjWJ6ufVSTcXj+sosQ+6IGRpNdnBE=
+          159.223.140.70 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKHD5fmEsYZpqF35ruiCzYY8gNsONbl24FWoC0N/cbFybHxw0Tca+cYH9EYhjZlt5toFMvZgRTzIn9XECFZsC04=
+          EOT
 
       - name: Deploy services
         run: doctl compute ssh avenluutn-stage --ssh-command cd Avenluutn && git branch && ./deploy.sh
