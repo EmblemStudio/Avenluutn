@@ -1,6 +1,5 @@
 import React from 'react'
 
-import BuyShareButton from './BuyShareButton'
 import Countdown, { CountdownDisplayMode } from './Countdown'
 import LabeledString from './LabeledString'
 import { Story, storyId, NarratorState } from '../utils'
@@ -86,11 +85,6 @@ export default ({ story, narratorState }: StoryBoxProps) => {
       </div>
       <div className="container">
         <div className="level">
-          <div className="level-left">
-            <div className="level-item">
-              <BuyShareButton story={story} />
-            </div>
-          </div>
           <div className="level-right">
             <div className="level-item">
               <div className="is-garamond is-italic is-size-5 pr-1">

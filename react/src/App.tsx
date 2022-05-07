@@ -6,7 +6,6 @@ import './App.css'
 import WagmiProvider from './providers/WagmiProvider'
 import NotificationsProvider from './providers/NotificationsProvider'
 import NarratorStateProvider from './providers/NarratorStateProvider'
-import UserProvider from './providers/UserProvider'
 import QueryProvider from './providers/QueryProvider'
 import { NARRATOR_PARAMS } from './constants'
 import Layout from './components/Layout'
@@ -20,7 +19,6 @@ import EmbassyLogbook from './pages/EmbassyLogbook'
 import About from './pages/About'
 import Adventurer from './pages/Adventurer'
 import Story from './pages/Story'
-import MyAccount from './pages/MyAccount'
 
 export default () => {
   return (
@@ -28,7 +26,6 @@ export default () => {
       <WagmiProvider>
         <NotificationsProvider>
           <NarratorStateProvider params={NARRATOR_PARAMS}>
-            <UserProvider>
               <QueryProvider>
                 <BrowserRouter>
                   <Layout>
@@ -43,13 +40,11 @@ export default () => {
                       <Route path="/embassy/chamber" element={<EmbassyChamber />} />
                       <Route path="/embassy/lounge" element={<EmbassyLounge />} />
                       <Route path="/embassy/logbook" element={<EmbassyLogbook />} />
-                      <Route path="/my-account" element={<MyAccount />} />
                       <Route path="/about" element={<About />} />
                     </Routes>
                   </Layout>
                 </BrowserRouter>
               </QueryProvider>
-            </UserProvider>
           </NarratorStateProvider>
         </NotificationsProvider>
       </WagmiProvider>
