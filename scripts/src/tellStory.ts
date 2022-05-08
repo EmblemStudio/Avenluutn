@@ -22,6 +22,7 @@ import {
   Success,
   Result,
   ResultType,
+  makeResurrectionText,
   makeTraitText,
   findNextUpdateTime,
   LabeledString
@@ -102,7 +103,8 @@ export async function tellStory(
     )
   }
   // make plainText
-  res.richText.beginning.forEach(ls => res.plainText.push(ls.string))
+  res.richText.beginning.resurrections.forEach(lsa => lsa.forEach(ls => res.plainText.push(ls.string)))
+  res.richText.beginning.main.forEach(ls => res.plainText.push(ls.string))
   res.richText.middle.obstacleText.forEach((lsa, i) => {
     const outcomeText = res.richText.middle.outcomeText[i]
     if (outcomeText) {
@@ -141,11 +143,26 @@ async function tellBeginning(
   /**
    * Make random party
    */
-  const party: Adventurer[] = randomParty(
+  const randomPartyRes = randomParty(
     prng,
     prng.nextInt(3, 5),
-    Object.keys(guild.adventurers)
-  ).party.map(id => {
+    Object.keys(guild.adventurers),
+    Object.keys(guild.graveyard)
+  )
+  const resurrectionTexts: LabeledString[][] = []
+  randomPartyRes.rareParty.forEach(id => {
+    const adv = guild.graveyard[id]
+    if (adv !== undefined) {
+      // change them into a thrall
+      adv.species = ["Thrall"]
+      // remove them from the graveyard
+      guild.adventurers[id] = adv
+      delete guild.graveyard[id]
+      // add some text about them being resurrected
+      resurrectionTexts.push(makeResurrectionText(adv))
+    }
+  })
+  const party: Adventurer[] = randomPartyRes.party.map(id => {
     const adv = guild.adventurers[id]
     if (!adv) { throw new Error("No adventurer") }
     return adv
@@ -190,7 +207,10 @@ async function tellBeginning(
     endTime,
     obstacleTimes,
     outcomeTimes,
-    text: [...guildText, ...questText]
+    text: {
+      resurrections: resurrectionTexts,
+      main: [...guildText, ...questText]
+    }
   }
 }
 

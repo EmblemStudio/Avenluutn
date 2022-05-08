@@ -10,7 +10,7 @@ export interface Story {
   party: Adventurer[];
   plainText: string[];
   richText: {
-    beginning: LabeledString[];
+    beginning: BeginningText;
     middle: {
       obstacleText: LabeledString[][];
       outcomeText: OutcomeText[];
@@ -22,6 +22,11 @@ export interface Story {
   nextUpdateTime: number;
 }
 
+export interface BeginningText {
+  resurrections: LabeledString[][];
+  main: LabeledString[];
+}
+
 export interface Beginning {
   guild: Guild;
   party: Adventurer[];
@@ -29,7 +34,7 @@ export interface Beginning {
   endTime: number;
   obstacleTimes: number[];
   outcomeTimes: number[];
-  text: LabeledString[];
+  text: BeginningText;
 }
 
 export interface OutcomeText {

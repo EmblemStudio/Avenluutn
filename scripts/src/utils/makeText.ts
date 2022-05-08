@@ -283,6 +283,15 @@ export function makeLootText(adventurer: Adventurer, lootPiece: string): Labeled
   ]
 }
 
+export function makeThrallLootText(adventurer: Adventurer, lootPiece: string): LabeledString[] {
+  return [
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
+    { string: ` offered `, label: Label.conjunctive },
+    { string: `${lootPiece}`, label: Label.lootName },
+    { string: `to the Grelvisanth Volume.`, label: Label.conjunctive }
+  ]
+}
+
 export function makeSkillText(adventurer: Adventurer, skill: string): LabeledString[] {
   return [
     { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
@@ -356,4 +365,13 @@ export function makeTriggerText(
     }
   }
   return res
+}
+
+export function makeResurrectionText(adventurer: Adventurer): LabeledString[] {
+  return [
+    { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
+    { string: `was resurrected as a thrall of the `, label: Label.conjunctive },
+    { string: `Grelvisanth Volume`, label: Label.conjunctive },
+    { string: `!`, label: Label.conjunctive }
+  ]
 }

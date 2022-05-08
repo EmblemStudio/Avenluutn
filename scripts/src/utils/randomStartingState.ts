@@ -55,24 +55,46 @@ async function randomGuild(
   }
 }
 
+const rareAdvPercent = 5 // / 100
+
 export function randomParty(
   prng: Prando,
   size: number,
-  adventurersLeft: string[]
-): { party: number[], adventurersLeft: string[] } {
-  if (size > adventurersLeft.length) size = adventurersLeft.length
+  advLeftCommon: string[],
+  advLeftRare: string[]
+): {
+  party: number[],
+  rareParty: number[],
+  advLeftCommon: string[],
+  advLeftRare: string[]
+} {
+  if (size > advLeftCommon.length) size = advLeftCommon.length
   const party: number[] = []
+  const rareParty: number[] = []
   for (let i = 0; i < size; i++) {
-    const nextAdvId = prng.nextArrayItem(adventurersLeft)
-    party.push(parseInt(nextAdvId))
-    adventurersLeft.splice(
-      adventurersLeft.indexOf(nextAdvId),
-      1
-    )
+    if (advLeftRare.length > 0) {
+      const roll = prng.nextInt(0, 100)
+      if (roll <= rareAdvPercent) {
+        const nextAdvId = prng.nextArrayItem(advLeftRare)
+        party.push(parseInt(nextAdvId))
+        rareParty.push(parseInt(nextAdvId))
+        advLeftRare.splice(advLeftRare.indexOf(nextAdvId), 1)
+      } else {
+        const nextAdvId = prng.nextArrayItem(advLeftCommon)
+        party.push(parseInt(nextAdvId))
+        advLeftCommon.splice(advLeftCommon.indexOf(nextAdvId), 1)
+      }
+    } else {
+      const nextAdvId = prng.nextArrayItem(advLeftCommon)
+      party.push(parseInt(nextAdvId))
+      advLeftCommon.splice(advLeftCommon.indexOf(nextAdvId), 1)
+    }
   }
   return {
     party,
-    adventurersLeft
+    rareParty,
+    advLeftCommon,
+    advLeftRare
   }
 }
 

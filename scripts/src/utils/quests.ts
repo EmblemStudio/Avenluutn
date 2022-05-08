@@ -56,6 +56,7 @@ import { processResults } from './processResults'
 import { getRandomLootPiece } from '../content/loot'
 import { makeObstacleText } from './makeText'
 import { makeProvider } from './newCheckpoint'
+import { makeThrallLootText } from '.'
 
 // 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
 // TODO adjust the RNG so characters are more likely to "select" quests that fit them?
@@ -433,6 +434,7 @@ async function rollResults(
     if (skillOdds === undefined) throw new Error("No skillOdds")
 
     if (typeRoll <= injuryOdds) {
+      // Injured!
       const injuryText = prng.nextArrayItem(Object.keys(injuries))
       result.text = makeInjuryText(adventurer, injuryText)
       const injury = injuries[injuryText]
@@ -444,16 +446,23 @@ async function rollResults(
         if (previousResults[ResultType.Injury].length === 2) i = length
       }
     } else if (typeRoll > injuryOdds && typeRoll <= deathOdds) {
+      // Died!
       result.type = ResultType.Death
       result.text = makeDeathText(adventurer)
       results.push(result)
-      // if they died, skip rest of results
+      // skip rest of results
       i = length
     } else if (typeRoll > deathOdds && typeRoll <= lootOdds) {
+      // Found loot!
       result.type = ResultType.Loot
       const lootPiece = await getRandomLootPiece(prng, provider)
       result.component = lootPiece
-      result.text = makeLootText(adventurer, lootPiece)
+      // handle thralls, who offer loot to the Grelvisanth Volume
+      if (adventurer.species.includes("Thrall")) {
+        result.text = makeThrallLootText(adventurer, lootPiece)
+      } else {
+        result.text = makeLootText(adventurer, lootPiece)
+      }
       results.push(result)
     } else if (typeRoll > lootOdds && typeRoll <= skillOdds) {
       result.type = ResultType.Skill
