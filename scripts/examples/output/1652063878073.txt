@@ -1,0 +1,2380 @@
+STORY 0-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Stani Feron, 
+Rasmus Vespertine, 
+and 
+Amou Kjeldsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+ caves
+ at the 
+Boreal 
+village
+.
+During the journey, 
+they 
+stumbled upon 
+a 
+decrepit
+ river
+.
+After 
+a fraught 
+trek
+, they 
+overcame
+ the 
+river
+.
+Stani Feron
+ learned 
+Archeology
+!
+Rasmus Vespertine
+ found 
+Studded Leather Belt
+!
+They 
+arrived at the 
+Boreal
+ village
+, where 
+they 
+were blocked by 
+some 
+voracious
+ caves
+.
+After 
+a trying 
+reconnoiter
+, they 
+successfully navigated
+ the 
+caves
+.
+Rasmus Vespertine
+ got blasted eardrums.
+Rasmus Vespertine
+ suffered slash wounds.
+The adventurers 
+returned to 
+Union of Scientists
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-1 
+
+At 
+Marsh's Sewerworks
+ in 
+Varajao District
+, 
+Malok state Kulechov, 
+Rita Plain, 
+and 
+Gawel from Gresham 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+violent
+, 
+deathly
+ tome
+ at the 
+Headless 
+sea
+.
+In transit, 
+they 
+discovered 
+a 
+violent
+ dead end
+.
+After 
+a grueling 
+brainstorm
+, they 
+figured out
+ the 
+dead end
+.
+Rita Plain
+ now has 
+aggressive impulses
+!
+After going some distance, 
+they 
+met 
+a 
+voracious
+, unspeakable
+ bird folk
+.
+After 
+an epic 
+negotiation
+, they 
+parted ways with
+ the 
+bird folk
+.
+Gawel from Gresham
+ was cursed.
+They 
+arrived at the 
+Headless
+ sea
+, where 
+they 
+were blocked by 
+a 
+violent
+, deathly
+ tome
+.
+After 
+a fraught 
+search
+, they 
+grabbed
+ the 
+tome
+.
+Malok state Kulechov
+ learned 
+Swordskill
+!
+Rita Plain
+ found 
+"Sorrow Peak" Ring Mail of Reflection +1
+!
+Gawel from Gresham
+ found 
+Maul
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Flying Stones
+, 
+Professor Andre Wintermute, 
+Jessica Marblemaw, 
+and 
+Andre Kiss 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+diurnal
+, 
+unsettling
+ egregore
+ at the 
+Darshish 
+city
+.
+Pushing forward, 
+they 
+were blocked by 
+a 
+voracious
+ maze
+.
+After 
+an epic 
+brainstorm
+, they 
+figured out
+ the 
+maze
+.
+Professor Andre Wintermute 
+used her 
+Baking 
+skills!
+Jessica Marblemaw
+ found 
+Platinum Ring of Anger
+!
+Jessica Marblemaw
+ found 
+Helm
+!
+Andre Kiss
+ got fried nerves.
+While investigating the area, 
+they 
+were confronted by 
+a 
+violent
+, hideous
+ beast
+.
+After 
+a grueling 
+battle
+, they 
+parted ways with
+ the 
+beast
+.
+Professor Andre Wintermute
+ learned 
+Haberdashery
+!
+Jessica Marblemaw
+ found 
+Silver Ring
+!
+Andre Kiss
+ was frightened half to death.
+They 
+arrived at the 
+Darshish
+ city
+, where 
+they 
+had to solve 
+a 
+diurnal
+, unsettling
+ egregore
+.
+After 
+a hard-earned 
+search
+, they 
+retrieved
+ the 
+egregore
+.
+Jessica Marblemaw 
+used his 
+Horsemanship 
+skills!
+Professor Andre Wintermute
+ learned 
+Marketing
+!
+Andre Kiss
+ was cursed.
+Andre Kiss
+ was knocked out.
+The adventurers 
+returned to 
+Royal Orchestra Theatre
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-3 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Robert Plain, 
+Zaki Gresham, 
+and 
+Abigail Took-Took 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+entrancing
+ walls
+ at the 
+Jarred 
+pass
+.
+On the way, 
+they 
+stumbled upon 
+a 
+voracious
+ waste
+.
+After 
+a grueling 
+trek
+, they 
+overcame
+ the 
+waste
+.
+Robert Plain 
+used his 
+Baking 
+skills!
+Zaki Gresham
+ found 
+Demonhide Boots
+!
+They 
+arrived at the 
+Jarred
+ pass
+, where 
+they 
+were blocked by 
+some 
+entrancing
+ walls
+.
+After 
+a weak 
+attempt
+, they 
+could not safe-guard
+ the 
+walls
+.
+Robert Plain
+ was stabbed in the torso.
+Zaki Gresham
+ was cursed.
+The adventurers 
+slunk back to 
+Cherished Heart Temple
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-4 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Molly Pelletier, 
+Vesryn Yellen da gay, 
+and 
+Kerstin Skotnik 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+invisible
+ wyrm
+ at the 
+Headless 
+valley
+.
+Next, 
+they 
+were blocked by 
+a 
+violent
+ cliff
+.
+After 
+a hard-earned 
+trek
+, they 
+traversed
+ the 
+cliff
+.
+Vesryn Yellen da gay
+ found 
+Titanium Ring of Vitriol
+!
+They 
+arrived at the 
+Headless
+ valley
+, where 
+they 
+snuck up on 
+an 
+invisible
+ wyrm
+.
+After 
+a strenuous 
+battle
+, they 
+conquered
+ the 
+wyrm
+.
+Vesryn Yellen da gay 
+conjured smiles with a clever joke!
+Kerstin Skotnik
+ learned 
+Acrobatics
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Anastazja Plain, 
+Amou Kjeldsen, 
+and 
+Stani Feron 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+many-eyed
+ maze
+ at the 
+Illusid 
+pass
+.
+On the road there, 
+they 
+discovered 
+a 
+succulent
+ maze
+.
+After 
+a bungled 
+hundred guesses
+, they 
+failed to solve
+ the 
+maze
+.
+Anastazja Plain
+ had their arm crushed.
+Amou Kjeldsen
+ was frightened half to death.
+Amou Kjeldsen
+ found 
+Hard Leather Boots
+!
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-1 
+Chinwemma Lopez
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Marsh's Sewerworks
+ in 
+Varajao District
+, 
+Chinwemma Lopez, 
+Kyle Buterin, 
+and 
+Malok state Kulechov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+succulent
+ egregore
+ at the 
+Boreal 
+summit
+.
+Before reaching the destination, 
+they 
+were confronted with 
+a 
+sharp
+ hedge
+.
+After 
+a strenuous 
+trek
+, they 
+crossed
+ the 
+hedge
+.
+Kyle Buterin
+ found 
+Ghost Wand
+!
+Malok state Kulechov
+ was cursed.
+They 
+arrived at the 
+Boreal
+ summit
+, where 
+they 
+discovered 
+a 
+succulent
+ egregore
+.
+After 
+a fraught 
+infiltration
+, they 
+grabbed
+ the 
+egregore
+.
+Chinwemma Lopez
+ offered 
+Pendant
+to the Grelvisanth Volume.
+Kyle Buterin
+ suffered slash wounds.
+Malok state Kulechov
+ found 
+Gold Ring
+!
+Malok state Kulechov
+ bruised her ribs.
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Flying Stones
+, 
+Satoshi Mancini, 
+King Noah Maki, 
+and 
+Jessica Marblemaw 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+invisible
+ psychopomp
+ at the 
+Red 
+valley
+.
+On the way, 
+they 
+discovered 
+an 
+entrancing
+ cliff
+.
+After 
+a misguided 
+trek
+, they 
+failed to traverse
+ the 
+cliff
+.
+Jessica Marblemaw
+ was stabbed in the torso.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-3 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Matthew Humblecut, 
+John Henrichon, 
+and 
+Carly Berg the Fighter 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+, 
+unspeakable
+ relic
+ "Pillskin Marauder"
+ at the 
+Boreal 
+valley
+.
+Next, 
+they 
+snuck up on 
+an 
+entrancing
+ bird folk
+.
+After 
+an exhausting 
+stand off
+, they 
+were defeated by
+ the 
+bird folk
+.
+The adventurers 
+slunk back to 
+Cherished Heart Temple
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-4 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Vesryn Yellen da gay, 
+Noah Kwiatkowski, 
+Rosvita Kufersin, 
+Molly Pelletier, 
+and 
+Ravil Woods 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+nocturnal
+, 
+empowered
+ swarm
+ "Yule Howler"
+ at the 
+Macrosign 
+valley
+.
+While traveling, 
+they 
+came across 
+some 
+crepuscular
+ brigands
+.
+After 
+a successful 
+game of wits
+, they 
+moved on from
+ the 
+brigands
+.
+Molly Pelletier 
+used her prosthetic arm!
+Molly Pelletier
+ found 
+Chain Mail
+!
+While investigating the area, 
+they 
+discovered 
+a 
+sharp
+, fearsome
+ puzzlebox
+.
+After 
+an easy 
+hundred guesses
+, they 
+solved
+ the 
+puzzlebox
+.
+Rosvita Kufersin
+ now has 
+monsterphobia
+!
+On the road there, 
+they 
+stumbled upon 
+the 
+entrancing
+, renowned
+ puzzlebox
+ "Vivisected Quartzile"
+.
+After 
+an epic 
+hundred guesses
+, they 
+solved
+ the 
+puzzlebox
+.
+Vesryn Yellen da gay
+ found 
+Sash
+!
+Noah Kwiatkowski
+ found 
+Cap
+!
+Rosvita Kufersin
+ now has 
+a peg leg
+!
+Molly Pelletier
+ had her confidence shaken.
+Molly Pelletier
+ learned 
+Horsemanship
+!
+They 
+arrived at the 
+Macrosign
+ valley
+, where 
+they 
+met 
+the 
+nocturnal
+, empowered
+ swarm
+ "Yule Howler"
+.
+After 
+an epic 
+struggle
+, they 
+bested
+ the 
+swarm
+.
+Noah Kwiatkowski
+ had her confidence shaken.
+Rosvita Kufersin
+ suffered slash wounds.
+Molly Pelletier
+ was frightened half to death.
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Archon Gustave October, 
+Stani Feron, 
+Queen Sybella Davis, 
+Gawel Horak, 
+and 
+Anastazja Plain 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+many-eyed
+, 
+fearsome
+ caves
+ at the 
+Darshish 
+pass
+.
+While investigating the area, 
+they 
+were confronted by 
+a 
+violent
+ elemental
+.
+After 
+a successful 
+game of wits
+, they 
+defeated
+ the 
+elemental
+.
+Gawel Horak
+ now has 
+unluckiness
+!
+Anastazja Plain
+ learned 
+Archery
+!
+Next, 
+they 
+were ambushed by 
+a 
+many-eyed
+, impossible
+ bird folk
+.
+After 
+a testing 
+game of wits
+, they 
+parted ways with
+ the 
+bird folk
+.
+Gawel Horak
+ found 
+Linen Shoes of Vitriol
+!
+They 
+arrived at the 
+Darshish
+ pass
+, where 
+they 
+were confronted with 
+some 
+many-eyed
+, fearsome
+ caves
+.
+After 
+a successful 
+reconnoiter
+, they 
+successfully navigated
+ the 
+caves
+.
+Archon Gustave October
+ found 
+Hard Leather Boots
+!
+Queen Sybella Davis
+ found 
+"Corruption Bite" Sash of Anger +1
+!
+Anastazja Plain
+ found 
+Chain Gloves
+!
+Anastazja Plain
+ now has 
+gambling addiction
+!
+Anastazja Plain
+ found 
+Full Helm
+!
+The adventurers 
+returned triumphantly to 
+Union of Scientists
+, basking in glory.
+nextUpdateTime: -1
+STORY 2-1 
+
+At 
+Marsh's Sewerworks
+ in 
+Varajao District
+, 
+Chinwemma Lopez, 
+Malok state Kulechov, 
+Master Satoshi Geisler, 
+and 
+Gawel from Gresham 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+ citadel
+ at the 
+Geometric 
+summit
+.
+In transit, 
+they 
+snuck up on 
+an 
+entrancing
+ bird folk
+.
+After 
+a hard-earned 
+contest
+, they 
+defeated
+ the 
+bird folk
+.
+Chinwemma Lopez
+ got blasted eardrums.
+Chinwemma Lopez
+ learned 
+Investigation
+!
+Gawel from Gresham
+ now has 
+martyr complex
+!
+They 
+arrived at the 
+Geometric
+ summit
+, where 
+they 
+stumbled upon 
+a 
+nocturnal
+ citadel
+.
+After 
+a challenging 
+attempt
+, they 
+defended
+ the 
+citadel
+.
+Chinwemma Lopez
+ offered 
+Wool Sash
+to the Grelvisanth Volume.
+Master Satoshi Geisler
+ had her arm crushed.
+Master Satoshi Geisler
+ now has 
+greed
+!
+Gawel from Gresham
+ had their arm crushed.
+Gawel from Gresham
+ found 
+Pendant
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+Chinwemma Lopez
+ now has 
+deafness
+!
+nextUpdateTime: -1
+STORY 2-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Flying Stones
+, 
+Dennis Gotou, 
+Professor Andre Wintermute, 
+Andre Kiss, 
+and 
+Yuukou chadde Okwuoma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+voracious
+, 
+horrifying
+ citadel
+ at the 
+Can-ton 
+market
+.
+After going some distance, 
+they 
+came across 
+a 
+many-eyed
+ bird folk
+.
+After 
+a hard-earned 
+game of wits
+, they 
+parted ways with
+ the 
+bird folk
+.
+Professor Andre Wintermute
+ found 
+Chain Boots
+!
+Andre Kiss
+ was frightened half to death.
+Yuukou chadde Okwuoma
+ found 
+"Foe Moon" Silk Slippers of Vitriol +1
+!
+On the road there, 
+they 
+came across 
+some 
+decrepit
+, impossible
+ brigands
+.
+After 
+an epic 
+battle
+, they 
+passed by
+ the 
+brigands
+.
+Dennis Gotou
+ had their arm crushed.
+Professor Andre Wintermute
+ found 
+Short Sword
+!
+Andre Kiss
+ found 
+Linen Sash
+!
+They 
+arrived at the 
+Can-ton
+ market
+, where 
+they 
+were blocked by 
+a 
+voracious
+, horrifying
+ citadel
+.
+After 
+an exhausting 
+overwatch
+, they 
+could not safe-guard
+ the 
+citadel
+.
+Professor Andre Wintermute
+ was frightened half to death.
+Yuukou chadde Okwuoma
+ dislocated his shoulder.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+Andre Kiss
+ now has 
+anxiety
+!
+nextUpdateTime: -1
+STORY 2-3 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+John Henrichon, 
+Matthew Humblecut, 
+Carly Berg the Fighter, 
+and 
+Chishou Sandgreen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+irresistible
+ maze
+ "Yule Quartzile"
+ at the 
+Geometric 
+valley
+.
+While traveling, 
+they 
+were blocked by 
+a 
+many-eyed
+ maze
+.
+After 
+a testing 
+hundred guesses
+, they 
+solved
+ the 
+maze
+.
+John Henrichon
+ got fried nerves.
+Matthew Humblecut
+ found 
+Scimitar
+!
+Matthew Humblecut
+ dislocated her shoulder.
+Carly Berg the Fighter
+ was cursed.
+While investigating the area, 
+they 
+were confronted by 
+a 
+violent
+, unsettling
+ beast
+.
+After 
+a grueling 
+negotiation
+, they 
+parted ways with
+ the 
+beast
+.
+John Henrichon
+ suffered slash wounds.
+Carly Berg the Fighter
+ had her confidence shaken.
+Chishou Sandgreen
+ found 
+Great Helm
+!
+Chishou Sandgreen
+ got fried nerves.
+While investigating the area, 
+they 
+met 
+the 
+entrancing
+, irresistible
+ brigands
+ "Carcosan Howler"
+.
+After 
+an epic 
+negotiation
+, they 
+parted ways with
+ the 
+brigands
+.
+Chishou Sandgreen 
+used his 
+Politics 
+skills!
+Matthew Humblecut
+ found 
+Heavy Belt
+!
+Matthew Humblecut
+ got fried nerves.
+Carly Berg the Fighter
+ found 
+Linen Shoes
+!
+Carly Berg the Fighter
+ dislocated her shoulder.
+Carly Berg the Fighter
+ was knocked out.
+Chishou Sandgreen
+ found 
+Linen Sash
+!
+Venturing forth, 
+they 
+were blocked by 
+the 
+many-eyed
+, cursed
+ puzzlebox
+ "Edible Butcher"
+.
+After 
+an epic 
+hundred guesses
+, they 
+found a way through
+ the 
+puzzlebox
+.
+John Henrichon
+ got fried nerves.
+John Henrichon
+ was knocked out.
+Matthew Humblecut
+ was cursed.
+Matthew Humblecut
+ was knocked out.
+Chishou Sandgreen
+ now has 
+self-doubt
+!
+They 
+arrived at the 
+Geometric
+ valley
+, where 
+they 
+were confronted with 
+the 
+sharp
+, irresistible
+ maze
+ "Yule Quartzile"
+.
+After 
+a misguided 
+reconnoiter
+, they 
+were unable to navigate
+ the 
+maze
+.
+Chishou Sandgreen
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Cherished Heart Temple
+ in disgrace.
+Matthew Humblecut
+ now has 
+unluckiness
+!
+nextUpdateTime: -1
+STORY 2-4 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Kerstin Skotnik, 
+Molly Pelletier, 
+and 
+Noah Kwiatkowski 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+succulent
+ gemstone
+ at the 
+Darshish 
+valley
+.
+Venturing forth, 
+they 
+were blocked by 
+a 
+violent
+ cliff
+.
+After 
+an epic 
+trek
+, they 
+overcame
+ the 
+cliff
+.
+Kerstin Skotnik
+ was stabbed in the torso.
+Noah Kwiatkowski
+ got blasted eardrums.
+They 
+arrived at the 
+Darshish
+ valley
+, where 
+they 
+had to solve 
+a 
+succulent
+ gemstone
+.
+After 
+a bungled 
+search
+, they 
+left without
+ the 
+gemstone
+.
+Kerstin Skotnik
+ was cursed.
+Molly Pelletier
+ got fried nerves.
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Amou Kjeldsen, 
+Robert Wood, 
+and 
+Vllad Enoksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+, 
+ferocious
+ maze
+ at the 
+Geometric 
+forest
+.
+In search of the goal, 
+they 
+stumbled upon 
+a 
+crepuscular
+ hedge
+.
+After 
+a hard-earned 
+exertion
+, they 
+traversed
+ the 
+hedge
+.
+Pushing forward, 
+they 
+were confronted by 
+a 
+nocturnal
+, irresistible
+ beast
+.
+After 
+an exhausting 
+negotiation
+, they 
+were driven back by
+ the 
+beast
+.
+Amou Kjeldsen
+ suffered slash wounds.
+Robert Wood
+ was frightened half to death.
+Robert Wood
+ found 
+Full Helm
+!
+The adventurers 
+slunk back to 
+Union of Scientists
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-1 
+
+At 
+Marsh's Sewerworks
+ in 
+Varajao District
+, 
+Chinwemma Lopez, 
+Rita Plain, 
+and 
+Kyle Buterin 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+, 
+irresistible
+ sanctum
+ "Victorious Nail"
+ at the 
+Jarred 
+crypt
+.
+Following the path, 
+they 
+had to solve 
+a 
+voracious
+ maze
+.
+After 
+a grueling 
+hundred guesses
+, they 
+solved
+ the 
+maze
+.
+During the journey, 
+they 
+were confronted by 
+some 
+invisible
+, hideous
+ brigands
+.
+After 
+a testing 
+negotiation
+, they 
+passed by
+ the 
+brigands
+.
+Rita Plain
+ found 
+Brightsilk Sash
+!
+Kyle Buterin
+ was cursed.
+In search of the goal, 
+they 
+met 
+the 
+succulent
+, unsettling
+ bird folk
+ "Diphonic Osprin"
+.
+After 
+a rough 
+stand off
+, they 
+were forced to turn back by
+ the 
+bird folk
+.
+Chinwemma Lopez
+ bruised their ribs.
+Rita Plain
+ found 
+"Honour Bender" Titanium Ring of Power +1
+!
+The adventurers 
+slunk back to 
+Marsh's Sewerworks
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Flying Stones
+, 
+Irene Thatcher the Lawgiver, 
+Andre Kiss, 
+and 
+Professor Andre Wintermute 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+diurnal
+, 
+fearsome
+ egregore
+ at the 
+Can-ton 
+forest
+.
+Venturing forth, 
+they 
+were confronted by 
+a 
+decrepit
+ beast
+.
+After 
+a rough 
+stand off
+, they 
+failed to pass
+ the 
+beast
+.
+Professor Andre Wintermute
+ dislocated her shoulder.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-3 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Astra K, 
+Abigail Took-Took, 
+and 
+Zaki Gresham 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+entrancing
+, 
+hideous
+ citadel
+ at the 
+Red 
+sea
+.
+Pushing forward, 
+they 
+were ambushed by 
+some 
+diurnal
+ brigands
+.
+After 
+a challenging 
+game of wits
+, they 
+defeated
+ the 
+brigands
+.
+Astra K
+ now has 
+unluckiness
+!
+Astra K
+ got blasted eardrums.
+Zaki Gresham
+ now has 
+weakness
+!
+Venturing forth, 
+they 
+were ambushed by 
+some 
+succulent
+, jovial
+ brigands
+.
+After 
+a rough 
+negotiation
+, they 
+were forced to turn back by
+ the 
+brigands
+.
+Astra K
+ bruised her ribs.
+Astra K
+ found 
+Wand
+!
+Abigail Took-Took
+ broke his leg.
+The adventurers 
+slunk back to 
+Cherished Heart Temple
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-4 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Ravil Woods, 
+Molly Pelletier, 
+and 
+Kerstin Skotnik 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+crepuscular
+ wyrm
+ at the 
+Red 
+crypt
+.
+On the road there, 
+they 
+met 
+a 
+sharp
+ beast
+.
+After 
+an epic 
+contest
+, they 
+passed by
+ the 
+beast
+.
+Ravil Woods
+ was stabbed in the torso.
+Ravil Woods
+ got blasted eardrums.
+Molly Pelletier
+ learned 
+Leadership
+!
+Kerstin Skotnik
+ had his arm crushed.
+They 
+arrived at the 
+Red
+ crypt
+, where 
+they 
+were ambushed by 
+a 
+crepuscular
+ wyrm
+.
+After 
+a trying 
+struggle
+, they 
+bested
+ the 
+wyrm
+.
+Ravil Woods 
+used his 
+Leadership 
+skills!
+Molly Pelletier 
+used her prosthetic arm!
+Ravil Woods
+ now has 
+trauma
+!
+Ravil Woods
+ found 
+Dragonskin Belt
+!
+Molly Pelletier
+ suffered slash wounds.
+Kerstin Skotnik
+ now has 
+anxiety
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Robert Wood, 
+Vllad Enoksen, 
+Patrick Davis, 
+Rasmus Vespertine, 
+and 
+Archon Gustave October 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+decrepit
+, 
+cursed
+ wyrm
+ at the 
+Headless 
+forest
+.
+While investigating the area, 
+they 
+discovered 
+a 
+voracious
+ puzzlebox
+.
+After 
+an easy 
+brainstorm
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Robert Wood
+ learned 
+Streetwise
+!
+Vllad Enoksen
+ found 
+Amulet
+!
+Patrick Davis
+ found 
+Pendant
+!
+While investigating the area, 
+they 
+discovered 
+an 
+invisible
+, ferocious
+ cliff
+.
+After 
+a strenuous 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Vllad Enoksen
+ was cursed.
+They 
+arrived at the 
+Headless
+ forest
+, where 
+they 
+met 
+a 
+decrepit
+, cursed
+ wyrm
+.
+After 
+a strong 
+contest
+, they 
+conquered
+ the 
+wyrm
+.
+Vllad Enoksen 
+used his 
+Alchemy 
+skills!
+Robert Wood
+ was stabbed in the torso.
+Robert Wood
+ found 
+Divine Gloves
+!
+Vllad Enoksen
+ found 
+Leather Armor
+!
+Patrick Davis
+ now has 
+cowardice
+!
+Patrick Davis
+ found 
+Divine Gloves
+!
+Rasmus Vespertine
+ learned 
+Alchemy
+!
+Archon Gustave October
+ found 
+Bronze Ring
+!
+The adventurers 
+returned triumphantly to 
+Union of Scientists
+, basking in glory.
+nextUpdateTime: -1
+STORY 4-1 
+Daealla Gannon
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Marsh's Sewerworks
+ in 
+Varajao District
+, 
+Vitalik Wintermute, 
+Chinwemma Lopez, 
+Kyle Buterin, 
+Daealla Gannon, 
+and 
+Master Satoshi Geisler 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+, 
+hideous
+ nephilim
+ "Pillskin Clopse"
+ at the 
+Headless 
+market
+.
+On the road there, 
+they 
+stumbled upon 
+an 
+entrancing
+ locked gate
+.
+After 
+a hard-earned 
+attempt
+, they 
+found a way through
+ the 
+locked gate
+.
+Vitalik Wintermute
+ learned 
+Acrobatics
+!
+Chinwemma Lopez
+ dislocated their shoulder.
+Kyle Buterin
+ found 
+Bronze Ring
+!
+Kyle Buterin
+ learned 
+Navigation
+!
+Kyle Buterin
+ was stabbed in the torso.
+After going some distance, 
+they 
+discovered 
+a 
+nocturnal
+, unspeakable
+ maze
+.
+After 
+an epic 
+hundred guesses
+, they 
+figured out
+ the 
+maze
+.
+Vitalik Wintermute
+ now has 
+quick-wit
+!
+Daealla Gannon
+ broke his leg.
+Master Satoshi Geisler
+ found 
+Shirt
+!
+On the road there, 
+they 
+came across 
+the 
+violent
+, ferocious
+ elemental
+ "Indefatigable Nail"
+.
+After 
+a challenging 
+stand off
+, they 
+passed by
+ the 
+elemental
+.
+Vitalik Wintermute
+ found 
+Long Sword of the Fox
+!
+Chinwemma Lopez
+ dislocated their shoulder.
+Kyle Buterin
+ suffered slash wounds.
+Daealla Gannon
+ offered 
+Ornate Greaves
+to the Grelvisanth Volume.
+Daealla Gannon
+ dislocated his shoulder.
+Master Satoshi Geisler
+ had her arm crushed.
+They 
+arrived at the 
+Headless
+ market
+, where 
+they 
+snuck up on 
+the 
+crepuscular
+, hideous
+ nephilim
+ "Pillskin Clopse"
+.
+After 
+a hard-earned 
+conversation
+, they 
+found common ground with
+ the 
+nephilim
+.
+Vitalik Wintermute
+ was frightened half to death.
+Vitalik Wintermute
+ now has 
+quick-wit
+!
+Chinwemma Lopez
+ learned 
+Politics
+!
+Chinwemma Lopez
+ now has 
+anxiety
+!
+Kyle Buterin
+ was stabbed in the torso.
+Kyle Buterin
+ was knocked out.
+Daealla Gannon
+ got blasted eardrums.
+Daealla Gannon
+ was knocked out.
+Master Satoshi Geisler
+ found 
+Short Sword
+!
+Master Satoshi Geisler
+ learned 
+Acrobatics
+!
+Master Satoshi Geisler
+ found 
+"Bramble Glow" Silver Ring of Protection
+!
+The adventurers 
+returned to 
+Marsh's Sewerworks
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Flying Stones
+, 
+Annabelle Nigiri, 
+Isak Skotnik, 
+Andre Kiss, 
+Satoshi Mancini, 
+and 
+Irene Thatcher the Lawgiver 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+nocturnal
+, 
+fearsome
+ gemstone
+ "Edible Ambusher"
+ at the 
+Craven 
+crypt
+.
+During the journey, 
+they 
+were confronted with 
+a 
+sharp
+ hedge
+.
+After 
+a trying 
+exertion
+, they 
+crossed
+ the 
+hedge
+.
+Satoshi Mancini
+ had their confidence shaken.
+Satoshi Mancini
+ found 
+Shirt
+!
+Satoshi Mancini
+ was cursed.
+While traveling, 
+they 
+were blocked by 
+a 
+violent
+, impossible
+ river
+.
+After 
+a challenging 
+trek
+, they 
+overcame
+ the 
+river
+.
+Annabelle Nigiri
+ found 
+Pendant
+!
+Isak Skotnik
+ had her arm crushed.
+Andre Kiss
+ found 
+Quarterstaff
+!
+Andre Kiss
+ had their arm crushed.
+Irene Thatcher the Lawgiver
+ now has 
+gambling addiction
+!
+In transit, 
+they 
+came across 
+the 
+invisible
+, ravenous
+ elemental
+ "Blistered Ulula"
+.
+After 
+a fraught 
+stand off
+, they 
+parted ways with
+ the 
+elemental
+.
+Annabelle Nigiri
+ found 
+Amulet
+!
+Andre Kiss
+ suffered slash wounds.
+Andre Kiss
+ now has 
+greed
+!
+Andre Kiss
+ got fried nerves.
+Satoshi Mancini
+ was cursed.
+Satoshi Mancini
+ was knocked out.
+Irene Thatcher the Lawgiver
+ died.
+After going some distance, 
+they 
+discovered 
+the 
+entrancing
+, black-hearted
+ cliff
+ "Indefatigable Quartzile"
+.
+After 
+a rough 
+exertion
+, they 
+failed to traverse
+ the 
+cliff
+.
+Annabelle Nigiri
+ had their arm crushed.
+Isak Skotnik
+ was stabbed in the torso.
+Isak Skotnik
+ learned 
+Investigation
+!
+Andre Kiss
+ was cursed.
+The adventurers 
+slunk back to 
+Royal Orchestra Theatre
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-3 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Bellas Araujo, 
+John Henrichon, 
+and 
+Chukwuebuka Egede 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+nocturnal
+, 
+renowned
+ relic
+ at the 
+Macrosign 
+desert
+.
+Pushing forward, 
+they 
+stumbled upon 
+a 
+succulent
+ locked gate
+.
+After 
+a bungled 
+brainstorm
+, they 
+failed to solve
+ the 
+locked gate
+.
+Chukwuebuka Egede
+ had their arm crushed.
+The adventurers 
+slunk back to 
+Cherished Heart Temple
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-4 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Vesryn Yellen da gay, 
+Kerstin Skotnik, 
+and 
+Su Quenneville 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+diurnal
+, 
+ravenous
+ hidden passage
+ at the 
+Boreal 
+summit
+.
+In search of the goal, 
+they 
+stumbled upon 
+a 
+nocturnal
+ waste
+.
+After 
+an exhausting 
+attempt
+, they 
+failed to cross
+ the 
+waste
+.
+Vesryn Yellen da gay
+ now has 
+self-doubt
+!
+Kerstin Skotnik
+ got fried nerves.
+Su Quenneville
+ had his arm crushed.
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 5-0 
+
+At 
+Union of Scientists
+ in 
+Ulster's Jeweltown
+, 
+Queen Sybella Davis, 
+Darfin Allen, 
+Robert Wood, 
+Rasmus Vespertine, 
+and 
+Onyekachukwu Davis 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+voracious
+ giant spider
+ at the 
+Geometric 
+sea
+.
+nextUpdateTime: 1652064131
+STORY 5-1 
+
+At 
+Marsh's Sewerworks
+ in 
+Varajao District
+, 
+Kyle Marblemaw, 
+Betty Jenkins, 
+Master Satoshi Geisler, 
+Vitalik Wintermute, 
+and 
+Gawel from Gresham 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+violent
+, 
+impossible
+ priest
+ "Indefatigable Quartzile"
+ at the 
+Macrosign 
+desert
+.
+nextUpdateTime: 1652063998
+STORY 5-2 
+
+At 
+Royal Orchestra Theatre
+ in 
+the Flying Stones
+, 
+Dennis Gotou, 
+Satoshi Mancini, 
+Yuukou chadde Okwuoma, 
+Professor Andre Wintermute, 
+and 
+Annabelle Nigiri 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+voracious
+ warlock
+ at the 
+Macrosign 
+desert
+.
+nextUpdateTime: 1652064131
+STORY 5-3 
+
+At 
+Cherished Heart Temple
+ in 
+the Last Stop
+, 
+Zaki Gresham, 
+Abigail Took-Took, 
+Astra K, 
+Bellas Araujo, 
+and 
+Matthew Humblecut 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+lightless
+, 
+irridescent
+ tome
+ "Mighty Howler"
+ at the 
+Boreal 
+sea
+.
+nextUpdateTime: 1652063998
+STORY 5-4 
+
+At 
+Platinum Branch Club
+ in 
+the Flying Stones
+, 
+Ravil Woods, 
+James Enoksen, 
+Su Quenneville, 
+Changpeng Humblecut, 
+and 
+Noah Kwiatkowski 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+violent
+, 
+jovial
+ ruins
+ "Melifluent Clopse"
+ at the 
+Jarred 
+pass
+.
+nextUpdateTime: 1652063998

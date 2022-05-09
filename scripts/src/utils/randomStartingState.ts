@@ -27,16 +27,22 @@ export async function randomStartingState(
   return state
 }
 
-async function randomGuild(
+export interface GuildOverrides {
+  characters: { [key: string]: any }
+}
+
+export async function randomGuild(
   id: number,
   prng: Prando,
   previousState: State,
-  provider?: providers.BaseProvider | string
+  provider?: providers.BaseProvider | string,
+  overrides?: GuildOverrides
 ): Promise<Guild> {
   const adventurers = await makeRandomAdventurers(
     prng.nextInt(10, 15),
     prng,
-    provider
+    provider,
+    overrides
   )
   const name = randomUnusedItem<string>(
     previousState.guilds.map(g => g.name),
@@ -47,7 +53,7 @@ async function randomGuild(
     name,
     motto: prng.nextArrayItem(guildMottos),
     location: prng.nextArrayItem(guildLocations),
-    bard: await randomCharacter(prng, provider, 2),
+    bard: await randomCharacter(prng, provider, 2, overrides?.characters),
     adventurers,
     graveyard: {},
     adventurerCredits: {},
@@ -131,7 +137,8 @@ function makeRandomParties(
 async function randomCharacter(
   prng: Prando,
   provider?: providers.BaseProvider | string,
-  traitCount?: number
+  traitCount?: number,
+  overrides?: { [key: string]: any }
 ): Promise<Character> {
   const classInstance = await getRandomClass(prng, provider)
   const pronounKey = Number(prng.nextArrayItem(Object.keys(pronounsSource)))
@@ -154,6 +161,9 @@ async function randomCharacter(
       ))
     }
   }
+  if (overrides?.species !== undefined) {
+    newChar.species = overrides.species
+  }
   return newChar
 }
 
@@ -163,15 +173,18 @@ const existingAdv: { [id: string]: Adventurer } = {}
 async function makeRandomAdventurers(
   numberToMake: number,
   prng: Prando,
-  provider?: providers.BaseProvider | string
+  provider?: providers.BaseProvider | string,
+  overrides?: GuildOverrides
 ): Promise<{ [id: string]: Adventurer }> {
   const res: { [id: string]: Adventurer } = {}
-  const numberExisting = Object.keys(existingAdv).length
+  let numberExisting = Object.keys(existingAdv).length
+  if (overrides?.characters.numberExisting) numberExisting = Number(overrides.characters.numberExisting)
   for (let i = 0; i < numberToMake; i++) {
     const newAdv = await randomAdventurer(
       numberExisting + i + 1,
       prng,
-      provider
+      provider,
+      overrides
     )
     res[newAdv.id] = newAdv
   }
@@ -182,9 +195,10 @@ async function makeRandomAdventurers(
 async function randomAdventurer(
   id: number,
   prng: Prando,
-  provider?: providers.BaseProvider | string
+  provider?: providers.BaseProvider | string,
+  overrides?: GuildOverrides
 ): Promise<Adventurer> {
-  const newChar = await randomCharacter(prng, provider)
+  const newChar = await randomCharacter(prng, provider, undefined, overrides?.characters)
   const newAdv: Adventurer = Object.assign(newChar, {
     id,
     class: [(await getRandomClass(prng, provider)).class],
