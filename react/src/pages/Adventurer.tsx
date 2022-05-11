@@ -71,7 +71,7 @@ export default ({ graveyard }: AdventurerParams) => {
     <>
       <AdventurerHeader
         name={nameString(adventurer.name)}
-        class_={adventurer.class.join("")}
+        class_={adventurer.class.join(" ")}
         graveyard={graveyard}
         lastStory={[...stories].pop()}
       />

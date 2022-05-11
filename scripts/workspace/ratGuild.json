@@ -1,121 +1,41 @@
 {
   "id": 6,
-  "name": "Union of Scientists",
-  "motto": "Where We go, They Follow",
-  "location": "Ulster's Jeweltown",
+  "name": "Klaxon Messengerhall",
+  "motto": "Does not Mean What You Think it Means",
+  "location": "Farshi District",
   "bard": {
     "name": {
-      "id": 4685,
+      "id": 3635,
       "prefix": "",
-      "firstName": "Irene",
+      "firstName": "Mary",
       "middleName": "",
-      "lastName": "Jenkins",
+      "lastName": "Kodou",
       "suffix": ""
     },
     "pronouns": {
-      "subject": "he",
-      "object": "him",
-      "depPossessive": "his",
-      "indPossessive": "his",
-      "reflexive": "himself"
+      "subject": "they",
+      "object": "them",
+      "depPossessive": "their",
+      "indPossessive": "theirs",
+      "reflexive": "themself"
     },
     "species": [
       "Rat"
     ],
     "age": 6,
     "traits": [
-      "dragon obsession",
-      "great destiny"
+      "anxiety",
+      "trauma"
     ]
   },
   "adventurers": {
-    "63": {
+    "75": {
       "name": {
-        "id": 4844,
+        "id": 6981,
         "prefix": "",
-        "firstName": "Rasmus",
+        "firstName": "Vitalik",
         "middleName": "",
-        "lastName": "Vespertine",
-        "suffix": ""
-      },
-      "pronouns": {
-        "subject": "she",
-        "object": "her",
-        "depPossessive": "her",
-        "indPossessive": "hers",
-        "reflexive": "herself"
-      },
-      "species": [
-        "Rat"
-      ],
-      "age": 8,
-      "traits": [],
-      "id": 63,
-      "class": [
-        "Monk"
-      ],
-      "stats": {
-        "strength": 0,
-        "magic": 2,
-        "agility": 3,
-        "resourcefulness": 3,
-        "toughness": 2
-      },
-      "skills": [
-        "Swordskill"
-      ],
-      "loot": [
-        "Brightsilk Sash"
-      ],
-      "stories": []
-    },
-    "64": {
-      "name": {
-        "id": 7478,
-        "prefix": "",
-        "firstName": "Onyekachukwu",
-        "middleName": "",
-        "lastName": "Davis",
-        "suffix": ""
-      },
-      "pronouns": {
-        "subject": "they",
-        "object": "them",
-        "depPossessive": "their",
-        "indPossessive": "theirs",
-        "reflexive": "themself"
-      },
-      "species": [
-        "Rat"
-      ],
-      "age": 9,
-      "traits": [],
-      "id": 64,
-      "class": [
-        "Sorcerer"
-      ],
-      "stats": {
-        "strength": 3,
-        "magic": 0,
-        "agility": 1,
-        "resourcefulness": 1,
-        "toughness": 3
-      },
-      "skills": [
-        "Acrobatics"
-      ],
-      "loot": [
-        "Gauntlets"
-      ],
-      "stories": []
-    },
-    "65": {
-      "name": {
-        "id": 987,
-        "prefix": "Queen",
-        "firstName": "Sybella",
-        "middleName": "",
-        "lastName": "Davis",
+        "lastName": "Onwuka",
         "suffix": ""
       },
       "pronouns": {
@@ -124,158 +44,78 @@
         "depPossessive": "his",
         "indPossessive": "his",
         "reflexive": "himself"
-      },
-      "species": [
-        "Rat"
-      ],
-      "age": 5,
-      "traits": [],
-      "id": 65,
-      "class": [
-        "Fighter"
-      ],
-      "stats": {
-        "strength": 2,
-        "magic": 1,
-        "agility": 0,
-        "resourcefulness": 3,
-        "toughness": 2
-      },
-      "skills": [
-        "Navigation"
-      ],
-      "loot": [
-        "Studded Leather Belt"
-      ],
-      "stories": []
-    },
-    "66": {
-      "name": {
-        "id": 5961,
-        "prefix": "",
-        "firstName": "Patrick",
-        "middleName": "",
-        "lastName": "Davis",
-        "suffix": ""
-      },
-      "pronouns": {
-        "subject": "he",
-        "object": "him",
-        "depPossessive": "his",
-        "indPossessive": "his",
-        "reflexive": "himself"
-      },
-      "species": [
-        "Rat"
-      ],
-      "age": 7,
-      "traits": [],
-      "id": 66,
-      "class": [
-        "Ranger"
-      ],
-      "stats": {
-        "strength": 1,
-        "magic": 0,
-        "agility": 1,
-        "resourcefulness": 2,
-        "toughness": 3
-      },
-      "skills": [
-        "Tracking"
-      ],
-      "loot": [
-        "Bone Wand"
-      ],
-      "stories": []
-    },
-    "67": {
-      "name": {
-        "id": 394,
-        "prefix": "",
-        "firstName": "Vllad",
-        "middleName": "",
-        "lastName": "Enoksen",
-        "suffix": ""
-      },
-      "pronouns": {
-        "subject": "he",
-        "object": "him",
-        "depPossessive": "his",
-        "indPossessive": "his",
-        "reflexive": "himself"
-      },
-      "species": [
-        "Rat"
-      ],
-      "age": 6,
-      "traits": [],
-      "id": 67,
-      "class": [
-        "Warlock"
-      ],
-      "stats": {
-        "strength": 1,
-        "magic": 0,
-        "agility": 1,
-        "resourcefulness": 1,
-        "toughness": 2
-      },
-      "skills": [
-        "Alchemy"
-      ],
-      "loot": [
-        "Dragonskin Belt"
-      ],
-      "stories": []
-    },
-    "68": {
-      "name": {
-        "id": 1598,
-        "prefix": "",
-        "firstName": "Anastazja",
-        "middleName": "",
-        "lastName": "Plain",
-        "suffix": ""
-      },
-      "pronouns": {
-        "subject": "they",
-        "object": "them",
-        "depPossessive": "their",
-        "indPossessive": "theirs",
-        "reflexive": "themself"
       },
       "species": [
         "Rat"
       ],
       "age": 4,
       "traits": [],
-      "id": 68,
+      "id": 75,
       "class": [
-        "Fighter"
+        "Monk"
+      ],
+      "stats": {
+        "strength": 2,
+        "magic": 1,
+        "agility": 1,
+        "resourcefulness": 2,
+        "toughness": 3
+      },
+      "skills": [
+        "Haberdashery"
+      ],
+      "loot": [
+        "Linen Hood"
+      ],
+      "stories": []
+    },
+    "76": {
+      "name": {
+        "id": 202,
+        "prefix": "",
+        "firstName": "Gogu",
+        "middleName": "vibes",
+        "lastName": "Monroe",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "he",
+        "object": "him",
+        "depPossessive": "his",
+        "indPossessive": "his",
+        "reflexive": "himself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 11,
+      "traits": [],
+      "id": 76,
+      "class": [
+        "Rogue"
       ],
       "stats": {
         "strength": 1,
         "magic": 2,
-        "agility": 0,
-        "resourcefulness": 3,
-        "toughness": 4
+        "agility": 4,
+        "resourcefulness": 1,
+        "toughness": 3
       },
       "skills": [
-        "Leadership"
+        "Disguise"
       ],
       "loot": [
-        "Greaves"
+        "Divine Slippers"
       ],
       "stories": []
     },
-    "69": {
+    "77": {
       "name": {
-        "id": 2754,
+        "id": 5175,
         "prefix": "",
-        "firstName": "Stani",
-        "middleName": "",
-        "lastName": "Feron",
+        "firstName": "Jesper",
+        "middleName": "groovy",
+        "lastName": "Steffensen",
         "suffix": ""
       },
       "pronouns": {
@@ -290,70 +130,70 @@
       ],
       "age": 10,
       "traits": [],
-      "id": 69,
+      "id": 77,
       "class": [
-        "Druid"
+        "Monk"
       ],
       "stats": {
-        "strength": 4,
-        "magic": 0,
-        "agility": 3,
+        "strength": 2,
+        "magic": 3,
+        "agility": 0,
         "resourcefulness": 4,
-        "toughness": 0
+        "toughness": 1
       },
       "skills": [
-        "Swordskill"
+        "Tracking"
       ],
       "loot": [
-        "Cap of the Fox"
+        "Full Helm of Fury"
       ],
       "stories": []
     },
-    "70": {
+    "78": {
       "name": {
-        "id": 7512,
-        "prefix": "Archon",
-        "firstName": "Gustave",
+        "id": 7402,
+        "prefix": "",
+        "firstName": "Quintus",
         "middleName": "",
-        "lastName": "October",
+        "lastName": "Finnegan",
         "suffix": ""
       },
       "pronouns": {
-        "subject": "they",
-        "object": "them",
-        "depPossessive": "their",
-        "indPossessive": "theirs",
-        "reflexive": "themself"
+        "subject": "she",
+        "object": "her",
+        "depPossessive": "her",
+        "indPossessive": "hers",
+        "reflexive": "herself"
       },
       "species": [
         "Rat"
       ],
-      "age": 5,
+      "age": 1,
       "traits": [],
-      "id": 70,
+      "id": 78,
       "class": [
-        "Cleric"
+        "Druid"
       ],
       "stats": {
-        "strength": 0,
-        "magic": 1,
+        "strength": 1,
+        "magic": 3,
         "agility": 0,
-        "resourcefulness": 3,
-        "toughness": 2
+        "resourcefulness": 0,
+        "toughness": 0
       },
       "skills": [
-        "Politics"
+        "Tracking"
       ],
       "loot": [
-        "Linen Robe"
+        "Demonhide Boots"
       ],
       "stories": []
     },
-    "71": {
+    "79": {
       "name": {
-        "id": 1422,
+        "id": 6907,
         "prefix": "",
-        "firstName": "Amou",
+        "firstName": "Aron",
         "middleName": "",
         "lastName": "Kjeldsen",
         "suffix": ""
@@ -368,74 +208,74 @@
       "species": [
         "Rat"
       ],
-      "age": 7,
+      "age": 4,
       "traits": [],
-      "id": 71,
+      "id": 79,
       "class": [
-        "Ranger"
+        "Sorcerer"
       ],
       "stats": {
         "strength": 4,
         "magic": 1,
-        "agility": 3,
-        "resourcefulness": 2,
-        "toughness": 2
+        "agility": 2,
+        "resourcefulness": 4,
+        "toughness": 0
       },
       "skills": [
-        "Ancient Lore"
+        "Archery"
       ],
       "loot": [
-        "Pendant"
+        "Tome"
       ],
       "stories": []
     },
-    "72": {
+    "80": {
       "name": {
-        "id": 7601,
-        "prefix": "",
-        "firstName": "Gawel",
+        "id": 1798,
+        "prefix": "Caesar",
+        "firstName": "Matthew",
         "middleName": "",
-        "lastName": "Horak",
+        "lastName": "Mailhot",
         "suffix": ""
       },
       "pronouns": {
-        "subject": "she",
-        "object": "her",
-        "depPossessive": "her",
-        "indPossessive": "hers",
-        "reflexive": "herself"
+        "subject": "he",
+        "object": "him",
+        "depPossessive": "his",
+        "indPossessive": "his",
+        "reflexive": "himself"
       },
       "species": [
         "Rat"
       ],
-      "age": 6,
+      "age": 5,
       "traits": [],
-      "id": 72,
+      "id": 80,
       "class": [
-        "Cleric"
+        "Ranger"
       ],
       "stats": {
-        "strength": 4,
-        "magic": 0,
-        "agility": 4,
-        "resourcefulness": 3,
-        "toughness": 0
+        "strength": 2,
+        "magic": 1,
+        "agility": 0,
+        "resourcefulness": 4,
+        "toughness": 2
       },
       "skills": [
-        "Ancient Lore"
+        "Portraiture"
       ],
       "loot": [
-        "Leather Armor"
+        "\"Pandemonium Grasp\" Pendant of Brilliance +1"
       ],
       "stories": []
     },
-    "73": {
+    "81": {
       "name": {
-        "id": 483,
+        "id": 3637,
         "prefix": "",
-        "firstName": "Robert",
+        "firstName": "John",
         "middleName": "",
-        "lastName": "Wood",
+        "lastName": "October",
         "suffix": ""
       },
       "pronouns": {
@@ -448,32 +288,72 @@
       "species": [
         "Rat"
       ],
-      "age": 5,
+      "age": 7,
       "traits": [],
-      "id": 73,
+      "id": 81,
       "class": [
-        "Barbarian"
+        "Paladin"
       ],
       "stats": {
-        "strength": 3,
-        "magic": 0,
-        "agility": 1,
-        "resourcefulness": 1,
-        "toughness": 2
+        "strength": 2,
+        "magic": 2,
+        "agility": 0,
+        "resourcefulness": 0,
+        "toughness": 0
       },
       "skills": [
-        "Ropework"
+        "Deception"
       ],
       "loot": [
-        "\"Maelstrom Whisper\" Ghost Wand of Anger"
+        "War Cap of Power"
       ],
       "stories": []
     },
-    "74": {
+    "82": {
       "name": {
-        "id": 1281,
+        "id": 1031,
         "prefix": "",
-        "firstName": "Darfin",
+        "firstName": "Annabelle",
+        "middleName": "",
+        "lastName": "Zamfir",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "she",
+        "object": "her",
+        "depPossessive": "her",
+        "indPossessive": "hers",
+        "reflexive": "herself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 7,
+      "traits": [],
+      "id": 82,
+      "class": [
+        "Paladin"
+      ],
+      "stats": {
+        "strength": 1,
+        "magic": 3,
+        "agility": 2,
+        "resourcefulness": 0,
+        "toughness": 2
+      },
+      "skills": [
+        "Ancient Lore"
+      ],
+      "loot": [
+        "Demon's Hands"
+      ],
+      "stories": []
+    },
+    "83": {
+      "name": {
+        "id": 2681,
+        "prefix": "",
+        "firstName": "Rasmus",
         "middleName": "",
         "lastName": "Allen",
         "suffix": ""
@@ -488,24 +368,264 @@
       "species": [
         "Rat"
       ],
-      "age": 9,
+      "age": 12,
       "traits": [],
-      "id": 74,
+      "id": 83,
       "class": [
-        "Wizard"
+        "Sorcerer"
       ],
       "stats": {
         "strength": 2,
-        "magic": 1,
-        "agility": 2,
+        "magic": 0,
+        "agility": 3,
+        "resourcefulness": 4,
+        "toughness": 2
+      },
+      "skills": [
+        "Streetwise"
+      ],
+      "loot": [
+        "Heavy Gloves"
+      ],
+      "stories": []
+    },
+    "84": {
+      "name": {
+        "id": 572,
+        "prefix": "",
+        "firstName": "Azura",
+        "middleName": "",
+        "lastName": "Ranth",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "she",
+        "object": "her",
+        "depPossessive": "her",
+        "indPossessive": "hers",
+        "reflexive": "herself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 11,
+      "traits": [],
+      "id": 84,
+      "class": [
+        "Bard"
+      ],
+      "stats": {
+        "strength": 1,
+        "magic": 3,
+        "agility": 3,
+        "resourcefulness": 1,
+        "toughness": 0
+      },
+      "skills": [
+        "Leadership"
+      ],
+      "loot": [
+        "Ring Mail"
+      ],
+      "stories": []
+    },
+    "85": {
+      "name": {
+        "id": 2075,
+        "prefix": "Doge",
+        "firstName": "Anya",
+        "middleName": "",
+        "lastName": "Strozak",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "he",
+        "object": "him",
+        "depPossessive": "his",
+        "indPossessive": "his",
+        "reflexive": "himself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 7,
+      "traits": [],
+      "id": 85,
+      "class": [
+        "Ranger"
+      ],
+      "stats": {
+        "strength": 1,
+        "magic": 2,
+        "agility": 3,
         "resourcefulness": 3,
         "toughness": 0
       },
       "skills": [
-        "Disguise"
+        "Leadership"
       ],
       "loot": [
-        "Greaves"
+        "Leather Armor"
+      ],
+      "stories": []
+    },
+    "86": {
+      "name": {
+        "id": 3788,
+        "prefix": "",
+        "firstName": "Stanislaus",
+        "middleName": "",
+        "lastName": "Ermakov",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "he",
+        "object": "him",
+        "depPossessive": "his",
+        "indPossessive": "his",
+        "reflexive": "himself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 12,
+      "traits": [],
+      "id": 86,
+      "class": [
+        "Monk"
+      ],
+      "stats": {
+        "strength": 4,
+        "magic": 4,
+        "agility": 0,
+        "resourcefulness": 2,
+        "toughness": 4
+      },
+      "skills": [
+        "Alchemy"
+      ],
+      "loot": [
+        "Grimoire of Enlightenment"
+      ],
+      "stories": []
+    },
+    "87": {
+      "name": {
+        "id": 4006,
+        "prefix": "",
+        "firstName": "Svatava",
+        "middleName": "",
+        "lastName": "Hines",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "she",
+        "object": "her",
+        "depPossessive": "her",
+        "indPossessive": "hers",
+        "reflexive": "herself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 6,
+      "traits": [],
+      "id": 87,
+      "class": [
+        "Sorcerer"
+      ],
+      "stats": {
+        "strength": 3,
+        "magic": 0,
+        "agility": 2,
+        "resourcefulness": 3,
+        "toughness": 4
+      },
+      "skills": [
+        "Haberdashery"
+      ],
+      "loot": [
+        "\"Dread Grasp\" Silk Sash of Rage +1"
+      ],
+      "stories": []
+    },
+    "88": {
+      "name": {
+        "id": 5829,
+        "prefix": "",
+        "firstName": "Dzemail",
+        "middleName": "",
+        "lastName": "Nakamoto",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "he",
+        "object": "him",
+        "depPossessive": "his",
+        "indPossessive": "his",
+        "reflexive": "himself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 8,
+      "traits": [],
+      "id": 88,
+      "class": [
+        "Fighter"
+      ],
+      "stats": {
+        "strength": 2,
+        "magic": 0,
+        "agility": 2,
+        "resourcefulness": 1,
+        "toughness": 1
+      },
+      "skills": [
+        "Deception"
+      ],
+      "loot": [
+        "Dragonskin Boots of the Twins"
+      ],
+      "stories": []
+    },
+    "89": {
+      "name": {
+        "id": 2264,
+        "prefix": "Fren",
+        "firstName": "Dzemail",
+        "middleName": "",
+        "lastName": "Chibugo",
+        "suffix": ""
+      },
+      "pronouns": {
+        "subject": "they",
+        "object": "them",
+        "depPossessive": "their",
+        "indPossessive": "theirs",
+        "reflexive": "themself"
+      },
+      "species": [
+        "Rat"
+      ],
+      "age": 12,
+      "traits": [],
+      "id": 89,
+      "class": [
+        "Sorcerer"
+      ],
+      "stats": {
+        "strength": 0,
+        "magic": 3,
+        "agility": 3,
+        "resourcefulness": 0,
+        "toughness": 0
+      },
+      "skills": [
+        "Tracking"
+      ],
+      "loot": [
+        "Necklace of Vitriol"
       ],
       "stories": []
     }

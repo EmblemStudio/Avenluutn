@@ -29,11 +29,12 @@ function makeClass(provider?: providers.BaseProvider | string): Contract {
 }
 
 export async function getClassInstance(
-  classId: number, 
+  classId: number,
+  prng: Prando,
   provider?: providers.BaseProvider | string
 ): Promise<ClassInstance> {
-  if (classId < MIN_ID || classId > MAX_ID) { 
-    throw new Error(`classId must be between ${MIN_ID} and ${MAX_ID}`) 
+  if (classId < MIN_ID || classId > MAX_ID) {
+    throw new Error(`classId must be between ${MIN_ID} and ${MAX_ID}`)
   }
 
   const class_ = makeClass(provider)
@@ -45,12 +46,19 @@ export async function getClassInstance(
       class_.getClass(classId),
     ])
 
-  return {
+  const res = {
     id: classId,
     gender: gender.split(": ")[1],
     race: race.split(": ")[1],
     class: _class.split(": ")[1]
   }
+
+  // Add a chance of rat!
+  // 9 races total in the contract, so a 1/10 chance of being a rat
+  const roll = prng.nextInt(1, 10)
+  if (roll === 10) res.race = "Rat"
+
+  return res
 }
 
 export async function getRandomClass(
@@ -58,5 +66,5 @@ export async function getRandomClass(
   provider?: providers.BaseProvider | string
 ): Promise<ClassInstance> {
   const classId = prng.nextInt(MIN_ID, MAX_ID)
-  return await getClassInstance(classId, provider)
+  return await getClassInstance(classId, prng, provider)
 }

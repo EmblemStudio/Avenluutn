@@ -146,11 +146,15 @@ async function randomCharacter(
   if (pronounsArray === undefined) throw new Error("pronounsArray")
   const pronouns = pronounsArray[0]
   if (pronouns === undefined) throw new Error("No pronouns")
+  let species = [classInstance.race]
+  if (overrides?.species !== undefined) {
+    species = overrides.species
+  }
   const newChar: Character = {
     name: await getRandomName(prng, provider),
     pronouns,
-    species: [classInstance.race],
-    age: prng.nextInt(19, 105),
+    species: species,
+    age: species.includes("Rat") ? prng.nextInt(1, 12) : prng.nextInt(19, 105),
     traits: []
   }
   if (traitCount) {
@@ -161,9 +165,7 @@ async function randomCharacter(
       ))
     }
   }
-  if (overrides?.species !== undefined) {
-    newChar.species = overrides.species
-  }
+
   return newChar
 }
 
@@ -192,7 +194,7 @@ async function makeRandomAdventurers(
   return res
 }
 
-async function randomAdventurer(
+export async function randomAdventurer(
   id: number,
   prng: Prando,
   provider?: providers.BaseProvider | string,
