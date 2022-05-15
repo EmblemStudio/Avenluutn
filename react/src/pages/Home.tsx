@@ -43,7 +43,7 @@ export default () => {
               <EmbassySection />
             </div>
             <div className="block">
-              <div className="has-text-centered">Invest crin and read tales of adventure</div>
+              <div className="has-text-centered">Read tales of adventure</div>
               <GuildButtons
                 guilds={narrator.collections[narrator.collections.length - 1]?.scriptResult.nextState.guilds ?? null}
               />
