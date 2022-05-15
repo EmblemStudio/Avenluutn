@@ -17,7 +17,9 @@ function nextState(state, events) {
                         delete guild.adventurers[adventurer.id];
                         break;
                     case utils_1.ResultType.Loot:
-                        // add loot to adventurer
+                        // add loot to adventurer if they aren't a thralls
+                        if (adventurer.species.includes("Thrall"))
+                            break;
                         adventurer.loot.push(event.component);
                         guild.adventurers[adventurer.id] = Object.assign({}, adventurer);
                         break;

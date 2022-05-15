@@ -7,13 +7,13 @@ import Countdown, { CountdownDisplayMode } from '../components/Countdown'
 import usePublisher from '../hooks/usePublisher'
 import useNarratorState from '../hooks/useNarratorState'
 import useNotifications from '../hooks/useNotifications'
-import { getTimeLeft } from '../utils'
+import { getTimeLeft, firstArrayElement } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { NARRATOR_PARAMS } from '../constants'
 
 export default () => {
   const publisher = usePublisher(NARRATOR_PARAMS)
-  const narratorState = useNarratorState()
+  const narratorState = firstArrayElement(useNarratorState())
   const { narrator } = narratorState
   const { addNotification, removeNotification } = useNotifications()
 

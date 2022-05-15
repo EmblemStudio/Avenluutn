@@ -14,7 +14,7 @@ function makeClass(provider) {
     }
     return new ethers_1.Contract(CLASS_ADDR, classAbi, provider);
 }
-async function getClassInstance(classId, provider) {
+async function getClassInstance(classId, prng, provider) {
     if (classId < MIN_ID || classId > MAX_ID) {
         throw new Error(`classId must be between ${MIN_ID} and ${MAX_ID}`);
     }
@@ -24,16 +24,22 @@ async function getClassInstance(classId, provider) {
         class_.getRace(classId),
         class_.getClass(classId),
     ]);
-    return {
+    const res = {
         id: classId,
         gender: gender.split(": ")[1],
         race: race.split(": ")[1],
         class: _class.split(": ")[1]
     };
+    // Add a chance of rat!
+    // 9 races total in the contract, so a 1/10 chance of being a rat
+    const roll = prng.nextInt(1, 10);
+    if (roll === 10)
+        res.race = "Rat";
+    return res;
 }
 exports.getClassInstance = getClassInstance;
 async function getRandomClass(prng, provider) {
     const classId = prng.nextInt(MIN_ID, MAX_ID);
-    return await getClassInstance(classId, provider);
+    return await getClassInstance(classId, prng, provider);
 }
 exports.getRandomClass = getRandomClass;

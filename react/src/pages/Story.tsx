@@ -5,13 +5,13 @@ import useNarratorState from '../hooks/useNarratorState'
 import useStory from '../hooks/useStory'
 import usePublisher from '../hooks/usePublisher'
 import useNotifications from '../hooks/useNotifications'
-import { StoryCategory } from '../utils'
+import { StoryCategory, firstArrayElement } from '../utils'
 import StoryBox from '../components/StoryBox'
 import StoryAuction from '../components/StoryAuction'
 import { NARRATOR_PARAMS } from '../constants'
 
 export default () => {
-  const narratorState = useNarratorState()
+  const narratorState = firstArrayElement(useNarratorState())
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { addNotification, removeNotification } = useNotifications()
   const { story, category } = useStory(narratorState.narrator)

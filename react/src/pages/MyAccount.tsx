@@ -5,11 +5,11 @@ import AccountHeader from '../components/AccountHeader'
 import ShareOutcome from '../components/ShareOutcome'
 import useUser from '../hooks/useUser'
 import useNarratorState from '../hooks/useNarratorState'
-import { Share, storyIdFromIndices, storyId } from '../utils'
+import { Share, storyIdFromIndices, storyId, firstArrayElement } from '../utils'
 
 export default () => {
   const { user } = useUser()
-  const { narrator } = useNarratorState()
+  const { narrator } = firstArrayElement(useNarratorState())
 
   return (
     <>

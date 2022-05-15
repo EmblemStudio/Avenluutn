@@ -1,20 +1,20 @@
 import { useQuery } from 'react-query'
 import axios from 'axios'
 
-import { Vote, CategorizedVotes } from '../utils'
-import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING, NARRATOR_PARAMS } from '../constants'
+import { Vote, CategorizedVotes, firstArrayElement } from '../utils'
+import { SERVER, NETWORK, NARRATOR_INDICES } from '../constants'
 
 export default () => {
   return useQuery(
     [],
-    () => mockVotes(),
+    () => getVotes(),
     { enabled: true }
   )
 }
 
-async function mockVotes(): Promise<CategorizedVotes> {
-  // TODO '0' should be replaced with NARRATOR_PARAMS.narratorIndex once a valid votes object is up
-  const res: Vote[] = (await axios.get(`${SERVER}/votes/${NARRATOR_PARAMS.narratorIndex}.json`)).data
+async function getVotes(): Promise<CategorizedVotes> {
+  const index = firstArrayElement(NARRATOR_INDICES[NETWORK])
+  const res: Vote[] = (await axios.get(`${SERVER}/votes/${index}.json`)).data
   const votes: CategorizedVotes = {
     upcoming: [], inProgress: [], completed: []
   }

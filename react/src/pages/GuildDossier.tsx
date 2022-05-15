@@ -6,9 +6,10 @@ import Expander from '../components/Expander'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
 import { nameString } from '../../../scripts/src/content/loot'
+import { firstArrayElement } from '../utils'
 
 export default () => {
-  const { narrator } = useNarratorState()
+  const { narrator } = firstArrayElement(useNarratorState())
   const { guild } = useGuild(narrator)
 
   return (

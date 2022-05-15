@@ -6,10 +6,10 @@ import Countdown, { CountdownDisplayMode } from '../components/Countdown'
 import EventFeed from '../components/EventFeed'
 import useNarratorState from '../hooks/useNarratorState'
 import useGuild from '../hooks/useGuild'
-import { coloredBoldStyle, Event } from '../utils'
+import { coloredBoldStyle, Event, firstArrayElement } from '../utils'
 
 export default () => {
-  const narratorState = useNarratorState()
+  const narratorState = firstArrayElement(useNarratorState())
   const { narrator } = narratorState
   const { guild, color } = useGuild(narrator)
 

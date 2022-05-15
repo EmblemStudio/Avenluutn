@@ -14,8 +14,15 @@ export default ({ story, narratorState }: StoryBoxProps) => {
       <div className="container outer-border">
         <div className="container inner-border">
           <section className="section pt-5 pb-5">
+            <div className="block resurrections">
+              {story.text.richText.beginning.resurrections?.map((r, i) => {
+                return <div key={i}>{r.map((l, i) => {
+                  return <LabeledString labeledString={l} storyIndex={story.storyIndex} key={i} />
+                })}</div>
+              })}
+            </div>
             <div className="block beginning">
-              {story.text.richText.beginning.map((l, i) => {
+              {story.text.richText.beginning.main.map((l, i) => {
                 return <LabeledString labeledString={l} storyIndex={story.storyIndex} key={i} />
               })}
             </div>

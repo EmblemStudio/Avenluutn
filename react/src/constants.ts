@@ -1,4 +1,4 @@
-import { NetworkName } from './utils'
+import { NetworkName, firstArrayElement } from './utils'
 import env from "../.env.json"
 
 interface NarratorParams {
@@ -9,7 +9,27 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-export const currentRelease: NetworkName = "polygon mainnet"
+/** remove? */
+export const currentRelease: NetworkName = "polygon testnet mumbai"
+export const PAST_NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
+  "mainnet": [],
+  "ropsten": [],
+  "goerli": [],
+  "polygon mainnet": [0],
+  "polygon testnet mumbai": [12],
+  "localhost": []
+}
+/** */
+export const NETWORK: NetworkName = "polygon testnet mumbai"
+// add latest narrator to BEGINNING of array
+export const NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
+  "mainnet": [],
+  "ropsten": [],
+  "goerli": [],
+  "polygon mainnet": [0],
+  "polygon testnet mumbai": [12],
+  "localhost": []
+}
 export let currentNarrator = 0
 export const localTestNarrator = 0
 
@@ -38,7 +58,7 @@ export const NATIVE_TOKENS: { [key in NetworkName]: string } = {
 }
 
 /***** CHANGE THEeSE!!! ????**/
-
+/*
 let network
 if (window !== undefined) {
   if (window.location.host === '127.0.0.1:3000') {
@@ -46,10 +66,11 @@ if (window !== undefined) {
     currentNarrator = localTestNarrator
   }
 }
+*/
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: network ? network : currentRelease,
-  narratorIndex: currentNarrator,
+  network: currentRelease,
+  narratorIndex: firstArrayElement(PAST_NARRATOR_INDICES[currentRelease])
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {
@@ -77,7 +98,7 @@ export const SERVER = {
   "ropsten": "http://67.205.138.92",
   "polygon mainnet": "https://avenluutn-api.squad.games",
   // TODO should be swapped back to non-dev once votes are up there
-  "polygon testnet mumbai": "https://avenluutn-api.squad.games",
+  "polygon testnet mumbai": "https://avenluutn-api-dev.squad.games",
   "goerli": "https://avenluutn-api-dev.squad.games",
 }[NARRATOR_PARAMS.network]
 

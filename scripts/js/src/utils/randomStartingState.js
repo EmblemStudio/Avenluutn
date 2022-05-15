@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.randomParty = exports.randomStartingState = void 0;
+exports.randomAdventurer = exports.randomParty = exports.randomGuild = exports.randomStartingState = void 0;
 const prando_1 = require("prando");
 const loot_1 = require("../content/loot");
 const originalContent_1 = require("../content/original/originalContent");
@@ -15,33 +15,54 @@ async function randomStartingState(numberOfGuilds, prng, provider) {
     return state;
 }
 exports.randomStartingState = randomStartingState;
-async function randomGuild(id, prng, previousState, provider) {
-    const adventurers = await makeRandomAdventurers(prng.nextInt(10, 15), prng, provider);
+async function randomGuild(id, prng, previousState, provider, overrides) {
+    const adventurers = await makeRandomAdventurers(prng.nextInt(10, 15), prng, provider, overrides);
     const name = (0, _1.randomUnusedItem)(previousState.guilds.map(g => g.name), () => prng.nextArrayItem(originalContent_1.guildNames));
     return {
         id,
         name,
         motto: prng.nextArrayItem(originalContent_1.guildMottos),
         location: prng.nextArrayItem(originalContent_1.guildLocations),
-        bard: await randomCharacter(prng, provider, 2),
+        bard: await randomCharacter(prng, provider, 2, overrides === null || overrides === void 0 ? void 0 : overrides.characters),
         adventurers,
         graveyard: {},
         adventurerCredits: {},
         gold: 0
     };
 }
-function randomParty(prng, size, adventurersLeft) {
-    if (size > adventurersLeft.length)
-        size = adventurersLeft.length;
+exports.randomGuild = randomGuild;
+const rareAdvPercent = 5; // / 100
+function randomParty(prng, size, advLeftCommon, advLeftRare) {
+    if (size > advLeftCommon.length)
+        size = advLeftCommon.length;
     const party = [];
+    const rareParty = [];
     for (let i = 0; i < size; i++) {
-        const nextAdvId = prng.nextArrayItem(adventurersLeft);
-        party.push(parseInt(nextAdvId));
-        adventurersLeft.splice(adventurersLeft.indexOf(nextAdvId), 1);
+        if (advLeftRare.length > 0) {
+            const roll = prng.nextInt(0, 100);
+            if (roll <= rareAdvPercent) {
+                const nextAdvId = prng.nextArrayItem(advLeftRare);
+                party.push(parseInt(nextAdvId));
+                rareParty.push(parseInt(nextAdvId));
+                advLeftRare.splice(advLeftRare.indexOf(nextAdvId), 1);
+            }
+            else {
+                const nextAdvId = prng.nextArrayItem(advLeftCommon);
+                party.push(parseInt(nextAdvId));
+                advLeftCommon.splice(advLeftCommon.indexOf(nextAdvId), 1);
+            }
+        }
+        else {
+            const nextAdvId = prng.nextArrayItem(advLeftCommon);
+            party.push(parseInt(nextAdvId));
+            advLeftCommon.splice(advLeftCommon.indexOf(nextAdvId), 1);
+        }
     }
     return {
         party,
-        adventurersLeft
+        rareParty,
+        advLeftCommon,
+        advLeftRare
     };
 }
 exports.randomParty = randomParty;
@@ -74,7 +95,7 @@ function makeRandomParties(
   return res
 }
 */
-async function randomCharacter(prng, provider, traitCount) {
+async function randomCharacter(prng, provider, traitCount, overrides) {
     const classInstance = await (0, loot_1.getRandomClass)(prng, provider);
     const pronounKey = Number(prng.nextArrayItem(Object.keys(originalContent_1.pronounsSource)));
     const pronounsArray = originalContent_1.pronounsSource[pronounKey];
@@ -83,11 +104,15 @@ async function randomCharacter(prng, provider, traitCount) {
     const pronouns = pronounsArray[0];
     if (pronouns === undefined)
         throw new Error("No pronouns");
+    let species = [classInstance.race];
+    if ((overrides === null || overrides === void 0 ? void 0 : overrides.species) !== undefined) {
+        species = overrides.species;
+    }
     const newChar = {
         name: await (0, loot_1.getRandomName)(prng, provider),
         pronouns,
-        species: [classInstance.race],
-        age: prng.nextInt(19, 105),
+        species: species,
+        age: species.includes("Rat") ? prng.nextInt(1, 12) : prng.nextInt(19, 105),
         traits: []
     };
     if (traitCount) {
@@ -99,18 +124,20 @@ async function randomCharacter(prng, provider, traitCount) {
 }
 const existingAdv = {};
 // TODO reroll any repeat names
-async function makeRandomAdventurers(numberToMake, prng, provider) {
+async function makeRandomAdventurers(numberToMake, prng, provider, overrides) {
     const res = {};
-    const numberExisting = Object.keys(existingAdv).length;
+    let numberExisting = Object.keys(existingAdv).length;
+    if (overrides === null || overrides === void 0 ? void 0 : overrides.characters.numberExisting)
+        numberExisting = Number(overrides.characters.numberExisting);
     for (let i = 0; i < numberToMake; i++) {
-        const newAdv = await randomAdventurer(numberExisting + i + 1, prng, provider);
+        const newAdv = await randomAdventurer(numberExisting + i + 1, prng, provider, overrides);
         res[newAdv.id] = newAdv;
     }
     Object.assign(existingAdv, res);
     return res;
 }
-async function randomAdventurer(id, prng, provider) {
-    const newChar = await randomCharacter(prng, provider);
+async function randomAdventurer(id, prng, provider, overrides) {
+    const newChar = await randomCharacter(prng, provider, undefined, overrides === null || overrides === void 0 ? void 0 : overrides.characters);
     const newAdv = Object.assign(newChar, {
         id,
         class: [(await (0, loot_1.getRandomClass)(prng, provider)).class],
@@ -121,6 +148,7 @@ async function randomAdventurer(id, prng, provider) {
     });
     return newAdv;
 }
+exports.randomAdventurer = randomAdventurer;
 function randomStats(prng) {
     return {
         strength: prng.nextInt(0, 4),

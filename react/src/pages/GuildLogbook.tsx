@@ -10,11 +10,11 @@ import useNarratorState from '../hooks/useNarratorState'
 import usePublisher from '../hooks/usePublisher'
 import useGuild from '../hooks/useGuild'
 import { NARRATOR_PARAMS } from '../constants'
-import { coloredBoldStyle, storyId, Story } from '../utils'
+import { coloredBoldStyle, storyId, Story, firstArrayElement } from '../utils'
 import Expander from '../components/Expander'
 
 export default () => {
-  const narratorState = useNarratorState()
+  const narratorState = firstArrayElement(useNarratorState())
   const { narrator } = narratorState
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { guild, color } = useGuild(narrator)

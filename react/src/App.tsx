@@ -22,12 +22,17 @@ import Adventurer from './pages/Adventurer'
 import Story from './pages/Story'
 import MyAccount from './pages/MyAccount'
 
+// the whole NarratorStateProvider needs to deal with multiple narrators
+// but we'd like loading the site to only require loading the latest narrator and 
+// then load earlier ones only on demand
+// but once we load them, we don't want to have to reload them
+
 export default () => {
   return (
     <div className="App">
       <WagmiProvider>
         <NotificationsProvider>
-          <NarratorStateProvider params={NARRATOR_PARAMS}>
+          <NarratorStateProvider>
             <UserProvider>
               <QueryProvider>
                 <BrowserRouter>

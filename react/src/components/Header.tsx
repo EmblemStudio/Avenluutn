@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 
 import useNarratorState from '../hooks/useNarratorState'
 import useUser from '../hooks/useUser'
-import { updateUserFromNarrator } from '../utils'
+import { updateUserFromNarrator, firstArrayElement } from '../utils'
 import Balance from './Balance'
 
 export default () => {
-  const { narrator } = useNarratorState()
+  const { narrator } = firstArrayElement(useNarratorState())
   const { user, setUser } = useUser()
 
   useEffect(() => {

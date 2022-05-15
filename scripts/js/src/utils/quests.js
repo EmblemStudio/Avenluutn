@@ -8,6 +8,7 @@ const processResults_1 = require("./processResults");
 const loot_1 = require("../content/loot");
 const makeText_2 = require("./makeText");
 const newCheckpoint_1 = require("./newCheckpoint");
+const _1 = require(".");
 // 1 = verb, objective, location / 2 = verb, adj, obj, loc, 3 = ver, adj, adj, obj, loc, 4 = ver, adj, adj, name, obj, loc
 // TODO adjust the RNG so characters are more likely to "select" quests that fit them?
 function randomQuest(guildId, prng) {
@@ -422,6 +423,7 @@ async function rollResults(prng, guildId, difficulty, success, adventurer, provi
         if (skillOdds === undefined)
             throw new Error("No skillOdds");
         if (typeRoll <= injuryOdds) {
+            // Injured!
             const injuryText = prng.nextArrayItem(Object.keys(originalContent_1.injuries));
             result.text = (0, makeText_1.makeInjuryText)(adventurer, injuryText);
             const injury = originalContent_1.injuries[injuryText];
@@ -436,17 +438,25 @@ async function rollResults(prng, guildId, difficulty, success, adventurer, provi
             }
         }
         else if (typeRoll > injuryOdds && typeRoll <= deathOdds) {
+            // Died!
             result.type = interfaces_1.ResultType.Death;
             result.text = (0, makeText_1.makeDeathText)(adventurer);
             results.push(result);
-            // if they died, skip rest of results
+            // skip rest of results
             i = length;
         }
         else if (typeRoll > deathOdds && typeRoll <= lootOdds) {
+            // Found loot!
             result.type = interfaces_1.ResultType.Loot;
             const lootPiece = await (0, loot_1.getRandomLootPiece)(prng, provider);
             result.component = lootPiece;
-            result.text = (0, makeText_1.makeLootText)(adventurer, lootPiece);
+            // handle thralls, who offer loot to the Grelvisanth Volume
+            if (adventurer.species.includes("Thrall")) {
+                result.text = (0, _1.makeThrallLootText)(adventurer, lootPiece);
+            }
+            else {
+                result.text = (0, makeText_1.makeLootText)(adventurer, lootPiece);
+            }
             results.push(result);
         }
         else if (typeRoll > lootOdds && typeRoll <= skillOdds) {

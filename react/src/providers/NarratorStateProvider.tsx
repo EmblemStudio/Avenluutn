@@ -6,9 +6,24 @@ import axios from 'axios'
 
 import useContractReadable from '../hooks/useContractReadable'
 import artifact from '../../../hardhat/artifacts/contracts/Publisher.sol/Publisher.json'
-import { ScriptResult, Label, Story as StoryText } from '../../../scripts/src'
-import { NarratorParams, Narrator, Auction, Collection, Story, storyCategory, StoryCategory, NarratorState, NetworkName, storyId, NarratorContractData, EventType, presentOrPast, storyIdFromIndices } from '../utils'
-import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING } from '../constants'
+import { ScriptResult, Label } from '../../../scripts/src'
+import {
+  NarratorParams,
+  Narrator,
+  Auction,
+  Collection,
+  Story,
+  storyCategory,
+  StoryCategory,
+  NarratorState,
+  NetworkName,
+  storyId,
+  NarratorContractData,
+  EventType,
+  presentOrPast,
+  storyIdFromIndices
+} from '../utils'
+import { ADDRESSES, SERVER, CACHE_PERIOD, LOADING, NETWORK, NARRATOR_INDICES } from '../constants'
 
 const emptyNarrator: Narrator = {
   NFTAddress: LOADING,
@@ -33,16 +48,21 @@ function requireDefined<T>(val: T, msg?: string): asserts val is NonNullable<T> 
   }
 }
 
-export const NarratorStateContext = createContext<NarratorState>({
+const emptyNarratorState: NarratorState = {
   narrator: emptyNarrator,
   updateNarrator: () => { },
   lastUpdate: 0,
   queryUntilUpdate: (state: NarratorState) => { },
   querying: false,
   loadState: "loading"
-})
+}
 
-export default ({ params, children }: { params: NarratorParams, children: ReactElement }) => {
+export const NarratorStateContext = createContext<NarratorState[]>(
+  NARRATOR_INDICES[NETWORK].map(() => emptyNarratorState)
+)
+
+export default ({ children }: { children: ReactElement }) => {
+  /*
   const [narratorState, setNarratorState] = useState<NarratorState>({
     narrator: emptyNarrator,
     updateNarrator: () => { },
@@ -55,9 +75,44 @@ export default ({ params, children }: { params: NarratorParams, children: ReactE
   useEffect(() => {
     updateNarratorState(narratorState, setNarratorState, params)
   }, [narratorState])
+  */
+
+  let currentNarratorIndex = 0
+  const narratorStates: NarratorState[] = []
+  let currentNarratorState = emptyNarratorState
+  const narratorStateUpdaters: React.Dispatch<React.SetStateAction<NarratorState>>[] = []
+  let currentNarratorStateUpdater: React.Dispatch<React.SetStateAction<NarratorState>> = () => { }
+
+  NARRATOR_INDICES[NETWORK].forEach(n => {
+    const [narratorState, setNarratorState] = useState<NarratorState>({
+      narrator: emptyNarrator,
+      updateNarrator: () => { },
+      lastUpdate: 0,
+      queryUntilUpdate: (state: NarratorState) => { },
+      querying: false,
+      loadState: "loading"
+    })
+    narratorStates.push(narratorState)
+    narratorStateUpdaters.push(setNarratorState)
+    if (n === 0) {
+      const index = NARRATOR_INDICES[NETWORK][n]
+      if (index === undefined) throw new Error('no narrator index')
+      currentNarratorIndex = index
+      currentNarratorState = narratorState
+      currentNarratorStateUpdater = setNarratorState
+    }
+  })
+
+  useEffect(() => {
+    updateNarratorState(
+      currentNarratorState,
+      currentNarratorStateUpdater,
+      { network: NETWORK, narratorIndex: currentNarratorIndex }
+    )
+  }, [])
 
   return (
-    <NarratorStateContext.Provider value={narratorState}>
+    <NarratorStateContext.Provider value={narratorStates}>
       {children}
     </NarratorStateContext.Provider>
   )
@@ -250,7 +305,10 @@ async function addStories(
         party: [],
         plainText: ["A story only the future has beheld..."],
         richText: {
-          beginning: [{ string: "A story only the future has beheld...", label: Label.conjunctive }],
+          beginning: {
+            resurrections: [],
+            main: [{ string: "A story only the future has beheld...", label: Label.conjunctive }]
+          },
           middle: { obstacleText: [], outcomeText: [] },
           ending: { main: [], resultTexts: [] }
         },

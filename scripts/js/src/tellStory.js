@@ -41,7 +41,8 @@ async function tellStory(runStart, prng, state, startTime, length, guildId, prov
         nextUpdateTime: (0, utils_1.findNextUpdateTime)(runStart, [startTime, ...beginning.outcomeTimes, ...beginning.obstacleTimes, beginning.endTime], middle.allOutcomesSucceeded)
     };
     // make plainText
-    res.richText.beginning.forEach(ls => res.plainText.push(ls.string));
+    res.richText.beginning.resurrections.forEach(lsa => lsa.forEach(ls => res.plainText.push(ls.string)));
+    res.richText.beginning.main.forEach(ls => res.plainText.push(ls.string));
     res.richText.middle.obstacleText.forEach((lsa, i) => {
         const outcomeText = res.richText.middle.outcomeText[i];
         if (outcomeText) {
@@ -77,7 +78,21 @@ async function tellBeginning(prng, state, startTime, length, guildId
     /**
      * Make random party
      */
-    const party = (0, utils_1.randomParty)(prng, prng.nextInt(3, 5), Object.keys(guild.adventurers)).party.map(id => {
+    const randomPartyRes = (0, utils_1.randomParty)(prng, prng.nextInt(3, 5), Object.keys(guild.adventurers), Object.keys(guild.graveyard));
+    const resurrectionTexts = [];
+    randomPartyRes.rareParty.forEach(id => {
+        const adv = guild.graveyard[id];
+        if (adv !== undefined) {
+            // change them into a thrall
+            adv.species = ["Thrall"];
+            // remove them from the graveyard
+            guild.adventurers[id] = adv;
+            delete guild.graveyard[id];
+            // add some text about them being resurrected
+            resurrectionTexts.push((0, utils_1.makeResurrectionText)(adv));
+        }
+    });
+    const party = randomPartyRes.party.map(id => {
         const adv = guild.adventurers[id];
         if (!adv) {
             throw new Error("No adventurer");
@@ -120,7 +135,10 @@ async function tellBeginning(prng, state, startTime, length, guildId
         endTime,
         obstacleTimes,
         outcomeTimes,
-        text: [...guildText, ...questText]
+        text: {
+            resurrections: resurrectionTexts,
+            main: [...guildText, ...questText]
+        }
     };
 }
 async function tellMiddle(runStart, guildId, state, beginning, provider) {

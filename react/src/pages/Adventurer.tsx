@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 import useNarratorState from '../hooks/useNarratorState'
 import useAdventurer from '../hooks/useAdventurer'
-import { storyId, outcomeString, storyCategory, StoryCategory, Story } from '../utils'
+import { storyId, outcomeString, storyCategory, StoryCategory, Story, firstArrayElement } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
 import { nameString } from '../../../scripts/src/content/loot'
 import AdventurerHeader from '../components/AdventurerHeader'
@@ -18,7 +18,8 @@ interface AdventurerParams {
 }
 
 export default ({ graveyard }: AdventurerParams) => {
-  const { narrator } = useNarratorState()
+  const narratorStates = useNarratorState()
+  const { narrator } = firstArrayElement(narratorStates)
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
   const [stories, setStories] = useState<Story[]>([])
   const navigate = useNavigate()
@@ -26,14 +27,17 @@ export default ({ graveyard }: AdventurerParams) => {
 
   useEffect(() => {
     const stories: Story[] = []
-    for (const id in narrator.stories) {
-      const story = narrator.stories[id]
-      let includesAdv = false
-      story?.text.party.forEach(adv => {
-        if (adv.id === adventurer?.id) includesAdv = true
-      })
-      if (includesAdv) stories.push(story)
-    }
+    narratorStates.forEach(state => {
+      const { narrator } = state
+      for (const id in narrator.stories) {
+        const story = narrator.stories[id]
+        let includesAdv = false
+        story?.text.party.forEach(adv => {
+          if (adv.id === adventurer?.id) includesAdv = true
+        })
+        if (includesAdv) stories.push(story)
+      }
+    })
     setStories(stories)
   }, [narrator, adventurer])
 

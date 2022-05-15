@@ -8,7 +8,7 @@ import { TransactionResponse, TransactionReceipt } from '@ethersproject/provider
 import Countdown, { CountdownDisplayMode } from './Countdown'
 import StoryBox from './StoryBox'
 import { Story, shortAddress, presentOrPast, NotificationFunction, NarratorState, secondsToTimeString } from '../utils'
-import { STATUS, NATIVE_TOKENS, NARRATOR_PARAMS } from '../constants'
+import { STATUS, NATIVE_TOKENS, NETWORK } from '../constants'
 
 // TODO Error notifications if not enough funds or bid not high enough
 
@@ -23,7 +23,7 @@ interface StoryAuctionProps {
 export default ({ story, publisher, narratorState, addNotification, removeNotification }: StoryAuctionProps) => {
   const auctionOver = presentOrPast(story.endTime.add(story.auction.duration))
   const [bid, setBid] = useState<BigNumber>(parseEther("0"))
-  const tokenSymbol = NATIVE_TOKENS[NARRATOR_PARAMS.network]
+  const tokenSymbol = NATIVE_TOKENS[NETWORK]
 
   // TODO refresh state after transaction confirmations
   const handleSetBid = (e: React.ChangeEvent<HTMLInputElement>) => {
