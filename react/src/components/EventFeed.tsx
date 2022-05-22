@@ -14,7 +14,7 @@ export default ({ events, narrator }: EventFeedProps) => {
     <>
       {events.map((event, i) => {
         const story = narrator.stories[event.storyId]
-        const party = story?.text.party
+        const party = story?.text.party === undefined ? [] : story?.text.party
         const partyNames = party.map(adv => adv.name.firstName)
         return <EventString event={event} story={story} partyNames={partyNames} key={i} />
       })}
@@ -100,6 +100,9 @@ function EventString({ event, story, partyNames }: EventProps) {
 interface PartyNamesProps { names: string[] }
 
 function PartyNames({ names }: PartyNamesProps) {
+  if (names.length === 0) return (
+    <span>They</span>
+  )
   return (
     <>
       {names.map((n, i) => {

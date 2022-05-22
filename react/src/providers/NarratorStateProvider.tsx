@@ -57,59 +57,62 @@ const emptyNarratorState: NarratorState = {
   loadState: "loading"
 }
 
-export const NarratorStateContext = createContext<NarratorState[]>(
-  NARRATOR_INDICES[NETWORK].map(() => emptyNarratorState)
+interface NarratorStateObj { contractIndex: number, state: NarratorState, update: (s: NarratorState) => void }
+
+export const NarratorStateContext = createContext<NarratorStateObj[]>(
+  NARRATOR_INDICES[NETWORK].map((contractIndex) => {
+    return {
+      contractIndex,
+      state: emptyNarratorState,
+      update: (s: NarratorState) => { }
+    }
+  })
 )
 
 export default ({ children }: { children: ReactElement }) => {
-  /*
-  const [narratorState, setNarratorState] = useState<NarratorState>({
-    narrator: emptyNarrator,
-    updateNarrator: () => { },
-    lastUpdate: 0,
-    queryUntilUpdate: (state: NarratorState) => { },
-    querying: false,
-    loadState: "loading"
-  })
 
-  useEffect(() => {
-    updateNarratorState(narratorState, setNarratorState, params)
-  }, [narratorState])
+  /*
+  const [narratorStates, setNarratorStates] = useState<NarratorState[]>(
+    NARRATOR_INDICES[NETWORK].map((narratorIndex, i) => {
+      const s = Object.assign({}, emptyNarratorState)
+      s.narrator.narratorIndex = narratorIndex
+      s.updateNarrator = (narratorStates: NarratorState[]) => {
+        updateNarratorState(
+          s,
+          narratorStates,
+          (state: NarratorState, states: NarratorState[]) => {
+            const newStates = [...states]
+            newStates[i] = state
+            setNarratorStates(newStates)
+          },
+          { network: NETWORK, narratorIndex }
+        )
+      }
+      return s
+    })
+  )
   */
 
-  let currentNarratorIndex = 0
-  const narratorStates: NarratorState[] = []
-  let currentNarratorState = emptyNarratorState
-  const narratorStateUpdaters: React.Dispatch<React.SetStateAction<NarratorState>>[] = []
-  let currentNarratorStateUpdater: React.Dispatch<React.SetStateAction<NarratorState>> = () => { }
-
-  NARRATOR_INDICES[NETWORK].forEach(n => {
-    const [narratorState, setNarratorState] = useState<NarratorState>({
-      narrator: emptyNarrator,
-      updateNarrator: () => { },
-      lastUpdate: 0,
-      queryUntilUpdate: (state: NarratorState) => { },
-      querying: false,
-      loadState: "loading"
+  const narratorStates: { contractIndex: number, state: NarratorState, update: (s: NarratorState) => void }[] =
+    NARRATOR_INDICES[NETWORK].map((narratorIndex) => {
+      const [state, setNarratorState] = useState<NarratorState>(
+        Object.assign({}, emptyNarratorState)
+      )
+      const update = (currentState: NarratorState) => {
+        updateNarratorState(
+          currentState,
+          setNarratorState,
+          { network: NETWORK, narratorIndex }
+        )
+      }
+      return { contractIndex: narratorIndex, state, update }
     })
-    narratorStates.push(narratorState)
-    narratorStateUpdaters.push(setNarratorState)
-    if (n === 0) {
-      const index = NARRATOR_INDICES[NETWORK][n]
-      if (index === undefined) throw new Error('no narrator index')
-      currentNarratorIndex = index
-      currentNarratorState = narratorState
-      currentNarratorStateUpdater = setNarratorState
-    }
-  })
 
   useEffect(() => {
-    updateNarratorState(
-      currentNarratorState,
-      currentNarratorStateUpdater,
-      { network: NETWORK, narratorIndex: currentNarratorIndex }
-    )
-  }, [])
+    narratorStates.forEach(ns => {
+      ns.update(ns.state)
+    })
+  }, [narratorStates])
 
   return (
     <NarratorStateContext.Provider value={narratorStates}>
@@ -127,15 +130,24 @@ let baseAuctionDuration: BigNumber = BigNumber.from(-1)
 let narratorData: NarratorContractData
 
 async function updateNarratorState(
-  narratorState: NarratorState,
+  currentState: NarratorState,
   setNarratorState: React.Dispatch<React.SetStateAction<NarratorState>>,
   params: NarratorParams
 ) {
-  if (narratorState.lastUpdate > Date.now() - CACHE_PERIOD) {
+  if (currentState.lastUpdate > Date.now() - CACHE_PERIOD) {
     return
   }
 
-  await _updateNarratorState(narratorState, setNarratorState, params)
+  await _updateNarratorState(currentState, setNarratorState, params)
+}
+
+const contractIdCache: { [key: string]: any } = {}
+const startTimeCache: { [key: string]: any } = {}
+const contractStoryCache: { [key: string]: any } = {}
+
+async function memoizedRead(callback: Function, key: string, cache: { [key: string]: any }): Promise<any> {
+  if (cache[key] !== undefined) return cache[key]
+  return await callback()
 }
 
 async function _updateNarratorState(
@@ -145,8 +157,9 @@ async function _updateNarratorState(
 ) {
   const address = ADDRESSES[params.network as NetworkName]
   requireDefined(address, "Address for ${params.netowrk} required")
+
   const publisher = useContractReadable(address, artifact.abi, params.network as NetworkName)
-  if (!publisher) return
+  requireDefined(publisher, "Publisher")
 
   if (baseAuctionDuration.eq(-1)) {
     baseAuctionDuration = await publisher.baseAuctionDuration()
@@ -156,7 +169,13 @@ async function _updateNarratorState(
     narratorData = await publisher.narrators(params.narratorIndex)
   }
 
-  let newNarrator: Narrator = { ...narratorData, collections: [], stories: {}, storiesByGuild: {}, eventsByGuild: {} }
+  let newNarrator: Narrator = {
+    ...narratorData,
+    collections: [],
+    stories: {},
+    storiesByGuild: {},
+    eventsByGuild: {}
+  }
   for (let i = 0; i <= Number(newNarrator.collectionSize) - 1; i++) {
     newNarrator.storiesByGuild[i] = {
       upcoming: [],
@@ -197,23 +216,26 @@ async function _updateNarratorState(
           collection,
           newNarrator
         )
+        /*
         setNarratorState({
           narrator: newNarrator,
-          updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
+          updateNarrator: () => { updateNarratorState(narratorState, narratorStates, setNarratorState, params) },
           lastUpdate: Date.now(),
           queryUntilUpdate: (
             state: NarratorState,
             collectionIndex: number,
             storyIndex: number
-          ) => { queryUntilStateUpdate(state, collectionIndex, storyIndex, setNarratorState, params) },
+          ) => { queryUntilStateUpdate(state, narratorStates, collectionIndex, storyIndex, setNarratorState, params) },
           querying,
           loadState: "loading"
-        })
+        }, narratorStates)
+        */
         resolve()
       }
     ))
   }
   await Promise.all(promises)
+  console.log('adding new narrator', newNarrator)
   setNarratorState({
     narrator: newNarrator,
     updateNarrator: () => { updateNarratorState(narratorState, setNarratorState, params) },
@@ -292,10 +314,22 @@ async function addStories(
   const newStories: Story[] = []
   for (let j = 0; j < Number(narrator.collectionSize); j++) {
     const storyIndex = j
-    const contractId = await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex)
-    const startTime: BigNumber = await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex)
+    const contractId = await memoizedRead(
+      async () => await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex),
+      `${narratorIndex}-${collectionIndex}-${storyIndex}`,
+      contractIdCache
+    )
+    const startTime: BigNumber = await memoizedRead(
+      async () => await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex),
+      `${narratorIndex}-${collectionIndex}-${storyIndex}`,
+      startTimeCache
+    )
     const endTime = startTime.add(narrator.collectionLength)
-    const contractStory = await publisher.stories(contractId)
+    const contractStory = await memoizedRead(
+      async () => await publisher.stories(contractId),
+      `${contractId}`,
+      contractStoryCache
+    )
     const auction: Auction = contractStory.auction
     let text = collection.scriptResult.stories[j]
     const id = storyIdFromIndices(narratorIndex, storyIndex, collectionIndex)

@@ -14,12 +14,13 @@ export default () => {
 
 async function getVotes(): Promise<CategorizedVotes> {
   const index = firstArrayElement(NARRATOR_INDICES[NETWORK])
-  const res: Vote[] = (await axios.get(`${SERVER}/votes/${index}.json`)).data
+  const res = { data: undefined } //await axios.get(`${SERVER}/votes/${index}.json`)
+  const data: Vote[] = res.data === undefined ? [] : res.data
   const votes: CategorizedVotes = {
     upcoming: [], inProgress: [], completed: []
   }
   const now = Math.floor(Date.now() / 1000)
-  res.forEach(v => {
+  data.forEach(v => {
     if (v.startTime > v.endTime) {
       console.log("Vote startTime not before endTime", v)
     } else if (v.startTime > now) {

@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ScriptResult, Story as StoryText, Success, Result } from '../../../scripts/src'
+import { ScriptResult, Story as StoryText, Result } from '../../../scripts/src'
 
 export type NetworkName = "mainnet" | "ropsten" | "polygon mainnet" | "polygon testnet mumbai" | "localhost" | "goerli"
 
@@ -15,7 +15,7 @@ export interface NarratorParams { network: string; narratorIndex: number }
 
 export interface NarratorState {
   narrator: Narrator,
-  updateNarrator: () => void,
+  updateNarrator: (currentState: NarratorState) => void,
   lastUpdate: number,
   queryUntilUpdate: (state: NarratorState, collectionIndex: number, storyIndex: number) => void,
   querying: boolean,

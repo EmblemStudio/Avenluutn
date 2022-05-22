@@ -11,7 +11,8 @@ import StoryAuction from '../components/StoryAuction'
 import { NARRATOR_PARAMS } from '../constants'
 
 export default () => {
-  const narratorState = firstArrayElement(useNarratorState())
+  const narratorStates = useNarratorState()
+  const narratorState = firstArrayElement(narratorStates).state
   const publisher = usePublisher(NARRATOR_PARAMS)
   const { addNotification, removeNotification } = useNotifications()
   const { story, category } = useStory(narratorState.narrator)

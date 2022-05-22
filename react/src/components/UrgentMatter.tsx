@@ -18,14 +18,30 @@ interface UrgentMatterProps {
 
 export default ({ publisher, narratorState, addNotification, removeNotification }: UrgentMatterProps) => {
   const { data: votes } = useVotes()
+
+  if (narratorState === undefined) {
+    return (
+      <div className="dotted-bookends">
+        <div className="p-3">
+          <div className="block is-garamond is-italic is-size-4 mb-1">
+            Urgent!
+          </div>
+          <LoadingAnimation />
+        </div>
+      </div>
+    )
+  }
+
   const um = findUrgentMatter(narratorState.narrator, votes)
 
   return (
     <div className="dotted-bookends">
       <div className="p-3">
-        <div className="block is-garamond is-italic is-size-4 mb-1">
-          Urgent!
-        </div>
+        {um.type !== MatterType.lounge &&
+          <div className="block is-garamond is-italic is-size-4 mb-1">
+            Urgent!
+          </div>
+        }
         {narratorState.loadState === "finished" ?
           urgentMatterContent(um, publisher, narratorState, addNotification, removeNotification)
           :
@@ -143,7 +159,7 @@ function findUrgentMatter(narrator: Narrator, votes?: CategorizedVotes): UrgentM
       }
     }
   }
-  if (um === undefined) {
+  if (um.matter === undefined) {
     um = {
       type: MatterType.lounge
     }

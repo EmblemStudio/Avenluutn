@@ -51,7 +51,7 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
-                narratorState.updateNarrator()
+                narratorState.updateNarrator(narratorState)
               })
             })
         })
@@ -75,7 +75,7 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
               res.wait().then((rec: TransactionReceipt) => {
                 addNotification("status", STATUS.tx_confirmed)
                 removeNotification("status", STATUS.tx_submitted)
-                narratorState.updateNarrator()
+                narratorState.updateNarrator(narratorState)
               })
             })
         })
@@ -97,7 +97,7 @@ export default ({ story, publisher, narratorState, addNotification, removeNotifi
           res.wait().then((rec: TransactionReceipt) => {
             addNotification("status", STATUS.tx_confirmed)
             removeNotification("status", STATUS.tx_submitted)
-            narratorState.updateNarrator()
+            narratorState.updateNarrator(narratorState)
           })
         })
     }

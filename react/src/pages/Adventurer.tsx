@@ -19,7 +19,7 @@ interface AdventurerParams {
 
 export default ({ graveyard }: AdventurerParams) => {
   const narratorStates = useNarratorState()
-  const { narrator } = firstArrayElement(narratorStates)
+  const { narrator } = firstArrayElement(narratorStates).state
   const { adventurer, guild, color } = useAdventurer(narrator, graveyard)
   const [stories, setStories] = useState<Story[]>([])
   const navigate = useNavigate()
@@ -27,12 +27,12 @@ export default ({ graveyard }: AdventurerParams) => {
 
   useEffect(() => {
     const stories: Story[] = []
-    narratorStates.forEach(state => {
-      const { narrator } = state
+    narratorStates.forEach(stateObj => {
+      const { narrator } = stateObj.state
       for (const id in narrator.stories) {
         const story = narrator.stories[id]
         let includesAdv = false
-        story?.text.party.forEach(adv => {
+        story?.text.party?.forEach(adv => {
           if (adv.id === adventurer?.id) includesAdv = true
         })
         if (includesAdv) stories.push(story)

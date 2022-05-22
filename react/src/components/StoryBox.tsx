@@ -4,10 +4,12 @@ import Countdown, { CountdownDisplayMode } from './Countdown'
 import LabeledString from './LabeledString'
 import { Story, storyId, NarratorState } from '../utils'
 import LoadingAnimation from './LoadingAnimation'
+import { LabeledString as LS } from '../../../scripts/src'
 
 interface StoryBoxProps { story: Story, narratorState: NarratorState }
 
 export default ({ story, narratorState }: StoryBoxProps) => {
+  console.log(story.text.richText.beginning, typeof story.text.richText.beginning)
   return (
     <section className="section pt-2 pb-4">
       <div className="container outer-border">
@@ -21,9 +23,16 @@ export default ({ story, narratorState }: StoryBoxProps) => {
               })}
             </div>
             <div className="block beginning">
-              {story.text.richText.beginning.main.map((l, i) => {
+              {story.text.richText.beginning.main?.map((l, i) => {
                 return <LabeledString labeledString={l} storyIndex={story.storyIndex} key={i} />
               })}
+            </div>
+            <div className="block beginning">
+              {(story.text.richText.beginning as any)[0] !== undefined &&
+                (story.text.richText.beginning as any).map((l: LS, i: number) => {
+                  return <LabeledString labeledString={l} storyIndex={story.storyIndex} key={i} />
+                })
+              }
             </div>
             <div className="block middle">
               {story.text.richText.middle.obstacleText?.map((obText, i) => {

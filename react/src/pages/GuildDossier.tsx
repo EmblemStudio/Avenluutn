@@ -9,7 +9,7 @@ import { nameString } from '../../../scripts/src/content/loot'
 import { firstArrayElement } from '../utils'
 
 export default () => {
-  const { narrator } = firstArrayElement(useNarratorState())
+  const { narrator } = firstArrayElement(useNarratorState()).state
   const { guild } = useGuild(narrator)
 
   return (

@@ -9,23 +9,12 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-/** remove? */
-export const currentRelease: NetworkName = "polygon testnet mumbai"
-export const PAST_NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
-  "mainnet": [],
-  "ropsten": [],
-  "goerli": [],
-  "polygon mainnet": [0],
-  "polygon testnet mumbai": [12],
-  "localhost": []
-}
-/** */
-export const NETWORK: NetworkName = "polygon testnet mumbai"
+export const NETWORK: NetworkName = "goerli"
 // add latest narrator to BEGINNING of array
 export const NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
   "mainnet": [],
   "ropsten": [],
-  "goerli": [],
+  "goerli": [7, 6],
   "polygon mainnet": [0],
   "polygon testnet mumbai": [12],
   "localhost": []
@@ -69,8 +58,8 @@ if (window !== undefined) {
 */
 
 export const NARRATOR_PARAMS: NarratorParams = {
-  network: currentRelease,
-  narratorIndex: firstArrayElement(PAST_NARRATOR_INDICES[currentRelease])
+  network: NETWORK,
+  narratorIndex: firstArrayElement(NARRATOR_INDICES[NETWORK])
 }
 
 export const NETWORK_IDS: { [key in NetworkName]: number } = {

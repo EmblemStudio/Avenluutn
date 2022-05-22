@@ -9,12 +9,16 @@ import useNarratorState from '../hooks/useNarratorState'
 import useNotifications from '../hooks/useNotifications'
 import { getTimeLeft, firstArrayElement } from '../utils'
 import LoadingAnimation from '../components/LoadingAnimation'
-import { NARRATOR_PARAMS } from '../constants'
+import { NETWORK, NARRATOR_INDICES } from '../constants'
 
 export default () => {
-  const publisher = usePublisher(NARRATOR_PARAMS)
-  const narratorState = firstArrayElement(useNarratorState())
-  const { narrator } = narratorState
+  const publisher = usePublisher({
+    network: NETWORK,
+    narratorIndex: firstArrayElement(NARRATOR_INDICES[NETWORK])
+  })
+  const narratorStates = useNarratorState()
+  let { state: narratorState } = firstArrayElement(narratorStates)
+  let { narrator } = narratorState
   const { addNotification, removeNotification } = useNotifications()
 
   return (

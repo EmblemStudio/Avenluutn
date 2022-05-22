@@ -9,7 +9,7 @@ import useGuild from '../hooks/useGuild'
 import { coloredBoldStyle, Event, firstArrayElement } from '../utils'
 
 export default () => {
-  const narratorState = firstArrayElement(useNarratorState())
+  const narratorState = firstArrayElement(useNarratorState()).state
   const { narrator } = narratorState
   const { guild, color } = useGuild(narrator)
 
