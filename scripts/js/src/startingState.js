@@ -3,9 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.startingState = void 0;
 /*
   Starting state from:
-  network: "polygon mumbai",
-  publisher: "0x9Ee5716bd64ec6e90e0a1F44C5eA346Cd0a8E5a4",
-  narrator: "0"
+  network: "goerli",
+  narrator: "7"
+  + rat guild
+  + new recruits
 */
 exports.startingState = {
     "guilds": [
@@ -13,2401 +14,20 @@ exports.startingState = {
             "adventurerCredits": {},
             "adventurers": {
                 "1": {
-                    "age": 62,
+                    "age": 63,
                     "class": [
-                        "Cleric"
+                        "Monk"
                     ],
                     "id": 1,
                     "loot": [
-                        "Chain Gloves",
-                        "Crown"
-                    ],
-                    "name": {
-                        "firstName": "Rita",
-                        "id": 7247,
-                        "lastName": "Plain",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Ropework",
-                        "Deception"
-                    ],
-                    "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 2,
-                        "resourcefulness": 1,
-                        "strength": 3,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "martyr complex",
-                        "cowardice"
-                    ]
-                },
-                "10": {
-                    "age": 40,
-                    "class": [
-                        "Monk"
-                    ],
-                    "id": 10,
-                    "loot": [
-                        "Necklace",
-                        "Studded Leather Boots",
-                        "Linen Sash",
-                        "Chain Boots",
-                        "Heavy Boots",
-                        "Leather Cap",
-                        "Leather Boots of Anger"
-                    ],
-                    "name": {
-                        "firstName": "Malok",
-                        "id": 170,
-                        "lastName": "Kulechov",
-                        "middleName": "state",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Leadership"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 0,
-                        "resourcefulness": 4,
-                        "strength": 0,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "gambling addiction"
-                    ]
-                },
-                "11": {
-                    "age": 66,
-                    "class": [
-                        "Paladin"
-                    ],
-                    "id": 11,
-                    "loot": [
-                        "Necklace",
-                        "Amulet",
-                        "War Cap"
-                    ],
-                    "name": {
-                        "firstName": "Vitalik",
-                        "id": 2469,
-                        "lastName": "Wintermute",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Marketing",
-                        "Horsemanship"
-                    ],
-                    "species": [
-                        "Half-Orc"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 0,
-                        "resourcefulness": 2,
-                        "strength": 3,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "aggressive impulses",
-                        "unluckiness",
-                        "anxiety"
-                    ]
-                },
-                "12": {
-                    "age": 72,
-                    "class": [
-                        "Ranger"
-                    ],
-                    "id": 12,
-                    "loot": [
-                        "Shirt",
-                        "\"Dusk Sun\" Tome of the Fox",
-                        "Dragonskin Belt",
-                        "Pendant of Protection"
-                    ],
-                    "name": {
-                        "firstName": "Vitalik",
-                        "id": 4727,
-                        "lastName": "Wixx",
-                        "middleName": "first of",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Streetwise",
-                        "Metallurgy"
-                    ],
-                    "species": [
-                        "Halfling"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 2,
-                        "resourcefulness": 3,
-                        "strength": 4,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "a peg leg",
-                        "quick-wit"
-                    ]
-                },
-                "13": {
-                    "age": 99,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "id": 13,
-                    "loot": [
-                        "Cap of Brilliance",
-                        "Gold Ring",
-                        "Wool Shoes",
-                        "Ancient Helm of Perfection",
-                        "Scimitar of Detection"
-                    ],
-                    "name": {
-                        "firstName": "Csilla",
-                        "id": 8017,
-                        "lastName": "Goncalves",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Baking"
-                    ],
-                    "species": [
-                        "Dragonborn"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 4,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "cowardice"
-                    ]
-                },
-                "2": {
-                    "age": 97,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "id": 2,
-                    "loot": [
-                        "Club",
-                        "Amulet",
-                        "Silk Slippers",
-                        "Greaves of Giants",
-                        "Gold Ring of Detection",
-                        "Necklace"
-                    ],
-                    "name": {
-                        "firstName": "Kyle",
-                        "id": 2056,
-                        "lastName": "Marblemaw",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Haberdashery",
-                        "Horsemanship",
-                        "Disguise"
-                    ],
-                    "species": [
-                        "Dragonborn"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 3,
-                        "resourcefulness": 1,
-                        "strength": 3,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "greed",
-                        "great destiny"
-                    ]
-                },
-                "3": {
-                    "age": 69,
-                    "class": [
-                        "Warlock"
-                    ],
-                    "id": 3,
-                    "loot": [
-                        "Studded Leather Belt"
-                    ],
-                    "name": {
-                        "firstName": "Gawel",
-                        "id": 2697,
-                        "lastName": "Gresham",
-                        "middleName": "from",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Haberdashery",
-                        "Horsemanship"
-                    ],
-                    "species": [
-                        "Gnome"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 1,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "cowardice"
-                    ]
-                },
-                "7": {
-                    "age": 54,
-                    "class": [
-                        "Monk"
-                    ],
-                    "id": 7,
-                    "loot": [
-                        "\"Sorrow Peak\" Shoes of Fury +1",
-                        "\"Dusk Whisper\" Amulet of the Fox",
-                        "\"Ghoul Whisper\" Ghost Wand of Titans",
-                        "Pendant of Enlightenment"
-                    ],
-                    "name": {
-                        "firstName": "Satoshi",
-                        "id": 1537,
-                        "lastName": "Geisler",
-                        "middleName": "",
-                        "prefix": "Master",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Leadership"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 0,
-                        "resourcefulness": 3,
-                        "strength": 2,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "monsterphobia"
-                    ]
-                },
-                "8": {
-                    "age": 104,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 8,
-                    "loot": [
-                        "Silk Gloves",
-                        "Pendant",
-                        "Titanium Ring of the Twins",
-                        "Shoes"
-                    ],
-                    "name": {
-                        "firstName": "Darda",
-                        "id": 149,
-                        "lastName": "K",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Navigation"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 3,
-                        "resourcefulness": 2,
-                        "strength": 1,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "monsterphobia",
-                        "greed",
-                        "aggressive impulses",
-                        "weakness"
-                    ]
-                },
-                "9": {
-                    "age": 50,
-                    "class": [
-                        "Rogue"
-                    ],
-                    "id": 9,
-                    "loot": [
-                        "Platinum Ring",
-                        "Divine Hood",
-                        "Dragonskin Armor",
-                        "Necklace",
-                        "Gold Ring of Anger"
-                    ],
-                    "name": {
-                        "firstName": "Betty",
-                        "id": 228,
-                        "lastName": "Jenkins",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Archery",
-                        "Ancient Lore"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 2,
-                        "resourcefulness": 1,
-                        "strength": 0,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": []
-                }
-            },
-            "bard": {
-                "age": 73,
-                "name": {
-                    "firstName": "Monica",
-                    "id": 2148,
-                    "lastName": "Araujo",
-                    "middleName": "",
-                    "prefix": "",
-                    "suffix": "the Mad"
-                },
-                "pronouns": {
-                    "depPossessive": "her",
-                    "indPossessive": "hers",
-                    "object": "her",
-                    "reflexive": "herself",
-                    "subject": "she"
-                },
-                "species": [
-                    "Dragonborn"
-                ],
-                "traits": [
-                    "monsterphobia",
-                    "anxiety"
-                ]
-            },
-            "gold": 0,
-            "graveyard": {
-                "4": {
-                    "age": 58,
-                    "class": [
-                        "Paladin"
-                    ],
-                    "id": 4,
-                    "loot": [
-                        "Dragonskin Gloves",
-                        "Bronze Ring"
-                    ],
-                    "name": {
-                        "firstName": "Chinwemma",
-                        "id": 2113,
-                        "lastName": "Lopez",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Ancient Lore"
-                    ],
-                    "species": [
-                        "Dragonborn"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 3,
-                        "resourcefulness": 1,
-                        "strength": 2,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": []
-                },
-                "5": {
-                    "age": 79,
-                    "class": [
-                        "Ranger"
-                    ],
-                    "id": 5,
-                    "loot": [
-                        "Ornate Chestplate",
-                        "Necklace",
                         "Ornate Gauntlets",
-                        "Demon Crown",
-                        "Linen Hood",
-                        "Cap",
-                        "Hard Leather Boots",
-                        "Chronicle"
-                    ],
-                    "name": {
-                        "firstName": "Kyle",
-                        "id": 5662,
-                        "lastName": "Buterin",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Archeology",
-                        "Deception",
-                        "Disguise"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 0,
-                        "resourcefulness": 3,
-                        "strength": 1,
-                        "toughness": 3
-                    },
-                    "stories": [],
-                    "traits": [
-                        "monsterphobia",
-                        "optimistism",
-                        "dragon obsession"
-                    ]
-                },
-                "6": {
-                    "age": 103,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 6,
-                    "loot": [
-                        "Cap",
-                        "Linen Robe of Reflection",
-                        "\"Gloom Bite\" Gloves of Titans +1"
-                    ],
-                    "name": {
-                        "firstName": "Daealla",
-                        "id": 564,
-                        "lastName": "Gannon",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Portraiture"
-                    ],
-                    "species": [
-                        "Dragonborn"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 0,
-                        "resourcefulness": 4,
-                        "strength": 1,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "elegance"
-                    ]
-                }
-            },
-            "id": 0,
-            "location": "Varajao District",
-            "motto": "Sixteen of One, None of the Other",
-            "name": "Marsh's Sewerworks"
-        },
-        {
-            "adventurerCredits": {},
-            "adventurers": {
-                "14": {
-                    "age": 31,
-                    "class": [
-                        "Monk"
-                    ],
-                    "id": 14,
-                    "loot": [
-                        "Dragon's Crown",
-                        "Heavy Belt",
-                        "Wand",
-                        "Platinum Ring",
-                        "Silver Ring"
-                    ],
-                    "name": {
-                        "firstName": "Isak",
-                        "id": 3421,
-                        "lastName": "Skotnik",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Metallurgy"
-                    ],
-                    "species": [
-                        "Half-Elf"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 2,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": []
-                },
-                "15": {
-                    "age": 42,
-                    "class": [
-                        "Ranger"
-                    ],
-                    "id": 15,
-                    "loot": [
-                        "Demonhide Belt",
-                        "\"Vengeance Whisper\" Ghost Wand of the Fox",
-                        "Wool Sash of Vitriol",
-                        "Silver Ring",
-                        "Divine Slippers",
-                        "Robe of Titans",
-                        "Ornate Gauntlets",
-                        "Wool Sash",
-                        "Hard Leather Armor",
-                        "Necklace"
-                    ],
-                    "name": {
-                        "firstName": "Rasmus",
-                        "id": 7241,
-                        "lastName": "Zhu",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Metallurgy"
-                    ],
-                    "species": [
-                        "Half-Orc"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 4,
-                        "resourcefulness": 4,
-                        "strength": 2,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "cowardice",
-                        "anxiety",
-                        "a prosthetic arm",
-                        "martyr complex"
-                    ]
-                },
-                "16": {
-                    "age": 99,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 16,
-                    "loot": [
-                        "Hard Leather Armor",
-                        "Scimitar",
-                        "Divine Gloves",
-                        "Dragonskin Boots of Giants",
-                        "Crown",
-                        "\"Pain Whisper\" Brightsilk Sash of Power",
-                        "Amulet",
-                        "Studded Leather Belt",
-                        "Divine Hood",
-                        "Silver Ring"
-                    ],
-                    "name": {
-                        "firstName": "Satoshi",
-                        "id": 6782,
-                        "lastName": "Mancini",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Politics"
-                    ],
-                    "species": [
-                        "Gnome"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 1,
-                        "resourcefulness": 0,
-                        "strength": 2,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "unluckiness"
-                    ]
-                },
-                "17": {
-                    "age": 66,
-                    "class": [
-                        "Wizard"
-                    ],
-                    "id": 17,
-                    "loot": [
-                        "Heavy Belt",
-                        "Silver Ring",
-                        "Chain Gloves",
-                        "Dragonskin Belt of Titans",
-                        "Leather Gloves",
-                        "\"Victory Shout\" Hard Leather Armor of Protection +1",
-                        "\"Rune Root\" Platinum Ring of Vitriol",
-                        "Wand of Rage",
-                        "Dragonskin Armor of Detection",
-                        "Pendant",
-                        "Demonhide Belt of Protection",
-                        "Wool Shoes",
-                        "Pendant",
-                        "Heavy Belt",
-                        "Silk Robe"
+                        "Katana"
                     ],
                     "name": {
                         "firstName": "Dennis",
-                        "id": 221,
-                        "lastName": "Gotou",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Alchemy",
-                        "Portraiture",
-                        "Acrobatics",
-                        "Deception"
-                    ],
-                    "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 1,
-                        "resourcefulness": 1,
-                        "strength": 0,
-                        "toughness": 3
-                    },
-                    "stories": [],
-                    "traits": [
-                        "cowardice"
-                    ]
-                },
-                "18": {
-                    "age": 68,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 18,
-                    "loot": [
-                        "Tome of Fury",
-                        "Gold Ring"
-                    ],
-                    "name": {
-                        "firstName": "Jessica",
-                        "id": 1927,
-                        "lastName": "Marblemaw",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Horsemanship",
-                        "Investigation"
-                    ],
-                    "species": [
-                        "Gnome"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 4,
-                        "resourcefulness": 0,
-                        "strength": 4,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "monsterphobia"
-                    ]
-                },
-                "19": {
-                    "age": 37,
-                    "class": [
-                        "Monk"
-                    ],
-                    "id": 19,
-                    "loot": [
-                        "Silk Sash",
-                        "Crown of Vitriol"
-                    ],
-                    "name": {
-                        "firstName": "Andre",
-                        "id": 978,
-                        "lastName": "Kiss",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Ropework",
-                        "Swordskill",
-                        "Investigation",
-                        "Ancient Lore"
-                    ],
-                    "species": [
-                        "Gnome"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 3,
-                        "resourcefulness": 4,
-                        "strength": 2,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "anxiety"
-                    ]
-                },
-                "20": {
-                    "age": 76,
-                    "class": [
-                        "Wizard"
-                    ],
-                    "id": 20,
-                    "loot": [
-                        "Amulet",
-                        "\"Armageddon Grasp\" Hard Leather Belt of Rage +1",
-                        "Platinum Ring",
-                        "Holy Chestplate",
-                        "Studded Leather Armor of Power",
-                        "Necklace of Anger",
-                        "Titanium Ring"
-                    ],
-                    "name": {
-                        "firstName": "Irene",
-                        "id": 716,
-                        "lastName": "Thatcher",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": "the Lawgiver"
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Ancient Lore",
-                        "Navigation"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 2,
-                        "resourcefulness": 1,
-                        "strength": 0,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "quick-wit",
-                        "great destiny",
-                        "greed"
-                    ]
-                },
-                "22": {
-                    "age": 90,
-                    "class": [
-                        "Monk"
-                    ],
-                    "id": 22,
-                    "loot": [
-                        "Necklace",
-                        "\"Plague Sun\" Heavy Gloves of Fury",
-                        "Titanium Ring",
-                        "Ornate Gauntlets",
-                        "Silk Slippers",
-                        "Chain Gloves",
-                        "Dragonskin Belt",
-                        "Cap",
-                        "Crown of Enlightenment"
-                    ],
-                    "name": {
-                        "firstName": "Noah",
-                        "id": 3747,
-                        "lastName": "Maki",
-                        "middleName": "",
-                        "prefix": "King",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Arcane Arts",
-                        "Marketing",
-                        "Navigation"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 2,
-                        "resourcefulness": 2,
-                        "strength": 4,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "a prosthetic arm"
-                    ]
-                },
-                "23": {
-                    "age": 50,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 23,
-                    "loot": [
-                        "Heavy Gloves",
-                        "Necklace",
-                        "Plate Mail of Detection",
-                        "Robe of the Fox"
-                    ],
-                    "name": {
-                        "firstName": "Yuukou",
-                        "id": 2514,
-                        "lastName": "Okwuoma",
-                        "middleName": "chadde",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Politics",
-                        "Metallurgy"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 1,
-                        "resourcefulness": 3,
-                        "strength": 4,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": []
-                },
-                "24": {
-                    "age": 100,
-                    "class": [
-                        "Rogue"
-                    ],
-                    "id": 24,
-                    "loot": [
-                        "Chain Mail of Enlightenment",
-                        "\"Woe Shout\" Plated Belt of Detection +1",
-                        "Quarterstaff",
-                        "Demonhide Boots",
-                        "Platinum Ring",
-                        "Dragon's Crown",
-                        "Silk Slippers"
-                    ],
-                    "name": {
-                        "firstName": "Annabelle",
-                        "id": 4868,
-                        "lastName": "Nigiri",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Swimming",
-                        "Streetwise"
-                    ],
-                    "species": [
-                        "Half-Elf"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 2,
-                        "resourcefulness": 1,
-                        "strength": 4,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "anxiety",
-                        "cowardice"
-                    ]
-                }
-            },
-            "bard": {
-                "age": 52,
-                "name": {
-                    "firstName": "Laura",
-                    "id": 940,
-                    "lastName": "Oliveira",
-                    "middleName": "",
-                    "prefix": "",
-                    "suffix": ""
-                },
-                "pronouns": {
-                    "depPossessive": "their",
-                    "indPossessive": "theirs",
-                    "object": "them",
-                    "reflexive": "themself",
-                    "subject": "they"
-                },
-                "species": [
-                    "Gnome"
-                ],
-                "traits": [
-                    "gambling addiction",
-                    "great destiny"
-                ]
-            },
-            "gold": 0,
-            "graveyard": {
-                "21": {
-                    "age": 71,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 21,
-                    "loot": [
-                        "Leather Cap",
-                        "Wool Sash"
-                    ],
-                    "name": {
-                        "firstName": "Andre",
-                        "id": 1506,
-                        "lastName": "Wintermute",
-                        "middleName": "",
-                        "prefix": "Professor",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Ancient Lore",
-                        "Alchemy",
-                        "Baking",
-                        "Portraiture",
-                        "Leadership"
-                    ],
-                    "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 1,
-                        "resourcefulness": 1,
-                        "strength": 0,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "unluckiness",
-                        "a peg leg"
-                    ]
-                }
-            },
-            "id": 1,
-            "location": "the Flying Stones",
-            "motto": "Does not Mean What You Think it Means",
-            "name": "Royal Orchestra Theatre"
-        },
-        {
-            "adventurerCredits": {},
-            "adventurers": {
-                "25": {
-                    "age": 32,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 25,
-                    "loot": [
-                        "Necklace",
-                        "Chronicle of Giants",
-                        "Linen Gloves",
-                        "Silk Slippers"
-                    ],
-                    "name": {
-                        "firstName": "Zaki",
-                        "id": 3502,
-                        "lastName": "Gresham",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Marketing"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 3,
-                        "resourcefulness": 1,
-                        "strength": 4,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": []
-                },
-                "26": {
-                    "age": 25,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 26,
-                    "loot": [
-                        "Amulet",
-                        "Dragonskin Belt of Titans",
-                        "Scimitar of Skill"
-                    ],
-                    "name": {
-                        "firstName": "John",
-                        "id": 7634,
-                        "lastName": "Henrichon",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Streetwise"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 3,
-                        "resourcefulness": 3,
-                        "strength": 4,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "elegance"
-                    ]
-                },
-                "27": {
-                    "age": 89,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 27,
-                    "loot": [
-                        "Ornate Greaves",
-                        "Wool Shoes"
-                    ],
-                    "name": {
-                        "firstName": "Matthew",
-                        "id": 5205,
-                        "lastName": "Humblecut",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Ropework",
-                        "Leadership",
-                        "Tracking",
-                        "Acrobatics",
-                        "Marketing"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 3,
-                        "resourcefulness": 1,
-                        "strength": 1,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "dragon obsession",
-                        "unluckiness",
-                        "deafness"
-                    ]
-                },
-                "28": {
-                    "age": 94,
-                    "class": [
-                        "Warlock"
-                    ],
-                    "id": 28,
-                    "loot": [
-                        "Holy Greaves of Reflection",
-                        "Shoes",
-                        "Demonhide Boots"
-                    ],
-                    "name": {
-                        "firstName": "Miguel",
-                        "id": 1740,
-                        "lastName": "Maki",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Deception",
-                        "Ropework",
-                        "Alchemy",
-                        "Archery",
-                        "Swordskill"
-                    ],
-                    "species": [
-                        "Half-Orc"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 4,
-                        "resourcefulness": 4,
-                        "strength": 1,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": []
-                },
-                "29": {
-                    "age": 50,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 29,
-                    "loot": [
-                        "Linen Hood",
-                        "Dragonskin Boots",
-                        "Leather Cap of Fury",
-                        "Chain Mail",
-                        "Warhammer"
-                    ],
-                    "name": {
-                        "firstName": "Bolethe",
-                        "id": 2415,
-                        "lastName": "Nakamoto",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Politics",
-                        "Portraiture",
-                        "Streetwise"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 4,
-                        "resourcefulness": 2,
-                        "strength": 4,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "great destiny"
-                    ]
-                },
-                "30": {
-                    "age": 83,
-                    "class": [
-                        "Paladin"
-                    ],
-                    "id": 30,
-                    "loot": [
-                        "Grave Wand",
-                        "Amulet",
-                        "Demon's Hands",
-                        "Studded Leather Gloves",
-                        "Linen Gloves of Rage"
-                    ],
-                    "name": {
-                        "firstName": "Chukwuebuka",
-                        "id": 1438,
-                        "lastName": "Egede",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Investigation"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 2,
-                        "resourcefulness": 4,
-                        "strength": 1,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "self-doubt"
-                    ]
-                },
-                "31": {
-                    "age": 82,
-                    "class": [
-                        "Paladin"
-                    ],
-                    "id": 31,
-                    "loot": [
-                        "Silk Sash",
-                        "Grave Wand",
-                        "Plate Mail of Brilliance"
-                    ],
-                    "name": {
-                        "firstName": "Astra",
-                        "id": 1936,
-                        "lastName": "K",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Swimming",
-                        "Haberdashery"
-                    ],
-                    "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 0,
-                        "resourcefulness": 0,
-                        "strength": 1,
-                        "toughness": 3
-                    },
-                    "stories": [],
-                    "traits": []
-                },
-                "32": {
-                    "age": 101,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 32,
-                    "loot": [
-                        "Necklace",
-                        "Leather Cap",
-                        "Hard Leather Armor of Brilliance",
-                        "Ornate Helm",
-                        "Pendant",
-                        "Linen Hood"
-                    ],
-                    "name": {
-                        "firstName": "Chishou",
-                        "id": 6035,
-                        "lastName": "Sandgreen",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Swordskill",
-                        "Politics"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 0,
-                        "resourcefulness": 3,
-                        "strength": 3,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "weakness",
-                        "anxiety"
-                    ]
-                },
-                "33": {
-                    "age": 86,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 33,
-                    "loot": [
-                        "Bronze Ring of the Twins",
-                        "Mesh Belt of Rage",
-                        "\"Carrion Sun\" Titanium Ring of the Fox",
-                        "Leather Belt",
-                        "Full Helm",
-                        "Necklace",
-                        "Hard Leather Gloves",
-                        "Leather Cap of Anger",
-                        "Titanium Ring of Detection"
-                    ],
-                    "name": {
-                        "firstName": "Robert",
-                        "id": 959,
-                        "lastName": "Plain",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Ancient Lore",
-                        "Baking",
-                        "Politics"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 3,
-                        "resourcefulness": 0,
-                        "strength": 1,
-                        "toughness": 3
-                    },
-                    "stories": [],
-                    "traits": [
-                        "anxiety",
-                        "great destiny"
-                    ]
-                },
-                "34": {
-                    "age": 75,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 34,
-                    "loot": [
-                        "Linen Shoes"
-                    ],
-                    "name": {
-                        "firstName": "Carly",
-                        "id": 5912,
-                        "lastName": "Berg",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": "the Fighter"
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Horsemanship"
-                    ],
-                    "species": [
-                        "Dragonborn"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 0,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "unluckiness",
-                        "weakness"
-                    ]
-                },
-                "35": {
-                    "age": 79,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 35,
-                    "loot": [
-                        "Holy Gauntlets",
-                        "Leather Gloves",
-                        "Falchion"
-                    ],
-                    "name": {
-                        "firstName": "Bellas",
-                        "id": 7959,
-                        "lastName": "Araujo",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Ancient Lore"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 0,
-                        "resourcefulness": 0,
-                        "strength": 0,
-                        "toughness": 3
-                    },
-                    "stories": [],
-                    "traits": [
-                        "monsterphobia"
-                    ]
-                },
-                "36": {
-                    "age": 93,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 36,
-                    "loot": [
-                        "Necklace",
-                        "Demon Husk"
-                    ],
-                    "name": {
-                        "firstName": "Abigail",
-                        "id": 6472,
-                        "lastName": "Took-Took",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Haberdashery",
-                        "Archery",
-                        "Alchemy",
-                        "Acrobatics",
-                        "Baking"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 0,
-                        "resourcefulness": 4,
-                        "strength": 3,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "unluckiness"
-                    ]
-                }
-            },
-            "bard": {
-                "age": 32,
-                "name": {
-                    "firstName": "Satoshi",
-                    "id": 2722,
-                    "lastName": "Ford",
-                    "middleName": "",
-                    "prefix": "",
-                    "suffix": ""
-                },
-                "pronouns": {
-                    "depPossessive": "her",
-                    "indPossessive": "hers",
-                    "object": "her",
-                    "reflexive": "herself",
-                    "subject": "she"
-                },
-                "species": [
-                    "Half-Elf"
-                ],
-                "traits": [
-                    "optimistism",
-                    "greed"
-                ]
-            },
-            "gold": 0,
-            "graveyard": {},
-            "id": 2,
-            "location": "the Last Stop",
-            "motto": "Where We go, They Follow",
-            "name": "Cherished Heart Temple"
-        },
-        {
-            "adventurerCredits": {},
-            "adventurers": {
-                "37": {
-                    "age": 63,
-                    "class": [
-                        "Fighter"
-                    ],
-                    "id": 37,
-                    "loot": [
-                        "Pendant of the Fox",
-                        "Divine Robe",
-                        "Gauntlets",
-                        "\"Woe Bite\" Silk Sash of Enlightenment +1"
-                    ],
-                    "name": {
-                        "firstName": "Rosvita",
-                        "id": 948,
-                        "lastName": "Kufersin",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Alchemy"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 2,
-                        "resourcefulness": 3,
-                        "strength": 1,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "a peg leg",
-                        "great destiny",
-                        "unluckiness"
-                    ]
-                },
-                "39": {
-                    "age": 73,
-                    "class": [
-                        "Paladin"
-                    ],
-                    "id": 39,
-                    "loot": [
-                        "Book of the Twins",
-                        "Platinum Ring",
-                        "Heavy Boots",
-                        "Linen Sash",
-                        "Holy Gauntlets",
-                        "Gauntlets",
-                        "\"Tempest Peak\" Leather Cap of Enlightenment +1"
-                    ],
-                    "name": {
-                        "firstName": "Noah",
-                        "id": 7854,
-                        "lastName": "Kwiatkowski",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Metallurgy",
-                        "Ancient Lore",
-                        "Politics",
-                        "Portraiture",
-                        "Haberdashery",
-                        "Archery"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 0,
-                        "resourcefulness": 2,
-                        "strength": 1,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "optimistism",
-                        "gambling addiction",
-                        "greed",
-                        "elegance",
-                        "a peg leg"
-                    ]
-                },
-                "40": {
-                    "age": 82,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "id": 40,
-                    "loot": [
-                        "Demon Crown of the Twins",
-                        "Demonhide Belt",
-                        "Titanium Ring",
-                        "Short Sword of the Twins",
-                        "Divine Slippers",
-                        "Hood"
-                    ],
-                    "name": {
-                        "firstName": "Hilarij",
-                        "id": 4951,
-                        "lastName": "Hendrix",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Navigation",
-                        "Archery",
-                        "Alchemy"
-                    ],
-                    "species": [
-                        "Dwarf"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 1,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "cowardice",
-                        "dragon obsession",
-                        "unluckiness"
-                    ]
-                },
-                "41": {
-                    "age": 63,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 41,
-                    "loot": [
-                        "Falchion"
-                    ],
-                    "name": {
-                        "firstName": "Amou",
-                        "id": 6074,
-                        "lastName": "Nystrom",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Ancient Lore"
-                    ],
-                    "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 3,
-                        "resourcefulness": 4,
-                        "strength": 1,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "a peg leg"
-                    ]
-                },
-                "43": {
-                    "age": 97,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "id": 43,
-                    "loot": [
-                        "Quarterstaff",
-                        "\"Shimmering Bender\" Pendant of Power +1",
-                        "Ancient Helm of Vitriol",
-                        "Chain Gloves",
-                        "Holy Gauntlets",
-                        "\"Vortex Sun\" War Belt of Perfection"
-                    ],
-                    "name": {
-                        "firstName": "Changpeng",
-                        "id": 2581,
-                        "lastName": "Humblecut",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Politics",
-                        "Swordskill"
-                    ],
-                    "species": [
-                        "Gnome"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 1,
-                        "resourcefulness": 0,
-                        "strength": 3,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "unluckiness",
-                        "deafness"
-                    ]
-                },
-                "44": {
-                    "age": 103,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 44,
-                    "loot": [
-                        "Brightsilk Sash",
-                        "\"Carrion Glow\" Scimitar of Rage",
-                        "\"Oblivion Moon\" Pendant of Vitriol +1",
-                        "Pendant"
-                    ],
-                    "name": {
-                        "firstName": "James",
-                        "id": 795,
-                        "lastName": "Enoksen",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Archeology"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 1,
-                        "resourcefulness": 2,
-                        "strength": 0,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "a prosthetic arm",
-                        "quick-wit"
-                    ]
-                },
-                "45": {
-                    "age": 83,
-                    "class": [
-                        "Warlock"
-                    ],
-                    "id": 45,
-                    "loot": [
-                        "Linen Sash",
-                        "Dragonskin Belt",
-                        "Maul of Fury",
-                        "Platinum Ring of Enlightenment",
-                        "Amulet",
-                        "Necklace",
-                        "Divine Gloves"
-                    ],
-                    "name": {
-                        "firstName": "Su",
-                        "id": 7190,
-                        "lastName": "Quenneville",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Haberdashery",
-                        "Leadership"
-                    ],
-                    "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 2,
-                        "resourcefulness": 3,
-                        "strength": 3,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "a prosthetic arm",
-                        "dragon obsession"
-                    ]
-                },
-                "46": {
-                    "age": 86,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 46,
-                    "loot": [
-                        "Amulet",
-                        "Ornate Chestplate",
-                        "Heavy Belt",
-                        "Platinum Ring of Fury",
-                        "Mesh Belt of the Twins",
-                        "Holy Chestplate of Enlightenment",
-                        "Necklace of the Twins"
-                    ],
-                    "name": {
-                        "firstName": "Vesryn",
-                        "id": 6968,
-                        "lastName": "Yellen",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": "da gay"
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Politics",
-                        "Horsemanship"
-                    ],
-                    "species": [
-                        "Dragonborn"
-                    ],
-                    "stats": {
-                        "agility": 3,
-                        "magic": 4,
-                        "resourcefulness": 4,
-                        "strength": 3,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "monsterphobia",
-                        "martyr complex",
-                        "quick-wit"
-                    ]
-                },
-                "47": {
-                    "age": 75,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "id": 47,
-                    "loot": [
-                        "Divine Gloves",
-                        "Gauntlets of Anger",
-                        "Platinum Ring",
-                        "Dragonskin Gloves",
-                        "War Belt",
-                        "Book"
-                    ],
-                    "name": {
-                        "firstName": "Molly",
-                        "id": 3951,
-                        "lastName": "Pelletier",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Archery"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 0,
-                        "resourcefulness": 4,
-                        "strength": 2,
-                        "toughness": 1
-                    },
-                    "stories": [],
-                    "traits": [
-                        "optimistism",
-                        "greed",
-                        "martyr complex",
-                        "a prosthetic arm",
-                        "dragon obsession"
-                    ]
-                },
-                "48": {
-                    "age": 28,
-                    "class": [
-                        "Wizard"
-                    ],
-                    "id": 48,
-                    "loot": [
-                        "Ornate Belt",
-                        "Quarterstaff",
-                        "Dragonskin Gloves of Power",
-                        "Demon's Hands",
-                        "Silk Slippers",
-                        "Ancient Helm"
-                    ],
-                    "name": {
-                        "firstName": "Kerstin",
-                        "id": 4441,
-                        "lastName": "Skotnik",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Alchemy",
-                        "Streetwise",
-                        "Archeology",
-                        "Swimming"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 1,
-                        "resourcefulness": 0,
-                        "strength": 1,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "quick-wit",
-                        "aggressive impulses",
-                        "greed"
-                    ]
-                }
-            },
-            "bard": {
-                "age": 86,
-                "name": {
-                    "firstName": "Jody",
-                    "id": 1913,
-                    "lastName": "Gresham",
-                    "middleName": "",
-                    "prefix": "",
-                    "suffix": ""
-                },
-                "pronouns": {
-                    "depPossessive": "their",
-                    "indPossessive": "theirs",
-                    "object": "them",
-                    "reflexive": "themself",
-                    "subject": "they"
-                },
-                "species": [
-                    "Halfling"
-                ],
-                "traits": [
-                    "greed",
-                    "great destiny"
-                ]
-            },
-            "gold": 0,
-            "graveyard": {
-                "38": {
-                    "age": 79,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "id": 38,
-                    "loot": [
-                        "Ornate Greaves",
-                        "Hood",
-                        "Studded Leather Armor"
-                    ],
-                    "name": {
-                        "firstName": "Ravil",
-                        "id": 1876,
-                        "lastName": "Woods",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Leadership"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 2,
-                        "magic": 3,
-                        "resourcefulness": 3,
-                        "strength": 1,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "quick-wit"
-                    ]
-                },
-                "42": {
-                    "age": 98,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "id": 42,
-                    "loot": [
-                        "Amulet",
-                        "Wand",
-                        "Leather Boots of Brilliance",
-                        "Ornate Gauntlets",
-                        "Titanium Ring of Brilliance"
-                    ],
-                    "name": {
-                        "firstName": "Isak",
-                        "id": 4903,
-                        "lastName": "Izmaylov",
-                        "middleName": "in",
+                        "id": 7622,
+                        "lastName": "Zhu",
+                        "middleName": "mons",
                         "prefix": "",
                         "suffix": ""
                     },
@@ -2422,45 +42,131 @@ exports.startingState = {
                         "Ropework"
                     ],
                     "species": [
-                        "Dragonborn"
+                        "Half-Orc"
                     ],
                     "stats": {
                         "agility": 4,
                         "magic": 4,
                         "resourcefulness": 3,
                         "strength": 0,
-                        "toughness": 1
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            0
+                        ]
+                    ],
+                    "traits": []
+                },
+                "2": {
+                    "age": 76,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "id": 2,
+                    "loot": [
+                        "Necklace"
+                    ],
+                    "name": {
+                        "firstName": "Archibaldo",
+                        "id": 7082,
+                        "lastName": "Woodd",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Marketing"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 3,
+                        "resourcefulness": 3,
+                        "strength": 4,
+                        "toughness": 4
                     },
                     "stories": [],
                     "traits": []
-                }
-            },
-            "id": 3,
-            "location": "the Flying Stones",
-            "motto": "Prosperity at Any Cost",
-            "name": "Platinum Branch Club"
-        },
-        {
-            "adventurerCredits": {},
-            "adventurers": {
-                "49": {
-                    "age": 21,
+                },
+                "3": {
+                    "age": 65,
                     "class": [
-                        "Warlock"
+                        "Wizard"
                     ],
-                    "id": 49,
+                    "id": 3,
                     "loot": [
-                        "Dragonskin Armor",
-                        "Bronze Ring of Detection",
-                        "Linen Shoes",
-                        "Leather Armor",
-                        "Gloves",
-                        "Chain Gloves"
+                        "War Belt",
+                        "Heavy Belt"
                     ],
                     "name": {
-                        "firstName": "Mary",
-                        "id": 5897,
-                        "lastName": "Yearwood",
+                        "firstName": "Yuukou",
+                        "id": 1117,
+                        "lastName": "Woodd",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Deception",
+                        "Horsemanship"
+                    ],
+                    "species": [
+                        "Dwarf"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 0,
+                        "resourcefulness": 2,
+                        "strength": 0,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            0
+                        ],
+                        [
+                            1646938037,
+                            0
+                        ],
+                        [
+                            1646947037,
+                            0
+                        ]
+                    ],
+                    "traits": []
+                },
+                "4": {
+                    "age": 63,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 4,
+                    "loot": [
+                        "\"Plague Root\" Silver Ring of Vitriol"
+                    ],
+                    "name": {
+                        "firstName": "Raff",
+                        "id": 5242,
+                        "lastName": "Bazhenov",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
@@ -2476,33 +182,112 @@ exports.startingState = {
                         "Alchemy"
                     ],
                     "species": [
-                        "Tiefling"
+                        "Human"
                     ],
                     "stats": {
                         "agility": 0,
-                        "magic": 2,
-                        "resourcefulness": 0,
+                        "magic": 0,
+                        "resourcefulness": 4,
                         "strength": 1,
                         "toughness": 0
                     },
-                    "stories": [],
-                    "traits": []
-                },
-                "50": {
-                    "age": 84,
-                    "class": [
-                        "Wizard"
+                    "stories": [
+                        [
+                            1646929037,
+                            0
+                        ],
+                        [
+                            1646938037,
+                            0
+                        ],
+                        [
+                            1646941037,
+                            0
+                        ],
+                        [
+                            1646947037,
+                            0
+                        ]
                     ],
-                    "id": 50,
+                    "traits": [
+                        "cowardice"
+                    ]
+                },
+                "5": {
+                    "age": 22,
+                    "class": [
+                        "Sorcerer"
+                    ],
+                    "id": 5,
                     "loot": [
-                        "Studded Leather Belt",
-                        "Leather Boots",
-                        "Hard Leather Belt"
+                        "Great Helm",
+                        "Holy Greaves",
+                        "\"Rage Bite\" Platinum Ring of Titans +1",
+                        "Mace of Brilliance"
                     ],
                     "name": {
-                        "firstName": "Darfin",
-                        "id": 4174,
-                        "lastName": "Lopez",
+                        "firstName": "Ebony",
+                        "id": 4793,
+                        "lastName": "Bazhenov",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Baking"
+                    ],
+                    "species": [
+                        "Elf"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 2,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            0
+                        ],
+                        [
+                            1646944037,
+                            0
+                        ],
+                        [
+                            1646950037,
+                            0
+                        ]
+                    ],
+                    "traits": [
+                        "self-doubt"
+                    ]
+                },
+                "6": {
+                    "age": 60,
+                    "class": [
+                        "Bard"
+                    ],
+                    "id": 6,
+                    "loot": [
+                        "Ornate Helm",
+                        "Gold Ring",
+                        "\"Dragon Tear\" Amulet of the Twins",
+                        "Chain Boots",
+                        "Plate Mail of Vitriol"
+                    ],
+                    "name": {
+                        "firstName": "Evan",
+                        "id": 6073,
+                        "lastName": "Karlsen",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
@@ -2515,43 +300,160 @@ exports.startingState = {
                         "subject": "they"
                     },
                     "skills": [
-                        "Marketing",
-                        "Metallurgy"
+                        "Leadership"
                     ],
                     "species": [
-                        "Half-Orc"
+                        "Half-Elf"
                     ],
                     "stats": {
-                        "agility": 4,
-                        "magic": 4,
-                        "resourcefulness": 1,
-                        "strength": 3,
-                        "toughness": 0
+                        "agility": 0,
+                        "magic": 0,
+                        "resourcefulness": 2,
+                        "strength": 0,
+                        "toughness": 3
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646932037,
+                            0
+                        ],
+                        [
+                            1646935037,
+                            0
+                        ],
+                        [
+                            1646938037,
+                            0
+                        ],
+                        [
+                            1646941037,
+                            0
+                        ],
+                        [
+                            1646944037,
+                            0
+                        ],
+                        [
+                            1646947037,
+                            0
+                        ],
+                        [
+                            1646950037,
+                            0
+                        ]
+                    ],
                     "traits": [
-                        "dragon obsession"
+                        "deafness",
+                        "monsterphobia"
                     ]
                 },
-                "51": {
-                    "age": 65,
+                "7": {
+                    "age": 102,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 7,
+                    "loot": [
+                        "Amulet"
+                    ],
+                    "name": {
+                        "firstName": "Filippa",
+                        "id": 7029,
+                        "lastName": "Nakamoto",
+                        "middleName": "mewny",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Marketing"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 1,
+                        "resourcefulness": 2,
+                        "strength": 3,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646950037,
+                            0
+                        ]
+                    ],
+                    "traits": []
+                },
+                "8": {
+                    "age": 57,
+                    "class": [
+                        "Druid"
+                    ],
+                    "id": 8,
+                    "loot": [
+                        "Chain Boots"
+                    ],
+                    "name": {
+                        "firstName": "George",
+                        "id": 404,
+                        "lastName": "Pelletier",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Horsemanship"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 1,
+                        "resourcefulness": 2,
+                        "strength": 4,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            0
+                        ],
+                        [
+                            1646941037,
+                            0
+                        ]
+                    ],
+                    "traits": []
+                },
+                "9": {
+                    "age": 101,
                     "class": [
                         "Paladin"
                     ],
-                    "id": 51,
+                    "id": 9,
                     "loot": [
-                        "Linen Hood",
-                        "Dragonskin Armor of Reflection",
-                        "Amulet",
-                        "Demonhide Belt of Detection",
-                        "Greaves",
-                        "\"Apocalypse Root\" Quarterstaff of Skill",
-                        "Divine Robe of Vitriol"
+                        "Gauntlets"
                     ],
                     "name": {
-                        "firstName": "Caspian",
-                        "id": 1069,
-                        "lastName": "Thatcher",
+                        "firstName": "Orion",
+                        "id": 4670,
+                        "lastName": "Mintz",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
@@ -2567,138 +469,39 @@ exports.startingState = {
                         "Swimming"
                     ],
                     "species": [
-                        "Human"
-                    ],
-                    "stats": {
-                        "agility": 1,
-                        "magic": 1,
-                        "resourcefulness": 4,
-                        "strength": 1,
-                        "toughness": 0
-                    },
-                    "stories": [],
-                    "traits": [
-                        "cowardice",
-                        "great destiny",
-                        "anxiety"
-                    ]
-                },
-                "52": {
-                    "age": 38,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 52,
-                    "loot": [
-                        "Full Helm",
-                        "Hard Leather Armor",
-                        "Hard Leather Armor of Fury",
-                        "Mace of the Twins"
-                    ],
-                    "name": {
-                        "firstName": "Dioscoro",
-                        "id": 539,
-                        "lastName": "Rodrigue",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
-                    },
-                    "skills": [
-                        "Baking"
-                    ],
-                    "species": [
-                        "Half-Elf"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 2,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 4
-                    },
-                    "stories": [],
-                    "traits": [
-                        "self-doubt",
-                        "weakness"
-                    ]
-                },
-                "53": {
-                    "age": 56,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "id": 53,
-                    "loot": [
-                        "\"Cataclysm Bite\" Silk Sash of Perfection +1",
-                        "Warhammer",
-                        "Silver Ring",
-                        "Pendant of Giants",
-                        "Divine Slippers",
-                        "Greaves",
-                        "Scimitar",
-                        "Katana"
-                    ],
-                    "name": {
-                        "firstName": "Satoshi",
-                        "id": 2265,
-                        "lastName": "Lelkova",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "object": "him",
-                        "reflexive": "himself",
-                        "subject": "he"
-                    },
-                    "skills": [
-                        "Deception",
-                        "Streetwise",
-                        "Marketing"
-                    ],
-                    "species": [
-                        "Dragonborn"
+                        "Elf"
                     ],
                     "stats": {
                         "agility": 0,
                         "magic": 3,
-                        "resourcefulness": 1,
-                        "strength": 1,
+                        "resourcefulness": 4,
+                        "strength": 4,
                         "toughness": 0
                     },
-                    "stories": [],
-                    "traits": [
-                        "self-doubt",
-                        "deafness"
-                    ]
-                },
-                "54": {
-                    "age": 56,
-                    "class": [
-                        "Barbarian"
+                    "stories": [
+                        [
+                            1646935037,
+                            0
+                        ]
                     ],
-                    "id": 54,
+                    "traits": []
+                },
+                "10": {
+                    "age": 20,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 10,
                     "loot": [
-                        "Heavy Boots of Power",
-                        "\"Gloom Shout\" Grave Wand of Detection +1",
-                        "Gold Ring",
-                        "Ornate Greaves"
+                        "Divine Robe",
+                        "Silk Gloves"
                     ],
                     "name": {
-                        "firstName": "Matthew",
-                        "id": 2030,
-                        "lastName": "Sandgreen",
+                        "firstName": "Sarah",
+                        "id": 4880,
+                        "lastName": "Borkowska",
                         "middleName": "",
-                        "prefix": "Queen",
+                        "prefix": "",
                         "suffix": ""
                     },
                     "pronouns": {
@@ -2709,57 +512,98 @@ exports.startingState = {
                         "subject": "he"
                     },
                     "skills": [
-                        "Haberdashery"
+                        "Portraiture"
                     ],
                     "species": [
-                        "Half-Orc"
+                        "Gnome"
                     ],
                     "stats": {
                         "agility": 2,
-                        "magic": 1,
-                        "resourcefulness": 2,
+                        "magic": 4,
+                        "resourcefulness": 3,
                         "strength": 2,
-                        "toughness": 0
+                        "toughness": 1
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646935037,
+                            0
+                        ],
+                        [
+                            1646938037,
+                            0
+                        ]
+                    ],
                     "traits": [
-                        "weakness"
+                        "a peg leg"
                     ]
                 },
-                "55": {
-                    "age": 104,
+                "11": {
+                    "age": 23,
                     "class": [
-                        "Monk"
+                        "Warlock"
                     ],
-                    "id": 55,
+                    "id": 11,
                     "loot": [
-                        "Plated Belt",
-                        "Ornate Belt",
-                        "Pendant",
-                        "Wand",
-                        "Linen Gloves",
-                        "Gloves of Enlightenment"
+                        "Chain Mail"
                     ],
                     "name": {
-                        "firstName": "Bogdan",
-                        "id": 7472,
-                        "lastName": "Finnegan",
+                        "firstName": "Dennis",
+                        "id": 7693,
+                        "lastName": "Enyinnaya",
                         "middleName": "",
-                        "prefix": "Private",
+                        "prefix": "Earl",
                         "suffix": ""
                     },
                     "pronouns": {
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "object": "them",
-                        "reflexive": "themself",
-                        "subject": "they"
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
                     },
                     "skills": [
-                        "Acrobatics",
-                        "Politics",
-                        "Alchemy",
-                        "Horsemanship"
+                        "Politics"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 2,
+                        "resourcefulness": 0,
+                        "strength": 4,
+                        "toughness": 0
+                    },
+                    "stories": [],
+                    "traits": []
+                },
+                "12": {
+                    "age": 85,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 12,
+                    "loot": [
+                        "\"Corpse Roar\" Linen Shoes of Anger"
+                    ],
+                    "name": {
+                        "firstName": "Stanislaus",
+                        "id": 6658,
+                        "lastName": "Borkowska",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Swimming"
                     ],
                     "species": [
                         "Half-Orc"
@@ -2768,29 +612,34 @@ exports.startingState = {
                         "agility": 3,
                         "magic": 0,
                         "resourcefulness": 4,
-                        "strength": 2,
-                        "toughness": 1
+                        "strength": 1,
+                        "toughness": 2
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646944037,
+                            0
+                        ]
+                    ],
                     "traits": [
-                        "elegance"
+                        "trauma"
                     ]
                 },
-                "56": {
-                    "age": 80,
+                "13": {
+                    "age": 84,
                     "class": [
-                        "Paladin"
+                        "Ranger"
                     ],
-                    "id": 56,
+                    "id": 13,
                     "loot": [
-                        "Crown",
-                        "Necklace"
+                        "Gold Ring",
+                        "Ornate Greaves"
                     ],
                     "name": {
-                        "firstName": "Ebony",
-                        "id": 3717,
-                        "lastName": "Aliyeva",
-                        "middleName": "of",
+                        "firstName": "Zeniya",
+                        "id": 316,
+                        "lastName": "Blau",
+                        "middleName": "",
                         "prefix": "",
                         "suffix": ""
                     },
@@ -2802,173 +651,296 @@ exports.startingState = {
                         "subject": "he"
                     },
                     "skills": [
+                        "Ropework",
                         "Archeology"
                     ],
                     "species": [
-                        "Elf"
+                        "Gnome"
                     ],
                     "stats": {
                         "agility": 3,
-                        "magic": 3,
-                        "resourcefulness": 3,
-                        "strength": 4,
-                        "toughness": 2
-                    },
-                    "stories": [],
-                    "traits": [
-                        "trauma"
-                    ]
-                },
-                "57": {
-                    "age": 73,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 57,
-                    "loot": [
-                        "Amulet",
-                        "Dragonskin Armor"
-                    ],
-                    "name": {
-                        "firstName": "Anastazja",
-                        "id": 508,
-                        "lastName": "Hakugi",
-                        "middleName": "",
-                        "prefix": "",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Marketing"
-                    ],
-                    "species": [
-                        "Tiefling"
-                    ],
-                    "stats": {
-                        "agility": 0,
-                        "magic": 2,
-                        "resourcefulness": 3,
+                        "magic": 0,
+                        "resourcefulness": 0,
                         "strength": 1,
-                        "toughness": 1
+                        "toughness": 4
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646929037,
+                            0
+                        ],
+                        [
+                            1646938037,
+                            0
+                        ]
+                    ],
                     "traits": [
-                        "aggressive impulses"
+                        "weakness"
                     ]
                 },
-                "58": {
-                    "age": 31,
-                    "class": [
-                        "Bard"
-                    ],
-                    "id": 58,
-                    "loot": [
-                        "\"Soul Roar\" Ornate Greaves of the Fox",
-                        "Leather Armor of Perfection",
-                        "Leather Cap",
-                        "Demonhide Belt"
-                    ],
-                    "name": {
-                        "firstName": "Archibaldo",
-                        "id": 2094,
-                        "lastName": "Crassus",
-                        "middleName": "",
-                        "prefix": "Khal",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
-                    },
-                    "skills": [
-                        "Acrobatics",
-                        "Marketing",
-                        "Politics"
-                    ],
-                    "species": [
-                        "Elf"
-                    ],
-                    "stats": {
-                        "agility": 4,
-                        "magic": 2,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 3
-                    },
-                    "stories": [],
-                    "traits": [
-                        "optimistism"
-                    ]
-                },
-                "59": {
-                    "age": 78,
+                "14": {
+                    "age": 45,
                     "class": [
                         "Warlock"
                     ],
-                    "id": 59,
+                    "id": 14,
                     "loot": [
-                        "Hard Leather Gloves of Fury",
-                        "Silk Gloves of Giants",
-                        "Hard Leather Boots"
+                        "Silk Robe",
+                        "Chain Boots",
+                        "Katana"
                     ],
                     "name": {
-                        "firstName": "Sarah",
-                        "id": 4273,
-                        "lastName": "Cromwell",
+                        "firstName": "Fortinbras",
+                        "id": 7451,
+                        "lastName": "Fellowes",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
                     },
                     "pronouns": {
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "object": "her",
-                        "reflexive": "herself",
-                        "subject": "she"
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
                     },
                     "skills": [
-                        "Acrobatics",
-                        "Tracking"
+                        "Politics",
+                        "Archery",
+                        "Ancient Lore"
                     ],
                     "species": [
-                        "Tiefling"
+                        "Dragonborn"
                     ],
                     "stats": {
-                        "agility": 2,
-                        "magic": 1,
-                        "resourcefulness": 1,
-                        "strength": 4,
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 4,
+                        "strength": 3,
                         "toughness": 1
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646941037,
+                            0
+                        ],
+                        [
+                            1646950037,
+                            0
+                        ]
+                    ],
+                    "traits": []
+                },
+                "15": {
+                    "age": 26,
+                    "class": [
+                        "Wizard"
+                    ],
+                    "id": 15,
+                    "loot": [
+                        "Tome",
+                        "Helm"
+                    ],
+                    "name": {
+                        "firstName": "Charles",
+                        "id": 7960,
+                        "lastName": "Aliyeva",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Swimming",
+                        "Politics",
+                        "Leadership"
+                    ],
+                    "species": [
+                        "Dragonborn"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 3,
+                        "strength": 4,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            0
+                        ],
+                        [
+                            1646935037,
+                            0
+                        ],
+                        [
+                            1646944037,
+                            0
+                        ]
+                    ],
                     "traits": [
                         "anxiety"
                     ]
                 },
-                "60": {
-                    "age": 50,
-                    "class": [
-                        "Bard"
+                "83": {
+                    "name": {
+                        "id": 6603,
+                        "prefix": "",
+                        "firstName": "Ambrogino",
+                        "middleName": "",
+                        "lastName": "Ledger",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "they",
+                        "object": "them",
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "reflexive": "themself"
+                    },
+                    "species": [
+                        "Gnome"
                     ],
-                    "id": 60,
+                    "age": 80,
+                    "traits": [],
+                    "id": 83,
+                    "class": [
+                        "Fighter"
+                    ],
+                    "stats": {
+                        "strength": 0,
+                        "magic": 0,
+                        "agility": 2,
+                        "resourcefulness": 4,
+                        "toughness": 3
+                    },
+                    "skills": [
+                        "Disguise"
+                    ],
                     "loot": [
+                        "Necklace"
+                    ],
+                    "stories": []
+                }
+            },
+            "bard": {
+                "age": 77,
+                "name": {
+                    "firstName": "Chinwemma",
+                    "id": 50,
+                    "lastName": "Aliyeva",
+                    "middleName": "",
+                    "prefix": "",
+                    "suffix": ""
+                },
+                "pronouns": {
+                    "depPossessive": "her",
+                    "indPossessive": "hers",
+                    "object": "her",
+                    "reflexive": "herself",
+                    "subject": "she"
+                },
+                "species": [
+                    "Human"
+                ],
+                "traits": [
+                    "trauma",
+                    "self-doubt"
+                ]
+            },
+            "gold": 0,
+            "graveyard": {},
+            "id": 0,
+            "location": "the basement of Porcine Castle",
+            "motto": "Does not Mean What You Think it Means",
+            "name": "Zoanthropic Lodge"
+        },
+        {
+            "adventurerCredits": {},
+            "adventurers": {
+                "16": {
+                    "age": 59,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "id": 16,
+                    "loot": [
+                        "Amulet",
+                        "Ornate Chestplate",
                         "Ornate Belt",
-                        "Chain Boots",
-                        "Plate Mail"
+                        "Falchion of the Fox",
+                        "Studded Leather Armor"
                     ],
                     "name": {
-                        "firstName": "Ivan",
-                        "id": 216,
-                        "lastName": "Henrichon",
+                        "firstName": "Mohammed",
+                        "id": 4818,
+                        "lastName": "Amsel",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Archery",
+                        "Swordskill",
+                        "Deception"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 4,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            1
+                        ],
+                        [
+                            1646935037,
+                            1
+                        ],
+                        [
+                            1646950037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "a peg leg",
+                        "unluckiness",
+                        "aggressive impulses"
+                    ]
+                },
+                "17": {
+                    "age": 47,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 17,
+                    "loot": [
+                        "Wool Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Jessica",
+                        "id": 5787,
+                        "lastName": "Donaldson",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
@@ -2981,41 +953,348 @@ exports.startingState = {
                         "subject": "they"
                     },
                     "skills": [
-                        "Swordskill",
-                        "Baking"
+                        "Arcane Arts"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 2,
+                        "resourcefulness": 3,
+                        "strength": 1,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646941037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "elegance"
+                    ]
+                },
+                "18": {
+                    "age": 58,
+                    "class": [
+                        "Sorcerer"
+                    ],
+                    "id": 18,
+                    "loot": [
+                        "Heavy Boots of Power",
+                        "Amulet",
+                        "Leather Belt",
+                        "Dragonskin Gloves",
+                        "Tome",
+                        "Studded Leather Armor"
+                    ],
+                    "name": {
+                        "firstName": "Yvanna",
+                        "id": 4318,
+                        "lastName": "Mintz",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Ropework",
+                        "Leadership"
                     ],
                     "species": [
                         "Human"
                     ],
                     "stats": {
-                        "agility": 1,
-                        "magic": 2,
-                        "resourcefulness": 1,
-                        "strength": 3,
-                        "toughness": 4
+                        "agility": 2,
+                        "magic": 0,
+                        "resourcefulness": 2,
+                        "strength": 1,
+                        "toughness": 3
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646929037,
+                            1
+                        ],
+                        [
+                            1646932037,
+                            1
+                        ],
+                        [
+                            1646938037,
+                            1
+                        ],
+                        [
+                            1646941037,
+                            1
+                        ],
+                        [
+                            1646950037,
+                            1
+                        ]
+                    ],
                     "traits": [
-                        "greed"
+                        "great destiny",
+                        "quick-wit",
+                        "gambling addiction"
                     ]
                 },
-                "61": {
-                    "age": 68,
+                "19": {
+                    "age": 47,
                     "class": [
-                        "Cleric"
+                        "Rogue"
                     ],
-                    "id": 61,
+                    "id": 19,
                     "loot": [
-                        "Wool Sash",
-                        "Amulet of Protection",
-                        "\"Behemoth Sun\" Amulet of the Fox",
-                        "Shoes",
-                        "Grimoire"
+                        "Grimoire",
+                        "Ornate Chestplate",
+                        "\"Oblivion Moon\" Pendant of Vitriol +1",
+                        "Chain Gloves",
+                        "Chain Gloves",
+                        "Ornate Gauntlets of Protection"
                     ],
                     "name": {
-                        "firstName": "Dzemail",
-                        "id": 3466,
-                        "lastName": "Kiss",
+                        "firstName": "Michael",
+                        "id": 7737,
+                        "lastName": "Cronje",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Deception"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 1,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            1
+                        ],
+                        [
+                            1646935037,
+                            1
+                        ],
+                        [
+                            1646938037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "self-doubt",
+                        "trauma"
+                    ]
+                },
+                "20": {
+                    "age": 30,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 20,
+                    "loot": [
+                        "Dragonskin Boots",
+                        "Amulet of Anger",
+                        "Robe",
+                        "Chain Boots",
+                        "Leather Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Adelbert",
+                        "id": 7947,
+                        "lastName": "Probst",
+                        "middleName": "da",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Alchemy",
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 4,
+                        "resourcefulness": 0,
+                        "strength": 0,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            1
+                        ],
+                        [
+                            1646935037,
+                            1
+                        ],
+                        [
+                            1646938037,
+                            1
+                        ],
+                        [
+                            1646941037,
+                            1
+                        ],
+                        [
+                            1646944037,
+                            1
+                        ],
+                        [
+                            1646947037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "great destiny"
+                    ]
+                },
+                "21": {
+                    "age": 45,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 21,
+                    "loot": [
+                        "Dragonskin Armor",
+                        "Wool Shoes",
+                        "Linen Hood"
+                    ],
+                    "name": {
+                        "firstName": "Mira",
+                        "id": 2343,
+                        "lastName": "Gannon",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Archery"
+                    ],
+                    "species": [
+                        "Tiefling"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 1,
+                        "resourcefulness": 0,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            1
+                        ],
+                        [
+                            1646938037,
+                            1
+                        ],
+                        [
+                            1646944037,
+                            1
+                        ]
+                    ],
+                    "traits": []
+                },
+                "22": {
+                    "age": 58,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 22,
+                    "loot": [
+                        "Silk Slippers"
+                    ],
+                    "name": {
+                        "firstName": "Rasmus",
+                        "id": 4656,
+                        "lastName": "Mikulanc",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": "the Impaler"
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Ropework"
+                    ],
+                    "species": [
+                        "Half-Elf"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 3,
+                        "resourcefulness": 0,
+                        "strength": 3,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            1
+                        ]
+                    ],
+                    "traits": []
+                },
+                "23": {
+                    "age": 69,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "id": 23,
+                    "loot": [
+                        "Linen Hood of Perfection",
+                        "Pendant",
+                        "Katana of the Twins",
+                        "Gauntlets"
+                    ],
+                    "name": {
+                        "firstName": "Chinonyelum",
+                        "id": 1660,
+                        "lastName": "Wintermute",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
@@ -3029,38 +1308,52 @@ exports.startingState = {
                     },
                     "skills": [
                         "Archery",
-                        "Alchemy"
+                        "Arcane Arts"
                     ],
                     "species": [
-                        "Dragonborn"
+                        "Half-Elf"
                     ],
                     "stats": {
-                        "agility": 3,
-                        "magic": 4,
-                        "resourcefulness": 2,
-                        "strength": 2,
-                        "toughness": 2
+                        "agility": 4,
+                        "magic": 2,
+                        "resourcefulness": 0,
+                        "strength": 0,
+                        "toughness": 4
                     },
-                    "stories": [],
-                    "traits": []
-                },
-                "62": {
-                    "age": 98,
-                    "class": [
-                        "Monk"
+                    "stories": [
+                        [
+                            1646935037,
+                            1
+                        ],
+                        [
+                            1646938037,
+                            1
+                        ],
+                        [
+                            1646944037,
+                            1
+                        ]
                     ],
-                    "id": 62,
+                    "traits": [
+                        "weakness",
+                        "anxiety",
+                        "gambling addiction"
+                    ]
+                },
+                "24": {
+                    "age": 100,
+                    "class": [
+                        "Bard"
+                    ],
+                    "id": 24,
                     "loot": [
-                        "Brightsilk Sash",
-                        "Gold Ring of the Fox",
-                        "Grimoire",
-                        "Platinum Ring",
-                        "Silk Sash"
+                        "Studded Leather Gloves",
+                        "Necklace"
                     ],
                     "name": {
-                        "firstName": "Annabelle",
-                        "id": 1028,
-                        "lastName": "Jackson",
+                        "firstName": "Ambrogino",
+                        "id": 4183,
+                        "lastName": "Lopez",
                         "middleName": "",
                         "prefix": "",
                         "suffix": ""
@@ -3073,31 +1366,1734 @@ exports.startingState = {
                         "subject": "she"
                     },
                     "skills": [
-                        "Archeology"
+                        "Deception"
+                    ],
+                    "species": [
+                        "Dwarf"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 2,
+                        "resourcefulness": 1,
+                        "strength": 1,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646950037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "quick-wit",
+                        "weakness",
+                        "dragon obsession"
+                    ]
+                },
+                "25": {
+                    "age": 72,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 25,
+                    "loot": [
+                        "Scimitar"
+                    ],
+                    "name": {
+                        "firstName": "Chishou",
+                        "id": 2438,
+                        "lastName": "Elizondo",
+                        "middleName": "vibes",
+                        "prefix": "",
+                        "suffix": "the Kind"
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Politics"
+                    ],
+                    "species": [
+                        "Half-Elf"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 0,
+                        "resourcefulness": 1,
+                        "strength": 0,
+                        "toughness": 4
+                    },
+                    "stories": [],
+                    "traits": []
+                },
+                "26": {
+                    "age": 81,
+                    "class": [
+                        "Wizard"
+                    ],
+                    "id": 26,
+                    "loot": [
+                        "Long Sword of Reflection",
+                        "Gold Ring"
+                    ],
+                    "name": {
+                        "firstName": "Jiri",
+                        "id": 5145,
+                        "lastName": "Ranth",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Portraiture"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 2,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646941037,
+                            1
+                        ],
+                        [
+                            1646947037,
+                            1
+                        ]
+                    ],
+                    "traits": []
+                },
+                "27": {
+                    "age": 58,
+                    "class": [
+                        "Barbarian"
+                    ],
+                    "id": 27,
+                    "loot": [
+                        "Robe"
+                    ],
+                    "name": {
+                        "firstName": "Chad",
+                        "id": 3049,
+                        "lastName": "Schmidt",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Alchemy"
+                    ],
+                    "species": [
+                        "Dragonborn"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 3,
+                        "resourcefulness": 4,
+                        "strength": 0,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "greed",
+                        "unluckiness"
+                    ]
+                },
+                "28": {
+                    "age": 88,
+                    "class": [
+                        "Sorcerer"
+                    ],
+                    "id": 28,
+                    "loot": [
+                        "Studded Leather Belt of Brilliance",
+                        "Studded Leather Belt"
+                    ],
+                    "name": {
+                        "firstName": "Chinonyelum",
+                        "id": 3046,
+                        "lastName": "Kodou",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Ropework",
+                        "Archery",
+                        "Deception"
+                    ],
+                    "species": [
+                        "Tiefling"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 1,
+                        "resourcefulness": 0,
+                        "strength": 2,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646944037,
+                            1
+                        ],
+                        [
+                            1646947037,
+                            1
+                        ],
+                        [
+                            1646950037,
+                            1
+                        ]
+                    ],
+                    "traits": [
+                        "weakness",
+                        "dragon obsession",
+                        "aggressive impulses"
+                    ]
+                },
+                "84": {
+                    "name": {
+                        "id": 771,
+                        "prefix": "",
+                        "firstName": "Rasmus",
+                        "middleName": "",
+                        "lastName": "Ledger",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "they",
+                        "object": "them",
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "reflexive": "themself"
+                    },
+                    "species": [
+                        "Elf"
+                    ],
+                    "age": 72,
+                    "traits": [],
+                    "id": 84,
+                    "class": [
+                        "Bard"
+                    ],
+                    "stats": {
+                        "strength": 0,
+                        "magic": 2,
+                        "agility": 3,
+                        "resourcefulness": 4,
+                        "toughness": 1
+                    },
+                    "skills": [
+                        "Metallurgy"
+                    ],
+                    "loot": [
+                        "Amulet"
+                    ],
+                    "stories": []
+                }
+            },
+            "bard": {
+                "age": 62,
+                "name": {
+                    "firstName": "Eve",
+                    "id": 4413,
+                    "lastName": "Gandhi",
+                    "middleName": "vibes",
+                    "prefix": "",
+                    "suffix": ""
+                },
+                "pronouns": {
+                    "depPossessive": "her",
+                    "indPossessive": "hers",
+                    "object": "her",
+                    "reflexive": "herself",
+                    "subject": "she"
+                },
+                "species": [
+                    "Elf"
+                ],
+                "traits": [
+                    "deafness",
+                    "martyr complex"
+                ]
+            },
+            "gold": 0,
+            "graveyard": {},
+            "id": 1,
+            "location": "Ulster's Jeweltown",
+            "motto": "Until our Ancient Lord Awakes",
+            "name": "Platinum Branch Club"
+        },
+        {
+            "adventurerCredits": {},
+            "adventurers": {
+                "29": {
+                    "age": 69,
+                    "class": [
+                        "Paladin"
+                    ],
+                    "id": 29,
+                    "loot": [
+                        "Titanium Ring of Rage",
+                        "Silk Robe",
+                        "Pendant",
+                        "Leather Belt",
+                        "\"Eagle Grasp\" Katana of Rage +1",
+                        "Divine Robe",
+                        "Helm"
+                    ],
+                    "name": {
+                        "firstName": "Efraim",
+                        "id": 3273,
+                        "lastName": "Viragh",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Streetwise"
+                    ],
+                    "species": [
+                        "Half-Elf"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 3,
+                        "resourcefulness": 1,
+                        "strength": 3,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            2
+                        ],
+                        [
+                            1646941037,
+                            2
+                        ],
+                        [
+                            1646944037,
+                            2
+                        ],
+                        [
+                            1646947037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "cowardice"
+                    ]
+                },
+                "30": {
+                    "age": 76,
+                    "class": [
+                        "Paladin"
+                    ],
+                    "id": 30,
+                    "loot": [
+                        "Necklace of Fury",
+                        "\"Death Tear\" Studded Leather Boots of Brilliance",
+                        "Dragon's Crown"
+                    ],
+                    "name": {
+                        "firstName": "Gradasso",
+                        "id": 5244,
+                        "lastName": "Udobata",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Baking",
+                        "Haberdashery",
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 3,
+                        "strength": 0,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            2
+                        ],
+                        [
+                            1646935037,
+                            2
+                        ],
+                        [
+                            1646944037,
+                            2
+                        ],
+                        [
+                            1646950037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "cowardice",
+                        "optimistism",
+                        "anxiety"
+                    ]
+                },
+                "31": {
+                    "age": 74,
+                    "class": [
+                        "Wizard"
+                    ],
+                    "id": 31,
+                    "loot": [
+                        "Silk Sash"
+                    ],
+                    "name": {
+                        "firstName": "Jan",
+                        "id": 3250,
+                        "lastName": "Plain",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Marketing"
+                    ],
+                    "species": [
+                        "Elf"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 3,
+                        "resourcefulness": 3,
+                        "strength": 4,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646938037,
+                            2
+                        ]
+                    ],
+                    "traits": []
+                },
+                "32": {
+                    "age": 55,
+                    "class": [
+                        "Paladin"
+                    ],
+                    "id": 32,
+                    "loot": [
+                        "Amulet"
+                    ],
+                    "name": {
+                        "firstName": "Daniel",
+                        "id": 4110,
+                        "lastName": "Henrichon",
+                        "middleName": "in",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Streetwise"
                     ],
                     "species": [
                         "Halfling"
                     ],
                     "stats": {
-                        "agility": 2,
+                        "agility": 0,
                         "magic": 1,
+                        "resourcefulness": 3,
+                        "strength": 3,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646938037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "monsterphobia"
+                    ]
+                },
+                "33": {
+                    "age": 83,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "id": 33,
+                    "loot": [
+                        "Silk Sash of Protection",
+                        "Dragonskin Armor",
+                        "Maul",
+                        "\"Dusk Glow\" Linen Shoes of Giants"
+                    ],
+                    "name": {
+                        "firstName": "Chad",
+                        "id": 1226,
+                        "lastName": "Gresham",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Ropework"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 0,
+                        "resourcefulness": 2,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            2
+                        ],
+                        [
+                            1646941037,
+                            2
+                        ],
+                        [
+                            1646950037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "weakness"
+                    ]
+                },
+                "34": {
+                    "age": 98,
+                    "class": [
+                        "Druid"
+                    ],
+                    "id": 34,
+                    "loot": [
+                        "Helm of Power",
+                        "Studded Leather Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Irene",
+                        "id": 1650,
+                        "lastName": "Henrichon",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Metallurgy"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 0,
+                        "resourcefulness": 4,
+                        "strength": 4,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            2
+                        ],
+                        [
+                            1646935037,
+                            2
+                        ]
+                    ],
+                    "traits": []
+                },
+                "35": {
+                    "age": 63,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 35,
+                    "loot": [
+                        "Shoes",
+                        "Linen Sash of the Twins",
+                        "Amulet",
+                        "Silver Ring",
+                        "Wool Sash"
+                    ],
+                    "name": {
+                        "firstName": "Ebony",
+                        "id": 3176,
+                        "lastName": "October",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Metallurgy",
+                        "Horsemanship"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 0,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            2
+                        ],
+                        [
+                            1646941037,
+                            2
+                        ],
+                        [
+                            1646944037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "aggressive impulses",
+                        "self-doubt"
+                    ]
+                },
+                "36": {
+                    "age": 57,
+                    "class": [
+                        "Barbarian"
+                    ],
+                    "id": 36,
+                    "loot": [
+                        "Grimoire",
+                        "Cap of Detection"
+                    ],
+                    "name": {
+                        "firstName": "Helga",
+                        "id": 513,
+                        "lastName": "Lothran",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Metallurgy"
+                    ],
+                    "species": [
+                        "Tiefling"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 4,
+                        "resourcefulness": 4,
+                        "strength": 1,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646938037,
+                            2
+                        ],
+                        [
+                            1646941037,
+                            2
+                        ],
+                        [
+                            1646947037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "weakness"
+                    ]
+                },
+                "37": {
+                    "age": 39,
+                    "class": [
+                        "Bard"
+                    ],
+                    "id": 37,
+                    "loot": [
+                        "\"Skull Shout\" Hard Leather Boots of Skill +1",
+                        "Plated Belt",
+                        "Demon Crown of Vitriol",
+                        "Wool Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Helga",
+                        "id": 5049,
+                        "lastName": "Karlsen",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Archery"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 3,
+                        "strength": 4,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            2
+                        ],
+                        [
+                            1646944037,
+                            2
+                        ],
+                        [
+                            1646950037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "great destiny",
+                        "martyr complex"
+                    ]
+                },
+                "38": {
+                    "age": 44,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 38,
+                    "loot": [
+                        "Amulet",
+                        "Studded Leather Armor",
+                        "Heavy Boots of Giants"
+                    ],
+                    "name": {
+                        "firstName": "Kerstin",
+                        "id": 6679,
+                        "lastName": "Egede",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Ropework"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 2,
+                        "resourcefulness": 3,
+                        "strength": 3,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            2
+                        ],
+                        [
+                            1646938037,
+                            2
+                        ]
+                    ],
+                    "traits": []
+                },
+                "39": {
+                    "age": 65,
+                    "class": [
+                        "Sorcerer"
+                    ],
+                    "id": 39,
+                    "loot": [
+                        "Chronicle",
+                        "\"Demon Bender\" Demon Crown of Power +1",
+                        "Tome",
+                        "Chain Boots",
+                        "Leather Belt of Brilliance"
+                    ],
+                    "name": {
+                        "firstName": "Cathy",
+                        "id": 1435,
+                        "lastName": "Okwuoma",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Archeology"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 2,
+                        "resourcefulness": 0,
+                        "strength": 0,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            2
+                        ],
+                        [
+                            1646935037,
+                            2
+                        ],
+                        [
+                            1646950037,
+                            2
+                        ]
+                    ],
+                    "traits": [
+                        "cowardice",
+                        "anxiety"
+                    ]
+                },
+                "40": {
+                    "age": 36,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 40,
+                    "loot": [
+                        "Dragonskin Armor",
+                        "Club",
+                        "Hood"
+                    ],
+                    "name": {
+                        "firstName": "Caspian",
+                        "id": 6452,
+                        "lastName": "Torma",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Haberdashery",
+                        "Deception"
+                    ],
+                    "species": [
+                        "Dragonborn"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 2,
+                        "resourcefulness": 4,
+                        "strength": 1,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            2
+                        ],
+                        [
+                            1646938037,
+                            2
+                        ],
+                        [
+                            1646947037,
+                            2
+                        ]
+                    ],
+                    "traits": []
+                },
+                "41": {
+                    "age": 104,
+                    "class": [
+                        "Druid"
+                    ],
+                    "id": 41,
+                    "loot": [
+                        "Necklace"
+                    ],
+                    "name": {
+                        "firstName": "Amou",
+                        "id": 6400,
+                        "lastName": "Okwuoma",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Metallurgy"
+                    ],
+                    "species": [
+                        "Tiefling"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 0,
+                        "resourcefulness": 1,
+                        "strength": 0,
+                        "toughness": 4
+                    },
+                    "stories": [],
+                    "traits": []
+                },
+                "85": {
+                    "name": {
+                        "id": 5081,
+                        "prefix": "Lord",
+                        "firstName": "Quintus",
+                        "middleName": "",
+                        "lastName": "Vespertine",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "he",
+                        "object": "him",
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "reflexive": "himself"
+                    },
+                    "species": [
+                        "Dwarf"
+                    ],
+                    "age": 54,
+                    "traits": [],
+                    "id": 85,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "stats": {
+                        "strength": 3,
+                        "magic": 2,
+                        "agility": 4,
+                        "resourcefulness": 2,
+                        "toughness": 4
+                    },
+                    "skills": [
+                        "Acrobatics"
+                    ],
+                    "loot": [
+                        "Gold Ring"
+                    ],
+                    "stories": []
+                }
+            },
+            "bard": {
+                "age": 92,
+                "name": {
+                    "firstName": "Ilona",
+                    "id": 7345,
+                    "lastName": "Gannon",
+                    "middleName": "groovy",
+                    "prefix": "",
+                    "suffix": "the Lion"
+                },
+                "pronouns": {
+                    "depPossessive": "her",
+                    "indPossessive": "hers",
+                    "object": "her",
+                    "reflexive": "herself",
+                    "subject": "she"
+                },
+                "species": [
+                    "Gnome"
+                ],
+                "traits": [
+                    "weakness",
+                    "aggressive impulses"
+                ]
+            },
+            "gold": 0,
+            "graveyard": {},
+            "id": 2,
+            "location": "Farshi District",
+            "motto": "Until our Ancient Lord Awakes",
+            "name": "Hall of Heads"
+        },
+        {
+            "adventurerCredits": {},
+            "adventurers": {
+                "42": {
+                    "age": 55,
+                    "class": [
+                        "Wizard"
+                    ],
+                    "id": 42,
+                    "loot": [
+                        "Wool Shoes"
+                    ],
+                    "name": {
+                        "firstName": "Ambrogino",
+                        "id": 501,
+                        "lastName": "Mailhot",
+                        "middleName": "",
+                        "prefix": "Master",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 1,
+                        "resourcefulness": 0,
+                        "strength": 1,
+                        "toughness": 2
+                    },
+                    "stories": [],
+                    "traits": []
+                },
+                "43": {
+                    "age": 31,
+                    "class": [
+                        "Barbarian"
+                    ],
+                    "id": 43,
+                    "loot": [
+                        "Wool Gloves",
+                        "Hard Leather Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Barbara",
+                        "id": 3873,
+                        "lastName": "Gousse",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 0,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            3
+                        ],
+                        [
+                            1646941037,
+                            3
+                        ],
+                        [
+                            1646944037,
+                            3
+                        ]
+                    ],
+                    "traits": [
+                        "trauma"
+                    ]
+                },
+                "44": {
+                    "age": 69,
+                    "class": [
+                        "Fighter"
+                    ],
+                    "id": 44,
+                    "loot": [
+                        "Linen Robe",
+                        "Holy Chestplate of Giants",
+                        "Silk Hood"
+                    ],
+                    "name": {
+                        "firstName": "Malok",
+                        "id": 3684,
+                        "lastName": "Cromwell",
+                        "middleName": "",
+                        "prefix": "King",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Deception"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 4,
+                        "resourcefulness": 0,
+                        "strength": 1,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            3
+                        ],
+                        [
+                            1646935037,
+                            3
+                        ],
+                        [
+                            1646938037,
+                            3
+                        ],
+                        [
+                            1646941037,
+                            3
+                        ],
+                        [
+                            1646947037,
+                            3
+                        ],
+                        [
+                            1646950037,
+                            3
+                        ]
+                    ],
+                    "traits": [
+                        "martyr complex",
+                        "a peg leg",
+                        "aggressive impulses",
+                        "unluckiness"
+                    ]
+                },
+                "45": {
+                    "age": 70,
+                    "class": [
+                        "Fighter"
+                    ],
+                    "id": 45,
+                    "loot": [
+                        "Gold Ring",
+                        "Linen Shoes of Giants",
+                        "Gold Ring"
+                    ],
+                    "name": {
+                        "firstName": "Zefram",
+                        "id": 7951,
+                        "lastName": "Amsel",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Marketing",
+                        "Archery"
+                    ],
+                    "species": [
+                        "Tiefling"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 1,
+                        "resourcefulness": 1,
+                        "strength": 0,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646944037,
+                            3
+                        ]
+                    ],
+                    "traits": []
+                },
+                "46": {
+                    "age": 79,
+                    "class": [
+                        "Fighter"
+                    ],
+                    "id": 46,
+                    "loot": [
+                        "\"Eagle Grasp\" Silk Slippers of Protection +1",
+                        "Chain Boots of the Fox",
+                        "Demon Husk"
+                    ],
+                    "name": {
+                        "firstName": "Jenci",
+                        "id": 7786,
+                        "lastName": "Yellen",
+                        "middleName": "jai",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Leadership"
+                    ],
+                    "species": [
+                        "Dwarf"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 2,
                         "resourcefulness": 3,
                         "strength": 4,
                         "toughness": 1
                     },
-                    "stories": [],
+                    "stories": [
+                        [
+                            1646929037,
+                            3
+                        ],
+                        [
+                            1646941037,
+                            3
+                        ],
+                        [
+                            1646944037,
+                            3
+                        ]
+                    ],
+                    "traits": []
+                },
+                "47": {
+                    "age": 69,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 47,
+                    "loot": [
+                        "Gauntlets",
+                        "Chain Gloves",
+                        "Linen Robe"
+                    ],
+                    "name": {
+                        "firstName": "Betty",
+                        "id": 6156,
+                        "lastName": "Biddercombe",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Half-Elf"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 4,
+                        "resourcefulness": 3,
+                        "strength": 2,
+                        "toughness": 0
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            3
+                        ],
+                        [
+                            1646935037,
+                            3
+                        ],
+                        [
+                            1646938037,
+                            3
+                        ]
+                    ],
                     "traits": [
-                        "gambling addiction",
-                        "aggressive impulses"
+                        "weakness",
+                        "monsterphobia"
                     ]
+                },
+                "48": {
+                    "age": 56,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 48,
+                    "loot": [
+                        "Mace of Skill",
+                        "Gold Ring"
+                    ],
+                    "name": {
+                        "firstName": "Karl",
+                        "id": 6668,
+                        "lastName": "Zhu",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Ropework",
+                        "Baking",
+                        "Streetwise"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 4,
+                        "resourcefulness": 1,
+                        "strength": 0,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            3
+                        ],
+                        [
+                            1646935037,
+                            3
+                        ],
+                        [
+                            1646938037,
+                            3
+                        ],
+                        [
+                            1646941037,
+                            3
+                        ]
+                    ],
+                    "traits": [
+                        "a peg leg"
+                    ]
+                },
+                "49": {
+                    "age": 98,
+                    "class": [
+                        "Cleric"
+                    ],
+                    "id": 49,
+                    "loot": [
+                        "Gauntlets",
+                        "Amulet",
+                        "Amulet of Anger"
+                    ],
+                    "name": {
+                        "firstName": "Gradasso",
+                        "id": 2266,
+                        "lastName": "Yearwood",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Streetwise",
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 0,
+                        "resourcefulness": 0,
+                        "strength": 4,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            3
+                        ],
+                        [
+                            1646938037,
+                            3
+                        ],
+                        [
+                            1646947037,
+                            3
+                        ],
+                        [
+                            1646950037,
+                            3
+                        ]
+                    ],
+                    "traits": [
+                        "deafness",
+                        "weakness"
+                    ]
+                },
+                "51": {
+                    "age": 40,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 51,
+                    "loot": [
+                        "\"Vengeance Whisper\" War Belt of Enlightenment",
+                        "Divine Gloves"
+                    ],
+                    "name": {
+                        "firstName": "James",
+                        "id": 2191,
+                        "lastName": "Probst",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Marketing"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 4,
+                        "resourcefulness": 0,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646938037,
+                            3
+                        ],
+                        [
+                            1646944037,
+                            3
+                        ]
+                    ],
+                    "traits": []
+                },
+                "52": {
+                    "age": 94,
+                    "class": [
+                        "Cleric"
+                    ],
+                    "id": 52,
+                    "loot": [
+                        "Necklace",
+                        "Linen Hood"
+                    ],
+                    "name": {
+                        "firstName": "Eva",
+                        "id": 4548,
+                        "lastName": "Nystrom",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Arcane Arts"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 2,
+                        "resourcefulness": 4,
+                        "strength": 0,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            3
+                        ],
+                        [
+                            1646935037,
+                            3
+                        ]
+                    ],
+                    "traits": []
+                },
+                "54": {
+                    "age": 42,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 54,
+                    "loot": [
+                        "Leather Belt"
+                    ],
+                    "name": {
+                        "firstName": "Tyler",
+                        "id": 3520,
+                        "lastName": "Egede",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Portraiture"
+                    ],
+                    "species": [
+                        "Elf"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 0,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 1
+                    },
+                    "stories": [],
+                    "traits": []
+                },
+                "86": {
+                    "name": {
+                        "id": 1729,
+                        "prefix": "Sultan",
+                        "firstName": "Vllad",
+                        "middleName": "",
+                        "lastName": "Hoskinson",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "he",
+                        "object": "him",
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "reflexive": "himself"
+                    },
+                    "species": [
+                        "Halfling"
+                    ],
+                    "age": 102,
+                    "traits": [],
+                    "id": 86,
+                    "class": [
+                        "Paladin"
+                    ],
+                    "stats": {
+                        "strength": 1,
+                        "magic": 0,
+                        "agility": 1,
+                        "resourcefulness": 2,
+                        "toughness": 2
+                    },
+                    "skills": [
+                        "Disguise"
+                    ],
+                    "loot": [
+                        "Studded Leather Boots"
+                    ],
+                    "stories": []
                 }
             },
             "bard": {
-                "age": 80,
+                "age": 100,
                 "name": {
-                    "firstName": "Laura",
-                    "id": 4099,
-                    "lastName": "Humblecut",
+                    "firstName": "Amou",
+                    "id": 5415,
+                    "lastName": "Chad",
                     "middleName": "",
                     "prefix": "",
                     "suffix": ""
@@ -3110,138 +3106,1008 @@ exports.startingState = {
                     "subject": "he"
                 },
                 "species": [
-                    "Dragonborn"
+                    "Elf"
                 ],
                 "traits": [
-                    "a peg leg",
+                    "greed",
                     "martyr complex"
                 ]
             },
             "gold": 0,
-            "graveyard": {},
+            "graveyard": {
+                "50": {
+                    "age": 93,
+                    "class": [
+                        "Bard"
+                    ],
+                    "id": 50,
+                    "loot": [
+                        "Studded Leather Belt"
+                    ],
+                    "name": {
+                        "firstName": "Helga",
+                        "id": 1147,
+                        "lastName": "Gotou",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Metallurgy"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 2,
+                        "resourcefulness": 4,
+                        "strength": 3,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            3
+                        ],
+                        [
+                            1646950037,
+                            3
+                        ]
+                    ],
+                    "traits": []
+                },
+                "53": {
+                    "age": 19,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 53,
+                    "loot": [
+                        "Titanium Ring",
+                        "Pendant"
+                    ],
+                    "name": {
+                        "firstName": "Darfin",
+                        "id": 5389,
+                        "lastName": "Okwuoma",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Haberdashery"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 0,
+                        "resourcefulness": 1,
+                        "strength": 3,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646947037,
+                            3
+                        ]
+                    ],
+                    "traits": []
+                }
+            },
+            "id": 3,
+            "location": "Karkowa District",
+            "motto": "Birth, Death, Rebirth",
+            "name": "Klaxon Messengerhall"
+        },
+        {
+            "adventurerCredits": {},
+            "adventurers": {
+                "55": {
+                    "age": 55,
+                    "class": [
+                        "Bard"
+                    ],
+                    "id": 55,
+                    "loot": [
+                        "Holy Gauntlets",
+                        "Studded Leather Armor",
+                        "\"Honour Moon\" Bronze Ring of Brilliance +1"
+                    ],
+                    "name": {
+                        "firstName": "Rita",
+                        "id": 7430,
+                        "lastName": "Chibugo",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Horsemanship",
+                        "Swimming"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 2,
+                        "resourcefulness": 4,
+                        "strength": 3,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            4
+                        ],
+                        [
+                            1646938037,
+                            4
+                        ],
+                        [
+                            1646950037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "aggressive impulses"
+                    ]
+                },
+                "56": {
+                    "age": 79,
+                    "class": [
+                        "Bard"
+                    ],
+                    "id": 56,
+                    "loot": [
+                        "Shoes"
+                    ],
+                    "name": {
+                        "firstName": "James",
+                        "id": 267,
+                        "lastName": "Pinette",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Horsemanship"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 1,
+                        "resourcefulness": 2,
+                        "strength": 0,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646938037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "gambling addiction"
+                    ]
+                },
+                "57": {
+                    "age": 42,
+                    "class": [
+                        "Druid"
+                    ],
+                    "id": 57,
+                    "loot": [
+                        "Crown",
+                        "Silver Ring",
+                        "Titanium Ring"
+                    ],
+                    "name": {
+                        "firstName": "Chishou",
+                        "id": 4826,
+                        "lastName": "Vespertine",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Ancient Lore"
+                    ],
+                    "species": [
+                        "Elf"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 0,
+                        "resourcefulness": 1,
+                        "strength": 0,
+                        "toughness": 1
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            4
+                        ],
+                        [
+                            1646938037,
+                            4
+                        ],
+                        [
+                            1646941037,
+                            4
+                        ],
+                        [
+                            1646944037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "a peg leg",
+                        "weakness"
+                    ]
+                },
+                "58": {
+                    "age": 48,
+                    "class": [
+                        "Sorcerer"
+                    ],
+                    "id": 58,
+                    "loot": [
+                        "Chain Mail of Giants",
+                        "Platinum Ring"
+                    ],
+                    "name": {
+                        "firstName": "Rita",
+                        "id": 7430,
+                        "lastName": "Chibugo",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Archeology",
+                        "Portraiture"
+                    ],
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 4,
+                        "resourcefulness": 1,
+                        "strength": 4,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                },
+                "59": {
+                    "age": 61,
+                    "class": [
+                        "Barbarian"
+                    ],
+                    "id": 59,
+                    "loot": [
+                        "Pendant"
+                    ],
+                    "name": {
+                        "firstName": "Daealla",
+                        "id": 2356,
+                        "lastName": "Fellowes",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Leadership",
+                        "Baking"
+                    ],
+                    "species": [
+                        "Dwarf"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 3,
+                        "resourcefulness": 1,
+                        "strength": 2,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                },
+                "60": {
+                    "age": 49,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 60,
+                    "loot": [
+                        "Hood",
+                        "\"Kraken Peak\" Ornate Chestplate of Perfection +1",
+                        "Silk Gloves",
+                        "Amulet of Perfection",
+                        "Holy Greaves"
+                    ],
+                    "name": {
+                        "firstName": "Dzemail",
+                        "id": 1686,
+                        "lastName": "Woodd",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Marketing",
+                        "Swordskill"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 1,
+                        "resourcefulness": 0,
+                        "strength": 0,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            4
+                        ],
+                        [
+                            1646941037,
+                            4
+                        ],
+                        [
+                            1646947037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "optimistism"
+                    ]
+                },
+                "61": {
+                    "age": 66,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 61,
+                    "loot": [
+                        "Sash"
+                    ],
+                    "name": {
+                        "firstName": "Ulrich",
+                        "id": 541,
+                        "lastName": "Mailhot",
+                        "middleName": "",
+                        "prefix": "Empress",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Streetwise",
+                        "Archeology"
+                    ],
+                    "species": [
+                        "Tiefling"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 4,
+                        "strength": 3,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            4
+                        ],
+                        [
+                            1646935037,
+                            4
+                        ],
+                        [
+                            1646947037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "a peg leg"
+                    ]
+                },
+                "62": {
+                    "age": 30,
+                    "class": [
+                        "Barbarian"
+                    ],
+                    "id": 62,
+                    "loot": [
+                        "Necklace"
+                    ],
+                    "name": {
+                        "firstName": "Jonas",
+                        "id": 3258,
+                        "lastName": "Huxley",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Marketing",
+                        "Archeology"
+                    ],
+                    "species": [
+                        "Elf"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 4,
+                        "resourcefulness": 1,
+                        "strength": 1,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                },
+                "63": {
+                    "age": 64,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 63,
+                    "loot": [
+                        "Dragonskin Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Hana",
+                        "id": 3612,
+                        "lastName": "Araujo",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Deception"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 0,
+                        "strength": 3,
+                        "toughness": 2
+                    },
+                    "stories": [],
+                    "traits": []
+                },
+                "64": {
+                    "age": 89,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "id": 64,
+                    "loot": [
+                        "Divine Slippers",
+                        "Studded Leather Boots",
+                        "Leather Armor",
+                        "Short Sword of Protection"
+                    ],
+                    "name": {
+                        "firstName": "Sam",
+                        "id": 521,
+                        "lastName": "Davis",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Horsemanship"
+                    ],
+                    "species": [
+                        "Human"
+                    ],
+                    "stats": {
+                        "agility": 1,
+                        "magic": 0,
+                        "resourcefulness": 0,
+                        "strength": 1,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646938037,
+                            4
+                        ],
+                        [
+                            1646941037,
+                            4
+                        ],
+                        [
+                            1646944037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                },
+                "65": {
+                    "age": 65,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "id": 65,
+                    "loot": [
+                        "Demon Husk"
+                    ],
+                    "name": {
+                        "firstName": "Helga",
+                        "id": 5543,
+                        "lastName": "Frederiksen",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "object": "him",
+                        "reflexive": "himself",
+                        "subject": "he"
+                    },
+                    "skills": [
+                        "Politics",
+                        "Leadership"
+                    ],
+                    "species": [
+                        "Dragonborn"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 1,
+                        "resourcefulness": 0,
+                        "strength": 4,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646935037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                },
+                "66": {
+                    "age": 62,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "id": 66,
+                    "loot": [
+                        "Linen Gloves"
+                    ],
+                    "name": {
+                        "firstName": "Elisabeth",
+                        "id": 6529,
+                        "lastName": "Sandheaver",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Baking",
+                        "Leadership"
+                    ],
+                    "species": [
+                        "Gnome"
+                    ],
+                    "stats": {
+                        "agility": 2,
+                        "magic": 3,
+                        "resourcefulness": 3,
+                        "strength": 0,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            4
+                        ],
+                        [
+                            1646944037,
+                            4
+                        ],
+                        [
+                            1646947037,
+                            4
+                        ],
+                        [
+                            1646950037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "self-doubt"
+                    ]
+                },
+                "67": {
+                    "age": 90,
+                    "class": [
+                        "Wizard"
+                    ],
+                    "id": 67,
+                    "loot": [
+                        "Greaves",
+                        "Chain Gloves of Anger",
+                        "Demon's Hands"
+                    ],
+                    "name": {
+                        "firstName": "Amou",
+                        "id": 3903,
+                        "lastName": "Yearwood",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Leadership",
+                        "Arcane Arts"
+                    ],
+                    "species": [
+                        "Dragonborn"
+                    ],
+                    "stats": {
+                        "agility": 3,
+                        "magic": 4,
+                        "resourcefulness": 2,
+                        "strength": 4,
+                        "toughness": 4
+                    },
+                    "stories": [
+                        [
+                            1646929037,
+                            4
+                        ],
+                        [
+                            1646938037,
+                            4
+                        ],
+                        [
+                            1646944037,
+                            4
+                        ],
+                        [
+                            1646950037,
+                            4
+                        ]
+                    ],
+                    "traits": [
+                        "self-doubt"
+                    ]
+                },
+                "69": {
+                    "age": 25,
+                    "class": [
+                        "Monk"
+                    ],
+                    "id": 69,
+                    "loot": [
+                        "Grimoire"
+                    ],
+                    "name": {
+                        "firstName": "Angor",
+                        "id": 3855,
+                        "lastName": "Leehy",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "object": "them",
+                        "reflexive": "themself",
+                        "subject": "they"
+                    },
+                    "skills": [
+                        "Horsemanship"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 4,
+                        "magic": 3,
+                        "resourcefulness": 4,
+                        "strength": 2,
+                        "toughness": 3
+                    },
+                    "stories": [
+                        [
+                            1646941037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                },
+                "87": {
+                    "name": {
+                        "id": 7580,
+                        "prefix": "",
+                        "firstName": "Gradasso",
+                        "middleName": "",
+                        "lastName": "Benes",
+                        "suffix": "the Ape"
+                    },
+                    "pronouns": {
+                        "subject": "he",
+                        "object": "him",
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "reflexive": "himself"
+                    },
+                    "species": [
+                        "Halfling"
+                    ],
+                    "age": 73,
+                    "traits": [],
+                    "id": 87,
+                    "class": [
+                        "Cleric"
+                    ],
+                    "stats": {
+                        "strength": 4,
+                        "magic": 1,
+                        "agility": 2,
+                        "resourcefulness": 4,
+                        "toughness": 1
+                    },
+                    "skills": [
+                        "Ancient Lore"
+                    ],
+                    "loot": [
+                        "Robe"
+                    ],
+                    "stories": []
+                }
+            },
+            "bard": {
+                "age": 25,
+                "name": {
+                    "firstName": "Malok",
+                    "id": 5251,
+                    "lastName": "Kiss",
+                    "middleName": "first of",
+                    "prefix": "",
+                    "suffix": "the Iron"
+                },
+                "pronouns": {
+                    "depPossessive": "his",
+                    "indPossessive": "his",
+                    "object": "him",
+                    "reflexive": "himself",
+                    "subject": "he"
+                },
+                "species": [
+                    "Halfling"
+                ],
+                "traits": [
+                    "monsterphobia",
+                    "a prosthetic arm"
+                ]
+            },
+            "gold": 0,
+            "graveyard": {
+                "68": {
+                    "age": 58,
+                    "class": [
+                        "Wizard"
+                    ],
+                    "id": 68,
+                    "loot": [
+                        "\"Demon Peak\" Grimoire of Enlightenment +1",
+                        "Studded Leather Boots"
+                    ],
+                    "name": {
+                        "firstName": "Eva",
+                        "id": 4218,
+                        "lastName": "Elizondo",
+                        "middleName": "",
+                        "prefix": "",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "object": "her",
+                        "reflexive": "herself",
+                        "subject": "she"
+                    },
+                    "skills": [
+                        "Politics"
+                    ],
+                    "species": [
+                        "Halfling"
+                    ],
+                    "stats": {
+                        "agility": 0,
+                        "magic": 0,
+                        "resourcefulness": 4,
+                        "strength": 1,
+                        "toughness": 2
+                    },
+                    "stories": [
+                        [
+                            1646932037,
+                            4
+                        ]
+                    ],
+                    "traits": []
+                }
+            },
             "id": 4,
             "location": "the Dregs",
-            "motto": "Four Hundrend Thirty Seven",
-            "name": "Hall of Heads"
+            "motto": "Where We go, They Follow",
+            "name": "Harcourt Smithy"
         },
         {
             "id": 5,
-            "name": "Cult of 973",
-            "motto": "Birth, Death, Rebirth",
-            "location": "Karkowa District",
+            "name": "Marsh's Sewerworks",
+            "motto": "Peel back the Veil",
+            "location": "the Flying Stones",
             "bard": {
                 "name": {
-                    "id": 7615,
+                    "id": 2773,
                     "prefix": "",
-                    "firstName": "Radim",
+                    "firstName": "Betty",
                     "middleName": "",
-                    "lastName": "Melo",
+                    "lastName": "Wintermute",
                     "suffix": ""
                 },
                 "pronouns": {
-                    "subject": "she",
-                    "object": "her",
-                    "depPossessive": "her",
-                    "indPossessive": "hers",
-                    "reflexive": "herself"
+                    "subject": "they",
+                    "object": "them",
+                    "depPossessive": "their",
+                    "indPossessive": "theirs",
+                    "reflexive": "themself"
                 },
                 "species": [
                     "Rat"
                 ],
-                "age": 7,
+                "age": 2,
                 "traits": [
-                    "greed",
-                    "monsterphobia"
+                    "cowardice",
+                    "self-doubt"
                 ]
             },
             "adventurers": {
-                "63": {
+                "70": {
                     "name": {
-                        "id": 383,
+                        "id": 5802,
                         "prefix": "",
-                        "firstName": "John",
+                        "firstName": "Dioscoro",
                         "middleName": "",
-                        "lastName": "Mailhot",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "they",
-                        "object": "them",
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "reflexive": "themself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 7,
-                    "traits": [],
-                    "id": 63,
-                    "class": [
-                        "Ranger"
-                    ],
-                    "stats": {
-                        "strength": 1,
-                        "magic": 3,
-                        "agility": 1,
-                        "resourcefulness": 2,
-                        "toughness": 3
-                    },
-                    "skills": [
-                        "Alchemy"
-                    ],
-                    "loot": [
-                        "Demonhide Belt"
-                    ],
-                    "stories": []
-                },
-                "64": {
-                    "name": {
-                        "id": 2995,
-                        "prefix": "",
-                        "firstName": "Darda",
-                        "middleName": "",
-                        "lastName": "Horak",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "they",
-                        "object": "them",
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "reflexive": "themself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 3,
-                    "traits": [],
-                    "id": 64,
-                    "class": [
-                        "Druid"
-                    ],
-                    "stats": {
-                        "strength": 1,
-                        "magic": 1,
-                        "agility": 3,
-                        "resourcefulness": 3,
-                        "toughness": 1
-                    },
-                    "skills": [
-                        "Portraiture"
-                    ],
-                    "loot": [
-                        "Club"
-                    ],
-                    "stories": []
-                },
-                "65": {
-                    "name": {
-                        "id": 5814,
-                        "prefix": "",
-                        "firstName": "Rasmus",
-                        "middleName": "",
-                        "lastName": "Frederiksen",
+                        "lastName": "Bunker",
                         "suffix": ""
                     },
                     "pronouns": {
@@ -3254,32 +4120,32 @@ exports.startingState = {
                     "species": [
                         "Rat"
                     ],
-                    "age": 4,
+                    "age": 5,
                     "traits": [],
-                    "id": 65,
+                    "id": 70,
                     "class": [
                         "Fighter"
                     ],
                     "stats": {
-                        "strength": 3,
-                        "magic": 2,
-                        "agility": 2,
-                        "resourcefulness": 1,
-                        "toughness": 4
+                        "strength": 0,
+                        "magic": 4,
+                        "agility": 0,
+                        "resourcefulness": 0,
+                        "toughness": 1
                     },
                     "skills": [
-                        "Investigation"
+                        "Archery"
                     ],
                     "loot": [
-                        "Pendant"
+                        "Demonhide Belt"
                     ],
                     "stories": []
                 },
-                "66": {
+                "71": {
                     "name": {
-                        "id": 2745,
-                        "prefix": "",
-                        "firstName": "Sarah",
+                        "id": 6053,
+                        "prefix": "President",
+                        "firstName": "Matthew",
                         "middleName": "",
                         "lastName": "Feron",
                         "suffix": ""
@@ -3294,114 +4160,114 @@ exports.startingState = {
                     "species": [
                         "Rat"
                     ],
-                    "age": 8,
+                    "age": 5,
                     "traits": [],
-                    "id": 66,
+                    "id": 71,
                     "class": [
-                        "Rogue"
-                    ],
-                    "stats": {
-                        "strength": 0,
-                        "magic": 4,
-                        "agility": 1,
-                        "resourcefulness": 1,
-                        "toughness": 0
-                    },
-                    "skills": [
-                        "Politics"
-                    ],
-                    "loot": [
-                        "Titanium Ring"
-                    ],
-                    "stories": []
-                },
-                "67": {
-                    "name": {
-                        "id": 2023,
-                        "prefix": "",
-                        "firstName": "Florus",
-                        "middleName": "",
-                        "lastName": "Aliyeva",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "she",
-                        "object": "her",
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "reflexive": "herself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 10,
-                    "traits": [],
-                    "id": 67,
-                    "class": [
-                        "Barbarian"
+                        "Monk"
                     ],
                     "stats": {
                         "strength": 0,
                         "magic": 0,
                         "agility": 1,
                         "resourcefulness": 1,
-                        "toughness": 2
+                        "toughness": 3
                     },
                     "skills": [
-                        "Marketing"
+                        "Disguise"
                     ],
                     "loot": [
-                        "Quarterstaff of Protection"
+                        "Grimoire"
                     ],
                     "stories": []
                 },
-                "68": {
+                "72": {
                     "name": {
-                        "id": 6016,
+                        "id": 6788,
                         "prefix": "",
-                        "firstName": "Eve",
+                        "firstName": "Ulrich",
                         "middleName": "",
-                        "lastName": "Blau",
+                        "lastName": "Delphine",
                         "suffix": ""
                     },
                     "pronouns": {
-                        "subject": "they",
-                        "object": "them",
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "reflexive": "themself"
+                        "subject": "she",
+                        "object": "her",
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "reflexive": "herself"
                     },
                     "species": [
                         "Rat"
                     ],
-                    "age": 1,
+                    "age": 6,
                     "traits": [],
-                    "id": 68,
+                    "id": 72,
                     "class": [
-                        "Rogue"
+                        "Barbarian"
                     ],
                     "stats": {
-                        "strength": 0,
-                        "magic": 2,
-                        "agility": 1,
-                        "resourcefulness": 4,
-                        "toughness": 3
+                        "strength": 2,
+                        "magic": 3,
+                        "agility": 0,
+                        "resourcefulness": 2,
+                        "toughness": 2
                     },
                     "skills": [
-                        "Deception"
+                        "Acrobatics"
                     ],
                     "loot": [
-                        "Hard Leather Gloves of Protection"
+                        "War Belt of Detection"
                     ],
                     "stories": []
                 },
-                "69": {
+                "73": {
                     "name": {
-                        "id": 1239,
+                        "id": 6236,
                         "prefix": "",
-                        "firstName": "Stanislaus",
+                        "firstName": "Darfin",
                         "middleName": "",
-                        "lastName": "Lincoln",
+                        "lastName": "Felten",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "she",
+                        "object": "her",
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "reflexive": "herself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 12,
+                    "traits": [],
+                    "id": 73,
+                    "class": [
+                        "Bard"
+                    ],
+                    "stats": {
+                        "strength": 1,
+                        "magic": 3,
+                        "agility": 0,
+                        "resourcefulness": 1,
+                        "toughness": 2
+                    },
+                    "skills": [
+                        "Portraiture"
+                    ],
+                    "loot": [
+                        "Gauntlets"
+                    ],
+                    "stories": []
+                },
+                "74": {
+                    "name": {
+                        "id": 7330,
+                        "prefix": "",
+                        "firstName": "Robert",
+                        "middleName": "",
+                        "lastName": "Benes",
                         "suffix": ""
                     },
                     "pronouns": {
@@ -3416,312 +4282,152 @@ exports.startingState = {
                     ],
                     "age": 2,
                     "traits": [],
-                    "id": 69,
+                    "id": 74,
                     "class": [
-                        "Barbarian"
+                        "Monk"
                     ],
                     "stats": {
-                        "strength": 3,
+                        "strength": 2,
                         "magic": 3,
                         "agility": 4,
-                        "resourcefulness": 2,
+                        "resourcefulness": 0,
+                        "toughness": 0
+                    },
+                    "skills": [
+                        "Politics"
+                    ],
+                    "loot": [
+                        "Ornate Greaves"
+                    ],
+                    "stories": []
+                },
+                "75": {
+                    "name": {
+                        "id": 4986,
+                        "prefix": "",
+                        "firstName": "Jens",
+                        "middleName": "",
+                        "lastName": "Izmaylov",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "they",
+                        "object": "them",
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "reflexive": "themself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 2,
+                    "traits": [],
+                    "id": 75,
+                    "class": [
+                        "Rogue"
+                    ],
+                    "stats": {
+                        "strength": 1,
+                        "magic": 0,
+                        "agility": 0,
+                        "resourcefulness": 1,
                         "toughness": 0
                     },
                     "skills": [
                         "Disguise"
                     ],
                     "loot": [
-                        "Studded Leather Gloves"
-                    ],
-                    "stories": []
-                },
-                "70": {
-                    "name": {
-                        "id": 3943,
-                        "prefix": "",
-                        "firstName": "Jessica",
-                        "middleName": "",
-                        "lastName": "Windward",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "they",
-                        "object": "them",
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "reflexive": "themself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 4,
-                    "traits": [],
-                    "id": 70,
-                    "class": [
-                        "Monk"
-                    ],
-                    "stats": {
-                        "strength": 3,
-                        "magic": 4,
-                        "agility": 1,
-                        "resourcefulness": 0,
-                        "toughness": 1
-                    },
-                    "skills": [
-                        "Leadership"
-                    ],
-                    "loot": [
-                        "Silk Sash of Protection"
-                    ],
-                    "stories": []
-                },
-                "71": {
-                    "name": {
-                        "id": 2797,
-                        "prefix": "",
-                        "firstName": "Faina",
-                        "middleName": "",
-                        "lastName": "Ibekwe",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "he",
-                        "object": "him",
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "reflexive": "himself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 9,
-                    "traits": [],
-                    "id": 71,
-                    "class": [
-                        "Sorcerer"
-                    ],
-                    "stats": {
-                        "strength": 1,
-                        "magic": 4,
-                        "agility": 2,
-                        "resourcefulness": 1,
-                        "toughness": 3
-                    },
-                    "skills": [
-                        "Navigation"
-                    ],
-                    "loot": [
-                        "Ornate Belt"
-                    ],
-                    "stories": []
-                },
-                "72": {
-                    "name": {
-                        "id": 7875,
-                        "prefix": "",
-                        "firstName": "Adam",
-                        "middleName": "",
-                        "lastName": "Wood",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "they",
-                        "object": "them",
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "reflexive": "themself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 9,
-                    "traits": [],
-                    "id": 72,
-                    "class": [
-                        "Cleric"
-                    ],
-                    "stats": {
-                        "strength": 2,
-                        "magic": 2,
-                        "agility": 3,
-                        "resourcefulness": 3,
-                        "toughness": 3
-                    },
-                    "skills": [
-                        "Ropework"
-                    ],
-                    "loot": [
-                        "Heavy Boots"
-                    ],
-                    "stories": []
-                },
-                "73": {
-                    "name": {
-                        "id": 1538,
-                        "prefix": "",
-                        "firstName": "Bella",
-                        "middleName": "",
-                        "lastName": "Crassus",
-                        "suffix": "the Holy"
-                    },
-                    "pronouns": {
-                        "subject": "they",
-                        "object": "them",
-                        "depPossessive": "their",
-                        "indPossessive": "theirs",
-                        "reflexive": "themself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 10,
-                    "traits": [],
-                    "id": 73,
-                    "class": [
-                        "Paladin"
-                    ],
-                    "stats": {
-                        "strength": 2,
-                        "magic": 4,
-                        "agility": 4,
-                        "resourcefulness": 0,
-                        "toughness": 1
-                    },
-                    "skills": [
-                        "Ropework"
-                    ],
-                    "loot": [
-                        "Shoes"
-                    ],
-                    "stories": []
-                },
-                "74": {
-                    "name": {
-                        "id": 1540,
-                        "prefix": "",
-                        "firstName": "Elisabeth",
-                        "middleName": "",
-                        "lastName": "Kjeldsen",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "she",
-                        "object": "her",
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "reflexive": "herself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 9,
-                    "traits": [],
-                    "id": 74,
-                    "class": [
-                        "Bard"
-                    ],
-                    "stats": {
-                        "strength": 4,
-                        "magic": 3,
-                        "agility": 2,
-                        "resourcefulness": 3,
-                        "toughness": 4
-                    },
-                    "skills": [
-                        "Leadership"
-                    ],
-                    "loot": [
-                        "Leather Gloves"
-                    ],
-                    "stories": []
-                },
-                "75": {
-                    "name": {
-                        "id": 3958,
-                        "prefix": "",
-                        "firstName": "Jessica",
-                        "middleName": "",
-                        "lastName": "Yellen",
-                        "suffix": ""
-                    },
-                    "pronouns": {
-                        "subject": "he",
-                        "object": "him",
-                        "depPossessive": "his",
-                        "indPossessive": "his",
-                        "reflexive": "himself"
-                    },
-                    "species": [
-                        "Rat"
-                    ],
-                    "age": 8,
-                    "traits": [],
-                    "id": 75,
-                    "class": [
-                        "Barbarian"
-                    ],
-                    "stats": {
-                        "strength": 3,
-                        "magic": 3,
-                        "agility": 0,
-                        "resourcefulness": 4,
-                        "toughness": 3
-                    },
-                    "skills": [
-                        "Horsemanship"
-                    ],
-                    "loot": [
-                        "Leather Belt of Skill"
+                        "Wand"
                     ],
                     "stories": []
                 },
                 "76": {
                     "name": {
-                        "id": 6948,
+                        "id": 5897,
                         "prefix": "",
-                        "firstName": "Filippa",
+                        "firstName": "Mary",
                         "middleName": "",
-                        "lastName": "Onwuka",
+                        "lastName": "Yearwood",
                         "suffix": ""
                     },
                     "pronouns": {
-                        "subject": "she",
-                        "object": "her",
-                        "depPossessive": "her",
-                        "indPossessive": "hers",
-                        "reflexive": "herself"
+                        "subject": "they",
+                        "object": "them",
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "reflexive": "themself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 9,
+                    "traits": [],
+                    "id": 76,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "stats": {
+                        "strength": 4,
+                        "magic": 3,
+                        "agility": 4,
+                        "resourcefulness": 2,
+                        "toughness": 1
+                    },
+                    "skills": [
+                        "Investigation"
+                    ],
+                    "loot": [
+                        "Leather Belt of Rage"
+                    ],
+                    "stories": []
+                },
+                "77": {
+                    "name": {
+                        "id": 3756,
+                        "prefix": "",
+                        "firstName": "Changpeng",
+                        "middleName": "",
+                        "lastName": "Cromwell",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "he",
+                        "object": "him",
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "reflexive": "himself"
                     },
                     "species": [
                         "Rat"
                     ],
                     "age": 2,
                     "traits": [],
-                    "id": 76,
+                    "id": 77,
                     "class": [
-                        "Druid"
+                        "Monk"
                     ],
                     "stats": {
-                        "strength": 1,
-                        "magic": 4,
-                        "agility": 3,
-                        "resourcefulness": 4,
+                        "strength": 2,
+                        "magic": 0,
+                        "agility": 2,
+                        "resourcefulness": 0,
                         "toughness": 3
                     },
                     "skills": [
-                        "Alchemy"
+                        "Haberdashery"
                     ],
                     "loot": [
-                        "Silk Gloves"
+                        "Linen Gloves"
                     ],
                     "stories": []
                 },
-                "77": {
+                "78": {
                     "name": {
-                        "id": 1760,
-                        "prefix": "",
-                        "firstName": "Noah",
+                        "id": 6116,
+                        "prefix": "Senator",
+                        "firstName": "Charles",
                         "middleName": "",
-                        "lastName": "Enoksen",
+                        "lastName": "Schmidt",
                         "suffix": ""
                     },
                     "pronouns": {
@@ -3734,24 +4440,224 @@ exports.startingState = {
                     "species": [
                         "Rat"
                     ],
-                    "age": 4,
+                    "age": 5,
                     "traits": [],
-                    "id": 77,
+                    "id": 78,
                     "class": [
-                        "Warlock"
+                        "Cleric"
+                    ],
+                    "stats": {
+                        "strength": 3,
+                        "magic": 4,
+                        "agility": 2,
+                        "resourcefulness": 4,
+                        "toughness": 3
+                    },
+                    "skills": [
+                        "Portraiture"
+                    ],
+                    "loot": [
+                        "\"Carrion Whisper\" Divine Gloves of Fury"
+                    ],
+                    "stories": []
+                },
+                "79": {
+                    "name": {
+                        "id": 6020,
+                        "prefix": "",
+                        "firstName": "Dilibe",
+                        "middleName": "",
+                        "lastName": "Quenneville",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "he",
+                        "object": "him",
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "reflexive": "himself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 2,
+                    "traits": [],
+                    "id": 79,
+                    "class": [
+                        "Paladin"
                     ],
                     "stats": {
                         "strength": 2,
-                        "magic": 3,
-                        "agility": 1,
+                        "magic": 0,
+                        "agility": 4,
+                        "resourcefulness": 4,
+                        "toughness": 3
+                    },
+                    "skills": [
+                        "Streetwise"
+                    ],
+                    "loot": [
+                        "Necklace"
+                    ],
+                    "stories": []
+                },
+                "80": {
+                    "name": {
+                        "id": 5130,
+                        "prefix": "",
+                        "firstName": "Eve",
+                        "middleName": "",
+                        "lastName": "Took-Took",
+                        "suffix": "the Good"
+                    },
+                    "pronouns": {
+                        "subject": "he",
+                        "object": "him",
+                        "depPossessive": "his",
+                        "indPossessive": "his",
+                        "reflexive": "himself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 3,
+                    "traits": [],
+                    "id": 80,
+                    "class": [
+                        "Monk"
+                    ],
+                    "stats": {
+                        "strength": 0,
+                        "magic": 1,
+                        "agility": 0,
                         "resourcefulness": 0,
                         "toughness": 0
                     },
                     "skills": [
-                        "Archeology"
+                        "Portraiture"
                     ],
                     "loot": [
-                        "Hard Leather Belt of Rage"
+                        "Wand"
+                    ],
+                    "stories": []
+                },
+                "81": {
+                    "name": {
+                        "id": 347,
+                        "prefix": "",
+                        "firstName": "Hayden",
+                        "middleName": "mise",
+                        "lastName": "Kiss",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "she",
+                        "object": "her",
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "reflexive": "herself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 1,
+                    "traits": [],
+                    "id": 81,
+                    "class": [
+                        "Monk"
+                    ],
+                    "stats": {
+                        "strength": 0,
+                        "magic": 2,
+                        "agility": 3,
+                        "resourcefulness": 0,
+                        "toughness": 1
+                    },
+                    "skills": [
+                        "Acrobatics"
+                    ],
+                    "loot": [
+                        "Quarterstaff"
+                    ],
+                    "stories": []
+                },
+                "82": {
+                    "name": {
+                        "id": 1271,
+                        "prefix": "",
+                        "firstName": "Changpeng",
+                        "middleName": "",
+                        "lastName": "Oliveira",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "she",
+                        "object": "her",
+                        "depPossessive": "her",
+                        "indPossessive": "hers",
+                        "reflexive": "herself"
+                    },
+                    "species": [
+                        "Rat"
+                    ],
+                    "age": 3,
+                    "traits": [],
+                    "id": 82,
+                    "class": [
+                        "Ranger"
+                    ],
+                    "stats": {
+                        "strength": 3,
+                        "magic": 0,
+                        "agility": 2,
+                        "resourcefulness": 2,
+                        "toughness": 3
+                    },
+                    "skills": [
+                        "Metallurgy"
+                    ],
+                    "loot": [
+                        "Necklace"
+                    ],
+                    "stories": []
+                },
+                "88": {
+                    "name": {
+                        "id": 648,
+                        "prefix": "",
+                        "firstName": "Geoffrey",
+                        "middleName": "",
+                        "lastName": "Okwuoma",
+                        "suffix": ""
+                    },
+                    "pronouns": {
+                        "subject": "they",
+                        "object": "them",
+                        "depPossessive": "their",
+                        "indPossessive": "theirs",
+                        "reflexive": "themself"
+                    },
+                    "species": [
+                        "Half-Orc"
+                    ],
+                    "age": 98,
+                    "traits": [],
+                    "id": 88,
+                    "class": [
+                        "Warlock"
+                    ],
+                    "stats": {
+                        "strength": 4,
+                        "magic": 0,
+                        "agility": 2,
+                        "resourcefulness": 1,
+                        "toughness": 3
+                    },
+                    "skills": [
+                        "Baking"
+                    ],
+                    "loot": [
+                        "Bone Wand"
                     ],
                     "stories": []
                 }

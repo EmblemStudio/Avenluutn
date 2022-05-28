@@ -33,16 +33,20 @@ export async function tellStories(
   const checkpoint = await newCheckpoint(runStart, startTime, provider)
   let nextUpdateTime = startTime
 
+  console.log('prevResult', prevResult)
   if (checkpoint.error) {
-    return {
+    // TODO 
+    const scriptResult = {
       stories: [],
-      nextState: prevResult ? prevResult.nextState : { guilds: [] },
+      nextState: prevResult === null ? startingState : prevResult.nextState,
       nextUpdateTime: startTime
     }
+    console.log('checkpoint error: returning', scriptResult)
+    return scriptResult
   }
 
   let state: State
-  if (!prevResult) {
+  if (prevResult === null) {
     state = startingState // use this if starting from a previous state
     // state = await randomStartingState(totalStories, checkpoint.prng, provider) // use this if starting fresh
   } else {

@@ -1,0 +1,2853 @@
+STORY 0-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Filippa mewny Nakamoto, 
+Ambrogino Ledger, 
+Orion Mintz, 
+Earl Dennis Enyinnaya, 
+and 
+Raff Bazhenov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+nocturnal
+ tome
+ at the 
+Red 
+summit
+.
+Before reaching the destination, 
+they 
+snuck up on 
+an 
+invisible
+ elemental
+.
+After 
+a successful 
+battle
+, they 
+moved on from
+ the 
+elemental
+.
+Ambrogino Ledger
+ now has 
+trauma
+!
+Ambrogino Ledger
+ found 
+Grave Wand
+!
+Earl Dennis Enyinnaya
+ found 
+Necklace of Giants
+!
+They 
+arrived at the 
+Red
+ summit
+, where 
+they 
+had to solve 
+a 
+nocturnal
+ tome
+.
+After 
+a hard-earned 
+infiltration
+, they 
+retrieved
+ the 
+tome
+.
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Mohammed Amsel, 
+Yvanna Mintz, 
+Michael Cronje, 
+Chad Schmidt, 
+and 
+Chishou vibes Elizondo the Kind 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+decrepit
+, 
+irridescent
+ maze
+ "Mighty Clopse"
+ at the 
+Headless 
+sea
+.
+Following the path, 
+they 
+stumbled upon 
+a 
+diurnal
+ dead end
+.
+After 
+a strong 
+attempt
+, they 
+figured out
+ the 
+dead end
+.
+Chad Schmidt
+ learned 
+Acrobatics
+!
+Chishou vibes Elizondo the Kind
+ found 
+Crown
+!
+Venturing forth, 
+they 
+discovered 
+a 
+sharp
+, ancient
+ locked gate
+.
+After 
+a testing 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Mohammed Amsel
+ found 
+Silver Ring
+!
+Chad Schmidt
+ now has 
+aggressive impulses
+!
+Chad Schmidt
+ now has 
+elegance
+!
+Chishou vibes Elizondo the Kind
+ suffered slash wounds.
+Chishou vibes Elizondo the Kind
+ found 
+War Belt of Titans
+!
+In transit, 
+they 
+were blocked by 
+the 
+many-eyed
+, unspeakable
+ locked gate
+ "Xtophila Butcher"
+.
+After 
+an epic 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Mohammed Amsel 
+used her 
+Archery 
+skills!
+Mohammed Amsel
+ dislocated her shoulder.
+Yvanna Mintz
+ bruised her ribs.
+Michael Cronje
+ found 
+Hard Leather Armor
+!
+Chad Schmidt
+ found 
+Mesh Belt
+!
+Chad Schmidt
+ dislocated her shoulder.
+Chishou vibes Elizondo the Kind
+ was frightened half to death.
+Chishou vibes Elizondo the Kind
+ learned 
+Tracking
+!
+They 
+arrived at the 
+Headless
+ sea
+, where 
+they 
+were confronted with 
+the 
+decrepit
+, irridescent
+ maze
+ "Mighty Clopse"
+.
+After 
+a successful 
+journey
+, they 
+surveiled all of
+ the 
+maze
+.
+Mohammed Amsel
+ learned 
+Marketing
+!
+Yvanna Mintz
+ found 
+Gold Ring
+!
+Michael Cronje
+ learned 
+Swimming
+!
+Chad Schmidt
+ suffered slash wounds.
+The adventurers 
+returned triumphantly to 
+Platinum Branch Club
+, basking in glory.
+nextUpdateTime: -1
+STORY 0-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Gradasso Udobata, 
+Chad Gresham, 
+and 
+Amou Okwuoma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+lightless
+, 
+luminous
+ ruins
+ at the 
+Jarred 
+city
+.
+While investigating the area, 
+they 
+came across 
+a 
+lightless
+ bird folk
+.
+After 
+a misjudged 
+battle
+, they 
+were driven back by
+ the 
+bird folk
+.
+Chad Gresham
+ was cursed.
+Amou Okwuoma
+ suffered slash wounds.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+Amou Okwuoma
+ now has 
+cowardice
+!
+nextUpdateTime: -1
+STORY 0-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Sultan Vllad Hoskinson, 
+Master Ambrogino Mailhot, 
+and 
+Barbara Gousse 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+, 
+unsettling
+ ogre
+ "Blistered Fecund"
+ at the 
+Illusid 
+sea
+.
+While investigating the area, 
+they 
+discovered 
+a 
+crepuscular
+ puzzlebox
+.
+After 
+a fraught 
+attempt
+, they 
+figured out
+ the 
+puzzlebox
+.
+Pushing forward, 
+they 
+had to solve 
+a 
+nocturnal
+, hideous
+ locked gate
+.
+After 
+a misguided 
+brainstorm
+, they 
+found no way through
+ the 
+locked gate
+.
+Sultan Vllad Hoskinson
+ was stabbed in the torso.
+Sultan Vllad Hoskinson
+ found 
+Studded Leather Boots
+!
+Master Ambrogino Mailhot
+ broke his leg.
+Master Ambrogino Mailhot
+ was cursed.
+Barbara Gousse
+ was frightened half to death.
+Barbara Gousse
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: -1
+STORY 0-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Dzemail Woodd, 
+Daealla Fellowes, 
+and 
+Rita Chibugo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+voracious
+, 
+luminous
+ egregore
+ at the 
+Headless 
+sea
+.
+Following the path, 
+they 
+were ambushed by 
+a 
+lightless
+ tunnel dweller
+.
+After 
+a fraught 
+battle
+, they 
+parted ways with
+ the 
+tunnel dweller
+.
+Dzemail Woodd
+ learned 
+Archeology
+!
+Rita Chibugo
+ now has 
+aggressive impulses
+!
+During the journey, 
+they 
+were blocked by 
+a 
+decrepit
+, unspeakable
+ cliff
+.
+After 
+a testing 
+attempt
+, they 
+traversed
+ the 
+cliff
+.
+Daealla Fellowes
+ got blasted eardrums.
+Daealla Fellowes
+ now has 
+trauma
+!
+They 
+arrived at the 
+Headless
+ sea
+, where 
+they 
+were blocked by 
+a 
+voracious
+, luminous
+ egregore
+.
+After 
+a fraught 
+mission
+, they 
+returned with
+ the 
+egregore
+.
+Daealla Fellowes 
+used her 
+Baking 
+skills!
+Dzemail Woodd
+ now has 
+quick-wit
+!
+Rita Chibugo
+ found 
+Demonhide Boots
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Yuukou Woodd, 
+Dennis mons Zhu, 
+and 
+Evan Karlsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+ swarm
+ at the 
+Macrosign 
+village
+.
+On the road there, 
+they 
+snuck up on 
+some 
+nocturnal
+ brigands
+.
+After 
+an exhausting 
+negotiation
+, they 
+were forced to turn back by
+ the 
+brigands
+.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Mira Gannon, 
+Jiri Ranth, 
+and 
+Rasmus Mikulanc the Impaler 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+lightless
+, 
+unsettling
+ maze
+ at the 
+Craven 
+village
+.
+While investigating the area, 
+they 
+were ambushed by 
+some 
+crepuscular
+ brigands
+.
+After 
+a testing 
+negotiation
+, they 
+passed by
+ the 
+brigands
+.
+Mira Gannon
+ found 
+Gold Ring
+!
+Jiri Ranth
+ was cursed.
+Rasmus Mikulanc the Impaler
+ got fried nerves.
+During the journey, 
+they 
+discovered 
+a 
+voracious
+, unspeakable
+ maze
+.
+After 
+a grueling 
+brainstorm
+, they 
+figured out
+ the 
+maze
+.
+Mira Gannon
+ dislocated his shoulder.
+Mira Gannon
+ was stabbed in the torso.
+They 
+arrived at the 
+Craven
+ village
+, where 
+they 
+discovered 
+a 
+lightless
+, unsettling
+ maze
+.
+After 
+a misguided 
+journey
+, they 
+were disoriented by
+ the 
+maze
+.
+Jiri Ranth
+ bruised their ribs.
+Jiri Ranth
+ died.
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Efraim Viragh, 
+Ebony October, 
+and 
+Amou Okwuoma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+ wyrm
+ at the 
+Red 
+village
+.
+On the way, 
+they 
+met 
+some 
+voracious
+ brigands
+.
+After 
+a challenging 
+negotiation
+, they 
+moved on from
+ the 
+brigands
+.
+Efraim Viragh
+ dislocated her shoulder.
+Efraim Viragh
+ got fried nerves.
+Ebony October
+ now has 
+weakness
+!
+Ebony October
+ found 
+Wool Sash
+!
+Amou Okwuoma
+ now has 
+dragon obsession
+!
+Amou Okwuoma
+ had her arm crushed.
+They 
+arrived at the 
+Red
+ village
+, where 
+they 
+were confronted by 
+a 
+violent
+ wyrm
+.
+After 
+a hard-earned 
+battle
+, they 
+overpowered
+ the 
+wyrm
+.
+Efraim Viragh
+ found 
+Studded Leather Belt
+!
+Efraim Viragh
+ suffered slash wounds.
+Efraim Viragh
+ was knocked out.
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Barbara Gousse, 
+Sultan Vllad Hoskinson, 
+Karl Zhu, 
+and 
+King Malok Cromwell 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+lightless
+, 
+impossible
+ nephilim
+ at the 
+Macrosign 
+crypt
+.
+After going some distance, 
+they 
+stumbled upon 
+an 
+entrancing
+ maze
+.
+After 
+a rough 
+brainstorm
+, they 
+found no way through
+ the 
+maze
+.
+Barbara Gousse
+ was frightened half to death.
+Barbara Gousse
+ got fried nerves.
+Barbara Gousse
+ got fried nerves.
+The adventurers 
+slunk back to 
+Klaxon Messengerhall
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Elisabeth Sandheaver, 
+Jonas Huxley, 
+Rita Chibugo, 
+and 
+Chishou Vespertine 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+lightless
+, 
+unsettling
+ sanctum
+ "Xtophila Ulula"
+ at the 
+Red 
+market
+.
+Following the path, 
+they 
+had to solve 
+an 
+invisible
+ puzzlebox
+.
+After 
+a strenuous 
+brainstorm
+, they 
+found a way through
+ the 
+puzzlebox
+.
+Rita Chibugo
+ bruised her ribs.
+Chishou Vespertine
+ suffered slash wounds.
+On the road there, 
+they 
+discovered 
+an 
+invisible
+, fearsome
+ canyon
+.
+After 
+a fraught 
+attempt
+, they 
+overcame
+ the 
+canyon
+.
+Jonas Huxley
+ bruised her ribs.
+Rita Chibugo
+ had her arm crushed.
+Rita Chibugo
+ got fried nerves.
+Chishou Vespertine
+ got fried nerves.
+Before reaching the destination, 
+they 
+stumbled upon 
+the 
+crepuscular
+, irridescent
+ maze
+ "Vivisected Limpet"
+.
+After 
+a hard-earned 
+attempt
+, they 
+figured out
+ the 
+maze
+.
+Elisabeth Sandheaver
+ had their confidence shaken.
+Jonas Huxley
+ got fried nerves.
+Jonas Huxley
+ found 
+Dragonskin Gloves
+!
+Chishou Vespertine
+ was frightened half to death.
+Chishou Vespertine
+ was knocked out.
+They 
+arrived at the 
+Red
+ market
+, where 
+they 
+were confronted with 
+the 
+lightless
+, unsettling
+ sanctum
+ "Xtophila Ulula"
+.
+After 
+a misjudged 
+battle
+, they 
+could not to protect
+ the 
+sanctum
+.
+Elisabeth Sandheaver
+ bruised their ribs.
+Rita Chibugo
+ found 
+Dragonskin Boots of Power
+!
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+Rita Chibugo
+ now has 
+aggressive impulses
+!
+nextUpdateTime: -1
+STORY 2-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Yuukou Woodd, 
+Evan Karlsen, 
+Charles Aliyeva, 
+Sarah Borkowska, 
+and 
+George Pelletier 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+many-eyed
+ secret
+ at the 
+Geometric 
+city
+.
+On the way, 
+they 
+stumbled upon 
+an 
+invisible
+ hedge
+.
+After 
+a triumphant 
+exertion
+, they 
+crossed
+ the 
+hedge
+.
+Charles Aliyeva
+ found 
+Ornate Belt of Brilliance
+!
+They 
+arrived at the 
+Geometric
+ city
+, where 
+they 
+stumbled upon 
+a 
+many-eyed
+ secret
+.
+After 
+a challenging 
+mission
+, they 
+grabbed
+ the 
+secret
+.
+Yuukou Woodd
+ found 
+Studded Leather Gloves
+!
+Yuukou Woodd
+ found 
+Divine Slippers of Perfection
+!
+Charles Aliyeva
+ now has 
+trauma
+!
+Charles Aliyeva
+ was stabbed in the torso.
+George Pelletier
+ now has 
+elegance
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Yvanna Mintz, 
+Adelbert da Probst, 
+Chad Schmidt, 
+Rasmus Mikulanc the Impaler, 
+and 
+Ambrogino Lopez 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+decrepit
+ priest
+ at the 
+Geometric 
+valley
+.
+Next, 
+they 
+snuck up on 
+a 
+lightless
+ elemental
+.
+After 
+a hard-earned 
+stand off
+, they 
+passed by
+ the 
+elemental
+.
+Chad Schmidt
+ had her arm crushed.
+Ambrogino Lopez
+ found 
+Wool Gloves
+!
+They 
+arrived at the 
+Geometric
+ valley
+, where 
+they 
+were confronted by 
+a 
+decrepit
+ priest
+.
+After 
+a challenging 
+introduction
+, they 
+gained favor with
+ the 
+priest
+.
+Yvanna Mintz
+ now has 
+elegance
+!
+Ambrogino Lopez
+ learned 
+Arcane Arts
+!
+Ambrogino Lopez
+ found 
+Grimoire
+!
+Ambrogino Lopez
+ learned 
+Portraiture
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Chad Gresham, 
+Amou Okwuoma, 
+Cathy Okwuoma, 
+Jan Plain, 
+and 
+Helga Karlsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+many-eyed
+ maze
+ at the 
+Red 
+crypt
+.
+During the journey, 
+they 
+were ambushed by 
+some 
+invisible
+ brigands
+.
+After 
+a fraught 
+battle
+, they 
+defeated
+ the 
+brigands
+.
+Chad Gresham
+ now has 
+aggressive impulses
+!
+Jan Plain
+ found 
+"Soul Glow" Ornate Gauntlets of Detection
+!
+They 
+arrived at the 
+Red
+ crypt
+, where 
+they 
+were confronted with 
+a 
+many-eyed
+ maze
+.
+After 
+a testing 
+journey
+, they 
+completely mapped out
+ the 
+maze
+.
+Helga Karlsen 
+used their 
+Archery 
+skills!
+Chad Gresham
+ had their arm crushed.
+Amou Okwuoma
+ found 
+Scimitar
+!
+Helga Karlsen
+ dislocated their shoulder.
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-3 
+Darfin Okwuoma
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Zefram Amsel, 
+Betty Biddercombe, 
+Barbara Gousse, 
+Karl Zhu, 
+and 
+Darfin Okwuoma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+voracious
+, 
+deathly
+ prisoner
+ "Asla-Kratom Hunter"
+ at the 
+Red 
+market
+.
+While traveling, 
+they 
+stumbled upon 
+an 
+invisible
+ canyon
+.
+After 
+a trying 
+exertion
+, they 
+traversed
+ the 
+canyon
+.
+Zefram Amsel
+ found 
+Pendant
+!
+Betty Biddercombe
+ suffered slash wounds.
+Barbara Gousse
+ now has 
+anxiety
+!
+In search of the goal, 
+they 
+were confronted with 
+a 
+succulent
+, luminous
+ canyon
+.
+After 
+an easy 
+trek
+, they 
+crossed
+ the 
+canyon
+.
+Karl Zhu 
+used his 
+Baking 
+skills!
+Zefram Amsel
+ learned 
+Horsemanship
+!
+Barbara Gousse
+ dislocated her shoulder.
+Barbara Gousse
+ found 
+Linen Sash
+!
+Karl Zhu
+ found 
+Platinum Ring of Vitriol
+!
+Before reaching the destination, 
+they 
+were blocked by 
+the 
+violent
+, unsettling
+ waste
+ "Mighty Osprin"
+.
+After 
+a trying 
+trek
+, they 
+crossed
+ the 
+waste
+.
+Zefram Amsel
+ found 
+Studded Leather Armor
+!
+Betty Biddercombe
+ found 
+Demonhide Boots
+!
+Betty Biddercombe
+ now has 
+aggressive impulses
+!
+Barbara Gousse
+ found 
+Silk Robe
+!
+Darfin Okwuoma
+ offered 
+Ring Mail
+to the Grelvisanth Volume.
+Darfin Okwuoma
+ got fried nerves.
+Darfin Okwuoma
+ bruised her ribs.
+On the road there, 
+they 
+were confronted with 
+the 
+voracious
+, cursed
+ cliff
+ "Edible Osprin"
+.
+After 
+a grueling 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Zefram Amsel
+ now has 
+gambling addiction
+!
+Betty Biddercombe
+ found 
+Amulet
+!
+Barbara Gousse
+ found 
+Grimoire
+!
+Karl Zhu
+ now has 
+anxiety
+!
+Karl Zhu
+ found 
+"Hypnotic Whisper" Ornate Greaves of Fury
+!
+Darfin Okwuoma
+ broke her leg.
+Darfin Okwuoma
+ was knocked out.
+They 
+arrived at the 
+Red
+ market
+, where 
+they 
+were blocked by 
+the 
+voracious
+, deathly
+ prisoner
+ "Asla-Kratom Hunter"
+.
+After 
+a trying 
+infiltration
+, they 
+acquired
+ the 
+prisoner
+.
+Karl Zhu 
+used his 
+Baking 
+skills!
+Zefram Amsel
+ found 
+Necklace
+!
+Zefram Amsel
+ now has 
+a prosthetic arm
+!
+Betty Biddercombe
+ got fried nerves.
+Karl Zhu
+ had his arm crushed.
+Karl Zhu
+ got blasted eardrums.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Jonas Huxley, 
+Rita Chibugo, 
+Gradasso Benes the Ape, 
+Empress Ulrich Mailhot, 
+and 
+Sam Davis 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+decrepit
+, 
+magical
+ doctor
+ "Pillskin Ulula"
+ at the 
+Red 
+pass
+.
+Next, 
+they 
+snuck up on 
+a 
+violent
+ tunnel dweller
+.
+After 
+a hard-earned 
+stand off
+, they 
+moved on from
+ the 
+tunnel dweller
+.
+Rita Chibugo
+ found 
+Silver Ring
+!
+Gradasso Benes the Ape
+ was cursed.
+After going some distance, 
+they 
+discovered 
+an 
+entrancing
+, ferocious
+ locked gate
+.
+After 
+a hard-earned 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Jonas Huxley
+ dislocated her shoulder.
+Rita Chibugo
+ now has 
+a peg leg
+!
+Gradasso Benes the Ape
+ found 
+Grimoire
+!
+Empress Ulrich Mailhot
+ broke his leg.
+Sam Davis
+ now has 
+gambling addiction
+!
+Sam Davis
+ was frightened half to death.
+Sam Davis
+ died.
+After going some distance, 
+they 
+met 
+the 
+sharp
+, fearsome
+ elemental
+ "Yule Hunter"
+.
+After 
+a rough 
+stand off
+, they 
+were defeated by
+ the 
+elemental
+.
+Jonas Huxley
+ now has 
+monsterphobia
+!
+Jonas Huxley
+ learned 
+Ropework
+!
+Rita Chibugo
+ found 
+Sash
+!
+Rita Chibugo
+ broke her leg.
+Gradasso Benes the Ape
+ had his confidence shaken.
+Gradasso Benes the Ape
+ had his confidence shaken.
+Gradasso Benes the Ape
+ got blasted eardrums.
+Empress Ulrich Mailhot
+ got fried nerves.
+Empress Ulrich Mailhot
+ had his arm crushed.
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+Sam Davis
+ now has 
+anxiety
+!
+nextUpdateTime: -1
+STORY 3-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Ebony Bazhenov, 
+Dennis mons Zhu, 
+Zeniya Blau, 
+Yuukou Woodd, 
+and 
+Raff Bazhenov 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+invisible
+, 
+magical
+ dunes
+ "Melifluent Osprin"
+ at the 
+Darshish 
+village
+.
+During the journey, 
+they 
+stumbled upon 
+a 
+lightless
+ hedge
+.
+After 
+a breezy 
+trek
+, they 
+traversed
+ the 
+hedge
+.
+Ebony Bazhenov
+ learned 
+Haberdashery
+!
+Raff Bazhenov
+ found 
+Amulet
+!
+While traveling, 
+they 
+stumbled upon 
+an 
+invisible
+, black-hearted
+ hedge
+.
+After 
+a breezy 
+trek
+, they 
+overcame
+ the 
+hedge
+.
+Ebony Bazhenov 
+used her 
+Holy Greaves
+!
+Dennis mons Zhu
+ found 
+Dragonskin Boots
+!
+Yuukou Woodd
+ found 
+Hood
+!
+Raff Bazhenov
+ broke their leg.
+Before reaching the destination, 
+they 
+were confronted by 
+the 
+succulent
+, renowned
+ tunnel dweller
+ "Mighty Clopse"
+.
+After 
+a fraught 
+negotiation
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Ebony Bazhenov 
+used her 
+Baking 
+skills!
+Ebony Bazhenov
+ learned 
+Deception
+!
+Dennis mons Zhu
+ found 
+Chain Mail of Fury
+!
+Dennis mons Zhu
+ found 
+Plate Mail
+!
+Zeniya Blau
+ now has 
+quick-wit
+!
+Yuukou Woodd
+ found 
+Platinum Ring of Detection
+!
+Raff Bazhenov
+ found 
+Ornate Helm
+!
+Raff Bazhenov
+ had their confidence shaken.
+In search of the goal, 
+they 
+were blocked by 
+the 
+voracious
+, magical
+ hedge
+ "Edible Ambusher"
+.
+After 
+a hard-earned 
+attempt
+, they 
+overcame
+ the 
+hedge
+.
+Ebony Bazhenov 
+used her 
+Baking 
+skills!
+Ebony Bazhenov
+ now has 
+a peg leg
+!
+Dennis mons Zhu
+ learned 
+Marketing
+!
+Dennis mons Zhu
+ had his arm crushed.
+Zeniya Blau
+ broke his leg.
+Yuukou Woodd
+ dislocated his shoulder.
+Yuukou Woodd
+ died.
+Raff Bazhenov
+ was cursed.
+Raff Bazhenov
+ was knocked out.
+They 
+arrived at the 
+Darshish
+ village
+, where 
+they 
+were confronted with 
+the 
+invisible
+, magical
+ dunes
+ "Melifluent Osprin"
+.
+After 
+a trying 
+reconnoiter
+, they 
+completely mapped out
+ the 
+dunes
+.
+Ebony Bazhenov
+ had her arm crushed.
+Dennis mons Zhu
+ learned 
+Navigation
+!
+Zeniya Blau
+ learned 
+Deception
+!
+Zeniya Blau
+ was frightened half to death.
+Zeniya Blau
+ now has 
+monsterphobia
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-1 
+Jiri Ranth
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Chad Schmidt, 
+Adelbert da Probst, 
+Chinonyelum Wintermute, 
+Jiri Ranth, 
+and 
+Mohammed Amsel 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+, 
+hideous
+ relic
+ at the 
+Craven 
+city
+.
+After going some distance, 
+they 
+snuck up on 
+a 
+sharp
+ tunnel dweller
+.
+After 
+a misjudged 
+contest
+, they 
+were defeated by
+ the 
+tunnel dweller
+.
+Adelbert da Probst
+ got fried nerves.
+Chinonyelum Wintermute
+ was stabbed in the torso.
+Jiri Ranth
+ suffered slash wounds.
+Mohammed Amsel
+ learned 
+Swimming
+!
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Jan Plain, 
+Kerstin Egede, 
+Amou Okwuoma, 
+Helga Karlsen, 
+and 
+Cathy Okwuoma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+entrancing
+, 
+magical
+ hidden passage
+ at the 
+Red 
+city
+.
+Pushing forward, 
+they 
+were ambushed by 
+an 
+entrancing
+ beast
+.
+After 
+an epic 
+contest
+, they 
+moved on from
+ the 
+beast
+.
+Helga Karlsen
+ got blasted eardrums.
+Cathy Okwuoma
+ got fried nerves.
+Cathy Okwuoma
+ was frightened half to death.
+Venturing forth, 
+they 
+met 
+a 
+lightless
+, fearsome
+ bird folk
+.
+After 
+a breezy 
+battle
+, they 
+moved on from
+ the 
+bird folk
+.
+Jan Plain
+ found 
+Studded Leather Boots
+!
+Kerstin Egede
+ now has 
+deafness
+!
+Amou Okwuoma
+ learned 
+Acrobatics
+!
+Helga Karlsen
+ found 
+Sash
+!
+Cathy Okwuoma
+ suffered slash wounds.
+Cathy Okwuoma
+ was knocked out.
+They 
+arrived at the 
+Red
+ city
+, where 
+they 
+stumbled upon 
+an 
+entrancing
+, magical
+ hidden passage
+.
+After 
+a grueling 
+journey
+, they 
+successfully navigated
+ the 
+hidden passage
+.
+Jan Plain
+ found 
+Linen Sash of Detection
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Betty Biddercombe, 
+Darfin Okwuoma, 
+Gradasso Yearwood, 
+Eva Nystrom, 
+and 
+Karl Zhu 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+sharp
+ secret
+ at the 
+Macrosign 
+sea
+.
+Next, 
+they 
+were confronted with 
+a 
+lightless
+ waste
+.
+After 
+a grueling 
+trek
+, they 
+overcame
+ the 
+waste
+.
+Gradasso Yearwood
+ was frightened half to death.
+Karl Zhu
+ now has 
+elegance
+!
+Karl Zhu
+ learned 
+Ancient Lore
+!
+Karl Zhu
+ died.
+They 
+arrived at the 
+Macrosign
+ sea
+, where 
+they 
+were blocked by 
+a 
+sharp
+ secret
+.
+After 
+a testing 
+infiltration
+, they 
+grabbed
+ the 
+secret
+.
+Gradasso Yearwood 
+used their 
+Swimming 
+skills!
+Betty Biddercombe
+ found 
+Heavy Gloves
+!
+Gradasso Yearwood
+ now has 
+unluckiness
+!
+Eva Nystrom
+ bruised their ribs.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-4 
+Eva Elizondo
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Elisabeth Sandheaver, 
+Eva Elizondo, 
+Helga Frederiksen, 
+Jonas Huxley, 
+and 
+Hana Araujo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+sharp
+, 
+irresistible
+ egregore
+ "Blistered Ulula"
+ at the 
+Can-ton 
+desert
+.
+Before reaching the destination, 
+they 
+were confronted with 
+a 
+voracious
+ waste
+.
+After 
+a triumphant 
+trek
+, they 
+traversed
+ the 
+waste
+.
+Elisabeth Sandheaver
+ broke their leg.
+Elisabeth Sandheaver
+ found 
+Leather Cap
+!
+Hana Araujo
+ now has 
+a prosthetic arm
+!
+Before reaching the destination, 
+they 
+stumbled upon 
+an 
+entrancing
+, renowned
+ locked gate
+.
+After 
+a fraught 
+hundred guesses
+, they 
+solved
+ the 
+locked gate
+.
+Helga Frederiksen
+ broke his leg.
+Jonas Huxley
+ was frightened half to death.
+Hana Araujo
+ learned 
+Horsemanship
+!
+While investigating the area, 
+they 
+met 
+the 
+succulent
+, magical
+ elemental
+ "Mighty Nail"
+.
+After 
+a challenging 
+stand off
+, they 
+moved on from
+ the 
+elemental
+.
+Helga Frederiksen
+ suffered slash wounds.
+Jonas Huxley
+ found 
+"Brimstone Grasp" Demon Crown of Brilliance +1
+!
+Jonas Huxley
+ found 
+Gauntlets
+!
+Hana Araujo
+ found 
+Cap
+!
+They 
+arrived at the 
+Can-ton
+ desert
+, where 
+they 
+discovered 
+the 
+sharp
+, irresistible
+ egregore
+ "Blistered Ulula"
+.
+After 
+a fraught 
+mission
+, they 
+acquired
+ the 
+egregore
+.
+Elisabeth Sandheaver
+ suffered slash wounds.
+Helga Frederiksen
+ got fried nerves.
+Helga Frederiksen
+ was knocked out.
+Jonas Huxley
+ got blasted eardrums.
+Hana Araujo
+ found 
+Falchion
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Raff Bazhenov, 
+Zeniya Blau, 
+Ambrogino Ledger, 
+Ebony Bazhenov, 
+and 
+Archibaldo Woodd 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+diurnal
+ caravan
+ at the 
+Darshish 
+summit
+.
+Next, 
+they 
+stumbled upon 
+a 
+decrepit
+ locked gate
+.
+After 
+a hard-earned 
+hundred guesses
+, they 
+solved
+ the 
+locked gate
+.
+Ambrogino Ledger
+ found 
+Mace
+!
+They 
+arrived at the 
+Darshish
+ summit
+, where 
+they 
+stumbled upon 
+a 
+diurnal
+ caravan
+.
+After 
+a challenging 
+attempt
+, they 
+protected
+ the 
+caravan
+.
+Zeniya Blau
+ bruised his ribs.
+Ambrogino Ledger
+ found 
+Bronze Ring
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Rasmus Ledger, 
+Rasmus Mikulanc the Impaler, 
+Ambrogino Lopez, 
+Mira Gannon, 
+and 
+Yvanna Mintz 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+crepuscular
+, 
+jovial
+ citadel
+ at the 
+Red 
+valley
+.
+Following the path, 
+they 
+stumbled upon 
+a 
+decrepit
+ waste
+.
+After 
+a testing 
+trek
+, they 
+crossed
+ the 
+waste
+.
+Rasmus Ledger
+ found 
+"Gloom Bite" Silk Sash of Reflection +1
+!
+Rasmus Mikulanc the Impaler
+ found 
+Ornate Helm
+!
+Ambrogino Lopez
+ had her arm crushed.
+Mira Gannon
+ was stabbed in the torso.
+Yvanna Mintz
+ found 
+Platinum Ring
+!
+Soon enough, 
+they 
+were ambushed by 
+some 
+violent
+, fearsome
+ brigands
+.
+After 
+a strenuous 
+negotiation
+, they 
+moved on from
+ the 
+brigands
+.
+Rasmus Ledger
+ found 
+Dragonskin Armor
+!
+Rasmus Mikulanc the Impaler
+ suffered slash wounds.
+Ambrogino Lopez
+ found 
+Chain Gloves
+!
+Ambrogino Lopez
+ now has 
+greed
+!
+Mira Gannon
+ found 
+Book
+!
+Yvanna Mintz
+ found 
+"Storm Roar" Gold Ring of Perfection
+!
+They 
+arrived at the 
+Red
+ valley
+, where 
+they 
+were blocked by 
+a 
+crepuscular
+, jovial
+ citadel
+.
+After 
+a challenging 
+overwatch
+, they 
+safe-guarded
+ the 
+citadel
+.
+Rasmus Ledger
+ now has 
+optimistism
+!
+Rasmus Ledger
+ had their confidence shaken.
+Rasmus Ledger
+ bruised their ribs.
+Rasmus Mikulanc the Impaler
+ found 
+Amulet of Rage
+!
+Mira Gannon
+ bruised his ribs.
+Mira Gannon
+ was cursed.
+Yvanna Mintz
+ was frightened half to death.
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+Mira Gannon
+ now has 
+cowardice
+!
+nextUpdateTime: -1
+STORY 4-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Helga Lothran, 
+Chad Gresham, 
+Jan Plain, 
+Lord Quintus Vespertine, 
+and 
+Helga Karlsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+, 
+empowered
+ prisoner
+ at the 
+Headless 
+pass
+.
+In search of the goal, 
+they 
+were blocked by 
+a 
+crepuscular
+ cliff
+.
+After 
+a strenuous 
+trek
+, they 
+overcame
+ the 
+cliff
+.
+Helga Lothran
+ found 
+Leather Belt
+!
+Before reaching the destination, 
+they 
+were confronted by 
+a 
+sharp
+, unspeakable
+ beast
+.
+After 
+an epic 
+negotiation
+, they 
+parted ways with
+ the 
+beast
+.
+Helga Lothran
+ learned 
+Investigation
+!
+Chad Gresham
+ found 
+Holy Chestplate
+!
+Jan Plain
+ was cursed.
+Jan Plain
+ was cursed.
+Lord Quintus Vespertine
+ found 
+Amulet
+!
+Lord Quintus Vespertine
+ was frightened half to death.
+Helga Karlsen
+ was stabbed in the torso.
+They 
+arrived at the 
+Headless
+ pass
+, where 
+they 
+stumbled upon 
+a 
+decrepit
+, empowered
+ prisoner
+.
+After 
+a trying 
+infiltration
+, they 
+returned with
+ the 
+prisoner
+.
+Helga Lothran
+ now has 
+gambling addiction
+!
+Chad Gresham
+ had their arm crushed.
+Jan Plain
+ had their confidence shaken.
+Jan Plain
+ was knocked out.
+Lord Quintus Vespertine
+ found 
+"Tempest Shout" Silk Sash of Detection +1
+!
+Helga Karlsen
+ found 
+Studded Leather Gloves
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Barbara Gousse, 
+King Malok Cromwell, 
+Eva Nystrom, 
+James Probst, 
+and 
+Master Ambrogino Mailhot 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+sharp
+, 
+luminous
+ doctor
+ at the 
+Headless 
+market
+.
+While investigating the area, 
+they 
+discovered 
+a 
+many-eyed
+ canyon
+.
+After 
+an epic 
+trek
+, they 
+traversed
+ the 
+canyon
+.
+Barbara Gousse
+ learned 
+Ancient Lore
+!
+King Malok Cromwell
+ found 
+Leather Gloves
+!
+Eva Nystrom
+ found 
+Platinum Ring of Detection
+!
+James Probst
+ found 
+Divine Hood
+!
+On the road there, 
+they 
+met 
+an 
+entrancing
+, hideous
+ bird folk
+.
+After 
+a breezy 
+negotiation
+, they 
+passed by
+ the 
+bird folk
+.
+Eva Nystrom
+ had their arm crushed.
+Eva Nystrom
+ found 
+Silk Hood of Protection
+!
+They 
+arrived at the 
+Headless
+ market
+, where 
+they 
+were confronted by 
+a 
+sharp
+, luminous
+ doctor
+.
+After 
+a fraught 
+conversation
+, they 
+gained favor with
+ the 
+doctor
+.
+Barbara Gousse
+ learned 
+Portraiture
+!
+King Malok Cromwell
+ found 
+Divine Robe of Giants
+!
+Eva Nystrom
+ found 
+"Pain Whisper" Silver Ring of Anger
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-4 
+Sam Davis
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Gradasso Benes the Ape, 
+Daealla Fellowes, 
+Jonas Huxley, 
+Sam Davis, 
+and 
+James Pinette 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+entrancing
+, 
+empowered
+ swarm
+ "Mighty Ulula"
+ at the 
+Can-ton 
+village
+.
+While investigating the area, 
+they 
+were blocked by 
+a 
+decrepit
+ cliff
+.
+After 
+a breezy 
+trek
+, they 
+traversed
+ the 
+cliff
+.
+Daealla Fellowes
+ found 
+Bronze Ring
+!
+Daealla Fellowes
+ found 
+Hard Leather Armor
+!
+Sam Davis
+ offered 
+Wand
+to the Grelvisanth Volume.
+While investigating the area, 
+they 
+were blocked by 
+a 
+nocturnal
+, renowned
+ puzzlebox
+.
+After 
+a triumphant 
+hundred guesses
+, they 
+figured out
+ the 
+puzzlebox
+.
+Gradasso Benes the Ape
+ found 
+Dragonskin Belt of Detection
+!
+Daealla Fellowes
+ now has 
+deafness
+!
+Sam Davis
+ was stabbed in the torso.
+James Pinette
+ bruised his ribs.
+James Pinette
+ found 
+Robe
+!
+James Pinette
+ learned 
+Marketing
+!
+Next, 
+they 
+were confronted by 
+the 
+succulent
+, deathly
+ brigands
+ "Vivisected Clopse"
+.
+After 
+an easy 
+stand off
+, they 
+moved on from
+ the 
+brigands
+.
+Daealla Fellowes 
+used her 
+Baking 
+skills!
+Gradasso Benes the Ape
+ learned 
+Politics
+!
+Daealla Fellowes
+ got blasted eardrums.
+Daealla Fellowes
+ found 
+Gold Ring
+!
+Jonas Huxley
+ found 
+Mesh Belt of Titans
+!
+Sam Davis
+ learned 
+Swordskill
+!
+James Pinette
+ found 
+Chain Gloves
+!
+They 
+arrived at the 
+Can-ton
+ village
+, where 
+they 
+snuck up on 
+the 
+entrancing
+, empowered
+ swarm
+ "Mighty Ulula"
+.
+After 
+an epic 
+contest
+, they 
+conquered
+ the 
+swarm
+.
+Gradasso Benes the Ape
+ suffered slash wounds.
+Daealla Fellowes
+ found 
+War Cap
+!
+Jonas Huxley
+ found 
+Plate Mail of Detection
+!
+Sam Davis
+ offered 
+Ornate Gauntlets
+to the Grelvisanth Volume.
+Sam Davis
+ got fried nerves.
+James Pinette
+ learned 
+Archeology
+!
+James Pinette
+ suffered slash wounds.
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 5-0 
+Yuukou Woodd
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Earl Dennis Enyinnaya, 
+Yuukou Woodd, 
+Dennis mons Zhu, 
+Stanislaus Borkowska, 
+and 
+Filippa mewny Nakamoto 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+, 
+unsettling
+ egregore
+ "Asla-Kratom Clopse"
+ at the 
+Red 
+valley
+.
+nextUpdateTime: 1653597471
+STORY 5-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Mohammed Amsel, 
+Yvanna Mintz, 
+Mira Gannon, 
+Ambrogino Lopez, 
+and 
+Chad Schmidt 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+crepuscular
+, 
+fearsome
+ priest
+ "Edible Fecund"
+ at the 
+Geometric 
+crypt
+.
+nextUpdateTime: 1653597505
+STORY 5-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Ebony October, 
+Caspian Torma, 
+Amou Okwuoma, 
+Lord Quintus Vespertine, 
+and 
+Gradasso Udobata 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+succulent
+ wyrm
+ at the 
+Geometric 
+market
+.
+nextUpdateTime: 1653597638
+STORY 5-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+King Malok Cromwell, 
+Jenci jai Yellen, 
+Eva Nystrom, 
+James Probst, 
+and 
+Zefram Amsel 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+lightless
+, 
+unspeakable
+ priest
+ at the 
+Red 
+village
+.
+nextUpdateTime: 1653597555
+STORY 5-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Elisabeth Sandheaver, 
+Angor Leehy, 
+Rita Chibugo, 
+Daealla Fellowes, 
+and 
+Eva Elizondo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+decrepit
+ tome
+ at the 
+Red 
+sea
+.
+nextUpdateTime: 1653597638

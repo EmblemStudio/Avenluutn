@@ -370,7 +370,7 @@ export function makeTriggerText(
 export function makeResurrectionText(adventurer: Adventurer): LabeledString[] {
   return [
     { string: `${nameString(adventurer.name)}`, label: Label.adventurerName, entityId: adventurer.id },
-    { string: `was resurrected as a thrall of the `, label: Label.conjunctive },
+    { string: ` was resurrected as a thrall of the `, label: Label.conjunctive },
     { string: `Grelvisanth Volume`, label: Label.conjunctive },
     { string: `!`, label: Label.conjunctive }
   ]

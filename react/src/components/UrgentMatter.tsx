@@ -7,7 +7,10 @@ import VoteBox from "./VoteBox"
 import StoryAuction from "./StoryAuction"
 import JoinTheDiscord from './JoinTheDiscord'
 import LoadingAnimation from "./LoadingAnimation"
+import LabeledString from "./LabeledString"
 import useVotes from "../hooks/useVotes"
+import { Label, LabeledString as LS } from "../../../scripts/src"
+import { chapterNotifications } from "../chapterNotifications"
 
 interface UrgentMatterProps {
   publisher: Contract | string;
@@ -61,6 +64,29 @@ function urgentMatterContent(
 ) {
   if (um.matter !== undefined) {
     switch (um.type) {
+      case MatterType.notifications:
+        return (
+          <div className="block">
+            {(um.matter as LS[][][]).map(lsaa => {
+              return (
+                <div className="block">
+                  {lsaa.map(lsa => {
+                    let storyIndex = 0
+                    lsa.forEach(ls => {
+                      if (ls.label === Label.guildName && ls.entityId !== undefined)
+                        storyIndex = ls.entityId
+                    })
+                    return (
+                      <div>
+                        {lsa.map(ls => <LabeledString labeledString={ls} storyIndex={storyIndex} />)}
+                      </div>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
+        )
       case MatterType.upcomingVote:
         return (
           <VoteBox vote={um.matter as Vote} />
@@ -101,6 +127,7 @@ function urgentMatterContent(
 }
 
 enum MatterType {
+  "notifications",
   "upcomingVote",
   "inProgressVote",
   "inProgressStory",
@@ -111,7 +138,7 @@ enum MatterType {
 interface UrgentMatter {
   type: MatterType;
   voteIndex?: number;
-  matter?: Story | Vote
+  matter?: LS[][][] | Story | Vote
 }
 
 
@@ -123,7 +150,8 @@ interface UrgentMatter {
  * 1b. upcoming votees
  * 2. stories in progress
  * 3. stories on auction
- * 3. Joining the discord in the Embassy lounge
+ * 4. chapter notifications
+ * 5. joining the discord in the Embassy lounge
  */
 
 function findUrgentMatter(narrator: Narrator, votes?: CategorizedVotes): UrgentMatter {
@@ -159,10 +187,12 @@ function findUrgentMatter(narrator: Narrator, votes?: CategorizedVotes): UrgentM
       }
     }
   }
+  if (chapterNotifications.length > 0) {
+    um.type = MatterType.notifications
+    um.matter = chapterNotifications
+  }
   if (um.matter === undefined) {
-    um = {
-      type: MatterType.lounge
-    }
+    um.type = MatterType.lounge
   }
   return um
 }

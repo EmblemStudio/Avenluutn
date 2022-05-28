@@ -1,0 +1,2384 @@
+STORY 0-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Orion Mintz, 
+Ebony Bazhenov, 
+Filippa mewny Nakamoto, 
+and 
+Charles Aliyeva 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+diurnal
+ swarm
+ at the 
+Craven 
+valley
+.
+Venturing forth, 
+they 
+discovered 
+a 
+nocturnal
+ puzzlebox
+.
+After 
+a strenuous 
+attempt
+, they 
+solved
+ the 
+puzzlebox
+.
+Orion Mintz
+ learned 
+Portraiture
+!
+Filippa mewny Nakamoto
+ now has 
+great destiny
+!
+They 
+arrived at the 
+Craven
+ valley
+, where 
+they 
+snuck up on 
+a 
+diurnal
+ swarm
+.
+After 
+a testing 
+contest
+, they 
+bested
+ the 
+swarm
+.
+Orion Mintz
+ found 
+Divine Hood
+!
+Ebony Bazhenov
+ dislocated her shoulder.
+Filippa mewny Nakamoto
+ was stabbed in the torso.
+Filippa mewny Nakamoto
+ found 
+Leather Boots
+!
+Charles Aliyeva
+ found 
+Leather Gloves
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Chinonyelum Kodou, 
+Chinonyelum Wintermute, 
+Jiri Ranth, 
+and 
+Rasmus Mikulanc the Impaler 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+, 
+renowned
+ doctor
+ at the 
+Boreal 
+desert
+.
+Next, 
+they 
+were confronted by 
+some 
+sharp
+ brigands
+.
+After 
+a hard-earned 
+battle
+, they 
+defeated
+ the 
+brigands
+.
+Chinonyelum Wintermute
+ dislocated his shoulder.
+Rasmus Mikulanc the Impaler
+ found 
+Hard Leather Boots
+!
+During the journey, 
+they 
+were confronted with 
+a 
+nocturnal
+, irresistible
+ cliff
+.
+After 
+a fraught 
+exertion
+, they 
+overcame
+ the 
+cliff
+.
+Rasmus Mikulanc the Impaler
+ bruised her ribs.
+They 
+arrived at the 
+Boreal
+ desert
+, where 
+they 
+came across 
+a 
+nocturnal
+, renowned
+ doctor
+.
+After 
+a challenging 
+audience
+, they 
+befriended
+ the 
+doctor
+.
+Chinonyelum Kodou
+ was stabbed in the torso.
+Chinonyelum Wintermute
+ bruised his ribs.
+Chinonyelum Wintermute
+ broke his leg.
+Jiri Ranth
+ found 
+Cap
+!
+Jiri Ranth
+ was cursed.
+Rasmus Mikulanc the Impaler
+ now has 
+monsterphobia
+!
+Rasmus Mikulanc the Impaler
+ found 
+"Fate Sun" Platinum Ring of Perfection
+!
+Rasmus Mikulanc the Impaler
+ learned 
+Swordskill
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Lord Quintus Vespertine, 
+Helga Lothran, 
+Jan Plain, 
+and 
+Gradasso Udobata 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+invisible
+ wyrm
+ at the 
+Craven 
+crypt
+.
+In transit, 
+they 
+stumbled upon 
+a 
+crepuscular
+ dead end
+.
+After 
+a trying 
+attempt
+, they 
+solved
+ the 
+dead end
+.
+Lord Quintus Vespertine
+ broke his leg.
+Lord Quintus Vespertine
+ found 
+Club
+!
+Helga Lothran
+ found 
+Ornate Greaves of Brilliance
+!
+Jan Plain
+ found 
+Leather Belt
+!
+They 
+arrived at the 
+Craven
+ crypt
+, where 
+they 
+were confronted by 
+an 
+invisible
+ wyrm
+.
+After 
+a powerful 
+struggle
+, they 
+overpowered
+ the 
+wyrm
+.
+Lord Quintus Vespertine
+ now has 
+weakness
+!
+Gradasso Udobata
+ was frightened half to death.
+The adventurers 
+returned triumphantly to 
+Hall of Heads
+, basking in glory.
+nextUpdateTime: -1
+STORY 0-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Jenci jai Yellen, 
+Zefram Amsel, 
+Tyler Egede, 
+and 
+King Malok Cromwell 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+lightless
+ mindscape
+ at the 
+Can-ton 
+sea
+.
+Following the path, 
+they 
+had to solve 
+a 
+succulent
+ maze
+.
+After 
+a hard-earned 
+attempt
+, they 
+figured out
+ the 
+maze
+.
+They 
+arrived at the 
+Can-ton
+ sea
+, where 
+they 
+were blocked by 
+a 
+lightless
+ mindscape
+.
+After 
+a challenging 
+overwatch
+, they 
+defended
+ the 
+mindscape
+.
+Jenci jai Yellen
+ found 
+"Foe Shout" Great Helm of Detection +1
+!
+King Malok Cromwell
+ now has 
+elegance
+!
+King Malok Cromwell
+ got fried nerves.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 0-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Angor Leehy, 
+Rita Chibugo, 
+Hana Araujo, 
+and 
+Rita Chibugo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+diurnal
+ psychopomp
+ at the 
+Macrosign 
+desert
+.
+In transit, 
+they 
+were blocked by 
+a 
+sharp
+ dead end
+.
+After 
+a trying 
+attempt
+, they 
+found a way through
+ the 
+dead end
+.
+Angor Leehy
+ had their arm crushed.
+Rita Chibugo
+ found 
+"Dragon Sun" Shirt of Fury
+!
+Rita Chibugo
+ found 
+Divine Robe
+!
+Hana Araujo
+ found 
+Necklace of Fury
+!
+Rita Chibugo
+ bruised her ribs.
+They 
+arrived at the 
+Macrosign
+ desert
+, where 
+they 
+were confronted by 
+a 
+diurnal
+ psychopomp
+.
+After 
+a hard-earned 
+contest
+, they 
+conquered
+ the 
+psychopomp
+.
+Rita Chibugo 
+used her 
+Horsemanship 
+skills!
+Hana Araujo
+ was frightened half to death.
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Orion Mintz, 
+Ambrogino Ledger, 
+and 
+Yuukou Woodd 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+ citadel
+ at the 
+Boreal 
+sea
+.
+Next, 
+they 
+stumbled upon 
+a 
+voracious
+ canyon
+.
+After 
+a bungled 
+exertion
+, they 
+failed to traverse
+ the 
+canyon
+.
+Yuukou Woodd
+ learned 
+Politics
+!
+Yuukou Woodd
+ now has 
+cowardice
+!
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Chinonyelum Kodou, 
+Yvanna Mintz, 
+and 
+Chinonyelum Wintermute 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+many-eyed
+, 
+irresistible
+ fiend
+ at the 
+Jarred 
+sea
+.
+Before reaching the destination, 
+they 
+discovered 
+a 
+many-eyed
+ locked gate
+.
+After 
+a challenging 
+attempt
+, they 
+found a way through
+ the 
+locked gate
+.
+After going some distance, 
+they 
+were blocked by 
+an 
+entrancing
+, magical
+ maze
+.
+After 
+a hard-earned 
+attempt
+, they 
+found a way through
+ the 
+maze
+.
+Chinonyelum Wintermute 
+used his 
+Arcane Arts 
+skills!
+Chinonyelum Kodou
+ had their confidence shaken.
+Chinonyelum Kodou
+ found 
+"Dusk Root" Studded Leather Gloves of Rage
+!
+They 
+arrived at the 
+Jarred
+ sea
+, where 
+they 
+were ambushed by 
+a 
+many-eyed
+, irresistible
+ fiend
+.
+After 
+a challenging 
+conversation
+, they 
+gained favor with
+ the 
+fiend
+.
+Chinonyelum Wintermute 
+used his 
+Archery 
+skills!
+Chinonyelum Kodou
+ dislocated their shoulder.
+Yvanna Mintz
+ found 
+Amulet
+!
+Chinonyelum Wintermute
+ found 
+Demon Husk of the Twins
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Lord Quintus Vespertine, 
+Chad Gresham, 
+and 
+Efraim Viragh 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+lightless
+, 
+horrifying
+ ogre
+ "Indefatigable Ambusher"
+ at the 
+Darshish 
+forest
+.
+Pushing forward, 
+they 
+were confronted with 
+a 
+decrepit
+ cliff
+.
+After 
+a misguided 
+exertion
+, they 
+failed to traverse
+ the 
+cliff
+.
+Efraim Viragh
+ suffered slash wounds.
+Efraim Viragh
+ suffered slash wounds.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 1-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Karl Zhu, 
+Jenci jai Yellen, 
+and 
+Tyler Egede 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+diurnal
+, 
+irridescent
+ citadel
+ "Blistered Fecund"
+ at the 
+Darshish 
+city
+.
+Next, 
+they 
+stumbled upon 
+a 
+voracious
+ dead end
+.
+After 
+a fraught 
+brainstorm
+, they 
+found a way through
+ the 
+dead end
+.
+Jenci jai Yellen
+ now has 
+dragon obsession
+!
+Tyler Egede
+ found 
+Dragonskin Gloves
+!
+Next, 
+they 
+stumbled upon 
+a 
+succulent
+, hideous
+ river
+.
+After 
+an epic 
+attempt
+, they 
+overcame
+ the 
+river
+.
+Karl Zhu
+ had his arm crushed.
+Tyler Egede
+ found 
+Wool Sash of the Twins
+!
+In search of the goal, 
+they 
+had to solve 
+the 
+invisible
+, cursed
+ locked gate
+ "Vivisected Ambusher"
+.
+After 
+a hard-earned 
+brainstorm
+, they 
+solved
+ the 
+locked gate
+.
+Karl Zhu
+ got blasted eardrums.
+Karl Zhu
+ bruised his ribs.
+Jenci jai Yellen
+ had their arm crushed.
+Tyler Egede
+ had her arm crushed.
+Soon enough, 
+they 
+snuck up on 
+the 
+diurnal
+, horrifying
+ brigands
+ "Victorious Butcher"
+.
+After 
+a testing 
+contest
+, they 
+moved on from
+ the 
+brigands
+.
+Karl Zhu
+ dislocated his shoulder.
+Tyler Egede
+ now has 
+great destiny
+!
+They 
+arrived at the 
+Darshish
+ city
+, where 
+they 
+were blocked by 
+the 
+diurnal
+, irridescent
+ citadel
+ "Blistered Fecund"
+.
+After 
+a challenging 
+overwatch
+, they 
+protected
+ the 
+citadel
+.
+Karl Zhu 
+used his 
+Streetwise 
+skills!
+Jenci jai Yellen
+ found 
+Demon Crown
+!
+Jenci jai Yellen
+ broke their leg.
+Jenci jai Yellen
+ found 
+"Carrion Whisper" Ghost Wand of Enlightenment
+!
+Tyler Egede
+ had her confidence shaken.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 1-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Rita Chibugo, 
+Chishou Vespertine, 
+and 
+Helga Frederiksen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+entrancing
+, 
+luminous
+ psychopomp
+ "Carcosan Nail"
+ at the 
+Can-ton 
+city
+.
+While traveling, 
+they 
+were confronted with 
+a 
+voracious
+ hedge
+.
+After 
+a rough 
+attempt
+, they 
+failed to overcome
+ the 
+hedge
+.
+Rita Chibugo
+ was stabbed in the torso.
+Helga Frederiksen
+ broke his leg.
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Archibaldo Woodd, 
+Yuukou Woodd, 
+Ebony Bazhenov, 
+and 
+Orion Mintz 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+entrancing
+, 
+impossible
+ nephilim
+ "Mighty Marauder"
+ at the 
+Jarred 
+forest
+.
+Next, 
+they 
+met 
+a 
+lightless
+ elemental
+.
+After 
+a testing 
+game of wits
+, they 
+passed by
+ the 
+elemental
+.
+On the way, 
+they 
+came across 
+a 
+nocturnal
+, unspeakable
+ bird folk
+.
+After 
+a trying 
+battle
+, they 
+defeated
+ the 
+bird folk
+.
+Archibaldo Woodd
+ now has 
+martyr complex
+!
+Archibaldo Woodd
+ found 
+Necklace
+!
+Archibaldo Woodd
+ broke their leg.
+Yuukou Woodd
+ learned 
+Portraiture
+!
+On the way, 
+they 
+snuck up on 
+the 
+succulent
+, fearsome
+ bird folk
+ "Melifluent Hunter"
+.
+After 
+a challenging 
+game of wits
+, they 
+moved on from
+ the 
+bird folk
+.
+Archibaldo Woodd
+ found 
+Chronicle
+!
+Archibaldo Woodd
+ found 
+Divine Slippers
+!
+Yuukou Woodd
+ learned 
+Swimming
+!
+Yuukou Woodd
+ got fried nerves.
+Yuukou Woodd
+ learned 
+Swordskill
+!
+Ebony Bazhenov
+ bruised her ribs.
+Ebony Bazhenov
+ found 
+Shoes
+!
+Orion Mintz
+ suffered slash wounds.
+They 
+arrived at the 
+Jarred
+ forest
+, where 
+they 
+were confronted by 
+the 
+entrancing
+, impossible
+ nephilim
+ "Mighty Marauder"
+.
+After 
+an epic 
+audience
+, they 
+found common ground with
+ the 
+nephilim
+.
+Archibaldo Woodd
+ found 
+"Hypnotic Whisper" War Belt of Power
+!
+Yuukou Woodd
+ found 
+Chain Mail
+!
+Ebony Bazhenov
+ found 
+Leather Boots
+!
+Ebony Bazhenov
+ got blasted eardrums.
+Orion Mintz
+ was cursed.
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Mira Gannon, 
+Ambrogino Lopez, 
+and 
+Adelbert da Probst 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+violent
+ psychopomp
+ at the 
+Darshish 
+forest
+.
+Following the path, 
+they 
+met 
+an 
+invisible
+ bird folk
+.
+After 
+a hard-earned 
+negotiation
+, they 
+passed by
+ the 
+bird folk
+.
+Mira Gannon
+ was cursed.
+They 
+arrived at the 
+Darshish
+ forest
+, where 
+they 
+came across 
+a 
+violent
+ psychopomp
+.
+After 
+a hard-earned 
+battle
+, they 
+defeated
+ the 
+psychopomp
+.
+Mira Gannon
+ learned 
+Acrobatics
+!
+Ambrogino Lopez
+ found 
+Chain Mail
+!
+Adelbert da Probst
+ found 
+Great Helm
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Jan Plain, 
+Chad Gresham, 
+and 
+Caspian Torma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+voracious
+, 
+unspeakable
+ dunes
+ "Asla-Kratom Nail"
+ at the 
+Headless 
+forest
+.
+On the way, 
+they 
+came across 
+a 
+diurnal
+ elemental
+.
+After 
+a rough 
+contest
+, they 
+were driven back by
+ the 
+elemental
+.
+Jan Plain
+ got blasted eardrums.
+Caspian Torma
+ dislocated his shoulder.
+Caspian Torma
+ had his arm crushed.
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 2-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+King Malok Cromwell, 
+Karl Zhu, 
+and 
+Sultan Vllad Hoskinson 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+entrancing
+ swarm
+ at the 
+Craven 
+summit
+.
+Pushing forward, 
+they 
+were ambushed by 
+some 
+entrancing
+ brigands
+.
+After 
+a challenging 
+negotiation
+, they 
+defeated
+ the 
+brigands
+.
+King Malok Cromwell
+ found 
+"Eagle Bite" Silk Gloves of Perfection +1
+!
+They 
+arrived at the 
+Craven
+ summit
+, where 
+they 
+met 
+an 
+entrancing
+ swarm
+.
+After 
+a hard-earned 
+contest
+, they 
+conquered
+ the 
+swarm
+.
+King Malok Cromwell
+ was stabbed in the torso.
+Karl Zhu
+ learned 
+Swordskill
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 2-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Angor Leehy, 
+Gradasso Benes the Ape, 
+and 
+Chishou Vespertine 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+invisible
+ fiend
+ at the 
+Geometric 
+pass
+.
+After going some distance, 
+they 
+were confronted by 
+a 
+lightless
+ elemental
+.
+After 
+an epic 
+negotiation
+, they 
+passed by
+ the 
+elemental
+.
+Angor Leehy
+ now has 
+aggressive impulses
+!
+Gradasso Benes the Ape
+ was frightened half to death.
+Chishou Vespertine
+ now has 
+anxiety
+!
+They 
+arrived at the 
+Geometric
+ pass
+, where 
+they 
+were ambushed by 
+an 
+invisible
+ fiend
+.
+After 
+a bungled 
+conversation
+, they 
+annoyed
+ the 
+fiend
+.
+Chishou Vespertine 
+was hampered by their peg leg!
+Gradasso Benes the Ape
+ got fried nerves.
+Chishou Vespertine
+ was frightened half to death.
+The adventurers 
+slunk back to 
+Harcourt Smithy
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Stanislaus Borkowska, 
+Charles Aliyeva, 
+George Pelletier, 
+and 
+Yuukou Woodd 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+voracious
+, 
+irridescent
+ relic
+ "Blistered Quartzile"
+ at the 
+Headless 
+market
+.
+On the road there, 
+they 
+met 
+a 
+lightless
+ tunnel dweller
+.
+After 
+a grueling 
+contest
+, they 
+passed by
+ the 
+tunnel dweller
+.
+Stanislaus Borkowska
+ had his confidence shaken.
+Yuukou Woodd
+ found 
+Gloves
+!
+Yuukou Woodd
+ found 
+Linen Gloves of Titans
+!
+Pushing forward, 
+they 
+were blocked by 
+a 
+lightless
+, ravenous
+ maze
+.
+After 
+a fraught 
+brainstorm
+, they 
+figured out
+ the 
+maze
+.
+Stanislaus Borkowska
+ suffered slash wounds.
+Stanislaus Borkowska
+ found 
+Amulet
+!
+George Pelletier
+ dislocated their shoulder.
+Yuukou Woodd
+ broke his leg.
+In search of the goal, 
+they 
+were blocked by 
+the 
+invisible
+, magical
+ hedge
+ "Blistered Nail"
+.
+After 
+a hard-earned 
+attempt
+, they 
+traversed
+ the 
+hedge
+.
+Stanislaus Borkowska 
+used his 
+Swimming 
+skills!
+Stanislaus Borkowska
+ found 
+Dragonskin Boots
+!
+Stanislaus Borkowska
+ learned 
+Baking
+!
+Stanislaus Borkowska
+ learned 
+Ancient Lore
+!
+Charles Aliyeva
+ was frightened half to death.
+Charles Aliyeva
+ found 
+Club
+!
+George Pelletier
+ was frightened half to death.
+George Pelletier
+ found 
+Bronze Ring
+!
+George Pelletier
+ now has 
+optimistism
+!
+Yuukou Woodd
+ found 
+Pendant
+!
+They 
+arrived at the 
+Headless
+ market
+, where 
+they 
+discovered 
+the 
+voracious
+, irridescent
+ relic
+ "Blistered Quartzile"
+.
+After 
+a grueling 
+search
+, they 
+returned with
+ the 
+relic
+.
+George Pelletier
+ found 
+"Tempest Bite" Great Helm of Power +1
+!
+Yuukou Woodd
+ found 
+Brightsilk Sash
+!
+The adventurers 
+returned to 
+Zoanthropic Lodge
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Rasmus Ledger, 
+Adelbert da Probst, 
+Jiri Ranth, 
+and 
+Rasmus Mikulanc the Impaler 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+sharp
+, 
+irridescent
+ maze
+ at the 
+Macrosign 
+valley
+.
+Before reaching the destination, 
+they 
+were blocked by 
+a 
+sharp
+ locked gate
+.
+After 
+a hard-earned 
+attempt
+, they 
+figured out
+ the 
+locked gate
+.
+Rasmus Ledger
+ had their confidence shaken.
+Jiri Ranth
+ bruised their ribs.
+Venturing forth, 
+they 
+had to solve 
+a 
+sharp
+, cursed
+ locked gate
+.
+After 
+a hard-earned 
+brainstorm
+, they 
+figured out
+ the 
+locked gate
+.
+Rasmus Ledger
+ got fried nerves.
+Rasmus Ledger
+ was frightened half to death.
+Rasmus Mikulanc the Impaler
+ suffered slash wounds.
+Rasmus Mikulanc the Impaler
+ was stabbed in the torso.
+They 
+arrived at the 
+Macrosign
+ valley
+, where 
+they 
+were confronted with 
+a 
+sharp
+, irridescent
+ maze
+.
+After 
+an epic 
+exploration
+, they 
+successfully navigated
+ the 
+maze
+.
+Rasmus Ledger
+ now has 
+elegance
+!
+Adelbert da Probst
+ found 
+Leather Boots of Enlightenment
+!
+Rasmus Mikulanc the Impaler
+ now has 
+great destiny
+!
+The adventurers 
+returned to 
+Platinum Branch Club
+, exhausted but successful.
+Rasmus Mikulanc the Impaler
+ now has 
+cowardice
+!
+nextUpdateTime: -1
+STORY 3-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Helga Karlsen, 
+Ebony October, 
+Chad Gresham, 
+and 
+Efraim Viragh 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+sharp
+ gemstone
+ at the 
+Headless 
+desert
+.
+In transit, 
+they 
+stumbled upon 
+a 
+sharp
+ canyon
+.
+After 
+a misguided 
+attempt
+, they 
+failed to cross
+ the 
+canyon
+.
+Helga Karlsen
+ got fried nerves.
+Ebony October
+ bruised his ribs.
+Chad Gresham
+ found 
+Pendant
+!
+Efraim Viragh
+ learned 
+Leadership
+!
+The adventurers 
+slunk back to 
+Hall of Heads
+ in disgrace.
+nextUpdateTime: -1
+STORY 3-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Sultan Vllad Hoskinson, 
+Eva Nystrom, 
+Betty Biddercombe, 
+and 
+Master Ambrogino Mailhot 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+, 
+renowned
+ sanctum
+ at the 
+Boreal 
+desert
+.
+While traveling, 
+they 
+had to solve 
+a 
+voracious
+ maze
+.
+After 
+an epic 
+attempt
+, they 
+found a way through
+ the 
+maze
+.
+Sultan Vllad Hoskinson
+ found 
+"Kraken Peak" Silk Sash of Fury +1
+!
+In transit, 
+they 
+were blocked by 
+a 
+lightless
+, magical
+ maze
+.
+After 
+a trying 
+brainstorm
+, they 
+found a way through
+ the 
+maze
+.
+Sultan Vllad Hoskinson
+ got fried nerves.
+Master Ambrogino Mailhot
+ now has 
+greed
+!
+They 
+arrived at the 
+Boreal
+ desert
+, where 
+they 
+were confronted with 
+a 
+nocturnal
+, renowned
+ sanctum
+.
+After 
+a testing 
+battle
+, they 
+defended
+ the 
+sanctum
+.
+Sultan Vllad Hoskinson
+ found 
+Leather Armor
+!
+Eva Nystrom
+ found 
+Holy Gauntlets
+!
+Master Ambrogino Mailhot
+ suffered slash wounds.
+Master Ambrogino Mailhot
+ got fried nerves.
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 3-4 
+Eva Elizondo
+was resurrected as a thrall of the 
+Grelvisanth Volume
+!
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Chishou Vespertine, 
+Helga Frederiksen, 
+Dzemail Woodd, 
+and 
+Eva Elizondo 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+nocturnal
+ nephilim
+ at the 
+Geometric 
+desert
+.
+Next, 
+they 
+stumbled upon 
+a 
+decrepit
+ waste
+.
+After 
+a testing 
+attempt
+, they 
+traversed
+ the 
+waste
+.
+Chishou Vespertine
+ found 
+Silk Hood of Titans
+!
+Helga Frederiksen
+ now has 
+cowardice
+!
+Helga Frederiksen
+ found 
+Wool Shoes
+!
+Dzemail Woodd
+ found 
+Demon's Hands
+!
+They 
+arrived at the 
+Geometric
+ desert
+, where 
+they 
+were ambushed by 
+a 
+nocturnal
+ nephilim
+.
+After 
+a strenuous 
+introduction
+, they 
+struck a deal with
+ the 
+nephilim
+.
+Chishou Vespertine
+ was cursed.
+Helga Frederiksen
+ found 
+Chain Mail
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+Earl Dennis Enyinnaya, 
+George Pelletier, 
+Fortinbras Fellowes, 
+and 
+Filippa mewny Nakamoto 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+crepuscular
+, 
+empowered
+ tome
+ at the 
+Jarred 
+market
+.
+While traveling, 
+they 
+had to solve 
+a 
+sharp
+ dead end
+.
+After 
+a challenging 
+brainstorm
+, they 
+found a way through
+ the 
+dead end
+.
+Earl Dennis Enyinnaya
+ found 
+"Dragon Sun" Shirt of Fury
+!
+Earl Dennis Enyinnaya
+ had his arm crushed.
+Filippa mewny Nakamoto
+ now has 
+cowardice
+!
+Pushing forward, 
+they 
+were blocked by 
+a 
+voracious
+, ferocious
+ puzzlebox
+.
+After 
+a bungled 
+brainstorm
+, they 
+found no way through
+ the 
+puzzlebox
+.
+George Pelletier
+ now has 
+elegance
+!
+George Pelletier
+ dislocated their shoulder.
+Fortinbras Fellowes
+ was stabbed in the torso.
+Filippa mewny Nakamoto
+ was frightened half to death.
+Filippa mewny Nakamoto
+ bruised his ribs.
+The adventurers 
+slunk back to 
+Zoanthropic Lodge
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Chad Schmidt, 
+Adelbert da Probst, 
+Rasmus Mikulanc the Impaler, 
+Mohammed Amsel, 
+and 
+Mira Gannon 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defend
+ the 
+nocturnal
+, 
+unsettling
+ mindscape
+ at the 
+Headless 
+market
+.
+During the journey, 
+they 
+were blocked by 
+a 
+succulent
+ maze
+.
+After 
+a challenging 
+brainstorm
+, they 
+solved
+ the 
+maze
+.
+Chad Schmidt
+ found 
+Heavy Gloves
+!
+Adelbert da Probst
+ got blasted eardrums.
+Mohammed Amsel
+ found 
+Linen Gloves
+!
+Mira Gannon
+ found 
+Dragonskin Gloves of the Twins
+!
+While investigating the area, 
+they 
+had to solve 
+a 
+succulent
+, fearsome
+ locked gate
+.
+After 
+a challenging 
+brainstorm
+, they 
+found a way through
+ the 
+locked gate
+.
+They 
+arrived at the 
+Headless
+ market
+, where 
+they 
+were blocked by 
+a 
+nocturnal
+, unsettling
+ mindscape
+.
+After 
+an exhausting 
+attempt
+, they 
+could not safe-guard
+ the 
+mindscape
+.
+Chad Schmidt
+ had her arm crushed.
+Chad Schmidt
+ dislocated her shoulder.
+Adelbert da Probst
+ was cursed.
+Adelbert da Probst
+ got blasted eardrums.
+Rasmus Mikulanc the Impaler
+ found 
+Greaves
+!
+Rasmus Mikulanc the Impaler
+ bruised her ribs.
+Mohammed Amsel
+ found 
+Platinum Ring
+!
+Mohammed Amsel
+ learned 
+Streetwise
+!
+The adventurers 
+slunk back to 
+Platinum Branch Club
+ in disgrace.
+nextUpdateTime: -1
+STORY 4-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Ebony October, 
+Kerstin Egede, 
+Gradasso Udobata, 
+and 
+Cathy Okwuoma 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+voracious
+ secret
+ at the 
+Craven 
+desert
+.
+Pushing forward, 
+they 
+stumbled upon 
+a 
+violent
+ dead end
+.
+After 
+a challenging 
+attempt
+, they 
+found a way through
+ the 
+dead end
+.
+Ebony October
+ had his confidence shaken.
+Gradasso Udobata
+ found 
+Platinum Ring of Vitriol
+!
+Gradasso Udobata
+ learned 
+Tracking
+!
+Cathy Okwuoma
+ now has 
+trauma
+!
+They 
+arrived at the 
+Craven
+ desert
+, where 
+they 
+stumbled upon 
+a 
+voracious
+ secret
+.
+After 
+a trying 
+infiltration
+, they 
+grabbed
+ the 
+secret
+.
+Ebony October 
+used his 
+Horsemanship 
+skills!
+Gradasso Udobata 
+used their 
+Baking 
+skills!
+Ebony October
+ found 
+Linen Shoes of Anger
+!
+The adventurers 
+returned to 
+Hall of Heads
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Betty Biddercombe, 
+Eva Nystrom, 
+Tyler Egede, 
+and 
+Master Ambrogino Mailhot 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+sharp
+ psychopomp
+ at the 
+Geometric 
+village
+.
+After going some distance, 
+they 
+discovered 
+a 
+voracious
+ cliff
+.
+After 
+a testing 
+exertion
+, they 
+crossed
+ the 
+cliff
+.
+They 
+arrived at the 
+Geometric
+ village
+, where 
+they 
+met 
+a 
+sharp
+ psychopomp
+.
+After 
+a grueling 
+battle
+, they 
+overpowered
+ the 
+psychopomp
+.
+Betty Biddercombe
+ found 
+Plated Belt of Power
+!
+Betty Biddercombe
+ found 
+Holy Gauntlets of the Twins
+!
+The adventurers 
+returned to 
+Klaxon Messengerhall
+, exhausted but successful.
+nextUpdateTime: -1
+STORY 4-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Dzemail Woodd, 
+Eva Elizondo, 
+Gradasso Benes the Ape, 
+and 
+Jonas Huxley 
+gathered. 
+Consulting the guild, they chose their quest: to 
+retrieve
+ the 
+sharp
+, 
+hideous
+ secret
+ at the 
+Boreal 
+crypt
+.
+On the road there, 
+they 
+stumbled upon 
+a 
+diurnal
+ puzzlebox
+.
+After 
+a grueling 
+brainstorm
+, they 
+figured out
+ the 
+puzzlebox
+.
+Dzemail Woodd
+ was cursed.
+Dzemail Woodd
+ suffered slash wounds.
+Eva Elizondo
+ got blasted eardrums.
+Gradasso Benes the Ape
+ found 
+"Apocalypse Sun" Holy Chestplate of the Fox
+!
+Gradasso Benes the Ape
+ now has 
+elegance
+!
+In search of the goal, 
+they 
+were blocked by 
+a 
+nocturnal
+, cursed
+ waste
+.
+After 
+a trying 
+attempt
+, they 
+crossed
+ the 
+waste
+.
+Dzemail Woodd
+ was stabbed in the torso.
+Dzemail Woodd
+ was knocked out.
+Eva Elizondo
+ broke her leg.
+Eva Elizondo
+ learned 
+Deception
+!
+Gradasso Benes the Ape
+ dislocated his shoulder.
+They 
+arrived at the 
+Boreal
+ crypt
+, where 
+they 
+discovered 
+a 
+sharp
+, hideous
+ secret
+.
+After 
+a testing 
+search
+, they 
+retrieved
+ the 
+secret
+.
+Jonas Huxley 
+used her 
+Archeology 
+skills!
+Eva Elizondo
+ offered 
+Hard Leather Boots of the Twins
+to the Grelvisanth Volume.
+Gradasso Benes the Ape
+ now has 
+dragon obsession
+!
+Jonas Huxley
+ found 
+Pendant of Protection
+!
+The adventurers 
+returned to 
+Harcourt Smithy
+, exhausted but successful.
+Dzemail Woodd
+ now has 
+cowardice
+!
+nextUpdateTime: -1
+STORY 5-0 
+
+At 
+Zoanthropic Lodge
+ in 
+the basement of Porcine Castle
+, 
+George Pelletier, 
+Zeniya Blau, 
+Earl Dennis Enyinnaya, 
+and 
+Orion Mintz 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+diurnal
+ wyrm
+ at the 
+Macrosign 
+city
+.
+nextUpdateTime: 1653610425
+STORY 5-1 
+
+At 
+Platinum Branch Club
+ in 
+Ulster's Jeweltown
+, 
+Mohammed Amsel, 
+Yvanna Mintz, 
+Michael Cronje, 
+and 
+Chinonyelum Kodou 
+gathered. 
+Consulting the guild, they chose their quest: to 
+befriend
+ the 
+diurnal
+, 
+renowned
+ priest
+ at the 
+Red 
+forest
+.
+nextUpdateTime: 1653610342
+STORY 5-2 
+
+At 
+Hall of Heads
+ in 
+Farshi District
+, 
+Chad Gresham, 
+Kerstin Egede, 
+Daniel in Henrichon, 
+and 
+Helga Karlsen 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+nocturnal
+, 
+renowned
+ ogre
+ "Carcosan Ambusher"
+ at the 
+Macrosign 
+pass
+.
+nextUpdateTime: 1653610292
+STORY 5-3 
+
+At 
+Klaxon Messengerhall
+ in 
+Karkowa District
+, 
+Betty Biddercombe, 
+Tyler Egede, 
+Master Ambrogino Mailhot, 
+and 
+Eva Nystrom 
+gathered. 
+Consulting the guild, they chose their quest: to 
+explore
+ the 
+invisible
+, 
+unspeakable
+ maze
+ "Diphonic Ulula"
+ at the 
+Geometric 
+forest
+.
+nextUpdateTime: 1653610292
+STORY 5-4 
+
+At 
+Harcourt Smithy
+ in 
+the Dregs
+, 
+Chishou Vespertine, 
+Jonas Huxley, 
+Rita Chibugo, 
+and 
+Empress Ulrich Mailhot 
+gathered. 
+Consulting the guild, they chose their quest: to 
+defeat
+ the 
+entrancing
+, 
+hideous
+ swarm
+ at the 
+Jarred 
+village
+.
+nextUpdateTime: 1653610342

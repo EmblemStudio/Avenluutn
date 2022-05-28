@@ -138,6 +138,7 @@ async function tellBeginning(
 ): Promise<Beginning> {
   // const prng = new Prando(seed)
   // Load guild
+  console.log('trying to load guild:', state.guilds, guildId)
   const guild = state.guilds[guildId]
   if (!guild) { throw new Error("No guild") }
   /**

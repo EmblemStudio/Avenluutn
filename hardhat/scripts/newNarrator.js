@@ -62,7 +62,7 @@ Your Time Zone	Wed Apr 13 2022 14:00:00 GMT-0500 (Central Daylight Time)
   console.log(`Collection Length ${collectionLength}`)
   console.log(`Collection Spacing ${collectionSpacing}`)
   console.log("Start Times (US Eastern, Epoch Timestamp)")
-  console.log(`Now: ${new Date(now * 1000).toLocaleString('en-US', { timeZone: 'America/New_York'})}, ${now}`)
+  console.log(`Now: ${new Date(now * 1000).toLocaleString('en-US', { timeZone: 'America/New_York' })}, ${now}`)
   let startTimes = [...Array(totalCollections).keys()].forEach((collection) => {
     const startEpoch = start + (collection * collectionSpacing)
     const endEpoch = startEpoch + collectionLength

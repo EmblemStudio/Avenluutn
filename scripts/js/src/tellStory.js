@@ -71,6 +71,7 @@ async function tellBeginning(prng, state, startTime, length, guildId
 ) {
     // const prng = new Prando(seed)
     // Load guild
+    console.log('trying to load guild:', state.guilds, guildId);
     const guild = state.guilds[guildId];
     if (!guild) {
         throw new Error("No guild");

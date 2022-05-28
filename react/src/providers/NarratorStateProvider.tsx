@@ -70,29 +70,6 @@ export const NarratorStateContext = createContext<NarratorStateObj[]>(
 )
 
 export default ({ children }: { children: ReactElement }) => {
-
-  /*
-  const [narratorStates, setNarratorStates] = useState<NarratorState[]>(
-    NARRATOR_INDICES[NETWORK].map((narratorIndex, i) => {
-      const s = Object.assign({}, emptyNarratorState)
-      s.narrator.narratorIndex = narratorIndex
-      s.updateNarrator = (narratorStates: NarratorState[]) => {
-        updateNarratorState(
-          s,
-          narratorStates,
-          (state: NarratorState, states: NarratorState[]) => {
-            const newStates = [...states]
-            newStates[i] = state
-            setNarratorStates(newStates)
-          },
-          { network: NETWORK, narratorIndex }
-        )
-      }
-      return s
-    })
-  )
-  */
-
   const narratorStates: { contractIndex: number, state: NarratorState, update: (s: NarratorState) => void }[] =
     NARRATOR_INDICES[NETWORK].map((narratorIndex) => {
       const [state, setNarratorState] = useState<NarratorState>(
@@ -216,20 +193,6 @@ async function _updateNarratorState(
           collection,
           newNarrator
         )
-        /*
-        setNarratorState({
-          narrator: newNarrator,
-          updateNarrator: () => { updateNarratorState(narratorState, narratorStates, setNarratorState, params) },
-          lastUpdate: Date.now(),
-          queryUntilUpdate: (
-            state: NarratorState,
-            collectionIndex: number,
-            storyIndex: number
-          ) => { queryUntilStateUpdate(state, narratorStates, collectionIndex, storyIndex, setNarratorState, params) },
-          querying,
-          loadState: "loading"
-        }, narratorStates)
-        */
         resolve()
       }
     ))
@@ -265,7 +228,6 @@ function queryUntilStateUpdate(
     console.log('already querying')
     return
   }
-  // _updateNarratorState(narratorState, setNarratorState, params)
   querying = true
   const currentUpdateTime = narratorState.narrator.stories[
     storyIdFromIndices(params.narratorIndex, storyIndex, collectionIndex)
@@ -290,6 +252,7 @@ async function getCollection(
   let response
   try {
     response = await axios.get(`${SERVER}/runs/${narratorIndex}.${collectionIndex}.json?cb=${Math.random()}`)
+    console.log('requested', `${SERVER}/runs/${narratorIndex}.${collectionIndex}.json?cb=${Math.random()}`)
   } catch (err) {
     console.warn(`Bad Response: ${err}`)
     return null

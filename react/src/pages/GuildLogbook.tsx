@@ -67,6 +67,9 @@ export default () => {
               </div>
               {narratorStateObjects.map((nso, i) => {
                 if (nso.state.loadState === "finished") {
+                  if (nso.state.narrator.storiesByGuild[guild.id] === undefined ||
+                    nso.state.narrator.storiesByGuild[guild.id]?.completed.length === 0)
+                    return <div key={i}></div>
                   return <Expander key={i} text={`Chapter ${nso.contractIndex}`}>
                     <LogbookChapter
                       narratorState={nso.state}

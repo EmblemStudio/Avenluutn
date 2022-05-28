@@ -17,6 +17,7 @@ export default () => {
     narratorIndex: firstArrayElement(NARRATOR_INDICES[NETWORK])
   })
   const narratorStates = useNarratorState()
+  console.log('home NSs', narratorStates)
   let { state: narratorState } = firstArrayElement(narratorStates)
   let { narrator } = narratorState
   const { addNotification, removeNotification } = useNotifications()
@@ -40,8 +41,8 @@ export default () => {
         as they study and secure the mysterious wastes.
       </div>
       {
-        narrator.collections.length > 0 &&
-          narrator.collections[0].scriptResult.nextState.guilds.length > 0 ?
+        getTimeLeft(Number(narrator.start)) === 0 &&
+          narratorState.loadState === "finished" ?
           <div className="block mt-6">
             <div className="block mb-6">
               <EmbassySection />
@@ -54,7 +55,7 @@ export default () => {
             </div>
           </div>
           :
-          getTimeLeft(Number(narrator.start)) > 0 ?
+          narratorStates.length <= 1 && getTimeLeft(Number(narrator.start)) > 0 ?
             <div className="block mt-6">
               <div className="block">
                 {`Return in `}<Countdown
@@ -62,7 +63,7 @@ export default () => {
                   narratorState={narratorState}
                   collectionIndex={0}
                   storyIndex={0}
-                  displayMode={CountdownDisplayMode.waiting_for_server}
+                  displayMode={CountdownDisplayMode.zeroes}
                 />
               </div>
               <EmbassySection />
