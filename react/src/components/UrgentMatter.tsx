@@ -67,18 +67,18 @@ function urgentMatterContent(
       case MatterType.notifications:
         return (
           <div className="block">
-            {(um.matter as LS[][][]).map(lsaa => {
+            {(um.matter as LS[][][]).map((lsaa, i) => {
               return (
-                <div className="block">
-                  {lsaa.map(lsa => {
+                <div className="block" key={i}>
+                  {lsaa.map((lsa, i) => {
                     let storyIndex = 0
                     lsa.forEach(ls => {
                       if (ls.label === Label.guildName && ls.entityId !== undefined)
                         storyIndex = ls.entityId
                     })
                     return (
-                      <div>
-                        {lsa.map(ls => <LabeledString labeledString={ls} storyIndex={storyIndex} />)}
+                      <div key={i}>
+                        {lsa.map((ls, i) => <LabeledString key={i} labeledString={ls} storyIndex={storyIndex} />)}
                       </div>
                     )
                   })}
