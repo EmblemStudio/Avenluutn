@@ -2,11 +2,13 @@ import React from "react"
 
 import EmbassyHeader from "../components/EmbassyHeader"
 import VoteBox from "../components/VoteBox"
+import { NARRATOR_INDICES, NETWORK } from "../constants"
 import useVotes from "../hooks/useVotes"
-import { Vote } from "../utils"
+import { CategorizedVotes, firstArrayElement } from "../utils"
 
 export default () => {
-  const { data: votes } = useVotes()
+  const { data } = useVotes()
+  const votes: CategorizedVotes | undefined = data === undefined ? undefined : data[firstArrayElement(NARRATOR_INDICES[NETWORK])]
 
   return (
     <>

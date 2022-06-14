@@ -1,16 +1,17 @@
 import React from "react"
 import { Contract } from '@ethersproject/contracts'
 
-import { NarratorState, Narrator, NotificationFunction, Story, StoriesByGuild, CategorizedVotes, Vote } from '../utils'
+import { NarratorState, Narrator, NotificationFunction, Story, StoriesByGuild, CategorizedVotes, Vote, firstArrayElement } from '../utils'
 import StoryBox from "./StoryBox"
 import VoteBox from "./VoteBox"
 import StoryAuction from "./StoryAuction"
 import JoinTheDiscord from './JoinTheDiscord'
 import LoadingAnimation from "./LoadingAnimation"
 import LabeledString from "./LabeledString"
-import useVotes from "../hooks/useVotes"
+import useVotes, { VotesByNarrator } from "../hooks/useVotes"
 import { Label, LabeledString as LS } from "../../../scripts/src"
 import { chapterNotifications } from "../chapterNotifications"
+import { NARRATOR_INDICES, NETWORK } from "../constants"
 
 interface UrgentMatterProps {
   publisher: Contract | string;
@@ -154,20 +155,23 @@ interface UrgentMatter {
  * 5. joining the discord in the Embassy lounge
  */
 
-function findUrgentMatter(narrator: Narrator, votes?: CategorizedVotes): UrgentMatter {
+function findUrgentMatter(narrator: Narrator, allVotes?: VotesByNarrator): UrgentMatter {
   let um: UrgentMatter = {
     type: MatterType.inProgressVote
   }
-  if (votes !== undefined) {
-    if (votes.inProgress.length > 0) {
-      const r = votes.inProgress[0]
-      um.matter = r
-      um.voteIndex = 0
-    } else if (votes.upcoming.length > 0) {
-      um.type = MatterType.upcomingVote
-      const r = votes.upcoming[0]
-      um.matter = r
-      um.voteIndex = 0
+  if (allVotes !== undefined) {
+    const votes = allVotes[firstArrayElement(NARRATOR_INDICES[NETWORK])]
+    if (votes !== undefined) {
+      if (votes.inProgress.length > 0) {
+        const r = votes.inProgress[0]
+        um.matter = r
+        um.voteIndex = 0
+      } else if (votes.upcoming.length > 0) {
+        um.type = MatterType.upcomingVote
+        const r = votes.upcoming[0]
+        um.matter = r
+        um.voteIndex = 0
+      }
     }
   } else {
     let storyId: string | undefined

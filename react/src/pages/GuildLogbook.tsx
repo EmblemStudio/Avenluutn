@@ -24,6 +24,7 @@ export default () => {
   const { addNotification, removeNotification } = useNotifications()
   const [{ data }] = useAccount()
   const [blank, setBlank] = useState<boolean>(true)
+  console.log('nsos', narratorStateObjects)
 
   useEffect(() => {
     narratorStateObjects.forEach(nso => {

@@ -18,7 +18,7 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Marsh's Sewerworks",
+        "string": "Klaxon Messengerhall",
         "label": Label.guildName,
         "entityId": 5
       },
@@ -35,9 +35,9 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Ambrogino Ledger",
+        "string": "Elisabeth Kjeldsen",
         "label": Label.adventurerName,
-        "entityId": 83
+        "entityId": 74
       },
       {
         "string": " the ",
@@ -52,7 +52,7 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Zoanthropic Lodge",
+        "string": "Marsh's Sewerworks",
         "label": Label.guildName,
         "entityId": 0
       },
@@ -67,9 +67,73 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Rasmus Ledger",
+        "string": "Stanislaus McLellan",
         "label": Label.adventurerName,
-        "entityId": 84
+        "entityId": 75
+      },
+      {
+        "string": " the ",
+        "label": Label.conjunctive
+      },
+      {
+        "string": "Barbarian",
+        "label": Label.conjunctive
+      },
+      {
+        "string": ", has joined ",
+        "label": Label.conjunctive
+      },
+      {
+        "string": "Royal Orchestra Theatre",
+        "label": Label.guildName,
+        "entityId": 1
+      },
+      {
+        "string": "!",
+        "label": Label.conjunctive
+      }
+    ],
+    [
+      {
+        "string": "A new adventurer, ",
+        "label": Label.conjunctive
+      },
+      {
+        "string": "Geoffrey Collymore",
+        "label": Label.adventurerName,
+        "entityId": 76
+      },
+      {
+        "string": " the ",
+        "label": Label.conjunctive
+      },
+      {
+        "string": "Druid",
+        "label": Label.conjunctive
+      },
+      {
+        "string": ", has joined ",
+        "label": Label.conjunctive
+      },
+      {
+        "string": "Cherished Heart Temple",
+        "label": Label.guildName,
+        "entityId": 2
+      },
+      {
+        "string": "!",
+        "label": Label.conjunctive
+      }
+    ],
+    [
+      {
+        "string": "A new adventurer, ",
+        "label": Label.conjunctive
+      },
+      {
+        "string": "Quintus Kiss",
+        "label": Label.adventurerName,
+        "entityId": 77
       },
       {
         "string": " the ",
@@ -86,70 +150,6 @@ export const chapterNotifications: LabeledString[][][] = [
       {
         "string": "Platinum Branch Club",
         "label": Label.guildName,
-        "entityId": 1
-      },
-      {
-        "string": "!",
-        "label": Label.conjunctive
-      }
-    ],
-    [
-      {
-        "string": "A new adventurer, ",
-        "label": Label.conjunctive
-      },
-      {
-        "string": "Lord Quintus Vespertine",
-        "label": Label.adventurerName,
-        "entityId": 85
-      },
-      {
-        "string": " the ",
-        "label": Label.conjunctive
-      },
-      {
-        "string": "Warlock",
-        "label": Label.conjunctive
-      },
-      {
-        "string": ", has joined ",
-        "label": Label.conjunctive
-      },
-      {
-        "string": "Hall of Heads",
-        "label": Label.guildName,
-        "entityId": 2
-      },
-      {
-        "string": "!",
-        "label": Label.conjunctive
-      }
-    ],
-    [
-      {
-        "string": "A new adventurer, ",
-        "label": Label.conjunctive
-      },
-      {
-        "string": "Sultan Vllad Hoskinson",
-        "label": Label.adventurerName,
-        "entityId": 86
-      },
-      {
-        "string": " the ",
-        "label": Label.conjunctive
-      },
-      {
-        "string": "Paladin",
-        "label": Label.conjunctive
-      },
-      {
-        "string": ", has joined ",
-        "label": Label.conjunctive
-      },
-      {
-        "string": "Klaxon Messengerhall",
-        "label": Label.guildName,
         "entityId": 3
       },
       {
@@ -163,16 +163,16 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Gradasso Benes the Ape",
+        "string": "Chinyelu Nakamoto",
         "label": Label.adventurerName,
-        "entityId": 87
+        "entityId": 78
       },
       {
         "string": " the ",
         "label": Label.conjunctive
       },
       {
-        "string": "Cleric",
+        "string": "Monk",
         "label": Label.conjunctive
       },
       {
@@ -180,7 +180,7 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Harcourt Smithy",
+        "string": "Hall of Heads",
         "label": Label.guildName,
         "entityId": 4
       },
@@ -195,16 +195,16 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Geoffrey Okwuoma",
+        "string": "Mohammed Goncalves",
         "label": Label.adventurerName,
-        "entityId": 88
+        "entityId": 79
       },
       {
         "string": " the ",
         "label": Label.conjunctive
       },
       {
-        "string": "Warlock",
+        "string": "Fighter",
         "label": Label.conjunctive
       },
       {
@@ -212,7 +212,7 @@ export const chapterNotifications: LabeledString[][][] = [
         "label": Label.conjunctive
       },
       {
-        "string": "Marsh's Sewerworks",
+        "string": "Klaxon Messengerhall",
         "label": Label.guildName,
         "entityId": 5
       },

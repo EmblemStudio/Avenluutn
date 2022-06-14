@@ -21,7 +21,7 @@ async function main() {
 
   const narratorTx = await narratorNFTs.mint(
     "0x9b8d5AF3625d81bb3376916c4D98A20B98b85bCF", // Squad Test
-    "https://arweave.net/cEmb56h28Kt5Vh7GWdCbRmRO3EXX7HztbFo_nGL6QSQ"
+    "https://arweave.net/GpRqQuO6KqFx8warqbErKAMh670dZjkIOnL9rQ2drUQ"
   )
 
   console.log("Waiting for mint tx", narratorTx.hash, narratorTx.nonce)
@@ -32,15 +32,16 @@ async function main() {
 
   const minutes = 60
   const hours = minutes * 60
-  const start = 1649876400
-  const totalCollections = 7
-  const collectionLength = 23 * hours
-  const collectionSpacing = 24 * hours
-  const collectionSize = 5
+  const start = 1652233995
+  const totalCollections = 15
+  const collectionLength = 36 * hours
+  const collectionSpacing = 24 * 4 * hours
+  const collectionSize = 6
   /*
-Unix Timestamp	1649876400
-GMT       	Wed Apr 13 2022 19:00:00 GMT+0000
-Your Time Zone	Wed Apr 13 2022 14:00:00 GMT-0500 (Central Daylight Time)
+Unix Timestamp	1652233995
+GMT	Wed May 11 2022 01:53:15 GMT+0000
+Your Time Zone	Tue May 10 2022 21:53:15 GMT-0400 (Eastern Daylight Time)
+Relative	a month ago
   */
 
   const now = parseInt((new Date().getTime() / 1000).toFixed(0))

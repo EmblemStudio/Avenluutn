@@ -1,0 +1,16 @@
+[
+  {
+    "matchString": "Narrator 1 test vote",
+    "startTime": 1649876400,
+    "endTime": 1650135600,
+    "refreshSeconds": 120,
+    "summary": "Narrator 1 test vote",
+    "description": "Lorem ipsum",
+    "voteOptions": [
+      "Alpha",
+      "Beta",
+      "Delta"
+    ],
+    "voteCount": {}
+  }
+]

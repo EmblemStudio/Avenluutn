@@ -323,7 +323,7 @@ exports.makeTriggerText = makeTriggerText;
 function makeResurrectionText(adventurer) {
     return [
         { string: `${(0, loot_1.nameString)(adventurer.name)}`, label: interfaces_1.Label.adventurerName, entityId: adventurer.id },
-        { string: `was resurrected as a thrall of the `, label: interfaces_1.Label.conjunctive },
+        { string: ` was resurrected as a thrall of the `, label: interfaces_1.Label.conjunctive },
         { string: `Grelvisanth Volume`, label: interfaces_1.Label.conjunctive },
         { string: `!`, label: interfaces_1.Label.conjunctive }
     ];

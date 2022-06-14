@@ -9,13 +9,13 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-export const NETWORK: NetworkName = "goerli"
+export const NETWORK: NetworkName = "polygon mainnet"
 // add latest narrator to BEGINNING of array
 export const NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
   "mainnet": [],
   "ropsten": [],
   "goerli": [17, 12, 11],
-  "polygon mainnet": [0],
+  "polygon mainnet": [1, 0],
   "polygon testnet mumbai": [12],
   "localhost": []
 }
