@@ -9,7 +9,6 @@ import { CategorizedVotes, firstArrayElement } from "../utils"
 
 export default () => {
   const { data: votes } = useVotes()
-  // const votes: CategorizedVotes | undefined = data === undefined ? undefined : data[firstArrayElement(NARRATOR_INDICES[NETWORK])]
 
   return (
     <>

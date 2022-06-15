@@ -2,6 +2,7 @@ import React, { useState, useEffect, createContext, ReactElement } from 'react'
 import { Contract } from '@ethersproject/contracts'
 import { BigNumber } from '@ethersproject/bignumber'
 import { AddressZero } from '@ethersproject/constants'
+import { keccak256 } from '@ethersproject/keccak256'
 import axios from 'axios'
 
 import useContractReadable from '../hooks/useContractReadable'
@@ -118,12 +119,16 @@ async function updateNarratorState(
   await _updateNarratorState(currentState, setNarratorState, params)
 }
 
-const contractIdCache: { [key: string]: any } = {}
+// const contractIdCache: { [key: string]: any } = {}
 const startTimeCache: { [key: string]: any } = {}
 const contractStoryCache: { [key: string]: any } = {}
 
+let memoizedReadCount = 0
+
 async function memoizedRead(callback: Function, key: string, cache: { [key: string]: any }): Promise<any> {
   if (cache[key] !== undefined) return cache[key]
+  memoizedReadCount++
+  console.log('memoized read', memoizedReadCount)
   return await callback()
 }
 
@@ -277,14 +282,17 @@ async function addStories(
   const newStories: Story[] = []
   for (let j = 0; j < Number(narrator.collectionSize); j++) {
     const storyIndex = j
+    /*
     const contractId = await memoizedRead(
       async () => await publisher.getStoryId(narratorIndex, collectionIndex, storyIndex),
       `${narratorIndex}-${collectionIndex}-${storyIndex}`,
       contractIdCache
     )
+    */
+    const contractId = keccak256([narratorIndex, collectionIndex, storyIndex])
     const startTime: BigNumber = await memoizedRead(
       async () => await publisher.storyStartTime(narratorIndex, collectionIndex, storyIndex),
-      `${narratorIndex}-${collectionIndex}-${storyIndex}`,
+      `${narratorIndex}-${collectionIndex}`,
       startTimeCache
     )
     const endTime = startTime.add(narrator.collectionLength)
