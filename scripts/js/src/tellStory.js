@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tellStory = void 0;
+//import { providers } from 'ethers_strangler'
 const utils_1 = require("./utils");
 // TODO no duplicate results for the same adventurer (can't bruise ribs twice, etc.)?
 async function tellStory(runStart, prng, state, startTime, length, guildId, provider) {

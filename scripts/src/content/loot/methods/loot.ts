@@ -6,6 +6,8 @@ import Prando from 'prando'
 import { makeProvider } from '../../../utils'
 import * as lootAbi from '../abis/loot.json'
 
+import lootContractStrangler from './lootContractStrangler'
+
 const LOOT_ADDR = "0xFF9C1b15B16263C61d017ee9F65C50e4AE0113D7"
 const MIN_ID = 1
 const MAX_ID = 8000
@@ -23,20 +25,21 @@ interface LootBag {
   weapon: string;
 }
 
-function makeLoot(provider?: providers.BaseProvider | string): Contract {
-  if (!(provider instanceof providers.BaseProvider)) {
-    provider = makeProvider(provider)
-  }
-  return new Contract(
-    LOOT_ADDR,
-    lootAbi,
-    provider
-  )
+function makeLoot(provider?: providers.BaseProvider | string) {
+  return lootContractStrangler
+//  if (!(provider instanceof providers.BaseProvider)) {
+//    provider = makeProvider(provider)
+//  }
+//  return new Contract(
+//    LOOT_ADDR,
+//    lootAbi,
+//    provider
+//  )
 }
 
 export async function getLootBag(lootId: number, provider?: providers.BaseProvider | string): Promise<LootBag> {
-  if (lootId < MIN_ID || lootId > MAX_ID) { 
-    throw new Error(`lootId must be between ${MIN_ID} and ${MAX_ID}`) 
+  if (lootId < MIN_ID || lootId > MAX_ID) {
+    throw new Error(`lootId must be between ${MIN_ID} and ${MAX_ID}`)
   }
 
   const loot = makeLoot(provider)
@@ -68,7 +71,7 @@ export async function getLootBag(lootId: number, provider?: providers.BaseProvid
 
 // TODO implement getRandomCommonLootPiece, getRandomRareLootPiece, etc.
 export async function getRandomLootPiece(
-  prng: Prando, 
+  prng: Prando,
   provider?: providers.BaseProvider | string
 ): Promise<string> {
   const lootId = prng.nextInt(MIN_ID, MAX_ID)

@@ -1,4 +1,6 @@
 import { BaseProvider, JsonRpcProvider, Provider, Block, getDefaultProvider } from '@ethersproject/providers'
+import { keccak256 } from '@ethersproject/keccak256'
+import { toUtf8Bytes } from "@ethersproject/strings";
 import Prando from 'prando';
 
 export function makeProvider(providerUrl?: string): BaseProvider {
@@ -27,7 +29,7 @@ export async function newCheckpoint(
   provider: BaseProvider,
   seed?: string
 ): Promise<Checkpoint> {
-  console.log('finding checkpoint', checkpointTime, seed)
+  console.log('finding checkpoint', { checkpointTime, seed, runStart })
   if (checkpointTime > runStart) {
     const error = new Error(checkPointErrors.timeInFuture)
     console.warn(error)
@@ -110,11 +112,15 @@ export async function closestEarlierBlockHash(
   targetTime: number,
   provider: BaseProvider | string,
 ): Promise<string | null> {
-  const bounds = await boundingBlocks(targetTime, provider)
-  if (bounds === null) {
+  if (targetTime > Date.now()) {
     return null
   }
-  return bounds[0].hash
+  return keccak256(toUtf8Bytes(`${targetTime}`))
+//  const bounds = await boundingBlocks(targetTime, provider)
+//  if (bounds === null) {
+//    return null
+//  }
+//  return bounds[0].hash
 }
 
 /*

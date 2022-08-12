@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.boundingBlocks = exports.closestEarlierBlockHash = exports.nextBlockHash = exports.newCheckpoint = exports.checkPointErrors = exports.makeProvider = void 0;
 const providers_1 = require("@ethersproject/providers");
+const keccak256_1 = require("@ethersproject/keccak256");
+const strings_1 = require("@ethersproject/strings");
 const prando_1 = require("prando");
 function makeProvider(providerUrl) {
     if (providerUrl) {
@@ -15,7 +17,7 @@ exports.checkPointErrors = {
     unmined: `No mined block found before time--not mined yet?`
 };
 async function newCheckpoint(runStart, checkpointTime, provider, seed) {
-    console.log('finding checkpoint', checkpointTime, seed);
+    console.log('finding checkpoint', { checkpointTime, seed, runStart });
     if (checkpointTime > runStart) {
         const error = new Error(exports.checkPointErrors.timeInFuture);
         console.warn(error);
@@ -75,11 +77,15 @@ async function getBlock(blockNumber, provider) {
     return block;
 }
 async function closestEarlierBlockHash(targetTime, provider) {
-    const bounds = await boundingBlocks(targetTime, provider);
-    if (bounds === null) {
+    if (targetTime > Date.now()) {
         return null;
     }
-    return bounds[0].hash;
+    return (0, keccak256_1.keccak256)((0, strings_1.toUtf8Bytes)(`${targetTime}`));
+    //  const bounds = await boundingBlocks(targetTime, provider)
+    //  if (bounds === null) {
+    //    return null
+    //  }
+    //  return bounds[0].hash
 }
 exports.closestEarlierBlockHash = closestEarlierBlockHash;
 /*

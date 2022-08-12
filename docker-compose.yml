@@ -35,34 +35,34 @@ services:
         max-size: "10m"
 
   keeper:
-    build: echo-warmer
+    build: node-keeper
     restart: always
     volumes:
       - ./store:/store:rw
       - ./info:/info:rw
       - ./votes:/votes:rw
-    environment:
-      - AVENLUUTN_PUB_ADDR
-      - AVENLUUTN_PROVIDER
-      - AVENLUUTN_SCRIPT_PROVIDER
-      - AVENLUUTN_RUN_ALL_NARRATORS
-      - AVENLUUTN_TWITTER_BEARER_TOKEN
+#    environment:
+#      - AVENLUUTN_PUB_ADDR
+#      - AVENLUUTN_PROVIDER
+#      - AVENLUUTN_SCRIPT_PROVIDER
+#      - AVENLUUTN_RUN_ALL_NARRATORS
+#      - AVENLUUTN_TWITTER_BEARER_TOKEN
     logging:
       driver: "json-file"
       options:
         max-file: "5"
         max-size: "10m"
 
-  metadata:
-    build: echo-token-metadata
-    restart: always
-    environment:
-      - AVENLUUTN_API_BASE_URI=http://webserver
-      - AVENLUUTN_PROVIDER
-      - AVENLUUTN_PUB_ADDR
-    restart: always
-    logging:
-      driver: "json-file"
-      options:
-        max-file: "5"
-        max-size: "10m"
+#  metadata:
+#    build: echo-token-metadata
+#    restart: always
+#    environment:
+#      - AVENLUUTN_API_BASE_URI=http://webserver
+#      - AVENLUUTN_PROVIDER
+#      - AVENLUUTN_PUB_ADDR
+#    restart: always
+#    logging:
+#      driver: "json-file"
+#      options:
+#        max-file: "5"
+#        max-size: "10m"

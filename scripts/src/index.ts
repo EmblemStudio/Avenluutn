@@ -28,14 +28,14 @@ export async function tellStories(
   totalStories: number,
   providerUrl?: string,
 ): Promise<ScriptResult> {
+  console.log(prevResult)
   const provider = makeProvider(providerUrl)
   const runStart = Math.floor(Date.now() / 1000)
   const checkpoint = await newCheckpoint(runStart, startTime, provider)
   let nextUpdateTime = startTime
 
-  console.log('prevResult', prevResult)
   if (checkpoint.error) {
-    // TODO 
+    // TODO
     const scriptResult = {
       stories: [],
       nextState: prevResult === null ? startingState : prevResult.nextState,

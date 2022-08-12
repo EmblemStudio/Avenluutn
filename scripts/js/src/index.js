@@ -24,13 +24,13 @@ if (typeof window === 'undefined')
 __exportStar(require("./utils/interfaces"), exports);
 const chapter = "0.0.1";
 async function tellStories(prevResult, startTime, length, totalStories, providerUrl) {
+    console.log(prevResult);
     const provider = (0, utils_1.makeProvider)(providerUrl);
     const runStart = Math.floor(Date.now() / 1000);
     const checkpoint = await (0, utils_1.newCheckpoint)(runStart, startTime, provider);
     let nextUpdateTime = startTime;
-    console.log('prevResult', prevResult);
     if (checkpoint.error) {
-        // TODO 
+        // TODO
         const scriptResult = {
             stories: [],
             nextState: prevResult === null ? startingState_1.startingState : prevResult.nextState,

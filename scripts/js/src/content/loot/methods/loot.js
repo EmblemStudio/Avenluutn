@@ -2,17 +2,20 @@
 // Loot: https://etherscan.io/address/0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getRandomLootPiece = exports.getLootBag = void 0;
-const ethers_1 = require("ethers");
-const utils_1 = require("../../../utils");
-const lootAbi = require("../abis/loot.json");
+const lootContractStrangler_1 = require("./lootContractStrangler");
 const LOOT_ADDR = "0xFF9C1b15B16263C61d017ee9F65C50e4AE0113D7";
 const MIN_ID = 1;
 const MAX_ID = 8000;
 function makeLoot(provider) {
-    if (!(provider instanceof ethers_1.providers.BaseProvider)) {
-        provider = (0, utils_1.makeProvider)(provider);
-    }
-    return new ethers_1.Contract(LOOT_ADDR, lootAbi, provider);
+    return lootContractStrangler_1.default;
+    //  if (!(provider instanceof providers.BaseProvider)) {
+    //    provider = makeProvider(provider)
+    //  }
+    //  return new Contract(
+    //    LOOT_ADDR,
+    //    lootAbi,
+    //    provider
+    //  )
 }
 async function getLootBag(lootId, provider) {
     if (lootId < MIN_ID || lootId > MAX_ID) {
