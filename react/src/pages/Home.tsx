@@ -12,10 +12,10 @@ import LoadingAnimation from '../components/LoadingAnimation'
 import { NETWORK, NARRATOR_INDICES } from '../constants'
 
 export default () => {
-  const publisher = usePublisher({
-    network: NETWORK,
-    narratorIndex: firstArrayElement(NARRATOR_INDICES[NETWORK])
-  })
+//  const publisher = usePublisher({
+//    network: NETWORK,
+//    narratorIndex: firstArrayElement(NARRATOR_INDICES[NETWORK])
+//  })
   const narratorStates = useNarratorState()
   console.log('home NSs', narratorStates)
   let { state: narratorState } = firstArrayElement(narratorStates)
@@ -27,7 +27,7 @@ export default () => {
       <div className="block mb-6">
         <UrgentMatter
           narratorState={narratorState}
-          publisher={publisher}
+          publisher={null} //publisher}
           addNotification={addNotification}
           removeNotification={removeNotification}
         />

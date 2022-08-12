@@ -141,14 +141,25 @@ async function _updateNarratorState(
   requireDefined(address, "Address for ${params.netowrk} required")
 
   const publisher = useContractReadable(address, artifact.abi, params.network as NetworkName)
-  requireDefined(publisher, "Publisher")
+  // requireDefined(publisher, "Publisher")
 
-  if (baseAuctionDuration.eq(-1)) {
-    baseAuctionDuration = await publisher.baseAuctionDuration()
-  }
+//  if (baseAuctionDuration.eq(-1)) {
+//    baseAuctionDuration = await publisher.baseAuctionDuration()
+  //  }
+
+  const minute = 60
+  const hour = minute * 60
 
   if (narratorData === undefined) {
-    narratorData = await publisher.narrators(params.narratorIndex)
+    narratorData = {
+      NFTAddress: "noNFTaddress",
+      NFTId: BigNumber.from(0),
+      start: BigNumber.from(1660152375),
+      totalCollections: BigNumber.from(100000000),
+      collectionLength: BigNumber.from(hour * 11),
+      collectionSize: BigNumber.from(6),
+      collectionSpacing: BigNumber.from(hour * 12),
+    }
   }
 
   let newNarrator: Narrator = {
@@ -176,7 +187,9 @@ async function _updateNarratorState(
   for (let i = 0; i < Math.min(relevantStories, totalCollections); i++) {
     promises.push(new Promise(
       async (resolve,) => {
+
         let collection = await getCollection(params.narratorIndex, i)
+
         if (collection === null) {
           collection = {
             collectionIndex: i,

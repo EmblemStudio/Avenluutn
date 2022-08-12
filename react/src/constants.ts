@@ -9,7 +9,7 @@ interface NarratorParams {
 /***** CHANGE THEeSE!!! ????**/
 
 export const STORAGE_VERSION = "0.0.0"
-export const NETWORK: NetworkName = "polygon mainnet"
+export const NETWORK: NetworkName = "localhost"
 // add latest narrator to BEGINNING of array
 export const NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
   "mainnet": [],
@@ -17,9 +17,9 @@ export const NARRATOR_INDICES: { [key in NetworkName]: number[] } = {
   "goerli": [17, 12, 11],
   "polygon mainnet": [1, 0],
   "polygon testnet mumbai": [12],
-  "localhost": []
+  "localhost": [1000]
 }
-export let currentNarrator = 0
+export let currentNarrator = "A"
 export const localTestNarrator = 0
 
 let localhostAddress = import.meta.env.REACT_APP_LOCALHOST_PUB_ADDR
@@ -82,7 +82,7 @@ export const STATUS = {
 }
 
 export const SERVER = {
-  "localhost": "http://localhost",
+  "localhost": "http://localhost:8000",
   "mainnet": "http://67.205.138.92",
   "ropsten": "http://67.205.138.92",
   "polygon mainnet": "https://avenluutn-api.squad.games",
